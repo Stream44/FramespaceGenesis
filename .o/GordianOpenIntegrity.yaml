@@ -1,0 +1,21 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$defs:
+  envelope:
+    $ref: "https://datatracker.ietf.org/doc/draft-mcnally-envelope/"
+  mark:
+    $ref: "https://github.com/BlockchainCommons/Research/blob/master/papers/bcr-2025-001-provenance-mark.md"
+envelope: "ur:envelope/lptpsotanshdhdcxwtmtbzpmhhetwdehsknyvdrejphdntiavopycecmmuwzrlhecaiyprhhbylbytrnoytpsoksdtfljljpieinhsjtgwjoihjtgajtjyihiojpinjykkdmgmihjojljkinjyjljpkkgaieihjtjyiniyinihjptpsoksehieinieftjpihjojlftihemideeeniydyesemetiaeyiaiadyeyeeenehideeetdyideseshseneceteshseyideniyhsetetetoyaylftpsohdgltansgylftanshfhdcxfyonwttkhdtokngtjpbdiacwmejnintiwdpeadflmhpsdespynkbbkmsnydajsqdtansgrhdcxgubabwwzdsclswurecrhfmltsnhkhkamleptdywyamtydasgkivsqznsrnfpbdadoycsfncsfgoytpsoksctfljljpieinhsjtgwjoihjtgajtjyihiojpinjykkdmguiniojtinjtiogrihkktpsokshnjkjkisdpihieeyececehescxfpfpfpfpfxeoglknhsfxehjzhtfygaehglghfeecfpfpfpfpgagdjtgoknhkfxgokpkkgmflgmgleogsdniofdemksksghgaidhdethfjnjegtecfxfphfeeflkphdkkjzkogwfecxjyeeeedpjkiniojtinjtiodpjeihkkoycsfztpsohdjktngdgmgwhflfaxhdimeejoothkcfmepmptmnzczojyfluybtkeyawzdasojyhtskwecaiywfgarhkgotcmhkvldpzctkhlsthyntsaaddijtmejeleetwnwmjohftyjknsoyimuowfahgmsabzgoimqzplfssrhkdyoxisayttynrpyastjytimnsrvyfzuymngddrecswfzpfmwhkvdrhtlwftdhnpdkgaoytckqdpfuo"
+mark: "b5688df8"
+---
+# Repository DID: did:repo:e7b46f0978c2cc02461b480b99a6589a2b6fa888
+# Current Mark: b5688df8 (🅑 RACE IRIS LUNG YOGA)
+# Inception Mark: 741c1643 (🅑 JURY CODE CALM FLUX)
+# XID(f09615ad) [
+#     "GordianOpenIntegrity.RepositoryIdentifier": "did:repo:e7b46f0978c2cc02461b480b99a6589a2b6fa888"
+#     'key': Bytes(78) [
+#         'allow': 'All'
+#     ]
+#     "GordianOpenIntegrity.SigningKey": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPnUzYCUuyRGRN3L+gH7xxTIbX8VmkM5CAV4GuXylvOE t44-signing-key"
+#     'provenance': Bytes(115)
+# ]
+# Trust established using https://github.com/Stream44/t44-BlockchainCommons.com
