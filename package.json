@@ -1,0 +1,9 @@
+{
+    "name": "@stream44.studio/FramespaceGenesis",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "test": "bun test"
+    },
+    "license": "LGPL"
+}
