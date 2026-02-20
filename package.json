@@ -3,7 +3,8 @@
     "version": "0.2.0-rc.1",
     "private": true,
     "scripts": {
-        "test": "bun test"
+        "test": "bun test",
+        "postinstall": "bunx @stream44.studio/dco install-hook"
     },
     "license": "LGPL"
 }
