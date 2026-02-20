@@ -1,10 +1,13 @@
 {
     "name": "@stream44.studio/FramespaceGenesis",
     "version": "0.2.0-rc.1",
+    "license": "LGPL",
     "private": true,
     "scripts": {
         "test": "bun test",
         "postinstall": "bunx @stream44.studio/dco install-hook"
     },
-    "license": "LGPL"
+    "devDependencies": {
+        "@stream44.studio/dco": "0.3.0-rc.18"
+    }
 }
