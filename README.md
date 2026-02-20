@@ -26,7 +26,9 @@ The engine is built on [encapsulate](https://github.com/Stream44/encapsulate) wh
 - Observe data movement across component and space boundaries to identify exposure, correlation, and risk
 - Transpose models directly onto actual system implementations — the components may map to real classes and services
 
-This project thrives on your collaboration! Try creating a **Framespace** for something you are interested in and share it!
+> **This project thrives on your collaboration!**
+
+Try creating a **Framespace** for something you are interested in and share it!
 
 
 Visualization Model
