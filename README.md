@@ -34,3 +34,7 @@ Repository DID: `did:repo:e7b46f0978c2cc02461b480b99a6589a2b6fa888`
 </table>
 
 (c) 2026 [Christoph.diy](https://christoph.diy) • Code: `LGPL` • Text: [GNU Free Documentation License](https://www.gnu.org/licenses/fdl-1.3.txt) • Created with [Stream44.Studio](https://Stream44.Studio)
+
+### Contributing
+
+All contributions must contain [Developer Certificates of Origin](https://github.com/Stream44/dco). To contribute, sign `DCO.md` once using `bun run sign-dco` and push branches to github using `bun run push` which will create a signed commit.
