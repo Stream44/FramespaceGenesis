@@ -4,10 +4,9 @@
     "license": "LGPL",
     "private": true,
     "scripts": {
-        "test": "bun test",
-        "postinstall": "bunx @stream44.studio/dco install-hook"
+        "test": "bun test"
     },
     "devDependencies": {
-        "@stream44.studio/dco": "0.3.0-rc.18"
+        "@stream44.studio/dco": "0.3.0-rc.21"
     }
 }
