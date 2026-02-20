@@ -1,6 +1,6 @@
 GNU LESSER GENERAL PUBLIC LICENSE - Version 3
 
-Framespace Genesis: An experimental encapsulate-based visual modeling engine for annotated code components.
+Framespace Genesis: Component execution path based modeling engine with realtime interactive visualization written in TypeScript.
 
 Copyright 2026 Christoph Dorn - https://Christoph.diy
 
