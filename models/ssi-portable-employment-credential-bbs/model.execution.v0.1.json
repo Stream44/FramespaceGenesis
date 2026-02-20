@@ -1,0 +1,594 @@
+{
+  "modelPack": {
+    "id": "ssi-portable-employment-v0.1",
+    "title": "Portable Employment Credential",
+    "version": "0.1.0",
+    "scenario": {
+      "id": "employmentDurationProof",
+      "profile": "A",
+      "crypto": "bbsPlusPredicates",
+      "privacy": [
+        "antiCorrelation",
+        "dataMinimisation",
+        "nonceBinding"
+      ],
+      "purpose": "hiring"
+    }
+  },
+  "spaces": [
+    {
+      "id": "holderDomain",
+      "label": "Holder Domain",
+      "kind": "trustBoundary",
+      "style": {
+        "variant": "domain"
+      }
+    },
+    {
+      "id": "issuerDomain",
+      "label": "Issuer Domain",
+      "kind": "trustBoundary",
+      "style": {
+        "variant": "domain"
+      }
+    },
+    {
+      "id": "verifierDomain",
+      "label": "Verifier Domain",
+      "kind": "trustBoundary",
+      "style": {
+        "variant": "domain"
+      }
+    },
+    {
+      "id": "trustInfrastructure",
+      "label": "Trust Infrastructure",
+      "kind": "infrastructure",
+      "style": {
+        "variant": "infra"
+      }
+    },
+    {
+      "id": "policyRisk",
+      "label": "Policy And Risk",
+      "kind": "overlay",
+      "style": {
+        "variant": "overlay"
+      }
+    }
+  ],
+  "components": [
+    {
+      "id": "holder",
+      "label": "Holder",
+      "type": "actor",
+      "space": "holderDomain",
+      "attributes": [
+        {
+          "id": "consentState",
+          "type": "enum",
+          "values": [
+            "draft",
+            "approved"
+          ],
+          "initial": "approved"
+        },
+        {
+          "id": "pairwiseDidMode",
+          "type": "enum",
+          "values": [
+            "off",
+            "on"
+          ],
+          "initial": "on"
+        },
+        {
+          "id": "holderPresentationDid",
+          "type": "string",
+          "initial": ""
+        }
+      ],
+      "actions": [
+        {
+          "id": "submitPresentation",
+          "label": "Submit Presentation",
+          "inputs": [
+            "vpPayload"
+          ],
+          "outputs": [
+            "vpPayload"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wallet",
+      "label": "Wallet",
+      "type": "agent",
+      "space": "holderDomain",
+      "attributes": [
+        {
+          "id": "credentialStoreCount",
+          "type": "number",
+          "initial": 0
+        },
+        {
+          "id": "keyState",
+          "type": "enum",
+          "values": [
+            "ok",
+            "rotated",
+            "recovery"
+          ],
+          "initial": "ok"
+        },
+        {
+          "id": "persistentHolderDid",
+          "type": "string",
+          "initial": "did:example:holder-persistent"
+        },
+        {
+          "id": "pairwiseDid",
+          "type": "string",
+          "initial": ""
+        }
+      ],
+      "actions": [
+        {
+          "id": "storeCredential",
+          "label": "Store Credential",
+          "inputs": [
+            "vcPayload"
+          ],
+          "outputs": [
+            "storeReceiptPayload"
+          ]
+        },
+        {
+          "id": "derivePresentation",
+          "label": "Derive Presentation",
+          "inputs": [
+            "proofRequestPayload"
+          ],
+          "outputs": [
+            "vpPayload"
+          ]
+        },
+        {
+          "id": "derivePairwiseDid",
+          "label": "Derive Pairwise DID",
+          "inputs": [
+            "verifierDidPayload"
+          ],
+          "outputs": [
+            "didPayload"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "issuer",
+      "label": "Issuer",
+      "type": "service",
+      "space": "issuerDomain",
+      "attributes": [
+        {
+          "id": "issuerDid",
+          "type": "string",
+          "initial": "did:web:example-corp.com"
+        },
+        {
+          "id": "didMethodProfile",
+          "type": "string",
+          "initial": "dns-based"
+        },
+        {
+          "id": "statusListUrl",
+          "type": "string",
+          "initial": "https://example-corp.com/status/3"
+        }
+      ],
+      "actions": [
+        {
+          "id": "issueCredential",
+          "label": "Issue Credential",
+          "inputs": [
+            "issuanceRequestPayload"
+          ],
+          "outputs": [
+            "vcPayload"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "verifier",
+      "label": "Verifier",
+      "type": "service",
+      "space": "verifierDomain",
+      "attributes": [
+        {
+          "id": "verifierDid",
+          "type": "string",
+          "initial": "did:web:verifier.example"
+        },
+        {
+          "id": "nonce",
+          "type": "string",
+          "initial": ""
+        },
+        {
+          "id": "declaredPurpose",
+          "type": "string",
+          "initial": "hiring"
+        }
+      ],
+      "actions": [
+        {
+          "id": "createProofRequest",
+          "label": "Create Proof Request",
+          "inputs": [],
+          "outputs": [
+            "proofRequestPayload"
+          ]
+        },
+        {
+          "id": "verifyPresentation",
+          "label": "Verify Presentation",
+          "inputs": [
+            "vpPayload"
+          ],
+          "outputs": [
+            "verificationResultPayload"
+          ]
+        },
+        {
+          "id": "prepareStatusQuery",
+          "label": "Prepare Status Query",
+          "inputs": [
+            "vpPayload"
+          ],
+          "outputs": [
+            "statusQueryPayload"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "didResolver",
+      "label": "DID Resolver",
+      "type": "infrastructure",
+      "space": "trustInfrastructure",
+      "attributes": [
+        {
+          "id": "supportedMethods",
+          "type": "string[]",
+          "initial": [
+            "did:web",
+            "did:key",
+            "did:example"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "id": "resolveDid",
+          "label": "Resolve DID",
+          "inputs": [
+            "didPayload"
+          ],
+          "outputs": [
+            "didDocumentPayload"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "statusService",
+      "label": "Status Service",
+      "type": "infrastructure",
+      "space": "trustInfrastructure",
+      "attributes": [],
+      "actions": [
+        {
+          "id": "getStatus",
+          "label": "Get Status",
+          "inputs": [
+            "statusQueryPayload"
+          ],
+          "outputs": [
+            "statusResultPayload"
+          ]
+        }
+      ]
+    }
+  ],
+  "controls": [
+    {
+      "id": "antiCorrelation",
+      "label": "Anti Correlation",
+      "type": "constraint",
+      "space": "policyRisk",
+      "attachedTo": [
+        "wallet.derivePresentation",
+        "wallet.derivePairwiseDid"
+      ],
+      "rules": [
+        {
+          "id": "pairwiseDidRequired",
+          "mustHold": "holder.pairwiseDidMode == 'on'"
+        },
+        {
+          "id": "freshDidPerVerifier",
+          "mustHold": "wallet.pairwiseDid != ''"
+        }
+      ]
+    },
+    {
+      "id": "nonceBinding",
+      "label": "Nonce Binding",
+      "type": "constraint",
+      "space": "policyRisk",
+      "attachedTo": [
+        "wallet.derivePresentation",
+        "verifier.verifyPresentation"
+      ],
+      "rules": [
+        {
+          "id": "nonceRequired",
+          "mustHold": "verifier.nonce != ''"
+        },
+        {
+          "id": "nonceInVp",
+          "mustHold": "vpPayload.nonce == verifier.nonce"
+        }
+      ]
+    },
+    {
+      "id": "dataMinimisation",
+      "label": "Data Minimisation",
+      "type": "constraint",
+      "space": "policyRisk",
+      "attachedTo": [
+        "wallet.derivePresentation"
+      ],
+      "rules": [
+        {
+          "id": "predicateOnly",
+          "mustHold": "proofRequestPayload.requestedPredicate == 'employmentYears>=5'"
+        },
+        {
+          "id": "noEmployerDisclosure",
+          "mustHold": "vpPayload.disclosed.employerName == null"
+        }
+      ]
+    }
+  ],
+  "riskSignals": [
+    {
+      "id": "correlationRisk",
+      "label": "Correlation Risk",
+      "type": "derived",
+      "space": "policyRisk",
+      "derivation": {
+        "source": "boundaryCrossings",
+        "highWhen": [
+          "holder.pairwiseDidMode == 'off'",
+          "reusedDidAcrossRuns == true"
+        ],
+        "lowWhen": [
+          "antiCorrelation.pairwiseDidRequired == true",
+          "freshDidPerVerifier == true"
+        ]
+      }
+    },
+    {
+      "id": "dataExposureRisk",
+      "label": "Data Exposure Risk",
+      "type": "derived",
+      "space": "policyRisk",
+      "derivation": {
+        "source": "payloadInspection",
+        "levels": {
+          "fullCredential": "high",
+          "selectiveDisclosure": "medium",
+          "predicateProof": "low"
+        },
+        "computeFrom": "vpPayload.proofType"
+      }
+    }
+  ],
+  "payloadSchemas": {
+    "issuanceRequestPayload": {
+      "type": "issuanceRequest",
+      "fields": {
+        "subjectDid": "string",
+        "credentialType": "string"
+      }
+    },
+    "vcPayload": {
+      "type": "verifiableCredential",
+      "fields": {
+        "credentialType": "string",
+        "issuer": "string",
+        "credentialStatus": {
+          "statusListUrl": "string",
+          "statusIndex": "number"
+        },
+        "claims": {
+          "employmentYears": "number",
+          "role": "string",
+          "industry": "string"
+        }
+      }
+    },
+    "storeReceiptPayload": {
+      "type": "storeReceipt",
+      "fields": {
+        "stored": "boolean",
+        "storeCount": "number"
+      }
+    },
+    "verifierDidPayload": {
+      "type": "didRef",
+      "fields": {
+        "did": "string"
+      }
+    },
+    "didPayload": {
+      "type": "didRef",
+      "fields": {
+        "did": "string"
+      }
+    },
+    "didDocumentPayload": {
+      "type": "didDocument",
+      "fields": {
+        "id": "string",
+        "verificationMethods": "object"
+      }
+    },
+    "proofRequestPayload": {
+      "type": "proofRequest",
+      "fields": {
+        "requestedPredicate": "string",
+        "nonce": "string",
+        "declaredPurpose": "string"
+      }
+    },
+    "vpPayload": {
+      "type": "verifiablePresentation",
+      "fields": {
+        "holderDid": "string",
+        "proofType": "string",
+        "predicate": "string",
+        "nonce": "string",
+        "disclosed": "object"
+      }
+    },
+    "statusQueryPayload": {
+      "type": "statusQuery",
+      "fields": {
+        "statusListUrl": "string",
+        "statusIndex": "number"
+      }
+    },
+    "statusResultPayload": {
+      "type": "statusResult",
+      "fields": {
+        "revoked": "boolean",
+        "suspended": "boolean"
+      }
+    },
+    "verificationResultPayload": {
+      "type": "verificationResult",
+      "fields": {
+        "valid": "boolean",
+        "reason": "string"
+      }
+    }
+  },
+  "execution": {
+    "entrypoint": "scenario.run",
+    "promiseChain": [
+      {
+        "id": "p1",
+        "invoke": "issuer.issueCredential",
+        "input": "issuanceRequestPayload",
+        "output": "vcPayload",
+        "crossesBoundary": {
+          "from": "issuerDomain",
+          "to": "holderDomain"
+        }
+      },
+      {
+        "id": "p2",
+        "invoke": "wallet.storeCredential",
+        "input": "vcPayload",
+        "output": "storeReceiptPayload",
+        "crossesBoundary": {
+          "from": "holderDomain",
+          "to": "holderDomain"
+        }
+      },
+      {
+        "id": "p3",
+        "invoke": "verifier.createProofRequest",
+        "input": null,
+        "output": "proofRequestPayload",
+        "sideEffects": [
+          {
+            "set": "verifier.nonce",
+            "fromField": "proofRequestPayload.nonce"
+          }
+        ]
+      },
+      {
+        "id": "p4",
+        "invoke": "wallet.derivePairwiseDid",
+        "input": "verifierDidPayload",
+        "output": "didPayload",
+        "sideEffects": [
+          {
+            "set": "wallet.pairwiseDid",
+            "fromField": "didPayload.did"
+          }
+        ]
+      },
+      {
+        "id": "p5",
+        "invoke": "wallet.derivePresentation",
+        "input": "proofRequestPayload",
+        "output": "vpPayload",
+        "sideEffects": [
+          {
+            "set": "holder.holderPresentationDid",
+            "fromField": "vpPayload.holderDid"
+          }
+        ]
+      },
+      {
+        "id": "p6",
+        "invoke": "holder.submitPresentation",
+        "input": "vpPayload",
+        "output": "vpPayload",
+        "crossesBoundary": {
+          "from": "holderDomain",
+          "to": "verifierDomain"
+        }
+      },
+      {
+        "id": "p7",
+        "invoke": "didResolver.resolveDid",
+        "input": "didPayload",
+        "output": "didDocumentPayload",
+        "crossesBoundary": {
+          "from": "verifierDomain",
+          "to": "trustInfrastructure"
+        }
+      },
+      {
+        "id": "p8",
+        "invoke": "verifier.prepareStatusQuery",
+        "input": "vpPayload",
+        "output": "statusQueryPayload"
+      },
+      {
+        "id": "p9",
+        "invoke": "statusService.getStatus",
+        "input": "statusQueryPayload",
+        "output": "statusResultPayload",
+        "crossesBoundary": {
+          "from": "verifierDomain",
+          "to": "trustInfrastructure"
+        }
+      },
+      {
+        "id": "p10",
+        "invoke": "verifier.verifyPresentation",
+        "input": "vpPayload",
+        "output": "verificationResultPayload"
+      }
+    ]
+  }
+}
