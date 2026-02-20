@@ -1,0 +1,138 @@
+<mxfile host="65bd71144e">
+    <diagram name="Page-1" id="i0d2dFQ_SRkx4q-tRaAW">
+        <mxGraphModel dx="1160" dy="710" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="O7851T8cfqYL0E_z3snI-40" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="30" y="10" width="1060" height="610" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-1" value="Model Component Directory" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="50" y="60" width="340" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFBED;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="120" width="340" height="270" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-3" value="TypeScript Source File" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="100" width="340" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-4" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="170" width="280" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-5" value="Encapsulated TypeScript Object" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="150" width="280" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-6" value="Object Properties" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="130" y="230" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-7" value="Object Methods" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="130" y="290" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-9" value="Object Mappings" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="130" y="190" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-10" value="Property Mappings" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="250" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-11" value="Method Mappings" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="310" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-12" value="Model Schema Directory" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="550" y="60" width="340" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-13" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFBED;" parent="1" vertex="1">
+                    <mxGeometry x="570" y="120" width="340" height="270" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-14" value="TypeScript Source File" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="570" y="100" width="340" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontColor=#CC0000;dashed=1;" edge="1" parent="1" source="O7851T8cfqYL0E_z3snI-15" target="O7851T8cfqYL0E_z3snI-39">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-15" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="170" width="280" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-16" value="Encapsulated TypeScript Object" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="150" width="280" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-17" value="Object Properties" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="630" y="230" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-18" value="Object Methods" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="630" y="290" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-19" value="Schema Definition" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="630" y="190" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-20" value="Property Schema" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="650" y="250" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-21" value="Method Schema" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="650" y="310" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-22" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="O7851T8cfqYL0E_z3snI-9" target="O7851T8cfqYL0E_z3snI-16" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-23" value="Model Component aspects are mapped to Schema Components" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="420" y="200" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-24" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="O7851T8cfqYL0E_z3snI-19" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="690" y="510" as="sourcePoint"/>
+                        <mxPoint x="940" y="170" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-25" value="Schema Component aspects may map to higher-order Schema Components" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="940" y="140" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-27" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFBED;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="430" width="340" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-28" value="TypeScript Source File" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="410" width="340" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-29" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="470" width="280" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-30" value="Encapsulated TypeScript Object" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="450" width="280" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-31" value="Object Methods" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="130" y="485" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-32" value="Framespace Genesis Model Engine: Implementation Approach - v0.1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="290" y="10" width="400" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-33" value="(c) 2026 &lt;a href=&quot;https://christoph.diy&quot;&gt;Christoph.diy&lt;/a&gt;&amp;nbsp;CC BY" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="895" y="10" width="185" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-35" value="Object Method calls create Promise Chain" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontColor=#FF0000;labelBackgroundColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="43" y="359" width="140" height="34" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-36" value="Boundary Crossing Events are emitted by Encapsulate abstraction" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontColor=#007FFF;labelBackgroundColor=default;" parent="1" vertex="1">
+                    <mxGeometry x="197" y="410" width="140" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-34" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=1;entryDx=0;entryDy=0;strokeWidth=3;strokeColor=#FF0000;" parent="1" source="O7851T8cfqYL0E_z3snI-31" target="O7851T8cfqYL0E_z3snI-7" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-37" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;endWidth=46;endSize=14.67;width=23;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#007FFF;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="440" y="480" as="sourcePoint"/>
+                        <mxPoint x="630" y="481" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-38" value="&lt;font style=&quot;color: rgb(0, 76, 153);&quot;&gt;Boundary Event Log&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontStyle=1" parent="O7851T8cfqYL0E_z3snI-37" connectable="0" vertex="1">
+                    <mxGeometry x="0.4391" y="-4" relative="1" as="geometry">
+                        <mxPoint x="-67" y="-4" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="O7851T8cfqYL0E_z3snI-39" value="Schema-based, Event-hydrated Interactive Visualization" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#6c8ebf;fontStyle=1;gradientColor=#D5E8D4;" parent="1" vertex="1">
+                    <mxGeometry x="660" y="440" width="220" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="Model executes by following codepath" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#CC0000;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="70" y="560" width="340" height="40" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
