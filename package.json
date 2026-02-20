@@ -5,9 +5,10 @@
     "private": true,
     "scripts": {
         "test": "bun test",
-        "postinstall": "bunx @stream44.studio/dco install-hook"
+        "sign-dco": "bunx @stream44.studio/dco commit",
+        "push": "bunx @stream44.studio/dco push"
     },
     "devDependencies": {
-        "@stream44.studio/dco": "0.3.0-rc.18"
+        "@stream44.studio/dco": "0.3.0-rc.21"
     }
 }

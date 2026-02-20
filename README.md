@@ -16,7 +16,6 @@ Visualization Model
 ![Visual Model](./ui/Concept.svg)
 
 
-
 Provenance
 ===
 
