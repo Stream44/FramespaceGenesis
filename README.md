@@ -28,7 +28,7 @@ The engine is built on [encapsulate](https://github.com/Stream44/encapsulate) wh
 
 > **This project thrives on your collaboration!**
 
-Try creating a **Framespace** for something you are interested in and share it!
+Try creating a model for something you are interested in and share it!
 
 
 Visualization Model
@@ -76,7 +76,7 @@ Repository DID: `did:repo:e7b46f0978c2cc02461b480b99a6589a2b6fa888`
   </tr>
 </table>
 
-(c) 2026 [Christoph.diy](https://christoph.diy) • Code: `LGPL` • Text: [GNU Free Documentation License](https://www.gnu.org/licenses/fdl-1.3.txt) • Created with [Stream44.Studio](https://Stream44.Studio)
+(c) 2026 [Christoph.diy](https://christoph.diy) • Code: [LGPL](LICENSE.txt) • Text: [GNU Free Documentation License](https://www.gnu.org/licenses/fdl-1.3.txt) • Created with [Stream44.Studio](https://Stream44.Studio)
 
 ### Contributing
 
