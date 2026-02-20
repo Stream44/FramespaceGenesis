@@ -50,9 +50,9 @@ Implementation Approach
 
 A model is authored as TypeScript source files in two directories: **Model Components** and **Model Schema**.
 
-Each component is an **encapsulated TypeScript object** with properties, methods, and mappings. Component aspects (properties, methods) are mapped to schema components. Schema components may in turn map to higher-order schema components.
+Each component is an [encapsulated TypeScript object](https://github.com/Stream44/encapsulate/tree/main/src/spine-contracts/CapsuleSpineContract.v0) with properties, methods, and mappings. Component aspects (properties, methods) are mapped to schema components. Schema components may in turn map to higher-order schema components.
 
-The model **executes by following the actual codepath** — object method calls create a promise chain. The [encapsulate](https://github.com/Stream44/encapsulate) abstraction emits **boundary crossing events** whenever payloads exit or enter components and when components act internally.
+The model **executes by following the actual codepath** — object method calls create a promise chain. The encapsulate abstraction emits **boundary crossing events** whenever payloads exit or enter components and when components act internally.
 
 These events are collected into a **boundary event log**. The schema and event log together drive a **schema-based, event-hydrated interactive visualization** — the UI is not hand-drawn, it is generated from the execution trace against the model schema.
 
@@ -80,4 +80,4 @@ Repository DID: `did:repo:e7b46f0978c2cc02461b480b99a6589a2b6fa888`
 
 ### Contributing
 
-All contributions must contain [Developer Certificates of Origin](https://github.com/Stream44/dco). To contribute, sign `DCO.md` once using `bun run sign-dco` and push branches to github using `bun run push` which will squash unsigned commits into a signed commit.
+All contributions must contain a [Developer Certificate of Origin](https://github.com/Stream44/dco). To contribute, sign `DCO.md` once using `bun run sign-dco` and push branches to github using `bun run push` which will squash unsigned commits into a signed commit.
