@@ -35,7 +35,7 @@ The engine is built on [encapsulate](https://github.com/Stream44/encapsulate) wh
 Try creating a model for something you are interested in and share it!
 
 
-Visualization Model
+Quadrant Visualization Model
 ===
 
 The visualization is organized into **quadrants** with column and row trees that define the spatial layout. **Nested spaces** act as logical domains — the same identified space is the same space across quadrants, not just a visual container.
