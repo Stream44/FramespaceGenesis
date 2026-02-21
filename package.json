@@ -1,7 +1,7 @@
 {
     "name": "@stream44.studio/FramespaceGenesis",
     "version": "0.2.0-rc.2",
-    "license": "LGPL",
+    "license": "(LGPL AND MIT)",
     "private": true,
     "scripts": {
         "test": "bun test",

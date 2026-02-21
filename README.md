@@ -35,20 +35,6 @@ The engine is built on [encapsulate](https://github.com/Stream44/encapsulate) wh
 Try creating a model for something you are interested in and share it!
 
 
-Quadrant Visualization Model
-===
-
-The visualization is organized into **quadrants** with column and row trees that define the spatial layout. **Nested spaces** act as logical domains — the same identified space is the same space across quadrants, not just a visual container.
-
-Inside spaces, **components** are the core unit. A component has **properties** (state) and **actions** (executable methods). Components can have multiple actions and attributes that define their visual and functional identity.
-
-**Action invocations** connect components. An action payload moves from action to action — internal or external, one-to-one or fan-out to multiple invocations. Payloads crossing component and space boundaries emit **boundary crossing events** which makes execution observation possible.
-
-The primary rule: construct a **promise graph** through all action invocations that touches every attribute and ends up in a resolved state when the model has finished executing.
-
-![Visual Model](./ui/Concept.svg)
-
-
 Implementation Approach
 ===
 
@@ -60,7 +46,23 @@ The model **executes by following the actual codepath** — object method calls 
 
 These events are collected into a **boundary event log**. The schema and event log together drive a **schema-based, event-hydrated interactive visualization**.
 
-![Implementation Approach](./engine/Concept.svg)
+![Implementation Approach](./engines/Concept.svg)
+
+
+Visualizations
+===
+
+### Quadrant Visual Model
+
+The visualization is organized into **quadrants** with column and row trees that define the spatial layout. **Nested spaces** act as logical domains — the same identified space is the same space across quadrants, not just a visual container.
+
+Inside spaces, **components** are the core unit. A component has **properties** (state) and **actions** (executable methods). Components can have multiple actions and attributes that define their visual and functional identity.
+
+**Action invocations** connect components. An action payload moves from action to action — internal or external, one-to-one or fan-out to multiple invocations. Payloads crossing component and space boundaries emit **boundary crossing events** which makes execution observation possible.
+
+The primary rule: construct a **promise graph** through all action invocations that touches every attribute and ends up in a resolved state when the model has finished executing.
+
+![Quadrant Visual Model](./visualizations/Quadrant/Concept.svg)
 
 
 Provenance
@@ -80,7 +82,7 @@ Repository DID: `did:repo:e7b46f0978c2cc02461b480b99a6589a2b6fa888`
   </tr>
 </table>
 
-(c) 2026 [Christoph.diy](https://christoph.diy) • Code: [LGPL](./LICENSE.txt) • Text: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) • Created with [Stream44.Studio](https://Stream44.Studio)
+(c) 2026 [Christoph.diy](https://christoph.diy) • Code: [LGPL](./LICENSE.txt) & [MIT](./LICENSE.txt) • Text: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) • Created with [Stream44.Studio](https://Stream44.Studio)
 
 ### Contributing
 
