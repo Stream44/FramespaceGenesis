@@ -21,7 +21,7 @@ This event log, combined with a **schema** that maps components to visual elemen
 The engine is built on [encapsulate](https://github.com/Stream44/encapsulate) which wraps TypeScript objects and intercepts boundary crossings transparently. You write normal TypeScript. The runtime kernel observes it.
 
 **What this enables:**
-- Go from abstract model → concrete execution → visual representation in one system
+- Go from concrete execution → abstract model → visual representation in one system
 - Model real-world flows (like credential exchanges, service interactions) as executable component graphs
 - Observe data movement across component and space boundaries to identify exposure, correlation, and risk
 - Transpose models directly onto actual system implementations — the components may map to real classes and services
