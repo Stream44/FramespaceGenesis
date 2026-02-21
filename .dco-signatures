@@ -7,3 +7,4 @@ Format: name <email> | signed: <date> | agreement: <commit> (<agreement_change_d
 ---
 
 Christoph <christoph@christoph.diy> | signed: 2026-02-19 21:56:49 UTC | agreement: 32a03389ea1132db1ea6017090f4ba92cb0923fe (2026-02-19 16:56:47 -0500) | signature: SHA256:PJKqkaWh/+N7Zkmr59Zvgi92ByLmULIUMbubiUiY8X4
+Lluís Ariño <lluisalfons.arino@urv.cat> | signed: 2026-02-21 06:32:02 UTC | agreement: 32a03389ea1132db1ea6017090f4ba92cb0923fe (2026-02-19 16:56:47 -0500) | signature: SHA256:riA+9I7jgEEj0CX4eZc8xWOVHzfY7eChPOKeEik3DT0
