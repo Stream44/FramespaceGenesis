@@ -58,7 +58,7 @@ Each component is an [encapsulated TypeScript object](https://github.com/Stream4
 
 The model **executes by following the actual codepath** — object method calls create a promise chain. The encapsulate abstraction emits **boundary crossing events** whenever payloads exit or enter components and when components act internally.
 
-These events are collected into a **boundary event log**. The schema and event log together drive a **schema-based, event-hydrated interactive visualization** — the UI is not hand-drawn, it is generated from the execution trace against the model schema.
+These events are collected into a **boundary event log**. The schema and event log together drive a **schema-based, event-hydrated interactive visualization**.
 
 ![Implementation Approach](./engine/Concept.svg)
 
