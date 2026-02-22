@@ -84,6 +84,37 @@ Repository DID: `did:repo:e7b46f0978c2cc02461b480b99a6589a2b6fa888`
 
 (c) 2026 [Christoph.diy](https://christoph.diy) • Code: [LGPL](./LICENSE.txt) & [MIT](./LICENSE.txt) • Text: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) • Created with [Stream44.Studio](https://Stream44.Studio)
 
+````markdown
 ### Contributing
 
-All contributions must contain a [Developer Certificate of Origin](https://github.com/Stream44/dco). To contribute, sign `DCO.md` once using `bun run sign-dco` and push branches to github using `bun run push` which will squash unsigned commits into a signed commit.
+All contributions must comply with the repository’s Developer Certificate of Origin (DCO) and verified commit signature requirements.
+
+Before opening a Pull Request:
+
+1. Sign the DCO agreement once:
+   ```bash
+   bun run sign-dco
+````
+
+2. Ensure every commit:
+
+   * Contains a `Signed-off-by:` trailer
+   * Is cryptographically signed (SSH or GPG)
+   * Has a clean working tree before using repository scripts
+
+3. Push your branch using the provided helper:
+
+   ```bash
+   bun run push
+   ```
+
+   This will squash unsigned commits into a signed commit where possible.
+
+⚠️ Important:
+
+* The DCO check validates **all commits in the PR range**, not only the latest commit
+* Verified signatures are enforced by repository rules
+* Force-push may be restricted by branch protection; if you need to rewrite commits, create a new branch and open a new PR
+* See the full contribution guide: [`docs/CONTRIBUTING.md`](./docs/CONTRIBUTING.md)
+
+````
