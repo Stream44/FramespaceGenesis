@@ -1,0 +1,169 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Ladybug CST API",
+        "version": "1.0.0"
+    },
+    "apis": {
+        "QueryCapsuleSpineModel": {
+            "description": "Methods to query the *Capsule Spine Model* of the selected *Spine Tree Instance*",
+            "basePath": "/api/QueryCapsuleSpineModel"
+        },
+        "Workbench": {
+            "description": "Methods to faciliate the Framespace Workbench",
+            "basePath": "/api/Workbench"
+        }
+    },
+    "endpoints": {
+        "/api/QueryCapsuleSpineModel/listCapsules": {
+            "method": "GET or POST",
+            "namespace": "QueryCapsuleSpineModel",
+            "description": "List all capsules in the tree.",
+            "args": [
+                {
+                    "name": "spineInstanceUri",
+                    "type": "string",
+                    "optional": true
+                },
+                {
+                    "name": "resolveRefs",
+                    "type": "boolean",
+                    "optional": true
+                }
+            ],
+            "discovery": "/api/Workbench/listSpineInstances",
+            "filterField": "$id",
+            "usage": {
+                "GET": "/api/QueryCapsuleSpineModel/listCapsules?spineInstanceUri=<string>&resolveRefs=<boolean>",
+                "POST": {
+                    "body": {
+                        "args": [
+                            "<string>",
+                            "<boolean>"
+                        ]
+                    }
+                }
+            }
+        },
+        "/api/QueryCapsuleSpineModel/getCapsule": {
+            "method": "GET or POST",
+            "namespace": "QueryCapsuleSpineModel",
+            "description": "Get a capsule with full CST structure including spine contracts, property contracts, and properties.",
+            "args": [
+                {
+                    "name": "capsuleName",
+                    "type": "string"
+                }
+            ],
+            "discovery": "/api/QueryCapsuleSpineModel/listCapsules",
+            "filterField": "$id",
+            "usage": {
+                "GET": "/api/QueryCapsuleSpineModel/getCapsule?capsuleName=<string>",
+                "POST": {
+                    "body": {
+                        "args": [
+                            "<string>"
+                        ]
+                    }
+                }
+            }
+        },
+        "/api/QueryCapsuleSpineModel/getCapsuleSpineTree": {
+            "method": "GET or POST",
+            "namespace": "QueryCapsuleSpineModel",
+            "description": "Get the spine tree for a spineInstanceUri.",
+            "args": [
+                {
+                    "name": "spineInstanceUri",
+                    "type": "string"
+                },
+                {
+                    "name": "includeProperties",
+                    "type": "boolean",
+                    "optional": true
+                }
+            ],
+            "discovery": "/api/Workbench/listSpineInstances",
+            "filterField": "$id",
+            "usage": {
+                "GET": "/api/QueryCapsuleSpineModel/getCapsuleSpineTree?spineInstanceUri=<string>&includeProperties=<boolean>",
+                "POST": {
+                    "body": {
+                        "args": [
+                            "<string>",
+                            "<boolean>"
+                        ]
+                    }
+                }
+            }
+        },
+        "/api/Workbench/listSpineInstances": {
+            "method": "GET or POST",
+            "namespace": "Workbench",
+            "description": "List all distinct spine instance URIs (rootCapsuleName values) in the graph.",
+            "args": [],
+            "usage": {
+                "GET": "/api/Workbench/listSpineInstances",
+                "POST": {
+                    "body": {
+                        "args": []
+                    }
+                }
+            }
+        },
+        "/api/Workbench/getProcessStats": {
+            "method": "GET or POST",
+            "namespace": "Workbench",
+            "description": "Get backend process memory and CPU usage.",
+            "args": [],
+            "usage": {
+                "GET": "/api/Workbench/getProcessStats",
+                "POST": {
+                    "body": {
+                        "args": []
+                    }
+                }
+            }
+        },
+        "/api/Workbench/getReps": {
+            "method": "GET or POST",
+            "namespace": "Workbench",
+            "description": "List all registered reps with their source file paths.",
+            "args": [],
+            "usage": {
+                "GET": "/api/Workbench/getReps",
+                "POST": {
+                    "body": {
+                        "args": []
+                    }
+                }
+            }
+        },
+        "/api/Workbench/openFile": {
+            "method": "GET or POST",
+            "namespace": "Workbench",
+            "description": "Open a file in an editor. Command is the editor binary (e.g. \"code\"), file is an absolute path optionally with :line suffix.",
+            "args": [
+                {
+                    "name": "command",
+                    "type": "string"
+                },
+                {
+                    "name": "file",
+                    "type": "string"
+                }
+            ],
+            "usage": {
+                "GET": "/api/Workbench/openFile?command=<string>&file=<string>",
+                "POST": {
+                    "body": {
+                        "args": [
+                            "<string>",
+                            "<string>"
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

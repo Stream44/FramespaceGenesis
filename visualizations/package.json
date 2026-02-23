@@ -1,0 +1,7 @@
+{
+    "name": "@framespace/visualizations",
+    "peerDependencies": {
+        "solid-js": "^1.9.11",
+        "cytoscape": "^3.33.1"
+    }
+}
