@@ -65,26 +65,6 @@ The primary rule: construct a **promise graph** through all action invocations t
 ![Quadrant Visual Model](./visualizations/Quadrant/Concept.svg)
 
 
-Provenance
-===
-
-[![Gordian Open Integrity](https://github.com/Stream44/FramespaceGenesis/actions/workflows/gordian-open-integrity.yaml/badge.svg)](https://github.com/Stream44/FramespaceGenesis/actions/workflows/gordian-open-integrity.yaml?query=branch%3Amain) [![DCO Signatures](https://github.com/Stream44/FramespaceGenesis/actions/workflows/dco.yaml/badge.svg)](https://github.com/Stream44/FramespaceGenesis/actions/workflows/dco.yaml?query=branch%3Amain)
-
-Repository DID: `did:repo:e7b46f0978c2cc02461b480b99a6589a2b6fa888`
-
-<table>
-  <tr>
-    <td><strong>Inception Mark</strong></td>
-    <td><img src=".o/GordianOpenIntegrity-InceptionLifehash.svg" width="64" height="64"></td>
-    <td><strong>Current Mark</strong></td>
-    <td><img src=".o/GordianOpenIntegrity-CurrentLifehash.svg" width="64" height="64"></td>
-    <td>Trust established using<br/><a href="https://github.com/Stream44/t44-blockchaincommons.com">Stream44/t44-BlockchainCommons.com</a></td>
-  </tr>
-</table>
-
-(c) 2026 [Christoph.diy](https://christoph.diy) • Code: [LGPL](./LICENSE.txt) & [MIT](./LICENSE.txt) • Text: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) • Created with [Stream44.Studio](https://Stream44.Studio)
-
-
 Contributing
 ===
 
@@ -118,4 +98,25 @@ Before opening a Pull Request:
 * Force-push may be restricted by branch protection; if you need to rewrite commits, create a new branch and open a new PR
 * See the full contribution guide: [`docs/CONTRIBUTING.md`](./docs/CONTRIBUTING.md)
 
+
 ````
+Provenance
+===
+
+[![Gordian Open Integrity](https://github.com/Stream44/FramespaceGenesis/actions/workflows/gordian-open-integrity.yaml/badge.svg)](https://github.com/Stream44/FramespaceGenesis/actions/workflows/gordian-open-integrity.yaml?query=branch%3Amain) [![DCO Signatures](https://github.com/Stream44/FramespaceGenesis/actions/workflows/dco.yaml/badge.svg)](https://github.com/Stream44/FramespaceGenesis/actions/workflows/dco.yaml?query=branch%3Amain)
+
+Repository DID: `did:repo:e7b46f0978c2cc02461b480b99a6589a2b6fa888`
+
+<table>
+  <tr>
+    <td><strong>Inception Mark</strong></td>
+    <td><img src=".o/GordianOpenIntegrity-InceptionLifehash.svg" width="64" height="64"></td>
+    <td><strong>Current Mark</strong></td>
+    <td><img src=".o/GordianOpenIntegrity-CurrentLifehash.svg" width="64" height="64"></td>
+    <td>Trust established using<br/><a href="https://github.com/Stream44/t44-blockchaincommons.com">Stream44/t44-BlockchainCommons.com</a></td>
+  </tr>
+</table>
+
+(c) 2026 [Christoph.diy](https://christoph.diy) • Code: [LGPL](./LICENSE.txt) & [MIT](./LICENSE.txt) • Text: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) • Created with [Stream44.Studio](https://Stream44.Studio)
+
+
