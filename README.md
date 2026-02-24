@@ -24,13 +24,13 @@ After cloning run:
 bun install
 
 # Generate data for viewing
-bun run test
+bun test
 
 # Start the workbench
-bun run dev
+bun dev
 
 # Open browser
-open 
+open http://localhost:3000
 ```
 
 
