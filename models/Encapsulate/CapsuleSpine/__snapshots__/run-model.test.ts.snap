@@ -73,9 +73,7 @@ exports[`CapsuleSpine Model generated CST file contents per example 1`] = `
   "content": {
     "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:72": {
       "cacheBustVersion": 18,
-      "capsuleSourceLineRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:72",
       "capsuleSourceNameRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/run.singleCapsule",
-      "capsuleSourceNameRefHash": "e53b63db298925b1c7494d416840ffab",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main:72",
       "source": {
         "ambientReferences": {
@@ -162,9 +160,7 @@ exports[`CapsuleSpine Model generated CST file contents per example 2`] = `
   "content": {
     "../../../encapsulate.dev/packages/encapsulate/structs/Capsule.ts:18": {
       "cacheBustVersion": 18,
-      "capsuleSourceLineRef": "../../../encapsulate.dev/packages/encapsulate/structs/Capsule.ts:18",
       "capsuleSourceNameRef": "../../../encapsulate.dev/packages/encapsulate/structs/Capsule.ts:@stream44.studio/encapsulate/structs/Capsule",
-      "capsuleSourceNameRefHash": "68036e1b81a42659dbc0aad7984b2dab",
       "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
       "source": {
         "ambientReferences": {
@@ -208,16 +204,7 @@ exports[`CapsuleSpine Model generated CST file contents per example 2`] = `
         "#@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0": {
           "propertyContracts": {
             "#": {
-              "properties": {
-                "capsuleSourceNameRefHash": {
-                  "declarationLine": 10,
-                  "definitionEndLine": 13,
-                  "definitionStartLine": 10,
-                  "type": "CapsulePropertyTypes.Literal",
-                  "valueExpression": "undefined",
-                  "valueType": "any",
-                },
-              },
+              "properties": {},
               "propertyContractUri": "",
             },
           },
@@ -235,9 +222,7 @@ exports[`CapsuleSpine Model generated CST file contents per example 3`] = `
   "content": {
     "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule.ts:28": {
       "cacheBustVersion": 18,
-      "capsuleSourceLineRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule.ts:28",
       "capsuleSourceNameRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule.ts:@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule",
-      "capsuleSourceNameRefHash": "965b48fa59c8ed489b50563d6ab4218d",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule:28",
       "source": {
         "ambientReferences": {
@@ -343,9 +328,7 @@ exports[`CapsuleSpine Model generated CST file contents per example 4`] = `
   "content": {
     "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:93": {
       "cacheBustVersion": 18,
-      "capsuleSourceLineRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:93",
       "capsuleSourceNameRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/run.extendCapsule",
-      "capsuleSourceNameRefHash": "3ac2c575dc9a2efac364884fb81c2493",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main:93",
       "source": {
         "ambientReferences": {
@@ -434,9 +417,7 @@ exports[`CapsuleSpine Model generated CST file contents per example 5`] = `
   "content": {
     "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Storage.ts:33": {
       "cacheBustVersion": 18,
-      "capsuleSourceLineRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Storage.ts:33",
       "capsuleSourceNameRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Storage.ts:@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Storage",
-      "capsuleSourceNameRefHash": "0a23cffb435e176b023a3f6a6acbd426",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Storage:33",
       "source": {
         "ambientReferences": {
@@ -562,9 +543,7 @@ exports[`CapsuleSpine Model generated CST file contents per example 6`] = `
   "content": {
     "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:118": {
       "cacheBustVersion": 18,
-      "capsuleSourceLineRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:118",
       "capsuleSourceNameRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/run.mappedCapsule",
-      "capsuleSourceNameRefHash": "3c7b33c23ee5966fafb03bee08ef3c52",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main:118",
       "source": {
         "ambientReferences": {
@@ -664,9 +643,7 @@ exports[`CapsuleSpine Model generated CST file contents per example 7`] = `
   "content": {
     "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:149": {
       "cacheBustVersion": 18,
-      "capsuleSourceLineRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:149",
       "capsuleSourceNameRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/run.mappedNewCapsule",
-      "capsuleSourceNameRefHash": "01028fa88c5b6a41aa26f5a52ff565bf",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main:149",
       "source": {
         "ambientReferences": {
@@ -771,9 +748,7 @@ exports[`CapsuleSpine Model generated CST file contents per example 8`] = `
   "content": {
     "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ConfigStore.ts:29": {
       "cacheBustVersion": 18,
-      "capsuleSourceLineRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ConfigStore.ts:29",
       "capsuleSourceNameRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ConfigStore.ts:@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ConfigStore",
-      "capsuleSourceNameRefHash": "2bba5d01f029ee43ce0fc3a89024e42b",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ConfigStore:29",
       "source": {
         "ambientReferences": {
@@ -882,9 +857,7 @@ exports[`CapsuleSpine Model generated CST file contents per example 9`] = `
   "content": {
     "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:175": {
       "cacheBustVersion": 18,
-      "capsuleSourceLineRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:175",
       "capsuleSourceNameRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/run.structs",
-      "capsuleSourceNameRefHash": "d78e4032e673b5c1d53b3d5f447601e8",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main:175",
       "source": {
         "ambientReferences": {
@@ -990,9 +963,7 @@ exports[`CapsuleSpine Model generated CST file contents per example 10`] = `
   "content": {
     "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/structs/ConfigSchema.ts:29": {
       "cacheBustVersion": 18,
-      "capsuleSourceLineRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/structs/ConfigSchema.ts:29",
       "capsuleSourceNameRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/structs/ConfigSchema.ts:@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/structs/ConfigSchema",
-      "capsuleSourceNameRefHash": "b1838198c1559e6f7b96e6be3091c583",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/structs/ConfigSchema:29",
       "source": {
         "ambientReferences": {
@@ -1101,9 +1072,7 @@ exports[`CapsuleSpine Model generated CST file contents per example 11`] = `
   "content": {
     "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service.ts:32": {
       "cacheBustVersion": 18,
-      "capsuleSourceLineRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service.ts:32",
       "capsuleSourceNameRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service.ts:@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service",
-      "capsuleSourceNameRefHash": "7e64a2e4894a7dbe456571a46c0a0e85",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service:32",
       "source": {
         "ambientReferences": {
@@ -1221,9 +1190,7 @@ exports[`CapsuleSpine Model generated CST file contents per example 12`] = `
   "content": {
     "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service1.ts:22": {
       "cacheBustVersion": 18,
-      "capsuleSourceLineRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service1.ts:22",
       "capsuleSourceNameRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service1.ts:@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service1",
-      "capsuleSourceNameRefHash": "54893f0252370e5e699f4acc47356653",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service1:22",
       "source": {
         "ambientReferences": {
@@ -1312,9 +1279,7 @@ exports[`CapsuleSpine Model generated CST file contents per example 13`] = `
   "content": {
     "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service2.ts:22": {
       "cacheBustVersion": 18,
-      "capsuleSourceLineRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service2.ts:22",
       "capsuleSourceNameRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service2.ts:@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service2",
-      "capsuleSourceNameRefHash": "64d5d7444f9b83836e753259e4bdb367",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service2:22",
       "source": {
         "ambientReferences": {
@@ -1403,9 +1368,7 @@ exports[`CapsuleSpine Model generated CST file contents per example 14`] = `
   "content": {
     "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:214": {
       "cacheBustVersion": 18,
-      "capsuleSourceLineRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:214",
       "capsuleSourceNameRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/run.mappedInstanceSharing",
-      "capsuleSourceNameRefHash": "ed18b86094d6134c2a5e856b0681e74c",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main:214",
       "source": {
         "ambientReferences": {
@@ -1541,12 +1504,10 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 1`] = `
       {
         "#": "Capsule",
         "$id": "@stream44.studio/encapsulate/structs/Capsule",
-        "capsuleSourceLineRef": "/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/structs/Capsule.ts:18",
       },
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/run.singleCapsule",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:72",
       },
     ],
   },
@@ -1561,9 +1522,7 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 2`] = `
     "#": "Capsule",
     "$id": "@stream44.studio/encapsulate/structs/Capsule",
     "cacheBustVersion": 18,
-    "capsuleSourceLineRef": "/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/structs/Capsule.ts:18",
     "capsuleSourceNameRef": "../../../encapsulate.dev/packages/encapsulate/structs/Capsule.ts:@stream44.studio/encapsulate/structs/Capsule",
-    "capsuleSourceNameRefHash": "68036e1b81a42659dbc0aad7984b2dab",
     "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
     "source": {
       "#": "Capsule/Source",
@@ -1584,17 +1543,7 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 2`] = `
         "propertyContracts": {
           "#": {
             "#": "Capsule/PropertyContract",
-            "properties": {
-              "capsuleSourceNameRefHash": {
-                "#": "Capsule/Property",
-                "declarationLine": 10,
-                "definitionEndLine": 13,
-                "definitionStartLine": 10,
-                "propertyContractDelegate": "",
-                "propertyType": "CapsulePropertyTypes.Literal",
-                "valueType": "any",
-              },
-            },
+            "properties": {},
             "propertyContractUri": "",
           },
         },
@@ -1615,20 +1564,13 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 3`] = `
       {
         "#": "Capsule",
         "$id": "@stream44.studio/encapsulate/structs/Capsule",
-        "capsuleSourceLineRef": "/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/structs/Capsule.ts:18",
         "properties": {
           "#": "Capsule/Properties",
-          "capsuleSourceNameRefHash": {
-            "#": "Capsule/Property",
-            "propertyContract": "#",
-            "propertyType": "CapsulePropertyTypes.Literal",
-          },
         },
       },
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/run.singleCapsule",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:72",
         "mappings": {
           "#": "Capsule/Mappings",
           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -1670,12 +1612,10 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 4`] = `
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule.ts:28",
       },
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/run.extendCapsule",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:93",
       },
     ],
   },
@@ -1690,9 +1630,7 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 5`] = `
     "#": "Capsule",
     "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule",
     "cacheBustVersion": 18,
-    "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule.ts:28",
     "capsuleSourceNameRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule.ts:@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule",
-    "capsuleSourceNameRefHash": "965b48fa59c8ed489b50563d6ab4218d",
     "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule:28",
     "source": {
       "#": "Capsule/Source",
@@ -1768,7 +1706,6 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 6`] = `
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule.ts:28",
         "properties": {
           "#": "Capsule/Properties",
           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -1792,7 +1729,6 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 6`] = `
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/run.extendCapsule",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:93",
         "extends": {
           "#": "Capsule/Extends",
           "capsule": {
@@ -1830,12 +1766,10 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 7`] = `
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Storage",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Storage.ts:33",
       },
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/run.mappedCapsule",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:118",
       },
     ],
   },
@@ -1850,9 +1784,7 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 8`] = `
     "#": "Capsule",
     "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Storage",
     "cacheBustVersion": 18,
-    "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Storage.ts:33",
     "capsuleSourceNameRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Storage.ts:@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Storage",
-    "capsuleSourceNameRefHash": "0a23cffb435e176b023a3f6a6acbd426",
     "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Storage:33",
     "source": {
       "#": "Capsule/Source",
@@ -1937,7 +1869,6 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 9`] = `
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Storage",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Storage.ts:33",
         "properties": {
           "#": "Capsule/Properties",
           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -1966,7 +1897,6 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 9`] = `
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/run.mappedCapsule",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:118",
         "mappings": {
           "#": "Capsule/Mappings",
           "storageApi": {
@@ -2012,7 +1942,6 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 10`] = `
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/run.mappedNewCapsule",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:149",
       },
     ],
   },
@@ -2027,9 +1956,7 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 11`] = `
     "#": "Capsule",
     "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/run.mappedNewCapsule",
     "cacheBustVersion": 18,
-    "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:149",
     "capsuleSourceNameRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/run.mappedNewCapsule",
-    "capsuleSourceNameRefHash": "01028fa88c5b6a41aa26f5a52ff565bf",
     "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main:149",
     "source": {
       "#": "Capsule/Source",
@@ -2106,7 +2033,6 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 12`] = `
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/run.mappedNewCapsule",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:149",
         "properties": {
           "#": "Capsule/Properties",
           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -2142,17 +2068,14 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 13`] = `
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ConfigStore",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ConfigStore.ts:29",
       },
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/run.structs",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:175",
       },
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/structs/ConfigSchema",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/structs/ConfigSchema.ts:29",
       },
     ],
   },
@@ -2167,9 +2090,7 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 14`] = `
     "#": "Capsule",
     "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ConfigStore",
     "cacheBustVersion": 18,
-    "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ConfigStore.ts:29",
     "capsuleSourceNameRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ConfigStore.ts:@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ConfigStore",
-    "capsuleSourceNameRefHash": "2bba5d01f029ee43ce0fc3a89024e42b",
     "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ConfigStore:29",
     "source": {
       "#": "Capsule/Source",
@@ -2247,7 +2168,6 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 15`] = `
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ConfigStore",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ConfigStore.ts:29",
         "properties": {
           "#": "Capsule/Properties",
           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -2271,7 +2191,6 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 15`] = `
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/run.structs",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:175",
         "properties": {
           "#": "Capsule/Properties",
           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -2296,7 +2215,6 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 15`] = `
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/structs/ConfigSchema",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/structs/ConfigSchema.ts:29",
         "extends": {
           "#": "Capsule/Extends",
           "capsule": {
@@ -2339,22 +2257,18 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 16`] = `
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service.ts:32",
       },
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service1",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service1.ts:22",
       },
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service2",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service2.ts:22",
       },
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/run.mappedInstanceSharing",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:214",
       },
     ],
   },
@@ -2369,9 +2283,7 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 17`] = `
     "#": "Capsule",
     "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service",
     "cacheBustVersion": 18,
-    "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service.ts:32",
     "capsuleSourceNameRef": "models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service.ts:@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service",
-    "capsuleSourceNameRefHash": "7e64a2e4894a7dbe456571a46c0a0e85",
     "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service:32",
     "source": {
       "#": "Capsule/Source",
@@ -2456,7 +2368,6 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 18`] = `
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service.ts:32",
         "properties": {
           "#": "Capsule/Properties",
           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -2485,7 +2396,6 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 18`] = `
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service1",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service1.ts:22",
         "extends": {
           "#": "Capsule/Extends",
           "capsule": {
@@ -2511,7 +2421,6 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 18`] = `
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service2",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service2.ts:22",
         "extends": {
           "#": "Capsule/Extends",
           "capsule": {
@@ -2537,7 +2446,6 @@ exports[`CapsuleSpine Model CapsuleSpineModel queries per example 18`] = `
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/run.mappedInstanceSharing",
-        "capsuleSourceLineRef": "<PACKAGE_ROOT>/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/main.ts:214",
         "mappings": {
           "#": "Capsule/Mappings",
           "service1": {
