@@ -85,7 +85,8 @@ Repository DID: `did:repo:e7b46f0978c2cc02461b480b99a6589a2b6fa888`
 (c) 2026 [Christoph.diy](https://christoph.diy) • Code: [LGPL](./LICENSE.txt) & [MIT](./LICENSE.txt) • Text: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) • Created with [Stream44.Studio](https://Stream44.Studio)
 
 
-### Contributing
+Contributing
+===
 
 All contributions must comply with the repository’s Developer Certificate of Origin (DCO) and verified commit signature requirements.
 
