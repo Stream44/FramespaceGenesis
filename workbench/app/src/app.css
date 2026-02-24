@@ -1127,15 +1127,15 @@ body {
 .rep-list-type {
     font-size: 11px;
     font-weight: 600;
-    color: #8b949e;
-    background: #30363d;
+    color: var(--wb-ink-muted);
+    background: var(--wb-rule-light);
     padding: 2px 8px;
-    border-radius: 4px;
+    border-radius: var(--wb-radius-sm);
 }
 
 .rep-list-count {
     font-size: 11px;
-    color: #8b949e;
+    color: var(--wb-ink-muted);
 }
 
 .rep-list-items {
@@ -1151,30 +1151,30 @@ body {
 }
 
 .item-selectable>.entity-card.selectable:hover {
-    border-color: #d4956b66;
+    border-color: var(--wb-rule-blue);
 }
 
 .rep-capsule-line {
-    color: #e6edf3;
+    color: var(--wb-ink);
     font-weight: 400;
     font-size: 0.85em;
 }
 
 .rep-capsule-code-btn {
     margin-left: auto;
-    background: #21262d;
-    border: 1px solid #30363d;
-    color: #8b949e;
+    background: var(--wb-paper-base);
+    border: 1px solid var(--wb-rule);
+    color: var(--wb-ink-muted);
     font-size: 11px;
     padding: 2px 8px;
-    border-radius: 4px;
+    border-radius: var(--wb-radius-sm);
     cursor: pointer;
     flex-shrink: 0;
 }
 
 .rep-capsule-code-btn:hover {
-    border-color: #58a6ff;
-    color: #c9d1d9;
+    border-color: var(--wb-blue);
+    color: var(--wb-ink);
 }
 
 .rep-capsule-header.expandable {
@@ -1182,7 +1182,7 @@ body {
 }
 
 .rep-capsule-header.expandable:hover {
-    background: #222a3a;
+    background: var(--wb-blue-wash);
 }
 
 .rep-capsule-header.clickable {
@@ -1194,13 +1194,13 @@ body {
 }
 
 .rep-capsule-source-clickable:hover {
-    background: #1a2233;
+    background: var(--wb-blue-wash);
 }
 
 .rep-capsule-copy-btn {
     background: none;
     border: none;
-    color: #484f58;
+    color: var(--wb-ink-ghost);
     font-size: 13px;
     cursor: pointer;
     padding: 0 4px;
@@ -1209,23 +1209,23 @@ body {
 }
 
 .rep-capsule-copy-btn:hover {
-    color: #c9d1d9;
+    color: var(--wb-ink);
 }
 
 .rep-capsule-load-btn {
     background: none;
-    border: 1px solid #30363d;
-    color: #484f58;
+    border: 1px solid var(--wb-rule);
+    color: var(--wb-ink-ghost);
     font-size: 11px;
     padding: 2px 10px;
-    border-radius: 4px;
+    border-radius: var(--wb-radius-sm);
     cursor: pointer;
     margin: 6px 16px;
 }
 
 .rep-capsule-load-btn:hover {
-    border-color: #484f58;
-    color: #8b949e;
+    border-color: var(--wb-rule-strong);
+    color: var(--wb-ink-muted);
 }
 
 .rep-capsule-load-btn:disabled {
@@ -1234,12 +1234,12 @@ body {
 }
 
 .rep-capsule-header.clickable:hover {
-    background: #2a1f15;
+    background: var(--wb-accent-amber-faint);
 }
 
 .rep-capsule-header.clickable:hover~.rep-capsule-body,
 .item-selectable>.rep-capsule:has(.rep-capsule-header.clickable:hover) {
-    border-color: #d4956b66;
+    border-color: var(--wb-rule-blue);
 }
 
 /* ── Rep: Capsule internal sections ────────────────────────────────── */
@@ -1251,7 +1251,7 @@ body {
 .rep-capsule-section-header {
     font-size: 11px;
     font-weight: 600;
-    color: #8b949e;
+    color: var(--wb-ink-muted);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     padding: 4px 16px 6px;
@@ -1275,19 +1275,19 @@ body {
 .rep-capsule-section-item-key {
     font-size: 12px;
     font-weight: 500;
-    color: #c9a84c;
+    color: var(--wb-accent-amber);
 }
 
 .rep-spine-contract-key {
     font-size: 13px;
     font-weight: 700;
-    color: #58a6ff;
+    color: var(--wb-blue);
     margin-bottom: 2px;
 }
 
 .rep-capsule-section-nested {
     padding: 2px 0 2px 8px;
-    border-left: 2px solid #30363d;
+    border-left: 2px solid var(--wb-rule-blue);
     margin-left: 8px;
 }
 
@@ -1300,13 +1300,13 @@ body {
 }
 
 .rep-capsule-kv-key {
-    color: #7ee787;
+    color: var(--wb-json-key);
     font-weight: 500;
     flex-shrink: 0;
 }
 
 .rep-capsule-kv-val {
-    color: #a5d6ff;
+    color: var(--wb-json-string);
     word-break: break-all;
 }
 
@@ -1320,11 +1320,11 @@ body {
 .rep-capsule-prop-type {
     font-size: 10px;
     font-weight: 600;
-    color: #d2a8ff;
-    background: #d2a8ff18;
+    color: var(--wb-accent-purple);
+    background: var(--wb-accent-purple-faint);
     padding: 1px 8px;
-    border-radius: 4px;
-    border: 1px solid #d2a8ff33;
+    border-radius: var(--wb-radius-sm);
+    border: 1px solid var(--wb-accent-purple-faint);
     flex-shrink: 0;
 }
 
@@ -1333,22 +1333,22 @@ body {
     align-items: baseline;
     gap: 2px;
     font-size: 11px;
-    background: #21262d;
+    background: var(--wb-paper-base);
     padding: 1px 6px;
-    border-radius: 3px;
-    border: 1px solid #30363d;
+    border-radius: var(--wb-radius-sm);
+    border: 1px solid var(--wb-rule);
 }
 
 .rep-capsule-prop-tag-key {
-    color: #7ee787;
+    color: var(--wb-json-key);
 }
 
 .rep-capsule-prop-tag-eq {
-    color: #6e7681;
+    color: var(--wb-ink-faint);
 }
 
 .rep-capsule-prop-tag-val {
-    color: #a5d6ff;
+    color: var(--wb-json-string);
 }
 
 .rep-capsule-mapping {
@@ -1361,18 +1361,18 @@ body {
 .rep-capsule-mapping-tag {
     font-size: 10px;
     font-weight: 600;
-    color: #d2a8ff;
-    background: #d2a8ff18;
+    color: var(--wb-accent-purple);
+    background: var(--wb-accent-purple-faint);
     padding: 1px 8px;
-    border-radius: 4px;
-    border: 1px solid #d2a8ff33;
+    border-radius: var(--wb-radius-sm);
+    border: 1px solid var(--wb-accent-purple-faint);
     align-self: flex-start;
 }
 
 .rep-capsule-mapping-tag-delegate {
-    color: #f0883e;
-    background: #f0883e18;
-    border-color: #f0883e33;
+    color: var(--wb-accent-amber);
+    background: var(--wb-accent-amber-faint);
+    border-color: var(--wb-accent-amber-faint);
 }
 
 /* ── Rep: Capsule/PropertyContracts ─────────────────────────────────── */
@@ -1384,7 +1384,7 @@ body {
 .rep-property-contracts-header {
     font-size: 11px;
     font-weight: 600;
-    color: #8b949e;
+    color: var(--wb-ink-muted);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     padding: 4px 16px 6px;
@@ -1397,7 +1397,7 @@ body {
 .rep-property-contracts-key {
     font-size: 12px;
     font-weight: 500;
-    color: #c9a84c;
+    color: var(--wb-accent-amber);
 }
 
 /* ── Code Dialog ───────────────────────────────────────────────────── */
@@ -1406,20 +1406,20 @@ body {
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(46, 35, 24, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .code-dialog {
-    background: #161b22;
-    border: 1px solid #30363d;
-    border-radius: 8px;
+    background: var(--wb-paper-highlight);
+    border: 1px solid var(--wb-rule-blue-strong);
+    border-radius: var(--wb-radius-lg);
     min-width: 480px;
     max-width: 700px;
     padding: 16px 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    box-shadow: var(--wb-shadow-float);
 }
 
 .code-dialog-header {
@@ -1432,13 +1432,13 @@ body {
 .code-dialog-title {
     font-size: 14px;
     font-weight: 600;
-    color: #c9d1d9;
+    color: var(--wb-ink);
 }
 
 .code-dialog-close {
     background: none;
     border: none;
-    color: #8b949e;
+    color: var(--wb-ink-muted);
     font-size: 18px;
     cursor: pointer;
     padding: 0 4px;
@@ -1446,7 +1446,7 @@ body {
 }
 
 .code-dialog-close:hover {
-    color: #c9d1d9;
+    color: var(--wb-ink);
 }
 
 .code-dialog-section {
@@ -1456,7 +1456,7 @@ body {
 .code-dialog-label {
     display: block;
     font-size: 11px;
-    color: #8b949e;
+    color: var(--wb-ink-muted);
     margin-bottom: 6px;
 }
 
@@ -1469,28 +1469,28 @@ body {
 .code-dialog-path {
     flex: 1;
     font-size: 12px;
-    color: #58a6ff;
-    background: #0d1117;
-    border: 1px solid #21262d;
-    border-radius: 4px;
+    color: var(--wb-blue);
+    background: var(--wb-paper);
+    border: 1px solid var(--wb-rule);
+    border-radius: var(--wb-radius-sm);
     padding: 6px 10px;
     word-break: break-all;
-    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-family: var(--wb-font-mono);
 }
 
 .code-dialog-copy {
-    background: #21262d;
-    border: 1px solid #30363d;
-    color: #c9d1d9;
+    background: var(--wb-paper-base);
+    border: 1px solid var(--wb-rule);
+    color: var(--wb-ink);
     font-size: 11px;
     padding: 5px 12px;
-    border-radius: 4px;
+    border-radius: var(--wb-radius-sm);
     cursor: pointer;
     white-space: nowrap;
 }
 
 .code-dialog-copy:hover {
-    border-color: #58a6ff;
+    border-color: var(--wb-blue);
 }
 
 .code-dialog-cmd-row {
@@ -1501,49 +1501,49 @@ body {
 
 .code-dialog-input {
     flex: 1;
-    background: #0d1117;
-    border: 1px solid #21262d;
-    color: #c9d1d9;
+    background: var(--wb-paper);
+    border: 1px solid var(--wb-rule);
+    color: var(--wb-ink);
     font-size: 12px;
     padding: 6px 10px;
-    border-radius: 4px;
-    font-family: 'SF Mono', 'Fira Code', monospace;
+    border-radius: var(--wb-radius-sm);
+    font-family: var(--wb-font-mono);
     outline: none;
 }
 
 .code-dialog-input:focus {
-    border-color: #58a6ff;
+    border-color: var(--wb-blue);
 }
 
 .code-dialog-input::placeholder {
-    color: #484f58;
+    color: var(--wb-ink-ghost);
 }
 
 .code-dialog-btn {
-    background: #21262d;
-    border: 1px solid #30363d;
-    color: #c9d1d9;
+    background: var(--wb-paper-base);
+    border: 1px solid var(--wb-rule);
+    color: var(--wb-ink);
     font-size: 11px;
     padding: 5px 12px;
-    border-radius: 4px;
+    border-radius: var(--wb-radius-sm);
     cursor: pointer;
     white-space: nowrap;
 }
 
 .code-dialog-btn:hover {
-    border-color: #58a6ff;
-    background: #1f2937;
+    border-color: var(--wb-blue);
+    background: var(--wb-blue-wash);
 }
 
 .code-dialog-btn-primary {
-    background: #1f6feb;
-    border-color: #1f6feb;
-    color: #fff;
+    background: var(--wb-blue);
+    border-color: var(--wb-blue);
+    color: var(--wb-paper-highlight);
 }
 
 .code-dialog-btn-primary:hover {
-    background: #388bfd;
-    border-color: #388bfd;
+    background: var(--wb-blue-bright);
+    border-color: var(--wb-blue-bright);
 }
 
 .code-dialog-actions {
@@ -1557,9 +1557,9 @@ body {
 
 .error-rep {
     padding: 12px 16px;
-    background: #2d1215;
-    border: 1px solid #6e3630;
-    border-radius: 6px;
+    background: var(--wb-accent-red-faint);
+    border: 1px solid var(--wb-accent-red);
+    border-radius: var(--wb-radius);
     margin: 8px;
 }
 
@@ -1572,18 +1572,18 @@ body {
 
 .error-rep-icon {
     font-size: 16px;
-    color: #f85149;
+    color: var(--wb-accent-red);
 }
 
 .error-rep-title {
     font-size: 13px;
     font-weight: 600;
-    color: #f85149;
+    color: var(--wb-accent-red);
 }
 
 .error-rep-message {
     font-size: 12px;
-    color: #f0a8a0;
+    color: var(--wb-ink-secondary);
     margin-bottom: 8px;
     line-height: 1.5;
 }
@@ -1594,17 +1594,17 @@ body {
 
 .error-rep-stack-details summary {
     font-size: 11px;
-    color: #8b949e;
+    color: var(--wb-ink-muted);
     cursor: pointer;
     user-select: none;
 }
 
 .error-rep-stack {
     font-size: 11px;
-    color: #8b949e;
-    background: #161b22;
+    color: var(--wb-ink-muted);
+    background: var(--wb-paper-raised);
     padding: 8px;
-    border-radius: 4px;
+    border-radius: var(--wb-radius-sm);
     margin-top: 4px;
     overflow-x: auto;
     white-space: pre-wrap;
@@ -1616,7 +1616,7 @@ body {
 .error-dialog-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(46, 35, 24, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1624,14 +1624,15 @@ body {
 }
 
 .error-dialog {
-    background: #161b22;
-    border: 1px solid #6e3630;
-    border-radius: 8px;
+    background: var(--wb-paper-highlight);
+    border: 1px solid var(--wb-accent-red);
+    border-radius: var(--wb-radius-lg);
     padding: 16px 20px;
     min-width: 360px;
     max-width: 560px;
     max-height: 80vh;
     overflow-y: auto;
+    box-shadow: var(--wb-shadow-float);
 }
 
 .error-dialog-header {
@@ -1644,7 +1645,7 @@ body {
 .error-dialog-title {
     font-size: 14px;
     font-weight: 600;
-    color: #f85149;
+    color: var(--wb-accent-red);
     display: flex;
     align-items: center;
     gap: 6px;
@@ -1653,35 +1654,35 @@ body {
 .error-dialog-close {
     background: none;
     border: none;
-    color: #8b949e;
+    color: var(--wb-ink-muted);
     font-size: 18px;
     cursor: pointer;
     padding: 0 4px;
 }
 
 .error-dialog-close:hover {
-    color: #c9d1d9;
+    color: var(--wb-ink);
 }
 
 .error-dialog-method {
     font-size: 12px;
-    color: #8b949e;
+    color: var(--wb-ink-muted);
     margin-bottom: 8px;
 }
 
 .error-dialog-message {
     font-size: 12px;
-    color: #f0a8a0;
+    color: var(--wb-ink-secondary);
     margin-bottom: 8px;
     line-height: 1.5;
 }
 
 .error-dialog-stack {
     font-size: 11px;
-    color: #8b949e;
-    background: #0d1117;
+    color: var(--wb-ink-muted);
+    background: var(--wb-paper);
     padding: 8px;
-    border-radius: 4px;
+    border-radius: var(--wb-radius-sm);
     overflow-x: auto;
     white-space: pre-wrap;
     word-break: break-all;
@@ -1696,6 +1697,6 @@ body {
     align-items: center;
     justify-content: center;
     height: 100%;
-    color: #484f58;
+    color: var(--wb-ink-ghost);
     font-size: 13px;
 }

@@ -6,7 +6,8 @@ import type { EndpointDef, EngineSchema } from "~/lib/engines";
 import { ResultView, RawJsonView } from "~/lib/renderLib";
 import type { JsonValue } from "~/lib/renderLib";
 import "~viz/CapsularSpine/reps/CapsuleSpineTree";
-import { createDockview, themeAbyss } from "dockview-core";
+import { createDockview } from "dockview-core";
+import type { DockviewTheme } from "dockview-core";
 import type {
     DockviewApi,
     GroupPanelPartInitParameters,
@@ -16,6 +17,12 @@ import type {
 import "dockview-core/dist/styles/dockview.css";
 import { render } from "solid-js/web";
 import { workbenchLib } from "~/lib/workbenchLib";
+
+const themeBlueprintVellum: DockviewTheme = {
+    name: "blueprint-vellum",
+    className: "dockview-theme-blueprint-vellum",
+    gap: 4,
+};
 
 // ── Verbose logging ──────────────────────────────────────────────────
 function vlog(context: string, ...args: any[]) {
@@ -542,7 +549,7 @@ function WorkbenchDockview() {
         vlog("buildDockview", `APIs: ${Object.keys(s.apis ?? {}).join(", ")}`);
 
         dockApi = createDockview(containerRef, {
-            theme: themeAbyss,
+            theme: themeBlueprintVellum,
             createComponent(options) {
                 if (options.name === "framespace-api") {
                     // API list panel
