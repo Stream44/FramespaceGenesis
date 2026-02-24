@@ -75,7 +75,7 @@ Before opening a Pull Request:
 1. Sign the DCO agreement once:
    ```bash
    bun run sign-dco
-````
+```
 
 2. Ensure every commit:
 
@@ -99,7 +99,6 @@ Before opening a Pull Request:
 * See the full contribution guide: [`docs/CONTRIBUTING.md`](./docs/CONTRIBUTING.md)
 
 
-````
 Provenance
 ===
 
