@@ -33,7 +33,8 @@ export function normalizeForSnapshot(obj: any): any {
     if (obj && typeof obj === 'object') {
         const result: any = {}
         for (const [key, value] of Object.entries(obj)) {
-            if (key === 'capsuleSourceNameRefHash' || key === 'capsuleSourceLineRef') continue
+            // TODO: Keep these after we resilve URIs better.
+            if (key === 'capsuleSourceNameRefHash' || key === 'capsuleSourceLineRef' || key === 'capsuleSourceNameRef' || key === 'moduleFilepath') continue
             result[key] = normalizeForSnapshot(value)
         }
         return result
