@@ -1,0 +1,18 @@
+{
+    "name": "@framespace/ladybug-api",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "bun run --watch server.ts",
+        "start": "bun run server.ts",
+        "test": "bun test"
+    },
+    "dependencies": {
+        "lbug": "^0.14.3",
+        "@stream44.studio/encapsulate": "^0.4.0-rc.23",
+        "t44": "^0.4.0-rc.22"
+    },
+    "devDependencies": {
+        "@types/bun": "latest"
+    }
+}

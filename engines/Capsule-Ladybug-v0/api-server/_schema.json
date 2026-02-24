@@ -1,0 +1,169 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Framespace API",
+        "version": "0.1.0"
+    },
+    "apis": {
+        "Encapsulate/CapsuleSpine": {
+            "description": "Methods to query the *Capsule Spine Model* of the selected *Spine Tree Instance*",
+            "basePath": "/api/Encapsulate/CapsuleSpine"
+        },
+        "Framespace/Workbench": {
+            "description": "Methods to facilitate the Framespace Workbench",
+            "basePath": "/api/Framespace/Workbench"
+        }
+    },
+    "endpoints": {
+        "/api/Encapsulate/CapsuleSpine/listCapsules": {
+            "method": "GET or POST",
+            "namespace": "Encapsulate/CapsuleSpine",
+            "description": "List all capsules in the tree.",
+            "args": [
+                {
+                    "name": "spineInstanceUri",
+                    "type": "string",
+                    "optional": true
+                },
+                {
+                    "name": "resolveRefs",
+                    "type": "boolean",
+                    "optional": true
+                }
+            ],
+            "discovery": "/api/Framespace/Workbench/listSpineInstances",
+            "filterField": "$id",
+            "usage": {
+                "GET": "/api/Encapsulate/CapsuleSpine/listCapsules?spineInstanceUri=<string>&resolveRefs=<boolean>",
+                "POST": {
+                    "body": {
+                        "args": [
+                            "<string>",
+                            "<boolean>"
+                        ]
+                    }
+                }
+            }
+        },
+        "/api/Encapsulate/CapsuleSpine/getCapsule": {
+            "method": "GET or POST",
+            "namespace": "Encapsulate/CapsuleSpine",
+            "description": "Get a capsule with full CST structure including spine contracts, property contracts, and properties.",
+            "args": [
+                {
+                    "name": "capsuleName",
+                    "type": "string"
+                }
+            ],
+            "discovery": "/api/Encapsulate/CapsuleSpine/listCapsules",
+            "filterField": "$id",
+            "usage": {
+                "GET": "/api/Encapsulate/CapsuleSpine/getCapsule?capsuleName=<string>",
+                "POST": {
+                    "body": {
+                        "args": [
+                            "<string>"
+                        ]
+                    }
+                }
+            }
+        },
+        "/api/Encapsulate/CapsuleSpine/getCapsuleSpineTree": {
+            "method": "GET or POST",
+            "namespace": "Encapsulate/CapsuleSpine",
+            "description": "Get the spine tree for a spineInstanceUri.",
+            "args": [
+                {
+                    "name": "spineInstanceUri",
+                    "type": "string"
+                },
+                {
+                    "name": "includeProperties",
+                    "type": "boolean",
+                    "optional": true
+                }
+            ],
+            "discovery": "/api/Framespace/Workbench/listSpineInstances",
+            "filterField": "$id",
+            "usage": {
+                "GET": "/api/Encapsulate/CapsuleSpine/getCapsuleSpineTree?spineInstanceUri=<string>&includeProperties=<boolean>",
+                "POST": {
+                    "body": {
+                        "args": [
+                            "<string>",
+                            "<boolean>"
+                        ]
+                    }
+                }
+            }
+        },
+        "/api/Framespace/Workbench/listSpineInstances": {
+            "method": "GET or POST",
+            "namespace": "Framespace/Workbench",
+            "description": "List all distinct spine instance URIs (rootCapsuleName values) in the graph.",
+            "args": [],
+            "usage": {
+                "GET": "/api/Framespace/Workbench/listSpineInstances",
+                "POST": {
+                    "body": {
+                        "args": []
+                    }
+                }
+            }
+        },
+        "/api/Framespace/Workbench/getProcessStats": {
+            "method": "GET or POST",
+            "namespace": "Framespace/Workbench",
+            "description": "Get backend process memory and CPU usage.",
+            "args": [],
+            "usage": {
+                "GET": "/api/Framespace/Workbench/getProcessStats",
+                "POST": {
+                    "body": {
+                        "args": []
+                    }
+                }
+            }
+        },
+        "/api/Framespace/Workbench/getReps": {
+            "method": "GET or POST",
+            "namespace": "Framespace/Workbench",
+            "description": "List all registered reps with their source file paths.",
+            "args": [],
+            "usage": {
+                "GET": "/api/Framespace/Workbench/getReps",
+                "POST": {
+                    "body": {
+                        "args": []
+                    }
+                }
+            }
+        },
+        "/api/Framespace/Workbench/openFile": {
+            "method": "GET or POST",
+            "namespace": "Framespace/Workbench",
+            "description": "Open a file in an editor. Command is the editor binary (e.g. \"code\"), file is an absolute path optionally with :line suffix.",
+            "args": [
+                {
+                    "name": "command",
+                    "type": "string"
+                },
+                {
+                    "name": "file",
+                    "type": "string"
+                }
+            ],
+            "usage": {
+                "GET": "/api/Framespace/Workbench/openFile?command=<string>&file=<string>",
+                "POST": {
+                    "body": {
+                        "args": [
+                            "<string>",
+                            "<string>"
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

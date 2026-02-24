@@ -4,3 +4,8 @@ node_modules
 .env*
 
 .$*.drawio.bkp
+
+.turbo/
+.generated-data/
+
+___/
