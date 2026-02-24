@@ -1,7 +1,7 @@
 LadybugDB engine for Encapsulate
 ===
 
-This engine integrates the [encapsulate](https://github.com/Stream44/encapsulate) library with the (ladybugdb.com)[https://ladybugdb.com/] embedded database engine.
+This engine integrates the [encapsulate](https://github.com/Stream44/encapsulate) library with the [ladybugdb.com](https://ladybugdb.com/) embedded database engine.
 
 Encapsulate *Capsule Source Trees* and *Membrane Events* are fed into **ladybug** for graph querying.
 

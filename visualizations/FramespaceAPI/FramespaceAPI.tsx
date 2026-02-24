@@ -66,9 +66,9 @@ export function FramespaceAPI(props: { ctx: VisualizationContext }): JSX.Element
     function buildDockview(s: EngineSchema) {
         if (!containerRef) return;
 
-        // Only show QueryCapsuleSpineModel methods
+        // Only show Encapsulate/CapsuleSpine methods
         const allEndpoints = Object.entries(s.endpoints)
-            .filter(([, def]) => def.namespace === "QueryCapsuleSpineModel")
+            .filter(([, def]) => def.namespace === "Encapsulate/CapsuleSpine")
             .map(([path, def]) => ({
                 path,
                 name: path.split("/").pop()!,

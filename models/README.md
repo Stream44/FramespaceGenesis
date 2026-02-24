@@ -12,4 +12,3 @@ Reading
 
 - [Sovereign Agentic AI (Volodymyrs View)](https://volodymyrpavlyshyn.substack.com/)
  - Many great posts about Knowledge Graphs
-

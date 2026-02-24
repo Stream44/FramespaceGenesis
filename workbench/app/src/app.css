@@ -59,20 +59,36 @@ body {
     flex-shrink: 0;
 }
 
-.wb-header-left {
+.wb-header-detail {
     display: flex;
-    align-items: center;
-    gap: 16px;
+    flex-direction: column;
+    gap: 2px;
     flex: 1;
     min-width: 0;
 }
 
-.wb-header-right {
+.wb-header-detail-row {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 8px;
+    min-height: 22px;
+}
+
+.wb-header-detail-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+}
+
+.wb-header-detail-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     flex-shrink: 0;
-    margin-right: 10px;
+    white-space: nowrap;
+    margin-left: auto;
 }
 
 .wb-settings-btn {
@@ -187,9 +203,7 @@ body {
     font-size: 12px;
     font-weight: 500;
     color: var(--wb-ink);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    word-break: break-all;
     min-width: 0;
 }
 
@@ -211,26 +225,7 @@ body {
     background: var(--wb-accent-red-faint);
 }
 
-/* ── Engine Status Bar ────────────────────────────────────────────── */
-
-.engine-status-bar {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-left: auto;
-    flex-shrink: 0;
-    gap: 2px;
-}
-
-.engine-status-line {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.engine-status-line .engine-status-name {
-    margin-right: 12px;
-}
+/* ── Engine Status ────────────────────────────────────────────────── */
 
 .engine-status-stats {
     font-size: 10px;
@@ -426,6 +421,55 @@ body {
     font-size: 11px;
     color: var(--wb-ink-muted);
     margin-top: 4px;
+}
+
+/* ── Instance groups (modelName / exampleDir hierarchy) ─────────────── */
+
+.instance-group {
+    margin-bottom: 12px;
+}
+
+.instance-group-header {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 10px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid var(--wb-rule);
+}
+
+.instance-group-model {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--wb-ink);
+}
+
+.instance-group-sep {
+    font-size: 13px;
+    color: var(--wb-ink-muted);
+}
+
+.instance-group-example {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--wb-ink-secondary);
+}
+
+.instance-group-count {
+    font-size: 11px;
+    color: var(--wb-ink-muted);
+    margin-left: auto;
+}
+
+.instance-group-items {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-left: 16px;
+}
+
+.instance-group-items .instance-card {
+    padding: 8px 14px;
 }
 
 /* ══════════════════════════════════════════════════════════════════════
@@ -1143,6 +1187,46 @@ body {
     display: flex;
     flex-direction: column;
     gap: 6px;
+}
+
+/* ── Spine instance groups ──────────────────────────────────────────── */
+
+.rep-spine-group {
+    margin-bottom: 4px;
+}
+
+.rep-spine-group-header {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    background: var(--wb-rule-light);
+    border-radius: var(--wb-radius-sm);
+    margin-bottom: 4px;
+}
+
+.rep-spine-group-model {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--wb-accent);
+}
+
+.rep-spine-group-sep {
+    font-size: 11px;
+    color: var(--wb-ink-muted);
+}
+
+.rep-spine-group-example {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--wb-ink-secondary);
+}
+
+.rep-spine-group-items {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-left: 12px;
 }
 
 /* ── Hover-to-select on items in discovery mode ─────────────────────── */

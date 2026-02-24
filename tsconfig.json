@@ -1,5 +1,4 @@
 {
-    "extends": "../../../tsconfig.paths.json",
     "compilerOptions": {
         "target": "es2021",
         "module": "esnext",
@@ -18,10 +17,13 @@
         "forceConsistentCasingInFileNames": true,
         "resolveJsonModule": true,
         "allowSyntheticDefaultImports": true,
-        "baseUrl": "."
+        "baseUrl": ".",
+        "jsx": "preserve",
+        "jsxImportSource": "solid-js"
     },
     "include": [
-        "**/*.ts"
+        "**/*.ts",
+        "**/*.tsx"
     ],
     "exclude": [
         "node_modules"

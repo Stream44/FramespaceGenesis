@@ -6,5 +6,6 @@ node_modules
 .$*.drawio.bkp
 
 .turbo/
+.generated-data/
 
 ___/

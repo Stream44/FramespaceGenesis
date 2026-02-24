@@ -1,6 +1,6 @@
 // ── Workbench Store ──────────────────────────────────────────────────
 // Central state for the workbench: engine connections, selected spine
-// instance, and persistence via localStorage.
+// instance, dockview layout, and persistence via localStorage.
 
 import { createSignal } from "solid-js";
 import type { EngineClient, SpineInstance } from "./engines";
@@ -14,18 +14,23 @@ const STORAGE_KEY = "framespace-workbench-state";
 
 type Persisted = {
     selectedSpineInstance: string | null;
+    dockviewLayout: any | null;
 };
 
 function load(): Persisted {
     try {
         const raw = localStorage.getItem(STORAGE_KEY);
-        if (raw) return { selectedSpineInstance: null, ...JSON.parse(raw) };
+        if (raw) return { selectedSpineInstance: null, dockviewLayout: null, ...JSON.parse(raw) };
     } catch { /* ignore */ }
-    return { selectedSpineInstance: null };
+    return { selectedSpineInstance: null, dockviewLayout: null };
 }
 
-function persist(p: Persisted) {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); } catch { /* ignore */ }
+function persist(partial: Partial<Persisted>) {
+    try {
+        const current = load();
+        const merged = { ...current, ...partial };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+    } catch { /* ignore */ }
 }
 
 // ── Engine instances ─────────────────────────────────────────────────
@@ -37,6 +42,24 @@ const engines: EngineClient[] = [ladybugClient];
 const init = load();
 const [selectedSpineInstance, setSelectedSpineInstance] = createSignal<string | null>(init.selectedSpineInstance);
 const [spineInstances, setSpineInstances] = createSignal<SpineInstance[]>([]);
+const [dockviewLayout, setDockviewLayoutSignal] = createSignal<any | null>(init.dockviewLayout);
+
+// ── Dockview layout persistence (debounced) ──────────────────────────
+let layoutDebounce: ReturnType<typeof setTimeout> | undefined;
+
+function saveDockviewLayout(layout: any) {
+    setDockviewLayoutSignal(layout);
+    clearTimeout(layoutDebounce);
+    layoutDebounce = setTimeout(() => {
+        vlog("saveDockviewLayout", "persisting layout");
+        persist({ dockviewLayout: layout });
+    }, 500);
+}
+
+function clearDockviewLayout() {
+    setDockviewLayoutSignal(null);
+    persist({ dockviewLayout: null });
+}
 
 // ── Connect all engines on init ──────────────────────────────────────
 async function connectAll(): Promise<void> {
@@ -78,6 +101,11 @@ export const workbenchStore = {
     selectedSpineInstance,
     selectSpineInstance,
     clearSpineInstance,
+
+    // ── Dockview layout ──────────────────────────────────────────────
+    dockviewLayout,
+    saveDockviewLayout,
+    clearDockviewLayout,
 
     // ── Lifecycle ────────────────────────────────────────────────────
     connectAll,

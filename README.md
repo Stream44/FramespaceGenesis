@@ -79,7 +79,7 @@ Engines implement queryable graph models to drive visualizations. Each engine su
 LadybugDB engine for Encapsulate
 ---
 
-Query [encapsulate](https://github.com/Stream44/encapsulate) *Capsule Source Tree* and *Membrane Event* related data from the (ladybugdb.com)[https://ladybugdb.com/] embedded database engine.
+Query [encapsulate](https://github.com/Stream44/encapsulate) *Capsule Source Tree* and *Membrane Event* related data from the [ladybugdb.com](https://ladybugdb.com/) embedded database engine.
 
 See: [engines/Capsule-Ladybug-v0/](engines/Capsule-Ladybug-v0/)
 
@@ -90,6 +90,8 @@ Framespace Workbench
 The workbench single-page-application presents all supported visual models for a selected **Capsule Spine Tree Instance** on the same page. The visualizations update in realtime as source code is modified.
 
 See: [workbench/](workbench/)
+
+![Framespace Workbench](./framespace.dev/packages/FramespaceGenesis/workbench/Screenshot.jpg)
 
 
 Visualizations

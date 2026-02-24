@@ -1,23 +1,23 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Ladybug CST API",
-        "version": "1.0.0"
+        "title": "Framespace API",
+        "version": "0.1.0"
     },
     "apis": {
-        "QueryCapsuleSpineModel": {
+        "Encapsulate/CapsuleSpine": {
             "description": "Methods to query the *Capsule Spine Model* of the selected *Spine Tree Instance*",
-            "basePath": "/api/QueryCapsuleSpineModel"
+            "basePath": "/api/Encapsulate/CapsuleSpine"
         },
-        "Workbench": {
-            "description": "Methods to faciliate the Framespace Workbench",
-            "basePath": "/api/Workbench"
+        "Framespace/Workbench": {
+            "description": "Methods to facilitate the Framespace Workbench",
+            "basePath": "/api/Framespace/Workbench"
         }
     },
     "endpoints": {
-        "/api/QueryCapsuleSpineModel/listCapsules": {
+        "/api/Encapsulate/CapsuleSpine/listCapsules": {
             "method": "GET or POST",
-            "namespace": "QueryCapsuleSpineModel",
+            "namespace": "Encapsulate/CapsuleSpine",
             "description": "List all capsules in the tree.",
             "args": [
                 {
@@ -31,10 +31,10 @@
                     "optional": true
                 }
             ],
-            "discovery": "/api/Workbench/listSpineInstances",
+            "discovery": "/api/Framespace/Workbench/listSpineInstances",
             "filterField": "$id",
             "usage": {
-                "GET": "/api/QueryCapsuleSpineModel/listCapsules?spineInstanceUri=<string>&resolveRefs=<boolean>",
+                "GET": "/api/Encapsulate/CapsuleSpine/listCapsules?spineInstanceUri=<string>&resolveRefs=<boolean>",
                 "POST": {
                     "body": {
                         "args": [
@@ -45,9 +45,9 @@
                 }
             }
         },
-        "/api/QueryCapsuleSpineModel/getCapsule": {
+        "/api/Encapsulate/CapsuleSpine/getCapsule": {
             "method": "GET or POST",
-            "namespace": "QueryCapsuleSpineModel",
+            "namespace": "Encapsulate/CapsuleSpine",
             "description": "Get a capsule with full CST structure including spine contracts, property contracts, and properties.",
             "args": [
                 {
@@ -55,10 +55,10 @@
                     "type": "string"
                 }
             ],
-            "discovery": "/api/QueryCapsuleSpineModel/listCapsules",
+            "discovery": "/api/Encapsulate/CapsuleSpine/listCapsules",
             "filterField": "$id",
             "usage": {
-                "GET": "/api/QueryCapsuleSpineModel/getCapsule?capsuleName=<string>",
+                "GET": "/api/Encapsulate/CapsuleSpine/getCapsule?capsuleName=<string>",
                 "POST": {
                     "body": {
                         "args": [
@@ -68,9 +68,9 @@
                 }
             }
         },
-        "/api/QueryCapsuleSpineModel/getCapsuleSpineTree": {
+        "/api/Encapsulate/CapsuleSpine/getCapsuleSpineTree": {
             "method": "GET or POST",
-            "namespace": "QueryCapsuleSpineModel",
+            "namespace": "Encapsulate/CapsuleSpine",
             "description": "Get the spine tree for a spineInstanceUri.",
             "args": [
                 {
@@ -83,10 +83,10 @@
                     "optional": true
                 }
             ],
-            "discovery": "/api/Workbench/listSpineInstances",
+            "discovery": "/api/Framespace/Workbench/listSpineInstances",
             "filterField": "$id",
             "usage": {
-                "GET": "/api/QueryCapsuleSpineModel/getCapsuleSpineTree?spineInstanceUri=<string>&includeProperties=<boolean>",
+                "GET": "/api/Encapsulate/CapsuleSpine/getCapsuleSpineTree?spineInstanceUri=<string>&includeProperties=<boolean>",
                 "POST": {
                     "body": {
                         "args": [
@@ -97,13 +97,13 @@
                 }
             }
         },
-        "/api/Workbench/listSpineInstances": {
+        "/api/Framespace/Workbench/listSpineInstances": {
             "method": "GET or POST",
-            "namespace": "Workbench",
+            "namespace": "Framespace/Workbench",
             "description": "List all distinct spine instance URIs (rootCapsuleName values) in the graph.",
             "args": [],
             "usage": {
-                "GET": "/api/Workbench/listSpineInstances",
+                "GET": "/api/Framespace/Workbench/listSpineInstances",
                 "POST": {
                     "body": {
                         "args": []
@@ -111,13 +111,13 @@
                 }
             }
         },
-        "/api/Workbench/getProcessStats": {
+        "/api/Framespace/Workbench/getProcessStats": {
             "method": "GET or POST",
-            "namespace": "Workbench",
+            "namespace": "Framespace/Workbench",
             "description": "Get backend process memory and CPU usage.",
             "args": [],
             "usage": {
-                "GET": "/api/Workbench/getProcessStats",
+                "GET": "/api/Framespace/Workbench/getProcessStats",
                 "POST": {
                     "body": {
                         "args": []
@@ -125,13 +125,13 @@
                 }
             }
         },
-        "/api/Workbench/getReps": {
+        "/api/Framespace/Workbench/getReps": {
             "method": "GET or POST",
-            "namespace": "Workbench",
+            "namespace": "Framespace/Workbench",
             "description": "List all registered reps with their source file paths.",
             "args": [],
             "usage": {
-                "GET": "/api/Workbench/getReps",
+                "GET": "/api/Framespace/Workbench/getReps",
                 "POST": {
                     "body": {
                         "args": []
@@ -139,9 +139,9 @@
                 }
             }
         },
-        "/api/Workbench/openFile": {
+        "/api/Framespace/Workbench/openFile": {
             "method": "GET or POST",
-            "namespace": "Workbench",
+            "namespace": "Framespace/Workbench",
             "description": "Open a file in an editor. Command is the editor binary (e.g. \"code\"), file is an absolute path optionally with :line suffix.",
             "args": [
                 {
@@ -154,7 +154,7 @@
                 }
             ],
             "usage": {
-                "GET": "/api/Workbench/openFile?command=<string>&file=<string>",
+                "GET": "/api/Framespace/Workbench/openFile?command=<string>&file=<string>",
                 "POST": {
                     "body": {
                         "args": [

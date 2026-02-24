@@ -1,7 +1,7 @@
 import { serve } from "bun"
 import { run } from 't44/standalone-rt'
 import { join } from 'path'
-import { existsSync, writeFileSync, readFileSync } from 'fs'
+import { existsSync, writeFileSync, readdirSync, readFileSync } from 'fs'
 
 // ── CORS helper ──────────────────────────────────────────────────────
 const corsHeaders = {
@@ -17,17 +17,51 @@ function json(data: unknown, init?: ResponseInit) {
     })
 }
 
-// ── Bootstrap capsules ───────────────────────────────────────────────
+// ── Auto-discover model API capsules ─────────────────────────────────
 const port = Number(process.env.PORT || 4000)
+const PACKAGE_ROOT = join(import.meta.dir, '..', '..', '..')
+const MODELS_DIR = join(PACKAGE_ROOT, 'models')
+
+// Scan models/ for API.ts files at any depth (e.g. models/Encapsulate/CapsuleSpine/API.ts)
+// The directory path relative to models/ becomes the mapping key (e.g. 'Encapsulate/CapsuleSpine')
+function discoverApiModules(): { key: string; relativePath: string }[] {
+    const apis: { key: string; relativePath: string }[] = []
+    function scan(dir: string, parts: string[]) {
+        try {
+            for (const entry of readdirSync(dir, { withFileTypes: true })) {
+                if (entry.name.startsWith('.') || entry.name === 'node_modules' || entry.name === 'examples') continue
+                if (entry.isDirectory()) {
+                    scan(join(dir, entry.name), [...parts, entry.name])
+                } else if (entry.name === 'API.ts' && parts.length >= 2) {
+                    const key = parts.join('/')
+                    // Relative path from server.ts to the API file
+                    const relPath = '../../../models/' + key + '/API'
+                    apis.push({ key, relativePath: relPath })
+                }
+            }
+        } catch { /* skip unreadable dirs */ }
+    }
+    scan(MODELS_DIR, [])
+    return apis.sort((a, b) => a.key.localeCompare(b.key))
+}
+
+const discoveredApis = discoverApiModules()
+console.log(`🔍 Discovered ${discoveredApis.length} API modules:`, discoveredApis.map(a => a.key))
 
 const capsuleApis = await run(async ({ encapsulate, CapsulePropertyTypes, makeImportStack }: any) => {
+    // Build mappings dynamically: importer + all discovered API capsules
+    const mappings: Record<string, any> = {
+        importer: { type: CapsulePropertyTypes.Mapping, value: '../ImportCapsuleSourceTrees' },
+    }
+    for (const api of discoveredApis) {
+        // Use the directory key as the property name (e.g. 'Encapsulate/CapsuleSpine')
+        mappings[api.key] = { type: CapsulePropertyTypes.Mapping, value: api.relativePath }
+    }
+
     const spine = await encapsulate({
         '#@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0': {
             '#@stream44.studio/encapsulate/structs/Capsule': {},
-            '#': {
-                QueryCapsuleSpineModel: { type: CapsulePropertyTypes.Mapping, value: '../QueryCapsuleSpineModel' },
-                Workbench: { type: CapsulePropertyTypes.Mapping, value: '../Workbench' },
-            }
+            '#': mappings,
         }
     }, {
         importMeta: import.meta,
@@ -43,38 +77,25 @@ const capsuleApis = await run(async ({ encapsulate, CapsulePropertyTypes, makeIm
     runFromSnapshot: false,
 })
 
-// ── Parse 02-SpineStructures snapshot ────────────────────────────────
-interface SnapshotEntry {
-    name: string
-    rootCapsuleName: string
-    files: string[]
+// ── Scan .generated-data for CST files ──────────────────────────────
+function scanCstFiles(dir: string, prefix: string = ''): string[] {
+    const files: string[] = []
+    try {
+        const entries = readdirSync(dir, { withFileTypes: true })
+        for (const entry of entries) {
+            const relPath = prefix ? `${prefix}/${entry.name}` : entry.name
+            if (entry.isDirectory()) {
+                files.push(...scanCstFiles(join(dir, entry.name), relPath))
+            } else if (entry.name.endsWith('.csts.json')) {
+                files.push(relPath)
+            }
+        }
+    } catch { }
+    return files.sort()
 }
 
-function parseSnapshot(snapPath: string): SnapshotEntry[] {
-    const content = readFileSync(snapPath, 'utf-8')
-    const entries: SnapshotEntry[] = []
-    const pattern = /exports\[`02-SpineStructures (.+?) clears cache, encapsulates, and verifies generated CST files 1`\] = `\n([\s\S]*?)\n`;/g
-    let match
-    while ((match = pattern.exec(content)) !== null) {
-        const name = match[1].trim()
-        const block = match[2]
-        const rootMatch = block.match(/"rootCapsuleName":\s*"([^"]+)"/)
-        const rootCapsuleName = rootMatch ? rootMatch[1] : ''
-        const filesMatch = block.match(/"files":\s*\[([\s\S]*?)\]/)
-        const files = filesMatch
-            ? filesMatch[1]
-                .split('\n')
-                .map(line => line.trim().replace(/^"|",$|"$/g, ''))
-                .filter(line => line.length > 0)
-            : []
-        entries.push({ name, rootCapsuleName, files })
-    }
-    return entries
-}
-
-// ── Load CSTs into LadybugDB from snapshot ───────────────────────────
-// Use any capsule with an importer to bootstrap the DB
-const importer = capsuleApis.QueryCapsuleSpineModel.importer
+// ── Load CSTs into LadybugDB from .generated-data ───────────────────
+const importer = capsuleApis.importer
 const _db = await importer.createDatabase()
 const _conn = await importer.createConnection(_db)
 await importer.createSchema(_conn)
@@ -82,39 +103,57 @@ await importer.createSchema(_conn)
     // Prevent _db from being GC'd by pinning it on globalThis
     ; (globalThis as any).__ladybug_db = _db
 
-const PACKAGE_ROOT = join(import.meta.dir, '..', '..', '..')
 console.log(`📂 PACKAGE_ROOT: ${PACKAGE_ROOT}`)
-const SNAP_PATH = join(PACKAGE_ROOT, 'engines/Capsule-Ladybug-v0/tests/02-SpineStructures/__snapshots__/main.test.ts.snap')
-const CST_CACHE = join(PACKAGE_ROOT, '.~o', 'encapsulate.dev', 'static-analysis')
+const GENERATED_DATA = join(PACKAGE_ROOT, 'models', '.generated-data')
 
-if (existsSync(SNAP_PATH) && existsSync(CST_CACHE)) {
-    const snapshotEntries = parseSnapshot(SNAP_PATH)
-    let totalImported = 0
+// ── Scan all model subdirectories for manifests and CST data ─────────
+let totalImported = 0
+let totalInstances = 0
 
-    for (const entry of snapshotEntries) {
-        for (const relPath of entry.files) {
-            const absPath = join(CST_CACHE, relPath)
-            if (existsSync(absPath)) {
-                const result = await importer.importCstFile(_conn, absPath, entry.rootCapsuleName)
-                totalImported += result.imported
+if (existsSync(GENERATED_DATA)) {
+    // Scan two levels deep (e.g. Encapsulate/CapsuleSpine) for manifest.json
+    for (const l1 of readdirSync(GENERATED_DATA, { withFileTypes: true })) {
+        if (!l1.isDirectory() || l1.name.startsWith('.')) continue
+        for (const l2 of readdirSync(join(GENERATED_DATA, l1.name), { withFileTypes: true })) {
+            if (!l2.isDirectory() || l2.name.startsWith('.')) continue
+            const modelDir = join(GENERATED_DATA, l1.name, l2.name)
+            const manifestPath = join(modelDir, 'manifest.json')
+            const cstCache = join(modelDir, '.~o', 'encapsulate.dev', 'static-analysis')
+
+            if (!existsSync(manifestPath) || !existsSync(cstCache)) continue
+
+            const manifest: { modelName: string; rootCapsuleName: string; files: string[] }[] = JSON.parse(readFileSync(manifestPath, 'utf-8'))
+            for (const entry of manifest) {
+                for (const relPath of entry.files) {
+                    const absPath = join(cstCache, relPath)
+                    if (existsSync(absPath)) {
+                        const result = await importer.importCstFile(_conn, absPath, entry.rootCapsuleName)
+                        totalImported += result.imported
+                    }
+                }
             }
+            totalInstances += manifest.length
+            console.log(`📦 ${l1.name}/${l2.name}: imported from ${manifest.length} spine instances`)
         }
     }
 
-    await importer.linkMappings(_conn)
-    console.log(`📦 Imported ${totalImported} capsules from ${snapshotEntries.length} spine instances`)
-    console.log(`   Snapshot: ${SNAP_PATH}`)
-    console.log(`   CST cache: ${CST_CACHE}`)
+    if (totalImported > 0) {
+        await importer.linkMappings(_conn)
+        console.log(`📦 Total: ${totalImported} capsules from ${totalInstances} spine instances`)
 
-    try {
-        const diag = await importer.queryAll(_conn, `MATCH (c:Capsule) RETURN count(c)`)
-        console.log(`✅ DB verified: ${JSON.stringify(diag)}`)
-    } catch (e: any) {
-        console.error(`❌ DB verification FAILED: ${e.message}`)
+        try {
+            const diag = await importer.queryAll(_conn, `MATCH (c:Capsule) RETURN count(c)`)
+            console.log(`✅ DB verified: ${JSON.stringify(diag)}`)
+        } catch (e: any) {
+            console.error(`❌ DB verification FAILED: ${e.message}`)
+        }
+    } else {
+        console.warn(`⚠️  No CST data found in ${GENERATED_DATA}`)
+        console.warn(`   Run model tests first: t models/Encapsulate/CapsuleSpine/run-model.test.ts`)
     }
 } else {
-    if (!existsSync(SNAP_PATH)) console.warn(`⚠️  Snapshot not found at ${SNAP_PATH}`)
-    if (!existsSync(CST_CACHE)) console.warn(`⚠️  CST cache not found at ${CST_CACHE}`)
+    console.warn(`⚠️  Generated data not found at ${GENERATED_DATA}`)
+    console.warn(`   Run model tests first: t models/Encapsulate/CapsuleSpine/run-model.test.ts`)
 }
 
 // ── Build API method registry from capsule apiSchema properties ──────
@@ -183,7 +222,7 @@ function buildSchema() {
     }
     return {
         openapi: "3.0.0",
-        info: { title: "Ladybug CST API", version: "1.0.0" },
+        info: { title: "Framespace API", version: "0.1.0" },
         apis,
         endpoints,
     }
@@ -213,8 +252,9 @@ const server = serve({
             return json(buildSchema())
         }
 
-        // Dynamic method dispatch: /api/<namespace>/<methodName>
-        const match = url.pathname.match(/^\/api\/([a-zA-Z]+)\/([a-zA-Z]+)$/)
+        // Dynamic method dispatch: /api/<namespace...>/<methodName>
+        // Namespace can contain slashes (e.g. Encapsulate/CapsuleSpine)
+        const match = url.pathname.match(/^\/api\/(.+)\/([a-zA-Z_]+)$/)
         if (match) {
             const [, ns, methodName] = match
             const method = methodMap.get(`${ns}/${methodName}`)

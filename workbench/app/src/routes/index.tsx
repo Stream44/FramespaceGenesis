@@ -5,7 +5,7 @@ import { workbenchStore } from "~/lib/workbenchStore";
 import type { EndpointDef, EngineSchema } from "~/lib/engines";
 import { ResultView, RawJsonView } from "~/lib/renderLib";
 import type { JsonValue } from "~/lib/renderLib";
-import "~viz/CapsularSpine/reps/CapsuleSpineTree";
+import "~/lib/visualizations";
 import { createDockview } from "dockview-core";
 import type { DockviewTheme } from "dockview-core";
 import type {
@@ -66,22 +66,50 @@ function getPanelStatus(id: string): PanelStatus {
 
 // ── Spine Instance Selection Page ────────────────────────────────────
 
+type InstanceGroup = { modelName: string; exampleDir: string; items: { $id: string; instanceName: string }[] };
+
+function groupInstances(instances: { $id: string }[]): InstanceGroup[] {
+    const groupMap: Record<string, Record<string, { $id: string; instanceName: string }[]>> = {};
+    for (const inst of instances) {
+        const uri = inst.$id;
+        const examplesIdx = uri.indexOf('/examples/');
+        let modelName = '(unknown)';
+        let exampleDir = '(default)';
+        let instanceName = uri.split('/').pop() ?? uri;
+        if (examplesIdx >= 0) {
+            const modelsIdx = uri.indexOf('/models/');
+            if (modelsIdx >= 0) {
+                modelName = uri.substring(modelsIdx + '/models/'.length, examplesIdx);
+            }
+            const afterExamples = uri.substring(examplesIdx + '/examples/'.length);
+            const slashIdx = afterExamples.indexOf('/');
+            if (slashIdx >= 0) {
+                exampleDir = afterExamples.substring(0, slashIdx);
+            }
+        }
+        if (!groupMap[modelName]) groupMap[modelName] = {};
+        if (!groupMap[modelName][exampleDir]) groupMap[modelName][exampleDir] = [];
+        groupMap[modelName][exampleDir].push({ $id: uri, instanceName });
+    }
+    const groups: InstanceGroup[] = [];
+    for (const [modelName, examples] of Object.entries(groupMap)) {
+        for (const [exampleDir, items] of Object.entries(examples)) {
+            groups.push({ modelName, exampleDir, items });
+        }
+    }
+    return groups;
+}
+
 function SpineInstanceSelector() {
     const instances = () => workbenchStore.spineInstances();
     const isConnecting = () => workbenchStore.engines.some(e => e.status() === "connecting");
-
-    const splitId = (id: string) => {
-        const parts = id.split("/");
-        const capsuleName = parts.pop() ?? id;
-        const filepath = parts.length > 0 ? parts.join("/") + "/" : "";
-        return { capsuleName, filepath };
-    };
+    const groups = () => groupInstances(instances());
 
     return (
         <div class="instance-selector">
             <div class="instance-selector-header">
-                <h2>Select a Capsule Spine Tree Instance</h2>
-                <p class="instance-selector-hint">Choose an instance to open the workbench visualizations</p>
+                <h2>Select an Example Model Instance</h2>
+                <p class="instance-selector-hint">Each example is a Capsule Spine Tree Instance</p>
             </div>
             <Show when={isConnecting()}>
                 <div class="instance-selector-loading">Connecting to engines...</div>
@@ -92,32 +120,44 @@ function SpineInstanceSelector() {
                 </div>
             </Show>
             <div class="instance-list">
-                <For each={instances()}>
-                    {(inst) => {
-                        const { capsuleName, filepath } = splitId(inst.$id);
-                        return (
-                            <button
-                                class="instance-card"
-                                onClick={() => workbenchStore.selectSpineInstance(inst.$id)}
-                            >
-                                <div class="instance-card-header">
-                                    <span class="instance-capsule-name">{capsuleName}</span>
-                                </div>
-                                <Show when={filepath}>
-                                    <div class="instance-filepath">{filepath}</div>
-                                </Show>
-                            </button>
-                        );
-                    }}
+                <For each={groups()}>
+                    {(group) => (
+                        <div class="instance-group">
+                            <div class="instance-group-header">
+                                <span class="instance-group-model">{group.modelName}</span>
+                                <span class="instance-group-sep">/</span>
+                                <span class="instance-group-example">{group.exampleDir}</span>
+                                <span class="instance-group-count">{group.items.length} {group.items.length === 1 ? "instance" : "instances"}</span>
+                            </div>
+                            <div class="instance-group-items">
+                                <For each={group.items}>
+                                    {(inst) => (
+                                        <button
+                                            class="instance-card"
+                                            onClick={() => workbenchStore.selectSpineInstance(inst.$id)}
+                                        >
+                                            <span class="instance-capsule-name">{inst.instanceName}</span>
+                                        </button>
+                                    )}
+                                </For>
+                            </div>
+                        </div>
+                    )}
                 </For>
             </div>
         </div>
     );
 }
 
-// ── Engine Status Indicators ─────────────────────────────────────────
+// ── Workbench Header ─────────────────────────────────────────────────
 
-function EngineStatusBar(props: { settingsBtn?: JSX.Element }) {
+function WorkbenchHeader(props: {
+    selected: () => string | null;
+    selectedLineSuffix: () => string;
+    onSettingsClick: () => void;
+    onCodeClick: () => void;
+    onClearInstance: () => void;
+}) {
     const client = workbenchStore.ladybugClient;
 
     const statusClass = () => {
@@ -147,18 +187,51 @@ function EngineStatusBar(props: { settingsBtn?: JSX.Element }) {
     };
 
     return (
-        <div class="engine-status-bar">
-            <div class="engine-status-line">
-                {props.settingsBtn}
-                <span class={`engine-status ${statusClass()}`}>
-                    <span class="engine-status-dot" />
-                    <span class="engine-status-name">{client.name}</span>
-                </span>
-                <span class="engine-status-detail">{apiMethodText()}</span>
+        <div class="wb-header">
+            <div class="wb-title-block">
+                <h1 class="wb-title">Framespace Genesis Workbench</h1>
+                <div class="wb-branding">
+                    <img src="/assets/Stream44Studio-Icon-v1.svg" alt="Stream44 Studio" class="wb-branding-icon" />
+                    <span>a <a href="https://Stream44.Studio" target="_blank" rel="noopener noreferrer" class="wb-branding-link">Stream44.Studio</a> open dev project</span>
+                </div>
             </div>
-            <Show when={client.status() === "connected"}>
-                <span class="engine-status-stats">{statsText()}</span>
-            </Show>
+
+            <div class="wb-header-detail">
+                {/* Row 1: instance prefix (left) | settings + engine status + api count (right) */}
+                <div class="wb-header-detail-row">
+                    <div class="wb-header-detail-left">
+                        <Show when={props.selected()}>
+                            <span class="wb-instance-prefix">Selected Capsule Spine Tree Instance:</span>
+                        </Show>
+                    </div>
+                    <div class="wb-header-detail-right">
+                        <button class="wb-settings-btn" onClick={props.onSettingsClick} title="Workbench Settings">⚙</button>
+                        <span class={`engine-status ${statusClass()}`}>
+                            <span class="engine-status-dot" />
+                            <span class="engine-status-name">{client.name}</span>
+                        </span>
+                        <span class="engine-status-detail">{apiMethodText()}</span>
+                    </div>
+                </div>
+
+                {/* Row 2: Code btn + filter box (left, wraps) | request stats (right) */}
+                <div class="wb-header-detail-row">
+                    <div class="wb-header-detail-left">
+                        <Show when={props.selected()}>
+                            <button class="wb-code-btn" onClick={props.onCodeClick} title="Open source file">Code</button>
+                            <div class="wb-instance-filter">
+                                <span class="wb-instance-label">{props.selected()}<Show when={props.selectedLineSuffix()}><span class="wb-instance-line">{props.selectedLineSuffix()}</span></Show></span>
+                                <button class="wb-instance-clear" onClick={props.onClearInstance} title="Back to instance selection">×</button>
+                            </div>
+                        </Show>
+                    </div>
+                    <div class="wb-header-detail-right">
+                        <Show when={client.status() === "connected"}>
+                            <span class="engine-status-stats">{statsText()}</span>
+                        </Show>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
@@ -676,27 +749,50 @@ function WorkbenchDockview() {
             },
         });
 
-        // Add the Framespace API list panel (1/16 grid column initially)
-        const cw = colWidth();
-        const apiListPanel = dockApi.addPanel({
-            id: "framespace-api",
-            component: "framespace-api",
-            tabComponent: "no-close-tab",
-            title: "Framespace API",
-            initialWidth: cw * 1,
-            maximumWidth: cw * 6,
-            minimumWidth: cw * 2,
-        });
+        // Try to restore saved layout, fall back to default panels
+        const savedLayout = workbenchStore.dockviewLayout();
+        let restored = false;
+        if (savedLayout) {
+            try {
+                vlog("buildDockview", "restoring saved dockview layout");
+                dockApi.fromJSON(savedLayout);
+                restored = true;
+            } catch (err) {
+                vlog("buildDockview", "failed to restore layout, using defaults:", err);
+            }
+        }
 
-        // Set group constraints so the API list can't grow beyond 6 columns
-        requestAnimationFrame(() => {
-            if (apiListPanel.group) {
-                apiListPanel.group.api.setConstraints({
-                    maximumWidth: cw * 6,
-                    minimumWidth: cw * 2,
-                });
+        if (!restored) {
+            // Add the Framespace API list panel (1/16 grid column initially)
+            const cw = colWidth();
+            const apiListPanel = dockApi.addPanel({
+                id: "framespace-api",
+                component: "framespace-api",
+                tabComponent: "no-close-tab",
+                title: "Framespace API",
+                initialWidth: cw * 1,
+                maximumWidth: cw * 6,
+                minimumWidth: cw * 2,
+            });
+
+            // Set group constraints so the API list can't grow beyond 6 columns
+            requestAnimationFrame(() => {
+                if (apiListPanel.group) {
+                    apiListPanel.group.api.setConstraints({
+                        maximumWidth: cw * 6,
+                        minimumWidth: cw * 2,
+                    });
+                }
+            });
+        }
+
+        // Persist layout on every change (debounced in the store)
+        const layoutDisposable = dockApi.onDidLayoutChange(() => {
+            if (dockApi) {
+                workbenchStore.saveDockviewLayout(dockApi.toJSON());
             }
         });
+        disposers.push(() => layoutDisposable.dispose());
     }
 
     onCleanup(() => {
@@ -892,7 +988,7 @@ function isApiError(result: any): result is { '#': 'Error'; method: string; mess
 
 function execOpenFile(cmd: string, file: string, onError?: (e: ErrorInfo) => void) {
     vlog("openFile", `command=${cmd} file=${file}`);
-    workbenchStore.ladybugClient.call("/api/Workbench/openFile", { command: cmd, file })
+    workbenchStore.ladybugClient.call("/api/Framespace/Workbench/openFile", { command: cmd, file })
         .then((data) => {
             if (isApiError(data.result) && onError) onError(data.result);
         })
@@ -908,7 +1004,7 @@ function execOpenFile(cmd: string, file: string, onError?: (e: ErrorInfo) => voi
 async function resolveCapsuleFilepath(capsuleName: string, onError?: (e: ErrorInfo) => void): Promise<string | null> {
     try {
         const data = await workbenchStore.ladybugClient.call(
-            "/api/QueryCapsuleSpineModel/getCapsule",
+            "/api/Encapsulate/CapsuleSpine/getCapsule",
             { capsuleName },
         );
         if (isApiError(data.result)) {
@@ -920,7 +1016,7 @@ async function resolveCapsuleFilepath(capsuleName: string, onError?: (e: ErrorIn
         return lineRef ?? null;
     } catch (err: any) {
         vlog("resolveCapsuleFilepath", "getCapsule failed:", err);
-        if (onError) onError({ method: "QueryCapsuleSpineModel/getCapsule", message: err.message ?? String(err) });
+        if (onError) onError({ method: "Encapsulate/CapsuleSpine/getCapsule", message: err.message ?? String(err) });
         return null;
     }
 }
@@ -947,7 +1043,7 @@ export default function Home() {
     const resolveRepPath = async (repUri: string): Promise<string> => {
         if (!repsCache) {
             try {
-                const data = await workbenchStore.ladybugClient.call("/api/Workbench/getReps", {});
+                const data = await workbenchStore.ladybugClient.call("/api/Framespace/Workbench/getReps", {});
                 const result = data.result;
                 if (isApiError(result)) { showError(result); repsCache = []; return repUri; }
                 repsCache = result?.list ?? [];
@@ -1026,52 +1122,17 @@ export default function Home() {
         <div class="wb-root">
             <Title>Framespace Workbench</Title>
 
-            <div class="wb-header">
-                <div class="wb-header-left">
-                    <div class="wb-title-block">
-                        <h1 class="wb-title">Framespace Genesis Workbench</h1>
-                        <div class="wb-branding">
-                            <img src="/assets/Stream44Studio-Icon-v1.svg" alt="Stream44 Studio" class="wb-branding-icon" />
-                            <span>a <a href="https://Stream44.Studio" target="_blank" rel="noopener noreferrer" class="wb-branding-link">Stream44.Studio</a> open dev project</span>
-                        </div>
-                    </div>
-
-                    <Show when={selected()}>
-                        <div class="wb-instance-badge">
-                            <span class="wb-instance-prefix">Selected Capsule Spine Tree Instance:</span>
-                            <div class="wb-instance-row">
-                                <button
-                                    class="wb-code-btn"
-                                    onClick={() => {
-                                        const ref = selectedLineRef();
-                                        if (ref) openCodeFile("Open Capsule Source", ref);
-                                        else openCapsuleCode(selected()!);
-                                    }}
-                                    title="Open source file"
-                                >Code</button>
-                                <div class="wb-instance-filter">
-                                    <span class="wb-instance-label">{selected()}<Show when={selectedLineSuffix()}><span class="wb-instance-line">{selectedLineSuffix()}</span></Show></span>
-                                    <button
-                                        class="wb-instance-clear"
-                                        onClick={() => workbenchStore.clearSpineInstance()}
-                                        title="Back to instance selection"
-                                    >×</button>
-                                </div>
-                            </div>
-                        </div>
-                    </Show>
-                </div>
-
-                <div class="wb-header-right">
-                    <EngineStatusBar settingsBtn={
-                        <button
-                            class="wb-settings-btn"
-                            onClick={() => setShowSettings(true)}
-                            title="Workbench Settings"
-                        >⚙</button>
-                    } />
-                </div>
-            </div>
+            <WorkbenchHeader
+                selected={selected}
+                selectedLineSuffix={selectedLineSuffix}
+                onSettingsClick={() => setShowSettings(true)}
+                onCodeClick={() => {
+                    const ref = selectedLineRef();
+                    if (ref) openCodeFile("Open Capsule Source", ref);
+                    else openCapsuleCode(selected()!);
+                }}
+                onClearInstance={() => workbenchStore.clearSpineInstance()}
+            />
 
             <div class="wb-content">
                 <Show when={ready()} fallback={

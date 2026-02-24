@@ -48,7 +48,7 @@ export interface EngineClient {
     /** Sorted list of API namespace names */
     apiNames(): string[];
 
-    /** Call an API method by path (e.g. "/api/QueryCapsuleSpineModel/getCapsule") */
+    /** Call an API method by path (e.g. "/api/Encapsulate/CapsuleSpine/getCapsule") */
     call(path: string, args?: Record<string, string>): Promise<any>;
     /** Call an API method with positional args */
     callRaw(path: string, args?: any[]): Promise<any>;

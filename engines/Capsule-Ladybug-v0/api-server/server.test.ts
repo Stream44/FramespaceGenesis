@@ -98,69 +98,69 @@ describe('Ladybug API Server', () => {
         expect(res.status).toBe(200)
         const data = await res.json() as any
         expect(data.openapi).toBe('3.0.0')
-        expect(data.info.title).toBe('Ladybug CST API')
+        expect(data.info.title).toBe('Framespace API')
         expect(Object.keys(data.endpoints).length).toBeGreaterThan(0)
         // Should contain known methods
-        expect(data.endpoints['/api/QueryCapsuleSpineModel/listCapsules']).toBeDefined()
-        expect(data.endpoints['/api/QueryCapsuleSpineModel/getCapsule']).toBeDefined()
-        expect(data.endpoints['/api/QueryCapsuleSpineModel/getCapsuleSpineTree']).toBeDefined()
+        expect(data.endpoints['/api/Encapsulate/CapsuleSpine/listCapsules']).toBeDefined()
+        expect(data.endpoints['/api/Encapsulate/CapsuleSpine/getCapsule']).toBeDefined()
+        expect(data.endpoints['/api/Encapsulate/CapsuleSpine/getCapsuleSpineTree']).toBeDefined()
         // getCapsule should include arg definitions
-        const getCapsuleEndpoint = data.endpoints['/api/QueryCapsuleSpineModel/getCapsule']
+        const getCapsuleEndpoint = data.endpoints['/api/Encapsulate/CapsuleSpine/getCapsule']
         expect(getCapsuleEndpoint.args.length).toBe(1)
         expect(getCapsuleEndpoint.args[0].name).toBe('capsuleName')
         expect(getCapsuleEndpoint.args[0].type).toBe('string')
         expect(getCapsuleEndpoint.description).toBeDefined()
-        expect(getCapsuleEndpoint.discovery).toBe('/api/QueryCapsuleSpineModel/listCapsules')
+        expect(getCapsuleEndpoint.discovery).toBe('/api/Encapsulate/CapsuleSpine/listCapsules')
         expect(getCapsuleEndpoint.filterField).toBe('$id')
         // Workbench endpoints
-        expect(data.endpoints['/api/Workbench/listSpineInstances']).toBeDefined()
-        expect(data.endpoints['/api/Workbench/getProcessStats']).toBeDefined()
-        expect(data.endpoints['/api/Workbench/getReps']).toBeDefined()
-        expect(data.endpoints['/api/Workbench/openFile']).toBeDefined()
+        expect(data.endpoints['/api/Framespace/Workbench/listSpineInstances']).toBeDefined()
+        expect(data.endpoints['/api/Framespace/Workbench/getProcessStats']).toBeDefined()
+        expect(data.endpoints['/api/Framespace/Workbench/getReps']).toBeDefined()
+        expect(data.endpoints['/api/Framespace/Workbench/openFile']).toBeDefined()
         // API-level metadata with descriptions
         expect(data.apis).toBeDefined()
-        expect(data.apis['Workbench']).toBeDefined()
-        expect(data.apis['Workbench'].description).toBe('Methods to faciliate the Framespace Workbench')
-        expect(data.apis['Workbench'].basePath).toBe('/api/Workbench')
-        expect(data.apis['QueryCapsuleSpineModel']).toBeDefined()
-        expect(data.apis['QueryCapsuleSpineModel'].description).toBe('Methods to query the *Capsule Spine Model* of the selected *Spine Tree Instance*')
-        expect(data.apis['QueryCapsuleSpineModel'].basePath).toBe('/api/QueryCapsuleSpineModel')
+        expect(data.apis['Framespace/Workbench']).toBeDefined()
+        expect(data.apis['Framespace/Workbench'].description).toBe('Methods to facilitate the Framespace Workbench')
+        expect(data.apis['Framespace/Workbench'].basePath).toBe('/api/Framespace/Workbench')
+        expect(data.apis['Encapsulate/CapsuleSpine']).toBeDefined()
+        expect(data.apis['Encapsulate/CapsuleSpine'].description).toBe('Methods to query the *Capsule Spine Model* of the selected *Spine Tree Instance*')
+        expect(data.apis['Encapsulate/CapsuleSpine'].basePath).toBe('/api/Encapsulate/CapsuleSpine')
     })
 
-    // ── QueryCapsuleSpineModel Methods ───────────────────────────────
-    it('GET /api/QueryCapsuleSpineModel/listCapsules returns capsules', async () => {
-        const res = await fetch(`${BASE_URL}/api/QueryCapsuleSpineModel/listCapsules`)
+    // ── Encapsulate/CapsuleSpine Methods ─────────────────────────────
+    it('GET /api/Encapsulate/CapsuleSpine/listCapsules returns capsules', async () => {
+        const res = await fetch(`${BASE_URL}/api/Encapsulate/CapsuleSpine/listCapsules`)
         expect(res.status).toBe(200)
         const data = await res.json() as any
         expect(data.method).toBe('listCapsules')
-        expect(data.namespace).toBe('QueryCapsuleSpineModel')
+        expect(data.namespace).toBe('Encapsulate/CapsuleSpine')
         expect(data.result['#']).toBe('Capsules')
         expect(Array.isArray(data.result.list)).toBe(true)
         expect(data.result.list.length).toBeGreaterThan(0)
     })
 
-    it('GET /api/QueryCapsuleSpineModel/getCapsule with capsuleName returns capsule', async () => {
+    it('GET /api/Encapsulate/CapsuleSpine/getCapsule with capsuleName returns capsule', async () => {
         // First get a known capsule name
-        const listRes = await fetch(`${BASE_URL}/api/QueryCapsuleSpineModel/listCapsules`)
+        const listRes = await fetch(`${BASE_URL}/api/Encapsulate/CapsuleSpine/listCapsules`)
         const listData = await listRes.json() as any
         const capsuleName = listData.result.list[0]?.['$id'] ?? ''
         expect(capsuleName).not.toBe('')
 
-        const res = await fetch(`${BASE_URL}/api/QueryCapsuleSpineModel/getCapsule?capsuleName=${encodeURIComponent(capsuleName)}`)
+        const res = await fetch(`${BASE_URL}/api/Encapsulate/CapsuleSpine/getCapsule?capsuleName=${encodeURIComponent(capsuleName)}`)
         expect(res.status).toBe(200)
         const data = await res.json() as any
         expect(data.method).toBe('getCapsule')
-        expect(data.namespace).toBe('QueryCapsuleSpineModel')
+        expect(data.namespace).toBe('Encapsulate/CapsuleSpine')
         expect(data.result).toBeDefined()
         expect(data.result['#']).toBe('Capsule')
     })
 
-    it('POST /api/QueryCapsuleSpineModel/getCapsule with args body', async () => {
-        const listRes = await fetch(`${BASE_URL}/api/QueryCapsuleSpineModel/listCapsules`)
+    it('POST /api/Encapsulate/CapsuleSpine/getCapsule with args body', async () => {
+        const listRes = await fetch(`${BASE_URL}/api/Encapsulate/CapsuleSpine/listCapsules`)
         const listData = await listRes.json() as any
         const capsuleName = listData.result.list[0]?.['$id'] ?? ''
 
-        const res = await fetch(`${BASE_URL}/api/QueryCapsuleSpineModel/getCapsule`, {
+        const res = await fetch(`${BASE_URL}/api/Encapsulate/CapsuleSpine/getCapsule`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ args: [capsuleName] }),
@@ -170,34 +170,34 @@ describe('Ladybug API Server', () => {
         expect(data.result['#']).toBe('Capsule')
     })
 
-    // ── Workbench Methods ────────────────────────────────────────────
-    it('GET /api/Workbench/listSpineInstances returns instances', async () => {
-        const res = await fetch(`${BASE_URL}/api/Workbench/listSpineInstances`)
+    // ── Framespace/Workbench Methods ──────────────────────────────────
+    it('GET /api/Framespace/Workbench/listSpineInstances returns instances', async () => {
+        const res = await fetch(`${BASE_URL}/api/Framespace/Workbench/listSpineInstances`)
         expect(res.status).toBe(200)
         const data = await res.json() as any
-        expect(data.namespace).toBe('Workbench')
+        expect(data.namespace).toBe('Framespace/Workbench')
         expect(data.result['#']).toBe('SpineInstances')
         expect(Array.isArray(data.result.list)).toBe(true)
         expect(data.result.list.length).toBeGreaterThan(0)
     })
 
-    it('GET /api/Workbench/getProcessStats returns stats', async () => {
-        const res = await fetch(`${BASE_URL}/api/Workbench/getProcessStats`)
+    it('GET /api/Framespace/Workbench/getProcessStats returns stats', async () => {
+        const res = await fetch(`${BASE_URL}/api/Framespace/Workbench/getProcessStats`)
         expect(res.status).toBe(200)
         const data = await res.json() as any
         expect(data.result).toBeDefined()
     })
 
-    it('GET /api/Workbench/getReps returns reps list', async () => {
-        const res = await fetch(`${BASE_URL}/api/Workbench/getReps`)
+    it('GET /api/Framespace/Workbench/getReps returns reps list', async () => {
+        const res = await fetch(`${BASE_URL}/api/Framespace/Workbench/getReps`)
         expect(res.status).toBe(200)
         const data = await res.json() as any
         expect(data.result).toBeDefined()
     })
 
     // ── Fallback behavior ─────────────────────────────────────────────
-    it('GET /api/QueryCapsuleSpineModel/getCapsule with no args falls back to listCapsules', async () => {
-        const res = await fetch(`${BASE_URL}/api/QueryCapsuleSpineModel/getCapsule`)
+    it('GET /api/Encapsulate/CapsuleSpine/getCapsule with no args falls back to listCapsules', async () => {
+        const res = await fetch(`${BASE_URL}/api/Encapsulate/CapsuleSpine/getCapsule`)
         expect(res.status).toBe(200)
         const data = await res.json() as any
         expect(data.fallbackFrom).toBe('getCapsule')
@@ -206,8 +206,8 @@ describe('Ladybug API Server', () => {
         expect(data.result.list.length).toBeGreaterThan(0)
     })
 
-    it('GET /api/QueryCapsuleSpineModel/getCapsuleSpineTree with no args falls back to listSpineInstances', async () => {
-        const res = await fetch(`${BASE_URL}/api/QueryCapsuleSpineModel/getCapsuleSpineTree`)
+    it('GET /api/Encapsulate/CapsuleSpine/getCapsuleSpineTree with no args falls back to listSpineInstances', async () => {
+        const res = await fetch(`${BASE_URL}/api/Encapsulate/CapsuleSpine/getCapsuleSpineTree`)
         expect(res.status).toBe(200)
         const data = await res.json() as any
         expect(data.fallbackFrom).toBe('getCapsuleSpineTree')
@@ -216,8 +216,8 @@ describe('Ladybug API Server', () => {
     })
 
     // ── Error handling ───────────────────────────────────────────────
-    it('GET /api/QueryCapsuleSpineModel/nonExistentMethod returns 404', async () => {
-        const res = await fetch(`${BASE_URL}/api/QueryCapsuleSpineModel/nonExistentMethod`)
+    it('GET /api/Encapsulate/CapsuleSpine/nonExistentMethod returns 404', async () => {
+        const res = await fetch(`${BASE_URL}/api/Encapsulate/CapsuleSpine/nonExistentMethod`)
         expect(res.status).toBe(404)
         const data = await res.json() as any
         expect(data.error).toContain('Unknown method')

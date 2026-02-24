@@ -120,7 +120,7 @@ export function createCapsuleLadybugClient(baseUrl = DEFAULT_BASE_URL): EngineCl
     }
 
     async function listSpineInstances(): Promise<SpineInstance[]> {
-        const data = await callRaw("/api/Workbench/listSpineInstances");
+        const data = await callRaw("/api/Framespace/Workbench/listSpineInstances");
         if (data.result?.list) {
             return data.result.list.map((i: any) => ({
                 $id: i.$id,
@@ -133,7 +133,7 @@ export function createCapsuleLadybugClient(baseUrl = DEFAULT_BASE_URL): EngineCl
 
     async function fetchProcessStats() {
         try {
-            const data = await fetchJsonTracked(`${baseUrl}/api/Workbench/getProcessStats`);
+            const data = await fetchJsonTracked(`${baseUrl}/api/Framespace/Workbench/getProcessStats`);
             if (data.result) {
                 setProcessStats(data.result);
                 if (status() !== "connected") setStatus("connected");

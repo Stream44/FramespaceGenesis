@@ -255,21 +255,25 @@ function renderCompoundNodes(container: HTMLElement, data: JsonObject, spineInst
                     "arrow-scale": 1.4,
                 } as any,
             },
-            // extends edges: dashed amber
+            // extends edges: dashed amber, arrow toward declaring capsule (source)
             {
                 selector: "edge[edgeType = 'extends']",
                 css: {
                     "line-style": "dashed",
                     "line-color": "#9a7030",
-                    "target-arrow-color": "#9a7030",
+                    "target-arrow-shape": "none",
+                    "source-arrow-shape": "triangle",
+                    "source-arrow-color": "#9a7030",
                 } as any,
             },
-            // propertyContractDelegate edges: amber
+            // propertyContractDelegate edges: amber, arrow toward declaring capsule (source)
             {
                 selector: "edge[edgeType = 'contractDelegate']",
                 css: {
                     "line-color": "#9a7030",
-                    "target-arrow-color": "#9a7030",
+                    "target-arrow-shape": "none",
+                    "source-arrow-shape": "triangle",
+                    "source-arrow-color": "#9a7030",
                     "color": "#9a7030",
                     "width": 3,
                     "arrow-scale": 1.4,
@@ -294,56 +298,399 @@ function renderCompoundNodes(container: HTMLElement, data: JsonObject, spineInst
     return cy;
 }
 
-// ── Dockview content renderer for Compound Nodes tab ────────────────
+// ── Tree layout data extraction ──────────────────────────────────────
+// Walks the CapsuleSpineTree from the root and fans out:
+//   • extends  → to the right  (+x, same y)   — hard follow
+//   • mappings → downward       (same x, +y)  — hard follow
+// If a capsule is already in the tree, the edge links directly to it
+// (no duplicate node).
+//
+// Struct / contractDelegate mappings create a faded stub node off to
+// the diagonal.  If the struct extends a capsule, a hard extends edge
+// connects it to that capsule in the tree.
+
+type TreeCyNode = {
+    data: { id: string; label: string; nodeType?: string; isStruct?: string };
+    position: { x: number; y: number };
+};
+type TreeCyEdge = {
+    data: { id: string; source: string; target: string; label?: string; edgeType?: string };
+};
+
+const TREE_X_STEP = 320;
+const TREE_Y_STEP = 160;
+const TREE_DIAG_X = 280;
+const TREE_DIAG_Y = -120;
+
+function extractTreeGraph(
+    tree: JsonObject,
+    spineInstanceUri?: string,
+    nodeMeta?: Map<string, NodeMeta>,
+): { nodes: TreeCyNode[]; edges: TreeCyEdge[] } {
+    const nodes: TreeCyNode[] = [];
+    const edges: TreeCyEdge[] = [];
+    const placed = new Set<string>();   // capsule IDs already in the graph
+    let edgeSeq = 0;                    // unique edge-id suffix
+
+    function formatLabel(raw: string): string {
+        const m = raw.match(/^(@[^/]+\/[^/]+)\/(.+)$/);
+        if (m) return `${m[1]}\n/${m[2]}`;
+        return raw;
+    }
+
+    function shortLabel(id: string): string {
+        if (!spineInstanceUri) return formatLabel(id);
+        const baseDir = spineInstanceUri.substring(0, spineInstanceUri.lastIndexOf('/'));
+        if (!baseDir) return formatLabel(id);
+        const parts = id.split('/');
+        const baseParts = baseDir.split('/');
+        let common = 0;
+        while (common < baseParts.length && common < parts.length && baseParts[common] === parts[common]) common++;
+        if (common === 0) return formatLabel(id);
+        const ups = baseParts.length - common;
+        const rest = parts.slice(common);
+        return formatLabel('../'.repeat(ups) + rest.join('/'));
+    }
+
+    function addNode(id: string, x: number, y: number, extra?: Partial<TreeCyNode["data"]>) {
+        const meta = nodeMeta?.get(id);
+        const nd: TreeCyNode["data"] = { id, label: shortLabel(id), ...extra };
+        if (meta?.isContractDelegateTarget) nd.nodeType = "contractDelegateTarget";
+        nodes.push({ data: nd, position: { x, y } });
+    }
+
+    function addEdge(src: string, tgt: string, label: string, edgeType: string) {
+        edges.push({ data: { id: `e${edgeSeq++}_${src}→${label}→${tgt}`, source: src, target: tgt, label, edgeType } });
+    }
+
+    // Build a lookup from $id → full capsule JSON.  The root list
+    // contains full capsule objects (with nested mappings, extends, etc.)
+    // but when a capsule is referenced via a parent's mapping, the
+    // reference may be a minimal stub { $id: '...' } without nested
+    // data.  The lookup lets us always use the full object.
+    const capsuleLookup = new Map<string, JsonObject>();
+    const list = tree["list"] as JsonValue[] | undefined;
+    if (Array.isArray(list)) {
+        for (const item of list) {
+            if (typeof item === "object" && item !== null && !Array.isArray(item)) {
+                const cid = (item as JsonObject)["$id"] as string | undefined;
+                if (cid) capsuleLookup.set(cid, item as JsonObject);
+            }
+        }
+    }
+
+    // Ensure a capsule exists in the graph.  If it is already placed,
+    // return its id without creating a new node.  Otherwise walk it
+    // recursively (hard follow).  Prefers the full object from the
+    // lookup so nested mappings/extends are available.
+    function ensureCapsule(capsule: JsonObject, x: number, y: number, depth: number): { id: string; rows: number } | null {
+        const id = capsule["$id"] as string | undefined;
+        if (!id) return null;
+        if (placed.has(id)) return { id, rows: 0 };
+        const full = capsuleLookup.get(id) || capsule;
+        return { id, rows: walk(full, x, y, depth) };
+    }
+
+    // Returns the number of grid rows consumed by this subtree.
+    // depth is used to zigzag mapping children left/right.
+    function walk(capsule: JsonObject, x: number, y: number, depth: number): number {
+        const id = capsule["$id"] as string | undefined;
+        if (!id) return 0;
+        if (placed.has(id)) return 0;   // already placed — caller links to it
+
+        placed.add(id);
+        addNode(id, x, y);
+
+        let rowsConsumed = 1;
+
+        // ── Extends → to the right (hard follow) ──
+        const ext = capsule["extends"] as JsonObject | undefined;
+        if (ext && typeof ext === "object") {
+            const extCapsule = ext["capsule"] as JsonObject | undefined;
+            if (extCapsule) {
+                const result = ensureCapsule(extCapsule, x + TREE_X_STEP, y, depth);
+                if (result) {
+                    addEdge(id, result.id, "extends", "extends");
+                    if (result.rows > rowsConsumed) rowsConsumed = result.rows;
+                }
+            }
+        }
+
+        // ── Mappings ──
+        const mappings = capsule["mappings"] as JsonObject | undefined;
+        if (mappings && typeof mappings === "object") {
+            let mappingOffset = 0;
+            let diagIndex = 0;
+
+            for (const [propName, mapping] of Object.entries(mappings)) {
+                if (propName === "#") continue;
+                const m = mapping as JsonObject;
+                const child = m["capsule"] as JsonObject | undefined;
+                if (!child) continue;
+                const childId = child["$id"] as string | undefined;
+                if (!childId) continue;
+
+                const isDelegate = !!m["isPropertyContractDelegate"];
+
+                if (isDelegate) {
+                    // ── Struct mapping → faded stub diagonal up-right ──
+                    diagIndex++;
+                    const diagX = x + TREE_DIAG_X * diagIndex;
+                    const diagY = y + TREE_DIAG_Y * diagIndex;
+
+                    // Always create a dedicated struct stub node (faded)
+                    const stubId = `__struct_${edgeSeq++}_${childId}`;
+                    addNode(stubId, diagX, diagY, { isStruct: "true" });
+                    // Copy the label from the real capsule
+                    nodes[nodes.length - 1].data.label = shortLabel(childId);
+                    addEdge(id, stubId, propName, "contractDelegate");
+
+                    // If the struct extends a capsule, hard-link to it
+                    const structExt = child["extends"] as JsonObject | undefined;
+                    if (structExt && typeof structExt === "object") {
+                        const structExtCap = structExt["capsule"] as JsonObject | undefined;
+                        if (structExtCap) {
+                            const structExtId = structExtCap["$id"] as string | undefined;
+                            if (structExtId) {
+                                // Ensure the extended capsule is in the tree
+                                const result = ensureCapsule(structExtCap, diagX + TREE_X_STEP, diagY, depth + 1);
+                                if (result) {
+                                    addEdge(stubId, result.id, "extends", "extends");
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    // ── Regular mapping → downward, zigzag left/right ──
+                    const childY = y + TREE_Y_STEP * (rowsConsumed + mappingOffset);
+                    const childDepth = depth + 1 + mappingOffset;
+                    const nudge = (childDepth % 2 === 0 ? -1 : 1) * 100;
+                    const result = ensureCapsule(child, x + nudge, childY, childDepth);
+                    if (result) {
+                        addEdge(id, result.id, propName, "mapping");
+                        mappingOffset += Math.max(result.rows, 1);
+                    }
+                }
+            }
+            rowsConsumed += mappingOffset;
+        }
+
+        return rowsConsumed;
+    }
+
+    // Walk the root list in reverse.  The list is alphabetically sorted
+    // by capsule name, so the actual root capsule (which maps to the
+    // others) tends to be last.  Walking it first lets its recursive
+    // walk place children with proper zigzag positions.  Capsules
+    // already placed by recursion are skipped.
+    if (Array.isArray(list)) {
+        const items = [...list].reverse();
+        let currentY = 0;
+        for (const item of items) {
+            if (typeof item === "object" && item !== null && !Array.isArray(item)) {
+                const capsuleId = (item as JsonObject)["$id"] as string | undefined;
+                if (capsuleId && placed.has(capsuleId)) continue; // already placed by recursion
+                const rows = walk(item as JsonObject, 0, currentY * TREE_Y_STEP, 0);
+                currentY += Math.max(rows, 1);
+            }
+        }
+    }
+
+    return { nodes, edges };
+}
+
+// ── Cytoscape Tree renderer ─────────────────────────────────────────
+
+function renderTree(container: HTMLElement, data: JsonObject, spineInstanceUri?: string) {
+    const nodeMeta = precomputeNodeMeta(data);
+    const { nodes, edges } = extractTreeGraph(data, spineInstanceUri, nodeMeta);
+
+    const cy = cytoscape({
+        container,
+        boxSelectionEnabled: false,
+        style: [
+            {
+                selector: "node",
+                css: {
+                    "shape": "round-rectangle",
+                    "content": "data(label)",
+                    "text-valign": "center",
+                    "text-halign": "center",
+                    "font-size": "15px",
+                    "color": "#2b5a8c",
+                    "background-color": "#e4dbc6",
+                    "border-color": "#2b5a8c",
+                    "border-width": 1,
+                    "padding-top": "4px",
+                    "padding-bottom": "4px",
+                    "padding-left": "14px",
+                    "padding-right": "14px",
+                    "text-wrap": "wrap",
+                    "text-max-width": "400px",
+                } as any,
+            },
+            // Struct stub nodes — faded
+            {
+                selector: "node[isStruct]",
+                css: {
+                    "opacity": 0.4,
+                    "border-style": "dashed",
+                } as any,
+            },
+            // Nodes targeted by a propertyContractDelegate mapping
+            {
+                selector: "node[nodeType = 'contractDelegateTarget']",
+                css: {
+                    "background-color": "#f2ecda",
+                    "border-color": "#9a7030",
+                    "color": "#9a7030",
+                } as any,
+            },
+            {
+                selector: "edge",
+                css: {
+                    "curve-style": "bezier",
+                    "target-arrow-shape": "triangle",
+                    "target-arrow-color": "#2b5a8c",
+                    "line-color": "#c4b89e",
+                    "width": 1,
+                    "label": "data(label)",
+                    "font-size": "11px",
+                    "color": "#8a7a62",
+                    "text-rotation": "autorotate",
+                    "text-margin-y": -14,
+                } as any,
+            },
+            // mapping edges: muted rose, thicker, arrow on source side (reversed direction)
+            {
+                selector: "edge[edgeType = 'mapping']",
+                css: {
+                    "line-color": "#a63d2f",
+                    "target-arrow-shape": "none",
+                    "source-arrow-shape": "triangle",
+                    "source-arrow-color": "#a63d2f",
+                    "color": "#a63d2f",
+                    "width": 3,
+                    "arrow-scale": 1.4,
+                } as any,
+            },
+            // extends edges: dashed amber, arrow toward declaring capsule (source)
+            {
+                selector: "edge[edgeType = 'extends']",
+                css: {
+                    "line-style": "dashed",
+                    "line-color": "#9a7030",
+                    "target-arrow-shape": "none",
+                    "source-arrow-shape": "triangle",
+                    "source-arrow-color": "#9a7030",
+                } as any,
+            },
+            // propertyContractDelegate edges: amber, arrow toward declaring capsule (source)
+            {
+                selector: "edge[edgeType = 'contractDelegate']",
+                css: {
+                    "line-color": "#9a7030",
+                    "target-arrow-shape": "none",
+                    "source-arrow-shape": "triangle",
+                    "source-arrow-color": "#9a7030",
+                    "color": "#9a7030",
+                    "width": 3,
+                    "arrow-scale": 1.4,
+                } as any,
+            },
+        ],
+        elements: { nodes, edges },
+        layout: {
+            name: "preset",
+            padding: 30,
+        } as any,
+    });
+
+    cy.on('layoutstop', () => {
+        cy.fit(undefined, 30);
+        cy.center();
+    });
+
+    return cy;
+}
+
+// ── Dockview content renderers ──────────────────────────────────────
 
 // Rep URI for this file — used by Rep.code.show event
 const REP_URI = "~viz/CapsularSpine/reps/CapsuleSpineTree";
 
-function createCompoundNodesRenderer(data: JsonObject, spineInstanceUri?: string): (options: CreateComponentOptions) => IContentRenderer {
-    return (_options: CreateComponentOptions) => {
-        const el = document.createElement("div");
-        el.style.cssText = "width:100%;height:100%;background:#ffffff;position:relative;";
+function makeCodeButton(el: HTMLElement) {
+    const codeBtn = document.createElement("button");
+    codeBtn.textContent = "Visualization Code";
+    codeBtn.style.cssText = "position:absolute;top:6px;right:6px;z-index:10;padding:3px 10px;font-size:11px;background:#e4dbc6;color:#5a4a36;border:1px solid #c4b89e;border-radius:3px;cursor:pointer;transition:all 0.1s ease;";
+    codeBtn.addEventListener("mouseenter", () => { codeBtn.style.borderColor = "#2b5a8c"; codeBtn.style.color = "#2e2318"; });
+    codeBtn.addEventListener("mouseleave", () => { codeBtn.style.borderColor = "#c4b89e"; codeBtn.style.color = "#5a4a36"; });
+    codeBtn.addEventListener("click", () => {
+        el.dispatchEvent(new CustomEvent("Rep.code.show", {
+            detail: { repUri: REP_URI },
+            bubbles: true,
+            composed: true,
+        }));
+    });
+    el.appendChild(codeBtn);
+}
 
-        let cy: cytoscape.Core | null = null;
-        let ro: ResizeObserver | null = null;
+function createCyRenderer(
+    renderFn: (container: HTMLElement, data: JsonObject, spineInstanceUri?: string) => any,
+    data: JsonObject,
+    spineInstanceUri?: string,
+): IContentRenderer {
+    const el = document.createElement("div");
+    el.style.cssText = "width:100%;height:100%;background:#ffffff;position:relative;";
 
-        return {
-            element: el,
-            init() {
-                // Add Code button overlay
-                const codeBtn = document.createElement("button");
-                codeBtn.textContent = "Visualization Code";
-                codeBtn.style.cssText = "position:absolute;top:6px;right:6px;z-index:10;padding:3px 10px;font-size:11px;background:#e4dbc6;color:#5a4a36;border:1px solid #c4b89e;border-radius:3px;cursor:pointer;transition:all 0.1s ease;";
-                codeBtn.addEventListener("mouseenter", () => { codeBtn.style.borderColor = "#2b5a8c"; codeBtn.style.color = "#2e2318"; });
-                codeBtn.addEventListener("mouseleave", () => { codeBtn.style.borderColor = "#c4b89e"; codeBtn.style.color = "#5a4a36"; });
-                codeBtn.addEventListener("click", () => {
-                    el.dispatchEvent(new CustomEvent("Rep.code.show", {
-                        detail: { repUri: REP_URI },
-                        bubbles: true,
-                        composed: true,
-                    }));
-                });
-                el.appendChild(codeBtn);
+    // Dedicated inner container for Cytoscape so the button overlay
+    // does not interfere with pointer events on the canvas.
+    const cyContainer = document.createElement("div");
+    cyContainer.style.cssText = "width:100%;height:100%;position:absolute;top:0;left:0;";
+    el.appendChild(cyContainer);
 
-                // Wait for container to have dimensions before initializing
-                requestAnimationFrame(() => {
-                    cy = renderCompoundNodes(el, data, spineInstanceUri);
+    let cy: cytoscape.Core | null = null;
+    let ro: ResizeObserver | null = null;
+    let initialized = false;
 
-                    // Re-fit on container resize
-                    ro = new ResizeObserver(() => {
-                        if (cy) {
-                            cy.resize();
-                            cy.fit(undefined, 30);
+    function initCy() {
+        if (initialized) return;
+        // Only initialize when the container has real dimensions
+        if (cyContainer.offsetWidth === 0 || cyContainer.offsetHeight === 0) return;
+        initialized = true;
+        cy = renderFn(cyContainer, data, spineInstanceUri);
+        ro = new ResizeObserver(() => {
+            if (cy) {
+                cy.resize();
+                cy.fit(undefined, 30);
+            }
+        });
+        ro.observe(cyContainer);
+    }
+
+    return {
+        element: el,
+        init() {
+            makeCodeButton(el);
+            // Try to init immediately; if the tab is hidden (zero size),
+            // a ResizeObserver will catch when it becomes visible.
+            requestAnimationFrame(() => {
+                initCy();
+                if (!initialized) {
+                    const visRo = new ResizeObserver(() => {
+                        if (!initialized && cyContainer.offsetWidth > 0) {
+                            initCy();
+                            if (initialized) visRo.disconnect();
                         }
                     });
-                    ro.observe(el);
-                });
-            },
-            dispose() {
-                ro?.disconnect();
-                if (cy) cy.destroy();
-            },
-        };
+                    visRo.observe(cyContainer);
+                }
+            });
+        },
+        dispose() {
+            ro?.disconnect();
+            if (cy) cy.destroy();
+        },
     };
 }
 
@@ -363,13 +710,28 @@ registerRep({
 
             dockview = new DockviewComponent(containerRef, {
                 theme: themeBlueprintVellum,
-                createComponent: createCompoundNodesRenderer(data, ctx.spineInstanceUri),
+                createComponent: (options: CreateComponentOptions): IContentRenderer => {
+                    switch (options.name) {
+                        case "tree":
+                            return createCyRenderer(renderTree, data, ctx.spineInstanceUri);
+                        case "compound-nodes":
+                        default:
+                            return createCyRenderer(renderCompoundNodes, data, ctx.spineInstanceUri);
+                    }
+                },
             });
 
             dockview.addPanel({
                 id: "compound-nodes",
-                title: "Cytoscape: Compound Nodes",
+                title: "Declaration Graph",
                 component: "compound-nodes",
+            });
+
+            dockview.addPanel({
+                id: "tree",
+                title: "Instance Graph",
+                component: "tree",
+                position: { referencePanel: "compound-nodes" },
             });
         });
 
