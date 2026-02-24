@@ -1,4 +1,3 @@
-```markdown
 # Contributing to Framespace Genesis
 
 Thank you for contributing to Framespace Genesis.
