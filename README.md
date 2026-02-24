@@ -75,7 +75,7 @@ Before opening a Pull Request:
 1. Sign the DCO agreement once:
    ```bash
    bun run sign-dco
-```
+   ```
 
 2. Ensure every commit:
 
