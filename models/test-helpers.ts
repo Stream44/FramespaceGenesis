@@ -35,7 +35,12 @@ export function normalizeForSnapshot(obj: any): any {
         for (const [key, value] of Object.entries(obj)) {
             // TODO: Keep these after we resilve URIs better.
             if (key === 'capsuleSourceNameRefHash' || key === 'capsuleSourceLineRef' || key === 'capsuleSourceNameRef' || key === 'moduleFilepath') continue
-            result[key] = normalizeForSnapshot(value)
+            // Replace install-dependent capsuleSourceLineRef keys with stable capsuleSourceUriLineRef
+            let normalizedKey = key
+            if (value && typeof value === 'object' && (value as any).capsuleSourceUriLineRef) {
+                normalizedKey = (value as any).capsuleSourceUriLineRef
+            }
+            result[normalizedKey] = normalizeForSnapshot(value)
         }
         return result
     }
