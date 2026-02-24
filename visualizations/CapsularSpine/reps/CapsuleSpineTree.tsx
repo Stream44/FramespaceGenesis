@@ -7,7 +7,13 @@ import type { JSX } from "solid-js";
 import cytoscapeLib from "cytoscape";
 const cytoscape = (cytoscapeLib as any).default || cytoscapeLib;
 import { DockviewComponent } from "dockview-core";
-import type { CreateComponentOptions, IContentRenderer } from "dockview-core";
+import type { CreateComponentOptions, IContentRenderer, DockviewTheme } from "dockview-core";
+
+const themeBlueprintVellum: DockviewTheme = {
+    name: "blueprint-vellum",
+    className: "dockview-theme-blueprint-vellum",
+    gap: 4,
+};
 import "dockview-core/dist/styles/dockview.css";
 import { registerRep } from "../../../workbench/app/src/lib/renderLib";
 import type { JsonObject, JsonValue, RepContext } from "../../../workbench/app/src/lib/renderLib";
@@ -190,9 +196,9 @@ function renderCompoundNodes(container: HTMLElement, data: JsonObject, spineInst
                     "text-valign": "center",
                     "text-halign": "center",
                     "font-size": "15px",
-                    "color": "#58a6ff",
-                    "background-color": "#0d1b2e",
-                    "border-color": "#1f6feb",
+                    "color": "#2b5a8c",
+                    "background-color": "#e4dbc6",
+                    "border-color": "#2b5a8c",
                     "border-width": 1,
                     "padding-top": "4px",
                     "padding-bottom": "4px",
@@ -207,8 +213,8 @@ function renderCompoundNodes(container: HTMLElement, data: JsonObject, spineInst
                 css: {
                     "text-valign": "top",
                     "text-halign": "center",
-                    "background-color": "#161b22",
-                    "border-color": "#30363d",
+                    "background-color": "#ffffff",
+                    "border-color": "#c4b89e",
                     "padding": "15px",
                 } as any,
             },
@@ -216,9 +222,9 @@ function renderCompoundNodes(container: HTMLElement, data: JsonObject, spineInst
             {
                 selector: "node[nodeType = 'contractDelegateTarget']",
                 css: {
-                    "background-color": "#3d3520",
-                    "border-color": "#e3b341",
-                    "color": "#e3b341",
+                    "background-color": "#f2ecda",
+                    "border-color": "#9a7030",
+                    "color": "#9a7030",
                 } as any,
             },
             {
@@ -226,45 +232,45 @@ function renderCompoundNodes(container: HTMLElement, data: JsonObject, spineInst
                 css: {
                     "curve-style": "bezier",
                     "target-arrow-shape": "triangle",
-                    "target-arrow-color": "#58a6ff",
-                    "line-color": "#30363d",
+                    "target-arrow-color": "#2b5a8c",
+                    "line-color": "#c4b89e",
                     "width": 1,
                     "label": "data(label)",
                     "font-size": "11px",
-                    "color": "#8b949e",
+                    "color": "#8a7a62",
                     "text-rotation": "autorotate",
                     "text-margin-y": -14,
                 } as any,
             },
-            // mapping edges: magenta, thicker, arrow on source side (reversed direction)
+            // mapping edges: muted rose, thicker, arrow on source side (reversed direction)
             {
                 selector: "edge[edgeType = 'mapping']",
                 css: {
-                    "line-color": "#db61a2",
+                    "line-color": "#a63d2f",
                     "target-arrow-shape": "none",
                     "source-arrow-shape": "triangle",
-                    "source-arrow-color": "#db61a2",
-                    "color": "#db61a2",
+                    "source-arrow-color": "#a63d2f",
+                    "color": "#a63d2f",
                     "width": 3,
                     "arrow-scale": 1.4,
                 } as any,
             },
-            // extends edges: dashed orange
+            // extends edges: dashed amber
             {
                 selector: "edge[edgeType = 'extends']",
                 css: {
                     "line-style": "dashed",
-                    "line-color": "#d4956b",
-                    "target-arrow-color": "#d4956b",
+                    "line-color": "#9a7030",
+                    "target-arrow-color": "#9a7030",
                 } as any,
             },
-            // propertyContractDelegate edges: yellow
+            // propertyContractDelegate edges: amber
             {
                 selector: "edge[edgeType = 'contractDelegate']",
                 css: {
-                    "line-color": "#e3b341",
-                    "target-arrow-color": "#e3b341",
-                    "color": "#e3b341",
+                    "line-color": "#9a7030",
+                    "target-arrow-color": "#9a7030",
+                    "color": "#9a7030",
                     "width": 3,
                     "arrow-scale": 1.4,
                 } as any,
@@ -296,7 +302,7 @@ const REP_URI = "~viz/CapsularSpine/reps/CapsuleSpineTree";
 function createCompoundNodesRenderer(data: JsonObject, spineInstanceUri?: string): (options: CreateComponentOptions) => IContentRenderer {
     return (_options: CreateComponentOptions) => {
         const el = document.createElement("div");
-        el.style.cssText = "width:100%;height:100%;background:#0d1117;position:relative;";
+        el.style.cssText = "width:100%;height:100%;background:#ffffff;position:relative;";
 
         let cy: cytoscape.Core | null = null;
         let ro: ResizeObserver | null = null;
@@ -307,9 +313,9 @@ function createCompoundNodesRenderer(data: JsonObject, spineInstanceUri?: string
                 // Add Code button overlay
                 const codeBtn = document.createElement("button");
                 codeBtn.textContent = "Visualization Code";
-                codeBtn.style.cssText = "position:absolute;top:6px;right:6px;z-index:10;padding:3px 10px;font-size:11px;background:#21262d;color:#c9d1d9;border:1px solid #30363d;border-radius:4px;cursor:pointer;";
-                codeBtn.addEventListener("mouseenter", () => { codeBtn.style.borderColor = "#58a6ff"; });
-                codeBtn.addEventListener("mouseleave", () => { codeBtn.style.borderColor = "#30363d"; });
+                codeBtn.style.cssText = "position:absolute;top:6px;right:6px;z-index:10;padding:3px 10px;font-size:11px;background:#e4dbc6;color:#5a4a36;border:1px solid #c4b89e;border-radius:3px;cursor:pointer;transition:all 0.1s ease;";
+                codeBtn.addEventListener("mouseenter", () => { codeBtn.style.borderColor = "#2b5a8c"; codeBtn.style.color = "#2e2318"; });
+                codeBtn.addEventListener("mouseleave", () => { codeBtn.style.borderColor = "#c4b89e"; codeBtn.style.color = "#5a4a36"; });
                 codeBtn.addEventListener("click", () => {
                     el.dispatchEvent(new CustomEvent("Rep.code.show", {
                         detail: { repUri: REP_URI },
@@ -356,6 +362,7 @@ registerRep({
             if (!containerRef) return;
 
             dockview = new DockviewComponent(containerRef, {
+                theme: themeBlueprintVellum,
                 createComponent: createCompoundNodesRenderer(data, ctx.spineInstanceUri),
             });
 

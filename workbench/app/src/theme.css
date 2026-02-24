@@ -9,87 +9,88 @@
     /* ── Paper & Surface ──────────────────────────────────────────────
        Warm ivory tones evoking aged vellum / drafting paper.
        Layered from deepest (base) to lightest (raised surface).       */
-    --wb-paper-deep:            #d6ccb4;
-    --wb-paper-base:            #e4dbc6;
-    --wb-paper:                 #ebe4d0;
-    --wb-paper-raised:          #f2ecda;
-    --wb-paper-highlight:       #f8f4e8;
+    --wb-paper-deep: #d6ccb4;
+    --wb-paper-base: #e4dbc6;
+    --wb-paper: #ebe4d0;
+    --wb-paper-raised: #f2ecda;
+    --wb-paper-highlight: #f8f4e8;
+    --wb-paper-white: #ffffff;
 
     /* ── Ink & Text ───────────────────────────────────────────────────
        Sepia-brown ink tones for that hand-drawn document feel.        */
-    --wb-ink:                   #2e2318;
-    --wb-ink-secondary:         #5a4a36;
-    --wb-ink-muted:             #8a7a62;
-    --wb-ink-faint:             #a89878;
-    --wb-ink-ghost:             #c4b89e;
+    --wb-ink: #2e2318;
+    --wb-ink-secondary: #5a4a36;
+    --wb-ink-muted: #8a7a62;
+    --wb-ink-faint: #a89878;
+    --wb-ink-ghost: #c4b89e;
 
     /* ── Drafting Blue ────────────────────────────────────────────────
        Classic blueprint / engineering-drawing blue for structure.      */
-    --wb-blue:                  #2b5a8c;
-    --wb-blue-bright:           #3a7cc0;
-    --wb-blue-muted:            #5b8db8;
-    --wb-blue-faint:            #8bb3d4;
-    --wb-blue-wash:             rgba(43, 90, 140, 0.08);
-    --wb-blue-wash-strong:      rgba(43, 90, 140, 0.16);
+    --wb-blue: #2b5a8c;
+    --wb-blue-bright: #3a7cc0;
+    --wb-blue-muted: #5b8db8;
+    --wb-blue-faint: #8bb3d4;
+    --wb-blue-wash: rgba(43, 90, 140, 0.08);
+    --wb-blue-wash-strong: rgba(43, 90, 140, 0.16);
 
     /* ── Drafting Lines (borders) ─────────────────────────────────────
        Thin, precise lines like pencil rules on vellum.                */
-    --wb-rule:                  #c4b89e;
-    --wb-rule-light:            #d6ccb4;
-    --wb-rule-strong:           #a89878;
-    --wb-rule-blue:             rgba(43, 90, 140, 0.25);
-    --wb-rule-blue-strong:      rgba(43, 90, 140, 0.45);
+    --wb-rule: #c4b89e;
+    --wb-rule-light: #d6ccb4;
+    --wb-rule-strong: #a89878;
+    --wb-rule-blue: rgba(43, 90, 140, 0.25);
+    --wb-rule-blue-strong: rgba(43, 90, 140, 0.45);
 
     /* ── Semantic Accents ─────────────────────────────────────────────
        Restrained palette for status, errors, highlights.              */
-    --wb-accent-green:          #4a7c3f;
-    --wb-accent-green-faint:    rgba(74, 124, 63, 0.15);
-    --wb-accent-red:            #a63d2f;
-    --wb-accent-red-faint:      rgba(166, 61, 47, 0.12);
-    --wb-accent-amber:          #9a7030;
-    --wb-accent-amber-faint:    rgba(154, 112, 48, 0.15);
-    --wb-accent-purple:         #6b5b8a;
-    --wb-accent-purple-faint:   rgba(107, 91, 138, 0.12);
+    --wb-accent-green: #4a7c3f;
+    --wb-accent-green-faint: rgba(74, 124, 63, 0.15);
+    --wb-accent-red: #a63d2f;
+    --wb-accent-red-faint: rgba(166, 61, 47, 0.12);
+    --wb-accent-amber: #9a7030;
+    --wb-accent-amber-faint: rgba(154, 112, 48, 0.15);
+    --wb-accent-purple: #6b5b8a;
+    --wb-accent-purple-faint: rgba(107, 91, 138, 0.12);
 
     /* ── JSON Syntax ──────────────────────────────────────────────────
        Muted, legible tones for code on parchment.                     */
-    --wb-json-key:              #4a7c3f;
-    --wb-json-string:           #2b5a8c;
-    --wb-json-number:           #9a7030;
-    --wb-json-bool:             #a63d2f;
-    --wb-json-null:             #8a7a62;
-    --wb-json-bracket:          #a89878;
-    --wb-json-colon:            #a89878;
+    --wb-json-key: #4a7c3f;
+    --wb-json-string: #2b5a8c;
+    --wb-json-number: #9a7030;
+    --wb-json-bool: #a63d2f;
+    --wb-json-null: #8a7a62;
+    --wb-json-bracket: #a89878;
+    --wb-json-colon: #a89878;
 
     /* ── Typography ───────────────────────────────────────────────────
        Monospace for the technical feel; serif-fallback for headings.   */
-    --wb-font-mono:             "SF Mono", "Fira Code", "Cascadia Code", Menlo, monospace;
-    --wb-font-size-xs:          10px;
-    --wb-font-size-sm:          11px;
-    --wb-font-size-base:        12px;
-    --wb-font-size-md:          13px;
-    --wb-font-size-lg:          14px;
+    --wb-font-mono: "SF Mono", "Fira Code", "Cascadia Code", Menlo, monospace;
+    --wb-font-size-xs: 10px;
+    --wb-font-size-sm: 11px;
+    --wb-font-size-base: 12px;
+    --wb-font-size-md: 13px;
+    --wb-font-size-lg: 14px;
 
     /* ── Radii ────────────────────────────────────────────────────────
        Slightly rounded — crisp but not harsh.                         */
-    --wb-radius-sm:             3px;
-    --wb-radius:                5px;
-    --wb-radius-lg:             7px;
+    --wb-radius-sm: 3px;
+    --wb-radius: 5px;
+    --wb-radius-lg: 7px;
 
     /* ── Shadows ──────────────────────────────────────────────────────
        Warm, diffuse — like paper lifted off a desk.                   */
-    --wb-shadow-sm:             0 1px 3px rgba(46, 35, 24, 0.08);
-    --wb-shadow:                0 2px 8px rgba(46, 35, 24, 0.10);
-    --wb-shadow-lg:             0 4px 20px rgba(46, 35, 24, 0.14);
-    --wb-shadow-float:          0 8px 32px rgba(46, 35, 24, 0.18);
+    --wb-shadow-sm: 0 1px 3px rgba(46, 35, 24, 0.08);
+    --wb-shadow: 0 2px 8px rgba(46, 35, 24, 0.10);
+    --wb-shadow-lg: 0 4px 20px rgba(46, 35, 24, 0.14);
+    --wb-shadow-float: 0 8px 32px rgba(46, 35, 24, 0.18);
 
     /* ── Scrollbar ────────────────────────────────────────────────────*/
-    --wb-scrollbar-thumb:       #c4b89e;
+    --wb-scrollbar-thumb: #c4b89e;
     --wb-scrollbar-thumb-hover: #a89878;
 
     /* ── Transitions ──────────────────────────────────────────────────*/
-    --wb-transition-fast:       0.1s ease;
-    --wb-transition:            0.15s ease;
+    --wb-transition-fast: 0.1s ease;
+    --wb-transition: 0.15s ease;
 }
 
 
@@ -102,60 +103,61 @@
 
 .dockview-theme-blueprint-vellum {
     /* Layout & Background */
-    --dv-background-color:                                  var(--wb-paper-deep);
-    --dv-group-view-background-color:                       var(--wb-paper);
-    --dv-separator-border:                                  var(--wb-rule-blue);
-    --dv-active-sash-color:                                 var(--wb-blue);
+    --dv-background-color: var(--wb-paper-deep);
+    --dv-group-view-background-color: var(--wb-paper);
+    --dv-separator-border: var(--wb-rule-blue);
+    --dv-active-sash-color: var(--wb-blue);
 
     /* Tabs Container */
-    --dv-tabs-and-actions-container-background-color:       var(--wb-paper-base);
-    --dv-tabs-and-actions-container-height:                 34px;
-    --dv-tabs-and-actions-container-font-size:              var(--wb-font-size-base);
-    --dv-tabs-container-scrollbar-color:                    var(--wb-scrollbar-thumb);
+    --dv-tabs-and-actions-container-background-color: var(--wb-paper-base);
+    --dv-tabs-and-actions-container-height: 34px;
+    --dv-tabs-and-actions-container-font-size: var(--wb-font-size-base);
+    --dv-tabs-container-scrollbar-color: var(--wb-scrollbar-thumb);
 
     /* Active group, visible (selected) tab */
-    --dv-activegroup-visiblepanel-tab-background-color:     var(--wb-paper-highlight);
-    --dv-activegroup-visiblepanel-tab-color:                var(--wb-ink);
+    --dv-activegroup-visiblepanel-tab-background-color: var(--wb-paper-highlight);
+    --dv-activegroup-visiblepanel-tab-color: var(--wb-ink);
 
     /* Active group, hidden (unselected) tabs */
-    --dv-activegroup-hiddenpanel-tab-background-color:      var(--wb-paper-base);
-    --dv-activegroup-hiddenpanel-tab-color:                 var(--wb-ink-muted);
+    --dv-activegroup-hiddenpanel-tab-background-color: var(--wb-paper-base);
+    --dv-activegroup-hiddenpanel-tab-color: var(--wb-ink-muted);
 
     /* Inactive group, visible tab */
-    --dv-inactivegroup-visiblepanel-tab-background-color:   var(--wb-paper-raised);
-    --dv-inactivegroup-visiblepanel-tab-color:              var(--wb-ink-secondary);
+    --dv-inactivegroup-visiblepanel-tab-background-color: var(--wb-paper-raised);
+    --dv-inactivegroup-visiblepanel-tab-color: var(--wb-ink-secondary);
 
     /* Inactive group, hidden tabs */
-    --dv-inactivegroup-hiddenpanel-tab-background-color:    var(--wb-paper-base);
-    --dv-inactivegroup-hiddenpanel-tab-color:               var(--wb-ink-faint);
+    --dv-inactivegroup-hiddenpanel-tab-background-color: var(--wb-paper-base);
+    --dv-inactivegroup-hiddenpanel-tab-color: var(--wb-ink-faint);
 
     /* Tab divider */
-    --dv-tab-divider-color:                                 var(--wb-rule-light);
+    --dv-tab-divider-color: var(--wb-rule-light);
 
     /* Drag & Drop */
-    --dv-drag-over-background-color:                        var(--wb-blue-wash-strong);
-    --dv-drag-over-border-color:                            var(--wb-blue);
+    --dv-drag-over-background-color: var(--wb-blue-wash-strong);
+    --dv-drag-over-border-color: var(--wb-blue);
 
     /* Floating */
-    --dv-floating-box-shadow:                               var(--wb-shadow-float);
+    --dv-floating-box-shadow: var(--wb-shadow-float);
 
     /* Paneview */
-    --dv-paneview-active-outline-color:                     var(--wb-blue);
-    --dv-paneview-header-border-color:                      var(--wb-rule);
+    --dv-paneview-active-outline-color: var(--wb-blue);
+    --dv-paneview-header-border-color: var(--wb-rule);
 
     /* Icons */
-    --dv-icon-hover-background-color:                       var(--wb-blue-wash);
+    --dv-icon-hover-background-color: var(--wb-blue-wash);
 
     /* ── Extended selectors ───────────────────────────────────────── */
 
     .groupview {
         &.active-group {
-            > .tabs-and-actions-container {
+            >.tabs-and-actions-container {
                 border-bottom: 2px solid var(--wb-blue);
             }
         }
+
         &.inactive-group {
-            > .tabs-and-actions-container {
+            >.tabs-and-actions-container {
                 border-bottom: 2px solid var(--wb-rule);
             }
         }

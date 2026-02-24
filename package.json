@@ -16,8 +16,8 @@
     },
     "dependencies": {
         "lbug": "^0.14.3",
-        "@stream44.studio/encapsulate": "^0.4.0-rc.21",
-        "t44": "^0.4.0-rc.20"
+        "@stream44.studio/encapsulate": "^0.4.0-rc.22",
+        "t44": "^0.4.0-rc.21"
     },
     "devDependencies": {
         "@stream44.studio/dco": "^0.3.0-rc.24",

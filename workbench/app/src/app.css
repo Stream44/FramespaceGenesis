@@ -898,7 +898,7 @@ body {
 }
 
 .entity-card {
-    background: var(--wb-paper-raised);
+    background: var(--wb-paper-white);
     border: 1px solid var(--wb-rule);
     border-radius: var(--wb-radius);
     padding: 12px 16px;
@@ -1069,6 +1069,7 @@ body {
     padding: 10px 16px;
     overflow-y: auto;
     min-height: 0;
+    background: var(--wb-paper-white);
 }
 
 .rep-capsule-source {
