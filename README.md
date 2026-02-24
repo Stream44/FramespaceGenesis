@@ -91,7 +91,7 @@ The workbench single-page-application presents all supported visual models for a
 
 See: [workbench/](workbench/)
 
-![Framespace Workbench](./framespace.dev/packages/FramespaceGenesis/workbench/Screenshot.jpg)
+![Framespace Workbench](./workbench/Screenshot.jpg)
 
 
 Visualizations
