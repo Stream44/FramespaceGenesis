@@ -71,12 +71,13 @@ These events are collected into a **boundary event log**. The schema and event l
 
 ![Implementation Approach](./engines/Concept.svg)
 
-### Model Engines
+Model Engines
+===
 
 Engines implement queryable graph models to drive visualizations. Each engine supportes a specific set of model features.
 
 LadybugDB engine for Encapsulate
-===
+---
 
 Query [encapsulate](https://github.com/Stream44/encapsulate) *Capsule Source Tree* and *Membrane Event* related data from the (ladybugdb.com)[https://ladybugdb.com/] embedded database engine.
 

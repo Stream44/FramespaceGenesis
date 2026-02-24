@@ -19,4 +19,4 @@ Visualization Libraries
 - [x] [Cytoscape.js](https://js.cytoscape.org/) - Graph theory (network) library for visualisation and analysis
   - [ ] https://github.com/iVis-at-Bilkent/cytoscape.js-fcose
 - [ ] [d3js.org](https://d3js.org/)
-- [ ] [Sigma.js])(https://github.com/jacomyal/sigma.js) - A JavaScript library aimed at visualizing graphs of thousands of nodes and edges
+- [ ] [Sigma.js](https://github.com/jacomyal/sigma.js) - A JavaScript library aimed at visualizing graphs of thousands of nodes and edges
