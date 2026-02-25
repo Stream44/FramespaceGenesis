@@ -53,7 +53,7 @@ The engine is built on [encapsulate](https://github.com/Stream44/encapsulate) wh
 
 > **This project thrives on your collaboration!**
 
-Try creating a model for something you are interested in and share it! See [CONTRIBUTING.md](./CONTRIBUTING.md) to get started.
+Try creating a model for something you are interested in and share it! See [models/](./models/) to get started.
 
 
 Implementation Approach
