@@ -2,7 +2,7 @@ import { Title } from "@solidjs/meta";
 import { onMount, For, Show, createSignal, onCleanup, createEffect } from "solid-js";
 import type { Accessor, Setter, JSX } from "solid-js";
 import { workbenchStore } from "~/lib/workbenchStore";
-import type { EndpointDef, EngineSchema } from "~/lib/engines";
+import type { EndpointDef, EngineSchema, RequestLogEntry } from "~/lib/engines";
 import { ResultView, RawJsonView } from "~/lib/renderLib";
 import type { JsonValue } from "~/lib/renderLib";
 import "~/lib/visualizations";
@@ -66,49 +66,66 @@ function getPanelStatus(id: string): PanelStatus {
 
 // ── Spine Instance Selection Page ────────────────────────────────────
 
-type InstanceGroup = { modelName: string; exampleDir: string; items: { $id: string; instanceName: string }[] };
+function EngineSelector(props: { engines: string[] }) {
+    const currentEngine = () => workbenchStore.selectedEngine();
+    const backendStatus = () => workbenchStore.ladybugClient.engineStatus();
 
-function groupInstances(instances: { $id: string }[]): InstanceGroup[] {
-    const groupMap: Record<string, Record<string, { $id: string; instanceName: string }[]>> = {};
-    for (const inst of instances) {
-        const uri = inst.$id;
-        const examplesIdx = uri.indexOf('/examples/');
-        let modelName = '(unknown)';
-        let exampleDir = '(default)';
-        let instanceName = uri.split('/').pop() ?? uri;
-        if (examplesIdx >= 0) {
-            const modelsIdx = uri.indexOf('/models/');
-            if (modelsIdx >= 0) {
-                modelName = uri.substring(modelsIdx + '/models/'.length, examplesIdx);
-            }
-            const afterExamples = uri.substring(examplesIdx + '/examples/'.length);
-            const slashIdx = afterExamples.indexOf('/');
-            if (slashIdx >= 0) {
-                exampleDir = afterExamples.substring(0, slashIdx);
-            }
-        }
-        if (!groupMap[modelName]) groupMap[modelName] = {};
-        if (!groupMap[modelName][exampleDir]) groupMap[modelName][exampleDir] = [];
-        groupMap[modelName][exampleDir].push({ $id: uri, instanceName });
-    }
-    const groups: InstanceGroup[] = [];
-    for (const [modelName, examples] of Object.entries(groupMap)) {
-        for (const [exampleDir, items] of Object.entries(examples)) {
-            groups.push({ modelName, exampleDir, items });
-        }
-    }
-    return groups;
+    return (
+        <div class="engine-selector">
+            <For each={props.engines}>
+                {(name) => {
+                    const isSelected = () => currentEngine() === name;
+                    const shortName = () => name.replace(/^Capsule-/, '').replace(/-v\d+$/, '');
+                    const loadStatus = () => backendStatus()[name]?.status ?? 'idle';
+                    const dotClass = () => {
+                        const s = loadStatus();
+                        if (s === 'loaded') return 'loaded';
+                        if (s === 'error') return 'error';
+                        return '';
+                    };
+                    const titleText = () => {
+                        const s = loadStatus();
+                        if (s === 'loaded') return `${name} — loaded`;
+                        if (s === 'loading') return `${name} — loading...`;
+                        if (s === 'error') return `${name} — ${backendStatus()[name]?.error ?? 'error'}`;
+                        return `${name} — not yet loaded`;
+                    };
+                    return (
+                        <button
+                            class={`engine-toggle ${isSelected() ? 'active' : ''}`}
+                            onClick={() => workbenchStore.selectEngine(name)}
+                            title={titleText()}
+                        >
+                            <span class={`engine-toggle-dot ${dotClass()}`} />
+                            <span class="engine-toggle-name">{shortName()}</span>
+                        </button>
+                    );
+                }}
+            </For>
+        </div>
+    );
 }
 
-function SpineInstanceSelector() {
+function SpineInstanceSelector(props: { onCodeClick?: (filepath: string) => void }) {
     const instances = () => workbenchStore.spineInstances();
     const isConnecting = () => workbenchStore.engines.some(e => e.status() === "connecting");
-    const groups = () => groupInstances(instances());
+    const groups = () => workbenchStore.spineInstanceGroups();
+
+    // Group flat server groups by modelName for hierarchical display
+    const modelGroups = () => {
+        const byModel: Record<string, { modelName: string; engines: any; examples: { exampleDir: string; items: any[] }[] }> = {};
+        for (const g of groups()) {
+            const key = g.modelName;
+            if (!byModel[key]) byModel[key] = { modelName: key, engines: g.engines ?? {}, examples: [] };
+            byModel[key].examples.push({ exampleDir: g.exampleDir, items: g.list ?? [] });
+        }
+        return Object.values(byModel);
+    };
 
     return (
         <div class="instance-selector">
             <div class="instance-selector-header">
-                <h2>Select an Example Model Instance</h2>
+                <h2>Select a Model Instance to view</h2>
                 <p class="instance-selector-hint">Each example is a Capsule Spine Tree Instance</p>
             </div>
             <Show when={isConnecting()}>
@@ -120,29 +137,65 @@ function SpineInstanceSelector() {
                 </div>
             </Show>
             <div class="instance-list">
-                <For each={groups()}>
-                    {(group) => (
-                        <div class="instance-group">
-                            <div class="instance-group-header">
-                                <span class="instance-group-model">{group.modelName}</span>
-                                <span class="instance-group-sep">/</span>
-                                <span class="instance-group-example">{group.exampleDir}</span>
-                                <span class="instance-group-count">{group.items.length} {group.items.length === 1 ? "instance" : "instances"}</span>
-                            </div>
-                            <div class="instance-group-items">
-                                <For each={group.items}>
-                                    {(inst) => (
-                                        <button
-                                            class="instance-card"
-                                            onClick={() => workbenchStore.selectSpineInstance(inst.$id)}
-                                        >
-                                            <span class="instance-capsule-name">{inst.instanceName}</span>
-                                        </button>
+                <For each={modelGroups()}>
+                    {(model) => {
+                        const hasEngines = () => model.engines && Object.keys(model.engines).length > 0;
+                        return (
+                            <div class="instance-model">
+                                <div class="instance-model-row">
+                                    <span class="instance-tag instance-tag-model">Model</span>
+                                    <span class="instance-model-name">{model.modelName}</span>
+                                    <Show when={hasEngines()}>
+                                        <EngineSelector engines={Object.keys(model.engines)} />
+                                    </Show>
+                                </div>
+                                <For each={model.examples}>
+                                    {(example) => (
+                                        <div class="instance-example">
+                                            <div class="instance-example-row">
+                                                <span class="instance-tag instance-tag-example">Example</span>
+                                                <span class="instance-example-name">{example.exampleDir}</span>
+                                            </div>
+                                            <div class="instance-example-items">
+                                                <For each={example.items}>
+                                                    {(inst: any) => {
+                                                        const instanceName = () => (inst.$id as string).split('/').pop() ?? inst.$id;
+                                                        const lineSuffix = () => {
+                                                            const ref = inst.capsuleSourceLineRef as string | null;
+                                                            if (!ref) return '';
+                                                            const m = ref.match(/:(\d+)$/);
+                                                            return m ? `:${m[1]}` : '';
+                                                        };
+                                                        return (
+                                                            <div class="instance-card-row">
+                                                                <button
+                                                                    class="instance-card"
+                                                                    onClick={() => workbenchStore.selectSpineInstance(inst.$id)}
+                                                                >
+                                                                    <span class="instance-tag instance-tag-instance">Instance</span>
+                                                                    <span class="instance-capsule-name">{instanceName()}<Show when={lineSuffix()}><span class="instance-line-ref">{lineSuffix()}</span></Show></span>
+                                                                </button>
+                                                                <Show when={inst.capsuleSourceLineRef && props.onCodeClick}>
+                                                                    <button
+                                                                        class="instance-card-code-btn"
+                                                                        onClick={(e) => {
+                                                                            e.stopPropagation();
+                                                                            props.onCodeClick!(inst.capsuleSourceLineRef);
+                                                                        }}
+                                                                        title="Open source file"
+                                                                    >Code</button>
+                                                                </Show>
+                                                            </div>
+                                                        );
+                                                    }}
+                                                </For>
+                                            </div>
+                                        </div>
                                     )}
                                 </For>
                             </div>
-                        </div>
-                    )}
+                        );
+                    }}
                 </For>
             </div>
         </div>
@@ -150,6 +203,80 @@ function SpineInstanceSelector() {
 }
 
 // ── Workbench Header ─────────────────────────────────────────────────
+
+function RequestLogPopup(props: { entries: () => RequestLogEntry[]; onClose: () => void }) {
+    let popupRef: HTMLDivElement | undefined;
+
+    const handleClickOutside = (e: MouseEvent) => {
+        if (popupRef && !popupRef.contains(e.target as Node)) props.onClose();
+    };
+    onMount(() => document.addEventListener("mousedown", handleClickOutside));
+    onCleanup(() => document.removeEventListener("mousedown", handleClickOutside));
+
+    const methodName = (path: string) => path.split("/").pop() ?? path;
+    const fmtTime = (ts: number) => new Date(ts).toLocaleTimeString();
+    const argEntries = (args: Record<string, string> | undefined) => args ? Object.entries(args) : [];
+
+    const engines = () => workbenchStore.ladybugClient.availableEngines();
+
+    return (
+        <>
+            <div class="request-log-backdrop" onClick={props.onClose} />
+            <div class="request-log-popup" ref={popupRef}>
+                <div class="request-log-header">
+                    <span class="request-log-title">Model API Request Log</span>
+                    <Show when={engines().length > 0}>
+                        <EngineSelector engines={engines()} />
+                    </Show>
+                    <button class="request-log-close" onClick={props.onClose}>×</button>
+                </div>
+                <Show when={props.entries().length === 0}>
+                    <div class="request-log-empty">No model API calls yet.</div>
+                </Show>
+                <div class="request-log-list">
+                    <For each={props.entries()}>
+                        {(entry) => (
+                            <div class="request-log-entry">
+                                <div class="request-log-entry-header">
+                                    <span class="request-log-method">{methodName(entry.path)}</span>
+                                    <span class="request-log-engine">{entry.engine ?? "default"}</span>
+                                    <span class="request-log-elapsed">{entry.elapsed}ms</span>
+                                    <span class="request-log-time">{fmtTime(entry.timestamp)}</span>
+                                </div>
+                                <div class="request-log-entry-detail">
+                                    <div class="request-log-section-inline">
+                                        <span class="request-log-label">Path</span>
+                                        <span class="request-log-path">{entry.path}</span>
+                                    </div>
+                                    <Show when={argEntries(entry.args).length > 0}>
+                                        <div class="request-log-section">
+                                            <span class="request-log-label">Args</span>
+                                            <div class="request-log-args">
+                                                <For each={argEntries(entry.args)}>
+                                                    {([key, val]) => (
+                                                        <span class="request-log-arg">
+                                                            <span class="request-log-arg-key">{key}</span>
+                                                            <span class="request-log-arg-eq">=</span>
+                                                            <span class="request-log-arg-val">{val}</span>
+                                                        </span>
+                                                    )}
+                                                </For>
+                                            </div>
+                                        </div>
+                                    </Show>
+                                    <div class="request-log-section">
+                                        <span class="request-log-label">Result</span>
+                                        <code class="request-log-code request-log-result">{JSON.stringify(entry.result, null, 2)}</code>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </For>
+                </div>
+            </div>
+        </>
+    );
+}
 
 function WorkbenchHeader(props: {
     selected: () => string | null;
@@ -159,12 +286,26 @@ function WorkbenchHeader(props: {
     onClearInstance: () => void;
 }) {
     const client = workbenchStore.ladybugClient;
+    const [showLog, setShowLog] = createSignal(false);
 
     const statusClass = () => {
         const s = client.status();
-        if (s === "connected") return "ok";
         if (s === "error" || s === "disconnected") return "error";
+        if (s !== "connected") return "";
+        // When connected, reflect the selected engine's backend load status
+        const sel = workbenchStore.selectedEngine();
+        if (sel) {
+            const es = client.engineStatus()[sel]?.status;
+            if (es === 'loaded') return "ok";
+            if (es === 'error') return "error";
+        }
         return "";
+    };
+
+    const engineDisplayName = () => {
+        const sel = workbenchStore.selectedEngine();
+        if (sel) return sel;
+        return client.name;
     };
 
     const apiMethodText = () => {
@@ -206,10 +347,19 @@ function WorkbenchHeader(props: {
                     </div>
                     <div class="wb-header-detail-right">
                         <button class="wb-settings-btn" onClick={props.onSettingsClick} title="Workbench Settings">⚙</button>
-                        <span class={`engine-status ${statusClass()}`}>
-                            <span class="engine-status-dot" />
-                            <span class="engine-status-name">{client.name}</span>
-                        </span>
+                        <div class="engine-status-wrapper">
+                            <button
+                                class={`engine-status-btn ${statusClass()}`}
+                                onClick={() => setShowLog(!showLog())}
+                                title="Click to view model API request log"
+                            >
+                                <span class="engine-status-dot" />
+                                <span class="engine-status-name">{engineDisplayName()}</span>
+                            </button>
+                            <Show when={showLog()}>
+                                <RequestLogPopup entries={client.requestLog} onClose={() => setShowLog(false)} />
+                            </Show>
+                        </div>
                         <span class="engine-status-detail">{apiMethodText()}</span>
                     </div>
                 </div>
@@ -221,7 +371,8 @@ function WorkbenchHeader(props: {
                             <button class="wb-code-btn" onClick={props.onCodeClick} title="Open source file">Code</button>
                             <div class="wb-instance-filter">
                                 <span class="wb-instance-label">{props.selected()}<Show when={props.selectedLineSuffix()}><span class="wb-instance-line">{props.selectedLineSuffix()}</span></Show></span>
-                                <button class="wb-instance-clear" onClick={props.onClearInstance} title="Back to instance selection">×</button>
+                                <span class="wb-instance-clear">×</span>
+                                <div class="wb-instance-clear-zone" onClick={props.onClearInstance} title="Back to instance selection" />
                             </div>
                         </Show>
                     </div>
@@ -311,9 +462,22 @@ function MethodPanelContent(props: {
             const t0 = performance.now();
             const callArgs = isDiscovery ? ctx : merged;
             vlog(props.name, `[callMethod #${seq}] fetch ${actualPath}`, JSON.stringify(callArgs));
-            const data = await e.call(actualPath, callArgs);
+            const data = await e.call(actualPath, callArgs, ctx.engine);
             vlog(props.name, `[callMethod #${seq}] done ${Math.round(performance.now() - t0)}ms`);
             setElapsed(Math.round(performance.now() - t0));
+
+            // Detect model test errors from server
+            if (data?.result?.['#'] === 'ModelTestError') {
+                workbenchStore.setModelTestError({
+                    model: data.result.model ?? 'unknown',
+                    message: data.result.message ?? 'Model test failed',
+                    output: data.result.output ?? '',
+                });
+                setError(data.result.message);
+                setLoading(false);
+                return;
+            }
+
             setResult(data);
 
             const discoveryItems = Array.isArray(data.result) ? data.result : data.result?.list;
@@ -344,7 +508,7 @@ function MethodPanelContent(props: {
             const val = item[filterField];
             if (typeof val !== "string") return;
             try {
-                const data = await e.call(props.path, { ...ctx, [firstLocalArg.name]: val });
+                const data = await e.call(props.path, { ...ctx, [firstLocalArg.name]: val }, ctx.engine);
                 previews[val] = data.result ?? null;
             } catch { /* skip */ }
         }));
@@ -554,6 +718,8 @@ function WorkbenchDockview() {
         const ctx: Record<string, string> = {};
         const si = workbenchStore.selectedSpineInstance();
         if (si) ctx.spineInstanceUri = si;
+        const eng = workbenchStore.selectedEngine();
+        if (eng) ctx.engine = eng;
         return ctx;
     };
 
@@ -1006,6 +1172,7 @@ async function resolveCapsuleFilepath(capsuleName: string, onError?: (e: ErrorIn
         const data = await workbenchStore.ladybugClient.call(
             "/api/Encapsulate/CapsuleSpine/getCapsule",
             { capsuleName },
+            workbenchStore.selectedEngine() ?? undefined,
         );
         if (isApiError(data.result)) {
             if (onError) onError(data.result);
@@ -1138,7 +1305,9 @@ export default function Home() {
                 <Show when={ready()} fallback={
                     <div class="wb-loading">Connecting to engines...</div>
                 }>
-                    <Show when={selected()} fallback={<SpineInstanceSelector />}>
+                    <Show when={selected()} fallback={
+                        <SpineInstanceSelector onCodeClick={(filepath) => openCodeFile("Open Capsule Source", filepath)} />
+                    }>
                         <WorkbenchDockview />
                     </Show>
                 </Show>

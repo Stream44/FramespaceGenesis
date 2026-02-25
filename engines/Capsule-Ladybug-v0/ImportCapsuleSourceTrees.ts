@@ -26,11 +26,11 @@ export async function capsule({
                  */
                 importCstData: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, conn: any, data: Record<string, any>, cstFilepath?: string, spineInstanceUri?: string): Promise<{ imported: number }> {
+                    value: async function (this: any, data: Record<string, any>, cstFilepath?: string, spineInstanceUri?: string): Promise<{ imported: number }> {
                         let imported = 0
 
                         for (const [capsuleLineRef, cst] of Object.entries(data)) {
-                            await this._importSingleCst(conn, capsuleLineRef, cst, cstFilepath, spineInstanceUri)
+                            await this._importSingleCst(capsuleLineRef, cst, cstFilepath, spineInstanceUri)
                             imported++
                         }
 
@@ -44,7 +44,8 @@ export async function capsule({
                  */
                 _importSingleCst: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, conn: any, capsuleLineRef: string, cst: any, cstFilepath?: string, spineInstanceUri?: string): Promise<void> {
+                    value: async function (this: any, capsuleLineRef: string, cst: any, cstFilepath?: string, spineInstanceUri?: string): Promise<void> {
+                        const conn = await this._ensureConnection()
                         const source = cst.source
                         const esc = (s: string | undefined | null) => s != null ? s.replace(/\\/g, "\\\\").replace(/'/g, "\\'") : ''
                         const escLong = (s: string | undefined | null) => {
@@ -54,7 +55,7 @@ export async function capsule({
 
                         // Resolve capsuleSourceLineRef to absolute path using cstFilepath.
                         // The .~o cache can live at any depth below the package root (e.g.
-                        // models/Encapsulate/CapsuleSpine/.~o/... or .generated-data/Model/.~o/...).
+                        // models/Encapsulate/CapsuleSpine/.~o/... or .cst-data/Model/.~o/...).
                         // The relative capsuleLineRef is relative to the package root, so we
                         // walk up from the extracted base until the resolved path exists on disk.
                         const CACHE_MARKER = '.~o/encapsulate.dev/static-analysis/'
@@ -194,7 +195,7 @@ export async function capsule({
                                         if (groupData.properties) {
                                             for (const [propName, prop] of Object.entries(groupData.properties)) {
                                                 if (propName.endsWith('Expression')) continue
-                                                await this._importProperty(conn, absoluteCapsuleLineRef, pcId, propName, prop as any)
+                                                await this._importProperty(absoluteCapsuleLineRef, pcId, propName, prop as any)
                                             }
                                         }
                                     }
@@ -210,7 +211,8 @@ export async function capsule({
                  */
                 _importProperty: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, conn: any, capsuleLineRef: string, propertyContractId: string, propName: string, prop: any): Promise<void> {
+                    value: async function (this: any, capsuleLineRef: string, propertyContractId: string, propName: string, prop: any): Promise<void> {
+                        const conn = await this._ensureConnection()
                         const esc = (s: string | undefined | null) => s != null ? s.replace(/\\/g, "\\\\").replace(/'/g, "\\'") : ''
                         const escLong = (s: string | undefined | null) => {
                             if (s == null) return ''
@@ -274,13 +276,11 @@ export async function capsule({
                 /**
                  * Create all MAPS_TO and EXTENDS edges in bulk.
                  * Call once after all CST files have been imported.
-                 * Two Cypher queries:
-                 *   1. CapsuleProperty.mappedModuleUri → Capsule.capsuleName  (MAPS_TO)
-                 *   2. CapsuleSource.extendsCapsuleUri → Capsule.capsuleName  (EXTENDS)
                  */
                 linkMappings: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, conn: any): Promise<{ linked: number, extends: number }> {
+                    value: async function (this: any): Promise<{ linked: number, extends: number }> {
+                        const conn = await this._ensureConnection()
                         if (this.verbose) console.log('[cst-v1] Linking mappings and extends...')
 
                         // 1. MAPS_TO edges
@@ -321,11 +321,11 @@ export async function capsule({
                  */
                 importCstFile: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, conn: any, filePath: string, spineInstanceUri?: string): Promise<{ imported: number }> {
+                    value: async function (this: any, filePath: string, spineInstanceUri?: string): Promise<{ imported: number }> {
                         if (this.verbose) console.log(`[cst-v1] Importing file: ${filePath}`)
                         const content = await readFile(filePath, 'utf-8')
                         const data = JSON.parse(content)
-                        return await this.importCstData(conn, data, filePath, spineInstanceUri)
+                        return await this.importCstData(data, filePath, spineInstanceUri)
                     }
                 },
 
@@ -334,7 +334,7 @@ export async function capsule({
                  */
                 importCstDirectory: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, conn: any, dirPath: string): Promise<{ imported: number; files: number }> {
+                    value: async function (this: any, dirPath: string): Promise<{ imported: number; files: number }> {
                         if (this.verbose) console.log(`[cst-v1] Scanning directory: ${dirPath}`)
                         let totalImported = 0
                         let totalFiles = 0
@@ -343,11 +343,11 @@ export async function capsule({
                         for (const entry of entries) {
                             const fullPath = join(dirPath, entry.name)
                             if (entry.isDirectory()) {
-                                const sub = await this.importCstDirectory(conn, fullPath)
+                                const sub = await this.importCstDirectory(fullPath)
                                 totalImported += sub.imported
                                 totalFiles += sub.files
                             } else if (entry.name.endsWith('.csts.json')) {
-                                const result = await this.importCstFile(conn, fullPath)
+                                const result = await this.importCstFile(fullPath)
                                 totalImported += result.imported
                                 totalFiles++
                             }
@@ -360,7 +360,7 @@ export async function capsule({
             }
         }
     }, {
-        extendsCapsule: './LadybugGraph',
+        extendsCapsule: './EngineAPI',
         importMeta: import.meta,
         importStack: makeImportStack(),
         capsuleName: '@stream44.studio/FramespaceGenesis/engines/Capsule-Ladybug-v0/ImportCapsuleSourceTrees',

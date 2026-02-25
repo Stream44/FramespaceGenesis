@@ -8,8 +8,18 @@ When a [Capsule Spine Tree Instance](https://github.com/Stream44/encapsulate/tre
 The UI is implemented using [SolidJS](https://www.solidjs.com/) allowing for rapid signal based selective re-rendering of entities.
 
 
-Features
+Features / TODO
 ---
+
+Implementation
+
+- [ ] Use Capsules for all server and client code
+
+Visualizations
+
+- Capsular Spine
+  - [ ] Accurately reflect capsule instances (not just declarations)
+  - [ ] Play event log
 
 Visualization Libraries
 
@@ -20,6 +30,17 @@ Visualization Libraries
   - [ ] https://github.com/iVis-at-Bilkent/cytoscape.js-fcose
 - [ ] [d3js.org](https://d3js.org/)
 - [ ] [Sigma.js](https://github.com/jacomyal/sigma.js) - A JavaScript library aimed at visualizing graphs of thousands of nodes and edges
+
+
+Architecture
+---
+
+![Framespace Workbench Architecture](./Architecture.svg)
+
+Screenshot
+---
+
+![Framespace Workbench Screenshot](./Screenshot.jpg)
 
 
 ---

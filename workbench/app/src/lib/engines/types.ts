@@ -13,6 +13,7 @@ export type EndpointDef = {
     args: ArgDef[];
     discovery?: string;
     filterField?: string;
+    engineParam?: boolean;
 };
 
 export type ApiDef = {
@@ -24,6 +25,8 @@ export type EngineSchema = {
     openapi: string;
     info: { title: string; version: string };
     apis: Record<string, ApiDef>;
+    engines: string[];
+    defaultEngine: string | null;
     endpoints: Record<string, EndpointDef>;
 };
 
@@ -49,9 +52,9 @@ export interface EngineClient {
     apiNames(): string[];
 
     /** Call an API method by path (e.g. "/api/Encapsulate/CapsuleSpine/getCapsule") */
-    call(path: string, args?: Record<string, string>): Promise<any>;
+    call(path: string, args?: Record<string, string>, engine?: string): Promise<any>;
     /** Call an API method with positional args */
-    callRaw(path: string, args?: any[]): Promise<any>;
+    callRaw(path: string, args?: any[], engine?: string): Promise<any>;
 }
 
 export interface SpineInstance {

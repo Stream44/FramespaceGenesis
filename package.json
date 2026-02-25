@@ -6,7 +6,7 @@
     "private": true,
     "packageManager": "bun@1.3.9",
     "scripts": {
-        "test": "bun test",
+        "test": "bun test models engines workbench",
         "dev": "turbo run dev --parallel",
         "build": "turbo run build",
         "start": "turbo run start --parallel",
@@ -27,7 +27,7 @@
         "turbo": "^2.5.0"
     },
     "workspaces": [
-        "engines/Capsule-Ladybug-v0/api-server",
+        "engines/api-server",
         "visualizations",
         "workbench/app"
     ]

@@ -15,12 +15,20 @@ export type ProcessStats = {
     uptimeSeconds: number;
 };
 
+export type RequestLogEntry = { path: string; args: Record<string, string> | undefined; engine: string | undefined; result: any; timestamp: number; elapsed: number };
+
+export type EngineLoadStatus = Record<string, { status: 'idle' | 'loading' | 'loaded' | 'error'; error?: string }>;
+
 export function createCapsuleLadybugClient(baseUrl = DEFAULT_BASE_URL): EngineClient & {
-    listSpineInstances(): Promise<SpineInstance[]>;
+    listSpineInstances(engine?: string): Promise<{ list: SpineInstance[]; groups: any[] }>;
+    availableEngines: () => string[];
+    defaultEngineName: () => string | null;
+    engineStatus: () => EngineLoadStatus;
     requestCount: () => number;
     payloadSentBytes: () => number;
     payloadReceivedBytes: () => number;
     processStats: () => ProcessStats | null;
+    requestLog: () => RequestLogEntry[];
     startStatsPolling: () => void;
     stopStatsPolling: () => void;
 } {
@@ -34,7 +42,15 @@ export function createCapsuleLadybugClient(baseUrl = DEFAULT_BASE_URL): EngineCl
 
     // ── Process stats (polled from backend) ─────────────────────────
     const [processStats, setProcessStats] = createSignal<ProcessStats | null>(null);
+    const [engineStatus, setEngineStatus] = createSignal<EngineLoadStatus>({});
     let statsInterval: ReturnType<typeof setInterval> | null = null;
+
+    // ── Model request log (last 10 non-Workbench API calls) ─────────
+    const [requestLog, setRequestLog] = createSignal<RequestLogEntry[]>([]);
+
+    function pushRequestLog(entry: RequestLogEntry) {
+        setRequestLog(prev => [entry, ...prev].slice(0, 10));
+    }
 
     async function fetchJsonTracked(url: string): Promise<any> {
         // Track sent bytes (URL length as rough estimate for GET requests)
@@ -89,46 +105,64 @@ export function createCapsuleLadybugClient(baseUrl = DEFAULT_BASE_URL): EngineCl
         return [...namespaces].sort();
     }
 
-    async function call(path: string, args?: Record<string, string>): Promise<any> {
+    function availableEngines(): string[] {
+        const s = schema();
+        return s?.engines ?? [];
+    }
+
+    function defaultEngineName(): string | null {
+        const s = schema();
+        return s?.defaultEngine ?? null;
+    }
+
+    async function call(path: string, args?: Record<string, string>, engine?: string): Promise<any> {
         const s = schema();
         if (!s) throw new Error("Engine not connected");
 
         const ep = s.endpoints[path];
         let url = `${baseUrl}${path}`;
 
+        const params = new URLSearchParams();
+        if (engine) params.set("engine", engine);
         if (args && ep?.args) {
-            const params = new URLSearchParams();
             for (const argDef of ep.args) {
                 const val = args[argDef.name];
                 if (val != null && val !== "") params.set(argDef.name, val);
             }
-            const qs = params.toString();
-            if (qs) url += `?${qs}`;
         }
+        const qs = params.toString();
+        if (qs) url += `?${qs}`;
 
-        return fetchJsonTracked(url);
+        const isModelCall = !path.includes("/Framespace/Workbench/");
+        const t0 = isModelCall ? performance.now() : 0;
+        const data = await fetchJsonTracked(url);
+        if (isModelCall) {
+            pushRequestLog({ path, args, engine, result: data.result, timestamp: Date.now(), elapsed: Math.round(performance.now() - t0) });
+        }
+        return data;
     }
 
-    async function callRaw(path: string, args?: any[]): Promise<any> {
+    async function callRaw(path: string, args?: any[], engine?: string): Promise<any> {
         let url = `${baseUrl}${path}`;
+        const params = new URLSearchParams();
+        if (engine) params.set("engine", engine);
         if (args && args.length > 0) {
-            const params = new URLSearchParams();
             args.forEach((a, i) => params.set(String(i), String(a)));
-            url += `?${params.toString()}`;
         }
+        const qs = params.toString();
+        if (qs) url += `?${qs}`;
         return fetchJsonTracked(url);
     }
 
-    async function listSpineInstances(): Promise<SpineInstance[]> {
-        const data = await callRaw("/api/Framespace/Workbench/listSpineInstances");
-        if (data.result?.list) {
-            return data.result.list.map((i: any) => ({
-                $id: i.$id,
-                capsuleName: i.$id,
-                capsuleSourceLineRef: i.capsuleSourceLineRef,
-            }));
-        }
-        return [];
+    async function listSpineInstances(engine?: string): Promise<{ list: SpineInstance[]; groups: any[] }> {
+        const data = await callRaw("/api/Framespace/Workbench/listSpineInstances", [], engine);
+        const list = data.result?.list?.map((i: any) => ({
+            $id: i.$id,
+            capsuleName: i.$id,
+            capsuleSourceLineRef: i.capsuleSourceLineRef,
+        })) ?? [];
+        const groups = data.result?.groups ?? [];
+        return { list, groups };
     }
 
     async function fetchProcessStats() {
@@ -143,10 +177,18 @@ export function createCapsuleLadybugClient(baseUrl = DEFAULT_BASE_URL): EngineCl
         }
     }
 
+    async function fetchEngineStatus() {
+        try {
+            const data = await fetchJsonTracked(`${baseUrl}/api/engines`);
+            if (data.status) setEngineStatus(data.status);
+        } catch { /* ignore */ }
+    }
+
     function startStatsPolling() {
         if (statsInterval) return;
         fetchProcessStats();
-        statsInterval = setInterval(fetchProcessStats, 5000);
+        fetchEngineStatus();
+        statsInterval = setInterval(() => { fetchProcessStats(); fetchEngineStatus(); }, 5000);
     }
 
     function stopStatsPolling() {
@@ -166,6 +208,9 @@ export function createCapsuleLadybugClient(baseUrl = DEFAULT_BASE_URL): EngineCl
         methodCount,
         apiCount,
         apiNames,
+        availableEngines,
+        defaultEngineName,
+        engineStatus,
         call,
         callRaw,
         listSpineInstances,
@@ -173,6 +218,7 @@ export function createCapsuleLadybugClient(baseUrl = DEFAULT_BASE_URL): EngineCl
         payloadSentBytes,
         payloadReceivedBytes,
         processStats,
+        requestLog,
         startStatsPolling,
         stopStatsPolling,
     };

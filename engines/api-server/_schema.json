@@ -14,6 +14,10 @@
             "basePath": "/api/Framespace/Workbench"
         }
     },
+    "engines": [
+        "Capsule-JsonFiles-v0"
+    ],
+    "defaultEngine": "Capsule-JsonFiles-v0",
     "endpoints": {
         "/api/Encapsulate/CapsuleSpine/listCapsules": {
             "method": "GET or POST",
@@ -31,6 +35,7 @@
                     "optional": true
                 }
             ],
+            "engineParam": true,
             "discovery": "/api/Framespace/Workbench/listSpineInstances",
             "filterField": "$id",
             "usage": {
@@ -55,6 +60,7 @@
                     "type": "string"
                 }
             ],
+            "engineParam": true,
             "discovery": "/api/Encapsulate/CapsuleSpine/listCapsules",
             "filterField": "$id",
             "usage": {
@@ -83,6 +89,7 @@
                     "optional": true
                 }
             ],
+            "engineParam": true,
             "discovery": "/api/Framespace/Workbench/listSpineInstances",
             "filterField": "$id",
             "usage": {
@@ -102,6 +109,7 @@
             "namespace": "Framespace/Workbench",
             "description": "List all distinct spine instance URIs (rootCapsuleName values) in the graph.",
             "args": [],
+            "engineParam": true,
             "usage": {
                 "GET": "/api/Framespace/Workbench/listSpineInstances",
                 "POST": {

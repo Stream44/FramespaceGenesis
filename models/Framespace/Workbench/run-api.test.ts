@@ -72,25 +72,25 @@ describe('Framespace/Workbench API', () => {
     })
 
     it('openFile returns error for missing command', async () => {
-        const result = await workbenchApi.openFile(null, '', '')
+        const result = await workbenchApi.openFile('', '')
         expect(result['#']).toBe('Error')
         expect(result.method).toBe('openFile')
     })
 
     it('openFile returns error for missing file', async () => {
-        const result = await workbenchApi.openFile(null, 'code', '')
+        const result = await workbenchApi.openFile('code', '')
         expect(result['#']).toBe('Error')
         expect(result.method).toBe('openFile')
     })
 
     it('openFile returns error for non-absolute path', async () => {
-        const result = await workbenchApi.openFile(null, 'code', 'relative/path.ts')
+        const result = await workbenchApi.openFile('code', 'relative/path.ts')
         expect(result['#']).toBe('Error')
         expect(result.message).toContain('absolute path')
     })
 
     it('openFile returns error for non-existent file', async () => {
-        const result = await workbenchApi.openFile(null, 'code', '/tmp/nonexistent-file-12345.ts')
+        const result = await workbenchApi.openFile('code', '/tmp/nonexistent-file-12345.ts')
         expect(result['#']).toBe('Error')
         expect(result.message).toContain('not found')
     })

@@ -14,15 +14,16 @@ const STORAGE_KEY = "framespace-workbench-state";
 
 type Persisted = {
     selectedSpineInstance: string | null;
+    selectedEngine: string | null;
     dockviewLayout: any | null;
 };
 
 function load(): Persisted {
     try {
         const raw = localStorage.getItem(STORAGE_KEY);
-        if (raw) return { selectedSpineInstance: null, dockviewLayout: null, ...JSON.parse(raw) };
+        if (raw) return { selectedSpineInstance: null, selectedEngine: null, dockviewLayout: null, ...JSON.parse(raw) };
     } catch { /* ignore */ }
-    return { selectedSpineInstance: null, dockviewLayout: null };
+    return { selectedSpineInstance: null, selectedEngine: null, dockviewLayout: null };
 }
 
 function persist(partial: Partial<Persisted>) {
@@ -41,8 +42,11 @@ const engines: EngineClient[] = [ladybugClient];
 // ── Signals ──────────────────────────────────────────────────────────
 const init = load();
 const [selectedSpineInstance, setSelectedSpineInstance] = createSignal<string | null>(init.selectedSpineInstance);
+const [selectedEngine, setSelectedEngine] = createSignal<string | null>(init.selectedEngine);
 const [spineInstances, setSpineInstances] = createSignal<SpineInstance[]>([]);
+const [spineInstanceGroups, setSpineInstanceGroups] = createSignal<any[]>([]);
 const [dockviewLayout, setDockviewLayoutSignal] = createSignal<any | null>(init.dockviewLayout);
+const [modelTestError, setModelTestError] = createSignal<{ model: string; message: string; output: string } | null>(null);
 
 // ── Dockview layout persistence (debounced) ──────────────────────────
 let layoutDebounce: ReturnType<typeof setTimeout> | undefined;
@@ -70,9 +74,19 @@ async function connectAll(): Promise<void> {
     // After connecting, fetch spine instances and start stats polling
     if (ladybugClient.status() === "connected") {
         try {
-            const instances = await ladybugClient.listSpineInstances();
-            vlog("connectAll", "spine instances loaded:", instances.length, instances.map(i => i.$id));
-            setSpineInstances(instances);
+            const result = await ladybugClient.listSpineInstances();
+            vlog("connectAll", "spine instances loaded:", result.list.length, result.list.map(i => i.$id));
+            setSpineInstances(result.list);
+            setSpineInstanceGroups(result.groups);
+
+            // If no engine selected yet, use default from server
+            if (!selectedEngine()) {
+                const def = ladybugClient.defaultEngineName();
+                if (def) {
+                    setSelectedEngine(def);
+                    persist({ selectedEngine: def });
+                }
+            }
         } catch (err) {
             vlog("connectAll", "ERROR loading spine instances:", err);
         }
@@ -86,6 +100,12 @@ function selectSpineInstance(id: string | null) {
     persist({ selectedSpineInstance: id });
 }
 
+function selectEngine(engineName: string) {
+    vlog("selectEngine", engineName);
+    setSelectedEngine(engineName);
+    persist({ selectedEngine: engineName });
+}
+
 function clearSpineInstance() {
     setSelectedSpineInstance(null);
     persist({ selectedSpineInstance: null });
@@ -96,8 +116,13 @@ export const workbenchStore = {
     engines,
     ladybugClient,
 
+    // ── Selected engine ──────────────────────────────────────────────
+    selectedEngine,
+    selectEngine,
+
     // ── Spine instances ──────────────────────────────────────────────
     spineInstances,
+    spineInstanceGroups,
     selectedSpineInstance,
     selectSpineInstance,
     clearSpineInstance,
@@ -106,6 +131,10 @@ export const workbenchStore = {
     dockviewLayout,
     saveDockviewLayout,
     clearDockviewLayout,
+
+    // ── Model test errors ────────────────────────────────────────────
+    modelTestError,
+    setModelTestError,
 
     // ── Lifecycle ────────────────────────────────────────────────────
     connectAll,

@@ -1,11 +1,12 @@
 import { join } from 'path'
 import { readFileSync, existsSync } from 'fs'
 import { cp, mkdir, readdir, rm, writeFile } from 'fs/promises'
+export { join } from 'path'
 
 // Package root (FramespaceGenesis)
 export const PACKAGE_ROOT = join(import.meta.dir, '..')
 export const MODELS_ROOT = import.meta.dir
-export const GENERATED_DATA = join(MODELS_ROOT, '.generated-data')
+export const GENERATED_DATA = join(MODELS_ROOT, '.cst-data')
 
 /**
  * Normalizes snapshot data for stable comparisons across dev and installed environments.
@@ -77,13 +78,14 @@ export interface ManifestEntry {
 }
 
 export interface ExampleResultForManifest {
+    name: string
     rootCapsuleName: string
     files: string[]
     cstRoot: string
 }
 
 /**
- * Copy generated CST data into models/.generated-data and write a manifest.
+ * Copy generated CST data into models/.cst-data and write a manifest.
  * @param modelName  The model directory name (e.g. "Encapsulate/CapsuleSpine")
  * @param cstRoot    The CST root directory from the first example result
  * @param results    Array of example results with rootCapsuleName and files
@@ -134,4 +136,159 @@ export async function copyGeneratedData(
         }
     })
     await writeFile(join(modelDataDir, 'manifest.json'), JSON.stringify(manifest, null, 2))
+
+    // Return total copied file count for assertion
+    const copiedFiles = await listAllCstFiles(join(modelDataDir, '.~o', 'encapsulate.dev', 'static-analysis'))
+    return copiedFiles.length
+}
+
+// ---------------------------------------------------------------------------
+// Engine test helpers
+// ---------------------------------------------------------------------------
+
+export interface EngineDefinition {
+    name: string
+    importer: any
+}
+
+export interface EngineTestContext {
+    engine: EngineDefinition
+    importer: any
+    recordResult: (testName: string, passed: boolean) => void
+}
+
+/**
+ * Create a model test context from the rest-spread `engines` object returned
+ * by `run()`. Engine importers are mounted with keys like `'engines/Capsule-Ladybug-v0'`.
+ *
+ * Returns helpers that share state for example results, engine results, and CST data.
+ *
+ * Usage:
+ * ```ts
+ * const { forEngine, saveCstData, saveTestResults, loadCstFile } =
+ *     createModelTest({ modelName: 'Encapsulate/CapsuleSpine', engines })
+ * ```
+ */
+// ── framespace.YAML engine config ─────────────────────────────────────
+const FRAMESPACE_YAML_PATH = join(PACKAGE_ROOT, 'framespace.YAML')
+
+function loadEngineConfig(): Record<string, { enabled: boolean }> {
+    const config: Record<string, { enabled: boolean }> = {}
+    try {
+        if (!existsSync(FRAMESPACE_YAML_PATH)) return config
+        const text = readFileSync(FRAMESPACE_YAML_PATH, 'utf-8')
+        let inEngines = false
+        let currentEngine: string | null = null
+        for (const line of text.split('\n')) {
+            const trimmed = line.trimEnd()
+            if (trimmed === 'engines:') { inEngines = true; continue }
+            if (inEngines && /^\S/.test(trimmed)) break
+            if (!inEngines) continue
+            const engineMatch = trimmed.match(/^  ([A-Za-z0-9_-]+):$/)
+            if (engineMatch) { currentEngine = engineMatch[1]; config[currentEngine] = { enabled: true }; continue }
+            if (currentEngine) {
+                const propMatch = trimmed.match(/^\s+enabled:\s*(true|false)\s*$/)
+                if (propMatch) config[currentEngine].enabled = propMatch[1] === 'true'
+            }
+        }
+    } catch { /* skip */ }
+    return config
+}
+
+export function createModelTest({ modelName, engines }: { modelName: string; engines: Record<string, any> }) {
+    const ENGINE_PREFIX = 'engines/'
+    const engineConfig = loadEngineConfig()
+
+    // Parse engine definitions from rest-spread keys
+    const engineDefs: EngineDefinition[] = []
+    for (const [key, value] of Object.entries(engines)) {
+        if (key.startsWith(ENGINE_PREFIX) && value) {
+            engineDefs.push({ name: key.slice(ENGINE_PREFIX.length), importer: value })
+        }
+    }
+
+    // Shared state
+    let _exampleResults: ExampleResultForManifest[] = []
+    let _cstRoot: string = ''
+    const _engineResults: Record<string, { available: boolean; passed: Record<string, boolean> }> = {}
+    for (const def of engineDefs) {
+        _engineResults[def.name] = { available: false, passed: {} }
+    }
+
+    /**
+     * Register example results so that saveCstData, loadCstFile, and
+     * forEngine tests can access them. Call this after running examples.
+     */
+    function setExampleResults(results: ExampleResultForManifest[]) {
+        _exampleResults = results
+        if (results.length > 0) _cstRoot = results[0].cstRoot
+    }
+
+    /**
+     * Iterate over mounted engines, calling `fn` for each one.
+     * Engines disabled in framespace.YAML are skipped with a yellow warning.
+     * If FRAMESPACE_ENGINE_NAME is set, only that engine is tested.
+     * The callback receives `{ engine, importer, recordResult }`.
+     * The test file is responsible for calling `describe` / `it` inside the callback.
+     */
+    function forEngine(fn: (ctx: EngineTestContext) => void): void {
+        const onlyEngine = process.env.FRAMESPACE_ENGINE_NAME
+        for (const def of engineDefs) {
+            if (onlyEngine && def.name !== onlyEngine) {
+                console.warn(`\x1b[33m⚠  Engine "${def.name}" skipped (FRAMESPACE_ENGINE_NAME=${onlyEngine})\x1b[0m`)
+                continue
+            }
+            const cfg = engineConfig[def.name]
+            if (cfg && !cfg.enabled) {
+                console.warn(`\x1b[33m⚠  Engine "${def.name}" is disabled in ${FRAMESPACE_YAML_PATH} — skipping tests\x1b[0m`)
+                continue
+            }
+            const results = _engineResults[def.name]
+            fn({
+                engine: def,
+                importer: def.importer,
+                recordResult: (testName: string, passed: boolean) => {
+                    results.passed[testName] = passed
+                    results.available = Object.values(results.passed).every(Boolean)
+                },
+            })
+        }
+    }
+
+    /**
+     * Copy CST data to .cst-data and write a manifest.
+     * Returns the total number of copied CST files.
+     */
+    async function saveCstData(): Promise<number> {
+        return await copyGeneratedData(modelName, _cstRoot, _exampleResults)
+    }
+
+    /**
+     * Write models.json with engine availability and per-test pass/fail results.
+     */
+    async function saveTestResults(): Promise<void> {
+        const modelsJson: Record<string, any> = {
+            [modelName]: { engines: _engineResults },
+        }
+        const modelsJsonPath = join(GENERATED_DATA, modelName, 'models.json')
+        await writeFile(modelsJsonPath, JSON.stringify(modelsJson, null, 2))
+    }
+
+    /**
+     * Load and parse a CST file by relative path from the cstRoot.
+     */
+    async function loadCstFile(relPath: string): Promise<any> {
+        const absPath = join(_cstRoot, relPath)
+        return JSON.parse(readFileSync(absPath, 'utf-8'))
+    }
+
+    return {
+        engines: engineDefs,
+        exampleResults: () => _exampleResults,
+        setExampleResults,
+        forEngine,
+        saveCstData,
+        saveTestResults,
+        loadCstFile,
+    }
 }

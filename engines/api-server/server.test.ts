@@ -20,7 +20,7 @@ const {
     }, {
         importMeta: import.meta,
         importStack: makeImportStack(),
-        capsuleName: '@stream44.studio/FramespaceGenesis/engines/Capsule-Ladybug-v0/api-server/server.test',
+        capsuleName: '@stream44.studio/FramespaceGenesis/engines/api-server/server.test',
     })
     return { spine }
 }, async ({ spine, apis }: any) => {
@@ -37,7 +37,7 @@ let BASE_URL: string
 const port = 14000 + Math.floor(Math.random() * 1000)
 BASE_URL = `http://localhost:${port}`
 
-describe('Ladybug API Server', () => {
+describe('Engine API Server', () => {
 
     bunTest.afterAll(async () => {
         if (serverProc) {
@@ -50,7 +50,7 @@ describe('Ladybug API Server', () => {
     it('starts the server', async () => {
         serverProc = Bun.spawn(['bun', 'run', 'server.ts'], {
             cwd: import.meta.dir,
-            env: { ...process.env, PORT: String(port), CST_DIR: import.meta.dir },
+            env: { ...process.env, PORT: String(port), CST_DIR: import.meta.dir, FRAMESPACE_ENGINE_NAME: 'Capsule-JsonFiles-v0' },
             stdout: 'pipe',
             stderr: 'pipe',
         })

@@ -68,13 +68,9 @@ function precomputeNodeMeta(tree: JsonObject): Map<string, NodeMeta> {
         }
     }
 
-    const list = tree["list"] as JsonValue[] | undefined;
-    if (Array.isArray(list)) {
-        for (const item of list) {
-            if (typeof item === "object" && item !== null && !Array.isArray(item)) {
-                walk(item as JsonObject);
-            }
-        }
+    const root = tree["rootCapsule"] as JsonObject | undefined;
+    if (root && typeof root === "object" && !Array.isArray(root)) {
+        walk(root);
     }
     return meta;
 }
@@ -164,14 +160,10 @@ function extractGraph(
         }
     }
 
-    // CapsuleSpineTree has a list of root capsules
-    const list = tree["list"] as JsonValue[] | undefined;
-    if (Array.isArray(list)) {
-        for (const item of list) {
-            if (typeof item === "object" && item !== null && !Array.isArray(item)) {
-                walk(item as JsonObject);
-            }
-        }
+    // CapsuleSpineTree has a single rootCapsule
+    const root = tree["rootCapsule"] as JsonObject | undefined;
+    if (root && typeof root === "object" && !Array.isArray(root)) {
+        walk(root as JsonObject);
     }
 
     return { nodes, edges };
@@ -299,15 +291,12 @@ function renderCompoundNodes(container: HTMLElement, data: JsonObject, spineInst
 }
 
 // ── Tree layout data extraction ──────────────────────────────────────
-// Walks the CapsuleSpineTree from the root and fans out:
-//   • extends  → to the right  (+x, same y)   — hard follow
-//   • mappings → downward       (same x, +y)  — hard follow
-// If a capsule is already in the tree, the edge links directly to it
-// (no duplicate node).
-//
-// Struct / contractDelegate mappings create a faded stub node off to
-// the diagonal.  If the struct extends a capsule, a hard extends edge
-// connects it to that capsule in the tree.
+// Layout rules (Y-axis is inverted: positive = down on screen):
+//   • rootCapsule starts at bottom-left (origin 0,0)
+//   • '#@stream44.studio/encapsulate/structs/Capsule' → NW (up-left), yellow/faded/smaller
+//   • mappings → NE (up-right)
+//   • extends → SE (down-right); link to existing node if already placed
+//   • property contracts (non-struct) → S first, then fan between S and W
 
 type TreeCyNode = {
     data: { id: string; label: string; nodeType?: string; isStruct?: string };
@@ -317,10 +306,8 @@ type TreeCyEdge = {
     data: { id: string; source: string; target: string; label?: string; edgeType?: string };
 };
 
-const TREE_X_STEP = 320;
-const TREE_Y_STEP = 160;
-const TREE_DIAG_X = 280;
-const TREE_DIAG_Y = -120;
+const STEP = 300;
+const STRUCT_CAPSULE_ID = "@stream44.studio/encapsulate/structs/Capsule";
 
 function extractTreeGraph(
     tree: JsonObject,
@@ -329,8 +316,8 @@ function extractTreeGraph(
 ): { nodes: TreeCyNode[]; edges: TreeCyEdge[] } {
     const nodes: TreeCyNode[] = [];
     const edges: TreeCyEdge[] = [];
-    const placed = new Set<string>();   // capsule IDs already in the graph
-    let edgeSeq = 0;                    // unique edge-id suffix
+    const placed = new Set<string>();
+    let edgeSeq = 0;
 
     function formatLabel(raw: string): string {
         const m = raw.match(/^(@[^/]+\/[^/]+)\/(.+)$/);
@@ -363,65 +350,49 @@ function extractTreeGraph(
         edges.push({ data: { id: `e${edgeSeq++}_${src}→${label}→${tgt}`, source: src, target: tgt, label, edgeType } });
     }
 
-    // Build a lookup from $id → full capsule JSON.  The root list
-    // contains full capsule objects (with nested mappings, extends, etc.)
-    // but when a capsule is referenced via a parent's mapping, the
-    // reference may be a minimal stub { $id: '...' } without nested
-    // data.  The lookup lets us always use the full object.
+    // Build lookup for full capsule objects keyed by $id (recursive)
     const capsuleLookup = new Map<string, JsonObject>();
-    const list = tree["list"] as JsonValue[] | undefined;
-    if (Array.isArray(list)) {
-        for (const item of list) {
-            if (typeof item === "object" && item !== null && !Array.isArray(item)) {
-                const cid = (item as JsonObject)["$id"] as string | undefined;
-                if (cid) capsuleLookup.set(cid, item as JsonObject);
+    function indexCapsule(cap: JsonObject) {
+        const cid = cap["$id"] as string | undefined;
+        if (cid && !capsuleLookup.has(cid)) {
+            capsuleLookup.set(cid, cap);
+            const mappings = cap["mappings"] as JsonObject | undefined;
+            if (mappings && typeof mappings === "object") {
+                for (const [k, v] of Object.entries(mappings)) {
+                    if (k === "#") continue;
+                    const child = (v as JsonObject)["capsule"] as JsonObject | undefined;
+                    if (child) indexCapsule(child);
+                }
+            }
+            const ext = cap["extends"] as JsonObject | undefined;
+            if (ext && typeof ext === "object") {
+                const extCap = ext["capsule"] as JsonObject | undefined;
+                if (extCap) indexCapsule(extCap);
             }
         }
     }
+    const rootCapsule = tree["rootCapsule"] as JsonObject | undefined;
+    if (rootCapsule) indexCapsule(rootCapsule);
 
-    // Ensure a capsule exists in the graph.  If it is already placed,
-    // return its id without creating a new node.  Otherwise walk it
-    // recursively (hard follow).  Prefers the full object from the
-    // lookup so nested mappings/extends are available.
-    function ensureCapsule(capsule: JsonObject, x: number, y: number, depth: number): { id: string; rows: number } | null {
-        const id = capsule["$id"] as string | undefined;
-        if (!id) return null;
-        if (placed.has(id)) return { id, rows: 0 };
-        const full = capsuleLookup.get(id) || capsule;
-        return { id, rows: walk(full, x, y, depth) };
-    }
-
-    // Returns the number of grid rows consumed by this subtree.
-    // depth is used to zigzag mapping children left/right.
-    function walk(capsule: JsonObject, x: number, y: number, depth: number): number {
+    // Walk the tree from the root with directional placement.
+    // x,y is the position of this node. Returns the number of slots consumed.
+    function walk(capsule: JsonObject, x: number, y: number): number {
         const id = capsule["$id"] as string | undefined;
         if (!id) return 0;
-        if (placed.has(id)) return 0;   // already placed — caller links to it
+        if (placed.has(id)) return 0;
 
         placed.add(id);
         addNode(id, x, y);
 
-        let rowsConsumed = 1;
+        let slotsConsumed = 1;
 
-        // ── Extends → to the right (hard follow) ──
-        const ext = capsule["extends"] as JsonObject | undefined;
-        if (ext && typeof ext === "object") {
-            const extCapsule = ext["capsule"] as JsonObject | undefined;
-            if (extCapsule) {
-                const result = ensureCapsule(extCapsule, x + TREE_X_STEP, y, depth);
-                if (result) {
-                    addEdge(id, result.id, "extends", "extends");
-                    if (result.rows > rowsConsumed) rowsConsumed = result.rows;
-                }
-            }
-        }
-
-        // ── Mappings ──
+        // Categorise children
         const mappings = capsule["mappings"] as JsonObject | undefined;
-        if (mappings && typeof mappings === "object") {
-            let mappingOffset = 0;
-            let diagIndex = 0;
+        const regularMappings: { propName: string; child: JsonObject; childId: string }[] = [];
+        const contractMappings: { propName: string; child: JsonObject; childId: string }[] = [];
+        let structMapping: { propName: string; child: JsonObject; childId: string } | null = null;
 
+        if (mappings && typeof mappings === "object") {
             for (const [propName, mapping] of Object.entries(mappings)) {
                 if (propName === "#") continue;
                 const m = mapping as JsonObject;
@@ -431,69 +402,105 @@ function extractTreeGraph(
                 if (!childId) continue;
 
                 const isDelegate = !!m["isPropertyContractDelegate"];
-
-                if (isDelegate) {
-                    // ── Struct mapping → faded stub diagonal up-right ──
-                    diagIndex++;
-                    const diagX = x + TREE_DIAG_X * diagIndex;
-                    const diagY = y + TREE_DIAG_Y * diagIndex;
-
-                    // Always create a dedicated struct stub node (faded)
-                    const stubId = `__struct_${edgeSeq++}_${childId}`;
-                    addNode(stubId, diagX, diagY, { isStruct: "true" });
-                    // Copy the label from the real capsule
-                    nodes[nodes.length - 1].data.label = shortLabel(childId);
-                    addEdge(id, stubId, propName, "contractDelegate");
-
-                    // If the struct extends a capsule, hard-link to it
-                    const structExt = child["extends"] as JsonObject | undefined;
-                    if (structExt && typeof structExt === "object") {
-                        const structExtCap = structExt["capsule"] as JsonObject | undefined;
-                        if (structExtCap) {
-                            const structExtId = structExtCap["$id"] as string | undefined;
-                            if (structExtId) {
-                                // Ensure the extended capsule is in the tree
-                                const result = ensureCapsule(structExtCap, diagX + TREE_X_STEP, diagY, depth + 1);
-                                if (result) {
-                                    addEdge(stubId, result.id, "extends", "extends");
-                                }
-                            }
-                        }
-                    }
+                if (isDelegate && childId === STRUCT_CAPSULE_ID) {
+                    structMapping = { propName, child, childId };
+                } else if (isDelegate) {
+                    contractMappings.push({ propName, child, childId });
                 } else {
-                    // ── Regular mapping → downward, zigzag left/right ──
-                    const childY = y + TREE_Y_STEP * (rowsConsumed + mappingOffset);
-                    const childDepth = depth + 1 + mappingOffset;
-                    const nudge = (childDepth % 2 === 0 ? -1 : 1) * 100;
-                    const result = ensureCapsule(child, x + nudge, childY, childDepth);
-                    if (result) {
-                        addEdge(id, result.id, propName, "mapping");
-                        mappingOffset += Math.max(result.rows, 1);
+                    regularMappings.push({ propName, child, childId });
+                }
+            }
+        }
+
+        // ── Struct Capsule → NW (up-left), always a faded stub ──
+        if (structMapping) {
+            const stubId = `__struct_${edgeSeq++}_${structMapping.childId}`;
+            addNode(stubId, x - STEP * 0.8, y - STEP * 0.7, { isStruct: "true" });
+            nodes[nodes.length - 1].data.label = shortLabel(structMapping.childId);
+            addEdge(id, stubId, structMapping.propName, "contractDelegate");
+        }
+
+        // ── Regular mappings → NE (up-right), stacked ──
+        let mappingIdx = 0;
+        for (const { propName, child, childId } of regularMappings) {
+            const full = capsuleLookup.get(childId) || child;
+            if (placed.has(childId)) {
+                addEdge(id, childId, propName, "mapping");
+            } else {
+                const mx = x + STEP;
+                const my = y - STEP * (1 + mappingIdx * 0.8);
+                const consumed = walk(full, mx, my);
+                addEdge(id, childId, propName, "mapping");
+                slotsConsumed += consumed;
+                mappingIdx++;
+            }
+        }
+
+        // ── Extends → SE (down-right); link if already exists ──
+        const ext = capsule["extends"] as JsonObject | undefined;
+        if (ext && typeof ext === "object") {
+            const extCapsule = ext["capsule"] as JsonObject | undefined;
+            if (extCapsule) {
+                const extId = extCapsule["$id"] as string | undefined;
+                if (extId) {
+                    if (placed.has(extId)) {
+                        addEdge(id, extId, "extends", "extends");
+                    } else {
+                        const full = capsuleLookup.get(extId) || extCapsule;
+                        const ex = x + STEP;
+                        const ey = y + STEP * 0.7;
+                        const consumed = walk(full, ex, ey);
+                        addEdge(id, extId, "extends", "extends");
+                        slotsConsumed += consumed;
                     }
                 }
             }
-            rowsConsumed += mappingOffset;
         }
 
-        return rowsConsumed;
-    }
+        // ── Property contracts (non-struct) → S first, then fan S to W ──
+        if (contractMappings.length > 0) {
+            const count = contractMappings.length;
+            // Fan angles from straight down (π/2) toward left (π), evenly spaced
+            const startAngle = Math.PI / 2;   // straight down (S)
+            const endAngle = Math.PI * 0.85;  // nearly W
+            const angleStep = count > 1 ? (endAngle - startAngle) / (count - 1) : 0;
+            const contractRadius = STEP * 0.9;
 
-    // Walk the root list in reverse.  The list is alphabetically sorted
-    // by capsule name, so the actual root capsule (which maps to the
-    // others) tends to be last.  Walking it first lets its recursive
-    // walk place children with proper zigzag positions.  Capsules
-    // already placed by recursion are skipped.
-    if (Array.isArray(list)) {
-        const items = [...list].reverse();
-        let currentY = 0;
-        for (const item of items) {
-            if (typeof item === "object" && item !== null && !Array.isArray(item)) {
-                const capsuleId = (item as JsonObject)["$id"] as string | undefined;
-                if (capsuleId && placed.has(capsuleId)) continue; // already placed by recursion
-                const rows = walk(item as JsonObject, 0, currentY * TREE_Y_STEP, 0);
-                currentY += Math.max(rows, 1);
+            for (let i = 0; i < count; i++) {
+                const { propName, child, childId } = contractMappings[i];
+                const angle = startAngle + angleStep * i;
+                const cx = x + Math.cos(angle) * contractRadius * -1; // flip x: S goes down, W goes left
+                const cy = y + Math.sin(angle) * contractRadius;
+
+                if (placed.has(childId)) {
+                    addEdge(id, childId, propName, "contractDelegate");
+                } else {
+                    const stubId = `__contract_${edgeSeq++}_${childId}`;
+                    addNode(stubId, cx, cy, { nodeType: "contractDelegateTarget" });
+                    nodes[nodes.length - 1].data.label = shortLabel(childId);
+                    addEdge(id, stubId, propName, "contractDelegate");
+
+                    // If the contract capsule extends something, link it
+                    const full = capsuleLookup.get(childId) || child;
+                    const cExt = full["extends"] as JsonObject | undefined;
+                    if (cExt && typeof cExt === "object") {
+                        const cExtCap = cExt["capsule"] as JsonObject | undefined;
+                        if (cExtCap) {
+                            const cExtId = cExtCap["$id"] as string | undefined;
+                            if (cExtId && placed.has(cExtId)) {
+                                addEdge(stubId, cExtId, "extends", "extends");
+                            }
+                        }
+                    }
+                }
             }
         }
+
+        return slotsConsumed;
+    }
+
+    if (rootCapsule) {
+        walk(rootCapsule, 0, 0);
     }
 
     return { nodes, edges };
@@ -529,12 +536,16 @@ function renderTree(container: HTMLElement, data: JsonObject, spineInstanceUri?:
                     "text-max-width": "400px",
                 } as any,
             },
-            // Struct stub nodes — faded
+            // Struct stub nodes — yellow, faded, smaller
             {
                 selector: "node[isStruct]",
                 css: {
                     "opacity": 0.4,
                     "border-style": "dashed",
+                    "background-color": "#f5edc8",
+                    "border-color": "#9a7030",
+                    "color": "#9a7030",
+                    "font-size": "12px",
                 } as any,
             },
             // Nodes targeted by a propertyContractDelegate mapping

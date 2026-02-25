@@ -4,3 +4,4 @@
 
 export type { EngineClient, EngineSchema, EndpointDef, ApiDef, ArgDef, ConnectionStatus, SpineInstance } from "./types";
 export { createCapsuleLadybugClient } from "./CapsuleLadybugClient";
+export type { RequestLogEntry } from "./CapsuleLadybugClient";

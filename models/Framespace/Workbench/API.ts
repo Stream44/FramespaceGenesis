@@ -30,6 +30,7 @@ export async function capsule({
                             listSpineInstances: {
                                 args: [],
                                 description: 'List all distinct spine instance URIs (rootCapsuleName values) in the graph.',
+                                graphMethod: true,
                             },
                             getProcessStats: {
                                 args: [],
@@ -59,11 +60,11 @@ export async function capsule({
                  */
                 listSpineInstances: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, conn: any): Promise<any> {
+                    value: async function (this: any, graph: any): Promise<any> {
                         // Try to read manifests for ordering
                         // moduleFilepath = .../models/Framespace/Workbench/API.ts → 4 levels up to package root
                         const PACKAGE_ROOT = join(this['#@stream44.studio/encapsulate/structs/Capsule'].moduleFilepath, '../../../..')
-                        const generatedData = join(PACKAGE_ROOT, 'models', '.generated-data')
+                        const generatedData = join(PACKAGE_ROOT, 'models', '.cst-data')
                         let manifestOrder: string[] | null = null
                         try {
                             const { readFileSync: rfs, readdirSync: rds, existsSync: exs } = require('fs')
@@ -83,9 +84,7 @@ export async function capsule({
                             if (allEntries.length > 0) manifestOrder = allEntries
                         } catch { }
 
-                        const rows = await this.queryAll(conn,
-                            `MATCH (cap:Capsule) WHERE cap.spineInstanceUri IS NOT NULL AND cap.spineInstanceUri <> '' RETURN DISTINCT cap.spineInstanceUri AS spineInstanceUri, cap.capsuleName AS capsuleName, cap.capsuleSourceLineRef AS capsuleSourceLineRef ORDER BY spineInstanceUri`
-                        )
+                        const rows = await graph.listSpineInstances()
                         // For each spineInstanceUri, find the root capsule (where capsuleName matches spineInstanceUri)
                         const rootLineRefs: Record<string, string> = {}
                         for (const r of rows) {
@@ -111,6 +110,28 @@ export async function capsule({
                                 return ai - bi
                             })
                         }
+
+                        // Load models.json for engine availability per model
+                        const modelsJsonCache: Record<string, any> = {}
+                        try {
+                            const { readFileSync: rfs, readdirSync: rds, existsSync: exs2 } = require('fs')
+                            if (exs2(generatedData)) {
+                                for (const l1 of rds(generatedData, { withFileTypes: true })) {
+                                    if (!l1.isDirectory() || l1.name.startsWith('.')) continue
+                                    for (const l2 of rds(join(generatedData, l1.name), { withFileTypes: true })) {
+                                        if (!l2.isDirectory() || l2.name.startsWith('.')) continue
+                                        const mjPath = join(generatedData, l1.name, l2.name, 'models.json')
+                                        if (!exs2(mjPath)) continue
+                                        try {
+                                            const mj = JSON.parse(rfs(mjPath, 'utf-8'))
+                                            for (const [modelName, modelData] of Object.entries(mj) as [string, any][]) {
+                                                modelsJsonCache[modelName] = modelData
+                                            }
+                                        } catch { }
+                                    }
+                                }
+                            }
+                        } catch { }
 
                         // Group by modelName > exampleDir
                         // URI pattern: .../models/<ns>/<model>/examples/<exampleDir>/run.<name>
@@ -139,11 +160,13 @@ export async function capsule({
                             groupMap[modelName][exampleDir].push(item)
                         }
                         for (const [modelName, examples] of Object.entries(groupMap)) {
+                            const modelEngines = modelsJsonCache[modelName]?.engines ?? {}
                             for (const [exampleDir, items] of Object.entries(examples)) {
                                 groups.push({
                                     '#': 'SpineInstanceGroup',
                                     modelName,
                                     exampleDir,
+                                    engines: modelEngines,
                                     list: items,
                                 })
                             }
@@ -219,7 +242,7 @@ export async function capsule({
                  */
                 openFile: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (_conn: any, command: string, file: string): Promise<any> {
+                    value: async function (command: string, file: string): Promise<any> {
                         if (!command || typeof command !== 'string') return { '#': 'Error', method: 'openFile', message: 'No command provided' }
                         if (!file || typeof file !== 'string') return { '#': 'Error', method: 'openFile', message: 'No file provided' }
                         if (!file.startsWith('/')) return { '#': 'Error', method: 'openFile', message: `File must be an absolute path: ${file}` }
@@ -251,7 +274,6 @@ export async function capsule({
             }
         }
     }, {
-        extendsCapsule: '../../../engines/Capsule-Ladybug-v0/LadybugGraph',
         importMeta: import.meta,
         importStack: makeImportStack(),
         capsuleName: '@stream44.studio/FramespaceGenesis/models/Framespace/Workbench/API',

@@ -31,6 +31,7 @@ export async function capsule({
                                 description: 'List all capsules in the tree.',
                                 discovery: 'Framespace/Workbench/listSpineInstances',
                                 filterField: '$id',
+                                graphMethod: true,
                             },
                             getCapsule: {
                                 args: [
@@ -39,6 +40,7 @@ export async function capsule({
                                 description: 'Get a capsule with full CST structure including spine contracts, property contracts, and properties.',
                                 discovery: 'listCapsules',
                                 filterField: '$id',
+                                graphMethod: true,
                             },
                             getCapsuleSpineTree: {
                                 args: [
@@ -48,32 +50,29 @@ export async function capsule({
                                 description: 'Get the spine tree for a spineInstanceUri.',
                                 discovery: 'Framespace/Workbench/listSpineInstances',
                                 filterField: '$id',
+                                graphMethod: true,
                             },
                         },
                     },
                 },
 
                 // =============================================================
-                // Query API
+                // Query API — each method receives `graph` (engine EngineAPI)
                 // =============================================================
 
                 /**
                  * List all imported capsules.
                  * Returns { '#': 'Capsules', list: [{ $id, '#' }] }.
-                 * If spineInstanceUri is provided, filters to capsules belonging to that spine instance.
                  */
                 listCapsules: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, conn: any, spineInstanceUri?: string, resolveRefs?: boolean): Promise<any> {
-                        const query = spineInstanceUri
-                            ? `MATCH (cap:Capsule)-[:HAS_SOURCE]->(cs:CapsuleSource) WHERE cap.spineInstanceUri = '${esc(spineInstanceUri)}' RETURN cap.capsuleName, cap.capsuleSourceLineRef ORDER BY cap.capsuleName`
-                            : `MATCH (cap:Capsule)-[:HAS_SOURCE]->(cs:CapsuleSource) RETURN cap.capsuleName, cap.capsuleSourceLineRef ORDER BY cap.capsuleName`
-                        const rows = await this.queryAll(conn, query)
+                    value: async function (this: any, graph: any, spineInstanceUri?: string, resolveRefs?: boolean): Promise<any> {
+                        const rows = await graph.listCapsules(spineInstanceUri)
 
                         if (resolveRefs) {
                             const list = []
                             for (const r of rows) {
-                                const entity = await this.getCapsule(conn, r['cap.capsuleName'])
+                                const entity = await this.getCapsule(graph, r.capsuleName)
                                 if (entity) list.push(entity)
                             }
                             return { '#': 'Capsules', list }
@@ -81,8 +80,8 @@ export async function capsule({
 
                         const list = rows.map((r: any) => ({
                             '#': 'Capsule',
-                            $id: r['cap.capsuleName'],
-                            capsuleSourceLineRef: r['cap.capsuleSourceLineRef'],
+                            $id: r.capsuleName,
+                            capsuleSourceLineRef: r.capsuleSourceLineRef,
                         }))
                         return { '#': 'Capsules', list }
                     }
@@ -90,132 +89,52 @@ export async function capsule({
 
                 /**
                  * Get a capsule by name with full CST structure.
-                 * Returns the entity with nested spine contracts, property contracts, and properties,
-                 * each annotated with '#' type tags.
                  */
                 getCapsule: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, conn: any, capsuleName: string): Promise<any | null> {
-                        const rows = await this.queryAll(conn, `
-                            MATCH (cap:Capsule)-[:HAS_SOURCE]->(cs:CapsuleSource)
-                            WHERE cap.capsuleName = '${esc(capsuleName)}'
-                            RETURN cap, cs
-                        `)
-                        if (rows.length === 0) return null
-                        return await this._buildCapsuleEntity(conn, rows[0].cap, rows[0].cs)
+                    value: async function (this: any, graph: any, capsuleName: string): Promise<any | null> {
+                        const raw = await graph.getCapsuleWithSource(capsuleName)
+                        if (!raw) return null
+                        return await this._buildCapsuleEntity(graph, raw.cap, raw.source)
                     }
                 },
 
                 /**
                  * Get a recursive tree of capsule mapping and extends dependencies.
-                 * Starting from a capsule $id, follows MAPS_TO and EXTENDS relationships
-                 * to build a nested tree.
-                 *
-                 * Level-batched BFS: O(depth) database round-trips.
-                 * Requires linkMappings() to have been called after import.
                  */
                 getCapsuleSpineTree: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, conn: any, spineInstanceUri: string, includeProperties?: boolean): Promise<any | null> {
-                        const inclProps = includeProperties !== false
-                        // Find all capsules belonging to this spine instance
-                        const capsuleRows = await this.queryAll(conn,
-                            `MATCH (cap:Capsule) WHERE cap.spineInstanceUri = '${esc(spineInstanceUri)}' RETURN cap.capsuleName ORDER BY cap.capsuleName`
-                        )
-                        if (capsuleRows.length === 0) return null
+                    value: async function (this: any, graph: any, spineInstanceUri: string, includeProperties?: boolean): Promise<any | null> {
+                        const inclProps = includeProperties === true
+                        const capsuleNames = await graph.getCapsuleNamesBySpine(spineInstanceUri)
+                        if (capsuleNames.length === 0) return null
 
-                        const capsuleNames = capsuleRows.map((r: any) => r['cap.capsuleName'])
-                        const relInfo = await this._fetchCapsuleRelations(conn, capsuleNames)
-                        const visited = new Set<string>(capsuleNames)
+                        const relInfo = await graph.fetchCapsuleRelations(capsuleNames)
+                        const visited = new Set<string>()
 
-                        const trees = []
-                        for (const name of capsuleNames) {
-                            if (relInfo.found.has(name)) {
-                                trees.push(await this._assembleTreeNode(conn, name, relInfo, visited, inclProps))
-                            }
-                        }
-                        return { '#': 'CapsuleSpineTree', $id: spineInstanceUri, list: trees }
+                        // Build tree from root capsule only (the one matching spineInstanceUri)
+                        const rootName = capsuleNames.find((n: string) => n === spineInstanceUri)
+                        if (!rootName || !relInfo.found.has(rootName)) return null
+                        const rootCapsule = await this._assembleTreeNode(graph, rootName, relInfo, visited, inclProps)
+                        return { '#': 'CapsuleSpineTree', $id: spineInstanceUri, rootCapsule }
                     }
                 },
 
-                /**
-                 * Batch-fetch mapping children and extends parent for a set of capsule names.
-                 * Returns { mappings, extends, found } keyed by capsuleName.
-                 * @internal
-                 */
-                _fetchCapsuleRelations: {
-                    type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, conn: any, capsuleNames: string[]): Promise<any> {
-                        if (capsuleNames.length === 0) return { mappings: {}, extends: {}, found: new Set(), properties: {}, capsuleInfo: {} }
-                        const nameList = capsuleNames.map(n => `'${esc(n)}'`).join(', ')
-
-                        // All 5 queries are independent — run in parallel
-                        const [mapRows, extRows, propRows, existRows, infoRows] = await Promise.all([
-                            this.queryAll(conn, `
-                                MATCH (cap:Capsule)-[:IMPLEMENTS_SPINE]->(:SpineContract)-[:HAS_PROPERTY_CONTRACT]->(:PropertyContract)-[:HAS_PROPERTY]->(p:CapsuleProperty)-[:MAPS_TO]->(target:Capsule)
-                                WHERE cap.capsuleName IN [${nameList}]
-                                RETURN cap.capsuleName AS src, p.name AS propName, p.propertyContractDelegate AS delegate, target.capsuleName AS target
-                                ORDER BY cap.capsuleName, p.name
-                            `),
-                            this.queryAll(conn, `
-                                MATCH (cap:Capsule)-[:EXTENDS]->(parent:Capsule)
-                                WHERE cap.capsuleName IN [${nameList}]
-                                RETURN cap.capsuleName AS src, parent.capsuleName AS target
-                            `),
-                            this.queryAll(conn, `
-                                MATCH (cap:Capsule)-[:IMPLEMENTS_SPINE]->(:SpineContract)-[:HAS_PROPERTY_CONTRACT]->(pc:PropertyContract)-[:HAS_PROPERTY]->(p:CapsuleProperty)
-                                WHERE cap.capsuleName IN [${nameList}]
-                                RETURN cap.capsuleName AS src, p.name AS propName, p.propertyType AS propertyType, pc.contractKey AS propertyContract, p.propertyContractDelegate AS propertyContractDelegate
-                                ORDER BY cap.capsuleName, p.name
-                            `),
-                            this.queryAll(conn, `
-                                MATCH (cap:Capsule)
-                                WHERE cap.capsuleName IN [${nameList}]
-                                RETURN cap.capsuleName AS name
-                            `),
-                            this.queryAll(conn, `
-                                MATCH (cap:Capsule)
-                                WHERE cap.capsuleName IN [${nameList}]
-                                RETURN cap.capsuleName AS name, cap.capsuleSourceLineRef AS capsuleSourceLineRef, cap.capsuleSourceNameRef AS capsuleSourceNameRef
-                            `),
-                        ])
-
-                        const mappings: Record<string, { propName: string, target: string, delegate: string }[]> = {}
-                        for (const r of mapRows) {
-                            if (!mappings[r.src]) mappings[r.src] = []
-                            mappings[r.src].push({ propName: r.propName, target: r.target, delegate: r.delegate || '' })
-                        }
-
-                        const extendsMap: Record<string, string> = {}
-                        for (const r of extRows) {
-                            extendsMap[r.src] = r.target
-                        }
-
-                        const properties: Record<string, { propName: string, propertyType: string, propertyContract: string, propertyContractDelegate: string }[]> = {}
-                        for (const r of propRows) {
-                            if (!properties[r.src]) properties[r.src] = []
-                            properties[r.src].push({ propName: r.propName, propertyType: r.propertyType, propertyContract: r.propertyContract || '', propertyContractDelegate: r.propertyContractDelegate || '' })
-                        }
-
-                        const found = new Set(existRows.map((r: any) => r.name))
-
-                        const capsuleInfo: Record<string, { capsuleSourceLineRef: string, capsuleSourceNameRef: string }> = {}
-                        for (const r of infoRows) {
-                            capsuleInfo[r.name] = { capsuleSourceLineRef: r.capsuleSourceLineRef, capsuleSourceNameRef: r.capsuleSourceNameRef }
-                        }
-
-                        return { mappings, extends: extendsMap, found, properties, capsuleInfo }
-                    }
-                },
+                // =============================================================
+                // Internal — composition / shaping (engine-agnostic)
+                // =============================================================
 
                 /**
-                 * Assemble a tree node from pre-fetched relations, recursively fetching
-                 * the next level in a single batch query per depth level.
+                 * Assemble a tree node from pre-fetched relations, recursively
+                 * fetching the next level in a single batch per depth.
                  * @internal
                  */
                 _assembleTreeNode: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, conn: any, capsuleName: string, relInfo: any, visited: Set<string>, includeProperties: boolean = true): Promise<any> {
+                    value: async function (this: any, graph: any, capsuleName: string, relInfo: any, visited: Set<string>, includeProperties: boolean = true): Promise<any> {
+                        // Mark self as visited (ancestor chain) for circular reference detection
+                        visited.add(capsuleName)
+
                         const info = relInfo.capsuleInfo[capsuleName]
                         const node: any = {
                             '#': 'Capsule',
@@ -227,42 +146,30 @@ export async function capsule({
                         const myExtends = relInfo.extends[capsuleName] || null
                         const myProperties = relInfo.properties[capsuleName] || []
 
-                        // Collect all unvisited targets (mapping targets + extends parent)
+                        // Collect all targets that need relation data fetched
                         const allTargets = new Set<string>()
                         for (const m of myMappings) allTargets.add(m.target)
                         if (myExtends) allTargets.add(myExtends)
 
-                        const unvisited = [...allTargets].filter(t => !visited.has(t))
-                        for (const t of unvisited) visited.add(t)
-
-                        // Batch-fetch relations for all unvisited targets
-                        let nextRelInfo = { mappings: {} as any, extends: {} as any, found: new Set() as Set<string>, properties: {} as any, capsuleInfo: {} as any }
-                        if (unvisited.length > 0) {
-                            nextRelInfo = await this._fetchCapsuleRelations(conn, unvisited)
+                        const needsFetch = [...allTargets].filter((t: string) => !relInfo.found.has(t))
+                        let mergedRelInfo = relInfo
+                        if (needsFetch.length > 0) {
+                            const nextRelInfo = await graph.fetchCapsuleRelations(needsFetch)
+                            mergedRelInfo = {
+                                mappings: { ...relInfo.mappings, ...nextRelInfo.mappings },
+                                extends: { ...relInfo.extends, ...nextRelInfo.extends },
+                                found: new Set([...relInfo.found, ...nextRelInfo.found]),
+                                properties: { ...relInfo.properties, ...nextRelInfo.properties },
+                                capsuleInfo: { ...relInfo.capsuleInfo, ...nextRelInfo.capsuleInfo },
+                            }
                         }
 
-                        // Merge nextRelInfo into a combined view for recursive calls
-                        const mergedRelInfo = {
-                            mappings: { ...relInfo.mappings, ...nextRelInfo.mappings },
-                            extends: { ...relInfo.extends, ...nextRelInfo.extends },
-                            found: new Set([...relInfo.found, ...nextRelInfo.found]),
-                            properties: { ...relInfo.properties, ...nextRelInfo.properties },
-                            capsuleInfo: { ...relInfo.capsuleInfo, ...nextRelInfo.capsuleInfo },
-                        }
-
-                        // Build extends
+                        // Build extends — stub only for circular references
                         if (myExtends) {
-                            if (visited.has(myExtends) && !unvisited.includes(myExtends)) {
-                                node.extends = {
-                                    '#': 'Capsule/Extends',
-                                    capsule: { '#': 'Capsule', $id: myExtends },
-                                }
+                            if (visited.has(myExtends)) {
+                                node.extends = { '#': 'Capsule/Extends', capsule: { '#': 'Capsule', $id: myExtends } }
                             } else {
-                                const extChild = await this._assembleTreeNode(conn, myExtends, mergedRelInfo, visited, includeProperties)
-                                node.extends = {
-                                    '#': 'Capsule/Extends',
-                                    capsule: extChild,
-                                }
+                                node.extends = { '#': 'Capsule/Extends', capsule: await this._assembleTreeNode(graph, myExtends, mergedRelInfo, new Set(visited), includeProperties) }
                             }
                         }
 
@@ -271,14 +178,8 @@ export async function capsule({
                             if (includeProperties) {
                                 const propsObj: any = { '#': 'Capsule/Properties' }
                                 for (const p of myProperties) {
-                                    const propEntry: any = {
-                                        '#': 'Capsule/Property',
-                                        propertyType: p.propertyType,
-                                        propertyContract: p.propertyContract,
-                                    }
-                                    if (p.propertyContractDelegate) {
-                                        propEntry.propertyContractDelegate = p.propertyContractDelegate
-                                    }
+                                    const propEntry: any = { '#': 'Capsule/Property', propertyType: p.propertyType, propertyContract: p.propertyContract }
+                                    if (p.propertyContractDelegate) propEntry.propertyContractDelegate = p.propertyContractDelegate
                                     propsObj[p.propName] = propEntry
                                 }
                                 node.properties = propsObj
@@ -287,17 +188,17 @@ export async function capsule({
                             }
                         }
 
-                        // Build mappings — distinguish PropertyMapping vs PropertyContractMapping
+                        // Build mappings — stub only for circular references
                         if (myMappings.length > 0) {
                             const mappingsObj: any = { '#': 'Capsule/Mappings' }
                             for (const m of myMappings) {
                                 const tag = m.delegate ? 'Capsule/PropertyContractMapping' : 'Capsule/PropertyMapping'
                                 const mappingEntry: any = { '#': tag }
                                 if (m.delegate) mappingEntry.isPropertyContractDelegate = true
-                                if (visited.has(m.target) && !unvisited.includes(m.target)) {
+                                if (visited.has(m.target)) {
                                     mappingEntry.capsule = { '#': 'Capsule', $id: m.target }
                                 } else {
-                                    mappingEntry.capsule = await this._assembleTreeNode(conn, m.target, mergedRelInfo, visited, includeProperties)
+                                    mappingEntry.capsule = await this._assembleTreeNode(graph, m.target, mergedRelInfo, new Set(visited), includeProperties)
                                 }
                                 mappingsObj[m.propName] = mappingEntry
                             }
@@ -309,17 +210,15 @@ export async function capsule({
                 },
 
                 /**
-                 * Build a full capsule entity from Capsule + CapsuleSource nodes.
-                 * Reconstructs the CST JSON structure with '#' annotations.
+                 * Build a full capsule entity from raw cap + source nodes.
                  * @internal
                  */
                 _buildCapsuleEntity: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, conn: any, capsuleNode: any, sourceNode: any): Promise<any> {
+                    value: async function (this: any, graph: any, capsuleNode: any, sourceNode: any): Promise<any> {
                         const { _label, _id, ...cap } = capsuleNode
                         const { _label: _sl2, _id: _si2, id: _srcId, capsuleSourceLineRef: _srcLineRef, ...src } = sourceNode
 
-                        // Build source object (Capsule/Source)
                         const source: any = {
                             '#': 'Capsule/Source',
                             moduleFilepath: src.moduleFilepath,
@@ -333,19 +232,12 @@ export async function capsule({
                             optionsEndLine: src.optionsEndLine,
                         }
 
-                        // Include extendsCapsule if present
                         if (src.extendsCapsule) source.extendsCapsule = src.extendsCapsule
                         if (src.extendsCapsuleUri) source.extendsCapsuleUri = src.extendsCapsuleUri
 
-                        // Single query: fetch the entire spine → propertyContract → property tree
-                        const allRows = await this.queryAll(conn, `
-                            MATCH (cap:Capsule {capsuleSourceLineRef: '${esc(cap.capsuleSourceLineRef)}'})-[:IMPLEMENTS_SPINE]->(s:SpineContract)-[:HAS_PROPERTY_CONTRACT]->(pc:PropertyContract)
-                            OPTIONAL MATCH (pc)-[:HAS_PROPERTY]->(p:CapsuleProperty)
-                            RETURN s, pc, p
-                            ORDER BY s.contractUri, pc.contractKey, p.name
-                        `)
+                        // Fetch spine tree data from engine
+                        const allRows = await graph.getCapsuleSpineTree_data(cap.capsuleSourceLineRef)
 
-                        // Assemble in memory from the flat result set
                         const spineContracts: any = { '#': 'Capsule/SpineContracts' }
                         for (const row of allRows) {
                             const { _label: _sl, _id: _si, ...spine } = row.s
@@ -367,17 +259,9 @@ export async function capsule({
 
                             if (row.p) {
                                 const { _label: _pl, _id: _pi, id: _pid, capsuleSourceLineRef: _pcslr, propertyContractId: _ppcid, ...prop } = row.p
-                                const propEntry: any = {
-                                    '#': 'Capsule/Property',
-                                    ...prop,
-                                }
+                                const propEntry: any = { '#': 'Capsule/Property', ...prop }
                                 delete propEntry.name
-
-                                // Remove empty mappedModuleUri
-                                if (!propEntry.mappedModuleUri) {
-                                    delete propEntry.mappedModuleUri
-                                }
-
+                                if (!propEntry.mappedModuleUri) delete propEntry.mappedModuleUri
                                 spineContractObj.propertyContracts[pc.contractKey].properties[prop.name] = propEntry
                             }
                         }
@@ -398,14 +282,8 @@ export async function capsule({
             }
         }
     }, {
-        extendsCapsule: '../../../engines/Capsule-Ladybug-v0/LadybugGraph',
         importMeta: import.meta,
         importStack: makeImportStack(),
         capsuleName: '@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/API',
     })
-}
-
-// Shared escape utility for Cypher string literals
-function esc(s: string | undefined | null): string {
-    return s != null ? s.replace(/\\/g, "\\\\").replace(/'/g, "\\'") : ''
 }

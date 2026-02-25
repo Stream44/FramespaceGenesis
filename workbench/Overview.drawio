@@ -1,0 +1,110 @@
+<mxfile host="65bd71144e">
+    <diagram id="wa42McsApICY1_0TvTKY" name="Page-1">
+        <mxGraphModel dx="1062" dy="1698" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="35" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fontColor=#994C00;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="-10" width="760" height="310" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3" target="4">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="map to" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="6">
+                    <mxGeometry x="-0.4118" y="-1" relative="1" as="geometry">
+                        <mxPoint x="15" y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="3" value="&lt;b&gt;Codepath &lt;/b&gt;Entities" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+                    <mxGeometry x="60" y="90" width="150" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#000000;strokeWidth=1;fontColor=#000000;dashed=1;" edge="1" parent="1" source="4" target="23">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="project (code generate)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;" vertex="1" connectable="0" parent="24">
+                    <mxGeometry x="-0.2842" relative="1" as="geometry">
+                        <mxPoint x="18" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" value="&lt;b&gt;Model&lt;/b&gt; Entities" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+                    <mxGeometry x="330" y="90" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Static Analysis" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="210" width="90" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Generate &lt;b&gt;Capsule Spine Tree&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#7F00FF;fontColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="220" y="210" width="560" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Run Model" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="60" y="240" width="390" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="endArrow=classic;html=1;strokeColor=#6600CC;strokeWidth=2;entryX=0.073;entryY=0.967;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="3">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="71" y="240" as="sourcePoint"/>
+                        <mxPoint x="310" y="330" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" value="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeWidth=2;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="210" width="20" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="2" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeWidth=2;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="180" width="20" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="Runtime Config" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="180" width="90" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="3" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeWidth=2;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="150" width="20" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="Execute Promise Chain" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="150" width="140" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="Generate &lt;b&gt;Boundary Event Log&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#7F00FF;fontColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="260" y="150" width="380" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="Capsule Components" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="60" y="70" width="390" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="Generate &lt;b&gt;Capsule Spine Tree Instance&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#7F00FF;fontColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="220" y="180" width="560" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="&lt;b&gt;UI Components&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="650" y="90" width="130" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="&lt;b&gt;Visualization &amp;amp; Interaction Model&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="650" y="130" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="Reactive UI" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="650" y="70" width="130" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="Define model in code and map to schemas" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=2;fontColor=#994C00;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="60" y="30" width="390" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="Interact with model" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=2;fontColor=#994C00;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="650" y="30" width="130" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="Run UI" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="650" y="260" width="130" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="" style="endArrow=none;html=1;dashed=1;strokeColor=#000000;strokeWidth=2;fontColor=#994C00;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="620" y="270" as="sourcePoint"/>
+                        <mxPoint x="620" y="30" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="32" value="Static Model Assets &amp;amp; Realtime Events" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="485" y="250" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="&lt;b&gt;Model Engines&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="650" y="240" width="130" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="(c) 2026 &lt;a href=&quot;https://christoph.diy&quot;&gt;Christoph.diy&lt;/a&gt;&amp;nbsp;CC BY" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="-10" width="185" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="Framespace Genesis: Overview - v0.1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="210" y="-10" width="240" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

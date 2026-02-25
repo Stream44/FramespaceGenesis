@@ -1,0 +1,5 @@
+engines:
+  Capsule-JsonFiles-v0:
+    enabled: true
+  Capsule-Ladybug-v0:
+    enabled: true

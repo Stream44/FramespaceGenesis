@@ -1,0 +1,276 @@
+<mxfile host="65bd71144e">
+    <diagram id="fwZsw3qrxmHFWRiRe0Wf" name="Page-1">
+        <mxGraphModel dx="1062" dy="2033" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="81" value="" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="-210" width="860" height="920" as="geometry"/>
+                </mxCell>
+                <mxCell id="61" value="dockview" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="-170" width="620" height="230" as="geometry"/>
+                </mxCell>
+                <mxCell id="80" value="" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=#FFFFFF;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="220" y="-140" width="340" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="420" width="220" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="Standard Engine API for&lt;br&gt;Capsule structures" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=bottom;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="420" width="220" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="Workbench UI" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="80" y="170" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Engines" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="80" y="350" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="" style="edgeStyle=none;html=1;dashed=1;strokeWidth=2;" parent="1" source="4" target="15" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Model specific API around&lt;br&gt;raw Capsule structures" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="585" y="450" width="170" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Models" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="560" y="350" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="70" style="rounded=1;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.175;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="7" target="49">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="Framespace API" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="100" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="8" target="52">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Model / Spine Instance Selection" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6a00ff;fontColor=#ffffff;strokeColor=#3700CC;" parent="1" vertex="1">
+                    <mxGeometry x="460" y="140" width="210" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Capsule- Engines" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="400" width="220" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="uses" style="edgeStyle=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="10" target="11" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="ImportCapsuleSourceTrees" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="490" width="170" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="Engine API" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="430" width="170" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" style="edgeStyle=none;html=1;entryX=0.129;entryY=1.025;entryDx=0;entryDy=0;strokeColor=#000000;strokeWidth=1;fontColor=#000000;entryPerimeter=0;exitX=0.1;exitY=0.075;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="13" target="14" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="Engine API Server" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="350" width="220" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="Engine API Client" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="170" width="170" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" style="edgeStyle=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=2;" parent="1" source="15" target="13" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="480" y="410" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="21" value="load model" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#6600CC;fontStyle=1" parent="20" vertex="1" connectable="0">
+                    <mxGeometry x="0.2545" relative="1" as="geometry">
+                        <mxPoint x="19" y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="15" value="Model" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="400" width="220" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="pass API" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="11" target="16" edge="1">
+                    <mxGeometry x="0.1765" relative="1" as="geometry">
+                        <mxPoint x="480" y="440" as="sourcePoint"/>
+                        <mxPoint x="510" y="460" as="targetPoint"/>
+                        <Array as="points"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="16" value="Model API" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="585" y="430" width="170" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="framespace.yaml enabled engines" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="370" width="220" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="Model Examples" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="585" y="520" width="170" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" style="edgeStyle=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#6600CC;strokeWidth=1;fontColor=#999999;" parent="1" source="29" target="10" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="generated files&lt;br&gt;get imported" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#6600CC;" parent="46" vertex="1" connectable="0">
+                    <mxGeometry x="0.1722" y="-1" relative="1" as="geometry">
+                        <mxPoint x="19" y="11" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="29" value="Defines model instances&lt;br&gt;(capsule source tree data&lt;br&gt;for loading)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="585" y="540" width="170" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="bun run test" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6a00ff;strokeColor=#3700CC;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="670" width="260" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="Runs for&lt;br&gt;framespace.yaml enabled engines&lt;br&gt;to validate Model API" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="620" width="220" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="&lt;span style=&quot;font-weight: normal;&quot;&gt;.cst-data/ &amp;lt;Model&amp;gt; /manifest.json&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5CCFF;strokeColor=#3700CC;fontStyle=1;fontColor=#000000;align=left;spacingLeft=5;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="280" width="570" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="&lt;span style=&quot;font-weight: normal;&quot;&gt;.cst-data/ &amp;lt;Model&amp;gt; /models.json&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5CCFF;strokeColor=#3700CC;fontStyle=1;fontColor=#000000;align=left;spacingLeft=5;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="300" width="570" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="&lt;span style=&quot;font-weight: normal;&quot;&gt;.cst-data/ &amp;lt;Model&amp;gt; /.~o/encapsulate.dev/static-analysis/&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E5CCFF;strokeColor=#3700CC;fontStyle=1;fontColor=#000000;align=left;spacingLeft=5;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="260" width="570" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" style="html=1;strokeWidth=1;fontColor=#000000;exitX=0.919;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=#6600CC;entryX=0.335;entryY=1.025;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="35" target="33" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="471" y="319" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="35" value="bun run dev" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6a00ff;strokeColor=#3700CC;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="580" width="260" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="" style="endArrow=classic;html=1;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;curved=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="15" target="28" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="470" y="590" as="sourcePoint"/>
+                        <mxPoint x="520" y="540" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="540" y="415"/>
+                            <mxPoint x="540" y="530"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="37" value="run once&lt;br&gt;on model load" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#6600CC;fontStyle=1" parent="36" vertex="1" connectable="0">
+                    <mxGeometry x="-0.1167" y="-4" relative="1" as="geometry">
+                        <mxPoint x="-6" y="1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="39" style="html=1;strokeWidth=1;fontColor=#000000;strokeColor=#6600CC;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="800" y="670" as="sourcePoint"/>
+                        <mxPoint x="800" y="320" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="40" value="Generated Capsule Source Tree Files" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#000000;spacingRight=10;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="560" y="260" width="260" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="Model x Engine x API Method support matrix" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#000000;spacingRight=10;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="510" y="300" width="310" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="Spine Instance Summaries" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#000000;spacingRight=10;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="510" y="280" width="310" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#B3B3B3;strokeWidth=2;fontColor=#000000;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="60" y="230" as="sourcePoint"/>
+                        <mxPoint x="840" y="230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="45" value="Client / Server Boundary" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#999999;fontStyle=1" parent="44" vertex="1" connectable="0">
+                    <mxGeometry x="-0.1615" y="1" relative="1" as="geometry">
+                        <mxPoint x="63" y="1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="50" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="48" target="8">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="list&lt;br&gt;instances" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="50">
+                    <mxGeometry x="-0.4" relative="1" as="geometry">
+                        <mxPoint x="13" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="57" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;rounded=1;" edge="1" parent="1" source="48" target="7">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="320" y="110"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="58" value="list model methods" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="57">
+                    <mxGeometry x="-0.3463" y="3" relative="1" as="geometry">
+                        <mxPoint x="66" y="3" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="48" value="Framespace API" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+                    <mxGeometry x="220" y="140" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="49" target="62">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="Framespace API Panel" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="640" y="20" width="160" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" style="edgeStyle=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="52" target="7">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="71" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;curved=1;startArrow=classic;startFill=1;dashed=1;" edge="1" parent="1" source="52" target="61">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="880" y="150"/>
+                            <mxPoint x="880" y="-55"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="52" value="Workspace Context" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+                    <mxGeometry x="700" y="140" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="62">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="640" y="30" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="600" y="30"/>
+                            <mxPoint x="600" y="30"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="67" value="launch" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="65">
+                    <mxGeometry x="0.2" y="-3" relative="1" as="geometry">
+                        <mxPoint x="-8" y="-3" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="62" value="Method Panel" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="220" y="20" width="340" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="66" value="Raw JSON" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+                    <mxGeometry x="235" y="-10" width="100" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="Rendered" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="-10" width="190" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="72" style="rounded=1;html=1;entryX=0.75;entryY=1;entryDx=0;entryDy=0;startArrow=none;startFill=0;edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="69" target="62">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="74" value="load data" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="72">
+                    <mxGeometry x="-0.5625" y="-1" relative="1" as="geometry">
+                        <mxPoint x="15" y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="69" value="Model API" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+                    <mxGeometry x="220" y="80" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Visualization" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="80" y="-170" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="75" value="Object Representations (Reps)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="-40" width="190" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="76" value="Reps" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+                    <mxGeometry x="390" y="-130" width="110" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="77" value="Visual Model" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="-70" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="78" value="Visual Rendering" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="-100" width="190" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="82" value="(c) 2026 &lt;a href=&quot;https://christoph.diy&quot;&gt;Christoph.diy&lt;/a&gt;&amp;nbsp;CC BY" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="700" y="-210" width="185" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="83" value="Framespace Genesis Workbench Architecture - v0.1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="245" y="-210" width="315" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

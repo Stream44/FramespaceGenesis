@@ -16,18 +16,15 @@ Framespace Genesis [![Tests](https://github.com/Stream44/FramespaceGenesis/actio
 Usage
 --
 
-[bun.sh](https://bun.sh) is required.
+[bun.sh](https://bun.sh) is required. Disable engines in `framespace.yaml` if one fails to run for you.
 
 After cloning run:
 
 ```
 bun install
 
-# Generate data for viewing
-bun test
-
 # Start the workbench
-bun dev
+bun run dev
 
 # Open browser
 open http://localhost:3000
@@ -39,11 +36,13 @@ Overview
 
 Framespace Genesis is not an abstract modeling tool. It is a modeling engine where the model is real TypeScript code that actually executes.
 
+![Framespace Genesis Overview](./workbench/Overview.svg)
+
 You author **components** — encapsulated TypeScript objects with properties and methods — and wire them together through **action invocations** that form a promise chain. When the model runs, method calls between components produce an **event log** of every boundary crossing: every payload that leaves one component and enters another.
 
-This event log, combined with a **schema** that maps components to visual elements, drives an interactive visualization. The visualization is not hand-drawn. It is generated from the execution trace. Change the code, re-run, and the visualization updates.
+This event log, combined with a **schema** that maps components to visual elements, drives an interactive visualization governed by a layout & animation model baked into the model schema. The UI updates in realtime as code is changed.
 
-The engine is built on [encapsulate](https://github.com/Stream44/encapsulate) which wraps TypeScript objects and intercepts boundary crossings transparently. You write normal TypeScript. The runtime kernel observes it.
+The engine is built on [encapsulate](https://github.com/Stream44/encapsulate) which wraps TypeScript objects and intercepts boundary crossings transparently using a runtime kernel.
 
 **What this enables:**
 - Go from concrete execution → abstract model → visual representation in one system
@@ -53,35 +52,41 @@ The engine is built on [encapsulate](https://github.com/Stream44/encapsulate) wh
 
 > **This project thrives on your collaboration!**
 
-Try creating a model for something you are interested in and share it!
+Try creating a model for something you are interested in and share it! See [CONTRIBUTING.md](./CONTRIBUTING.md) to get started.
 
 
 Implementation Approach
 ===
 
-A model is authored as TypeScript source files in two directories: **Model Components** and **Model Schema**.
+A model is authored using TypeScript source files holding components where each is an [encapsulated TypeScript object](https://github.com/Stream44/encapsulate/tree/main/src/spine-contracts/CapsuleSpineContract.v0) with properties, methods, and mappings. Component aspects (properties, methods) are mapped to schema components. Schema components may in turn map to higher-order schema components.
 
-Each component is an [encapsulated TypeScript object](https://github.com/Stream44/encapsulate/tree/main/src/spine-contracts/CapsuleSpineContract.v0) with properties, methods, and mappings. Component aspects (properties, methods) are mapped to schema components. Schema components may in turn map to higher-order schema components.
+The model code generates a single large  **capsule source tree** holding the whole graph of the model. This is the structual foundation for data processing and visualization.
 
-The model **executes by following the actual codepath** — object method calls create a promise chain. The encapsulate abstraction emits **boundary crossing events** whenever payloads exit or enter components and when components act internally.
+The model then **executes by following the actual codepath** — object method calls create a promise chain. The encapsulate abstraction emits **boundary crossing events** whenever payloads exit or enter components and when components act internally.
 
 These events are collected into a **boundary event log**. The schema and event log together drive a **schema-based, event-hydrated interactive visualization**.
 
 **The primary rule:** construct a **promise graph** through all action invocations that touches every attribute and ends up in a resolved state when the model has finished executing.
 
-![Implementation Approach](./engines/Concept.svg)
+<table>
+  <tr>
+    <td><img src="./engines/Concept.svg"></td>
+    <td><img src="./workbench/Architecture.svg"></td>
+  </tr>
+</table>
+
 
 Model Engines
 ===
 
 Engines implement queryable graph models to drive visualizations. Each engine supportes a specific set of model features.
 
-LadybugDB engine for Encapsulate
+Encapsulate Engines
 ---
 
-Query [encapsulate](https://github.com/Stream44/encapsulate) *Capsule Source Tree* and *Membrane Event* related data from the [ladybugdb.com](https://ladybugdb.com/) embedded database engine.
-
-See: [engines/Capsule-Ladybug-v0/](engines/Capsule-Ladybug-v0/)
+Query [encapsulate](https://github.com/Stream44/encapsulate) *Capsule Source Tree* and *Membrane Event* related data from:
+  - [`engines/Capsule-JsonFiles-v0/`](engines/Capsule-JsonFiles-v0/) - *JSON Files* on disk
+  - [`engines/Capsule-Ladybug-v0/`](engines/Capsule-Ladybug-v0/) - [ladybugdb.com](https://ladybugdb.com/) embedded database engine
 
 
 Framespace Workbench
@@ -91,7 +96,7 @@ The workbench single-page-application presents all supported visual models for a
 
 See: [workbench/](workbench/)
 
-![Framespace Workbench](./workbench/Screenshot.jpg)
+![Workbench Screenshot](./workbench/Screenshot.jpg)
 
 
 Visualizations
@@ -142,7 +147,3 @@ Repository DID: `did:repo:e7b46f0978c2cc02461b480b99a6589a2b6fa888`
 </table>
 
 (c) 2026 [Christoph.diy](https://christoph.diy) • Code: [LGPL](./LICENSE.txt) & [MIT](./LICENSE.txt) • Text: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) • Created with [Stream44.Studio](https://Stream44.Studio)
-
-### Contributing
-
-All contributions must contain a [Developer Certificate of Origin](https://github.com/Stream44/dco). To contribute, sign `DCO.md` once using `bun run sign-dco` and push branches to github using `bun run push` which will squash unsigned commits into a signed commit.
