@@ -29,6 +29,9 @@ bun run dev
 
 # Open browser
 open http://localhost:3000
+
+# Run tests (optional)
+bun run test
 ```
 
 

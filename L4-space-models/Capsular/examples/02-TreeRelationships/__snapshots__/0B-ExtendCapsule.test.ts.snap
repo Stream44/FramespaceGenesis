@@ -65,22 +65,19 @@ exports[`0B-ExtendCapsule fetchInstanceRelations 1`] = `
     "@stream44.studio/encapsulate/structs/Capsule:18": {
       "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
       "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
-      "instanceId": "f9f74bee2970efdd86c1b71299c914f2e7c430eb46d2dcc3176f87df9f842b63",
     },
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule:20": {
       "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule:20",
-      "instanceId": "b98db373f95c624d877b035f266189258460cb18a561f49686c157a312ce3fa3",
     },
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/ParentCapsule:28": {
       "capsuleName": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/ParentCapsule:28",
-      "instanceId": "01d55174daf96f171f3b73c6b32719226d80c5c574ac58f5f1deb201494d2467",
     },
   },
   "parentMap": {
-    "01d55174daf96f171f3b73c6b32719226d80c5c574ac58f5f1deb201494d2467": "b98db373f95c624d877b035f266189258460cb18a561f49686c157a312ce3fa3",
-    "f9f74bee2970efdd86c1b71299c914f2e7c430eb46d2dcc3176f87df9f842b63": "01d55174daf96f171f3b73c6b32719226d80c5c574ac58f5f1deb201494d2467",
+    "@stream44.studio/encapsulate/structs/Capsule:18": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/ParentCapsule:28",
+    "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/ParentCapsule:28": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule:20",
   },
 }
 `;
@@ -194,7 +191,6 @@ exports[`0B-ExtendCapsule getChildInstances 1`] = `
   {
     "capsuleName": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule",
     "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/ParentCapsule:28",
-    "instanceId": "01d55174daf96f171f3b73c6b32719226d80c5c574ac58f5f1deb201494d2467",
   },
 ]
 `;
@@ -204,17 +200,14 @@ exports[`0B-ExtendCapsule getInstancesBySpineTree 1`] = `
   {
     "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
     "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
-    "instanceId": "f9f74bee2970efdd86c1b71299c914f2e7c430eb46d2dcc3176f87df9f842b63",
   },
   {
     "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule",
     "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule:20",
-    "instanceId": "b98db373f95c624d877b035f266189258460cb18a561f49686c157a312ce3fa3",
   },
   {
     "capsuleName": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule",
     "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/ParentCapsule:28",
-    "instanceId": "01d55174daf96f171f3b73c6b32719226d80c5c574ac58f5f1deb201494d2467",
   },
 ]
 `;
@@ -223,7 +216,6 @@ exports[`0B-ExtendCapsule getRootInstance 1`] = `
 {
   "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule",
   "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule:20",
-  "instanceId": "b98db373f95c624d877b035f266189258460cb18a561f49686c157a312ce3fa3",
 }
 `;
 
