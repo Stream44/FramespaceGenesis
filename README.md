@@ -56,22 +56,14 @@ They are infinite data substrates constructed from simple repeating primitives.
 
 ### L6: Semantic Models
 
-Semantic models define dimensions in a metaspace by structuring primitives into linked objects with specific properties.
+Semantic models define dimensions in a space by structuring primitives into linked objects with specific properties.
 
 - **Capsular / Capsule Spine**
- - Conveniently query *Spine Instance Trees*, *Capsule Source Trees* and *Membrane Events* in a **Capsular** spaces.
+ - Conveniently query *Spine Instance Trees*, *Capsule Source Trees* and *Membrane Events* in **Capsular** spaces.
 
 ### L8: View Models
 
 View models structure one or more semantic models into derived layout visual canvases.
-
-### L10: Domain Models
-
-Domain models layer view models into topic specific observer oriented perspectives.
-
-### L12: Framespace Models
-
-Concrete instances of domain models creating purpose driven visual interfaces.
 
 ### L13: Workbench
 
