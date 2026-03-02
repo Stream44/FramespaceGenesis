@@ -10,7 +10,7 @@ const ENGINE_KEY = '@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/
 const PACKAGE_ROOT = dirname(dirname(dirname(dirname(import.meta.path))))
 
 const {
-    test: { describe, it, expect },
+    test: { describe, it, expect, expectSnapshotMatch },
     modelServer,
 } = await run(async ({ encapsulate, CapsulePropertyTypes, makeImportStack }: any) => {
     const spine = await encapsulate({
@@ -65,24 +65,24 @@ for (const { spineInstanceTreeId } of trees) {
 
         it('listCapsules', async () => {
             const result = await api.listCapsules(spineInstanceTreeId)
-            expect(normalize(result)).toMatchSnapshot()
+            await expectSnapshotMatch(normalize(result))
         })
 
         it('getCapsule (first capsule)', async () => {
             const list = await api.listCapsules(spineInstanceTreeId)
             const capsuleName = list.list[0]?.$id
             const result = await api.getCapsule(spineInstanceTreeId, capsuleName)
-            expect(normalize(result)).toMatchSnapshot()
+            await expectSnapshotMatch(normalize(result))
         })
 
         it('getSpineDeclarationTree', async () => {
             const result = await api.getSpineDeclarationTree(spineInstanceTreeId)
-            expect(normalize(result)).toMatchSnapshot()
+            await expectSnapshotMatch(normalize(result))
         })
 
         it('getSpineInstanceTree', async () => {
             const result = await api.getSpineInstanceTree(spineInstanceTreeId)
-            expect(normalize(result)).toMatchSnapshot()
+            await expectSnapshotMatch(normalize(result))
         })
     })
 }

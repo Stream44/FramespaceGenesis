@@ -6,8 +6,8 @@
     "private": true,
     "packageManager": "bun@1.3.9",
     "scripts": {
-        "test": "bun test",
-        "test:update": "UPDATE_SNAPSHOTS=1 bun test",
+        "test": "bun test L3 L4 L6 L8",
+        "test:update": "UPDATE_SNAPSHOTS=1 bun test L3 L4 L6 L8",
         "dev": "turbo run dev --parallel",
         "build": "turbo run build",
         "start": "turbo run start --parallel",
@@ -18,7 +18,7 @@
     "dependencies": {
         "lbug": "^0.14.3",
         "@stream44.studio/encapsulate": "^0.4.0-rc.25",
-        "@stream44.studio/t44": "^0.4.0-rc.27",
+        "@stream44.studio/t44": "^0.4.0-rc.28",
         "json-stable-stringify": "^1.3.0"
     },
     "devDependencies": {
