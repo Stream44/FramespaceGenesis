@@ -6,11 +6,7 @@ exports[`0F-MappedInstanceSharing fetchCapsuleRelations 1`] = `
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing": {},
   },
   "extends": {},
-  "found":   
-Set {
-    "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing",
-  }
-,
+  "found": {},
   "mappings": {
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing": [
       {

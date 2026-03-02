@@ -3,7 +3,7 @@
 import * as bunTest from 'bun:test'
 import { join } from 'path'
 import { readFile } from 'fs/promises'
-import { run } from 't44/standalone-rt'
+import { run } from '@stream44.studio/t44/standalone-rt'
 
 import { MODEL_NAME, runModel } from './0A-CapsuleAnatomy'
 
@@ -19,7 +19,7 @@ const {
             '#': {
                 test: {
                     type: CapsulePropertyTypes.Mapping,
-                    value: 't44/caps/ProjectTest',
+                    value: '@stream44.studio/t44/caps/ProjectTest',
                     options: { '#': { bunTest, env: {} } }
                 },
                 spineInstanceTrees: {

@@ -1,4 +1,4 @@
-import { run } from 't44/standalone-rt'
+import { run } from '@stream44.studio/t44/standalone-rt'
 import { join } from 'path'
 import { exists } from 'fs/promises'
 

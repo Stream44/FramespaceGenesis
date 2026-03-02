@@ -6,11 +6,7 @@ exports[`0D-MappedNewCapsule fetchCapsuleRelations 1`] = `
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule": {},
   },
   "extends": {},
-  "found":   
-Set {
-    "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule",
-  }
-,
+  "found": {},
   "mappings": {
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule": [
       {

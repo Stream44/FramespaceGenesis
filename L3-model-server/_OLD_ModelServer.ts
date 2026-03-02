@@ -1,4 +1,4 @@
-import { run } from 't44/standalone-rt'
+import { run } from '@stream44.studio/t44/standalone-rt'
 import { join, dirname } from 'path'
 import { existsSync, writeFileSync, readdirSync, readFileSync } from 'fs'
 import { spawnSync } from 'child_process'

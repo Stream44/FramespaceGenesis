@@ -6,11 +6,7 @@ exports[`0A-CapsuleAnatomy fetchCapsuleRelations 1`] = `
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy": {},
   },
   "extends": {},
-  "found":   
-Set {
-    "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
-  }
-,
+  "found": {},
   "mappings": {
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy": [
       {
@@ -328,16 +324,16 @@ exports[`0A-CapsuleAnatomy getCapsuleWithSource 1`] = `
 exports[`0A-CapsuleAnatomy getChildInstances 1`] = `
 [
   {
+    "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+    "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
+  },
+  {
     "capsuleName": "@acme/web-toolkit/caps/Logger",
     "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/caps/Logger:23",
   },
   {
     "capsuleName": "@acme/web-toolkit/structs/RequestSchema",
     "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema:30",
-  },
-  {
-    "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
-    "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
   },
 ]
 `;
@@ -345,20 +341,20 @@ exports[`0A-CapsuleAnatomy getChildInstances 1`] = `
 exports[`0A-CapsuleAnatomy getInstancesBySpineTree 1`] = `
 [
   {
-    "capsuleName": "@acme/web-toolkit/caps/Logger",
-    "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/caps/Logger:23",
-  },
-  {
-    "capsuleName": "@acme/web-toolkit/structs/RequestSchema",
-    "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema:30",
-  },
-  {
     "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
     "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
   },
   {
     "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
     "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33",
+  },
+  {
+    "capsuleName": "@acme/web-toolkit/caps/Logger",
+    "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/caps/Logger:23",
+  },
+  {
+    "capsuleName": "@acme/web-toolkit/structs/RequestSchema",
+    "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema:30",
   },
 ]
 `;
@@ -390,16 +386,6 @@ exports[`0A-CapsuleAnatomy listCapsules 1`] = `
 exports[`0A-CapsuleAnatomy listSpineInstanceTrees 1`] = `
 [
   {
-    "capsuleName": "@acme/web-toolkit/caps/Logger",
-    "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/caps/Logger:23",
-    "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
-  },
-  {
-    "capsuleName": "@acme/web-toolkit/structs/RequestSchema",
-    "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema:30",
-    "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
-  },
-  {
     "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
     "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
     "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
@@ -407,6 +393,16 @@ exports[`0A-CapsuleAnatomy listSpineInstanceTrees 1`] = `
   {
     "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
     "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33",
+    "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
+  },
+  {
+    "capsuleName": "@acme/web-toolkit/caps/Logger",
+    "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/caps/Logger:23",
+    "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
+  },
+  {
+    "capsuleName": "@acme/web-toolkit/structs/RequestSchema",
+    "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema:30",
     "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
   },
 ]

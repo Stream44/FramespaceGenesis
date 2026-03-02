@@ -1,4 +1,5 @@
 import { normalizeForSnapshot } from '../../L3-model-server/lib'
+import stringify from 'json-stable-stringify'
 
 export async function capsule({
     encapsulate,
@@ -27,7 +28,7 @@ export async function capsule({
                     }): void {
                         const { describe, it, expect, engine, spineInstanceTreeId, packageRoot, config } = opts
 
-                        const normalize = (obj: any) => normalizeForSnapshot(obj, packageRoot)
+                        const normalize = (obj: any) => JSON.parse(stringify(normalizeForSnapshot(obj, packageRoot)) || 'null')
 
                         // Dynamically discover all public query methods from ModelQueryMethods
                         // 'this' is the selfProxy whose ownKeys enumerates the full extends chain

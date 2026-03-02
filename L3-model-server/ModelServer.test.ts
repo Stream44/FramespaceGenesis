@@ -1,7 +1,7 @@
 #!/usr/bin/env bun test
 
 import * as bunTest from 'bun:test'
-import { run } from 't44/standalone-rt'
+import { run } from '@stream44.studio/t44/standalone-rt'
 
 const MOUNT_KEY = '@framespace.dev~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods'
 const ENGINE_KEY = '@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/JsonFiles-v0/ImportAPI'
@@ -16,7 +16,7 @@ const {
             '#': {
                 test: {
                     type: CapsulePropertyTypes.Mapping,
-                    value: 't44/caps/ProjectTest',
+                    value: '@stream44.studio/t44/caps/ProjectTest',
                     options: { '#': { bunTest, env: {} } }
                 },
                 modelServer: {

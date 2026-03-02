@@ -20,7 +20,7 @@
         "t44": "^0.4.0-rc.23"
     },
     "devDependencies": {
-        "@stream44.studio/dco": "^0.3.0-rc.26",
+        "@stream44.studio/dco": "^0.3.0-rc.27",
         "@types/bun": "^1.3.4",
         "@types/node": "^25.0.3",
         "bun-types": "^1.3.4",
