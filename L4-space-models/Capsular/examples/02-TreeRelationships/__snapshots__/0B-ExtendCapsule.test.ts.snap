@@ -48,10 +48,6 @@ Set {
 exports[`0B-ExtendCapsule fetchInstanceRelations 1`] = `
 {
   "capsuleInfo": {
-    "@stream44.studio/encapsulate/structs/Capsule:18": {
-      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
-      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
-    },
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule:20": {
       "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule:20",
@@ -59,13 +55,13 @@ exports[`0B-ExtendCapsule fetchInstanceRelations 1`] = `
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/ParentCapsule:28": {
       "capsuleName": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/ParentCapsule:28",
+    },
+    "@stream44.studio/encapsulate/structs/Capsule:18": {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
     },
   },
   "instances": {
-    "@stream44.studio/encapsulate/structs/Capsule:18": {
-      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
-      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
-    },
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule:20": {
       "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule:20",
@@ -74,19 +70,23 @@ exports[`0B-ExtendCapsule fetchInstanceRelations 1`] = `
       "capsuleName": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/ParentCapsule:28",
     },
+    "@stream44.studio/encapsulate/structs/Capsule:18": {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
+    },
   },
   "parentMap": {
-    "@stream44.studio/encapsulate/structs/Capsule:18": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/ParentCapsule:28",
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/ParentCapsule:28": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule:20",
+    "@stream44.studio/encapsulate/structs/Capsule:18": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/ParentCapsule:28",
   },
 }
 `;
 
 exports[`0B-ExtendCapsule getCapsuleNamesBySpineTree 1`] = `
 [
-  "@stream44.studio/encapsulate/structs/Capsule",
   "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule",
   "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule",
+  "@stream44.studio/encapsulate/structs/Capsule",
 ]
 `;
 
