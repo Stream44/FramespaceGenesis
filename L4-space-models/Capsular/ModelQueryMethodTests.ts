@@ -1,5 +1,4 @@
 import { normalizeForSnapshot } from '../../L3-model-server/lib'
-import stringify from 'json-stable-stringify'
 
 export async function capsule({
     encapsulate,
@@ -21,14 +20,15 @@ export async function capsule({
                         describe: any,
                         it: any,
                         expect: any,
+                        expectSnapshotMatch: (actual: any, opts?: { strict?: boolean }) => Promise<void>,
                         engine: any,
                         spineInstanceTreeId: string,
                         packageRoot: string,
                         config?: Record<string, Record<string, any>>
                     }): void {
-                        const { describe, it, expect, engine, spineInstanceTreeId, packageRoot, config } = opts
+                        const { describe, it, expect, expectSnapshotMatch, engine, spineInstanceTreeId, packageRoot, config } = opts
 
-                        const normalize = (obj: any) => JSON.parse(stringify(normalizeForSnapshot(obj, packageRoot)) || 'null')
+                        const normalize = (obj: any) => normalizeForSnapshot(obj, packageRoot)
 
                         // Dynamically discover all public query methods from ModelQueryMethods
                         // 'this' is the selfProxy whose ownKeys enumerates the full extends chain
@@ -41,7 +41,7 @@ export async function capsule({
                                 const extra = config?.[methodName]
                                 const extraArgs = extra ? Object.values(extra) : []
                                 const result = await engine[methodName](spineInstanceTreeId, ...extraArgs)
-                                expect(normalize(result)).toMatchSnapshot()
+                                await expectSnapshotMatch(normalize(result))
                             })
                         }
                     }

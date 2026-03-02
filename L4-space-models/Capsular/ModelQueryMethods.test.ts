@@ -6,7 +6,7 @@ import { readdir, stat } from 'fs/promises'
 import { run } from '@stream44.studio/t44/standalone-rt'
 
 const {
-    test: { describe, it, expect },
+    test: { describe, it, expect, expectSnapshotMatch },
     modelEngines,
     spineInstanceTrees,
     modelQueryMethodTests,
@@ -89,6 +89,7 @@ for (const engineName of engineNames) {
                     describe,
                     it,
                     expect,
+                    expectSnapshotMatch,
                     engine: modelEngines.getEngine(),
                     spineInstanceTreeId: capsule.MODEL_NAME,
                     packageRoot: join(import.meta.dir, '..', '..'),

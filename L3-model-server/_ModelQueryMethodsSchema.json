@@ -1,55 +1,87 @@
 {
-    "namespace": "@framespace.dev~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods",
-    "description": "Methods to query the *Quadrant Model* for a given *Spine Instance Tree*",
-    "basePath": "/api/@framespace.dev~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods",
+    "namespace": "@framespace.dev~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods",
+    "description": "Methods to query the *Capsule Spine Model* of the selected *Spine Instance Tree*",
+    "basePath": "/api/@framespace.dev~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods",
     "methods": {
-        "getColumnTree": {
+        "listCapsules": {
             "args": [
                 {
                     "name": "spineInstanceTreeId",
                     "type": "string"
-                }
-            ],
-            "description": "Get the column tree for a spine instance. Columns are detected via struct dependency on schema/Column. Parent-child hierarchy is derived from struct deps between columns. Each column node includes a capsules[] array of element capsules tagged with that column.",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
-                    "filterField": "$id"
-                }
-            }
-        },
-        "getRowTree": {
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "description": "Get the row tree for a spine instance. Rows are detected via struct dependency on schema/Row. Parent-child hierarchy is derived from struct deps between rows. Each row node includes a capsules[] array of element capsules tagged with that row.",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
-                    "filterField": "$id"
-                }
-            }
-        },
-        "getVisualization": {
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "description": "Get the full Quadrant visualization data including column tree, row tree, and grid placement for rendering.",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
-                    "filterField": "$id"
                 },
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/Models/Panel": {
-                    "label": "Quadrant Visualization",
-                    "description": "A table-rooted nested spatial layout for domain elements."
+                {
+                    "name": "resolveRefs",
+                    "type": "boolean",
+                    "optional": true
                 }
+            ],
+            "description": "List all capsules in the tree.",
+            "tags": {
+                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
+                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
+                    "filterField": "$id"
+                }
+            }
+        },
+        "getCapsule": {
+            "args": [
+                {
+                    "name": "spineInstanceTreeId",
+                    "type": "string"
+                },
+                {
+                    "name": "capsuleName",
+                    "type": "string"
+                }
+            ],
+            "description": "Get a capsule with full CST structure including spine contracts, property contracts, and properties.",
+            "tags": {
+                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
+                    "discovery": "listCapsules",
+                    "filterField": "$id"
+                }
+            }
+        },
+        "getSpineDeclarationTree": {
+            "args": [
+                {
+                    "name": "spineInstanceTreeId",
+                    "type": "string"
+                },
+                {
+                    "name": "includeProperties",
+                    "type": "boolean",
+                    "optional": true
+                }
+            ],
+            "description": "Get the declaration tree (capsule definitions) for a spineInstanceTreeId.",
+            "tags": {
+                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
+                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
+                    "filterField": "$id"
+                }
+            }
+        },
+        "getSpineInstanceTree": {
+            "args": [
+                {
+                    "name": "spineInstanceTreeId",
+                    "type": "string"
+                }
+            ],
+            "description": "Get the instance tree (runtime instances) for a spineInstanceTreeId.",
+            "tags": {
+                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
+                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
+                    "filterField": "$id"
+                }
+            }
+        },
+        "getSpineInstanceTrees": {
+            "args": [],
+            "description": "List all distinct spine instance tree IDs in the graph.",
+            "tags": {
+                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {}
             }
         }
     }

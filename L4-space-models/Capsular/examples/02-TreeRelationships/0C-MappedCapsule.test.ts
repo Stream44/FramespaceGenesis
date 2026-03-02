@@ -7,7 +7,7 @@ import { run } from '@stream44.studio/t44/standalone-rt'
 import { MODEL_NAME, runModel } from './0C-MappedCapsule'
 
 const {
-    test: { describe, it, expect },
+    test: { describe, it, expect, expectSnapshotMatch },
     spineInstanceTrees,
     modelEngines,
     modelQueryMethodTests,
@@ -64,6 +64,7 @@ describe('0C-MappedCapsule', () => {
         describe,
         it,
         expect,
+        expectSnapshotMatch,
         engine: modelEngines.getEngine(),
         spineInstanceTreeId: MODEL_NAME,
         packageRoot: join(import.meta.dir, '..', '..', '..', '..'),

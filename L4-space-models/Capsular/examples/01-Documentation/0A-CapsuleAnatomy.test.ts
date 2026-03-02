@@ -8,7 +8,7 @@ import { run } from '@stream44.studio/t44/standalone-rt'
 import { MODEL_NAME, runModel } from './0A-CapsuleAnatomy'
 
 const {
-    test: { describe, it, expect },
+    test: { describe, it, expect, expectSnapshotMatch },
     spineInstanceTrees,
     modelEngines,
     modelQueryMethodTests,
@@ -64,6 +64,7 @@ describe('0A-CapsuleAnatomy', () => {
         describe,
         it,
         expect,
+        expectSnapshotMatch,
         engine: modelEngines.getEngine(),
         spineInstanceTreeId: MODEL_NAME,
         packageRoot: join(import.meta.dir, '..', '..', '..', '..'),
@@ -279,11 +280,11 @@ describe('0A-CapsuleAnatomy — Documentation Structure', () => {
         cstsData = csts
     })
 
-    it('sit structure', () => {
-        expect(sitData).toMatchSnapshot()
+    it('sit structure', async () => {
+        await expectSnapshotMatch(sitData)
     })
 
-    it('cst structures', () => {
-        expect(cstsData).toMatchSnapshot()
+    it('cst structures', async () => {
+        await expectSnapshotMatch(cstsData)
     })
 })

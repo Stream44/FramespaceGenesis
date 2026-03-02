@@ -1,0 +1,486 @@
+{
+  "cst structures #1": {
+    "@<org>/<project>/FeatureY": {
+      "<project>/FeatureY.ts:23": {
+        "capsuleSourceUriLineRef": "@<org>/<project>/FeatureY:23",
+        "source": {
+          "capsuleName": "@<org>/<project>/FeatureY"
+        },
+        "spineContracts": {
+          "#@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0": {
+            "propertyContracts": {
+              "#": {
+                "properties": {
+                  "featureMethod": {
+                    "type": "CapsulePropertyTypes.Function"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "@<org>/<project>/MyCapsule": {
+      "<project>/MyCapsule.ts:33": {
+        "capsuleSourceUriLineRef": "@<org>/<project>/MyCapsule:33",
+        "source": {
+          "capsuleName": "@<org>/<project>/MyCapsule"
+        },
+        "spineContracts": {
+          "#@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0": {
+            "propertyContracts": {
+              "#": {
+                "properties": {
+                  "$#@<org>/<project>/AspectX": {
+                    "as": "$#@<org>/<project>/AspectX",
+                    "mappedModuleUri": "@<org>/<project>/structs/StructA",
+                    "propertyContractDelegate": "#@<org>/<project>/structs/StructA",
+                    "type": "CapsulePropertyTypes.Mapping"
+                  },
+                  "mapping1": {
+                    "mappedModuleUri": "@<org>/<project>/FeatureY",
+                    "type": "CapsulePropertyTypes.Mapping"
+                  },
+                  "method1": {
+                    "type": "CapsulePropertyTypes.Function"
+                  },
+                  "property1": {
+                    "type": "CapsulePropertyTypes.Literal"
+                  }
+                }
+              },
+              "#@<org>/<project>/structs/StructA": {
+                "as": "$#@<org>/<project>/AspectX",
+                "propertyContractUri": "@<org>/<project>/structs/StructA"
+              }
+            }
+          }
+        }
+      }
+    },
+    "@<org>/<project>/structs/StructA": {
+      "<project>/structs/StructA.ts:30": {
+        "capsuleSourceUriLineRef": "@<org>/<project>/structs/StructA:30",
+        "source": {
+          "capsuleName": "@<org>/<project>/structs/StructA"
+        },
+        "spineContracts": {
+          "#@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0": {
+            "propertyContracts": {
+              "#": {
+                "properties": {
+                  "instanceMethod2": {
+                    "type": "CapsulePropertyTypes.Function"
+                  },
+                  "protoMethod1": {
+                    "type": "CapsulePropertyTypes.Function"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "fetchCapsuleRelations #1": {
+    "capsuleInfo": {
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy": {}
+    },
+    "extends": {},
+    "found": {},
+    "mappings": {
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy": [
+        {
+          "delegate": "#@stream44.studio/encapsulate/structs/Capsule",
+          "propName": "#@stream44.studio/encapsulate/structs/Capsule",
+          "target": "@stream44.studio/encapsulate/structs/Capsule"
+        }
+      ]
+    },
+    "properties": {
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy": [
+        {
+          "pcOptions": null,
+          "propName": "property1",
+          "propertyContract": "#",
+          "propertyContractDelegate": "",
+          "propertyContractUri": "",
+          "propertyType": "CapsulePropertyTypes.Literal",
+          "valueExpression": "'val1'"
+        },
+        {
+          "pcOptions": null,
+          "propName": "logger",
+          "propertyContract": "#",
+          "propertyContractDelegate": "",
+          "propertyContractUri": "",
+          "propertyType": "CapsulePropertyTypes.Mapping",
+          "valueExpression": "'./caps/Logger'"
+        },
+        {
+          "pcOptions": null,
+          "propName": "handleRequest",
+          "propertyContract": "#",
+          "propertyContractDelegate": "",
+          "propertyContractUri": "",
+          "propertyType": "CapsulePropertyTypes.Function",
+          "valueExpression": "function (this: any, route: string): string {\n                            this.logger.log(`incoming ${route}`)\n                            return this['$#@acme/web-toolkit/Validated'].validate(`/api/v1${route}`)\n                        }"
+        },
+        {
+          "pcOptions": null,
+          "propName": "#@stream44.studio/encapsulate/structs/Capsule",
+          "propertyContract": "#",
+          "propertyContractDelegate": "#@stream44.studio/encapsulate/structs/Capsule",
+          "propertyContractUri": "",
+          "propertyType": "CapsulePropertyTypes.Mapping",
+          "valueExpression": "\"@stream44.studio/encapsulate/structs/Capsule\""
+        },
+        {
+          "pcOptions": null,
+          "propName": "$#@acme/web-toolkit/Validated",
+          "propertyContract": "#",
+          "propertyContractDelegate": "#@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema",
+          "propertyContractUri": "",
+          "propertyType": "CapsulePropertyTypes.Mapping",
+          "valueExpression": "\"@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema\""
+        }
+      ]
+    }
+  },
+  "fetchInstanceRelations #1": {
+    "capsuleInfo": {
+      "@stream44.studio/encapsulate/structs/Capsule:18": {
+        "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+        "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+      },
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33"
+      },
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/caps/Logger:23": {
+        "capsuleName": "@acme/web-toolkit/caps/Logger",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/caps/Logger:23"
+      },
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema:30": {
+        "capsuleName": "@acme/web-toolkit/structs/RequestSchema",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema:30"
+      }
+    },
+    "instances": {
+      "@stream44.studio/encapsulate/structs/Capsule:18": {
+        "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+        "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+      },
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33"
+      },
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/caps/Logger:23": {
+        "capsuleName": "@acme/web-toolkit/caps/Logger",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/caps/Logger:23"
+      },
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema:30": {
+        "capsuleName": "@acme/web-toolkit/structs/RequestSchema",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema:30"
+      }
+    },
+    "parentMap": {
+      "@stream44.studio/encapsulate/structs/Capsule:18": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33",
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/caps/Logger:23": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33",
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema:30": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33"
+    }
+  },
+  "getCapsuleNamesBySpineTree #1": [
+    "@acme/web-toolkit/caps/Logger",
+    "@acme/web-toolkit/structs/RequestSchema",
+    "@stream44.studio/encapsulate/structs/Capsule",
+    "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy"
+  ],
+  "getCapsuleSpineTree_data #1": [
+    {
+      "p": {
+        "declarationLine": -1,
+        "definitionEndLine": -1,
+        "definitionStartLine": -1,
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::prop::#@stream44.studio/encapsulate/structs/Capsule",
+        "mappedModuleUri": "@stream44.studio/encapsulate/structs/Capsule",
+        "name": "#@stream44.studio/encapsulate/structs/Capsule",
+        "propertyContractDelegate": "#@stream44.studio/encapsulate/structs/Capsule",
+        "propertyContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "propertyType": "CapsulePropertyTypes.Mapping",
+        "valueExpression": "\"@stream44.studio/encapsulate/structs/Capsule\"",
+        "valueType": "string"
+      },
+      "pc": {
+        "contractKey": "#",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "options": null,
+        "propertyContractUri": "",
+        "spineContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      },
+      "s": {
+        "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      }
+    },
+    {
+      "p": {
+        "declarationLine": -1,
+        "definitionEndLine": -1,
+        "definitionStartLine": -1,
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::prop::$#@acme/web-toolkit/Validated",
+        "mappedModuleUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema",
+        "name": "$#@acme/web-toolkit/Validated",
+        "propertyContractDelegate": "#@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema",
+        "propertyContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "propertyType": "CapsulePropertyTypes.Mapping",
+        "valueExpression": "\"@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema\"",
+        "valueType": "string"
+      },
+      "pc": {
+        "contractKey": "#",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "options": null,
+        "propertyContractUri": "",
+        "spineContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      },
+      "s": {
+        "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      }
+    },
+    {
+      "p": {
+        "declarationLine": 22,
+        "definitionEndLine": 28,
+        "definitionStartLine": 22,
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::prop::handleRequest",
+        "mappedModuleUri": "",
+        "name": "handleRequest",
+        "propertyContractDelegate": "",
+        "propertyContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "propertyType": "CapsulePropertyTypes.Function",
+        "valueExpression": "function (this: any, route: string): string {\n                            this.logger.log(`incoming ${route}`)\n                            return this['$#@acme/web-toolkit/Validated'].validate(`/api/v1${route}`)\n                        }",
+        "valueType": "(this: any, route: string) => string"
+      },
+      "pc": {
+        "contractKey": "#",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "options": null,
+        "propertyContractUri": "",
+        "spineContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      },
+      "s": {
+        "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      }
+    },
+    {
+      "p": {
+        "declarationLine": 18,
+        "definitionEndLine": 21,
+        "definitionStartLine": 18,
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::prop::logger",
+        "mappedModuleUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/caps/Logger",
+        "name": "logger",
+        "propertyContractDelegate": "",
+        "propertyContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "propertyType": "CapsulePropertyTypes.Mapping",
+        "valueExpression": "'./caps/Logger'",
+        "valueType": "string"
+      },
+      "pc": {
+        "contractKey": "#",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "options": null,
+        "propertyContractUri": "",
+        "spineContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      },
+      "s": {
+        "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      }
+    },
+    {
+      "p": {
+        "declarationLine": 14,
+        "definitionEndLine": 17,
+        "definitionStartLine": 14,
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::prop::property1",
+        "mappedModuleUri": "",
+        "name": "property1",
+        "propertyContractDelegate": "",
+        "propertyContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "propertyType": "CapsulePropertyTypes.Literal",
+        "valueExpression": "'val1'",
+        "valueType": "string"
+      },
+      "pc": {
+        "contractKey": "#",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "options": null,
+        "propertyContractUri": "",
+        "spineContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      },
+      "s": {
+        "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      }
+    },
+    {
+      "p": null,
+      "pc": {
+        "contractKey": "#@stream44.studio/encapsulate/structs/Capsule",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#@stream44.studio/encapsulate/structs/Capsule",
+        "options": null,
+        "propertyContractUri": "@stream44.studio/encapsulate/structs/Capsule",
+        "spineContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      },
+      "s": {
+        "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      }
+    },
+    {
+      "p": null,
+      "pc": {
+        "contractKey": "#@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema",
+        "options": null,
+        "propertyContractUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema",
+        "spineContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      },
+      "s": {
+        "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      }
+    }
+  ],
+  "getCapsuleWithSource #1": {
+    "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33": {
+      "cacheBustVersion": 21,
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33",
+      "cstFilepath": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/.~o/encapsulate.dev/static-analysis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33.csts.json",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy"
+    },
+    "source": {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
+      "declarationLine": 7,
+      "definitionEndLine": 31,
+      "definitionStartLine": 7,
+      "extendsCapsule": "",
+      "extendsCapsuleUri": "",
+      "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33::source",
+      "importStackLine": 33,
+      "moduleUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
+      "optionsEndLine": 35,
+      "optionsStartLine": 31
+    }
+  },
+  "getChildInstances #1": [
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@acme/web-toolkit/caps/Logger",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/caps/Logger:23"
+    },
+    {
+      "capsuleName": "@acme/web-toolkit/structs/RequestSchema",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema:30"
+    }
+  ],
+  "getInstancesBySpineTree #1": [
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33"
+    },
+    {
+      "capsuleName": "@acme/web-toolkit/caps/Logger",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/caps/Logger:23"
+    },
+    {
+      "capsuleName": "@acme/web-toolkit/structs/RequestSchema",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema:30"
+    }
+  ],
+  "getRootInstance #1": {
+    "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
+    "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33"
+  },
+  "listCapsules #1": [
+    {
+      "capsuleName": "@acme/web-toolkit/caps/Logger"
+    },
+    {
+      "capsuleName": "@acme/web-toolkit/structs/RequestSchema"
+    },
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy"
+    }
+  ],
+  "listSpineInstanceTrees #1": [
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy"
+    },
+    {
+      "capsuleName": "@acme/web-toolkit/caps/Logger",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/caps/Logger:23",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy"
+    },
+    {
+      "capsuleName": "@acme/web-toolkit/structs/RequestSchema",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema:30",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy"
+    }
+  ],
+  "sit structure #1": {
+    "capsuleInstances": {
+      "46aa0c89cfc9ab894d40d921b7ec4aae26e267128c25ea02a456e39e1d1fa954": {
+        "capsuleName": "@<org>/<project>/structs/StructA",
+        "capsuleSourceUriLineRef": "@<org>/<project>/structs/StructA:30"
+      },
+      "c288b9d371616707dcbdd09a746bf4664e71b5406234bdce5c8330e5ab5fa38b": {
+        "capsuleName": "@<org>/<project>/MyCapsule",
+        "capsuleSourceUriLineRef": "@<org>/<project>/MyCapsule:33"
+      },
+      "d2c2cd5e58bbc3333b5921b983532fb5214d7181c29fa2ef5be7d89f3a776bf2": {
+        "capsuleName": "@<org>/<project>/FeatureY",
+        "capsuleSourceUriLineRef": "@<org>/<project>/FeatureY:23"
+      }
+    },
+    "capsules": {
+      "@<org>/<project>/FeatureY": {
+        "capsuleSourceUriLineRef": "@<org>/<project>/FeatureY:23"
+      },
+      "@<org>/<project>/MyCapsule": {
+        "capsuleSourceUriLineRef": "@<org>/<project>/MyCapsule:33"
+      },
+      "@<org>/<project>/structs/StructA": {
+        "capsuleSourceUriLineRef": "@<org>/<project>/structs/StructA:30"
+      }
+    },
+    "rootCapsule": {
+      "capsuleSourceUriLineRef": "@<org>/<project>/MyCapsule:33",
+      "capsuleSourceUriLineRefInstanceId": "c288b9d371616707dcbdd09a746bf4664e71b5406234bdce5c8330e5ab5fa38b"
+    }
+  }
+}
