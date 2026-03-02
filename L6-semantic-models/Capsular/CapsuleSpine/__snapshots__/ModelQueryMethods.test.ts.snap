@@ -1,0 +1,684 @@
+// Bun Snapshot v1, https://bun.sh/docs/test/snapshots
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy listCapsules 1`] = `
+{
+  "#": "Capsules",
+  "list": [
+    {
+      "#": "Capsule",
+      "$id": "@acme/web-toolkit/caps/Logger",
+    },
+    {
+      "#": "Capsule",
+      "$id": "@acme/web-toolkit/structs/RequestSchema",
+    },
+    {
+      "#": "Capsule",
+      "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
+    },
+  ],
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy getCapsule (first capsule) 1`] = `
+{
+  "#": "Capsule",
+  "$id": "@acme/web-toolkit/caps/Logger",
+  "cacheBustVersion": 21,
+  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/caps/Logger:23",
+  "source": {
+    "#": "Capsule/Source",
+    "capsuleName": "@acme/web-toolkit/caps/Logger",
+    "declarationLine": 9,
+    "definitionEndLine": 21,
+    "definitionStartLine": 9,
+    "importStackLine": 23,
+    "moduleUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/caps/Logger",
+    "optionsEndLine": 25,
+    "optionsStartLine": 21,
+  },
+  "spineContracts": {
+    "#": "Capsule/SpineContracts",
+  },
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy getSpineDeclarationTree 1`] = `
+{
+  "#": "SpineDeclarationTree",
+  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
+  "rootCapsule": {
+    "#": "Capsule",
+    "$id": "@acme/web-toolkit/caps/Logger",
+    "mappings": {
+      "#": "Capsule/Mappings",
+      "#@stream44.studio/encapsulate/structs/Capsule": {
+        "#": "Capsule/PropertyContractMapping",
+        "capsule": {
+          "#": "Capsule",
+          "$id": "@stream44.studio/encapsulate/structs/Capsule",
+          "properties": {
+            "#": "Capsule/Properties",
+          },
+        },
+        "isPropertyContractDelegate": true,
+      },
+    },
+    "properties": {
+      "#": "Capsule/Properties",
+    },
+  },
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy getSpineInstanceTree 1`] = `
+{
+  "#": "SpineInstanceTree",
+  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
+  "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33": {
+    "#": "CapsuleInstance",
+    "$id": "c288b9d371616707dcbdd09a746bf4664e71b5406234bdce5c8330e5ab5fa38b",
+    "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
+    "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33",
+    "children": {
+      "#": "CapsuleInstance/Children",
+      "list": [
+        {
+          "#": "CapsuleInstance",
+          "$id": "46aa0c89cfc9ab894d40d921b7ec4aae26e267128c25ea02a456e39e1d1fa954",
+          "capsuleName": "@acme/web-toolkit/structs/RequestSchema",
+          "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema:30",
+        },
+        {
+          "#": "CapsuleInstance",
+          "$id": "d2c2cd5e58bbc3333b5921b983532fb5214d7181c29fa2ef5be7d89f3a776bf2",
+          "capsuleName": "@acme/web-toolkit/caps/Logger",
+          "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/caps/Logger:23",
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule listCapsules 1`] = `
+{
+  "#": "Capsules",
+  "list": [
+    {
+      "#": "Capsule",
+      "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule",
+    },
+  ],
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule getCapsule (first capsule) 1`] = `
+{
+  "#": "Capsule",
+  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule",
+  "cacheBustVersion": 21,
+  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule:19",
+  "source": {
+    "#": "Capsule/Source",
+    "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule",
+    "declarationLine": 7,
+    "definitionEndLine": 17,
+    "definitionStartLine": 7,
+    "importStackLine": 19,
+    "moduleUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule",
+    "optionsEndLine": 21,
+    "optionsStartLine": 17,
+  },
+  "spineContracts": {
+    "#": "Capsule/SpineContracts",
+  },
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule getSpineDeclarationTree 1`] = `
+{
+  "#": "SpineDeclarationTree",
+  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule",
+  "rootCapsule": {
+    "#": "Capsule",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule",
+    "mappings": {
+      "#": "Capsule/Mappings",
+      "#@stream44.studio/encapsulate/structs/Capsule": {
+        "#": "Capsule/PropertyContractMapping",
+        "capsule": {
+          "#": "Capsule",
+          "$id": "@stream44.studio/encapsulate/structs/Capsule",
+          "properties": {
+            "#": "Capsule/Properties",
+          },
+        },
+        "isPropertyContractDelegate": true,
+      },
+    },
+    "properties": {
+      "#": "Capsule/Properties",
+    },
+  },
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule getSpineInstanceTree 1`] = `
+{
+  "#": "SpineInstanceTree",
+  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule",
+  "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule:19": {
+    "#": "CapsuleInstance",
+    "$id": "bca36b328c6e8e5af43e548c9bd696858942d498002519f33ca8aee117dc7967",
+    "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule",
+    "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule:19",
+  },
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule listCapsules 1`] = `
+{
+  "#": "Capsules",
+  "list": [
+    {
+      "#": "Capsule",
+      "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule",
+    },
+    {
+      "#": "Capsule",
+      "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule",
+    },
+  ],
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule getCapsule (first capsule) 1`] = `
+{
+  "#": "Capsule",
+  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule",
+  "cacheBustVersion": 21,
+  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule:20",
+  "source": {
+    "#": "Capsule/Source",
+    "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule",
+    "declarationLine": 7,
+    "definitionEndLine": 17,
+    "definitionStartLine": 7,
+    "extendsCapsule": "./caps/ParentCapsule",
+    "extendsCapsuleUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/ParentCapsule",
+    "importStackLine": 20,
+    "moduleUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule",
+    "optionsEndLine": 22,
+    "optionsStartLine": 17,
+  },
+  "spineContracts": {
+    "#": "Capsule/SpineContracts",
+  },
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule getSpineDeclarationTree 1`] = `
+{
+  "#": "SpineDeclarationTree",
+  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule",
+  "rootCapsule": {
+    "#": "Capsule",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule",
+    "mappings": {
+      "#": "Capsule/Mappings",
+      "#@stream44.studio/encapsulate/structs/Capsule": {
+        "#": "Capsule/PropertyContractMapping",
+        "capsule": {
+          "#": "Capsule",
+          "$id": "@stream44.studio/encapsulate/structs/Capsule",
+          "properties": {
+            "#": "Capsule/Properties",
+          },
+        },
+        "isPropertyContractDelegate": true,
+      },
+    },
+    "properties": {
+      "#": "Capsule/Properties",
+    },
+  },
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule getSpineInstanceTree 1`] = `
+{
+  "#": "SpineInstanceTree",
+  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule",
+  "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule:20": {
+    "#": "CapsuleInstance",
+    "$id": "b98db373f95c624d877b035f266189258460cb18a561f49686c157a312ce3fa3",
+    "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule",
+    "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule:20",
+    "children": {
+      "#": "CapsuleInstance/Children",
+      "list": [
+        {
+          "#": "CapsuleInstance",
+          "$id": "01d55174daf96f171f3b73c6b32719226d80c5c574ac58f5f1deb201494d2467",
+          "capsuleName": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule",
+          "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/ParentCapsule:28",
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule listCapsules 1`] = `
+{
+  "#": "Capsules",
+  "list": [
+    {
+      "#": "Capsule",
+      "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule",
+    },
+  ],
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule getCapsule (first capsule) 1`] = `
+{
+  "#": "Capsule",
+  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule",
+  "cacheBustVersion": 21,
+  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule:23",
+  "source": {
+    "#": "Capsule/Source",
+    "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule",
+    "declarationLine": 7,
+    "definitionEndLine": 21,
+    "definitionStartLine": 7,
+    "importStackLine": 23,
+    "moduleUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule",
+    "optionsEndLine": 25,
+    "optionsStartLine": 21,
+  },
+  "spineContracts": {
+    "#": "Capsule/SpineContracts",
+  },
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule getSpineDeclarationTree 1`] = `
+{
+  "#": "SpineDeclarationTree",
+  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule",
+  "rootCapsule": {
+    "#": "Capsule",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule",
+    "mappings": {
+      "#": "Capsule/Mappings",
+      "#@stream44.studio/encapsulate/structs/Capsule": {
+        "#": "Capsule/PropertyContractMapping",
+        "capsule": {
+          "#": "Capsule",
+          "$id": "@stream44.studio/encapsulate/structs/Capsule",
+          "properties": {
+            "#": "Capsule/Properties",
+          },
+        },
+        "isPropertyContractDelegate": true,
+      },
+    },
+    "properties": {
+      "#": "Capsule/Properties",
+    },
+  },
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule getSpineInstanceTree 1`] = `
+{
+  "#": "SpineInstanceTree",
+  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule",
+  "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule:23": {
+    "#": "CapsuleInstance",
+    "$id": "b6f3f0b497e58531e08189374489a64127b39148339f4287b8a7beb897319c8b",
+    "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule",
+    "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule:23",
+  },
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule listCapsules 1`] = `
+{
+  "#": "Capsules",
+  "list": [
+    {
+      "#": "Capsule",
+      "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule",
+    },
+  ],
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule getCapsule (first capsule) 1`] = `
+{
+  "#": "Capsule",
+  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule",
+  "cacheBustVersion": 21,
+  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule:28",
+  "source": {
+    "#": "Capsule/Source",
+    "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule",
+    "declarationLine": 7,
+    "definitionEndLine": 26,
+    "definitionStartLine": 7,
+    "importStackLine": 28,
+    "moduleUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule",
+    "optionsEndLine": 30,
+    "optionsStartLine": 26,
+  },
+  "spineContracts": {
+    "#": "Capsule/SpineContracts",
+  },
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule getSpineDeclarationTree 1`] = `
+{
+  "#": "SpineDeclarationTree",
+  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule",
+  "rootCapsule": {
+    "#": "Capsule",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule",
+    "mappings": {
+      "#": "Capsule/Mappings",
+      "#@stream44.studio/encapsulate/structs/Capsule": {
+        "#": "Capsule/PropertyContractMapping",
+        "capsule": {
+          "#": "Capsule",
+          "$id": "@stream44.studio/encapsulate/structs/Capsule",
+          "properties": {
+            "#": "Capsule/Properties",
+          },
+        },
+        "isPropertyContractDelegate": true,
+      },
+    },
+    "properties": {
+      "#": "Capsule/Properties",
+    },
+  },
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule getSpineInstanceTree 1`] = `
+{
+  "#": "SpineInstanceTree",
+  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule",
+  "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule:28": {
+    "#": "CapsuleInstance",
+    "$id": "277506172bcfd8218b305caf9f8559089bedc0133015e0c66db2189cebce09c0",
+    "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule",
+    "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule:28",
+    "children": {
+      "#": "CapsuleInstance/Children",
+      "list": [
+        {
+          "#": "CapsuleInstance",
+          "$id": "96799a3c76bdae13aec376a11a92edb8b89a04002f2480378a0117912e34b26d",
+          "capsuleName": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Storage",
+          "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/Storage:33",
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs listCapsules 1`] = `
+{
+  "#": "Capsules",
+  "list": [
+    {
+      "#": "Capsule",
+      "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs",
+    },
+    {
+      "#": "Capsule",
+      "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ConfigStore",
+    },
+    {
+      "#": "Capsule",
+      "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Storage",
+    },
+    {
+      "#": "Capsule",
+      "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/structs/ConfigSchema",
+    },
+  ],
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs getCapsule (first capsule) 1`] = `
+{
+  "#": "Capsule",
+  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs",
+  "cacheBustVersion": 21,
+  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs:22",
+  "source": {
+    "#": "Capsule/Source",
+    "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs",
+    "declarationLine": 7,
+    "definitionEndLine": 20,
+    "definitionStartLine": 7,
+    "importStackLine": 22,
+    "moduleUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs",
+    "optionsEndLine": 24,
+    "optionsStartLine": 20,
+  },
+  "spineContracts": {
+    "#": "Capsule/SpineContracts",
+  },
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs getSpineDeclarationTree 1`] = `
+{
+  "#": "SpineDeclarationTree",
+  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs",
+  "rootCapsule": {
+    "#": "Capsule",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs",
+    "mappings": {
+      "#": "Capsule/Mappings",
+      "#@stream44.studio/encapsulate/structs/Capsule": {
+        "#": "Capsule/PropertyContractMapping",
+        "capsule": {
+          "#": "Capsule",
+          "$id": "@stream44.studio/encapsulate/structs/Capsule",
+          "properties": {
+            "#": "Capsule/Properties",
+          },
+        },
+        "isPropertyContractDelegate": true,
+      },
+    },
+    "properties": {
+      "#": "Capsule/Properties",
+    },
+  },
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs getSpineInstanceTree 1`] = `
+{
+  "#": "SpineInstanceTree",
+  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs",
+  "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs:22": {
+    "#": "CapsuleInstance",
+    "$id": "f1ca9f689c310e35cb3c4d554b0975f3f239971fc0c8744d4a918f0da1319913",
+    "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs",
+    "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs:22",
+    "children": {
+      "#": "CapsuleInstance/Children",
+      "list": [
+        {
+          "#": "CapsuleInstance",
+          "$id": "d00d1e295700c6d84be452c428a79dc8bd27257935cc206ee347fbec24c13bcd",
+          "capsuleName": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/structs/ConfigSchema",
+          "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/structs/ConfigSchema:29",
+          "children": {
+            "#": "CapsuleInstance/Children",
+            "list": [
+              {
+                "#": "CapsuleInstance",
+                "$id": "deb860df1e32c1fecdb8df406c5f1115c252332fba963ffd56ceb7213528f528",
+                "capsuleName": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ConfigStore",
+                "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/ConfigStore:29",
+                "children": {
+                  "#": "CapsuleInstance/Children",
+                  "list": [
+                    {
+                      "#": "CapsuleInstance",
+                      "$id": "e75c82883ae837c9b04c8a28ebd0f083d451ee35b067fcfcdd2fef4872faf34b",
+                      "capsuleName": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Storage",
+                      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/Storage:33",
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing listCapsules 1`] = `
+{
+  "#": "Capsules",
+  "list": [
+    {
+      "#": "Capsule",
+      "$id": "@stream44.studio/encapsulate/structs/Capsule",
+    },
+    {
+      "#": "Capsule",
+      "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing",
+    },
+    {
+      "#": "Capsule",
+      "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service",
+    },
+    {
+      "#": "Capsule",
+      "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service1",
+    },
+    {
+      "#": "Capsule",
+      "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service2",
+    },
+  ],
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing getCapsule (first capsule) 1`] = `
+{
+  "#": "Capsule",
+  "$id": "@stream44.studio/encapsulate/structs/Capsule",
+  "cacheBustVersion": 21,
+  "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
+  "source": {
+    "#": "Capsule/Source",
+    "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+    "declarationLine": 7,
+    "definitionEndLine": 16,
+    "definitionStartLine": 7,
+    "importStackLine": 18,
+    "moduleUri": "@stream44.studio/encapsulate/structs/Capsule",
+    "optionsEndLine": 20,
+    "optionsStartLine": 16,
+  },
+  "spineContracts": {
+    "#": "Capsule/SpineContracts",
+  },
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing getSpineDeclarationTree 1`] = `
+{
+  "#": "SpineDeclarationTree",
+  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing",
+  "rootCapsule": {
+    "#": "Capsule",
+    "$id": "@stream44.studio/encapsulate/structs/Capsule",
+    "properties": {
+      "#": "Capsule/Properties",
+    },
+  },
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing getSpineInstanceTree 1`] = `
+{
+  "#": "SpineInstanceTree",
+  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing",
+  "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36": {
+    "#": "CapsuleInstance",
+    "$id": "4e1a22e4fe896f2dc053802785d3030b8163ae9e5ebc9409cd6467b1ff1ed5a8",
+    "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing",
+    "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36",
+    "children": {
+      "#": "CapsuleInstance/Children",
+      "list": [
+        {
+          "#": "CapsuleInstance",
+          "$id": "3157b007b10b983543059951abde3722c9ea170b9524588024b11cbc89336eb5",
+          "capsuleName": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service2",
+          "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/Service2:22",
+          "children": {
+            "#": "CapsuleInstance/Children",
+            "list": [
+              {
+                "#": "CapsuleInstance",
+                "$id": "b61dd40bad8d4d9f9c4cf8b0aff0682ceb69b1429935b8ea78e35cc0ef3f875f",
+                "capsuleName": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service",
+                "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/Service:32",
+              },
+            ],
+          },
+        },
+        {
+          "#": "CapsuleInstance",
+          "$id": "47000eca1b4ce1a6b51a91d4ba7d05b756b19b4a47c001e47509efd0e128e79b",
+          "capsuleName": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service",
+          "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/Service:32",
+        },
+        {
+          "#": "CapsuleInstance",
+          "$id": "88612543938457661b4d6e83337d37b2660e515d827b0676334cf6fec8eb5ebb",
+          "capsuleName": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service1",
+          "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/Service1:22",
+          "children": {
+            "#": "CapsuleInstance/Children",
+            "list": [
+              {
+                "#": "CapsuleInstance",
+                "$id": "b34de02ba61b604c1a073f0ae1c1ff03aab6fab26d4abd9017ed472efc3b0da1",
+                "capsuleName": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service",
+                "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/Service:32",
+              },
+            ],
+          },
+        },
+        {
+          "#": "CapsuleInstance",
+          "$id": "f9f74bee2970efdd86c1b71299c914f2e7c430eb46d2dcc3176f87df9f842b63",
+          "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+          "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
+        },
+      ],
+    },
+  },
+}
+`;
