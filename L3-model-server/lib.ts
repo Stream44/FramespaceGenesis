@@ -3,10 +3,24 @@
  * - Replaces absolute package root paths with `<PACKAGE_ROOT>`
  * - Normalises bun node_modules paths
  * - Strips volatile fields (capsuleSourceNameRefHash, capsuleSourceLineRef, capsuleSourceNameRef, moduleFilepath, instanceId)
+ * - Replaces volatile hash `$id` values with `capsuleSourceUriLineRef` when available
  * - Normalises parentMap (instanceId-keyed) into a sorted capsuleSourceUriLineRef-keyed map
- * - Sorts object keys for deterministic ordering
- * - Sorts arrays of objects by `$id` for deterministic ordering
+ * - Sorts object keys (by *normalised* key) for deterministic ordering
+ * - Sorts all arrays (strings lexicographically, objects by `$id` or `capsuleSourceUriLineRef`)
  */
+
+const VOLATILE_KEYS = new Set([
+    'capsuleSourceNameRefHash',
+    'capsuleSourceLineRef',
+    'capsuleSourceNameRef',
+    'moduleFilepath',
+    'instanceId',
+])
+
+function isVolatileHash(value: string): boolean {
+    return /^[0-9a-f]{32,}$/.test(value)
+}
+
 export function normalizeForSnapshot(obj: any, packageRoot?: string): any {
     if (typeof obj === 'string') {
         let s = obj
@@ -22,49 +36,71 @@ export function normalizeForSnapshot(obj: any, packageRoot?: string): any {
     }
     if (Array.isArray(obj)) {
         const normalized = obj.map(item => normalizeForSnapshot(item, packageRoot))
-        if (normalized.length > 0 && normalized[0] && typeof normalized[0] === 'object' && '$id' in normalized[0]) {
-            normalized.sort((a: any, b: any) => (a.$id || '').localeCompare(b.$id || ''))
+        // Sort arrays for deterministic output
+        if (normalized.length > 1) {
+            if (typeof normalized[0] === 'string') {
+                // Plain string arrays — sort lexicographically
+                normalized.sort()
+            } else if (normalized[0] && typeof normalized[0] === 'object') {
+                // Object arrays — sort by $id, then by capsuleSourceUriLineRef
+                const sortKey = (o: any) => o.$id || o.capsuleSourceUriLineRef || ''
+                normalized.sort((a: any, b: any) => sortKey(a).localeCompare(sortKey(b)))
+            }
         }
         return normalized
     }
     if (obj && typeof obj === 'object') {
         if (obj instanceof Set) return obj
-        const result: any = {}
-        const entries = Object.entries(obj)
-        // Sort entries by key for deterministic output
-        entries.sort((a, b) => a[0].localeCompare(b[0]))
-        for (const [key, value] of entries) {
-            if (key === 'capsuleSourceNameRefHash' || key === 'capsuleSourceLineRef' || key === 'capsuleSourceNameRef' || key === 'moduleFilepath' || key === 'instanceId') continue
-            // Normalize parentMap: replace instanceId keys/values with capsuleSourceUriLineRef
-            if (key === 'parentMap' && value && typeof value === 'object') {
-                // Build instanceId → capsuleSourceUriLineRef lookup from sibling 'instances' map
-                const instances = obj.instances ?? obj.capsuleInfo ?? {}
-                const idToRef: Record<string, string> = {}
-                for (const inst of Object.values(instances) as any[]) {
-                    if (inst?.instanceId && inst?.capsuleSourceUriLineRef) {
-                        idToRef[inst.instanceId] = inst.capsuleSourceUriLineRef
-                    }
+
+        // Normalize parentMap: replace instanceId keys/values with capsuleSourceUriLineRef
+        // Must be done before general processing because it needs raw sibling data
+        const parentMapRaw = obj.parentMap
+        let normalizedParentMap: Record<string, string> | undefined
+        if (parentMapRaw && typeof parentMapRaw === 'object') {
+            const instances = obj.instances ?? obj.capsuleInfo ?? {}
+            const idToRef: Record<string, string> = {}
+            for (const inst of Object.values(instances) as any[]) {
+                if (inst?.instanceId && inst?.capsuleSourceUriLineRef) {
+                    idToRef[inst.instanceId] = inst.capsuleSourceUriLineRef
                 }
-                const normalizedParentMap: Record<string, string> = {}
-                for (const [childId, parentId] of Object.entries(value) as [string, string][]) {
-                    const childRef = idToRef[childId] ?? childId
-                    const parentRef = idToRef[parentId] ?? parentId
-                    normalizedParentMap[childRef] = parentRef
-                }
-                // Sort the normalized parentMap by key
-                const sortedParentMap: Record<string, string> = {}
-                for (const k of Object.keys(normalizedParentMap).sort()) {
-                    sortedParentMap[k] = normalizedParentMap[k]
-                }
-                result[key] = sortedParentMap
+            }
+            const pm: Record<string, string> = {}
+            for (const [childId, parentId] of Object.entries(parentMapRaw) as [string, string][]) {
+                pm[idToRef[childId] ?? childId] = idToRef[parentId] ?? parentId
+            }
+            const sorted: Record<string, string> = {}
+            for (const k of Object.keys(pm).sort()) sorted[k] = pm[k]
+            normalizedParentMap = sorted
+        }
+
+        // First pass: build normalised key-value pairs
+        const pairs: [string, any][] = []
+        for (const [key, value] of Object.entries(obj)) {
+            if (VOLATILE_KEYS.has(key)) continue
+            if (key === 'parentMap') {
+                pairs.push([key, normalizedParentMap!])
                 continue
+            }
+            // Replace volatile hash $id with stable capsuleSourceUriLineRef
+            if (key === '$id' && typeof value === 'string' && isVolatileHash(value)) {
+                const ref = obj.capsuleSourceUriLineRef
+                if (ref) {
+                    pairs.push([key, normalizeForSnapshot(ref, packageRoot)])
+                    continue
+                }
             }
             let normalizedKey = key
             if (value && typeof value === 'object' && (value as any).capsuleSourceUriLineRef) {
                 normalizedKey = (value as any).capsuleSourceUriLineRef
             }
-            result[normalizedKey] = normalizeForSnapshot(value, packageRoot)
+            pairs.push([normalizedKey, normalizeForSnapshot(value, packageRoot)])
         }
+
+        // Sort by the *normalised* key
+        pairs.sort((a, b) => a[0].localeCompare(b[0]))
+
+        const result: any = {}
+        for (const [k, v] of pairs) result[k] = v
         return result
     }
     return obj
