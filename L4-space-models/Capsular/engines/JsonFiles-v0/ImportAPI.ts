@@ -275,13 +275,20 @@ export async function capsule({
                         let totalImported = 0
                         const capsuleNames = Object.keys(sit.capsules || {})
 
+                        // DEBUG: Log all capsules in SIT
+                        console.log(`[DEBUG importSitFile] staticAnalysisDir: ${staticAnalysisDir}`)
+                        console.log(`[DEBUG importSitFile] capsuleNames in SIT: ${JSON.stringify(capsuleNames)}`)
+
                         for (const capsuleName of capsuleNames) {
                             const capsuleInfo = sit.capsules[capsuleName]
                             const capsuleSourceUriLineRef = capsuleInfo.capsuleSourceUriLineRef
                             if (!capsuleSourceUriLineRef) continue
 
                             const uriMatch = capsuleSourceUriLineRef.match(/^@([^:]+):(\d+)$/)
-                            if (!uriMatch) continue
+                            if (!uriMatch) {
+                                console.log(`[DEBUG importSitFile] No URI match for: ${capsuleSourceUriLineRef}`)
+                                continue
+                            }
 
                             const [, uriPath, line] = uriMatch
 
@@ -292,9 +299,21 @@ export async function capsule({
                             const localCstPath = localRelPath ? join(staticAnalysisDir, `${localRelPath}.ts:${line}.csts.json`) : null
                             const npmCstPath = join(staticAnalysisDir, `o/npmjs.com/node_modules/@${uriPath}.ts:${line}.csts.json`)
 
+                            // DEBUG: Log path resolution for encapsulate/structs/Capsule
+                            if (capsuleName.includes('encapsulate') && capsuleName.includes('Capsule')) {
+                                console.log(`[DEBUG importSitFile] Processing capsule: ${capsuleName}`)
+                                console.log(`[DEBUG importSitFile]   capsuleSourceUriLineRef: ${capsuleSourceUriLineRef}`)
+                                console.log(`[DEBUG importSitFile]   uriPath: ${uriPath}`)
+                                console.log(`[DEBUG importSitFile]   localRelPath: ${localRelPath}`)
+                                console.log(`[DEBUG importSitFile]   localCstPath: ${localCstPath}`)
+                                console.log(`[DEBUG importSitFile]   localCstPath exists: ${localCstPath ? existsSync(localCstPath) : 'N/A'}`)
+                                console.log(`[DEBUG importSitFile]   npmCstPath: ${npmCstPath}`)
+                                console.log(`[DEBUG importSitFile]   npmCstPath exists: ${existsSync(npmCstPath)}`)
+                            }
+
                             const cstFilePath = (localCstPath && existsSync(localCstPath)) ? localCstPath : npmCstPath
                             if (!existsSync(cstFilePath)) {
-                                if (this.verbose) console.log(`[json] CST file not found: ${cstFilePath}`)
+                                console.log(`[DEBUG importSitFile] CST file NOT FOUND: ${cstFilePath} for capsule: ${capsuleName}`)
                                 continue
                             }
 
@@ -317,6 +336,16 @@ export async function capsule({
                         const capsuleInstances = sit.capsuleInstances || {}
                         let imported = 0
 
+                        // DEBUG: Log all capsule instances in SIT
+                        console.log(`[DEBUG _importCapsuleInstances] Total instances in SIT: ${Object.keys(capsuleInstances).length}`)
+                        for (const [id, inst] of Object.entries(capsuleInstances) as [string, any][]) {
+                            if (inst.capsuleName?.includes('encapsulate') && inst.capsuleName?.includes('Capsule')) {
+                                console.log(`[DEBUG _importCapsuleInstances] Found structs/Capsule instance: ${id}`)
+                                console.log(`[DEBUG _importCapsuleInstances]   capsuleName: ${inst.capsuleName}`)
+                                console.log(`[DEBUG _importCapsuleInstances]   capsuleSourceUriLineRef: ${inst.capsuleSourceUriLineRef}`)
+                            }
+                        }
+
                         for (const [instanceId, instance] of Object.entries(capsuleInstances) as [string, any][]) {
                             this.mergeNode('CapsuleInstance', instanceId, {
                                 instanceId,
@@ -327,11 +356,19 @@ export async function capsule({
 
                             // Find capsule by name and create INSTANCE_OF edge
                             const capsuleNodes = this._readNodeTable('Capsule')
+                            let foundCapsule = false
                             for (const [capPk, cap] of Object.entries(capsuleNodes) as any[]) {
                                 if (cap.capsuleName === instance.capsuleName) {
                                     this.mergeEdge('INSTANCE_OF', 'CapsuleInstance', instanceId, 'Capsule', capPk)
+                                    foundCapsule = true
                                     break
                                 }
+                            }
+                            // DEBUG: Log if structs/Capsule instance couldn't find matching Capsule node
+                            if (!foundCapsule && instance.capsuleName?.includes('encapsulate') && instance.capsuleName?.includes('Capsule')) {
+                                console.log(`[DEBUG _importCapsuleInstances] NO CAPSULE NODE FOUND for instance: ${instanceId}`)
+                                console.log(`[DEBUG _importCapsuleInstances]   Looking for capsuleName: ${instance.capsuleName}`)
+                                console.log(`[DEBUG _importCapsuleInstances]   Available Capsule nodes: ${JSON.stringify(Object.values(capsuleNodes).map((c: any) => c.capsuleName))}`)
                             }
                             imported++
                         }
