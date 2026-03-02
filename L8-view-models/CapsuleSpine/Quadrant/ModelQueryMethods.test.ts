@@ -60,7 +60,7 @@ const trees = await engine._listSpineInstanceTrees({ prefix: '@stream44.studio/F
 
 // ── Schema tests ─────────────────────────────────────────────────────
 describe('Schema', () => {
-    const schema = modelServer._models.find((m: any) => m.mountKey === MOUNT_KEY)?.schema
+    const schema = modelServer._models.find((m: any) => m.schema.namespace === MOUNT_KEY)?.schema
 
     it('getVisualization has Models panel tag', () => {
         const method = schema?.methods?.getVisualization
