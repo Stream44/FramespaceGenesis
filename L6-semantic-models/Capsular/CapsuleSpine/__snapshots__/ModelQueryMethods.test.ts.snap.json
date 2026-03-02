@@ -146,7 +146,7 @@
     "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
     "rootCapsule": {
       "#": "Capsule",
-      "$id": "@acme/web-toolkit/caps/Logger",
+      "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
       "mappings": {
         "#": "Capsule/Mappings",
         "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -296,7 +296,21 @@
     "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing",
     "rootCapsule": {
       "#": "Capsule",
-      "$id": "@stream44.studio/encapsulate/structs/Capsule",
+      "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing",
+      "mappings": {
+        "#": "Capsule/Mappings",
+        "#@stream44.studio/encapsulate/structs/Capsule": {
+          "#": "Capsule/PropertyContractMapping",
+          "capsule": {
+            "#": "Capsule",
+            "$id": "@stream44.studio/encapsulate/structs/Capsule",
+            "properties": {
+              "#": "Capsule/Properties"
+            }
+          },
+          "isPropertyContractDelegate": true
+        }
+      },
       "properties": {
         "#": "Capsule/Properties"
       }

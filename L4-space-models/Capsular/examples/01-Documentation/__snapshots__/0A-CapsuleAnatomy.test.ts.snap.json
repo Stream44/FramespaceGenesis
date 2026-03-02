@@ -151,6 +151,10 @@
   },
   "fetchInstanceRelations #1": {
     "capsuleInfo": {
+      "@stream44.studio/encapsulate/structs/Capsule:18": {
+        "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+        "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+      },
       "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33": {
         "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
         "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33"
@@ -162,13 +166,13 @@
       "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema:30": {
         "capsuleName": "@acme/web-toolkit/structs/RequestSchema",
         "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema:30"
-      },
-      "@stream44.studio/encapsulate/structs/Capsule:18": {
-        "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
-        "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
       }
     },
     "instances": {
+      "@stream44.studio/encapsulate/structs/Capsule:18": {
+        "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+        "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+      },
       "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33": {
         "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
         "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33"
@@ -180,23 +184,19 @@
       "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema:30": {
         "capsuleName": "@acme/web-toolkit/structs/RequestSchema",
         "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema:30"
-      },
-      "@stream44.studio/encapsulate/structs/Capsule:18": {
-        "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
-        "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
       }
     },
     "parentMap": {
+      "@stream44.studio/encapsulate/structs/Capsule:18": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33",
       "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/caps/Logger:23": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33",
-      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema:30": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33",
-      "@stream44.studio/encapsulate/structs/Capsule:18": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33"
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema:30": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33"
     }
   },
   "getCapsuleNamesBySpineTree #1": [
     "@acme/web-toolkit/caps/Logger",
     "@acme/web-toolkit/structs/RequestSchema",
-    "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
-    "@stream44.studio/encapsulate/structs/Capsule"
+    "@stream44.studio/encapsulate/structs/Capsule",
+    "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy"
   ],
   "getCapsuleSpineTree_data #1": [
     {
@@ -454,15 +454,15 @@
   ],
   "sit structure #1": {
     "capsuleInstances": {
-      "0ac516eabe824d4361393a854c4b5b22bd9e4030bf216edda5a1a31e1de78432": {
-        "capsuleName": "@<org>/<project>/MyCapsule",
-        "capsuleSourceUriLineRef": "@<org>/<project>/MyCapsule:33"
-      },
-      "2252ae6c442880ffc536f35ccad677f806ad5f4f9705e8e910338f0ae37a1413": {
+      "46aa0c89cfc9ab894d40d921b7ec4aae26e267128c25ea02a456e39e1d1fa954": {
         "capsuleName": "@<org>/<project>/structs/StructA",
         "capsuleSourceUriLineRef": "@<org>/<project>/structs/StructA:30"
       },
-      "c57bd6c713397f77f90c8fd8890f0f1a520bfe6fd7b773735288758e1c301948": {
+      "c288b9d371616707dcbdd09a746bf4664e71b5406234bdce5c8330e5ab5fa38b": {
+        "capsuleName": "@<org>/<project>/MyCapsule",
+        "capsuleSourceUriLineRef": "@<org>/<project>/MyCapsule:33"
+      },
+      "d2c2cd5e58bbc3333b5921b983532fb5214d7181c29fa2ef5be7d89f3a776bf2": {
         "capsuleName": "@<org>/<project>/FeatureY",
         "capsuleSourceUriLineRef": "@<org>/<project>/FeatureY:23"
       }
@@ -480,7 +480,7 @@
     },
     "rootCapsule": {
       "capsuleSourceUriLineRef": "@<org>/<project>/MyCapsule:33",
-      "capsuleSourceUriLineRefInstanceId": "0ac516eabe824d4361393a854c4b5b22bd9e4030bf216edda5a1a31e1de78432"
+      "capsuleSourceUriLineRefInstanceId": "c288b9d371616707dcbdd09a746bf4664e71b5406234bdce5c8330e5ab5fa38b"
     }
   }
 }

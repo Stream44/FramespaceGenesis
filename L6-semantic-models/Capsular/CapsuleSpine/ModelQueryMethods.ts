@@ -161,7 +161,15 @@ export async function capsule({
                         const relInfo = await graph.fetchCapsuleRelations(capsuleNames)
                         const visited = new Set<string>()
 
-                        const rootName = capsuleNames[0]
+                        // Find root via the spine instance tree (same as getSpineInstanceTree)
+                        const instRelInfo = await graph.fetchInstanceRelations(spineInstanceTreeId)
+                        let rootName: string | null = null
+                        for (const instanceId of Object.keys(instRelInfo.instances)) {
+                            if (!instRelInfo.parentMap[instanceId]) {
+                                rootName = instRelInfo.instances[instanceId].capsuleName
+                                break
+                            }
+                        }
                         if (!rootName || !relInfo.found.has(rootName)) return null
                         const rootCapsule = await this._assembleTreeNode(graph, rootName, relInfo, visited, inclProps)
                         return { '#': 'SpineDeclarationTree', $id: spineInstanceTreeId, rootCapsule }
