@@ -275,9 +275,20 @@ export async function capsule({
                         let totalImported = 0
                         const capsuleNames = Object.keys(sit.capsules || {})
 
+                        // Helper for verbose logging
+                        const _logVerbose = (msg: string) => {
+                            if (this.verbose || process.env.DEBUG_IMPORT === '1') console.log(`[ImportAPI] ${msg}`)
+                        }
+
                         // DEBUG: Log all capsules in SIT
-                        console.log(`[DEBUG importSitFile] staticAnalysisDir: ${staticAnalysisDir}`)
-                        console.log(`[DEBUG importSitFile] capsuleNames in SIT: ${JSON.stringify(capsuleNames)}`)
+                        _logVerbose(`staticAnalysisDir: ${staticAnalysisDir}`)
+                        _logVerbose(`capsuleNames in SIT: ${JSON.stringify(capsuleNames)}`)
+
+                        // DEBUG: Log capsuleInstances to see if structs/Capsule is in SIT
+                        const sitInstanceNames = Object.values(sit.capsuleInstances || {}).map((i: any) => i.capsuleName)
+                        _logVerbose(`capsuleInstance names in SIT: ${JSON.stringify(sitInstanceNames)}`)
+                        const hasStructsCapsule = sitInstanceNames.some((n: string) => n?.includes('encapsulate') && n?.includes('Capsule'))
+                        _logVerbose(`SIT contains structs/Capsule instance: ${hasStructsCapsule}`)
 
                         for (const capsuleName of capsuleNames) {
                             const capsuleInfo = sit.capsules[capsuleName]
@@ -286,7 +297,7 @@ export async function capsule({
 
                             const uriMatch = capsuleSourceUriLineRef.match(/^@([^:]+):(\d+)$/)
                             if (!uriMatch) {
-                                console.log(`[DEBUG importSitFile] No URI match for: ${capsuleSourceUriLineRef}`)
+                                _logVerbose(`No URI match for: ${capsuleSourceUriLineRef}`)
                                 continue
                             }
 
@@ -301,19 +312,19 @@ export async function capsule({
 
                             // DEBUG: Log path resolution for encapsulate/structs/Capsule
                             if (capsuleName.includes('encapsulate') && capsuleName.includes('Capsule')) {
-                                console.log(`[DEBUG importSitFile] Processing capsule: ${capsuleName}`)
-                                console.log(`[DEBUG importSitFile]   capsuleSourceUriLineRef: ${capsuleSourceUriLineRef}`)
-                                console.log(`[DEBUG importSitFile]   uriPath: ${uriPath}`)
-                                console.log(`[DEBUG importSitFile]   localRelPath: ${localRelPath}`)
-                                console.log(`[DEBUG importSitFile]   localCstPath: ${localCstPath}`)
-                                console.log(`[DEBUG importSitFile]   localCstPath exists: ${localCstPath ? existsSync(localCstPath) : 'N/A'}`)
-                                console.log(`[DEBUG importSitFile]   npmCstPath: ${npmCstPath}`)
-                                console.log(`[DEBUG importSitFile]   npmCstPath exists: ${existsSync(npmCstPath)}`)
+                                _logVerbose(`Processing capsule: ${capsuleName}`)
+                                _logVerbose(`  capsuleSourceUriLineRef: ${capsuleSourceUriLineRef}`)
+                                _logVerbose(`  uriPath: ${uriPath}`)
+                                _logVerbose(`  localRelPath: ${localRelPath}`)
+                                _logVerbose(`  localCstPath: ${localCstPath}`)
+                                _logVerbose(`  localCstPath exists: ${localCstPath ? existsSync(localCstPath) : 'N/A'}`)
+                                _logVerbose(`  npmCstPath: ${npmCstPath}`)
+                                _logVerbose(`  npmCstPath exists: ${existsSync(npmCstPath)}`)
                             }
 
                             const cstFilePath = (localCstPath && existsSync(localCstPath)) ? localCstPath : npmCstPath
                             if (!existsSync(cstFilePath)) {
-                                console.log(`[DEBUG importSitFile] CST file NOT FOUND: ${cstFilePath} for capsule: ${capsuleName}`)
+                                _logVerbose(`CST file NOT FOUND: ${cstFilePath} for capsule: ${capsuleName}`)
                                 continue
                             }
 
@@ -336,13 +347,18 @@ export async function capsule({
                         const capsuleInstances = sit.capsuleInstances || {}
                         let imported = 0
 
+                        // Helper for verbose logging
+                        const _logVerbose = (msg: string) => {
+                            if (this.verbose || process.env.DEBUG_IMPORT === '1') console.log(`[ImportAPI] ${msg}`)
+                        }
+
                         // DEBUG: Log all capsule instances in SIT
-                        console.log(`[DEBUG _importCapsuleInstances] Total instances in SIT: ${Object.keys(capsuleInstances).length}`)
+                        _logVerbose(`_importCapsuleInstances: Total instances in SIT: ${Object.keys(capsuleInstances).length}`)
                         for (const [id, inst] of Object.entries(capsuleInstances) as [string, any][]) {
                             if (inst.capsuleName?.includes('encapsulate') && inst.capsuleName?.includes('Capsule')) {
-                                console.log(`[DEBUG _importCapsuleInstances] Found structs/Capsule instance: ${id}`)
-                                console.log(`[DEBUG _importCapsuleInstances]   capsuleName: ${inst.capsuleName}`)
-                                console.log(`[DEBUG _importCapsuleInstances]   capsuleSourceUriLineRef: ${inst.capsuleSourceUriLineRef}`)
+                                _logVerbose(`_importCapsuleInstances: Found structs/Capsule instance: ${id}`)
+                                _logVerbose(`_importCapsuleInstances:   capsuleName: ${inst.capsuleName}`)
+                                _logVerbose(`_importCapsuleInstances:   capsuleSourceUriLineRef: ${inst.capsuleSourceUriLineRef}`)
                             }
                         }
 
@@ -366,9 +382,9 @@ export async function capsule({
                             }
                             // DEBUG: Log if structs/Capsule instance couldn't find matching Capsule node
                             if (!foundCapsule && instance.capsuleName?.includes('encapsulate') && instance.capsuleName?.includes('Capsule')) {
-                                console.log(`[DEBUG _importCapsuleInstances] NO CAPSULE NODE FOUND for instance: ${instanceId}`)
-                                console.log(`[DEBUG _importCapsuleInstances]   Looking for capsuleName: ${instance.capsuleName}`)
-                                console.log(`[DEBUG _importCapsuleInstances]   Available Capsule nodes: ${JSON.stringify(Object.values(capsuleNodes).map((c: any) => c.capsuleName))}`)
+                                _logVerbose(`_importCapsuleInstances: NO CAPSULE NODE FOUND for instance: ${instanceId}`)
+                                _logVerbose(`_importCapsuleInstances:   Looking for capsuleName: ${instance.capsuleName}`)
+                                _logVerbose(`_importCapsuleInstances:   Available Capsule nodes: ${JSON.stringify(Object.values(capsuleNodes).map((c: any) => c.capsuleName))}`)
                             }
                             imported++
                         }

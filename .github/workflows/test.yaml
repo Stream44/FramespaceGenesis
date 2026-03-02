@@ -24,3 +24,5 @@ jobs:
 
       - name: Run tests
         run: bun test --bail
+        env:
+          DEBUG_IMPORT: "1"
