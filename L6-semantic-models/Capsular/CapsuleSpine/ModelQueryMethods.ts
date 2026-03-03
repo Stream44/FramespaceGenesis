@@ -22,9 +22,9 @@ export async function capsule({
                 apiSchema: {
                     type: CapsulePropertyTypes.Constant,
                     value: {
-                        namespace: '@framespace.dev~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods',
+                        namespace: '@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods',
                         description: 'Methods to query the *Capsule Spine Model* of the selected *Spine Instance Tree*',
-                        basePath: '/api/@framespace.dev~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods',
+                        basePath: '/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods',
                         methods: {
                             listCapsules: {
                                 args: [

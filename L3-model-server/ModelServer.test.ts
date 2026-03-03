@@ -3,7 +3,7 @@
 import * as bunTest from 'bun:test'
 import { run } from '@stream44.studio/t44/standalone-rt'
 
-const MOUNT_KEY = '@framespace.dev~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods'
+const MOUNT_KEY = '@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods'
 const ENGINE_KEY = '@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/JsonFiles-v0/ImportAPI'
 
 const {

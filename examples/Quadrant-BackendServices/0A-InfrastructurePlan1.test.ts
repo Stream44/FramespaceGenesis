@@ -7,7 +7,7 @@ import { dirname } from 'path'
 
 import { MODEL_NAME } from './0A-InfrastructurePlan1'
 
-const MOUNT_KEY = '@framespace.dev~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods'
+const MOUNT_KEY = '@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods'
 const ENGINE_KEY = '@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/JsonFiles-v0/ImportAPI'
 const PACKAGE_ROOT = dirname(dirname(dirname(import.meta.path)))
 

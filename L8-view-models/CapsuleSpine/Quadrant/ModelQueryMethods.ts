@@ -28,9 +28,9 @@ export async function capsule({
                 apiSchema: {
                     type: CapsulePropertyTypes.Constant,
                     value: {
-                        namespace: '@framespace.dev~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods',
+                        namespace: '@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods',
                         description: 'Methods to query the *Quadrant Model* for a given *Spine Instance Tree*',
-                        basePath: '/api/@framespace.dev~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods',
+                        basePath: '/api/@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods',
                         methods: {
                             getColumnTree: {
                                 args: [

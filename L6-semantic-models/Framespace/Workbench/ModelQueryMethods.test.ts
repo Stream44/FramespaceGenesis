@@ -5,7 +5,7 @@ import { run } from '@stream44.studio/t44/standalone-rt'
 import { normalizeForSnapshot } from '../../../L3-model-server/lib'
 import { dirname } from 'path'
 
-const MOUNT_KEY = '@framespace.dev~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods'
+const MOUNT_KEY = '@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods'
 const ENGINE_KEY = '@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/JsonFiles-v0/ImportAPI'
 const PACKAGE_ROOT = dirname(dirname(dirname(dirname(import.meta.path))))
 

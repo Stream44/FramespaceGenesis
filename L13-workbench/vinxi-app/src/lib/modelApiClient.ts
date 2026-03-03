@@ -68,9 +68,9 @@ export type RequestLogEntry = {
 // Mount key = model URI with '/' replaced by '~'
 
 const NS = {
-    CapsuleSpine: '@framespace.dev~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods',
-    Workbench: '@framespace.dev~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods',
-    Quadrant: '@framespace.dev~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods',
+    CapsuleSpine: '@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods',
+    Workbench: '@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods',
+    Quadrant: '@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods',
 } as const;
 
 const DEFAULT_BASE_URL = "http://localhost:4000";

@@ -9,7 +9,7 @@
 
 ⚠️ **Disclaimer:** Under active development. Code has not been audited. APIs and interfaces are subject to change!
 
-Framespace Genesis
+Framespace Genesis [![Tests](https://github.com/Stream44/FramespaceGenesis/actions/workflows/test.yaml/badge.svg)](https://github.com/Stream44/FramespaceGenesis/actions/workflows/test.yaml?query=branch%3Amain)
 ===
 
 Ontology-driven structural modeling tool for declaratively building multi-dimensional models with layered reactive functional data processing resulting in realtime interactive visualizations.

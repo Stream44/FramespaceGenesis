@@ -850,7 +850,7 @@ function MethodPanelContent(props: {
 
 // ── Model Instance APIs Panel (rendered inside dockview) ───────────────────
 
-const NS_TRIM_PREFIX = '@framespace.dev~FramespaceGenesis~';
+const NS_TRIM_PREFIX = '@stream44.studio~FramespaceGenesis~';
 const NS_TRIM_SUFFIX = '~ModelQueryMethods';
 
 function trimNamespace(ns: string): string {

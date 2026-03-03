@@ -115,7 +115,7 @@ registerRep({
             try {
                 if (ctx.apiCall) {
                     const result = await ctx.apiCall(
-                        "/api/@framespace.dev~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods/getCapsule",
+                        "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods/getCapsule",
                         { spineInstanceTreeId: ctx.spineInstanceTreeId ?? '', capsuleName: id }
                     );
                     if (result.result) setLoadedData(result.result as JsonObject);

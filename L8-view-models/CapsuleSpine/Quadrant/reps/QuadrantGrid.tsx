@@ -440,8 +440,8 @@ registerRep({
             try {
                 vlog("Fetching column and row trees...");
                 const [colResult, rowResult] = await Promise.all([
-                    ctx.apiCall("/api/@framespace.dev~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods/getColumnTree", { spineInstanceTreeId }),
-                    ctx.apiCall("/api/@framespace.dev~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods/getRowTree", { spineInstanceTreeId }),
+                    ctx.apiCall("/api/@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods/getColumnTree", { spineInstanceTreeId }),
+                    ctx.apiCall("/api/@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods/getRowTree", { spineInstanceTreeId }),
                 ]);
 
                 const columnTree = colResult.result?.columns || [];

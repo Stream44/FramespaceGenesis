@@ -30,9 +30,9 @@ export async function capsule({
                 apiSchema: {
                     type: CapsulePropertyTypes.Constant,
                     value: {
-                        namespace: '@framespace.dev~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods',
+                        namespace: '@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods',
                         description: 'Methods to facilitate the Framespace Workbench',
-                        basePath: '/api/@framespace.dev~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods',
+                        basePath: '/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods',
                         methods: {
                             listSpineInstanceTrees: {
                                 args: [],
