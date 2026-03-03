@@ -1,119 +1,33 @@
 {
-    "namespace": "Capsular/ModelQueryMethods",
-    "description": "Low-level query methods for Capsular model engines — delegates to engine-specific implementations.",
-    "basePath": "/api/Capsular/ModelQueryMethods",
+    "namespace": "@framespace.dev~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods",
+    "description": "Methods to facilitate the Framespace Workbench",
+    "basePath": "/api/@framespace.dev~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods",
     "methods": {
-        "listCapsules": {
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "description": "List all capsules in the given spine instance tree.",
-            "graphMethod": true
-        },
-        "getCapsuleWithSource": {
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                },
-                {
-                    "name": "capsuleName",
-                    "type": "string"
-                }
-            ],
-            "description": "Get a capsule with its full source node.",
-            "graphMethod": true
-        },
-        "getCapsuleSpineTree_data": {
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                },
-                {
-                    "name": "capsuleName",
-                    "type": "string"
-                }
-            ],
-            "description": "Get spine tree data rows for a capsule.",
-            "graphMethod": true
-        },
-        "getCapsuleNamesBySpineTree": {
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "description": "Get capsule names belonging to a spine tree.",
-            "graphMethod": true
-        },
-        "fetchCapsuleRelations": {
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                },
-                {
-                    "name": "capsuleNames",
-                    "type": "string[]"
-                }
-            ],
-            "description": "Fetch mapping and extends relations for a set of capsules.",
-            "graphMethod": true
-        },
         "listSpineInstanceTrees": {
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "description": "List all spine instance trees.",
+            "args": [],
+            "description": "List all distinct spine instance tree IDs in the graph.",
             "graphMethod": true
         },
-        "getInstancesBySpineTree": {
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "description": "Get all instances in a spine tree.",
-            "graphMethod": true
+        "getProcessStats": {
+            "args": [],
+            "description": "Get backend process memory and CPU usage."
         },
-        "getRootInstance": {
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "description": "Get the root instance of a spine tree.",
-            "graphMethod": true
+        "getReps": {
+            "args": [],
+            "description": "List all registered reps with their source file paths."
         },
-        "getChildInstances": {
+        "openFile": {
             "args": [
                 {
-                    "name": "spineInstanceTreeId",
+                    "name": "command",
+                    "type": "string"
+                },
+                {
+                    "name": "file",
                     "type": "string"
                 }
             ],
-            "description": "Get child instances of the root instance in a spine tree.",
-            "graphMethod": true
-        },
-        "fetchInstanceRelations": {
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "description": "Fetch instance relations for a spine tree.",
-            "graphMethod": true
+            "description": "Open a file in an editor. Command is the editor binary (e.g. \"code\"), file is an absolute path optionally with :line suffix."
         }
     }
 }

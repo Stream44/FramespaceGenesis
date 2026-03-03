@@ -1,6 +1,7 @@
 import { run } from '@stream44.studio/t44/standalone-rt'
 import { join, dirname } from 'path'
 import { readdir, stat } from 'fs/promises'
+import { writeFile } from 'fs/promises'
 
 export async function capsule({
     encapsulate,
@@ -136,6 +137,7 @@ export async function capsule({
                             const examplesDirs = [
                                 join(modelServerDir, '..', 'L4-space-models', 'Capsular', 'examples'),
                                 join(packageRoot, dirname(modelRelPath), 'examples'),
+                                join(packageRoot, 'examples'),
                             ]
                             const capsuleModules: { MODEL_NAME: string; runModel: (ctx: { run: any }) => Promise<any> }[] = []
                             const seenModels = new Set<string>()
@@ -236,6 +238,71 @@ export async function capsule({
                         }
 
                         console.log(`📋 ${this._methods.length} methods registered from ${this._models.length} semantic models`)
+
+                        if (this.writeApiSchema) {
+                            const schema = this._buildSchema()
+                            const modelServerDir = dirname(import.meta.path)
+                            const schemaPath = join(modelServerDir, '_schema.json')
+                            await writeFile(schemaPath, JSON.stringify(schema, null, 4))
+                            console.log(`📝 Schema written to ${schemaPath}`)
+                        }
+                    }
+                },
+
+                _buildSchema: {
+                    type: CapsulePropertyTypes.Function,
+                    value: function (this: any): any {
+                        const endpoints: Record<string, any> = {}
+                        const apis: Record<string, any> = {}
+                        const engineNames = [...new Set(this._models.map((m: any) => m.engineUri))]
+                        for (const m of this._models) {
+                            const ns = m.schema.namespace
+                            apis[ns] = { description: m.schema.description, basePath: m.schema.basePath }
+                            for (const [name, methodSchema] of Object.entries(m.schema.methods) as [string, any][]) {
+                                const path = `${m.schema.basePath}/${name}`
+                                const hasGraph = !!(methodSchema.tags || methodSchema.graphMethod)
+                                const endpoint: any = {
+                                    method: 'GET or POST',
+                                    namespace: ns,
+                                    description: methodSchema.description ?? '',
+                                    args: methodSchema.args ?? [],
+                                }
+                                if (hasGraph) endpoint.engineParam = true
+
+                                // Extract discovery and filterField from tags
+                                let discovery: string | undefined
+                                let filterField: string | undefined
+                                if (methodSchema.tags) {
+                                    for (const tagData of Object.values(methodSchema.tags) as any[]) {
+                                        if (tagData?.discovery) discovery = tagData.discovery
+                                        if (tagData?.filterField) filterField = tagData.filterField
+                                    }
+                                }
+                                if (methodSchema.discovery) discovery = methodSchema.discovery
+                                if (methodSchema.filterField) filterField = methodSchema.filterField
+                                if (discovery) endpoint.discovery = discovery.includes('/') ? `/api/${discovery}` : `${m.schema.basePath}/${discovery}`
+                                if (filterField) endpoint.filterField = filterField
+                                if (methodSchema.tags) endpoint.tags = methodSchema.tags
+
+                                // Build usage examples
+                                const argDefs = methodSchema.args ?? []
+                                const getParams = argDefs.map((a: any) => `${a.name}=<${a.type}>`).join('&')
+                                endpoint.usage = {
+                                    GET: getParams ? `${path}?${getParams}` : path,
+                                    POST: { body: { args: argDefs.map((a: any) => `<${a.type}>`) } },
+                                }
+
+                                endpoints[path] = endpoint
+                            }
+                        }
+                        return {
+                            openapi: '3.0.0',
+                            info: { title: 'Framespace Genesis API', version: '1.0.0' },
+                            apis,
+                            engines: engineNames,
+                            defaultEngine: engineNames[0] ?? null,
+                            endpoints,
+                        }
                     }
                 },
 
@@ -283,33 +350,7 @@ export async function capsule({
                                 }
 
                                 if (url.pathname === "/api/schema") {
-                                    const endpoints: Record<string, any> = {}
-                                    const apis: Record<string, any> = {}
-                                    const engineNames = [...new Set(self._models.map((m: any) => m.engineUri))]
-                                    for (const m of self._models) {
-                                        const ns = m.schema.namespace
-                                        apis[ns] = { description: m.schema.description, basePath: m.schema.basePath }
-                                        for (const [name, methodSchema] of Object.entries(m.schema.methods) as [string, any][]) {
-                                            const path = `/api/${ns}/${name}`
-                                            endpoints[path] = {
-                                                method: name,
-                                                namespace: ns,
-                                                description: methodSchema.description ?? '',
-                                                args: methodSchema.args ?? [],
-                                                discovery: methodSchema.discovery,
-                                                filterField: methodSchema.filterField,
-                                                tags: methodSchema.tags,
-                                            }
-                                        }
-                                    }
-                                    return _json({
-                                        openapi: '3.0.0',
-                                        info: { title: 'Framespace Genesis API', version: '1.0.0' },
-                                        apis,
-                                        engines: engineNames,
-                                        defaultEngine: engineNames[0] ?? null,
-                                        endpoints,
-                                    })
+                                    return _json(self._buildSchema())
                                 }
 
                                 // Dynamic method dispatch: /api/<namespace...>/<methodName>

@@ -65,8 +65,15 @@ export async function capsule({
                             }
                         }
 
+                        // Scope all node keys by spineInstanceTreeId so each tree
+                        // gets its own copy of shared capsules (e.g. structs/Capsule).
+                        const scopedRef = spineInstanceTreeId
+                            ? `${spineInstanceTreeId}::${absoluteCapsuleLineRef}`
+                            : absoluteCapsuleLineRef
+
                         // 1. MERGE Capsule node
-                        this.mergeNode('Capsule', absoluteCapsuleLineRef, {
+                        this.mergeNode('Capsule', scopedRef, {
+                            scopedId: scopedRef,
                             capsuleSourceLineRef: absoluteCapsuleLineRef,
                             capsuleSourceNameRef: cst.capsuleSourceNameRef ?? '',
                             capsuleSourceNameRefHash: cst.capsuleSourceNameRefHash ?? '',
@@ -96,7 +103,7 @@ export async function capsule({
                         })
 
                         // HAS_SOURCE edge
-                        this.mergeEdge('HAS_SOURCE', 'Capsule', absoluteCapsuleLineRef, 'CapsuleSource', sourceId)
+                        this.mergeEdge('HAS_SOURCE', 'Capsule', scopedRef, 'CapsuleSource', sourceId)
 
                         // 3. Spine contracts
                         if (cst.spineContracts) {
@@ -110,7 +117,7 @@ export async function capsule({
                                     capsuleSourceLineRef: absoluteCapsuleLineRef,
                                 })
 
-                                this.mergeEdge('IMPLEMENTS_SPINE', 'Capsule', absoluteCapsuleLineRef, 'SpineContract', spineId)
+                                this.mergeEdge('IMPLEMENTS_SPINE', 'Capsule', scopedRef, 'SpineContract', spineId)
 
                                 const properties = (spineContract as any).propertyContracts
                                 if (properties) {
@@ -134,7 +141,7 @@ export async function capsule({
                                         if (groupData.properties) {
                                             for (const [propName, prop] of Object.entries(groupData.properties)) {
                                                 if (propName.endsWith('Expression')) continue
-                                                await this._importProperty(absoluteCapsuleLineRef, pcId, propName, prop as any)
+                                                await this._importProperty(absoluteCapsuleLineRef, absoluteCapsuleLineRef, pcId, propName, prop as any)
                                             }
                                         }
                                     }
@@ -150,8 +157,8 @@ export async function capsule({
                  */
                 _importProperty: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, capsuleLineRef: string, propertyContractId: string, propName: string, prop: any): Promise<void> {
-                        const propId = `${capsuleLineRef}::prop::${propName}`
+                    value: async function (this: any, scopedRef: string, capsuleSourceLineRef: string, propertyContractId: string, propName: string, prop: any): Promise<void> {
+                        const propId = `${scopedRef}::prop::${propName}`
                         const delegate = prop.propertyContractDelegate || ''
                         const mappedModuleUri = prop.mappedModuleUri || ''
 
@@ -168,7 +175,7 @@ export async function capsule({
                             definitionStartLine: prop.definitionStartLine ?? -1,
                             definitionEndLine: prop.definitionEndLine ?? -1,
                             propertyContractDelegate: delegate,
-                            capsuleSourceLineRef: capsuleLineRef,
+                            capsuleSourceLineRef,
                             propertyContractId,
                         })
 
@@ -179,7 +186,7 @@ export async function capsule({
                             const delegateUri = delegate.startsWith('#') ? delegate.slice(1) : delegate
                             const pcRow = db.query(
                                 `SELECT id FROM PropertyContract WHERE capsuleSourceLineRef = ?1 AND propertyContractUri = ?2`
-                            ).get(capsuleLineRef, delegateUri) as any
+                            ).get(capsuleSourceLineRef, delegateUri) as any
                             if (pcRow) {
                                 this.mergeEdge('DELEGATES_TO', 'CapsuleProperty', propId, 'PropertyContract', pcRow.id)
                             }
@@ -197,24 +204,45 @@ export async function capsule({
                         const db = this._ensureConnection()
                         if (this.verbose) console.log('[sqlite] Linking mappings and extends...')
 
-                        // 1. MAPS_TO: CapsuleProperty.mappedModuleUri → Capsule.capsuleName
+                        // 1. MAPS_TO: CapsuleProperty.mappedModuleUri → Capsule (same tree, by capsuleName or CapsuleSource.moduleUri)
                         const mapResult = db.run(`
                             INSERT OR IGNORE INTO MAPS_TO (from_id, to_id)
-                            SELECT p.id, cap.capsuleSourceLineRef
+                            SELECT p.id, COALESCE(target1.scopedId, target2.scopedId)
                             FROM CapsuleProperty p
-                            JOIN Capsule cap ON cap.capsuleName = p.mappedModuleUri
+                            JOIN PropertyContract pc ON pc.id = p.propertyContractId
+                            JOIN Capsule owner ON owner.capsuleSourceLineRef = pc.capsuleSourceLineRef
+                            LEFT JOIN Capsule target1 ON target1.capsuleName = p.mappedModuleUri
+                                AND target1.spineInstanceTreeId = owner.spineInstanceTreeId
+                            LEFT JOIN (
+                                SELECT c.scopedId, c.spineInstanceTreeId, cs.moduleUri
+                                FROM HAS_SOURCE hs2
+                                JOIN Capsule c ON c.scopedId = hs2.from_id
+                                JOIN CapsuleSource cs ON cs.id = hs2.to_id
+                            ) target2 ON target2.moduleUri = p.mappedModuleUri
+                                AND target2.spineInstanceTreeId = owner.spineInstanceTreeId
                             WHERE p.mappedModuleUri IS NOT NULL AND p.mappedModuleUri <> ''
+                                AND COALESCE(target1.scopedId, target2.scopedId) IS NOT NULL
                         `)
                         const linked = mapResult.changes
 
-                        // 2. EXTENDS: CapsuleSource.extendsCapsuleUri → Capsule.capsuleName
+                        // 2. EXTENDS: CapsuleSource.extendsCapsuleUri → Capsule (same tree, by capsuleName or CapsuleSource.moduleUri)
                         const extResult = db.run(`
                             INSERT OR IGNORE INTO EXTENDS (from_id, to_id)
-                            SELECT hs.from_id, parent.capsuleSourceLineRef
+                            SELECT hs.from_id, COALESCE(parent1.scopedId, parent2.scopedId)
                             FROM HAS_SOURCE hs
+                            JOIN Capsule ownerCap ON ownerCap.scopedId = hs.from_id
                             JOIN CapsuleSource cs ON cs.id = hs.to_id
-                            JOIN Capsule parent ON parent.capsuleName = cs.extendsCapsuleUri
+                            LEFT JOIN Capsule parent1 ON parent1.capsuleName = cs.extendsCapsuleUri
+                                AND parent1.spineInstanceTreeId = ownerCap.spineInstanceTreeId
+                            LEFT JOIN (
+                                SELECT c2.scopedId, c2.spineInstanceTreeId, cs2.moduleUri
+                                FROM HAS_SOURCE hs3
+                                JOIN Capsule c2 ON c2.scopedId = hs3.from_id
+                                JOIN CapsuleSource cs2 ON cs2.id = hs3.to_id
+                            ) parent2 ON parent2.moduleUri = cs.extendsCapsuleUri
+                                AND parent2.spineInstanceTreeId = ownerCap.spineInstanceTreeId
                             WHERE cs.extendsCapsuleUri IS NOT NULL AND cs.extendsCapsuleUri <> ''
+                                AND COALESCE(parent1.scopedId, parent2.scopedId) IS NOT NULL
                         `)
                         const extendsCount = extResult.changes
 
@@ -245,7 +273,8 @@ export async function capsule({
                  */
                 importSitFile: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, sitFilePath: string): Promise<{ imported: number; capsules: number; instances: number }> {
+                    value: async function (this: any, sitFilePath: string, opts?: { reset?: boolean }): Promise<{ imported: number; capsules: number; instances: number }> {
+                        if (opts?.reset) { this._schemaCreated = false; await this._ensureSchema() }
                         if (this.verbose) console.log(`[sqlite] Importing SIT file: ${sitFilePath}`)
                         const content = await readFile(sitFilePath, 'utf-8')
                         const sit = JSON.parse(content)
@@ -275,19 +304,25 @@ export async function capsule({
                             if (!uriMatch) continue
 
                             const [, uriPath, line] = uriMatch
-                            let cstRelPath: string
-                            if (uriPath.includes('/models/')) {
-                                const modelsIdx = uriPath.indexOf('/models/')
-                                const localPath = uriPath.substring(modelsIdx + 1)
-                                cstRelPath = `${localPath}.ts:${line}.csts.json`
-                            } else {
-                                cstRelPath = `o/npmjs.com/node_modules/@${uriPath}.ts:${line}.csts.json`
-                            }
 
-                            const cstFilePath = join(staticAnalysisDir, cstRelPath)
-                            if (!existsSync(cstFilePath)) {
-                                if (this.verbose) console.log(`[sqlite] CST file not found: ${cstFilePath}`)
-                                continue
+                            // URI format: <org>/<package>/<local-path>
+                            // Strip first 2 segments (org/package) to get the local path
+                            const segments = uriPath.split('/')
+                            const localPath = segments.slice(2).join('/')
+                            const localCstRelPath = `${localPath}.ts:${line}.csts.json`
+                            const localCstFilePath = join(staticAnalysisDir, localCstRelPath)
+
+                            let cstFilePath: string
+                            if (existsSync(localCstFilePath)) {
+                                cstFilePath = localCstFilePath
+                            } else {
+                                // Fall back to npm-style path for external packages
+                                const npmCstFilePath = join(staticAnalysisDir, `o/npmjs.com/node_modules/@${uriPath}.ts:${line}.csts.json`)
+                                if (!existsSync(npmCstFilePath)) {
+                                    if (this.verbose) console.log(`[sqlite] CST file not found: ${localCstFilePath} or ${npmCstFilePath}`)
+                                    continue
+                                }
+                                cstFilePath = npmCstFilePath
                             }
 
                             const result = await this.importCstFile(cstFilePath, spineInstanceTreeId)
@@ -318,12 +353,12 @@ export async function capsule({
                                 spineInstanceTreeId,
                             })
 
-                            // Find capsule by name and create INSTANCE_OF edge
+                            // Find capsule by spineInstanceTreeId + capsuleName and create INSTANCE_OF edge
                             const capRow = db.query(
-                                `SELECT capsuleSourceLineRef FROM Capsule WHERE capsuleName = ?1`
-                            ).get(instance.capsuleName) as any
+                                `SELECT scopedId FROM Capsule WHERE spineInstanceTreeId = ?1 AND capsuleName = ?2`
+                            ).get(spineInstanceTreeId, instance.capsuleName) as any
                             if (capRow) {
-                                this.mergeEdge('INSTANCE_OF', 'CapsuleInstance', instanceId, 'Capsule', capRow.capsuleSourceLineRef)
+                                this.mergeEdge('INSTANCE_OF', 'CapsuleInstance', instanceId, 'Capsule', capRow.scopedId)
                             }
                             imported++
                         }

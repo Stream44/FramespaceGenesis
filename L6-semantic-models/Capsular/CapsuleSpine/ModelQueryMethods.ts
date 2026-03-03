@@ -95,9 +95,11 @@ export async function capsule({
                 init: {
                     type: CapsulePropertyTypes.Init,
                     value: async function (this: any): Promise<void> {
-                        const moduleFilepath = this['#@stream44.studio/encapsulate/structs/Capsule'].rootCapsule.moduleFilepath
-                        const schemaPath = join(dirname(moduleFilepath), '_ModelQueryMethodsSchema.json')
-                        await writeFile(schemaPath, JSON.stringify(this.apiSchema, null, 4))
+                        if (this.writeMethodSchema) {
+                            const moduleFilepath = this['#@stream44.studio/encapsulate/structs/Capsule'].moduleFilepath
+                            const schemaPath = join(dirname(moduleFilepath), '_ModelQueryMethodsSchema.json')
+                            await writeFile(schemaPath, JSON.stringify(this.apiSchema, null, 4))
+                        }
                     }
                 },
 
@@ -141,9 +143,9 @@ export async function capsule({
                     value: async function (this: any, { graph, server }: any, spineInstanceTreeId: string, capsuleName: string): Promise<any | null> {
                         if (!spineInstanceTreeId) throw new Error('getCapsule: spineInstanceTreeId is required')
                         if (!capsuleName) throw new Error('getCapsule: capsuleName is required')
-                        const raw = await graph.getCapsuleWithSource(capsuleName)
+                        const raw = await graph.getCapsuleWithSource(spineInstanceTreeId, capsuleName)
                         if (!raw) return null
-                        return await this._buildCapsuleEntity(graph, raw.cap, raw.source)
+                        return await this._buildCapsuleEntity(graph, spineInstanceTreeId, raw.cap, raw.source)
                     }
                 },
 
@@ -158,7 +160,7 @@ export async function capsule({
                         const capsuleNames = await graph.getCapsuleNamesBySpineTree(spineInstanceTreeId)
                         if (capsuleNames.length === 0) return null
 
-                        const relInfo = await graph.fetchCapsuleRelations(capsuleNames)
+                        const relInfo = await graph.fetchCapsuleRelations(spineInstanceTreeId, capsuleNames)
                         const visited = new Set<string>()
 
                         // Find root via the spine instance tree (same as getSpineInstanceTree)
@@ -171,7 +173,7 @@ export async function capsule({
                             }
                         }
                         if (!rootName || !relInfo.found.has(rootName)) return null
-                        const rootCapsule = await this._assembleTreeNode(graph, rootName, relInfo, visited, inclProps)
+                        const rootCapsule = await this._assembleTreeNode(graph, spineInstanceTreeId, rootName, relInfo, visited, inclProps)
                         return { '#': 'SpineDeclarationTree', $id: spineInstanceTreeId, rootCapsule }
                     }
                 },
@@ -208,14 +210,35 @@ export async function capsule({
                     value: async function (this: any, { graph, server }: any): Promise<any> {
                         const rows = await graph.listSpineInstanceTrees()
                         const distinctTreeIds = [...new Set<string>(rows.filter((r: any) => r.spineInstanceTreeId).map((r: any) => r.spineInstanceTreeId))]
+
+                        // For each tree, try to extract the root capsule's config property
+                        const configByTree: Record<string, any> = {}
+                        for (const treeId of distinctTreeIds) {
+                            try {
+                                const capsuleNames = await graph.getCapsuleNamesBySpineTree(treeId)
+                                if (capsuleNames.length > 0) {
+                                    const relInfo = await graph.fetchCapsuleRelations(treeId, [treeId])
+                                    const props = relInfo.properties?.[treeId] ?? []
+                                    const configProp = props.find((p: any) => p.propName === 'config')
+                                    if (configProp?.valueExpression) {
+                                        try {
+                                            configByTree[treeId] = new Function('return ' + configProp.valueExpression)()
+                                        } catch { }
+                                    }
+                                }
+                            } catch { }
+                        }
+
                         const list = distinctTreeIds.map((treeId: string) => {
                             const row = rows.find((r: any) => r.spineInstanceTreeId === treeId)
-                            return {
+                            const entry: any = {
                                 '#': 'SpineInstanceTree',
                                 $id: treeId,
                                 capsuleSourceLineRef: row?.capsuleSourceLineRef ?? null,
                                 capsuleSourceUriLineRef: row?.capsuleSourceUriLineRef ?? null,
                             }
+                            if (configByTree[treeId]) entry.config = configByTree[treeId]
+                            return entry
                         })
                         return { '#': 'SpineInstanceTrees', list }
                     }
@@ -270,7 +293,7 @@ export async function capsule({
                  */
                 _assembleTreeNode: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, graph: any, capsuleName: string, relInfo: any, visited: Set<string>, includeProperties: boolean = true): Promise<any> {
+                    value: async function (this: any, graph: any, spineInstanceTreeId: string, capsuleName: string, relInfo: any, visited: Set<string>, includeProperties: boolean = true): Promise<any> {
                         visited.add(capsuleName)
 
                         const info = relInfo.capsuleInfo[capsuleName]
@@ -291,7 +314,7 @@ export async function capsule({
                         const needsFetch = [...allTargets].filter((t: string) => !relInfo.found.has(t))
                         let mergedRelInfo = relInfo
                         if (needsFetch.length > 0) {
-                            const nextRelInfo = await graph.fetchCapsuleRelations(needsFetch)
+                            const nextRelInfo = await graph.fetchCapsuleRelations(spineInstanceTreeId, needsFetch)
                             mergedRelInfo = {
                                 mappings: { ...relInfo.mappings, ...nextRelInfo.mappings },
                                 extends: { ...relInfo.extends, ...nextRelInfo.extends },
@@ -305,7 +328,7 @@ export async function capsule({
                             if (visited.has(myExtends)) {
                                 node.extends = { '#': 'Capsule/Extends', capsule: { '#': 'Capsule', $id: myExtends } }
                             } else {
-                                node.extends = { '#': 'Capsule/Extends', capsule: await this._assembleTreeNode(graph, myExtends, mergedRelInfo, new Set(visited), includeProperties) }
+                                node.extends = { '#': 'Capsule/Extends', capsule: await this._assembleTreeNode(graph, spineInstanceTreeId, myExtends, mergedRelInfo, new Set(visited), includeProperties) }
                             }
                         }
 
@@ -332,7 +355,7 @@ export async function capsule({
                                 if (visited.has(m.target)) {
                                     mappingEntry.capsule = { '#': 'Capsule', $id: m.target }
                                 } else {
-                                    mappingEntry.capsule = await this._assembleTreeNode(graph, m.target, mergedRelInfo, new Set(visited), includeProperties)
+                                    mappingEntry.capsule = await this._assembleTreeNode(graph, spineInstanceTreeId, m.target, mergedRelInfo, new Set(visited), includeProperties)
                                 }
                                 mappingsObj[m.propName] = mappingEntry
                             }
@@ -349,7 +372,7 @@ export async function capsule({
                  */
                 _buildCapsuleEntity: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, graph: any, capsuleNode: any, sourceNode: any): Promise<any> {
+                    value: async function (this: any, graph: any, spineInstanceTreeId: string, capsuleNode: any, sourceNode: any): Promise<any> {
                         const { _label, _id, ...cap } = capsuleNode
                         const { _label: _sl2, _id: _si2, id: _srcId, capsuleSourceLineRef: _srcLineRef, ...src } = sourceNode
 
@@ -369,7 +392,7 @@ export async function capsule({
                         if (src.extendsCapsule) source.extendsCapsule = src.extendsCapsule
                         if (src.extendsCapsuleUri) source.extendsCapsuleUri = src.extendsCapsuleUri
 
-                        const allRows = await graph.getCapsuleSpineTree_data(cap.capsuleSourceLineRef)
+                        const allRows = await graph.getCapsuleSpineTree_data(spineInstanceTreeId, cap.capsuleName)
 
                         const spineContracts: any = { '#': 'Capsule/SpineContracts' }
                         for (const row of allRows) {

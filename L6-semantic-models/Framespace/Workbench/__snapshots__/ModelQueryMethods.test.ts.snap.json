@@ -1,0 +1,210 @@
+{
+  "L6 Framespace/Workbench ModelQueryMethods > getProcessStats #1": [
+    "#",
+    "cpuSystemMs",
+    "cpuUserMs",
+    "heapTotalMB",
+    "heapUsedMB",
+    "memoryMB",
+    "uptimeSeconds"
+  ],
+  "L6 Framespace/Workbench ModelQueryMethods > getReps #1": {
+    "#": "Reps",
+    "list": []
+  },
+  "L6 Framespace/Workbench ModelQueryMethods > listSpineInstanceTrees #1": {
+    "#": "SpineInstances",
+    "groups": [
+      {
+        "#": "SpineInstanceGroup",
+        "engines": {},
+        "exampleDir": "Quadrant-BackendServices",
+        "examplesPath": "<PACKAGE_ROOT>/examples/Quadrant-BackendServices",
+        "list": [
+          {
+            "#": "SpineInstanceTree",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1:75",
+            "config": {
+              "framespaces": {
+                "@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods": {
+                  "visualizationMethod": {
+                    "getSpineInstanceTree": {
+                      "label": "Spine Instance Tree"
+                    }
+                  }
+                },
+                "@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods#getSpineDeclarationTree": {
+                  "visualizationMethod": {
+                    "getSpineDeclarationTree": {
+                      "label": "Spine Declaration Tree"
+                    }
+                  }
+                },
+                "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/ModelQueryMethods": {
+                  "visualizationMethod": {
+                    "getVisualization": {
+                      "label": "Quadrant View"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "modelName": "@stream44.studio/FramespaceGenesis",
+        "type": "example"
+      },
+      {
+        "#": "SpineInstanceGroup",
+        "engines": {},
+        "exampleDir": "01-Documentation",
+        "examplesPath": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation",
+        "list": [
+          {
+            "#": "SpineInstanceTree",
+            "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33"
+          }
+        ],
+        "modelName": "L4-space-models/Capsular",
+        "type": "test"
+      },
+      {
+        "#": "SpineInstanceGroup",
+        "engines": {},
+        "exampleDir": "02-TreeRelationships",
+        "examplesPath": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships",
+        "list": [
+          {
+            "#": "SpineInstanceTree",
+            "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule:19"
+          },
+          {
+            "#": "SpineInstanceTree",
+            "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule:20"
+          },
+          {
+            "#": "SpineInstanceTree",
+            "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule:23"
+          },
+          {
+            "#": "SpineInstanceTree",
+            "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule:28"
+          },
+          {
+            "#": "SpineInstanceTree",
+            "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs:22",
+            "config": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/structs/ConfigSchema"
+          },
+          {
+            "#": "SpineInstanceTree",
+            "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36"
+          }
+        ],
+        "modelName": "L4-space-models/Capsular",
+        "type": "test"
+      }
+    ],
+    "list": [
+      {
+        "#": "SpineInstanceTree",
+        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1:75",
+        "config": {
+          "framespaces": {
+            "@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods": {
+              "visualizationMethod": {
+                "getSpineInstanceTree": {
+                  "label": "Spine Instance Tree"
+                }
+              }
+            },
+            "@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods#getSpineDeclarationTree": {
+              "visualizationMethod": {
+                "getSpineDeclarationTree": {
+                  "label": "Spine Declaration Tree"
+                }
+              }
+            },
+            "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/ModelQueryMethods": {
+              "visualizationMethod": {
+                "getVisualization": {
+                  "label": "Quadrant View"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "#": "SpineInstanceTree",
+        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33"
+      },
+      {
+        "#": "SpineInstanceTree",
+        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule:19"
+      },
+      {
+        "#": "SpineInstanceTree",
+        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule:20"
+      },
+      {
+        "#": "SpineInstanceTree",
+        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule:23"
+      },
+      {
+        "#": "SpineInstanceTree",
+        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule:28"
+      },
+      {
+        "#": "SpineInstanceTree",
+        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs:22",
+        "config": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/structs/ConfigSchema"
+      },
+      {
+        "#": "SpineInstanceTree",
+        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36"
+      }
+    ],
+    "registeredModels": [
+      {
+        "shortName": "L6-semantic-models/Framespace/Workbench",
+        "uri": "@stream44.studio/FramespaceGenesis/L6-semantic-models/Framespace/Workbench/ModelQueryMethods"
+      }
+    ]
+  },
+  "L6 Framespace/Workbench ModelQueryMethods > openFile (missing command) #1": {
+    "#": "Error",
+    "message": "No command provided",
+    "method": "openFile"
+  },
+  "L6 Framespace/Workbench ModelQueryMethods > openFile (missing file) #1": {
+    "#": "Error",
+    "message": "No file provided",
+    "method": "openFile"
+  },
+  "L6 Framespace/Workbench ModelQueryMethods > openFile (non-existent file) #1": {
+    "#": "Error",
+    "message": "File not found: /nonexistent/path/file.ts",
+    "method": "openFile"
+  },
+  "L6 Framespace/Workbench ModelQueryMethods > openFile (relative path) #1": {
+    "#": "Error",
+    "message": "File must be an absolute path: relative/path.ts",
+    "method": "openFile"
+  }
+}

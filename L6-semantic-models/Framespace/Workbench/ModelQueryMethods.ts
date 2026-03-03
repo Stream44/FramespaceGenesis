@@ -65,9 +65,11 @@ export async function capsule({
                 init: {
                     type: CapsulePropertyTypes.Init,
                     value: async function (this: any): Promise<void> {
-                        const moduleFilepath = this['#@stream44.studio/encapsulate/structs/Capsule'].rootCapsule.moduleFilepath
-                        const schemaPath = join(dirname(moduleFilepath), '_ModelQueryMethodsSchema.json')
-                        await writeFile(schemaPath, JSON.stringify(this.apiSchema, null, 4))
+                        if (this.writeMethodSchema) {
+                            const moduleFilepath = this['#@stream44.studio/encapsulate/structs/Capsule'].moduleFilepath
+                            const schemaPath = join(dirname(moduleFilepath), '_ModelQueryMethodsSchema.json')
+                            await writeFile(schemaPath, JSON.stringify(this.apiSchema, null, 4))
+                        }
                     }
                 },
 
@@ -160,15 +162,26 @@ export async function capsule({
                             shortName: shortModelName(uri),
                         }))
 
-                        // Group by modelName > exampleDir
+                        // Group by type (example vs test) > examplesPath > exampleDir
+                        // Only items from @stream44.studio/FramespaceGenesis/examples/ are "example", everything else is "test"
                         const groups: any[] = []
-                        const groupMap: Record<string, Record<string, any[]>> = {}
+                        // Key: type:examplesPath:exampleDir
+                        const groupMap: Record<string, { type: string; examplesPath: string; modelName: string; exampleDir: string; items: any[] }> = {}
                         for (const item of list) {
+                            // Use capsuleSourceLineRef (absolute path) for full filepath
+                            const absRef = (item.capsuleSourceLineRef ?? '') as string
                             // Use capsuleSourceUriLineRef (npm URI) to derive model name
                             const ref = (item.capsuleSourceUriLineRef ?? item.$id) as string
                             const examplesIdx = ref.indexOf('/examples/')
                             let modelName = '(unknown)'
                             let exampleDir = '(default)'
+                            let examplesPath = ''
+
+                            // Only items directly under @stream44.studio/FramespaceGenesis/examples/ are "example"
+                            // Check if the npm URI starts with the package prefix followed immediately by /examples/
+                            const isPackageExample = ref.startsWith('@stream44.studio/FramespaceGenesis/examples/')
+                            let type = isPackageExample ? 'example' : 'test'
+
                             if (examplesIdx >= 0) {
                                 // npm URI: @scope/package/path.../examples/dir/file
                                 let rawModelName = ref.substring(0, examplesIdx)
@@ -181,22 +194,37 @@ export async function capsule({
                                 if (slashIdx >= 0) {
                                     exampleDir = afterExamples.substring(0, slashIdx)
                                 }
+
+                                // Extract full examples path from absolute ref
+                                const absExamplesIdx = absRef.indexOf('/examples/')
+                                if (absExamplesIdx >= 0) {
+                                    const afterAbsExamples = absRef.substring(absExamplesIdx + '/examples/'.length)
+                                    const absSlashIdx = afterAbsExamples.indexOf('/')
+                                    if (absSlashIdx >= 0) {
+                                        examplesPath = absRef.substring(0, absExamplesIdx + '/examples/'.length + absSlashIdx)
+                                    } else {
+                                        examplesPath = absRef.substring(0, absExamplesIdx + '/examples/'.length) + afterAbsExamples.split(':')[0]
+                                    }
+                                }
                             }
-                            if (!groupMap[modelName]) groupMap[modelName] = {}
-                            if (!groupMap[modelName][exampleDir]) groupMap[modelName][exampleDir] = []
-                            groupMap[modelName][exampleDir].push(item)
+
+                            const key = `${type}:${examplesPath}:${exampleDir}`
+                            if (!groupMap[key]) {
+                                groupMap[key] = { type, examplesPath, modelName, exampleDir, items: [] }
+                            }
+                            groupMap[key].items.push(item)
                         }
-                        for (const [modelName, examples] of Object.entries(groupMap)) {
-                            const modelEngines = modelsJsonCache[modelName]?.engines ?? {}
-                            for (const [exampleDir, items] of Object.entries(examples)) {
-                                groups.push({
-                                    '#': 'SpineInstanceGroup',
-                                    modelName,
-                                    exampleDir,
-                                    engines: modelEngines,
-                                    list: items,
-                                })
-                            }
+                        for (const g of Object.values(groupMap)) {
+                            const modelEngines = modelsJsonCache[g.modelName]?.engines ?? {}
+                            groups.push({
+                                '#': 'SpineInstanceGroup',
+                                type: g.type,
+                                modelName: g.modelName,
+                                exampleDir: g.exampleDir,
+                                examplesPath: g.examplesPath,
+                                engines: modelEngines,
+                                list: g.items,
+                            })
                         }
 
                         return { '#': 'SpineInstances', list, groups, registeredModels }

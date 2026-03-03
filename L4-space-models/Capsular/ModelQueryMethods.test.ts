@@ -4,6 +4,7 @@ import * as bunTest from 'bun:test'
 import { join } from 'path'
 import { readdir, stat } from 'fs/promises'
 import { run } from '@stream44.studio/t44/standalone-rt'
+import { normalizeForSnapshot } from '../../L3-model-server/lib'
 
 const {
     test: { describe, it, expect, expectSnapshotMatch },
@@ -31,6 +32,7 @@ const {
                 modelQueryMethodTests: {
                     type: CapsulePropertyTypes.Mapping,
                     value: './ModelQueryMethodTests',
+                    options: { '#': { writeMethodSchema: true } }
                 },
             }
         }
@@ -70,19 +72,34 @@ for (const dir of exampleDirs) {
 }
 
 const engineNames = modelEngines.getEngineNames()
+const packageRoot = join(import.meta.dir, '..', '..')
+const normalize = (obj: any) => normalizeForSnapshot(obj, packageRoot)
+
+// Build per-model config used by both blocks
+const configForCapsule = (capsule: typeof capsuleModules[0]) => ({
+    getCapsuleWithSource: { capsuleName: capsule.MODEL_NAME },
+    getCapsuleSpineTree_data: { capsuleName: capsule.MODEL_NAME },
+    fetchCapsuleRelations: { capsuleNames: [capsule.MODEL_NAME] },
+})
+
+// Stores isolated-block results per engine+model+method for cross-validation
+// Key: `${engineName}::${MODEL_NAME}::${methodName}`
+const isolatedResults = new Map<string, any>()
 
 for (const engineName of engineNames) {
+    // Block 1: Isolated — reset before each model, only that model's data exists
     describe(`Engine: ${engineName}`, () => {
+        modelEngines.setActiveEngine(engineName)
+        const engine = modelEngines.getEngine()
+
         for (const capsule of capsuleModules) {
             describe(capsule.MODEL_NAME, () => {
                 it('runModel', async () => {
-                    modelEngines.setActiveEngine(engineName)
-
                     await spineInstanceTrees.registerInstance({
                         name: capsule.MODEL_NAME,
                     }, capsule.runModel)
 
-                    await spineInstanceTrees.importInstanceToEngine({ engine: modelEngines.getEngine(), name: capsule.MODEL_NAME })
+                    await spineInstanceTrees.importInstanceToEngine({ engine, name: capsule.MODEL_NAME, reset: true })
                 })
 
                 modelQueryMethodTests.makeTests({
@@ -90,15 +107,153 @@ for (const engineName of engineNames) {
                     it,
                     expect,
                     expectSnapshotMatch,
-                    engine: modelEngines.getEngine(),
+                    engine,
                     spineInstanceTreeId: capsule.MODEL_NAME,
-                    packageRoot: join(import.meta.dir, '..', '..'),
-                    config: {
-                        getCapsuleWithSource: { capsuleName: capsule.MODEL_NAME },
-                        getCapsuleSpineTree_data: { capsuleName: capsule.MODEL_NAME },
-                        fetchCapsuleRelations: { capsuleNames: [capsule.MODEL_NAME] },
+                    packageRoot,
+                    config: configForCapsule(capsule),
+                })
+
+                // Capture isolated results for cross-validation with accumulated block
+                it('_captureIsolatedResults', async () => {
+                    const config = configForCapsule(capsule)
+                    const methodNames = Object.keys(config) as string[]
+                    // Query methods that take only spineInstanceTreeId
+                    for (const m of ['listCapsules', 'getCapsuleNamesBySpineTree', 'listSpineInstanceTrees', 'getInstancesBySpineTree', 'getRootInstance', 'getChildInstances', 'fetchInstanceRelations']) {
+                        const key = `${engineName}::${capsule.MODEL_NAME}::${m}`
+                        try {
+                            isolatedResults.set(key, normalize(await engine[m](capsule.MODEL_NAME)))
+                        } catch { }
+                    }
+                    // Query methods that take extra args from config
+                    for (const [m, extra] of Object.entries(config)) {
+                        const key = `${engineName}::${capsule.MODEL_NAME}::${m}`
+                        const extraArgs = Object.values(extra)
+                        try {
+                            isolatedResults.set(key, normalize(await engine[m](capsule.MODEL_NAME, ...extraArgs)))
+                        } catch { }
                     }
                 })
+            })
+        }
+    })
+
+    // Block 2: Accumulated — import ALL models into the same engine (reset once,
+    // then accumulate), then run the same queries per model.
+    //
+    // Instance-level queries must match exactly (CapsuleInstance nodes are scoped
+    // by spineInstanceTreeId and never shared across trees).
+    //
+    // Capsule-level queries may differ because shared Capsule nodes (e.g.
+    // structs/Capsule) have a single spineInstanceTreeId that gets overwritten
+    // by whichever SIT file imports last.  For these we verify the accumulated
+    // result is a *superset* of the isolated result — every isolated item must
+    // appear in the accumulated output.
+    describe(`Engine (accumulated): ${engineName}`, () => {
+        modelEngines.setActiveEngine(engineName)
+        const engine = modelEngines.getEngine()
+
+        it('importAllModels', async () => {
+            let first = true
+            for (const capsule of capsuleModules) {
+                await spineInstanceTrees.registerInstance({
+                    name: capsule.MODEL_NAME,
+                }, capsule.runModel)
+                await spineInstanceTrees.importInstanceToEngine({ engine, name: capsule.MODEL_NAME, reset: first })
+                first = false
+            }
+        })
+
+        // Instance-level methods — must match exactly (strict isolation)
+        const exactMethods = ['getInstancesBySpineTree', 'getRootInstance', 'getChildInstances', 'fetchInstanceRelations']
+        // Capsule-level methods — accumulated is a superset of isolated
+        const supersetMethods = ['listCapsules', 'getCapsuleNamesBySpineTree', 'listSpineInstanceTrees']
+
+        for (const capsule of capsuleModules) {
+            describe(capsule.MODEL_NAME, () => {
+                const config = configForCapsule(capsule)
+
+                for (const m of exactMethods) {
+                    it(m, async () => {
+                        const key = `${engineName}::${capsule.MODEL_NAME}::${m}`
+                        const isolated = isolatedResults.get(key)
+                        expect(isolated).toBeDefined()
+                        const accumulated = normalize(await engine[m](capsule.MODEL_NAME))
+                        expect(accumulated).toEqual(isolated)
+                    })
+                }
+
+                for (const m of supersetMethods) {
+                    it(m, async () => {
+                        const key = `${engineName}::${capsule.MODEL_NAME}::${m}`
+                        const isolated = isolatedResults.get(key)
+                        expect(isolated).toBeDefined()
+                        const accumulated = normalize(await engine[m](capsule.MODEL_NAME))
+                        // Every item in the isolated result must appear in the accumulated result
+                        if (Array.isArray(isolated)) {
+                            for (const item of isolated) {
+                                if (typeof item === 'string') {
+                                    expect(accumulated).toContain(item)
+                                } else {
+                                    expect(accumulated).toContainEqual(item)
+                                }
+                            }
+                        }
+                    })
+                }
+
+                // Methods with extra args — capsule-level, use superset check
+                for (const [m, extra] of Object.entries(config)) {
+                    it(m, async () => {
+                        const key = `${engineName}::${capsule.MODEL_NAME}::${m}`
+                        const isolated = isolatedResults.get(key)
+                        expect(isolated).toBeDefined()
+                        const extraArgs = Object.values(extra)
+                        const accumulated = normalize(await engine[m](capsule.MODEL_NAME, ...extraArgs))
+                        // For object results, verify every key in isolated exists in accumulated
+                        if (isolated && typeof isolated === 'object' && !Array.isArray(isolated)) {
+                            for (const [k, v] of Object.entries(isolated)) {
+                                if (k === 'found') continue
+                                expect(accumulated).toHaveProperty([k])
+                            }
+                        }
+                    })
+                }
+            })
+        }
+    })
+}
+
+// ── Cross-engine comparison ─────────────────────────────────────────
+// After all engines have run, verify that every engine produces identical
+// isolated results for every model+method combination.
+if (engineNames.length > 1) {
+    const referenceEngine = engineNames[0]
+
+    // All method keys captured during isolated runs
+    const allMethods = [
+        'listCapsules', 'getCapsuleNamesBySpineTree', 'listSpineInstanceTrees',
+        'getInstancesBySpineTree', 'getRootInstance', 'getChildInstances', 'fetchInstanceRelations',
+        ...Object.keys(configForCapsule(capsuleModules[0])),
+    ]
+
+    describe('Cross-engine comparison', () => {
+        for (const capsule of capsuleModules) {
+            describe(capsule.MODEL_NAME, () => {
+                for (const m of allMethods) {
+                    for (let i = 1; i < engineNames.length; i++) {
+                        const shortRef = referenceEngine.split('/').slice(-2, -1)[0]
+                        const shortOther = engineNames[i].split('/').slice(-2, -1)[0]
+                        it(`${m} — ${shortRef} = ${shortOther}`, () => {
+                            const refKey = `${referenceEngine}::${capsule.MODEL_NAME}::${m}`
+                            const reference = isolatedResults.get(refKey)
+                            if (reference === undefined) return // method not captured
+
+                            const otherKey = `${engineNames[i]}::${capsule.MODEL_NAME}::${m}`
+                            const other = isolatedResults.get(otherKey)
+                            expect(other).toEqual(reference)
+                        })
+                    }
+                }
             })
         }
     })

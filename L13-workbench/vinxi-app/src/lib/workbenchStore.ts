@@ -2,7 +2,7 @@
 // Central state for the workbench: engine connections, selected spine
 // instance, dockview layout, and persistence via localStorage.
 
-import { createSignal } from "solid-js";
+import { createSignal, createMemo } from "solid-js";
 import type { SpineInstance } from "./modelApiClient";
 import { createModelApiClient } from "./modelApiClient";
 
@@ -128,6 +128,13 @@ function clearSpineInstance() {
     persist({ selectedSpineInstance: null });
 }
 
+const selectedInstanceConfig = createMemo(() => {
+    const id = selectedSpineInstance();
+    if (!id) return null;
+    const inst = spineInstances().find(i => i.$id === id);
+    return inst?.config ?? null;
+});
+
 export const workbenchStore = {
     // ── API client ──────────────────────────────────────────────────
     api,
@@ -141,6 +148,7 @@ export const workbenchStore = {
     spineInstanceGroups,
     registeredModels,
     selectedSpineInstance,
+    selectedInstanceConfig,
     selectSpineInstance,
     clearSpineInstance,
 

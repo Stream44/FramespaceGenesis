@@ -1,6 +1,10 @@
 // ── SpineInstanceTreeRep ────────────────────────────────────────────
 // Renders a SpineInstanceTree as a Cytoscape graph showing the
 // runtime capsule instantiation hierarchy (parent-child instances).
+//
+// Visualization approach mirrors SpineDeclarationTreeRep: preset
+// layout with recursive positioning, short labels relative to the
+// spineInstanceTreeId, and distinct node/edge styles per type.
 
 import { onMount, onCleanup } from "solid-js";
 import type { JSX } from "solid-js";
@@ -10,15 +14,15 @@ import type { JsonObject, RepContext } from "../../../../L13-workbench/vinxi-app
 // ── Data extraction ─────────────────────────────────────────────────
 
 type TreeCyNode = {
-    data: { id: string; label: string; nodeType?: string };
+    data: { id: string; label: string; nodeType?: string; isStruct?: string };
     position: { x: number; y: number };
 };
 type TreeCyEdge = {
     data: { id: string; source: string; target: string; label?: string; edgeType?: string };
 };
 
-const STEP_X = 350;
-const STEP_Y = 120;
+const STEP = 300;
+const STRUCT_CAPSULE_ID = "@stream44.studio/encapsulate/structs/Capsule";
 
 function extractInstanceGraph(
     tree: JsonObject,
@@ -58,73 +62,126 @@ function extractInstanceGraph(
         edges.push({ data: { id: `e${edgeSeq++}_${src}→${label}→${tgt}`, source: src, target: tgt, label, edgeType } });
     }
 
-    // Walk the instance tree recursively
-    // Returns the total height consumed by this subtree
-    function walk(instance: JsonObject, x: number, y: number): number {
+    // Find the root instance from the tree data.
+    // Raw API data uses 'rootInstance' key; normalized snapshot data
+    // renames it to the capsuleSourceUriLineRef value.
+    function findRootInstance(t: JsonObject): JsonObject | undefined {
+        // Check raw API shape first
+        const ri = t["rootInstance"];
+        if (ri && typeof ri === 'object' && !Array.isArray(ri) && (ri as JsonObject)['#'] === 'CapsuleInstance') {
+            return ri as JsonObject;
+        }
+        // Fall back: search for any CapsuleInstance value (normalized data)
+        for (const [key, val] of Object.entries(t)) {
+            if (key === '#' || key === '$id') continue;
+            if (val && typeof val === 'object' && !Array.isArray(val) && (val as JsonObject)['#'] === 'CapsuleInstance') {
+                return val as JsonObject;
+            }
+        }
+        return undefined;
+    }
+
+    // Build a lookup of all instances keyed by $id (recursive).
+    // Handles shared instances (same $id appearing in multiple subtrees).
+    const instanceLookup = new Map<string, JsonObject>();
+    function indexInstance(inst: JsonObject) {
+        const iid = inst["$id"] as string | undefined;
+        if (iid && !instanceLookup.has(iid)) {
+            instanceLookup.set(iid, inst);
+            const childrenObj = inst["children"] as JsonObject | undefined;
+            if (childrenObj && typeof childrenObj === "object") {
+                const list = childrenObj["list"] as JsonObject[] | undefined;
+                if (Array.isArray(list)) {
+                    for (const child of list) indexInstance(child);
+                }
+            }
+        }
+    }
+    const rootInstance = findRootInstance(tree);
+    if (rootInstance) indexInstance(rootInstance);
+
+    // Recursive walk — positions nodes and creates edges.
+    // Returns the number of vertical slots consumed.
+    function walk(instance: JsonObject, x: number, y: number, isRoot: boolean): number {
         const id = instance["$id"] as string | undefined;
         if (!id || placed.has(id)) return 0;
 
         placed.add(id);
 
-        // Determine node type based on instance properties
         const capsuleName = instance["capsuleName"] as string | undefined;
-        const nodeType = capsuleName ? "instance" : "root";
+        const isStruct = capsuleName === STRUCT_CAPSULE_ID;
 
-        // Get children (child instances)
-        const children = instance["children"] as JsonObject[] | undefined;
-        const childList = Array.isArray(children) ? children : [];
+        // Use capsuleName for the label (shows what capsule this is an instance of)
+        const label = capsuleName ? shortLabel(capsuleName) : shortLabel(id);
 
-        // Calculate total height needed for children
-        let totalChildHeight = 0;
-        const childHeights: number[] = [];
+        if (isStruct) {
+            addNode(id, x, y, { isStruct: "true" });
+            nodes[nodes.length - 1].data.label = label;
+            return 1;
+        }
 
-        // First pass: calculate heights
+        const nodeType = isRoot ? "root" : "instance";
+        addNode(id, x, y, { nodeType });
+        nodes[nodes.length - 1].data.label = label;
+
+        // Get children from children.list
+        const childrenObj = instance["children"] as JsonObject | undefined;
+        const childList: JsonObject[] = [];
+        if (childrenObj && typeof childrenObj === "object") {
+            const list = childrenObj["list"] as JsonObject[] | undefined;
+            if (Array.isArray(list)) childList.push(...list);
+        }
+
+        // Separate struct children from regular children
+        const structChildren: JsonObject[] = [];
+        const regularChildren: JsonObject[] = [];
         for (const child of childList) {
-            const childId = child["$id"] as string | undefined;
-            if (childId && !placed.has(childId)) {
-                // Estimate height (will be refined in second pass)
-                const childChildren = child["children"] as JsonObject[] | undefined;
-                const h = Math.max(1, Array.isArray(childChildren) ? childChildren.length : 1);
-                childHeights.push(h);
-                totalChildHeight += h;
+            const cName = child["capsuleName"] as string | undefined;
+            if (cName === STRUCT_CAPSULE_ID) {
+                structChildren.push(child);
             } else {
-                childHeights.push(0);
+                regularChildren.push(child);
             }
         }
 
-        // Place this node
-        addNode(id, x, y, { nodeType });
+        // Struct children → faded stub to upper-left (like declaration tree)
+        for (const sc of structChildren) {
+            const scId = sc["$id"] as string | undefined;
+            if (!scId) continue;
+            if (placed.has(scId)) {
+                addEdge(id, scId, "struct", "struct");
+            } else {
+                const stubId = `__struct_${edgeSeq++}_${scId}`;
+                addNode(stubId, x - STEP * 0.8, y - STEP * 0.7, { isStruct: "true" });
+                nodes[nodes.length - 1].data.label = shortLabel(STRUCT_CAPSULE_ID);
+                placed.add(scId);
+                addEdge(id, stubId, "struct", "struct");
+            }
+        }
 
-        // Second pass: place children
-        let currentY = y - (totalChildHeight * STEP_Y) / 2;
-        for (let i = 0; i < childList.length; i++) {
-            const child = childList[i];
+        // Regular children → right, stacked vertically
+        let slotsConsumed = 1;
+        let currentY = y - ((regularChildren.length - 1) * STEP) / 2;
+        for (const child of regularChildren) {
             const childId = child["$id"] as string | undefined;
             if (!childId) continue;
 
             if (placed.has(childId)) {
-                // Just add edge to existing node
-                const propName = child["propertyName"] as string | undefined;
-                addEdge(id, childId, propName ?? "child", "instantiation");
+                addEdge(id, childId, "child", "instantiation");
             } else {
-                const childHeight = childHeights[i];
-                const childY = currentY + (childHeight * STEP_Y) / 2;
-
-                const consumed = walk(child, x + STEP_X, childY);
-
-                const propName = child["propertyName"] as string | undefined;
-                addEdge(id, childId, propName ?? "child", "instantiation");
-
-                currentY += Math.max(consumed, 1) * STEP_Y;
+                const full = instanceLookup.get(childId) || child;
+                const consumed = walk(full, x + STEP, currentY, false);
+                addEdge(id, childId, "child", "instantiation");
+                slotsConsumed += consumed;
+                currentY += Math.max(consumed, 1) * STEP;
             }
         }
 
-        return Math.max(totalChildHeight, 1);
+        return slotsConsumed;
     }
 
-    const rootInstance = tree["rootInstance"] as JsonObject | undefined;
     if (rootInstance) {
-        walk(rootInstance, 0, 0);
+        walk(rootInstance, 0, 0, true);
     }
 
     return { nodes, edges };
@@ -146,7 +203,7 @@ function renderInstanceTree(container: HTMLElement, data: JsonObject, spineInsta
                     "content": "data(label)",
                     "text-valign": "center",
                     "text-halign": "center",
-                    "font-size": "14px",
+                    "font-size": "15px",
                     "color": "#2b5a8c",
                     "background-color": "#d4e8f2",
                     "border-color": "#2b5a8c",
@@ -156,7 +213,18 @@ function renderInstanceTree(container: HTMLElement, data: JsonObject, spineInsta
                     "padding-left": "14px",
                     "padding-right": "14px",
                     "text-wrap": "wrap",
-                    "text-max-width": "350px",
+                    "text-max-width": "400px",
+                } as any,
+            },
+            {
+                selector: "node[isStruct]",
+                css: {
+                    "opacity": 0.4,
+                    "border-style": "dashed",
+                    "background-color": "#e8f0f8",
+                    "border-color": "#7a9ab8",
+                    "color": "#7a9ab8",
+                    "font-size": "12px",
                 } as any,
             },
             {
@@ -180,12 +248,12 @@ function renderInstanceTree(container: HTMLElement, data: JsonObject, spineInsta
                     "target-arrow-shape": "triangle",
                     "target-arrow-color": "#2b5a8c",
                     "line-color": "#8ab4d4",
-                    "width": 2,
+                    "width": 1,
                     "label": "data(label)",
-                    "font-size": "10px",
+                    "font-size": "11px",
                     "color": "#5a8ab4",
                     "text-rotation": "autorotate",
-                    "text-margin-y": -12,
+                    "text-margin-y": -14,
                 } as any,
             },
             {
@@ -193,7 +261,18 @@ function renderInstanceTree(container: HTMLElement, data: JsonObject, spineInsta
                 css: {
                     "line-color": "#4a8ac4",
                     "target-arrow-color": "#4a8ac4",
-                    "width": 2,
+                    "width": 3,
+                    "arrow-scale": 1.4,
+                } as any,
+            },
+            {
+                selector: "edge[edgeType = 'struct']",
+                css: {
+                    "line-style": "dashed",
+                    "line-color": "#7a9ab8",
+                    "target-arrow-color": "#7a9ab8",
+                    "width": 1,
+                    "opacity": 0.4,
                 } as any,
             },
         ],
@@ -216,10 +295,18 @@ function renderInstanceTree(container: HTMLElement, data: JsonObject, spineInsta
 
 registerRep({
     name: "SpineInstanceTree",
-    match: (data) =>
-        typeof data === "object" && data !== null && !Array.isArray(data) &&
-        (data as JsonObject)["#"] === "SpineInstanceTree" &&
-        !!(data as JsonObject)["rootInstance"],
+    match: (data) => {
+        if (typeof data !== "object" || data === null || Array.isArray(data)) return false;
+        const obj = data as JsonObject;
+        if (obj["#"] !== "SpineInstanceTree") return false;
+        // Raw API data has 'rootInstance'; normalized data has a dynamic key
+        if (obj["rootInstance"]) return true;
+        for (const [key, val] of Object.entries(obj)) {
+            if (key === '#' || key === '$id') continue;
+            if (val && typeof val === 'object' && !Array.isArray(val) && (val as JsonObject)['#'] === 'CapsuleInstance') return true;
+        }
+        return false;
+    },
     render: (data: JsonObject, ctx: RepContext): JSX.Element => {
         let containerRef: HTMLDivElement | undefined;
         let cy: any = null;

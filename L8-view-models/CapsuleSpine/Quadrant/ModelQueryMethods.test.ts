@@ -10,7 +10,7 @@ const ENGINE_KEY = '@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/
 const PACKAGE_ROOT = dirname(dirname(dirname(dirname(import.meta.path))))
 
 const {
-    test: { describe, it, expect },
+    test: { describe, it, expect, expectSnapshotMatch },
     modelServer,
 } = await run(async ({ encapsulate, CapsulePropertyTypes, makeImportStack }: any) => {
     const spine = await encapsulate({
@@ -66,7 +66,7 @@ describe('Schema', () => {
         const method = schema?.methods?.getVisualization
         expect(method).toBeDefined()
         expect(method.tags).toBeDefined()
-        expect(method.tags['@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/Models/Panel']).toBeDefined()
+        expect(method.tags['@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/Framespaces/Panel']).toBeDefined()
     })
 
     it('all tagged methods have discovery in ModelAPIs tag', () => {
@@ -87,17 +87,17 @@ for (const { spineInstanceTreeId } of trees) {
 
         it('getColumnTree', async () => {
             const result = await api.getColumnTree(spineInstanceTreeId)
-            expect(normalize(result)).toMatchSnapshot()
+            await expectSnapshotMatch(normalize(result))
         })
 
         it('getRowTree', async () => {
             const result = await api.getRowTree(spineInstanceTreeId)
-            expect(normalize(result)).toMatchSnapshot()
+            await expectSnapshotMatch(normalize(result))
         })
 
         it('getVisualization', async () => {
             const result = await api.getVisualization(spineInstanceTreeId)
-            expect(normalize(result)).toMatchSnapshot()
+            await expectSnapshotMatch(normalize(result))
         })
     })
 }

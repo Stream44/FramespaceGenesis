@@ -66,7 +66,7 @@ export async function capsule({
                                         discovery: 'Framespace/Workbench/listSpineInstanceTrees',
                                         filterField: '$id',
                                     },
-                                    '@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/Models/Panel': {
+                                    '@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/Framespaces/Panel': {
                                         label: 'Quadrant Visualization',
                                         description: 'A table-rooted nested spatial layout for domain elements.'
                                     },
@@ -83,9 +83,11 @@ export async function capsule({
                 init: {
                     type: CapsulePropertyTypes.Init,
                     value: async function (this: any): Promise<void> {
-                        const moduleFilepath = this['#@stream44.studio/encapsulate/structs/Capsule'].rootCapsule.moduleFilepath
-                        const schemaPath = join(dirname(moduleFilepath), '_ModelQueryMethodsSchema.json')
-                        await writeFile(schemaPath, JSON.stringify(this.apiSchema, null, 4))
+                        if (this.writeMethodSchema) {
+                            const moduleFilepath = this['#@stream44.studio/encapsulate/structs/Capsule'].moduleFilepath
+                            const schemaPath = join(dirname(moduleFilepath), '_ModelQueryMethodsSchema.json')
+                            await writeFile(schemaPath, JSON.stringify(this.apiSchema, null, 4))
+                        }
                     }
                 },
 
@@ -117,7 +119,7 @@ export async function capsule({
                             properties: { ...base.properties, ...next.properties },
                             capsuleInfo: { ...base.capsuleInfo, ...next.capsuleInfo },
                         })
-                        let relInfo = await graph.fetchCapsuleRelations(capsuleNames)
+                        let relInfo = await graph.fetchCapsuleRelations(spineInstanceTreeId, capsuleNames)
                         for (let depth = 0; depth < 4; depth++) {
                             const targets = new Set<string>()
                             for (const name of relInfo.found) {
@@ -125,7 +127,7 @@ export async function capsule({
                             }
                             const unfetched = [...targets].filter((t: string) => !relInfo.found.has(t))
                             if (unfetched.length === 0) break
-                            relInfo = mergeRelInfo(relInfo, await graph.fetchCapsuleRelations(unfetched))
+                            relInfo = mergeRelInfo(relInfo, await graph.fetchCapsuleRelations(spineInstanceTreeId, unfetched))
                         }
 
                         // 1. Identify dimension capsules — those with a property matching schemaUri

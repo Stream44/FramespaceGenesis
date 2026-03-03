@@ -42,6 +42,7 @@ export interface SpineInstance {
     filepath?: string;
     capsuleSourceLineRef?: string;
     capsuleSourceUriLineRef?: string;
+    config?: Record<string, any> | null;
 }
 
 export type ProcessStats = {
@@ -230,6 +231,7 @@ export function createModelApiClient(baseUrl = DEFAULT_BASE_URL) {
             capsuleName: i.$id,
             capsuleSourceLineRef: i.capsuleSourceLineRef,
             capsuleSourceUriLineRef: i.capsuleSourceUriLineRef,
+            config: i.config ?? null,
         })) ?? [];
         const groups = data.result?.groups ?? [];
         const registeredModels = data.result?.registeredModels ?? [];

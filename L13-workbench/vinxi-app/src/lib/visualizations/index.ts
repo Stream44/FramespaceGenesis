@@ -6,10 +6,11 @@ export type { VisualizationDef, VisualizationContext } from "./types";
 export type { WorkbenchLib } from "../workbenchLib";
 export { workbenchLib } from "../workbenchLib";
 export { FramespaceAPI, panelDef as FramespaceAPIPanelDef } from "~L8/Workbench/ModelAPIs/Panel";
-export { ModelsPanel, panelDef as ModelsPanelDef } from "~L8/Workbench/Models/Panel";
+export { FramespacesPanel, panelDef as FramespacesPanelDef } from "~L8/Workbench/Framespaces/Panel";
+export type { FramespaceLink } from "~L8/Workbench/Framespaces/Panel";
 
 import type { VisualizationDef } from "./types";
-import { panelDef as ModelsPanelDef } from "~L8/Workbench/Models/Panel";
+import { panelDef as FramespacesPanelDef } from "~L8/Workbench/Framespaces/Panel";
 import { panelDef as FramespaceAPIPanelDef } from "~L8/Workbench/ModelAPIs/Panel";
 
 // Side-effect imports: register reps with renderLib
@@ -37,7 +38,7 @@ import "~L8/CapsuleSpine/Quadrant/reps/QuadrantGrid";
 // Default visualizations — these are shown from the start and are non-closable
 export const visualizations: VisualizationDef[] = [
     {
-        ...ModelsPanelDef,
+        ...FramespacesPanelDef,
         component: () => null, // placeholder — rendered inline in WorkbenchDockview
     },
 ];

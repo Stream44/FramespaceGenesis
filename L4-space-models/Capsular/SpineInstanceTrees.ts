@@ -47,7 +47,7 @@ export async function capsule({
 
                 importInstanceToEngine: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, opts: { engine: any, name?: string }): Promise<void> {
+                    value: async function (this: any, opts: { engine: any, name?: string, reset?: boolean }): Promise<void> {
                         const models = opts.name
                             ? this._models.filter((m: any) => m.name === opts.name)
                             : this._models
@@ -57,7 +57,7 @@ export async function capsule({
                             const sitDirName = model.name.replace(/\//g, '~')
                             const sitFile = join(sitRoot, '.~o/encapsulate.dev/spine-instances', sitDirName, 'root-capsule.sit.json')
                             if (await exists(sitFile)) {
-                                await opts.engine.importSitFile(sitFile)
+                                await opts.engine.importSitFile(sitFile, { reset: opts.reset })
                             }
                         }
 

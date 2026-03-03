@@ -110,9 +110,11 @@ export async function capsule({
                 init: {
                     type: CapsulePropertyTypes.Init,
                     value: async function (this: any): Promise<void> {
-                        const moduleFilepath = this['#@stream44.studio/encapsulate/structs/Capsule'].rootCapsule.moduleFilepath
-                        const schemaPath = join(dirname(moduleFilepath), '_ModelQueryMethodsSchema.json')
-                        await writeFile(schemaPath, JSON.stringify(this.apiSchema, null, 4))
+                        if (this.writeMethodSchema) {
+                            const moduleFilepath = this['#@stream44.studio/encapsulate/structs/Capsule'].moduleFilepath
+                            const schemaPath = join(dirname(moduleFilepath), '_ModelQueryMethodsSchema.json')
+                            await writeFile(schemaPath, JSON.stringify(this.apiSchema, null, 4))
+                        }
                     }
                 },
 

@@ -1,0 +1,178 @@
+<mxfile host="65bd71144e">
+    <diagram name="Page-1" id="QeIE7gKKPfThrfCM8ygm">
+        <mxGraphModel dx="974" dy="1705" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-63" value="" style="rounded=0;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="-840" width="430" height="340" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-1" value="L4: Space Models" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;align=left;spacingLeft=10;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="-800" width="270" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-2" value="L6: Semantic Models" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;align=left;spacingLeft=10;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="-750" width="260" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-3" value="L8: View Models" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;align=left;spacingLeft=10;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="-680" width="240" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-4" value="L10: Domain Models" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;align=left;spacingLeft=10;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="-610" width="220" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-6" value="Capsular" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;fontStyle=1;align=left;spacingLeft=10;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="-780" width="270" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-7" value="Capsular / Capsule Spine" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;fontStyle=1;align=left;spacingLeft=10;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="-730" width="260" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-9" value="Capsule Spine&amp;nbsp; / Codepath" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;fontStyle=1;align=left;spacingLeft=10;" parent="1" vertex="1">
+                    <mxGeometry x="90" y="-710" width="250" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-11" value="Capsule Spine / Quadrant" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;fontStyle=1;align=left;spacingLeft=10;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="-660" width="240" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-14" value="Quadrant / Codepath" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;fontStyle=1;align=left;spacingLeft=10;" parent="1" vertex="1">
+                    <mxGeometry x="110" y="-640" width="230" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-15" value="Codepath / SSI" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;fontStyle=1;align=left;spacingLeft=10;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="-590" width="220" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-16" value="L12: Framespace Models" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;align=left;spacingLeft=10;" parent="1" vertex="1">
+                    <mxGeometry x="130" y="-560" width="210" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-19" value="SSI / &amp;lt;Use Case&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;fontStyle=1;align=left;spacingLeft=10;" parent="1" vertex="1">
+                    <mxGeometry x="130" y="-540" width="210" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-20" value="" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="409.5" y="-750" as="sourcePoint"/>
+                        <mxPoint x="410" y="-570" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-21" value="dependent&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;model&amp;nbsp;&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;mapped &amp;amp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;controlled&lt;br&gt;&lt;div&gt;&lt;br&gt;reactivity&lt;/div&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="ez4ky4WJp2ajRVcOHQkX-20" connectable="0" vertex="1">
+                    <mxGeometry x="0.3403" relative="1" as="geometry">
+                        <mxPoint y="-34" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-23" value="Data Graph" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="-800" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-24" value="Visualization" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="-560" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-64" value="(c) 2026 &lt;a href=&quot;https://christoph.diy&quot;&gt;Christoph.diy&lt;/a&gt;&amp;nbsp;CC BY" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="-840" width="185" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-65" value="Framespace Genesis: Model Stack - v0.1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="-840" width="240" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-26" value="Notes" parent="0" visible="0"/>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-27" value="Semantic Schema" style="rounded=0;whiteSpace=wrap;html=1;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="100" y="35" width="140" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-28" value="&lt;div&gt;The generic engine model that defines the rules, grammar, and base schemas. It dictates how models are built.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="350" y="-355" width="660" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-29" value="&lt;div&gt;The specific model created by the user or developer that operates inside the engine to solve a specific business problem. It is an instance of the Metamodel.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="260" y="335" width="660" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-30" value="&lt;div&gt;The invisible, underlying graph of data, logic, and schemas. It represents the &quot;truth&quot; of the model regardless of how it is viewed.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="340" y="-85" width="580" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-31" value="&lt;div&gt;The visualization model. It holds the coordinates, colors, shapes, and layout rules used to display the Semantic Model to the user.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="250" y="85" width="660" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-32" value="Meta-schema" style="rounded=0;whiteSpace=wrap;html=1;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="100" y="-295" width="130" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-33" value="The schema of the modeling engine itself. (e.g., a JSON schema that dictates the structure of a valid save file for your engine)" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="250" y="-295" width="660" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-34" value="Domain Schema" style="rounded=0;whiteSpace=wrap;html=1;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="100" y="405" width="130" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-35" value="&lt;div&gt;(entity schema) The schema defined by the specific implementation model (e.g., the schema defining that a &quot;Customer&quot; requires a &quot;String Name&quot;).&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="240" y="405" width="660" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-36" value="View Schema" style="rounded=0;whiteSpace=wrap;html=1;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="100" y="245" width="130" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-37" value="&lt;div&gt;The schema defining the rules for the visualization model. Includes mappings to Semantic Schema.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="250" y="245" width="660" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-38" value="Framework Components" style="rounded=0;whiteSpace=wrap;html=1;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="70" y="-395" width="190" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-39" value="&lt;div&gt;The actual underlying code blocks that make up your generic modeling engine (the parser, the renderer, the validation engine).&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="300" y="-395" width="390" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-40" value="Model Elements" style="rounded=0;whiteSpace=wrap;html=1;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="100" y="445" width="190" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-41" value="(domain entities) Stop calling the pieces of the user's specific model &quot;components.&quot; Call them Elements, Entities, or Nodes. (e.g., &quot;The user added a new Element to their Domain Model&quot;)." style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="310" y="445" width="590" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-42" value="View Components" style="rounded=0;whiteSpace=wrap;html=1;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="100" y="285" width="130" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-43" value="The UI elements that render the View Model on the screen." style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="250" y="285" width="590" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-44" value="Framework" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="40" y="-425" width="130" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-45" value="Semantic Models" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="70" y="-85" width="170" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-46" value="Capsule Spine&amp;nbsp; / Code Execution Model" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;fontStyle=1;align=left;spacingLeft=10;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="100" y="5" width="280" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-47" value="Encapsulate / Capsule Spine" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;fontStyle=1;align=left;spacingLeft=10;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="100" y="-25" width="210" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-48" value="View Models" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="70" y="85" width="170" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-49" value="Framespace / Quadrant" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;fontStyle=1;align=left;spacingLeft=10;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="100" y="185" width="210" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-50" value="Framespace / Workbench" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;fontStyle=1;align=left;spacingLeft=10;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="100" y="125" width="210" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-51" value="Framespace / Encapsulate" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;fontStyle=1;align=left;spacingLeft=10;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="100" y="-55" width="210" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-52" value="Framespace / Model API" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;fontStyle=1;align=left;spacingLeft=10;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="100" y="155" width="210" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-53" value="Domain Models" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="70" y="335" width="170" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-54" value="Encapsulate" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;fontStyle=1;align=left;spacingLeft=10;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="100" y="-325" width="210" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-55" value="Metamodels" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="70" y="-355" width="170" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-56" value="Codepath / SSI" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;fontStyle=1;align=left;spacingLeft=10;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="100" y="375" width="210" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-57" value="Quadrant / Codepath" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;fontStyle=1;align=left;spacingLeft=10;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="100" y="215" width="210" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-58" value="Query Engines" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontStyle=1" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="70" y="-225" width="170" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-59" value="Ladybug" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;fontStyle=1;align=left;spacingLeft=10;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="100" y="-195" width="210" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-60" value="API" style="rounded=0;whiteSpace=wrap;html=1;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="100" y="-165" width="130" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="ez4ky4WJp2ajRVcOHQkX-61" value="The low-level API to query the metamodel" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;" parent="ez4ky4WJp2ajRVcOHQkX-26" vertex="1">
+                    <mxGeometry x="250" y="-165" width="660" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

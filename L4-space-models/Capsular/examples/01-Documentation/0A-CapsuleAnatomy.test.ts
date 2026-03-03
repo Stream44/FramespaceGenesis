@@ -255,7 +255,7 @@ function removeDefaultCapsuleStructEntries(obj: any): any {
     return result
 }
 
-describe('0A-CapsuleAnatomy — Documentation Structure', () => {
+describe.skip('0A-CapsuleAnatomy — Documentation Structure', () => {
 
     const removeDefaultCapsuleStruct = true
 

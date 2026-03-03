@@ -1,5 +1,5 @@
 
-export const MODEL_NAME = `@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree`
+export const MODEL_NAME = `@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1`
 
 export async function runModel({ run }) {
 
@@ -8,6 +8,34 @@ export async function runModel({ run }) {
             '#@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0': {
                 '#@stream44.studio/encapsulate/structs/Capsule': {},
                 '#': {
+                    config: {
+                        type: CapsulePropertyTypes.Constant,
+                        value: {
+                            framespaces: {
+                                '@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/ModelQueryMethods': {
+                                    visualizationMethod: {
+                                        'getVisualization': {
+                                            label: 'Quadrant View'
+                                        }
+                                    }
+                                },
+                                '@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods': {
+                                    visualizationMethod: {
+                                        'getSpineInstanceTree': {
+                                            label: 'Spine Instance Tree'
+                                        }
+                                    }
+                                },
+                                '@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods#getSpineDeclarationTree': {
+                                    visualizationMethod: {
+                                        'getSpineDeclarationTree': {
+                                            label: 'Spine Declaration Tree'
+                                        }
+                                    }
+                                },
+                            }
+                        }
+                    },
                     LoginService: {
                         type: CapsulePropertyTypes.Mapping,
                         value: './elements/LoginService',

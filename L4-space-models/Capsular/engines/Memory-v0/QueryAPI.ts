@@ -103,11 +103,18 @@ export async function capsule({
                     value: async function (this: any, spineInstanceTreeId: string, capsuleName: string): Promise<any | null> {
                         if (!spineInstanceTreeId) throw new Error('_getCapsuleWithSource: spineInstanceTreeId is required')
                         const conn = this._ensureConnection()
-                        const cap = (Object.values(conn.nodes.Capsule) as any[]).find(
-                            (c: any) => c.spineInstanceTreeId === spineInstanceTreeId && c.capsuleName === capsuleName
-                        )
-                        if (!cap) return null
-                        const edge = conn.edges.HAS_SOURCE.find((e: any) => e.from === cap.capsuleSourceLineRef)
+                        // Find the dict key (scopedRef) and data for matching capsule
+                        let capPk: string | null = null
+                        let cap: any = null
+                        for (const [pk, c] of Object.entries(conn.nodes.Capsule) as any[]) {
+                            if (c.spineInstanceTreeId === spineInstanceTreeId && c.capsuleName === capsuleName) {
+                                capPk = pk
+                                cap = c
+                                break
+                            }
+                        }
+                        if (!cap || !capPk) return null
+                        const edge = conn.edges.HAS_SOURCE.find((e: any) => e.from === capPk)
                         if (!edge) return null
                         const src = conn.nodes.CapsuleSource[edge.to]
                         if (!src) return null
@@ -125,8 +132,17 @@ export async function capsule({
                         if (!spineInstanceTreeId) throw new Error('_getCapsuleSpineTree_data: spineInstanceTreeId is required')
                         const conn = this._ensureConnection()
                         const rows: any[] = []
+                        // Find the scoped dict key for this capsule
+                        let scopedKey: string | null = null
+                        for (const [pk, c] of Object.entries(conn.nodes.Capsule) as any[]) {
+                            if (c.spineInstanceTreeId === spineInstanceTreeId && c.capsuleSourceLineRef === capsuleSourceLineRef) {
+                                scopedKey = pk
+                                break
+                            }
+                        }
+                        if (!scopedKey) return rows
                         // Find spine contracts for this capsule
-                        const spineEdges = conn.edges.IMPLEMENTS_SPINE.filter((e: any) => e.from === capsuleSourceLineRef)
+                        const spineEdges = conn.edges.IMPLEMENTS_SPINE.filter((e: any) => e.from === scopedKey)
                         for (const se of spineEdges) {
                             const spine = conn.nodes.SpineContract[se.to]
                             if (!spine) continue
@@ -219,6 +235,11 @@ export async function capsule({
                             }
                         }
 
+                        // Sort mappings by propName for consistent ordering
+                        for (const key of Object.keys(mappings)) {
+                            mappings[key].sort((a, b) => a.propName.localeCompare(b.propName))
+                        }
+
                         // extends: Capsule -> EXTENDS -> parent Capsule
                         const extendsMap: Record<string, string> = {}
                         for (const capsuleName of capsuleNames) {
@@ -253,6 +274,11 @@ export async function capsule({
                             }
                         }
 
+                        // Sort properties by propName for consistent ordering
+                        for (const key of Object.keys(properties)) {
+                            properties[key].sort((a, b) => a.propName.localeCompare(b.propName))
+                        }
+
                         // found
                         const found = new Set(capsuleNames.filter(n => nameToLineRef[n]))
 
@@ -275,13 +301,26 @@ export async function capsule({
                  */
                 _listSpineInstanceTrees: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, spineInstanceTreeId: string): Promise<any[]> {
-                        if (!spineInstanceTreeId) throw new Error('_listSpineInstanceTrees: spineInstanceTreeId is required')
+                    value: async function (this: any, spineInstanceTreeId?: string): Promise<any[]> {
                         const conn = this._ensureConnection()
-                        return (Object.values(conn.nodes.Capsule) as any[])
-                            .filter((c: any) => c.spineInstanceTreeId === spineInstanceTreeId)
-                            .map((c: any) => ({ spineInstanceTreeId: c.spineInstanceTreeId, capsuleName: c.capsuleName, capsuleSourceLineRef: c.capsuleSourceLineRef, capsuleSourceUriLineRef: c.capsuleSourceUriLineRef }))
-                            .sort((a: any, b: any) => (a.capsuleName || '').localeCompare(b.capsuleName || ''))
+                        if (spineInstanceTreeId) {
+                            // Filter by specific tree - return all capsules in that tree
+                            return (Object.values(conn.nodes.Capsule) as any[])
+                                .filter((c: any) => c.spineInstanceTreeId === spineInstanceTreeId)
+                                .map((c: any) => ({ spineInstanceTreeId: c.spineInstanceTreeId, capsuleName: c.capsuleName, capsuleSourceLineRef: c.capsuleSourceLineRef, capsuleSourceUriLineRef: c.capsuleSourceUriLineRef }))
+                                .sort((a: any, b: any) => (a.capsuleName || '').localeCompare(b.capsuleName || ''))
+                        }
+                        // No filter - return distinct trees (one entry per tree, preferring root capsule)
+                        const byTreeId = new Map<string, any>()
+                        for (const c of Object.values(conn.nodes.Capsule) as any[]) {
+                            if (!c.spineInstanceTreeId || c.spineInstanceTreeId === '') continue
+                            if (c.spineInstanceTreeId === c.capsuleName) {
+                                byTreeId.set(c.spineInstanceTreeId, { spineInstanceTreeId: c.spineInstanceTreeId, capsuleName: c.capsuleName, capsuleSourceLineRef: c.capsuleSourceLineRef, capsuleSourceUriLineRef: c.capsuleSourceUriLineRef })
+                            } else if (!byTreeId.has(c.spineInstanceTreeId)) {
+                                byTreeId.set(c.spineInstanceTreeId, { spineInstanceTreeId: c.spineInstanceTreeId, capsuleName: c.capsuleName, capsuleSourceLineRef: c.capsuleSourceLineRef, capsuleSourceUriLineRef: c.capsuleSourceUriLineRef })
+                            }
+                        }
+                        return [...byTreeId.values()].sort((a: any, b: any) => a.spineInstanceTreeId.localeCompare(b.spineInstanceTreeId))
                     }
                 },
 

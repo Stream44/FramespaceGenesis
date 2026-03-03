@@ -1,119 +1,56 @@
 {
-    "namespace": "Capsular/ModelQueryMethods",
-    "description": "Low-level query methods for Capsular model engines — delegates to engine-specific implementations.",
-    "basePath": "/api/Capsular/ModelQueryMethods",
+    "namespace": "@framespace.dev~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods",
+    "description": "Methods to query the *Quadrant Model* for a given *Spine Instance Tree*",
+    "basePath": "/api/@framespace.dev~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods",
     "methods": {
-        "listCapsules": {
+        "getColumnTree": {
             "args": [
                 {
                     "name": "spineInstanceTreeId",
                     "type": "string"
                 }
             ],
-            "description": "List all capsules in the given spine instance tree.",
-            "graphMethod": true
+            "description": "Get the column tree for a spine instance. Columns are detected via struct dependency on schema/Column. Parent-child hierarchy is derived from struct deps between columns. Each column node includes a capsules[] array of element capsules tagged with that column.",
+            "tags": {
+                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
+                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
+                    "filterField": "$id"
+                }
+            }
         },
-        "getCapsuleWithSource": {
+        "getRowTree": {
             "args": [
                 {
                     "name": "spineInstanceTreeId",
                     "type": "string"
+                }
+            ],
+            "description": "Get the row tree for a spine instance. Rows are detected via struct dependency on schema/Row. Parent-child hierarchy is derived from struct deps between rows. Each row node includes a capsules[] array of element capsules tagged with that row.",
+            "tags": {
+                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
+                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
+                    "filterField": "$id"
+                }
+            }
+        },
+        "getVisualization": {
+            "args": [
+                {
+                    "name": "spineInstanceTreeId",
+                    "type": "string"
+                }
+            ],
+            "description": "Get the full Quadrant visualization data including column tree, row tree, and grid placement for rendering.",
+            "tags": {
+                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
+                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
+                    "filterField": "$id"
                 },
-                {
-                    "name": "capsuleName",
-                    "type": "string"
+                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/Models/Panel": {
+                    "label": "Quadrant Visualization",
+                    "description": "A table-rooted nested spatial layout for domain elements."
                 }
-            ],
-            "description": "Get a capsule with its full source node.",
-            "graphMethod": true
-        },
-        "getCapsuleSpineTree_data": {
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                },
-                {
-                    "name": "capsuleName",
-                    "type": "string"
-                }
-            ],
-            "description": "Get spine tree data rows for a capsule.",
-            "graphMethod": true
-        },
-        "getCapsuleNamesBySpineTree": {
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "description": "Get capsule names belonging to a spine tree.",
-            "graphMethod": true
-        },
-        "fetchCapsuleRelations": {
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                },
-                {
-                    "name": "capsuleNames",
-                    "type": "string[]"
-                }
-            ],
-            "description": "Fetch mapping and extends relations for a set of capsules.",
-            "graphMethod": true
-        },
-        "listSpineInstanceTrees": {
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "description": "List all spine instance trees.",
-            "graphMethod": true
-        },
-        "getInstancesBySpineTree": {
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "description": "Get all instances in a spine tree.",
-            "graphMethod": true
-        },
-        "getRootInstance": {
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "description": "Get the root instance of a spine tree.",
-            "graphMethod": true
-        },
-        "getChildInstances": {
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "description": "Get child instances of the root instance in a spine tree.",
-            "graphMethod": true
-        },
-        "fetchInstanceRelations": {
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "description": "Fetch instance relations for a spine tree.",
-            "graphMethod": true
+            }
         }
     }
 }

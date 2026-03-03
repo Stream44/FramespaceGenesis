@@ -10,7 +10,7 @@ const ENGINE_KEY = '@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/
 const PACKAGE_ROOT = dirname(dirname(dirname(dirname(import.meta.path))))
 
 const {
-    test: { describe, it, expect },
+    test: { describe, it, expect, expectSnapshotMatch },
     modelServer,
 } = await run(async ({ encapsulate, CapsulePropertyTypes, makeImportStack }: any) => {
     const spine = await encapsulate({
@@ -61,37 +61,37 @@ describe('L6 Framespace/Workbench ModelQueryMethods', () => {
 
     it('listSpineInstanceTrees', async () => {
         const result = await api.listSpineInstanceTrees()
-        expect(normalize(result)).toMatchSnapshot()
+        await expectSnapshotMatch(normalize(result))
     })
 
     it('getProcessStats', async () => {
         const result = await api.getProcessStats()
         expect(result['#']).toBe('ProcessStats')
-        expect(Object.keys(result).sort()).toMatchSnapshot()
+        await expectSnapshotMatch(Object.keys(result).sort())
     })
 
     it('getReps', async () => {
         const result = await api.getReps()
-        expect(normalize(result)).toMatchSnapshot()
+        await expectSnapshotMatch(normalize(result))
     })
 
     it('openFile (missing command)', async () => {
         const result = await api.openFile('', '/some/file.ts')
-        expect(normalize(result)).toMatchSnapshot()
+        await expectSnapshotMatch(normalize(result))
     })
 
     it('openFile (missing file)', async () => {
         const result = await api.openFile('code', '')
-        expect(normalize(result)).toMatchSnapshot()
+        await expectSnapshotMatch(normalize(result))
     })
 
     it('openFile (relative path)', async () => {
         const result = await api.openFile('code', 'relative/path.ts')
-        expect(normalize(result)).toMatchSnapshot()
+        await expectSnapshotMatch(normalize(result))
     })
 
     it('openFile (non-existent file)', async () => {
         const result = await api.openFile('code', '/nonexistent/path/file.ts')
-        expect(normalize(result)).toMatchSnapshot()
+        await expectSnapshotMatch(normalize(result))
     })
 })

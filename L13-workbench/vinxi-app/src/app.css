@@ -781,6 +781,57 @@ body {
     color: var(--wb-accent-purple);
 }
 
+/* ── Tabs ────────────────────────────────────────────────────────── */
+
+.instance-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--wb-rule);
+    padding-bottom: 8px;
+}
+
+.instance-tab {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: transparent;
+    border: 1px solid var(--wb-rule);
+    border-radius: var(--wb-radius-sm);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--wb-ink-secondary);
+    transition: all var(--wb-transition);
+}
+
+.instance-tab:hover {
+    background: var(--wb-paper-raised);
+    color: var(--wb-ink);
+}
+
+.instance-tab.active {
+    background: var(--wb-accent-blue-faint);
+    border-color: var(--wb-accent-blue);
+    color: var(--wb-accent-blue);
+}
+
+.instance-tab-count {
+    font-size: 11px;
+    padding: 2px 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    color: var(--wb-ink-secondary);
+}
+
+.instance-tab.active .instance-tab-count {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--wb-accent-blue);
+    font-weight: 600;
+}
+
 /* ── Model level ─────────────────────────────────────────────────── */
 
 .instance-model {
@@ -799,6 +850,35 @@ body {
     font-size: 14px;
     font-weight: 600;
     color: var(--wb-ink);
+}
+
+.instance-examples-path {
+    font-size: 12px;
+    font-family: var(--wb-font-mono);
+    color: var(--wb-ink-secondary);
+    word-break: break-all;
+}
+
+.instance-copy-btn {
+    display: inline;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0 0 0 4px;
+    font-size: 13px;
+    line-height: 1;
+    vertical-align: baseline;
+    opacity: 0.4;
+    transition: opacity var(--wb-transition);
+}
+
+.instance-copy-btn:hover {
+    opacity: 1;
+}
+
+.instance-tag-test {
+    background: var(--wb-accent-orange-faint);
+    color: var(--wb-accent-orange);
 }
 
 /* ── Example level ───────────────────────────────────────────────── */
@@ -965,7 +1045,48 @@ body {
    Framespace API – panel styles
    ══════════════════════════════════════════════════════════════════════ */
 
+/* ── How-to box ─────────────────────────────────────────────────── */
+
+.instance-howto {
+    margin: 16px 0 0;
+    padding: 16px 20px;
+    background: var(--wb-surface);
+    border: 1px solid var(--wb-border);
+    border-radius: 8px;
+}
+
+.instance-howto h3 {
+    margin: 0 0 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--wb-ink);
+}
+
+.instance-howto ol {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.instance-howto li {
+    font-size: 12px;
+    color: var(--wb-ink-muted);
+    line-height: 1.5;
+}
+
+.instance-howto li strong {
+    color: var(--wb-ink);
+}
+
 /* ── API list panel ──────────────────────────────────────────────── */
+
+.fapi-empty {
+    font-size: 12px;
+    color: var(--wb-ink-faint);
+    padding: 8px 0;
+}
 
 .fapi-list {
     padding: 12px 16px;
@@ -1023,6 +1144,28 @@ body {
     padding: 1px 4px;
     border-radius: var(--wb-radius-sm);
     font-size: 10px;
+}
+
+.fapi-launch-btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--wb-ink);
+    background: var(--wb-paper);
+    border: 1.5px solid var(--wb-ink-faint, #bbb);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.12s;
+    text-align: left;
+}
+
+.fapi-launch-btn:hover {
+    border-color: var(--wb-blue);
+    background: var(--wb-paper-highlight);
+    color: var(--wb-blue);
 }
 
 .fapi-methods {

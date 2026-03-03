@@ -8,10 +8,10 @@
 
 ---
 
-# Capsule SQLite Engine — Model Reference
+# SqLite-v0 Engine — Model Reference
 
 > This section describes the Capsule relational schema, CST data model, import
-> pipeline, and query patterns for the SQLite engine. It serves as a reference
+> pipeline, and query patterns for the SQLite engine (`bun:sqlite`). It serves as a reference
 > for AI assistants and developers working on model APIs that query this database.
 
 ---
@@ -22,25 +22,27 @@
 
 | Table | Primary Key | Key Columns | Purpose |
 |-------|-------------|-------------|---------|
-| **Capsule** | `capsuleSourceLineRef` (TEXT) | `capsuleName`, `spineInstanceTreeId`, `cstFilepath` | Identity record for each capsule. One per `encapsulate()` call site. |
+| **Capsule** | `scopedId` (TEXT) — `<treeId>::<absLineRef>` | `capsuleSourceLineRef`, `capsuleName`, `spineInstanceTreeId`, `cstFilepath`, `capsuleSourceNameRef`, `capsuleSourceNameRefHash`, `capsuleSourceUriLineRef`, `cacheBustVersion` | Identity record for each capsule, scoped by spine instance tree. |
 | **CapsuleInstance** | `instanceId` (TEXT) | `capsuleName`, `capsuleSourceUriLineRef`, `spineInstanceTreeId` | Runtime instance of a capsule within a spine instance tree. |
-| **CapsuleSource** | `id` (TEXT) | `moduleFilepath`, `moduleUri`, `capsuleName`, `extendsCapsule`, `extendsCapsuleUri` | Source metadata: file location, declaration lines, extends info. |
-| **SpineContract** | `id` (TEXT) | `contractUri`, `capsuleSourceLineRef` | A spine contract implemented by a capsule (e.g., `CapsuleSpineContract.v0`). |
-| **PropertyContract** | `id` (TEXT) | `contractKey`, `propertyContractUri`, `capsuleSourceLineRef`, `spineContractId`, `options` | A property contract group within a spine contract. Key starts with `#`. |
-| **CapsuleProperty** | `id` (TEXT) | `name`, `propertyType`, `valueType`, `valueExpression`, `mappedModuleUri`, `propertyContractDelegate` | A single property within a property contract. |
+| **CapsuleSource** | `id` (TEXT) — `<lineRef>::source` | `capsuleSourceLineRef`, `moduleFilepath`, `moduleUri`, `capsuleName`, `declarationLine`, `importStackLine`, `definitionStartLine`, `definitionEndLine`, `optionsStartLine`, `optionsEndLine`, `extendsCapsule`, `extendsCapsuleUri` | Source metadata: file location, declaration lines, extends info. |
+| **SpineContract** | `id` (TEXT) — `<lineRef>::spine::<uri>` | `contractUri`, `capsuleSourceLineRef` | A spine contract implemented by a capsule. |
+| **PropertyContract** | `id` (TEXT) — `<lineRef>::pc::<spine>::<key>` | `contractKey`, `propertyContractUri`, `capsuleSourceLineRef`, `spineContractId`, `options` (JSON TEXT) | A property contract group within a spine contract. |
+| **CapsuleProperty** | `id` (TEXT) — `<lineRef>::prop::<name>` | `name`, `propertyType`, `valueType`, `valueExpression`, `mappedModuleUri`, `declarationLine`, `definitionStartLine`, `definitionEndLine`, `propertyContractDelegate`, `capsuleSourceLineRef`, `propertyContractId` | A single property within a property contract. |
 
 ### Edge Tables (Junction Tables)
 
+All edge tables have composite PK `(from_id TEXT, to_id TEXT)`.
+
 | Table | from_id → to_id | Meaning |
 |-------|-----------------|---------|
-| **HAS_SOURCE** | Capsule.capsuleSourceLineRef → CapsuleSource.id | Links capsule identity to its source metadata. |
-| **IMPLEMENTS_SPINE** | Capsule.capsuleSourceLineRef → SpineContract.id | Capsule implements a spine contract. |
+| **HAS_SOURCE** | Capsule.scopedId → CapsuleSource.id | Links capsule identity to its source metadata. |
+| **IMPLEMENTS_SPINE** | Capsule.scopedId → SpineContract.id | Capsule implements a spine contract. |
 | **HAS_PROPERTY_CONTRACT** | SpineContract.id → PropertyContract.id | Spine contract contains property contract groups. |
 | **HAS_PROPERTY** | PropertyContract.id → CapsuleProperty.id | Property contract contains properties. |
-| **MAPS_TO** | CapsuleProperty.id → Capsule.capsuleSourceLineRef | A Mapping-type property resolves to a target capsule. |
-| **EXTENDS** | Capsule.capsuleSourceLineRef → Capsule.capsuleSourceLineRef | Capsule extends (inherits from) a parent capsule. |
+| **MAPS_TO** | CapsuleProperty.id → Capsule.scopedId | A Mapping-type property resolves to a target capsule. |
+| **EXTENDS** | Capsule.scopedId → Capsule.scopedId | Capsule extends (inherits from) a parent capsule. |
 | **DELEGATES_TO** | CapsuleProperty.id → PropertyContract.id | A delegate property points to its source property contract. |
-| **INSTANCE_OF** | CapsuleInstance.instanceId → Capsule.capsuleSourceLineRef | Links a runtime instance to its capsule definition. |
+| **INSTANCE_OF** | CapsuleInstance.instanceId → Capsule.scopedId | Links a runtime instance to its capsule definition. |
 | **PARENT_INSTANCE** | CapsuleInstance.instanceId → CapsuleInstance.instanceId | Links a child instance to its parent instance in the tree. |
 
 ### Indexes
@@ -52,6 +54,12 @@
 | `idx_instance_spine` | CapsuleInstance | `spineInstanceTreeId` | Filter instances by spine instance tree |
 | `idx_capsule_property_mapped` | CapsuleProperty | `mappedModuleUri` | Fast MAPS_TO linking |
 | `idx_capsule_source_extends` | CapsuleSource | `extendsCapsuleUri` | Fast EXTENDS linking |
+
+### Mutation Helpers
+
+- `_mergeNode(table, pk, data)` → `INSERT OR REPLACE INTO` (full row replacement)
+- `_mergeEdge(rel, fromTable, fromPk, toTable, toPk)` → `INSERT OR IGNORE INTO` (skip duplicates)
+- Object values in `data` are serialized with `JSON.stringify()` before insertion.
 
 ---
 
@@ -76,6 +84,8 @@ Each `.csts.json` file contains entries keyed by `capsuleSourceLineRef`:
       "importStackLine": 19,
       "definitionStartLine": 9,
       "definitionEndLine": 17,
+      "optionsStartLine": 18,
+      "optionsEndLine": 20,
       "extendsCapsule": "rawValue",
       "extendsCapsuleUri": "@scope/pkg/parent",
       "capsuleExpression": "encapsulate({...})"
@@ -118,76 +128,89 @@ Each `.csts.json` file contains entries keyed by `capsuleSourceLineRef`:
 - String values inside literal options that look like relative paths
   (starting with `./` or `../`) are also resolved to npm URIs.
 
-### Import Pipeline (ImportCapsuleSourceTrees)
+### Import Pipeline (ImportAPI.ts)
 
-1. **`importSitFile(sitFilePath)`** — entry point for spine instance tree import
+1. **`importSitFile(sitFilePath, opts?)`** — entry point for spine instance tree import
+   - If `opts.reset` is set, clears `_schemaCreated` and re-runs `_ensureSchema()` (drops all tables)
    - Reads `.sit.json` file containing `rootCapsule`, `capsules`, and `capsuleInstances`
-   - Extracts `spineInstanceTreeId` from `rootCapsule.capsuleSourceUriLineRef`
-   - For each capsule: finds corresponding `.csts.json` file and imports via `importCstFile`
+   - Extracts `spineInstanceTreeId` from `capsuleInstances[rootCapsule.capsuleSourceUriLineRefInstanceId].capsuleName`
+   - For each capsule: resolves `.csts.json` file path (local then npm fallback) and imports via `importCstFile`
    - Calls `_importCapsuleInstances()` to create instance nodes and relationships
+   - Returns `{ imported, capsules, instances }`
 2. **`importSitDirectory(dirPath)`** — recursively scans for `.sit.json` files
 3. **`_importCapsuleInstances(sit, spineInstanceTreeId)`** — per-sit:
    - Creates `CapsuleInstance` rows for each entry in `capsuleInstances`
-   - Creates `INSTANCE_OF` edges linking instances to their capsule definitions
+   - Creates `INSTANCE_OF` edges — finds matching Capsule via SQL `WHERE spineInstanceTreeId = ? AND capsuleName = ?`
    - Creates `PARENT_INSTANCE` edges based on `parentCapsuleSourceUriLineRefInstanceId`
-4. **`linkMappings()`** — post-import bulk edge creation:
-   - `MAPS_TO`: matches `CapsuleProperty.mappedModuleUri` → `Capsule.capsuleName`
-   - `EXTENDS`: matches `CapsuleSource.extendsCapsuleUri` → `Capsule.capsuleName`
+4. **`linkMappings()`** — post-import bulk SQL edge creation:
+   - `MAPS_TO`: bulk `INSERT OR IGNORE` joining `CapsuleProperty` → `Capsule` in same tree via `COALESCE(target1.scopedId, target2.scopedId)`, matching by `capsuleName` or `CapsuleSource.moduleUri`
+   - `EXTENDS`: bulk `INSERT OR IGNORE` joining `CapsuleSource.extendsCapsuleUri` → `Capsule` in same tree via same `COALESCE` pattern
+
+### Key Invariants
+
+- Capsule nodes are **scoped by spineInstanceTreeId** — the PK (`scopedId`) is `<treeId>::<absoluteLineRef>`.
+- `_mergeNode` does full row `INSERT OR REPLACE` — not a shallow merge like Memory engine.
+- `options` on `PropertyContract` is stored as **serialized JSON TEXT**.
+- Edge tables use `INSERT OR IGNORE` with composite PK for deduplication.
 
 ---
 
-## G3. EngineAPI Query Methods
+## G3. Query Methods
+
+All queries are implemented as `_`-prefixed methods in `QueryAPI.ts`. The public API in `ModelQueryMethods.ts` delegates to these. All methods require `spineInstanceTreeId` as the first argument.
 
 | Method | Signature | Returns |
 |--------|-----------|---------|
-| `listCapsules(spineInstanceTreeId?)` | Optional filter by tree | `[{ capsuleName, capsuleSourceLineRef }]` |
-| `getCapsuleWithSource(capsuleName)` | By capsule name | `{ cap, source }` or `null` |
-| `getCapsuleSpineTree_data(lineRef)` | Full spine tree | `[{ s, pc, p }]` rows |
-| `getCapsuleNamesBySpineTree(treeId)` | All capsules in tree | `string[]` |
-| `fetchCapsuleRelations(names[])` | Batch relations | `{ mappings, extends, found, properties, capsuleInfo }` |
-| `listSpineInstanceTrees()` | All spine instance trees | `[{ spineInstanceTreeId, capsuleName, capsuleSourceLineRef }]` |
-| `getInstancesBySpineTree(treeId)` | All instances in tree | `[{ instanceId, capsuleName, capsuleSourceUriLineRef }]` |
-| `getRootInstance(treeId)` | Root instance of tree | `{ instanceId, capsuleName, ... }` or `null` |
-| `getChildInstances(instanceId)` | Child instances | `[{ instanceId, capsuleName, ... }]` |
-| `fetchInstanceRelations(treeId)` | Batch instance data | `{ instances, parentMap, capsuleInfo }` |
+| `listCapsules(spineInstanceTreeId)` | Required tree filter | `[{ capsuleName, capsuleSourceLineRef }]` sorted by `capsuleName` |
+| `getCapsuleWithSource(spineInstanceTreeId, capsuleName)` | By tree + capsule name | `{ cap, source }` or `null` |
+| `getCapsuleSpineTree_data(spineInstanceTreeId, capsuleSourceLineRef)` | Full spine tree for a capsule | `[{ s, pc, p }]` rows sorted by `contractUri`, `contractKey`, `name` |
+| `getCapsuleNamesBySpineTree(spineInstanceTreeId)` | All capsule names in tree | `string[]` sorted |
+| `fetchCapsuleRelations(spineInstanceTreeId, capsuleNames[])` | Batch relations | `{ mappings, extends, found, properties, capsuleInfo }` |
+| `listSpineInstanceTrees(spineInstanceTreeId?)` | With filter: all capsules in tree; without: distinct trees | `[{ spineInstanceTreeId, capsuleName, capsuleSourceLineRef, capsuleSourceUriLineRef }]` |
+| `getInstancesBySpineTree(spineInstanceTreeId)` | All instances in tree | `[{ instanceId, capsuleName, capsuleSourceUriLineRef }]` sorted by `capsuleName` |
+| `getRootInstance(spineInstanceTreeId)` | Root instance (no `PARENT_INSTANCE` edge via `NOT EXISTS`) | `{ instanceId, capsuleName, capsuleSourceUriLineRef }` or `null` |
+| `getChildInstances(parentInstanceId)` | Children of an instance | `[{ instanceId, capsuleName, capsuleSourceUriLineRef }]` sorted by `capsuleName` |
+| `fetchInstanceRelations(spineInstanceTreeId)` | Batch instance data | `{ instances, parentMap, capsuleInfo }` |
 
 ### `fetchCapsuleRelations` Return Shape
 
 ```typescript
 {
-  mappings: Record<string, { propName, target, delegate }[]>,
+  mappings: Record<string, { propName, target, delegate }[]>,  // sorted by propName
   extends: Record<string, string>,
   found: Set<string>,
   properties: Record<string, {
     propName, propertyType, propertyContract,
     propertyContractUri, propertyContractDelegate,
     valueExpression, pcOptions
-  }[]>,
+  }[]>,  // sorted by propName; pcOptions parsed from JSON TEXT
   capsuleInfo: Record<string, {
     capsuleSourceLineRef, capsuleSourceNameRef
   }>
 }
 ```
 
+### `fetchInstanceRelations` Return Shape
+
+```typescript
+{
+  instances: Record<string, { instanceId, capsuleName, capsuleSourceUriLineRef }>,
+  parentMap: Record<string, string>,  // childInstanceId → parentInstanceId
+  capsuleInfo: Record<string, { capsuleName, capsuleSourceLineRef, capsuleSourceUriLineRef }>
+}
+```
+
 ---
 
-## G4. SQL Query Patterns (mapped from Cypher)
+## G4. SQL Query Patterns
 
 ### listCapsules
 
 ```sql
--- With spineInstanceUri filter
-SELECT cap.capsuleName, cap.capsuleSourceLineRef
-FROM Capsule cap
-JOIN HAS_SOURCE hs ON hs.from_id = cap.capsuleSourceLineRef
-WHERE cap.spineInstanceTreeId = ?1
-ORDER BY cap.capsuleName;
-
--- Without filter
-SELECT cap.capsuleName, cap.capsuleSourceLineRef
-FROM Capsule cap
-JOIN HAS_SOURCE hs ON hs.from_id = cap.capsuleSourceLineRef
-ORDER BY cap.capsuleName;
+SELECT capsuleName, capsuleSourceLineRef
+FROM Capsule
+WHERE spineInstanceTreeId = ?1
+ORDER BY capsuleName;
 ```
 
 ### getCapsuleWithSource
@@ -195,9 +218,9 @@ ORDER BY cap.capsuleName;
 ```sql
 SELECT cap.*, cs.*
 FROM Capsule cap
-JOIN HAS_SOURCE hs ON hs.from_id = cap.capsuleSourceLineRef
+JOIN HAS_SOURCE hs ON hs.from_id = cap.scopedId
 JOIN CapsuleSource cs ON cs.id = hs.to_id
-WHERE cap.capsuleName = ?1;
+WHERE cap.spineInstanceTreeId = ?1 AND cap.capsuleName = ?2;
 ```
 
 ### getCapsuleSpineTree_data
@@ -205,13 +228,13 @@ WHERE cap.capsuleName = ?1;
 ```sql
 SELECT s.*, pc.*, p.*
 FROM Capsule cap
-JOIN IMPLEMENTS_SPINE isp ON isp.from_id = cap.capsuleSourceLineRef
+JOIN IMPLEMENTS_SPINE isp ON isp.from_id = cap.scopedId
 JOIN SpineContract s ON s.id = isp.to_id
 JOIN HAS_PROPERTY_CONTRACT hpc ON hpc.from_id = s.id
 JOIN PropertyContract pc ON pc.id = hpc.to_id
 LEFT JOIN HAS_PROPERTY hp ON hp.from_id = pc.id
 LEFT JOIN CapsuleProperty p ON p.id = hp.to_id
-WHERE cap.capsuleSourceLineRef = ?1
+WHERE cap.spineInstanceTreeId = ?1 AND cap.capsuleSourceLineRef = ?2
 ORDER BY s.contractUri, pc.contractKey, p.name;
 ```
 
@@ -221,16 +244,25 @@ ORDER BY s.contractUri, pc.contractKey, p.name;
 SELECT cap.capsuleName AS src, p.name AS propName,
        p.propertyContractDelegate AS delegate, target.capsuleName AS target
 FROM Capsule cap
-JOIN IMPLEMENTS_SPINE isp ON isp.from_id = cap.capsuleSourceLineRef
+JOIN IMPLEMENTS_SPINE isp ON isp.from_id = cap.scopedId
 JOIN SpineContract s ON s.id = isp.to_id
 JOIN HAS_PROPERTY_CONTRACT hpc ON hpc.from_id = s.id
 JOIN PropertyContract pc ON pc.id = hpc.to_id
 JOIN HAS_PROPERTY hp ON hp.from_id = pc.id
 JOIN CapsuleProperty p ON p.id = hp.to_id
 JOIN MAPS_TO mt ON mt.from_id = p.id
-JOIN Capsule target ON target.capsuleSourceLineRef = mt.to_id
-WHERE cap.capsuleName IN (...)
+JOIN Capsule target ON target.scopedId = mt.to_id
+WHERE cap.spineInstanceTreeId = '<treeId>' AND cap.capsuleName IN (...)
 ORDER BY cap.capsuleName, p.name;
+```
+
+### getRootInstance
+
+```sql
+SELECT ci.instanceId, ci.capsuleName, ci.capsuleSourceUriLineRef
+FROM CapsuleInstance ci
+WHERE ci.spineInstanceTreeId = ?1
+AND NOT EXISTS (SELECT 1 FROM PARENT_INSTANCE pi WHERE pi.from_id = ci.instanceId);
 ```
 
 ---
@@ -263,7 +295,7 @@ Capsule → ... → CapsuleProperty {propertyContractDelegate: "#<schemaUri>"}
 
 ### Pattern D: Struct Options (metadata on a struct dependency)
 - **Storage**: Options stored as JSON TEXT in `PropertyContract.options` column.
-- **Access**: Parse with `JSON.parse()` on read.
+- **Access**: Parse with `JSON.parse()` on read (done automatically by `fetchCapsuleRelations`).
 
 ### Pattern E: Element-to-Column Tagging
 ```
@@ -278,7 +310,7 @@ Capsule (element) → ... → CapsuleProperty {delegate: "#<columnUri>"} → MAP
 
 The SQLite database file is stored at:
 ```
-<dirname_of_rootCapsule_moduleFilepath>/.~o/framespace.dev/data/engines/Capsule-SqLite-v0/capsule-graph.sqlite
+<dirname_of_rootCapsule_moduleFilepath>/.~o/framespace.dev/data/engines/SqLite-v0/capsule-graph.sqlite
 ```
 
 Where `dirname_of_rootCapsule_moduleFilepath` is obtained from:
@@ -286,32 +318,38 @@ Where `dirname_of_rootCapsule_moduleFilepath` is obtained from:
 this['#@stream44.studio/encapsulate/structs/Capsule'].rootCapsule.moduleFilepath
 ```
 
-This ensures the DB file lives alongside the capsule source tree in the `.~o` cache directory.
+PRAGMAs set on connection:
+- `journal_mode = WAL` — Write-Ahead Logging for better concurrency
+- `foreign_keys = OFF` — no FK enforcement (edges are managed by import logic)
 
 ---
 
 ## G7. Instructions for Future AI Sessions
 
 ### When modifying the schema:
-1. Update `ensureSchema` in `EngineAPI.ts`.
-2. Update import logic in `ImportCapsuleSourceTrees.ts`.
-3. Update query methods in `EngineAPI.ts`.
-4. All three engines (Ladybug, JsonFiles, SqLite) MUST return identical data shapes — they are interchangeable.
+1. Update `_ensureSchema` in `QueryAPI.ts` — add/modify `CREATE TABLE` and `CREATE INDEX` statements.
+2. Update import logic in `ImportAPI.ts`.
+3. Update query methods in `QueryAPI.ts`.
+4. All four engines (Memory, JsonFiles, SqLite, Ladybug) MUST return identical data shapes — they are interchangeable.
 
 ### When adding new query capabilities:
 1. Prefer adding data to `fetchCapsuleRelations` return value over new methods.
 2. If a new edge type is needed, add a new junction table and update `linkMappings`.
 3. Always test with all engines to ensure parity.
 
-### When working on model APIs (like Quadrant/API.ts):
-1. APIs receive `graph` (the engine EngineAPI instance) as first argument.
-2. APIs should be **engine-agnostic** — only use methods defined in EngineAPI.
+### When working on model APIs:
+1. APIs receive the engine instance as first argument.
+2. APIs should be **engine-agnostic** — only use methods defined in ModelQueryMethods.
 3. Use `fetchCapsuleRelations` for bulk data, avoid per-capsule queries in loops.
 4. The API layer handles shaping/composition; the engine handles raw queries.
 
 ### Key file locations:
-- **SQLite engine**: `engines/Capsule-SqLite-v0/` (EngineAPI.ts, ImportCapsuleSourceTrees.ts)
-- **Ladybug engine**: `engines/Capsule-Ladybug-v0/` (same structure)
-- **JsonFiles engine**: `engines/Capsule-JsonFiles-v0/` (same structure)
-- **Quadrant API**: `models/Framespace/Visualization/Quadrant/API.ts`
-- **Quadrant test**: `models/Framespace/Visualization/Quadrant/run-model.test.ts`
+- **Memory engine**: `engines/Memory-v0/` (QueryAPI.ts, ImportAPI.ts)
+- **JsonFiles engine**: `engines/JsonFiles-v0/` (QueryAPI.ts, ImportAPI.ts)
+- **SQLite engine**: `engines/SqLite-v0/` (QueryAPI.ts, ImportAPI.ts)
+- **Ladybug engine**: `engines/Ladybug-v0/` (QueryAPI.ts, ImportAPI.ts)
+
+### CST regeneration:
+- CSTs are cached in `.~o/encapsulate.dev/static-analysis/` directories.
+- Delete cached CSTs to force regeneration after changing the static analyzer.
+- The static analyzer is at `encapsulate.dev/packages/encapsulate/src/static-analyzer.v0.ts`.

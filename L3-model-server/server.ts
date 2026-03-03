@@ -25,6 +25,7 @@ async function bootCapsule() {
                     value: './ModelServer',
                     options: {
                         '#': {
+                            writeApiSchema: true,
                             models: {
                                 '@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods': {
                                     engine: {

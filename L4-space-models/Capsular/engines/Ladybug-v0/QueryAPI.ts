@@ -78,7 +78,7 @@ export async function capsule({
                         const conn = await this._ensureConnection()
                         if (this.verbose) console.log('[lbug] Creating schema...')
 
-                        await conn.query(`CREATE NODE TABLE IF NOT EXISTS Capsule(capsuleSourceLineRef STRING PRIMARY KEY, capsuleSourceNameRef STRING, capsuleSourceNameRefHash STRING, capsuleSourceUriLineRef STRING, cacheBustVersion INT64, capsuleName STRING, cstFilepath STRING, spineInstanceTreeId STRING)`)
+                        await conn.query(`CREATE NODE TABLE IF NOT EXISTS Capsule(scopedId STRING PRIMARY KEY, capsuleSourceLineRef STRING, capsuleSourceNameRef STRING, capsuleSourceNameRefHash STRING, capsuleSourceUriLineRef STRING, cacheBustVersion INT64, capsuleName STRING, moduleUri STRING, cstFilepath STRING, spineInstanceTreeId STRING)`)
                         await conn.query(`CREATE NODE TABLE IF NOT EXISTS CapsuleSource(id STRING PRIMARY KEY, capsuleSourceLineRef STRING, moduleFilepath STRING, moduleUri STRING, capsuleName STRING, declarationLine INT64, importStackLine INT64, definitionStartLine INT64, definitionEndLine INT64, optionsStartLine INT64, optionsEndLine INT64, extendsCapsule STRING, extendsCapsuleUri STRING)`)
                         await conn.query(`CREATE NODE TABLE IF NOT EXISTS SpineContract(id STRING PRIMARY KEY, contractUri STRING, capsuleSourceLineRef STRING)`)
                         await conn.query(`CREATE NODE TABLE IF NOT EXISTS PropertyContract(id STRING PRIMARY KEY, contractKey STRING, propertyContractUri STRING, capsuleSourceLineRef STRING, spineContractId STRING, options STRING)`)
@@ -112,8 +112,8 @@ export async function capsule({
                     type: CapsulePropertyTypes.Function,
                     value: async function (this: any, spineInstanceTreeId?: string): Promise<any[]> {
                         const query = spineInstanceTreeId
-                            ? `MATCH (cap:Capsule)-[:HAS_SOURCE]->(cs:CapsuleSource) WHERE cap.spineInstanceTreeId = '${this._esc(spineInstanceTreeId)}' RETURN cap.capsuleName, cap.capsuleSourceLineRef ORDER BY cap.capsuleName`
-                            : `MATCH (cap:Capsule)-[:HAS_SOURCE]->(cs:CapsuleSource) RETURN cap.capsuleName, cap.capsuleSourceLineRef ORDER BY cap.capsuleName`
+                            ? `MATCH (cap:Capsule) WHERE cap.spineInstanceTreeId = '${this._esc(spineInstanceTreeId)}' RETURN cap.capsuleName, cap.capsuleSourceLineRef ORDER BY cap.capsuleName`
+                            : `MATCH (cap:Capsule) RETURN cap.capsuleName, cap.capsuleSourceLineRef ORDER BY cap.capsuleName`
                         const rows = await this._queryAll(query)
                         return rows.map((r: any) => ({
                             capsuleName: r['cap.capsuleName'],
@@ -128,14 +128,17 @@ export async function capsule({
                  */
                 _getCapsuleWithSource: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, capsuleName: string): Promise<any | null> {
+                    value: async function (this: any, spineInstanceTreeId: string, capsuleName: string): Promise<any | null> {
                         const rows = await this._queryAll(`
                             MATCH (cap:Capsule)-[:HAS_SOURCE]->(cs:CapsuleSource)
-                            WHERE cap.capsuleName = '${this._esc(capsuleName)}'
+                            WHERE cap.spineInstanceTreeId = '${this._esc(spineInstanceTreeId)}' AND cap.capsuleName = '${this._esc(capsuleName)}'
                             RETURN cap, cs
                         `)
                         if (rows.length === 0) return null
-                        return { cap: rows[0].cap, source: rows[0].cs }
+                        // Strip internal Ladybug properties (_id, _label) and extra properties not in Memory-v0
+                        const { _id: _capId, _label: _capLabel, scopedId: _scopedId, moduleUri: _capModuleUri, ...cap } = rows[0].cap
+                        const { _id: _srcId, _label: _srcLabel, ...source } = rows[0].cs
+                        return { cap, source }
                     }
                 },
 
@@ -145,13 +148,26 @@ export async function capsule({
                  */
                 _getCapsuleSpineTree_data: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, capsuleSourceLineRef: string): Promise<any[]> {
-                        return await this._queryAll(`
-                            MATCH (cap:Capsule {capsuleSourceLineRef: '${this._esc(capsuleSourceLineRef)}'})-[:IMPLEMENTS_SPINE]->(s:SpineContract)-[:HAS_PROPERTY_CONTRACT]->(pc:PropertyContract)
+                    value: async function (this: any, spineInstanceTreeId: string, capsuleSourceLineRef: string): Promise<any[]> {
+                        const rows = await this._queryAll(`
+                            MATCH (cap:Capsule)-[:IMPLEMENTS_SPINE]->(s:SpineContract)-[:HAS_PROPERTY_CONTRACT]->(pc:PropertyContract)
+                            WHERE cap.spineInstanceTreeId = '${this._esc(spineInstanceTreeId)}' AND cap.capsuleSourceLineRef = '${this._esc(capsuleSourceLineRef)}'
                             OPTIONAL MATCH (pc)-[:HAS_PROPERTY]->(p:CapsuleProperty)
                             RETURN s, pc, p
                             ORDER BY s.contractUri, pc.contractKey, p.name
                         `)
+                        // Strip internal Ladybug properties and normalize options
+                        return rows.map((row: any) => {
+                            const { _id: _sId, _label: _sLabel, ...s } = row.s || {}
+                            const { _id: _pcId, _label: _pcLabel, options: pcOptions, ...pcRest } = row.pc || {}
+                            const pc = { ...pcRest, options: pcOptions === '' ? null : pcOptions }
+                            let p = row.p
+                            if (p) {
+                                const { _id: _pId, _label: _pLabel, ...pRest } = p
+                                p = pRest
+                            }
+                            return { s: row.s ? s : null, pc: row.pc ? pc : null, p }
+                        })
                     }
                 },
 
@@ -175,36 +191,37 @@ export async function capsule({
                  */
                 _fetchCapsuleRelations: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, capsuleNames: string[]): Promise<any> {
+                    value: async function (this: any, spineInstanceTreeId: string, capsuleNames: string[]): Promise<any> {
                         if (capsuleNames.length === 0) return { mappings: {}, extends: {}, found: new Set(), properties: {}, capsuleInfo: {} }
                         const nameList = capsuleNames.map(n => `'${this._esc(n)}'`).join(', ')
 
+                        const treeFilter = `cap.spineInstanceTreeId = '${this._esc(spineInstanceTreeId)}'`
                         const [mapRows, extRows, propRows, existRows, infoRows] = await Promise.all([
                             this._queryAll(`
                                 MATCH (cap:Capsule)-[:IMPLEMENTS_SPINE]->(:SpineContract)-[:HAS_PROPERTY_CONTRACT]->(:PropertyContract)-[:HAS_PROPERTY]->(p:CapsuleProperty)-[:MAPS_TO]->(target:Capsule)
-                                WHERE cap.capsuleName IN [${nameList}]
+                                WHERE ${treeFilter} AND cap.capsuleName IN [${nameList}]
                                 RETURN cap.capsuleName AS src, p.name AS propName, p.propertyContractDelegate AS delegate, target.capsuleName AS target
                                 ORDER BY cap.capsuleName, p.name
                             `),
                             this._queryAll(`
                                 MATCH (cap:Capsule)-[:EXTENDS]->(parent:Capsule)
-                                WHERE cap.capsuleName IN [${nameList}]
+                                WHERE ${treeFilter} AND cap.capsuleName IN [${nameList}]
                                 RETURN cap.capsuleName AS src, parent.capsuleName AS target
                             `),
                             this._queryAll(`
                                 MATCH (cap:Capsule)-[:IMPLEMENTS_SPINE]->(:SpineContract)-[:HAS_PROPERTY_CONTRACT]->(pc:PropertyContract)-[:HAS_PROPERTY]->(p:CapsuleProperty)
-                                WHERE cap.capsuleName IN [${nameList}]
+                                WHERE ${treeFilter} AND cap.capsuleName IN [${nameList}]
                                 RETURN cap.capsuleName AS src, p.name AS propName, p.propertyType AS propertyType, pc.contractKey AS propertyContract, pc.propertyContractUri AS propertyContractUri, p.propertyContractDelegate AS propertyContractDelegate, p.valueExpression AS valueExpression, pc.options AS pcOptions
                                 ORDER BY cap.capsuleName, p.name
                             `),
                             this._queryAll(`
                                 MATCH (cap:Capsule)
-                                WHERE cap.capsuleName IN [${nameList}]
+                                WHERE ${treeFilter} AND cap.capsuleName IN [${nameList}]
                                 RETURN cap.capsuleName AS name
                             `),
                             this._queryAll(`
                                 MATCH (cap:Capsule)
-                                WHERE cap.capsuleName IN [${nameList}]
+                                WHERE ${treeFilter} AND cap.capsuleName IN [${nameList}]
                                 RETURN cap.capsuleName AS name, cap.capsuleSourceLineRef AS capsuleSourceLineRef, cap.capsuleSourceNameRef AS capsuleSourceNameRef
                             `),
                         ])
@@ -237,9 +254,16 @@ export async function capsule({
                  */
                 _listSpineInstanceTrees: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any): Promise<any[]> {
+                    value: async function (this: any, spineInstanceTreeId?: string): Promise<any[]> {
+                        if (spineInstanceTreeId) {
+                            // Filter by specific tree - return all capsules in that tree
+                            return await this._queryAll(
+                                `MATCH (cap:Capsule) WHERE cap.spineInstanceTreeId = '${this._esc(spineInstanceTreeId)}' RETURN cap.spineInstanceTreeId AS spineInstanceTreeId, cap.capsuleName AS capsuleName, cap.capsuleSourceLineRef AS capsuleSourceLineRef, cap.capsuleSourceUriLineRef AS capsuleSourceUriLineRef ORDER BY cap.capsuleName`
+                            )
+                        }
+                        // No filter - return distinct trees
                         return await this._queryAll(
-                            `MATCH (cap:Capsule) WHERE cap.spineInstanceTreeId IS NOT NULL AND cap.spineInstanceTreeId <> '' RETURN DISTINCT cap.spineInstanceTreeId AS spineInstanceTreeId, cap.capsuleName AS capsuleName, cap.capsuleSourceLineRef AS capsuleSourceLineRef, cap.capsuleSourceUriLineRef AS capsuleSourceUriLineRef ORDER BY spineInstanceTreeId`
+                            `MATCH (cap:Capsule) WHERE cap.spineInstanceTreeId IS NOT NULL AND cap.spineInstanceTreeId <> '' RETURN DISTINCT cap.spineInstanceTreeId AS spineInstanceTreeId, cap.capsuleName AS capsuleName, cap.capsuleSourceLineRef AS capsuleSourceLineRef, cap.capsuleSourceUriLineRef AS capsuleSourceUriLineRef ORDER BY cap.spineInstanceTreeId`
                         )
                     }
                 },

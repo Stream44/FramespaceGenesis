@@ -61,8 +61,8 @@ export async function capsule({
 
                         // Clear all existing tables to ensure fresh state
                         const tables = ['Capsule', 'CapsuleSource', 'SpineContract', 'PropertyContract', 'CapsuleProperty',
-                            'HAS_SOURCE', 'IMPLEMENTS_SPINE', 'HAS_PROPERTY_CONTRACT', 'HAS_PROPERTY',
-                            'MAPS_TO', 'EXTENDS', 'DELEGATES_TO']
+                            'CapsuleInstance', 'HAS_SOURCE', 'IMPLEMENTS_SPINE', 'HAS_PROPERTY_CONTRACT', 'HAS_PROPERTY',
+                            'MAPS_TO', 'EXTENDS', 'DELEGATES_TO', 'INSTANCE_OF', 'PARENT_INSTANCE']
                         for (const table of tables) {
                             db.run(`DROP TABLE IF EXISTS ${table}`)
                         }
@@ -70,7 +70,8 @@ export async function capsule({
 
                         // Node tables
                         db.run(`CREATE TABLE IF NOT EXISTS Capsule (
-                            capsuleSourceLineRef TEXT PRIMARY KEY,
+                            scopedId TEXT PRIMARY KEY,
+                            capsuleSourceLineRef TEXT,
                             capsuleSourceNameRef TEXT,
                             capsuleSourceNameRefHash TEXT,
                             capsuleSourceUriLineRef TEXT,
@@ -226,22 +227,20 @@ export async function capsule({
                  */
                 _listCapsules: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, spineInstanceUri?: string): Promise<any[]> {
+                    value: async function (this: any, spineInstanceTreeId?: string): Promise<any[]> {
                         const db = this._ensureConnection()
-                        if (spineInstanceUri) {
+                        if (spineInstanceTreeId) {
                             return db.query(`
-                                SELECT cap.capsuleName, cap.capsuleSourceLineRef
-                                FROM Capsule cap
-                                JOIN HAS_SOURCE hs ON hs.from_id = cap.capsuleSourceLineRef
-                                WHERE cap.spineInstanceUri = ?1
-                                ORDER BY cap.capsuleName
-                            `).all(spineInstanceUri)
+                                SELECT capsuleName, capsuleSourceLineRef
+                                FROM Capsule
+                                WHERE spineInstanceTreeId = ?1
+                                ORDER BY capsuleName
+                            `).all(spineInstanceTreeId)
                         }
                         return db.query(`
-                            SELECT cap.capsuleName, cap.capsuleSourceLineRef
-                            FROM Capsule cap
-                            JOIN HAS_SOURCE hs ON hs.from_id = cap.capsuleSourceLineRef
-                            ORDER BY cap.capsuleName
+                            SELECT capsuleName, capsuleSourceLineRef
+                            FROM Capsule
+                            ORDER BY capsuleName
                         `).all()
                     }
                 },
@@ -252,7 +251,7 @@ export async function capsule({
                  */
                 _getCapsuleWithSource: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, capsuleName: string): Promise<any | null> {
+                    value: async function (this: any, spineInstanceTreeId: string, capsuleName: string): Promise<any | null> {
                         const db = this._ensureConnection()
                         const row = db.query(`
                             SELECT
@@ -278,10 +277,10 @@ export async function capsule({
                                 cs.extendsCapsule AS cs_extendsCapsule,
                                 cs.extendsCapsuleUri AS cs_extendsCapsuleUri
                             FROM Capsule cap
-                            JOIN HAS_SOURCE hs ON hs.from_id = cap.capsuleSourceLineRef
+                            JOIN HAS_SOURCE hs ON hs.from_id = cap.scopedId
                             JOIN CapsuleSource cs ON cs.id = hs.to_id
-                            WHERE cap.capsuleName = ?1
-                        `).get(capsuleName) as any
+                            WHERE cap.spineInstanceTreeId = ?1 AND cap.capsuleName = ?2
+                        `).get(spineInstanceTreeId, capsuleName) as any
                         if (!row) return null
                         return {
                             cap: {
@@ -319,7 +318,7 @@ export async function capsule({
                  */
                 _getCapsuleSpineTree_data: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, capsuleSourceLineRef: string): Promise<any[]> {
+                    value: async function (this: any, spineInstanceTreeId: string, capsuleSourceLineRef: string): Promise<any[]> {
                         const db = this._ensureConnection()
                         const rows = db.query(`
                             SELECT
@@ -332,15 +331,15 @@ export async function capsule({
                                 p.definitionEndLine AS p_definitionEndLine, p.propertyContractDelegate AS p_propertyContractDelegate,
                                 p.capsuleSourceLineRef AS p_capsuleSourceLineRef, p.propertyContractId AS p_propertyContractId
                             FROM Capsule cap
-                            JOIN IMPLEMENTS_SPINE isp ON isp.from_id = cap.capsuleSourceLineRef
+                            JOIN IMPLEMENTS_SPINE isp ON isp.from_id = cap.scopedId
                             JOIN SpineContract s ON s.id = isp.to_id
                             JOIN HAS_PROPERTY_CONTRACT hpc ON hpc.from_id = s.id
                             JOIN PropertyContract pc ON pc.id = hpc.to_id
                             LEFT JOIN HAS_PROPERTY hp ON hp.from_id = pc.id
                             LEFT JOIN CapsuleProperty p ON p.id = hp.to_id
-                            WHERE cap.capsuleSourceLineRef = ?1
+                            WHERE cap.spineInstanceTreeId = ?1 AND cap.capsuleSourceLineRef = ?2
                             ORDER BY s.contractUri, pc.contractKey, p.name
-                        `).all(capsuleSourceLineRef) as any[]
+                        `).all(spineInstanceTreeId, capsuleSourceLineRef) as any[]
                         return rows.map((r: any) => ({
                             s: { id: r.s_id, contractUri: r.s_contractUri, capsuleSourceLineRef: r.s_capsuleSourceLineRef },
                             pc: { id: r.pc_id, contractKey: r.pc_contractKey, propertyContractUri: r.pc_propertyContractUri, capsuleSourceLineRef: r.pc_capsuleSourceLineRef, spineContractId: r.pc_spineContractId, options: r.pc_options },
@@ -370,7 +369,8 @@ export async function capsule({
                  */
                 _fetchCapsuleRelations: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, capsuleNames: string[]): Promise<any> {
+                    value: async function (this: any, spineInstanceTreeId: string, capsuleNames: string[]): Promise<any> {
+                        if (!spineInstanceTreeId) throw new Error('_fetchCapsuleRelations: spineInstanceTreeId is required')
                         if (capsuleNames.length === 0) return { mappings: {}, extends: {}, found: new Set(), properties: {}, capsuleInfo: {} }
                         const db = this._ensureConnection()
 
@@ -380,24 +380,24 @@ export async function capsule({
                             SELECT cap.capsuleName AS src, p.name AS propName,
                                    p.propertyContractDelegate AS delegate, target.capsuleName AS target
                             FROM Capsule cap
-                            JOIN IMPLEMENTS_SPINE isp ON isp.from_id = cap.capsuleSourceLineRef
+                            JOIN IMPLEMENTS_SPINE isp ON isp.from_id = cap.scopedId
                             JOIN SpineContract s ON s.id = isp.to_id
                             JOIN HAS_PROPERTY_CONTRACT hpc ON hpc.from_id = s.id
                             JOIN PropertyContract pc ON pc.id = hpc.to_id
                             JOIN HAS_PROPERTY hp ON hp.from_id = pc.id
                             JOIN CapsuleProperty p ON p.id = hp.to_id
                             JOIN MAPS_TO mt ON mt.from_id = p.id
-                            JOIN Capsule target ON target.capsuleSourceLineRef = mt.to_id
-                            WHERE cap.capsuleName IN (${placeholders})
+                            JOIN Capsule target ON target.scopedId = mt.to_id
+                            WHERE cap.spineInstanceTreeId = '${spineInstanceTreeId}' AND cap.capsuleName IN (${placeholders})
                             ORDER BY cap.capsuleName, p.name
                         `).all(...capsuleNames) as any[]
 
                         const extRows = db.query(`
                             SELECT cap.capsuleName AS src, parent.capsuleName AS target
                             FROM Capsule cap
-                            JOIN EXTENDS ext ON ext.from_id = cap.capsuleSourceLineRef
-                            JOIN Capsule parent ON parent.capsuleSourceLineRef = ext.to_id
-                            WHERE cap.capsuleName IN (${placeholders})
+                            JOIN EXTENDS ext ON ext.from_id = cap.scopedId
+                            JOIN Capsule parent ON parent.scopedId = ext.to_id
+                            WHERE cap.spineInstanceTreeId = '${spineInstanceTreeId}' AND cap.capsuleName IN (${placeholders})
                         `).all(...capsuleNames) as any[]
 
                         const propRows = db.query(`
@@ -406,23 +406,23 @@ export async function capsule({
                                    p.propertyContractDelegate AS propertyContractDelegate,
                                    p.valueExpression AS valueExpression, pc.options AS pcOptions
                             FROM Capsule cap
-                            JOIN IMPLEMENTS_SPINE isp ON isp.from_id = cap.capsuleSourceLineRef
+                            JOIN IMPLEMENTS_SPINE isp ON isp.from_id = cap.scopedId
                             JOIN SpineContract s ON s.id = isp.to_id
                             JOIN HAS_PROPERTY_CONTRACT hpc ON hpc.from_id = s.id
                             JOIN PropertyContract pc ON pc.id = hpc.to_id
                             JOIN HAS_PROPERTY hp ON hp.from_id = pc.id
                             JOIN CapsuleProperty p ON p.id = hp.to_id
-                            WHERE cap.capsuleName IN (${placeholders})
+                            WHERE cap.spineInstanceTreeId = '${spineInstanceTreeId}' AND cap.capsuleName IN (${placeholders})
                             ORDER BY cap.capsuleName, p.name
                         `).all(...capsuleNames) as any[]
 
                         const existRows = db.query(`
-                            SELECT capsuleName AS name FROM Capsule WHERE capsuleName IN (${placeholders})
+                            SELECT capsuleName AS name FROM Capsule WHERE spineInstanceTreeId = '${spineInstanceTreeId}' AND capsuleName IN (${placeholders})
                         `).all(...capsuleNames) as any[]
 
                         const infoRows = db.query(`
                             SELECT capsuleName AS name, capsuleSourceLineRef, capsuleSourceNameRef
-                            FROM Capsule WHERE capsuleName IN (${placeholders})
+                            FROM Capsule WHERE spineInstanceTreeId = '${spineInstanceTreeId}' AND capsuleName IN (${placeholders})
                         `).all(...capsuleNames) as any[]
 
                         const mappings: Record<string, { propName: string, target: string, delegate: string }[]> = {}
@@ -453,8 +453,18 @@ export async function capsule({
                  */
                 _listSpineInstanceTrees: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any): Promise<any[]> {
+                    value: async function (this: any, spineInstanceTreeId?: string): Promise<any[]> {
                         const db = this._ensureConnection()
+                        if (spineInstanceTreeId) {
+                            // Filter by specific tree - return all capsules in that tree
+                            return db.query(`
+                                SELECT spineInstanceTreeId, capsuleName, capsuleSourceLineRef, capsuleSourceUriLineRef
+                                FROM Capsule
+                                WHERE spineInstanceTreeId = ?1
+                                ORDER BY capsuleName
+                            `).all(spineInstanceTreeId)
+                        }
+                        // No filter - return distinct trees
                         return db.query(`
                             SELECT DISTINCT spineInstanceTreeId, capsuleName, capsuleSourceLineRef, capsuleSourceUriLineRef
                             FROM Capsule
@@ -556,7 +566,7 @@ export async function capsule({
                         const capsuleInfoRows = db.query(`
                             SELECT io.from_id AS instanceId, cap.capsuleName, cap.capsuleSourceLineRef, cap.capsuleSourceUriLineRef
                             FROM INSTANCE_OF io
-                            JOIN Capsule cap ON cap.capsuleSourceLineRef = io.to_id
+                            JOIN Capsule cap ON cap.scopedId = io.to_id
                             JOIN CapsuleInstance ci ON ci.instanceId = io.from_id
                             WHERE ci.spineInstanceTreeId = ?1
                         `).all(spineInstanceTreeId) as any[]

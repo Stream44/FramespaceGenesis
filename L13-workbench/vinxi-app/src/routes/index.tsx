@@ -6,7 +6,8 @@ import type { EndpointDef, EngineSchema } from "~/lib/modelApiClient";
 import type { RequestLogEntry } from "~/lib/modelApiClient";
 import { ResultView, RawJsonView } from "~/lib/renderLib";
 import type { JsonValue } from "~/lib/renderLib";
-import { visualizations, onDemandPanels, ModelsPanel } from "~/lib/visualizations";
+import { visualizations, onDemandPanels, FramespacesPanel } from "~/lib/visualizations";
+import type { FramespaceLink } from "~/lib/visualizations";
 import { REQUEST_LOG_PANEL_ID, MODEL_APIS_PANEL_ID, MODELS_PANEL_ID, requestLogPanelDef, modelApisPanelDef } from "~L8/Workbench/ModelAPIs/HeaderStatusElement";
 import { createDockview } from "dockview-core";
 import type { DockviewTheme } from "dockview-core";
@@ -25,6 +26,138 @@ const themeBlueprintVellum: DockviewTheme = {
     className: "dockview-theme-blueprint-vellum",
     gap: 4,
 };
+
+// ── Tab Context Menu State ────────────────────────────────────────────
+type TabContextMenuState = {
+    visible: boolean;
+    x: number;
+    y: number;
+    panelId: string | null;
+    groupId: string | null;
+};
+
+const [tabContextMenu, setTabContextMenu] = createSignal<TabContextMenuState>({
+    visible: false,
+    x: 0,
+    y: 0,
+    panelId: null,
+    groupId: null,
+});
+
+function TabContextMenu(props: { dockApi: () => DockviewApi | null }) {
+    const menu = tabContextMenu;
+
+    const handleCloseOthers = () => {
+        const api = props.dockApi();
+        const state = menu();
+        if (!api || !state.panelId || !state.groupId) return;
+
+        const group = api.getGroup(state.groupId);
+        if (!group) return;
+
+        const panelsInGroup = api.panels.filter(p => p.group.id === state.groupId);
+        for (const panel of panelsInGroup) {
+            if (panel.id !== state.panelId) {
+                api.removePanel(panel);
+            }
+        }
+        setTabContextMenu(prev => ({ ...prev, visible: false }));
+    };
+
+    const handleCloseToTheRight = () => {
+        const api = props.dockApi();
+        const state = menu();
+        if (!api || !state.panelId || !state.groupId) return;
+
+        const group = api.getGroup(state.groupId);
+        if (!group) return;
+
+        const panelsInGroup = api.panels.filter(p => p.group.id === state.groupId);
+        const targetIndex = panelsInGroup.findIndex(p => p.id === state.panelId);
+        if (targetIndex === -1) return;
+
+        for (let i = panelsInGroup.length - 1; i > targetIndex; i--) {
+            api.removePanel(panelsInGroup[i]);
+        }
+        setTabContextMenu(prev => ({ ...prev, visible: false }));
+    };
+
+    const handleClickOutside = (e: MouseEvent) => {
+        if (menu().visible) {
+            setTabContextMenu(prev => ({ ...prev, visible: false }));
+        }
+    };
+
+    onMount(() => {
+        document.addEventListener("click", handleClickOutside);
+        document.addEventListener("contextmenu", handleClickOutside);
+    });
+
+    onCleanup(() => {
+        document.removeEventListener("click", handleClickOutside);
+        document.removeEventListener("contextmenu", handleClickOutside);
+    });
+
+    return (
+        <Show when={menu().visible}>
+            <div
+                class="tab-context-menu"
+                style={{
+                    position: "fixed",
+                    left: `${menu().x}px`,
+                    top: `${menu().y}px`,
+                    "z-index": 10000,
+                    background: "var(--dv-tabs-and-actions-container-background-color, #1e1e1e)",
+                    border: "1px solid var(--dv-separator-border, #333)",
+                    "border-radius": "4px",
+                    "box-shadow": "0 2px 8px rgba(0,0,0,0.3)",
+                    "min-width": "150px",
+                    padding: "4px 0",
+                }}
+                onClick={(e) => e.stopPropagation()}
+            >
+                <button
+                    class="tab-context-menu-item"
+                    onClick={handleCloseOthers}
+                    style={{
+                        display: "block",
+                        width: "100%",
+                        padding: "6px 12px",
+                        border: "none",
+                        background: "transparent",
+                        color: "inherit",
+                        "text-align": "left",
+                        cursor: "pointer",
+                        "font-size": "13px",
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.background = "var(--dv-activegroup-hiddenpanel-tab-background-color, #2a2a2a)"}
+                    onMouseLeave={(e) => e.currentTarget.style.background = "transparent"}
+                >
+                    Close Others
+                </button>
+                <button
+                    class="tab-context-menu-item"
+                    onClick={handleCloseToTheRight}
+                    style={{
+                        display: "block",
+                        width: "100%",
+                        padding: "6px 12px",
+                        border: "none",
+                        background: "transparent",
+                        color: "inherit",
+                        "text-align": "left",
+                        cursor: "pointer",
+                        "font-size": "13px",
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.background = "var(--dv-activegroup-hiddenpanel-tab-background-color, #2a2a2a)"}
+                    onMouseLeave={(e) => e.currentTarget.style.background = "transparent"}
+                >
+                    Close to the Right
+                </button>
+            </div>
+        </Show>
+    );
+}
 
 // ── Verbose logging ──────────────────────────────────────────────────
 function vlog(context: string, ...args: any[]) {
@@ -72,24 +205,43 @@ function SpineInstanceSelector(props: { onCodeClick?: (filepath: string) => void
     const instances = () => workbenchStore.spineInstances();
     const isConnecting = () => workbenchStore.api.status() === "connecting";
     const groups = () => workbenchStore.spineInstanceGroups();
-    const models = () => workbenchStore.registeredModels();
 
-    // Group flat server groups by modelName for hierarchical display
-    const modelGroups = () => {
-        const byModel: Record<string, { modelName: string; engines: any; examples: { exampleDir: string; items: any[] }[] }> = {};
-        for (const g of groups()) {
+    const [activeTab, setActiveTab] = createSignal<"examples" | "tests">("examples");
+
+    // Separate groups by type
+    const exampleGroups = () => groups().filter((g: any) => g.type !== 'test');
+    const testGroups = () => groups().filter((g: any) => g.type === 'test');
+
+    // Group examples by examplesPath for hierarchical display
+    const groupedExamples = () => {
+        const byPath: Record<string, { examplesPath: string; engines: any; dirs: { exampleDir: string; items: any[] }[] }> = {};
+        for (const g of exampleGroups()) {
+            const key = g.examplesPath || g.modelName;
+            if (!byPath[key]) byPath[key] = { examplesPath: key, engines: g.engines ?? {}, dirs: [] };
+            byPath[key].dirs.push({ exampleDir: g.exampleDir, items: g.list ?? [] });
+        }
+        return Object.values(byPath);
+    };
+
+    // Group tests by modelName for hierarchical display
+    const groupedTests = () => {
+        const byModel: Record<string, { modelName: string; engines: any; dirs: { exampleDir: string; items: any[] }[] }> = {};
+        for (const g of testGroups()) {
             const key = g.modelName;
-            if (!byModel[key]) byModel[key] = { modelName: key, engines: g.engines ?? {}, examples: [] };
-            byModel[key].examples.push({ exampleDir: g.exampleDir, items: g.list ?? [] });
+            if (!byModel[key]) byModel[key] = { modelName: key, engines: g.engines ?? {}, dirs: [] };
+            byModel[key].dirs.push({ exampleDir: g.exampleDir, items: g.list ?? [] });
         }
         return Object.values(byModel);
     };
+
+    const exampleCount = () => exampleGroups().reduce((sum: number, g: any) => sum + (g.list?.length ?? 0), 0);
+    const testCount = () => testGroups().reduce((sum: number, g: any) => sum + (g.list?.length ?? 0), 0);
 
     return (
         <div class="instance-selector">
             <div class="instance-selector-header">
                 <h2>Select a Model Instance to view</h2>
-                <p class="instance-selector-hint">Each example is a Capsule Spine Tree Instance</p>
+                <p class="instance-selector-hint">Each example is a Capsule Spine Instance Tree</p>
             </div>
             <Show when={isConnecting()}>
                 <div class="instance-selector-loading">Connecting to engines...</div>
@@ -99,65 +251,161 @@ function SpineInstanceSelector(props: { onCodeClick?: (filepath: string) => void
                     No spine instances found. Make sure the engine API is running.
                 </div>
             </Show>
-            <div class="instance-list">
-                <For each={modelGroups()}>
-                    {(model) => {
-                        const hasEngines = () => model.engines && Object.keys(model.engines).length > 0;
-                        return (
-                            <div class="instance-model">
-                                <div class="instance-model-row">
-                                    <span class="instance-tag instance-tag-model">Model</span>
-                                    <span class="instance-model-name">{model.modelName}</span>
-                                </div>
-                                <For each={model.examples}>
-                                    {(example) => (
-                                        <div class="instance-example">
-                                            <div class="instance-example-row">
-                                                <span class="instance-tag instance-tag-example">Example</span>
-                                                <span class="instance-example-name">{example.exampleDir}</span>
-                                            </div>
-                                            <div class="instance-example-items">
-                                                <For each={example.items}>
-                                                    {(inst: any) => {
-                                                        const instanceName = () => (inst.$id as string).split('/').pop() ?? inst.$id;
-                                                        const lineSuffix = () => {
-                                                            const ref = inst.capsuleSourceLineRef as string | null;
-                                                            if (!ref) return '';
-                                                            const m = ref.match(/:(\d+)$/);
-                                                            return m ? `:${m[1]}` : '';
-                                                        };
-                                                        return (
-                                                            <div class="instance-card-row">
-                                                                <button
-                                                                    class="instance-card"
-                                                                    onClick={() => workbenchStore.selectSpineInstance(inst.$id)}
-                                                                >
-                                                                    <span class="instance-tag instance-tag-instance">Instance</span>
-                                                                    <span class="instance-capsule-name">{instanceName()}<Show when={lineSuffix()}><span class="instance-line-ref">{lineSuffix()}</span></Show></span>
-                                                                </button>
-                                                                <Show when={inst.capsuleSourceLineRef && props.onCodeClick}>
-                                                                    <button
-                                                                        class="instance-card-code-btn"
-                                                                        onClick={(e) => {
-                                                                            e.stopPropagation();
-                                                                            props.onCodeClick!(inst.capsuleSourceLineRef);
-                                                                        }}
-                                                                        title="Open source file"
-                                                                    >Code</button>
-                                                                </Show>
-                                                            </div>
-                                                        );
-                                                    }}
-                                                </For>
-                                            </div>
+            <Show when={instances().length > 0}>
+                <div class="instance-tabs">
+                    <button
+                        class={`instance-tab ${activeTab() === "examples" ? "active" : ""}`}
+                        onClick={() => setActiveTab("examples")}
+                    >
+                        Examples <span class="instance-tab-count">{exampleCount()}</span>
+                    </button>
+                    <button
+                        class={`instance-tab ${activeTab() === "tests" ? "active" : ""}`}
+                        onClick={() => setActiveTab("tests")}
+                    >
+                        Tests <span class="instance-tab-count">{testCount()}</span>
+                    </button>
+                </div>
+                <div class="instance-list">
+                    <Show when={activeTab() === "examples"}>
+                        <For each={groupedExamples()}>
+                            {(group) => {
+                                const copyPath = async () => {
+                                    try {
+                                        await navigator.clipboard.writeText(group.examplesPath);
+                                    } catch { /* ignore */ }
+                                };
+                                return (
+                                    <div class="instance-model">
+                                        <div class="instance-model-row">
+                                            <span class="instance-examples-path">{group.examplesPath}<button
+                                                class="instance-copy-btn"
+                                                onClick={copyPath}
+                                                title="Copy path to clipboard"
+                                            >⎘</button></span>
                                         </div>
-                                    )}
-                                </For>
-                            </div>
-                        );
-                    }}
-                </For>
-            </div>
+                                        <For each={group.dirs}>
+                                            {(dir) => (
+                                                <div class="instance-example">
+                                                    <div class="instance-example-row">
+                                                        <span class="instance-tag instance-tag-example">Example</span>
+                                                        <span class="instance-example-name">{dir.exampleDir}</span>
+                                                    </div>
+                                                    <div class="instance-example-items">
+                                                        <For each={dir.items}>
+                                                            {(inst: any) => {
+                                                                const instanceName = () => (inst.$id as string).split('/').pop() ?? inst.$id;
+                                                                const lineSuffix = () => {
+                                                                    const ref = inst.capsuleSourceLineRef as string | null;
+                                                                    if (!ref) return '';
+                                                                    const m = ref.match(/:(\d+)$/);
+                                                                    return m ? `:${m[1]}` : '';
+                                                                };
+                                                                return (
+                                                                    <div class="instance-card-row">
+                                                                        <button
+                                                                            class="instance-card"
+                                                                            onClick={() => workbenchStore.selectSpineInstance(inst.$id)}
+                                                                        >
+                                                                            <span class="instance-tag instance-tag-instance">Instance</span>
+                                                                            <span class="instance-capsule-name">{instanceName()}<Show when={lineSuffix()}><span class="instance-line-ref">{lineSuffix()}</span></Show></span>
+                                                                        </button>
+                                                                        <Show when={inst.capsuleSourceLineRef && props.onCodeClick}>
+                                                                            <button
+                                                                                class="instance-card-code-btn"
+                                                                                onClick={(e) => {
+                                                                                    e.stopPropagation();
+                                                                                    props.onCodeClick!(inst.capsuleSourceLineRef);
+                                                                                }}
+                                                                                title="Open source file"
+                                                                            >Code</button>
+                                                                        </Show>
+                                                                    </div>
+                                                                );
+                                                            }}
+                                                        </For>
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </For>
+                                    </div>
+                                );
+                            }}
+                        </For>
+                    </Show>
+                    <Show when={activeTab() === "tests"}>
+                        <For each={groupedTests()}>
+                            {(model) => (
+                                <div class="instance-model">
+                                    <div class="instance-model-row">
+                                        <span class="instance-tag instance-tag-model">Model</span>
+                                        <span class="instance-model-name">{model.modelName}</span>
+                                    </div>
+                                    <For each={model.dirs}>
+                                        {(dir) => (
+                                            <div class="instance-example">
+                                                <div class="instance-example-row">
+                                                    <span class="instance-tag instance-tag-test">Test</span>
+                                                    <span class="instance-example-name">{dir.exampleDir}</span>
+                                                </div>
+                                                <div class="instance-example-items">
+                                                    <For each={dir.items}>
+                                                        {(inst: any) => {
+                                                            const instanceName = () => (inst.$id as string).split('/').pop() ?? inst.$id;
+                                                            const lineSuffix = () => {
+                                                                const ref = inst.capsuleSourceLineRef as string | null;
+                                                                if (!ref) return '';
+                                                                const m = ref.match(/:(\d+)$/);
+                                                                return m ? `:${m[1]}` : '';
+                                                            };
+                                                            return (
+                                                                <div class="instance-card-row">
+                                                                    <button
+                                                                        class="instance-card"
+                                                                        onClick={() => workbenchStore.selectSpineInstance(inst.$id)}
+                                                                    >
+                                                                        <span class="instance-tag instance-tag-instance">Instance</span>
+                                                                        <span class="instance-capsule-name">{instanceName()}<Show when={lineSuffix()}><span class="instance-line-ref">{lineSuffix()}</span></Show></span>
+                                                                    </button>
+                                                                    <Show when={inst.capsuleSourceLineRef && props.onCodeClick}>
+                                                                        <button
+                                                                            class="instance-card-code-btn"
+                                                                            onClick={(e) => {
+                                                                                e.stopPropagation();
+                                                                                props.onCodeClick!(inst.capsuleSourceLineRef);
+                                                                            }}
+                                                                            title="Open source file"
+                                                                        >Code</button>
+                                                                    </Show>
+                                                                </div>
+                                                            );
+                                                        }}
+                                                    </For>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </For>
+                                </div>
+                            )}
+                        </For>
+                        <Show when={testCount() === 0}>
+                            <div class="instance-selector-empty">No test instances found.</div>
+                        </Show>
+                    </Show>
+                </div>
+            </Show>
+            <Show when={!workbenchStore.selectedSpineInstance() && instances().length > 0}>
+                <div class="instance-howto">
+                    <h3>How to build your own model</h3>
+                    <ol>
+                        <li>Click on <strong>Code</strong> button for an example to launch editor or copy path and find code</li>
+                        <li>Click on same example to launch framespace viewer</li>
+                        <li>Make changes to source and reload browser</li>
+                    </ol>
+                    <br />
+                    <p><b>NOTE:</b> We are actively exploring how to best author & map components for representation in diagrams. Expect significant progress in the model development experience.</p>
+                </div>
+            </Show>
         </div>
     );
 }
@@ -772,6 +1020,74 @@ function WorkbenchDockview() {
         );
     };
 
+    // Open (or focus) a framespace visualization panel
+    const openFramespacePanel = (link: FramespaceLink) => {
+        if (!dockApi) return;
+        vlog("openFramespacePanel", `path=${link.methodPath} label=${link.label}`);
+        openMethodPanel(link.methodPath, link.label);
+    };
+
+    // Resolve the first framespace link from a config object
+    const resolveFirstFramespace = (fs: Record<string, any>): { methodPath: string; label: string } | null => {
+        const entries = Object.entries(fs);
+        if (entries.length === 0) return null;
+        const [uri, entry] = entries[0];
+        const hashIdx = uri.indexOf('#');
+        const baseUri = hashIdx >= 0 ? uri.substring(0, hashIdx) : uri;
+        const ns = baseUri.replace(/\//g, '~');
+        const vizMethods = entry?.visualizationMethod;
+        const methodName = vizMethods ? Object.keys(vizMethods)[0] : null;
+        if (!methodName) return null;
+        const methodConfig = vizMethods[methodName] ?? {};
+        const label = methodConfig.label ?? methodName;
+        const s = engine().schema();
+        const apiDef = s?.apis?.[ns];
+        const basePath = apiDef?.basePath ?? `/api/${ns}`;
+        return { methodPath: `${basePath}/${methodName}`, label };
+    };
+
+    // Track the auto-opened panel ID so we can clean up on switch
+    let autoOpenedPanelId: string | null = null;
+
+    // Auto-open/focus the first framespace for the current instance config.
+    // Called after dockApi is ready and on every subsequent instance change.
+    function autoOpenFirstFramespace() {
+        if (!dockApi) return;
+        const config = workbenchStore.selectedInstanceConfig();
+        const fs = config?.framespaces as Record<string, any> | null | undefined;
+
+        const first = fs ? resolveFirstFramespace(fs) : null;
+        const newId = first?.methodPath ?? null;
+
+        vlog("autoOpenFramespace", `prev=${autoOpenedPanelId} new=${newId}`);
+
+        if (autoOpenedPanelId && autoOpenedPanelId !== newId) {
+            const panel = dockApi.getPanel(autoOpenedPanelId);
+            if (panel) {
+                vlog("autoOpenFramespace", `closing previous panel: ${autoOpenedPanelId}`);
+                panel.api.close();
+            }
+        }
+
+        autoOpenedPanelId = newId;
+
+        if (!newId || !first) return;
+
+        const existing = dockApi.getPanel(newId);
+        if (existing) {
+            vlog("autoOpenFramespace", `focusing existing panel: ${newId}`);
+            existing.api.setActive();
+        } else {
+            vlog("autoOpenFramespace", `opening new panel: ${newId} title=${first.label}`);
+            openInRightGroup(
+                dockApi,
+                { id: newId, component: "framespace-api-method", title: first.label },
+                { path: newId, name: first.label },
+                colWidth() * 5,
+            );
+        }
+    }
+
     // Wait for schema, then build panels
     let built = false;
     createEffect(() => {
@@ -791,7 +1107,7 @@ function WorkbenchDockview() {
             theme: themeBlueprintVellum,
             createComponent(options) {
                 if (options.name === "framespace-models") {
-                    // Models panel — tag-filtered method list
+                    // Framespaces panel — config-driven visualization links
                     const el = document.createElement("div");
                     el.style.cssText = "width:100%;height:100%;overflow:auto;";
                     let disposeRender: (() => void) | undefined;
@@ -799,9 +1115,10 @@ function WorkbenchDockview() {
                         element: el,
                         init() {
                             disposeRender = render(() => (
-                                <ModelsPanel
+                                <FramespacesPanel
                                     schema={() => engine().schema()}
-                                    onMethodClick={openMethodPanel}
+                                    framespaces={() => workbenchStore.selectedInstanceConfig()?.framespaces ?? null}
+                                    onFramespaceClick={openFramespacePanel}
                                 />
                             ), el);
                             disposers.push(disposeRender);
@@ -1000,6 +1317,20 @@ function WorkbenchDockview() {
                     });
                 }
             }
+            // Re-apply group constraints after restore (prevents left panel expanding)
+            requestAnimationFrame(() => {
+                for (const viz of visualizations) {
+                    if (viz.maxWidthCols || viz.minWidthCols) {
+                        const panel = dockApi!.getPanel(viz.id);
+                        if (panel?.group) {
+                            panel.group.api.setConstraints({
+                                maximumWidth: viz.maxWidthCols ? cw * viz.maxWidthCols : undefined,
+                                minimumWidth: viz.minWidthCols ? cw * viz.minWidthCols : undefined,
+                            });
+                        }
+                    }
+                }
+            });
         }
 
         if (!restored) {
@@ -1036,6 +1367,41 @@ function WorkbenchDockview() {
             }
         });
         disposers.push(() => layoutDisposable.dispose());
+
+        // Add context menu listener for tabs
+        const handleTabContextMenu = (e: MouseEvent) => {
+            const target = e.target as HTMLElement;
+            // Find the tab element (has class 'dv-tab')
+            const tabEl = target.closest('.dv-tab') as HTMLElement | null;
+            if (!tabEl) return;
+
+            // Get the panel id from the tab's data attribute
+            const panelId = tabEl.getAttribute('data-testid')?.replace('dv-tab-', '') ?? null;
+            if (!panelId) return;
+
+            // Find the panel and its group
+            const panel = dockApi?.getPanel(panelId);
+            if (!panel) return;
+
+            e.preventDefault();
+            setTabContextMenu({
+                visible: true,
+                x: e.clientX,
+                y: e.clientY,
+                panelId: panelId,
+                groupId: panel.group.id,
+            });
+        };
+
+        containerRef.addEventListener('contextmenu', handleTabContextMenu);
+        disposers.push(() => containerRef?.removeEventListener('contextmenu', handleTabContextMenu));
+
+        // Now that dockApi is ready, watch instance changes to auto-open first framespace
+        createEffect(() => {
+            // Subscribe to selectedInstanceConfig so this re-fires on instance change
+            workbenchStore.selectedInstanceConfig();
+            autoOpenFirstFramespace();
+        });
     }
 
     onCleanup(() => {
@@ -1045,7 +1411,10 @@ function WorkbenchDockview() {
     });
 
     return (
-        <div class="wb-dockview" ref={containerRef} />
+        <>
+            <div class="wb-dockview" ref={containerRef} />
+            <TabContextMenu dockApi={() => dockApi ?? null} />
+        </>
     );
 }
 

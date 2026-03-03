@@ -64,8 +64,14 @@ export async function capsule({
                             }
                         }
 
+                        // Scope all node keys by spineInstanceTreeId so each tree
+                        // gets its own copy of shared capsules (e.g. structs/Capsule).
+                        const scopedRef = spineInstanceTreeId
+                            ? `${spineInstanceTreeId}::${absoluteCapsuleLineRef}`
+                            : absoluteCapsuleLineRef
+
                         // 1. MERGE Capsule node
-                        this.mergeNode('Capsule', absoluteCapsuleLineRef, {
+                        this.mergeNode('Capsule', scopedRef, {
                             capsuleSourceLineRef: absoluteCapsuleLineRef,
                             capsuleSourceNameRef: cst.capsuleSourceNameRef ?? '',
                             capsuleSourceNameRefHash: cst.capsuleSourceNameRefHash ?? '',
@@ -95,7 +101,7 @@ export async function capsule({
                         })
 
                         // HAS_SOURCE edge
-                        this.mergeEdge('HAS_SOURCE', 'Capsule', absoluteCapsuleLineRef, 'CapsuleSource', sourceId)
+                        this.mergeEdge('HAS_SOURCE', 'Capsule', scopedRef, 'CapsuleSource', sourceId)
 
                         // 3. Spine contracts
                         if (cst.spineContracts) {
@@ -109,7 +115,7 @@ export async function capsule({
                                     capsuleSourceLineRef: absoluteCapsuleLineRef,
                                 })
 
-                                this.mergeEdge('IMPLEMENTS_SPINE', 'Capsule', absoluteCapsuleLineRef, 'SpineContract', spineId)
+                                this.mergeEdge('IMPLEMENTS_SPINE', 'Capsule', scopedRef, 'SpineContract', spineId)
 
                                 const properties = (spineContract as any).propertyContracts
                                 if (properties) {
@@ -133,7 +139,7 @@ export async function capsule({
                                         if (groupData.properties) {
                                             for (const [propName, prop] of Object.entries(groupData.properties)) {
                                                 if (propName.endsWith('Expression')) continue
-                                                await this._importProperty(absoluteCapsuleLineRef, pcId, propName, prop as any)
+                                                await this._importProperty(absoluteCapsuleLineRef, absoluteCapsuleLineRef, pcId, propName, prop as any)
                                             }
                                         }
                                     }
@@ -149,8 +155,8 @@ export async function capsule({
                  */
                 _importProperty: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, capsuleLineRef: string, propertyContractId: string, propName: string, prop: any): Promise<void> {
-                        const propId = `${capsuleLineRef}::prop::${propName}`
+                    value: async function (this: any, scopedRef: string, capsuleSourceLineRef: string, propertyContractId: string, propName: string, prop: any): Promise<void> {
+                        const propId = `${scopedRef}::prop::${propName}`
                         const delegate = prop.propertyContractDelegate || ''
                         const mappedModuleUri = prop.mappedModuleUri || ''
 
@@ -167,7 +173,7 @@ export async function capsule({
                             definitionStartLine: prop.definitionStartLine ?? -1,
                             definitionEndLine: prop.definitionEndLine ?? -1,
                             propertyContractDelegate: delegate,
-                            capsuleSourceLineRef: capsuleLineRef,
+                            capsuleSourceLineRef,
                             propertyContractId,
                         })
 
@@ -177,7 +183,7 @@ export async function capsule({
                             const conn = this._ensureConnection()
                             const delegateUri = delegate.startsWith('#') ? delegate.slice(1) : delegate
                             for (const [pcPk, pc] of Object.entries(conn.nodes.PropertyContract) as any[]) {
-                                if (pc.capsuleSourceLineRef === capsuleLineRef && pc.propertyContractUri === delegateUri) {
+                                if (pc.capsuleSourceLineRef === capsuleSourceLineRef && pc.propertyContractUri === delegateUri) {
                                     this.mergeEdge('DELEGATES_TO', 'CapsuleProperty', propId, 'PropertyContract', pcPk)
                                     break
                                 }
@@ -198,28 +204,62 @@ export async function capsule({
                         let linked = 0
                         let extendsCount = 0
 
-                        // 1. MAPS_TO: CapsuleProperty.mappedModuleUri → Capsule.capsuleName
-                        for (const [propPk, prop] of Object.entries(conn.nodes.CapsuleProperty) as any[]) {
-                            if (!prop.mappedModuleUri) continue
-                            for (const [capPk, cap] of Object.entries(conn.nodes.Capsule) as any[]) {
-                                if (cap.capsuleName === prop.mappedModuleUri) {
-                                    this.mergeEdge('MAPS_TO', 'CapsuleProperty', propPk, 'Capsule', capPk)
-                                    linked++
-                                    break
-                                }
+                        // Build lookups: capsuleName+tree → capPk, moduleUri+tree → capPk
+                        const capByNameAndTree = new Map<string, string>()
+                        const capByModuleUriAndTree = new Map<string, string>()
+                        for (const [capPk, cap] of Object.entries(conn.nodes.Capsule) as any[]) {
+                            capByNameAndTree.set(`${cap.spineInstanceTreeId}::${cap.capsuleName}`, capPk)
+                        }
+                        // CapsuleSource.moduleUri may differ from capsuleName for imported capsules
+                        for (const edge of conn.edges.HAS_SOURCE) {
+                            const src = conn.nodes.CapsuleSource[edge.to]
+                            const cap = conn.nodes.Capsule[edge.from]
+                            if (src?.moduleUri && cap) {
+                                capByModuleUriAndTree.set(`${cap.spineInstanceTreeId}::${src.moduleUri}`, edge.from)
                             }
                         }
 
-                        // 2. EXTENDS: CapsuleSource.extendsCapsuleUri → Capsule.capsuleName
+                        // Resolve a uri to a capsule key within a tree (try capsuleName first, then moduleUri)
+                        const resolveCapKey = (treeId: string, uri: string): string | undefined => {
+                            return capByNameAndTree.get(`${treeId}::${uri}`) ?? capByModuleUriAndTree.get(`${treeId}::${uri}`)
+                        }
+
+                        // Helper: find owning capsule's spineInstanceTreeId for a property
+                        const getTreeForProp = (prop: any): string => {
+                            // Walk up: prop → PropertyContract → SpineContract → Capsule
+                            const pc = conn.nodes.PropertyContract[prop.propertyContractId]
+                            if (pc) {
+                                const ownerCap = Object.values(conn.nodes.Capsule).find(
+                                    (c: any) => c.capsuleSourceLineRef === pc.capsuleSourceLineRef
+                                        && capByNameAndTree.has(`${c.spineInstanceTreeId}::${c.capsuleName}`)
+                                ) as any
+                                if (ownerCap) return ownerCap.spineInstanceTreeId
+                            }
+                            return ''
+                        }
+
+                        // 1. MAPS_TO: CapsuleProperty.mappedModuleUri → Capsule (same tree, by capsuleName or moduleUri)
+                        for (const [propPk, prop] of Object.entries(conn.nodes.CapsuleProperty) as any[]) {
+                            if (!prop.mappedModuleUri) continue
+                            const treeId = getTreeForProp(prop)
+                            const targetKey = resolveCapKey(treeId, prop.mappedModuleUri)
+                            if (targetKey) {
+                                this.mergeEdge('MAPS_TO', 'CapsuleProperty', propPk, 'Capsule', targetKey)
+                                linked++
+                            }
+                        }
+
+                        // 2. EXTENDS: CapsuleSource.extendsCapsuleUri → Capsule (same tree, by capsuleName or moduleUri)
                         for (const edge of conn.edges.HAS_SOURCE) {
                             const src = conn.nodes.CapsuleSource[edge.to]
                             if (!src?.extendsCapsuleUri) continue
-                            for (const [capPk, cap] of Object.entries(conn.nodes.Capsule) as any[]) {
-                                if (cap.capsuleName === src.extendsCapsuleUri) {
-                                    this.mergeEdge('EXTENDS', 'Capsule', edge.from, 'Capsule', capPk)
-                                    extendsCount++
-                                    break
-                                }
+                            // edge.from is the scoped Capsule key
+                            const ownerCap = conn.nodes.Capsule[edge.from]
+                            if (!ownerCap) continue
+                            const targetKey = resolveCapKey(ownerCap.spineInstanceTreeId, src.extendsCapsuleUri)
+                            if (targetKey) {
+                                this.mergeEdge('EXTENDS', 'Capsule', edge.from, 'Capsule', targetKey)
+                                extendsCount++
                             }
                         }
 
@@ -250,7 +290,8 @@ export async function capsule({
                  */
                 importSitFile: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, sitFilePath: string): Promise<{ imported: number; capsules: number; instances: number }> {
+                    value: async function (this: any, sitFilePath: string, opts?: { reset?: boolean }): Promise<{ imported: number; capsules: number; instances: number }> {
+                        if (opts?.reset) { this._conn = null; this._schemaCreated = false; this._ensureConnection() }
                         if (this.verbose) console.log(`[memory] Importing SIT file: ${sitFilePath}`)
                         const content = await readFile(sitFilePath, 'utf-8')
                         const sit = JSON.parse(content)
@@ -328,10 +369,10 @@ export async function capsule({
                                 spineInstanceTreeId,
                             })
 
-                            // Find capsule by name and create INSTANCE_OF edge
+                            // Find capsule by spineInstanceTreeId + capsuleName and create INSTANCE_OF edge
                             const conn = this._ensureConnection()
                             for (const [capPk, cap] of Object.entries(conn.nodes.Capsule) as any[]) {
-                                if (cap.capsuleName === instance.capsuleName) {
+                                if (cap.spineInstanceTreeId === spineInstanceTreeId && cap.capsuleName === instance.capsuleName) {
                                     this.mergeEdge('INSTANCE_OF', 'CapsuleInstance', instanceId, 'Capsule', capPk)
                                     break
                                 }

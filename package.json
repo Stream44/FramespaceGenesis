@@ -1,6 +1,6 @@
 {
     "name": "@stream44.studio/FramespaceGenesis",
-    "version": "0.2.0-rc.7",
+    "version": "0.2.0-rc.8",
     "license": "LGPL",
     "type": "module",
     "private": true,
@@ -17,12 +17,12 @@
     },
     "dependencies": {
         "lbug": "^0.14.3",
-        "@stream44.studio/encapsulate": "^0.4.0-rc.26",
-        "@stream44.studio/t44": "^0.4.0-rc.30",
+        "@stream44.studio/encapsulate": "^0.4.0-rc.27",
+        "@stream44.studio/t44": "^0.4.0-rc.31",
         "json-stable-stringify": "^1.3.0"
     },
     "devDependencies": {
-        "@stream44.studio/dco": "^0.3.0-rc.28",
+        "@stream44.studio/dco": "^0.3.0-rc.29",
         "@types/bun": "^1.3.4",
         "@types/node": "^25.0.3",
         "bun-types": "^1.3.4",
