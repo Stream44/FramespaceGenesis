@@ -48,7 +48,7 @@ Knowledge models require better tooling and toolchain integration to evolve into
 Innovation
 ---
 
-Framespace Genesis uses a novel approach to create complex layered models by taking a code-first approach that feels familiar and is efficient to work with by hand and with AI.
+Framespace Genesis uses a novel approach to create complex layered models by taking a code-first approach that feels familiar and is efficient to work with by hand and AI.
 
 Models are constructed as code components with declarative mappings to other components and executed by creating and resolving a promise chain across component method invocations. This is made possible by the [encapsulate](https://github.com/Stream44/encapsulate) library.
 

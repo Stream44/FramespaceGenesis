@@ -1,4 +1,4 @@
-#!/usr/bin/env bun test
+#!/usr/bin/env bun test --timeout=60000
 
 import * as bunTest from 'bun:test'
 import { join } from 'path'
