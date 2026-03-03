@@ -1,4 +1,4 @@
-#!/usr/bin/env bun test --timeout=60000
+#!/usr/bin/env bun test
 
 import * as bunTest from 'bun:test'
 import { join } from 'path'
@@ -161,7 +161,7 @@ for (const engineName of engineNames) {
                 await spineInstanceTrees.importInstanceToEngine({ engine, name: capsule.MODEL_NAME, reset: first })
                 first = false
             }
-        })
+        }, 30_000)
 
         // Instance-level methods — must match exactly (strict isolation)
         const exactMethods = ['getInstancesBySpineTree', 'getRootInstance', 'getChildInstances', 'fetchInstanceRelations']
@@ -226,6 +226,17 @@ for (const engineName of engineNames) {
 // ── Cross-engine comparison ─────────────────────────────────────────
 // After all engines have run, verify that every engine produces identical
 // isolated results for every model+method combination.
+// Sort-order-independent: engines may return rows in different orders.
+const sortForComparison = (val: any): any => {
+    if (Array.isArray(val)) return [...val].map(sortForComparison).sort((a: any, b: any) => JSON.stringify(a) < JSON.stringify(b) ? -1 : JSON.stringify(a) > JSON.stringify(b) ? 1 : 0)
+    if (val && typeof val === 'object') {
+        const out: any = {}
+        for (const k of Object.keys(val).sort()) out[k] = sortForComparison(val[k])
+        return out
+    }
+    return val
+}
+
 if (engineNames.length > 1) {
     const referenceEngine = engineNames[0]
 
@@ -250,7 +261,7 @@ if (engineNames.length > 1) {
 
                             const otherKey = `${engineNames[i]}::${capsule.MODEL_NAME}::${m}`
                             const other = isolatedResults.get(otherKey)
-                            expect(other).toEqual(reference)
+                            expect(sortForComparison(other)).toEqual(sortForComparison(reference))
                         })
                     }
                 }
