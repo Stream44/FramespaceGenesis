@@ -34,6 +34,10 @@ open http://localhost:3000
 bun run test
 ```
 
+### Quadrant View Example
+
+![Preview Quandrant View](./docs/PreviewQuadrant.png)
+
 
 Problem Statement
 ---
