@@ -251,6 +251,18 @@
       "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
     },
     {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
       "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs:22"
     },

@@ -446,7 +446,7 @@ export async function capsule({
                         const instanceOfEdges = this._readEdgeTable('INSTANCE_OF')
 
                         const instances: Record<string, { instanceId: string, capsuleName: string, capsuleSourceUriLineRef: string }> = {}
-                        for (const inst of Object.values(instanceNodes) as any[]) {
+                        for (const [, inst] of Object.entries(instanceNodes) as [string, any][]) {
                             if (inst.spineInstanceTreeId === spineInstanceTreeId) {
                                 instances[inst.instanceId] = { instanceId: inst.instanceId, capsuleName: inst.capsuleName, capsuleSourceUriLineRef: inst.capsuleSourceUriLineRef }
                             }

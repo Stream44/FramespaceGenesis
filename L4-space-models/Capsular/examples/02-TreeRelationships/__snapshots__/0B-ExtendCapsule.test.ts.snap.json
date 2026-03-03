@@ -168,11 +168,19 @@
   },
   "0B-ExtendCapsule > getChildInstances #1": [
     {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
       "capsuleName": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/ParentCapsule:28"
     }
   ],
   "0B-ExtendCapsule > getInstancesBySpineTree #1": [
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
     {
       "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
       "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"

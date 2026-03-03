@@ -8,7 +8,7 @@
         "test": "bun test"
     },
     "dependencies": {
-        "@stream44.studio/encapsulate": "^0.4.0-rc.25",
+        "@stream44.studio/encapsulate": "^0.4.0-rc.26",
         "@stream44.studio/t44": "^0.4.0-rc.30"
     },
     "devDependencies": {

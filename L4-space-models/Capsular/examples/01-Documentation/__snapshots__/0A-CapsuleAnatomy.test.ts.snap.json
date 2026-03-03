@@ -315,6 +315,14 @@
       "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
     },
     {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
       "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33"
     },
@@ -454,17 +462,17 @@
   },
   "0A-CapsuleAnatomy — Documentation Structure > sit structure #1": {
     "capsuleInstances": {
-      "46aa0c89cfc9ab894d40d921b7ec4aae26e267128c25ea02a456e39e1d1fa954": {
+      "81eca84b038fed31d0704f8bc61cdf167727003ab0f371d3b9eb52963cc3524a": {
         "capsuleName": "@<org>/<project>/structs/StructA",
         "capsuleSourceUriLineRef": "@<org>/<project>/structs/StructA:30"
+      },
+      "a32134276cfc54daa780c14386bd5a5a1a0cce71f66a400fdc6ea70a4713c298": {
+        "capsuleName": "@<org>/<project>/FeatureY",
+        "capsuleSourceUriLineRef": "@<org>/<project>/FeatureY:23"
       },
       "c288b9d371616707dcbdd09a746bf4664e71b5406234bdce5c8330e5ab5fa38b": {
         "capsuleName": "@<org>/<project>/MyCapsule",
         "capsuleSourceUriLineRef": "@<org>/<project>/MyCapsule:33"
-      },
-      "d2c2cd5e58bbc3333b5921b983532fb5214d7181c29fa2ef5be7d89f3a776bf2": {
-        "capsuleName": "@<org>/<project>/FeatureY",
-        "capsuleSourceUriLineRef": "@<org>/<project>/FeatureY:23"
       }
     },
     "capsules": {
