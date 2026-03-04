@@ -73,7 +73,7 @@ const NS = {
     Quadrant: '@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods',
 } as const;
 
-const DEFAULT_BASE_URL = "http://localhost:4000";
+const DEFAULT_BASE_URL = "/api-server";
 
 export function createModelApiClient(baseUrl = DEFAULT_BASE_URL) {
     const [status, setStatus] = createSignal<ConnectionStatus>("disconnected");
@@ -110,7 +110,7 @@ export function createModelApiClient(baseUrl = DEFAULT_BASE_URL) {
 
     // ── Build API URL ───────────────────────────────────────────────
     function apiUrl(namespace: string, method: string, params?: Record<string, string | undefined>): string {
-        let url = `${baseUrl}/api/${namespace}/${method}`;
+        let url = `${baseUrl}/${namespace}/${method}`;
         if (params) {
             const qs = new URLSearchParams();
             for (const [k, v] of Object.entries(params)) {
@@ -158,7 +158,8 @@ export function createModelApiClient(baseUrl = DEFAULT_BASE_URL) {
         if (!s) throw new Error("Not connected");
 
         const ep = s.endpoints[path];
-        let url = `${baseUrl}${path}`;
+        // path is like /api/ns/method – rewrite to go through the proxy prefix
+        let url = `${baseUrl}${path.replace(/^\/api\//, '/')}`;
 
         const params = new URLSearchParams();
         if (engine) params.set("engine", engine);
@@ -184,12 +185,12 @@ export function createModelApiClient(baseUrl = DEFAULT_BASE_URL) {
     async function connect() {
         setStatus("connecting");
         try {
-            const s = await fetchJson(`${baseUrl}/api/schema`);
+            const s = await fetchJson(`${baseUrl}/schema`);
             setSchema(s);
             setStatus("connected");
         } catch {
             setStatus("error");
-            throw new Error(`Failed to connect to model server at ${baseUrl}`);
+            throw new Error(`Failed to connect to model server via ${baseUrl}`);
         }
     }
 

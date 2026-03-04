@@ -1,7 +1,9 @@
 {
   "0A-SimpleExecution (MembraneEvents) > fetchCapsuleRelations #1": {
     "capsuleInfo": {
-      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution": {}
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution": {
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution"
+      }
     },
     "extends": {},
     "found": {},
@@ -223,6 +225,7 @@
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution:53": {
       "cacheBustVersion": 21,
       "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution:53",
       "cstFilepath": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/.~o/encapsulate.dev/static-analysis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53.csts.json",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution"
@@ -272,8 +275,9 @@
   "0A-SimpleExecution (MembraneEvents) > getMembraneEvents #1": [
     {
       "callEventIndex": -1,
-      "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": 184,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
       "eventIndex": 0,
       "eventType": "call",
       "membrane": "external",
@@ -285,8 +289,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
       "eventIndex": 1,
       "eventType": "get",
       "membrane": "internal",
@@ -298,8 +303,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
       "eventIndex": 4,
       "eventType": "call",
       "membrane": "external",
@@ -311,8 +317,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
       "eventIndex": 5,
       "eventType": "get",
       "membrane": "internal",
@@ -324,8 +331,9 @@
     },
     {
       "callEventIndex": 4,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "",
       "eventIndex": 6,
       "eventType": "call-result",
       "membrane": "external",
@@ -337,8 +345,9 @@
     },
     {
       "callEventIndex": 0,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "",
       "eventIndex": 7,
       "eventType": "call-result",
       "membrane": "external",
@@ -350,8 +359,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": 200,
+      "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
       "eventIndex": 8,
       "eventType": "get",
       "membrane": "external",
@@ -363,8 +373,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": 200,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
       "eventIndex": 9,
       "eventType": "get",
       "membrane": "external",
@@ -376,8 +387,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": 200,
+      "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
       "eventIndex": 10,
       "eventType": "get",
       "membrane": "external",
@@ -389,8 +401,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": 200,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
       "eventIndex": 11,
       "eventType": "get",
       "membrane": "external",

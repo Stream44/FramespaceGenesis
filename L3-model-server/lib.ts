@@ -12,7 +12,6 @@
 const VOLATILE_KEYS = new Set([
     'capsuleSourceNameRefHash',
     'capsuleSourceLineRef',
-    'capsuleSourceNameRef',
     'moduleFilepath',
     'instanceId',
     'capsuleSourceUriLineRefInstanceId',
@@ -86,17 +85,20 @@ export function normalizeForSnapshot(obj: any, packageRoot?: string): any {
                 continue
             }
             // Sanitize callerFilepath: absolute paths differ between local dev and installed packages
+            // Normalize to just the filename for consistency across environments
             if (key === 'callerFilepath' && typeof value === 'string') {
-                let sanitized = value as string
-                if (packageRoot && sanitized.includes(packageRoot)) {
-                    sanitized = sanitized.replace(new RegExp(packageRoot.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), '<PACKAGE_ROOT>')
+                pairs.push([key, CHANGED_FOR_CONSISTENCY])
+                continue
+            }
+            // Normalize capsuleSourceNameRef: path prefix differs between local workspace and node_modules
+            // Format is "<path>:<capsuleName>" - keep only the capsuleName part after ":"
+            if (key === 'capsuleSourceNameRef' && typeof value === 'string') {
+                const colonIdx = (value as string).indexOf(':')
+                if (colonIdx !== -1) {
+                    pairs.push([key, (value as string).substring(colonIdx + 1)])
+                } else {
+                    pairs.push([key, value])
                 }
-                const nmMarker = '/node_modules/'
-                const lastIdx = sanitized.lastIndexOf(nmMarker)
-                if (lastIdx !== -1 && sanitized.includes('node_modules/.bun/')) {
-                    sanitized = sanitized.substring(0, sanitized.indexOf('node_modules/')) + 'node_modules/' + sanitized.substring(lastIdx + nmMarker.length)
-                }
-                pairs.push([key, sanitized])
                 continue
             }
             if (key === 'parentMap') {

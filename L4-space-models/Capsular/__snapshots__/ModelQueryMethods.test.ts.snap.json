@@ -1,7 +1,9 @@
 {
   "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy > fetchCapsuleRelations #1": {
     "capsuleInfo": {
-      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy": {}
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy": {
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy"
+      }
     },
     "extends": {},
     "found": {},
@@ -287,6 +289,7 @@
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33": {
       "cacheBustVersion": 21,
       "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33",
       "cstFilepath": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation/.~o/encapsulate.dev/static-analysis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy.ts:33.csts.json",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy"
@@ -389,7 +392,9 @@
   ],
   "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule > fetchCapsuleRelations #1": {
     "capsuleInfo": {
-      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule": {}
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule": {
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule"
+      }
     },
     "extends": {},
     "found": {},
@@ -526,6 +531,7 @@
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule:19": {
       "cacheBustVersion": 21,
       "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule",
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule:19",
       "cstFilepath": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/.~o/encapsulate.dev/static-analysis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule.ts:19.csts.json",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule"
@@ -588,7 +594,9 @@
   ],
   "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule > fetchCapsuleRelations #1": {
     "capsuleInfo": {
-      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule": {}
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule": {
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule"
+      }
     },
     "extends": {
       "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/ParentCapsule"
@@ -737,6 +745,7 @@
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule:20": {
       "cacheBustVersion": 21,
       "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule",
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule:20",
       "cstFilepath": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/.~o/encapsulate.dev/static-analysis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule.ts:20.csts.json",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule"
@@ -819,7 +828,9 @@
   ],
   "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule > fetchCapsuleRelations #1": {
     "capsuleInfo": {
-      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule": {}
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule": {
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule"
+      }
     },
     "extends": {},
     "found": {},
@@ -1006,6 +1017,7 @@
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule:23": {
       "cacheBustVersion": 21,
       "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule",
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule:23",
       "cstFilepath": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/.~o/encapsulate.dev/static-analysis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule.ts:23.csts.json",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule"
@@ -1088,7 +1100,9 @@
   ],
   "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule > fetchCapsuleRelations #1": {
     "capsuleInfo": {
-      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule": {}
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule": {
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule"
+      }
     },
     "extends": {},
     "found": {},
@@ -1275,6 +1289,7 @@
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule:28": {
       "cacheBustVersion": 21,
       "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule",
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule:28",
       "cstFilepath": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/.~o/encapsulate.dev/static-analysis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule.ts:28.csts.json",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule"
@@ -1357,7 +1372,9 @@
   ],
   "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs > fetchCapsuleRelations #1": {
     "capsuleInfo": {
-      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs": {}
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs": {
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs"
+      }
     },
     "extends": {},
     "found": {},
@@ -1578,6 +1595,7 @@
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs:22": {
       "cacheBustVersion": 21,
       "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs",
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs:22",
       "cstFilepath": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/.~o/encapsulate.dev/static-analysis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs.ts:22.csts.json",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs"
@@ -1692,7 +1710,9 @@
   ],
   "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing > fetchCapsuleRelations #1": {
     "capsuleInfo": {
-      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing": {}
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing": {
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing"
+      }
     },
     "extends": {},
     "found": {},
@@ -1979,6 +1999,7 @@
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36": {
       "cacheBustVersion": 21,
       "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing",
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36",
       "cstFilepath": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/.~o/encapsulate.dev/static-analysis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36.csts.json",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing"
@@ -2117,7 +2138,9 @@
   ],
   "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution > fetchCapsuleRelations #1": {
     "capsuleInfo": {
-      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution": {}
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution": {
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution"
+      }
     },
     "extends": {},
     "found": {},
@@ -2339,6 +2362,7 @@
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution:53": {
       "cacheBustVersion": 21,
       "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution:53",
       "cstFilepath": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/.~o/encapsulate.dev/static-analysis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53.csts.json",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution"
@@ -2388,8 +2412,9 @@
   "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution > getMembraneEvents #1": [
     {
       "callEventIndex": -1,
-      "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": 184,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
       "eventIndex": 0,
       "eventType": "call",
       "membrane": "external",
@@ -2401,8 +2426,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
       "eventIndex": 1,
       "eventType": "get",
       "membrane": "internal",
@@ -2414,8 +2440,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
       "eventIndex": 4,
       "eventType": "call",
       "membrane": "external",
@@ -2427,8 +2454,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
       "eventIndex": 5,
       "eventType": "get",
       "membrane": "internal",
@@ -2440,8 +2468,9 @@
     },
     {
       "callEventIndex": 4,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "",
       "eventIndex": 6,
       "eventType": "call-result",
       "membrane": "external",
@@ -2453,8 +2482,9 @@
     },
     {
       "callEventIndex": 0,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "",
       "eventIndex": 7,
       "eventType": "call-result",
       "membrane": "external",
@@ -2466,8 +2496,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": 200,
+      "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
       "eventIndex": 8,
       "eventType": "get",
       "membrane": "external",
@@ -2479,8 +2510,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": 200,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
       "eventIndex": 9,
       "eventType": "get",
       "membrane": "external",
@@ -2492,8 +2524,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": 200,
+      "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
       "eventIndex": 10,
       "eventType": "get",
       "membrane": "external",
@@ -2505,8 +2538,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": 200,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
       "eventIndex": 11,
       "eventType": "get",
       "membrane": "external",

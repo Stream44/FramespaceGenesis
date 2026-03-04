@@ -1,7 +1,9 @@
 {
   "0F-MappedInstanceSharing > fetchCapsuleRelations #1": {
     "capsuleInfo": {
-      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing": {}
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing": {
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing"
+      }
     },
     "extends": {},
     "found": {},
@@ -288,6 +290,7 @@
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36": {
       "cacheBustVersion": 21,
       "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing",
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36",
       "cstFilepath": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/.~o/encapsulate.dev/static-analysis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36.csts.json",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing"

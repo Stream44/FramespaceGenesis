@@ -4,8 +4,17 @@ import { fileURLToPath } from "url";
 
 const __dir = dirname(fileURLToPath(import.meta.url));
 
+const MODEL_SERVER_ORIGIN = `http://localhost:${process.env.MODEL_SERVER_PORT || 4000}`;
+
 export default defineConfig({
     ssr: false,
+    server: {
+        routeRules: {
+            "/api-server/**": {
+                proxy: { to: `${MODEL_SERVER_ORIGIN}/api/**` },
+            },
+        },
+    },
     vite: {
         server: {
             fs: {
@@ -14,6 +23,12 @@ export default defineConfig({
                     resolve(__dir, "../../L6-semantic-models"),
                     resolve(__dir, "../../L8-view-models"),
                 ],
+            },
+            proxy: {
+                "/api-server": {
+                    target: MODEL_SERVER_ORIGIN,
+                    rewrite: (path: string) => path.replace(/^\/api-server/, "/api"),
+                },
             },
         },
         resolve: {

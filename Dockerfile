@@ -18,7 +18,13 @@ RUN bun install
 # Copy the rest of the project
 COPY --chown=bun:bun . .
 
-# Default: run model server (use CMD ["bun", "test", "--bail"] for testing)
-ENV PORT=4000
-EXPOSE 4000
-CMD ["bun", "run", "L3-model-server/server.ts"]
+# Default: run both model server and vinxi app via turbo
+ENV NODE_ENV=production
+ENV MODEL_SERVER_PORT=4000
+ENV PORT=3000
+
+# Build the vinxi app (turbo caches this)
+RUN bun run build
+
+EXPOSE 3000
+CMD ["bun", "run", "start"]

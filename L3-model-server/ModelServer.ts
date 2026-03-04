@@ -313,7 +313,7 @@ export async function capsule({
                 startServer: {
                     type: CapsulePropertyTypes.Function,
                     value: async function (this: any, port?: number, opts?: { skipInit?: boolean }): Promise<{ server: any; port: number }> {
-                        const actualPort = port ?? Number(process.env.PORT || 4000)
+                        const actualPort = port ?? Number(process.env.MODEL_SERVER_PORT || 4000)
 
                         if (!opts?.skipInit) await this.init()
 

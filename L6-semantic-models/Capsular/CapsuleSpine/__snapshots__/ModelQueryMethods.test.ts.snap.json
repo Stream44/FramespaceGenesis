@@ -3,6 +3,7 @@
     "#": "Capsule",
     "$id": "@acme/web-toolkit/caps/Logger",
     "cacheBustVersion": 21,
+    "capsuleSourceNameRef": "@acme/web-toolkit/caps/Logger",
     "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/caps/Logger:23",
     "source": {
       "#": "Capsule/Source",
@@ -220,6 +221,7 @@
     "#": "Capsule",
     "$id": "@stream44.studio/encapsulate/structs/Capsule",
     "cacheBustVersion": 21,
+    "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
     "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
     "source": {
       "#": "Capsule/Source",
@@ -319,6 +321,7 @@
     "#": "Capsule",
     "$id": "@stream44.studio/encapsulate/structs/Capsule",
     "cacheBustVersion": 21,
+    "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
     "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
     "source": {
       "#": "Capsule/Source",
@@ -463,6 +466,7 @@
     "#": "Capsule",
     "$id": "@stream44.studio/encapsulate/structs/Capsule",
     "cacheBustVersion": 21,
+    "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
     "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
     "source": {
       "#": "Capsule/Source",
@@ -607,6 +611,7 @@
     "#": "Capsule",
     "$id": "@stream44.studio/encapsulate/structs/Capsule",
     "cacheBustVersion": 21,
+    "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
     "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
     "source": {
       "#": "Capsule/Source",
@@ -751,6 +756,7 @@
     "#": "Capsule",
     "$id": "@stream44.studio/encapsulate/structs/Capsule",
     "cacheBustVersion": 21,
+    "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
     "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
     "source": {
       "#": "Capsule/Source",
@@ -986,6 +992,7 @@
     "#": "Capsule",
     "$id": "@stream44.studio/encapsulate/structs/Capsule",
     "cacheBustVersion": 21,
+    "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
     "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
     "source": {
       "#": "Capsule/Source",
@@ -1302,6 +1309,7 @@
     "#": "Capsule",
     "$id": "@stream44.studio/encapsulate/structs/Capsule",
     "cacheBustVersion": 21,
+    "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
     "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
     "source": {
       "#": "Capsule/Source",
@@ -1336,11 +1344,13 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
             "propertyName": "runModel"
           }
         ],
-        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": 184,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
         "eventIndex": 0,
         "eventType": "call",
         "membrane": "external",
@@ -1351,11 +1361,13 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
             "propertyName": "runModel"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
         "dataSeen": "{\"#@stream44.studio/encapsulate/structs/Capsule\":{},\"_prefix\":\"Hello\"}",
         "eventIndex": 1,
         "eventType": "get",
@@ -1369,14 +1381,17 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
             "propertyName": "greet"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
         "eventIndex": 4,
         "eventType": "call",
         "membrane": "external",
@@ -1387,14 +1402,17 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
             "propertyName": "greet"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
         "dataSeen": "\"Hello\"",
         "eventIndex": 5,
         "eventType": "get",
@@ -1406,18 +1424,21 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
             "propertyName": "runModel"
           }
         ],
         "callEventIndex": 4,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "",
         "eventIndex": 6,
         "eventType": "call-result",
         "membrane": "external",
         "propertyName": "",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
         "resolvedCaller": {
+          "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
           "propertyName": "greet"
         }
       },
@@ -1425,22 +1446,25 @@
         "#": "EventLogEntry",
         "activeInvocations": [],
         "callEventIndex": 0,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "",
         "eventIndex": 7,
         "eventType": "call-result",
         "membrane": "external",
         "propertyName": "",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
         "resolvedCaller": {
+          "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
           "propertyName": "runModel"
         }
       },
       {
         "#": "EventLogEntry",
         "activeInvocations": [],
-        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": 200,
+        "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
         "dataSeen": "",
         "eventIndex": 8,
         "eventType": "get",
@@ -1451,8 +1475,9 @@
       {
         "#": "EventLogEntry",
         "activeInvocations": [],
-        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": 200,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
         "dataSeen": "\"Hello\"",
         "eventIndex": 9,
         "eventType": "get",
@@ -1463,8 +1488,9 @@
       {
         "#": "EventLogEntry",
         "activeInvocations": [],
-        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": 200,
+        "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
         "dataSeen": "",
         "eventIndex": 10,
         "eventType": "get",
@@ -1475,8 +1501,9 @@
       {
         "#": "EventLogEntry",
         "activeInvocations": [],
-        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": 200,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
         "dataSeen": "\"Hello\"",
         "eventIndex": 11,
         "eventType": "get",
@@ -1493,8 +1520,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": 184,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
         "eventIndex": 0,
         "eventType": "call",
         "propertyName": "runModel"
@@ -1502,8 +1530,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
         "eventIndex": 1,
         "eventType": "get",
         "propertyName": "greeter"
@@ -1511,8 +1540,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
         "eventIndex": 4,
         "eventType": "call",
         "propertyName": "greet"
@@ -1520,8 +1550,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
         "eventIndex": 5,
         "eventType": "get",
         "propertyName": "_prefix"
@@ -1529,8 +1560,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": 4,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "",
         "eventIndex": 6,
         "eventType": "call-result",
         "propertyName": ""
@@ -1538,8 +1570,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": 0,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "",
         "eventIndex": 7,
         "eventType": "call-result",
         "propertyName": ""
@@ -1547,8 +1580,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": 200,
+        "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
         "eventIndex": 8,
         "eventType": "get",
         "propertyName": "capsuleSourceNameRefHash"
@@ -1556,8 +1590,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": 200,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
         "eventIndex": 9,
         "eventType": "get",
         "propertyName": "_prefix"
@@ -1565,8 +1600,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": 200,
+        "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
         "eventIndex": 10,
         "eventType": "get",
         "propertyName": "capsuleSourceNameRefHash"
@@ -1574,8 +1610,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": 200,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
         "eventIndex": 11,
         "eventType": "get",
         "propertyName": "_prefix"
@@ -1690,6 +1727,7 @@
     "#": "Capsule",
     "$id": "@stream44.studio/encapsulate/structs/Capsule",
     "cacheBustVersion": 21,
+    "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
     "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
     "source": {
       "#": "Capsule/Source",
@@ -1724,11 +1762,13 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           }
         ],
-        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": 184,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
         "eventIndex": 0,
         "eventType": "call",
         "membrane": "external",
@@ -1739,11 +1779,13 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
         "dataSeen": "\"[object]\"",
         "eventIndex": 1,
         "eventType": "get",
@@ -1757,14 +1799,17 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
         "eventIndex": 6,
         "eventType": "call",
         "membrane": "external",
@@ -1775,14 +1820,17 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
         "dataSeen": "\"[object]\"",
         "eventIndex": 7,
         "eventType": "get",
@@ -1796,17 +1844,21 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "setEmail"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 15,
         "eventType": "call",
         "membrane": "external",
@@ -1817,17 +1869,21 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "setEmail"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "dataSeen": "\"user@example.com\"",
         "eventIndex": 16,
         "eventType": "set",
@@ -1839,21 +1895,25 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           }
         ],
         "callEventIndex": 15,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "",
         "eventIndex": 17,
         "eventType": "call-result",
         "membrane": "external",
         "propertyName": "",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
         "resolvedCaller": {
+          "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
           "propertyName": "setEmail"
         }
       },
@@ -1861,14 +1921,17 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
         "dataSeen": "\"[object]\"",
         "eventIndex": 18,
         "eventType": "get",
@@ -1882,17 +1945,21 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "setPassword"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 26,
         "eventType": "call",
         "membrane": "external",
@@ -1903,17 +1970,21 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "setPassword"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "dataSeen": "\"validPassword123\"",
         "eventIndex": 27,
         "eventType": "set",
@@ -1925,21 +1996,25 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           }
         ],
         "callEventIndex": 26,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "",
         "eventIndex": 28,
         "eventType": "call-result",
         "membrane": "external",
         "propertyName": "",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
         "resolvedCaller": {
+          "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
           "propertyName": "setPassword"
         }
       },
@@ -1947,14 +2022,17 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
         "dataSeen": "\"[object]\"",
         "eventIndex": 29,
         "eventType": "get",
@@ -1968,17 +2046,21 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 37,
         "eventType": "call",
         "membrane": "external",
@@ -1989,17 +2071,21 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "dataSeen": "null",
         "eventIndex": 38,
         "eventType": "set",
@@ -2011,20 +2097,25 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "validate"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 39,
         "eventType": "call",
         "membrane": "external",
@@ -2035,20 +2126,25 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "validate"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "dataSeen": "\"user@example.com\"",
         "eventIndex": 40,
         "eventType": "get",
@@ -2060,20 +2156,25 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "validate"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "dataSeen": "\"user@example.com\"",
         "eventIndex": 41,
         "eventType": "get",
@@ -2085,20 +2186,25 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "validate"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "dataSeen": "\"validPassword123\"",
         "eventIndex": 42,
         "eventType": "get",
@@ -2110,20 +2216,25 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "validate"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "dataSeen": "\"validPassword123\"",
         "eventIndex": 43,
         "eventType": "get",
@@ -2135,24 +2246,29 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           }
         ],
         "callEventIndex": 39,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "",
         "eventIndex": 44,
         "eventType": "call-result",
         "membrane": "external",
         "propertyName": "",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
         "resolvedCaller": {
+          "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
           "propertyName": "validate"
         }
       },
@@ -2160,17 +2276,21 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "dataSeen": "\"[object]\"",
         "eventIndex": 45,
         "eventType": "get",
@@ -2184,17 +2304,21 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "dataSeen": "\"user@example.com\"",
         "eventIndex": 50,
         "eventType": "get",
@@ -2206,17 +2330,21 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "dataSeen": "\"validPassword123\"",
         "eventIndex": 51,
         "eventType": "get",
@@ -2228,20 +2356,25 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient",
             "propertyName": "post"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient",
         "eventIndex": 52,
         "eventType": "call",
         "membrane": "external",
@@ -2252,20 +2385,25 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient",
             "propertyName": "post"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient",
         "dataSeen": "{\"#@stream44.studio/encapsulate/structs/Capsule\":{}}",
         "eventIndex": 53,
         "eventType": "get",
@@ -2279,23 +2417,29 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient",
             "propertyName": "post"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/AuthService",
             "propertyName": "authenticate"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/AuthService",
         "eventIndex": 55,
         "eventType": "call",
         "membrane": "external",
@@ -2306,27 +2450,33 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient",
             "propertyName": "post"
           }
         ],
         "callEventIndex": 55,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "",
         "eventIndex": 56,
         "eventType": "call-result",
         "membrane": "external",
         "propertyName": "",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
         "resolvedCaller": {
+          "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/AuthService",
           "propertyName": "authenticate"
         }
       },
@@ -2334,24 +2484,29 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           }
         ],
         "callEventIndex": 52,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "",
         "eventIndex": 57,
         "eventType": "call-result",
         "membrane": "external",
         "propertyName": "",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
         "resolvedCaller": {
+          "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient",
           "propertyName": "post"
         }
       },
@@ -2359,17 +2514,21 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "dataSeen": "\"\"",
         "eventIndex": 58,
         "eventType": "set",
@@ -2381,17 +2540,21 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "dataSeen": "\"\"",
         "eventIndex": 59,
         "eventType": "set",
@@ -2403,17 +2566,21 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           }
         ],
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "dataSeen": "null",
         "eventIndex": 60,
         "eventType": "set",
@@ -2425,21 +2592,25 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           }
         ],
         "callEventIndex": 37,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "",
         "eventIndex": 61,
         "eventType": "call-result",
         "membrane": "external",
         "propertyName": "",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
         "resolvedCaller": {
+          "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
           "propertyName": "submit"
         }
       },
@@ -2447,18 +2618,21 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           }
         ],
         "callEventIndex": 6,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "",
         "eventIndex": 62,
         "eventType": "call-result",
         "membrane": "external",
         "propertyName": "",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
         "resolvedCaller": {
+          "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
           "propertyName": "login"
         }
       },
@@ -2466,14 +2640,16 @@
         "#": "EventLogEntry",
         "activeInvocations": [],
         "callEventIndex": 0,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "",
         "eventIndex": 63,
         "eventType": "call-result",
         "membrane": "external",
         "propertyName": "",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
         "resolvedCaller": {
+          "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
           "propertyName": "runModel"
         }
       }
@@ -2486,8 +2662,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": 184,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
         "eventIndex": 0,
         "eventType": "call",
         "propertyName": "runModel"
@@ -2495,8 +2672,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
         "eventIndex": 1,
         "eventType": "get",
         "propertyName": "user"
@@ -2504,8 +2682,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
         "eventIndex": 6,
         "eventType": "call",
         "propertyName": "login"
@@ -2513,8 +2692,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
         "eventIndex": 7,
         "eventType": "get",
         "propertyName": "loginForm"
@@ -2522,8 +2702,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 15,
         "eventType": "call",
         "propertyName": "setEmail"
@@ -2531,8 +2712,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 16,
         "eventType": "set",
         "propertyName": "_email"
@@ -2540,8 +2722,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": 15,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "",
         "eventIndex": 17,
         "eventType": "call-result",
         "propertyName": ""
@@ -2549,8 +2732,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
         "eventIndex": 18,
         "eventType": "get",
         "propertyName": "loginForm"
@@ -2558,8 +2742,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 26,
         "eventType": "call",
         "propertyName": "setPassword"
@@ -2567,8 +2752,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 27,
         "eventType": "set",
         "propertyName": "_password"
@@ -2576,8 +2762,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": 26,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "",
         "eventIndex": 28,
         "eventType": "call-result",
         "propertyName": ""
@@ -2585,8 +2772,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
         "eventIndex": 29,
         "eventType": "get",
         "propertyName": "loginForm"
@@ -2594,8 +2782,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 37,
         "eventType": "call",
         "propertyName": "submit"
@@ -2603,8 +2792,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 38,
         "eventType": "set",
         "propertyName": "_error"
@@ -2612,8 +2802,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 39,
         "eventType": "call",
         "propertyName": "validate"
@@ -2621,8 +2812,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 40,
         "eventType": "get",
         "propertyName": "_email"
@@ -2630,8 +2822,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 41,
         "eventType": "get",
         "propertyName": "_email"
@@ -2639,8 +2832,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 42,
         "eventType": "get",
         "propertyName": "_password"
@@ -2648,8 +2842,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 43,
         "eventType": "get",
         "propertyName": "_password"
@@ -2657,8 +2852,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": 39,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "",
         "eventIndex": 44,
         "eventType": "call-result",
         "propertyName": ""
@@ -2666,8 +2862,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 45,
         "eventType": "get",
         "propertyName": "httpClient"
@@ -2675,8 +2872,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 50,
         "eventType": "get",
         "propertyName": "_email"
@@ -2684,8 +2882,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 51,
         "eventType": "get",
         "propertyName": "_password"
@@ -2693,8 +2892,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient",
         "eventIndex": 52,
         "eventType": "call",
         "propertyName": "post"
@@ -2702,8 +2902,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient",
         "eventIndex": 53,
         "eventType": "get",
         "propertyName": "authService"
@@ -2711,8 +2912,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/AuthService",
         "eventIndex": 55,
         "eventType": "call",
         "propertyName": "authenticate"
@@ -2720,8 +2922,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": 55,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "",
         "eventIndex": 56,
         "eventType": "call-result",
         "propertyName": ""
@@ -2729,8 +2932,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": 52,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "",
         "eventIndex": 57,
         "eventType": "call-result",
         "propertyName": ""
@@ -2738,8 +2942,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 58,
         "eventType": "set",
         "propertyName": "_email"
@@ -2747,8 +2952,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 59,
         "eventType": "set",
         "propertyName": "_password"
@@ -2756,8 +2962,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 60,
         "eventType": "set",
         "propertyName": "_error"
@@ -2765,8 +2972,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": 37,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "",
         "eventIndex": 61,
         "eventType": "call-result",
         "propertyName": ""
@@ -2774,8 +2982,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": 6,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "",
         "eventIndex": 62,
         "eventType": "call-result",
         "propertyName": ""
@@ -2783,8 +2992,9 @@
       {
         "#": "MembraneEvent",
         "callEventIndex": 0,
-        "callerFilepath": "",
+        "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
+        "capsuleSourceNameRef": "",
         "eventIndex": 63,
         "eventType": "call-result",
         "propertyName": ""
@@ -3034,6 +3244,7 @@
     "#": "Capsule",
     "$id": "@stream44.studio/encapsulate/structs/Capsule",
     "cacheBustVersion": 21,
+    "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
     "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
     "source": {
       "#": "Capsule/Source",

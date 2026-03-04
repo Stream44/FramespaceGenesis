@@ -1,7 +1,9 @@
 {
   "01-SimplePasswordLogin > fetchCapsuleRelations #1": {
     "capsuleInfo": {
-      "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin": {}
+      "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin": {
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin"
+      }
     },
     "extends": {},
     "found": {},
@@ -253,6 +255,7 @@
     "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model:53": {
       "cacheBustVersion": 21,
       "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model:53",
       "cstFilepath": "<PACKAGE_ROOT>/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/.~o/encapsulate.dev/static-analysis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:53.csts.json",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin"
@@ -326,8 +329,9 @@
   "01-SimplePasswordLogin > getMembraneEvents #1": [
     {
       "callEventIndex": -1,
-      "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": 184,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "eventIndex": 0,
       "eventType": "call",
       "membrane": "external",
@@ -339,8 +343,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "eventIndex": 1,
       "eventType": "get",
       "membrane": "internal",
@@ -352,8 +357,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User",
       "eventIndex": 6,
       "eventType": "call",
       "membrane": "external",
@@ -365,8 +371,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User",
       "eventIndex": 7,
       "eventType": "get",
       "membrane": "internal",
@@ -378,8 +385,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
       "eventIndex": 15,
       "eventType": "call",
       "membrane": "external",
@@ -391,8 +399,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
       "eventIndex": 16,
       "eventType": "set",
       "membrane": "internal",
@@ -404,8 +413,9 @@
     },
     {
       "callEventIndex": 15,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "",
       "eventIndex": 17,
       "eventType": "call-result",
       "membrane": "external",
@@ -417,8 +427,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User",
       "eventIndex": 18,
       "eventType": "get",
       "membrane": "internal",
@@ -430,8 +441,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
       "eventIndex": 26,
       "eventType": "call",
       "membrane": "external",
@@ -443,8 +455,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
       "eventIndex": 27,
       "eventType": "set",
       "membrane": "internal",
@@ -456,8 +469,9 @@
     },
     {
       "callEventIndex": 26,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "",
       "eventIndex": 28,
       "eventType": "call-result",
       "membrane": "external",
@@ -469,8 +483,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User",
       "eventIndex": 29,
       "eventType": "get",
       "membrane": "internal",
@@ -482,8 +497,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
       "eventIndex": 37,
       "eventType": "call",
       "membrane": "external",
@@ -495,8 +511,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
       "eventIndex": 38,
       "eventType": "set",
       "membrane": "internal",
@@ -508,8 +525,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
       "eventIndex": 39,
       "eventType": "call",
       "membrane": "external",
@@ -521,8 +539,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
       "eventIndex": 40,
       "eventType": "get",
       "membrane": "internal",
@@ -534,8 +553,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
       "eventIndex": 41,
       "eventType": "get",
       "membrane": "internal",
@@ -547,8 +567,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
       "eventIndex": 42,
       "eventType": "get",
       "membrane": "internal",
@@ -560,8 +581,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
       "eventIndex": 43,
       "eventType": "get",
       "membrane": "internal",
@@ -573,8 +595,9 @@
     },
     {
       "callEventIndex": 39,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "",
       "eventIndex": 44,
       "eventType": "call-result",
       "membrane": "external",
@@ -586,8 +609,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
       "eventIndex": 45,
       "eventType": "get",
       "membrane": "internal",
@@ -599,8 +623,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
       "eventIndex": 50,
       "eventType": "get",
       "membrane": "internal",
@@ -612,8 +637,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
       "eventIndex": 51,
       "eventType": "get",
       "membrane": "internal",
@@ -625,8 +651,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient",
       "eventIndex": 52,
       "eventType": "call",
       "membrane": "external",
@@ -638,8 +665,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient",
       "eventIndex": 53,
       "eventType": "get",
       "membrane": "internal",
@@ -651,8 +679,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService",
       "eventIndex": 55,
       "eventType": "call",
       "membrane": "external",
@@ -664,8 +693,9 @@
     },
     {
       "callEventIndex": 55,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "",
       "eventIndex": 56,
       "eventType": "call-result",
       "membrane": "external",
@@ -677,8 +707,9 @@
     },
     {
       "callEventIndex": 52,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "",
       "eventIndex": 57,
       "eventType": "call-result",
       "membrane": "external",
@@ -690,8 +721,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
       "eventIndex": 58,
       "eventType": "set",
       "membrane": "internal",
@@ -703,8 +735,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
       "eventIndex": 59,
       "eventType": "set",
       "membrane": "internal",
@@ -716,8 +749,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
       "eventIndex": 60,
       "eventType": "set",
       "membrane": "internal",
@@ -729,8 +763,9 @@
     },
     {
       "callEventIndex": 37,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "",
       "eventIndex": 61,
       "eventType": "call-result",
       "membrane": "external",
@@ -742,8 +777,9 @@
     },
     {
       "callEventIndex": 6,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "",
       "eventIndex": 62,
       "eventType": "call-result",
       "membrane": "external",
@@ -755,8 +791,9 @@
     },
     {
       "callEventIndex": 0,
-      "callerFilepath": "",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": -1,
+      "capsuleSourceNameRef": "",
       "eventIndex": 63,
       "eventType": "call-result",
       "membrane": "external",
@@ -768,8 +805,9 @@
     },
     {
       "callEventIndex": -1,
-      "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
       "callerLine": 200,
+      "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
       "eventIndex": 64,
       "eventType": "get",
       "membrane": "external",
@@ -912,6 +950,7 @@
             "eventIndex": 0,
             "membrane": "external",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
               "prop": "runModel",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:53"
             }
@@ -936,6 +975,7 @@
           "propertyName": "user",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
               "prop": "runModel",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:53"
             },
@@ -943,6 +983,7 @@
             "eventIndex": 1,
             "membrane": "internal",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
               "prop": "user",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:53"
             },
@@ -964,6 +1005,7 @@
           "propertyName": "setEmail",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -971,6 +1013,7 @@
             "eventIndex": 15,
             "membrane": "external",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "setEmail",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             }
@@ -992,6 +1035,7 @@
           "propertyName": "_email",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "setEmail",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -999,6 +1043,7 @@
             "eventIndex": 16,
             "membrane": "internal",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "_email",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1030,6 +1075,7 @@
             }
           },
           "resolvedCaller": {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "setEmail"
           }
         },
@@ -1052,6 +1098,7 @@
           "propertyName": "loginForm",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -1059,6 +1106,7 @@
             "eventIndex": 18,
             "membrane": "internal",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User",
               "prop": "loginForm",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -1080,6 +1128,7 @@
           "propertyName": "setPassword",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -1087,6 +1136,7 @@
             "eventIndex": 26,
             "membrane": "external",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "setPassword",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             }
@@ -1108,6 +1158,7 @@
           "propertyName": "_password",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "setPassword",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1115,6 +1166,7 @@
             "eventIndex": 27,
             "membrane": "internal",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "_password",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1146,6 +1198,7 @@
             }
           },
           "resolvedCaller": {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "setPassword"
           }
         },
@@ -1168,6 +1221,7 @@
           "propertyName": "loginForm",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -1175,6 +1229,7 @@
             "eventIndex": 29,
             "membrane": "internal",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User",
               "prop": "loginForm",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -1196,6 +1251,7 @@
           "propertyName": "submit",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -1203,6 +1259,7 @@
             "eventIndex": 37,
             "membrane": "external",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             }
@@ -1224,6 +1281,7 @@
           "propertyName": "_error",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1231,6 +1289,7 @@
             "eventIndex": 38,
             "membrane": "internal",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "_error",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1252,6 +1311,7 @@
           "propertyName": "validate",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1259,6 +1319,7 @@
             "eventIndex": 39,
             "membrane": "external",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "validate",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             }
@@ -1280,6 +1341,7 @@
           "propertyName": "_email",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "validate",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1287,6 +1349,7 @@
             "eventIndex": 40,
             "membrane": "internal",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "_email",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1309,6 +1372,7 @@
           "propertyName": "_email",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "validate",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1316,6 +1380,7 @@
             "eventIndex": 41,
             "membrane": "internal",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "_email",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1338,6 +1403,7 @@
           "propertyName": "_password",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "validate",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1345,6 +1411,7 @@
             "eventIndex": 42,
             "membrane": "internal",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "_password",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1367,6 +1434,7 @@
           "propertyName": "_password",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "validate",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1374,6 +1442,7 @@
             "eventIndex": 43,
             "membrane": "internal",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "_password",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1406,6 +1475,7 @@
             }
           },
           "resolvedCaller": {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "validate"
           }
         },
@@ -1428,6 +1498,7 @@
           "propertyName": "httpClient",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1435,6 +1506,7 @@
             "eventIndex": 45,
             "membrane": "internal",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "httpClient",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1457,6 +1529,7 @@
           "propertyName": "_email",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1464,6 +1537,7 @@
             "eventIndex": 50,
             "membrane": "internal",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "_email",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1486,6 +1560,7 @@
           "propertyName": "_password",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1493,6 +1568,7 @@
             "eventIndex": 51,
             "membrane": "internal",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "_password",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1514,6 +1590,7 @@
           "propertyName": "post",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1521,6 +1598,7 @@
             "eventIndex": 52,
             "membrane": "external",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient",
               "prop": "post",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:31"
             }
@@ -1545,6 +1623,7 @@
           "propertyName": "authService",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient",
               "prop": "post",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:31"
             },
@@ -1552,6 +1631,7 @@
             "eventIndex": 53,
             "membrane": "internal",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient",
               "prop": "authService",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:31"
             },
@@ -1575,6 +1655,7 @@
           "propertyName": "authenticate",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient",
               "prop": "post",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:31"
             },
@@ -1582,6 +1663,7 @@
             "eventIndex": 55,
             "membrane": "external",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService",
               "prop": "authenticate",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService.ts:38"
             }
@@ -1617,6 +1699,7 @@
             }
           },
           "resolvedCaller": {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService",
             "propertyName": "authenticate"
           }
         },
@@ -1650,6 +1733,7 @@
             }
           },
           "resolvedCaller": {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient",
             "propertyName": "post"
           }
         },
@@ -1669,6 +1753,7 @@
           "propertyName": "_email",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1676,6 +1761,7 @@
             "eventIndex": 58,
             "membrane": "internal",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "_email",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1698,6 +1784,7 @@
           "propertyName": "_password",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1705,6 +1792,7 @@
             "eventIndex": 59,
             "membrane": "internal",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "_password",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1726,6 +1814,7 @@
           "propertyName": "login",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
               "prop": "runModel",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:53"
             },
@@ -1733,6 +1822,7 @@
             "eventIndex": 6,
             "membrane": "external",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             }
@@ -1754,6 +1844,7 @@
           "propertyName": "_error",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1761,6 +1852,7 @@
             "eventIndex": 60,
             "membrane": "internal",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
               "prop": "_error",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1797,6 +1889,7 @@
             }
           },
           "resolvedCaller": {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           }
         },
@@ -1830,6 +1923,7 @@
             }
           },
           "resolvedCaller": {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           }
         },
@@ -1863,6 +1957,7 @@
             }
           },
           "resolvedCaller": {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
             "propertyName": "runModel"
           }
         },
@@ -1882,6 +1977,7 @@
           "propertyName": "capsuleSourceNameRefHash",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService",
               "filepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
               "line": 200,
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService.ts:38",
@@ -1955,6 +2051,7 @@
             "eventIndex": 64,
             "membrane": "external",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
               "prop": "capsuleSourceNameRefHash",
               "spineContractCapsuleInstanceId": "$../../../encapsulate.dev/packages/encapsulate/structs/Capsule.ts:18"
             }
@@ -1979,6 +2076,7 @@
           "propertyName": "loginForm",
           "rawEvent": {
             "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -1986,6 +2084,7 @@
             "eventIndex": 7,
             "membrane": "internal",
             "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User",
               "prop": "loginForm",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             },
