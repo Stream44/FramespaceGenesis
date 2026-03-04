@@ -15,7 +15,10 @@ const VOLATILE_KEYS = new Set([
     'capsuleSourceNameRef',
     'moduleFilepath',
     'instanceId',
+    'capsuleSourceUriLineRefInstanceId',
 ])
+
+const CHANGED_FOR_CONSISTENCY = '<CHANGED_FOR_CONSISTENCY>'
 
 function isVolatileHash(value: string): boolean {
     return /^[0-9a-f]{32,}$/.test(value)
@@ -77,6 +80,25 @@ export function normalizeForSnapshot(obj: any, packageRoot?: string): any {
         const pairs: [string, any][] = []
         for (const [key, value] of Object.entries(obj)) {
             if (VOLATILE_KEYS.has(key)) continue
+            // Sanitize rawEvent: contains embedded JSON with volatile hashes and paths
+            if (key === 'rawEvent' && typeof value === 'string') {
+                pairs.push([key, CHANGED_FOR_CONSISTENCY])
+                continue
+            }
+            // Sanitize callerFilepath: absolute paths differ between local dev and installed packages
+            if (key === 'callerFilepath' && typeof value === 'string') {
+                let sanitized = value as string
+                if (packageRoot && sanitized.includes(packageRoot)) {
+                    sanitized = sanitized.replace(new RegExp(packageRoot.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), '<PACKAGE_ROOT>')
+                }
+                const nmMarker = '/node_modules/'
+                const lastIdx = sanitized.lastIndexOf(nmMarker)
+                if (lastIdx !== -1 && sanitized.includes('node_modules/.bun/')) {
+                    sanitized = sanitized.substring(0, sanitized.indexOf('node_modules/')) + 'node_modules/' + sanitized.substring(lastIdx + nmMarker.length)
+                }
+                pairs.push([key, sanitized])
+                continue
+            }
             if (key === 'parentMap') {
                 pairs.push([key, normalizedParentMap!])
                 continue

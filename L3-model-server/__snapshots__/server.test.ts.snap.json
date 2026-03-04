@@ -5,6 +5,46 @@
       {
         "#": "SpineInstanceGroup",
         "engines": {},
+        "exampleDir": "Codepath-SimplePasswordLogin",
+        "examplesPath": "<PACKAGE_ROOT>/examples/Codepath-SimplePasswordLogin",
+        "list": [
+          {
+            "#": "SpineInstanceTree",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1:53",
+            "config": {
+              "framespaces": {
+                "@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods": {
+                  "visualizationMethod": {
+                    "getSpineInstanceTree": {
+                      "label": "Spine Instance Tree"
+                    }
+                  }
+                },
+                "@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods#getSpineDeclarationTree": {
+                  "visualizationMethod": {
+                    "getSpineDeclarationTree": {
+                      "label": "Spine Declaration Tree"
+                    }
+                  }
+                },
+                "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/ModelQueryMethods": {
+                  "visualizationMethod": {
+                    "getSwimlaneView": {
+                      "label": "Codepath Swimlane View"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "modelName": "@stream44.studio/FramespaceGenesis",
+        "type": "example"
+      },
+      {
+        "#": "SpineInstanceGroup",
+        "engines": {},
         "exampleDir": "Quadrant-BackendServices",
         "examplesPath": "<PACKAGE_ROOT>/examples/Quadrant-BackendServices",
         "list": [
@@ -133,36 +173,6 @@
                 }
               }
             }
-          },
-          {
-            "#": "SpineInstanceTree",
-            "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0B-SimplePasswordLogin",
-            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0B-SimplePasswordLogin:53",
-            "config": {
-              "framespaces": {
-                "@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods": {
-                  "visualizationMethod": {
-                    "getSpineInstanceTree": {
-                      "label": "Spine Instance Tree"
-                    }
-                  }
-                },
-                "@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods#getSpineDeclarationTree": {
-                  "visualizationMethod": {
-                    "getSpineDeclarationTree": {
-                      "label": "Spine Declaration Tree"
-                    }
-                  }
-                },
-                "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/ModelQueryMethods": {
-                  "visualizationMethod": {
-                    "getSwimlaneView": {
-                      "label": "Codepath Swimlane View"
-                    }
-                  }
-                }
-              }
-            }
           }
         ],
         "modelName": "L4-space-models/Capsular",
@@ -171,13 +181,13 @@
       {
         "#": "SpineInstanceGroup",
         "engines": {},
-        "exampleDir": "04-SimplePasswordLogin",
-        "examplesPath": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/04-SimplePasswordLogin",
+        "exampleDir": "01-SimplePasswordLogin",
+        "examplesPath": "<PACKAGE_ROOT>/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
         "list": [
           {
             "#": "SpineInstanceTree",
-            "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin",
-            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin:53",
+            "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model:53",
             "config": {
               "framespaces": {
                 "@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods": {
@@ -205,7 +215,7 @@
             }
           }
         ],
-        "modelName": "L4-space-models/Capsular",
+        "modelName": "L8-view-models/CapsuleSpine/Codepath",
         "type": "test"
       },
       {
@@ -250,6 +260,36 @@
       }
     ],
     "list": [
+      {
+        "#": "SpineInstanceTree",
+        "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1:53",
+        "config": {
+          "framespaces": {
+            "@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods": {
+              "visualizationMethod": {
+                "getSpineInstanceTree": {
+                  "label": "Spine Instance Tree"
+                }
+              }
+            },
+            "@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods#getSpineDeclarationTree": {
+              "visualizationMethod": {
+                "getSpineDeclarationTree": {
+                  "label": "Spine Declaration Tree"
+                }
+              }
+            },
+            "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/ModelQueryMethods": {
+              "visualizationMethod": {
+                "getSwimlaneView": {
+                  "label": "Codepath Swimlane View"
+                }
+              }
+            }
+          }
+        }
+      },
       {
         "#": "SpineInstanceTree",
         "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1",
@@ -348,38 +388,8 @@
       },
       {
         "#": "SpineInstanceTree",
-        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0B-SimplePasswordLogin",
-        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0B-SimplePasswordLogin:53",
-        "config": {
-          "framespaces": {
-            "@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods": {
-              "visualizationMethod": {
-                "getSpineInstanceTree": {
-                  "label": "Spine Instance Tree"
-                }
-              }
-            },
-            "@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods#getSpineDeclarationTree": {
-              "visualizationMethod": {
-                "getSpineDeclarationTree": {
-                  "label": "Spine Declaration Tree"
-                }
-              }
-            },
-            "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/ModelQueryMethods": {
-              "visualizationMethod": {
-                "getSwimlaneView": {
-                  "label": "Codepath Swimlane View"
-                }
-              }
-            }
-          }
-        }
-      },
-      {
-        "#": "SpineInstanceTree",
-        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin",
-        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin:53",
+        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model:53",
         "config": {
           "framespaces": {
             "@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods": {
@@ -761,14 +771,14 @@
           }
         }
       },
-      "/api/@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Codepath~ModelQueryMethods/getVisualization": {
+      "/api/@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Codepath~ModelQueryMethods/getSwimlaneView": {
         "args": [
           {
             "name": "spineInstanceTreeId",
             "type": "string"
           }
         ],
-        "description": "Get the full Codepath visualization data including capsule columns, event rows, and grid cells for rendering the code execution path.",
+        "description": "Get the Codepath swimlane view: capsule columns, event rows, and grid cells for rendering the code execution path.",
         "discovery": "/api/Framespace/Workbench/listSpineInstanceTrees",
         "engineParam": true,
         "filterField": "$id",
@@ -785,7 +795,7 @@
           }
         },
         "usage": {
-          "GET": "/api/@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Codepath~ModelQueryMethods/getVisualization?spineInstanceTreeId=<string>",
+          "GET": "/api/@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Codepath~ModelQueryMethods/getSwimlaneView?spineInstanceTreeId=<string>",
           "POST": {
             "body": {
               "args": [
@@ -855,14 +865,14 @@
           }
         }
       },
-      "/api/@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods/getVisualization": {
+      "/api/@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods/getTableView": {
         "args": [
           {
             "name": "spineInstanceTreeId",
             "type": "string"
           }
         ],
-        "description": "Get the full Quadrant visualization data including column tree, row tree, and grid placement for rendering.",
+        "description": "Get the Quadrant table view: column tree, row tree, and grid placement for rendering.",
         "discovery": "/api/Framespace/Workbench/listSpineInstanceTrees",
         "engineParam": true,
         "filterField": "$id",
@@ -879,7 +889,7 @@
           }
         },
         "usage": {
-          "GET": "/api/@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods/getVisualization?spineInstanceTreeId=<string>",
+          "GET": "/api/@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods/getTableView?spineInstanceTreeId=<string>",
           "POST": {
             "body": {
               "args": [

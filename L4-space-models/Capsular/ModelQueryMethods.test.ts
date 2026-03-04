@@ -17,7 +17,7 @@ function readActiveEngines(): string[] | null {
             const trimmed = line.trim()
             if (trimmed === 'engines:') { inEngines = true; continue }
             if (inEngines && trimmed.startsWith('- ')) {
-                engines.push(trimmed.slice(2).trim())
+                engines.push(trimmed.slice(2).trim().replace(/^["']|["']$/g, ''))
             } else if (inEngines && trimmed && !trimmed.startsWith('#')) {
                 inEngines = false
             }
@@ -115,7 +115,6 @@ for (const engineName of engineNames) {
     // Block 1: Isolated — reset before each model, only that model's data exists
     describe(`Engine: ${engineName}`, () => {
         modelEngines.setActiveEngine(engineName)
-        const engine = modelEngines.getEngine()
 
         for (const capsule of capsuleModules) {
             describe(capsule.MODEL_NAME, () => {
@@ -124,6 +123,7 @@ for (const engineName of engineNames) {
                         name: capsule.MODEL_NAME,
                     }, capsule.runModel)
 
+                    const engine = modelEngines.getEngine()
                     await spineInstanceTrees.importInstanceToEngine({ engine, name: capsule.MODEL_NAME, reset: true })
                 })
 
@@ -132,7 +132,7 @@ for (const engineName of engineNames) {
                     it,
                     expect,
                     expectSnapshotMatch,
-                    engine,
+                    engine: () => modelEngines.getEngine(),
                     spineInstanceTreeId: capsule.MODEL_NAME,
                     packageRoot,
                     config: configForCapsule(capsule),
@@ -140,6 +140,7 @@ for (const engineName of engineNames) {
 
                 // Capture isolated results for cross-validation with accumulated block
                 it('_captureIsolatedResults', async () => {
+                    const engine = modelEngines.getEngine()
                     const config = configForCapsule(capsule)
                     const methodNames = Object.keys(config) as string[]
                     // Query methods that take only spineInstanceTreeId
@@ -175,9 +176,9 @@ for (const engineName of engineNames) {
     // appear in the accumulated output.
     describe(`Engine (accumulated): ${engineName}`, () => {
         modelEngines.setActiveEngine(engineName)
-        const engine = modelEngines.getEngine()
 
         it('importAllModels', async () => {
+            const engine = modelEngines.getEngine()
             let first = true
             for (const capsule of capsuleModules) {
                 await spineInstanceTrees.registerInstance({
@@ -199,6 +200,7 @@ for (const engineName of engineNames) {
 
                 for (const m of exactMethods) {
                     it(m, async () => {
+                        const engine = modelEngines.getEngine()
                         const key = `${engineName}::${capsule.MODEL_NAME}::${m}`
                         const isolated = isolatedResults.get(key)
                         expect(isolated).toBeDefined()
@@ -209,6 +211,7 @@ for (const engineName of engineNames) {
 
                 for (const m of supersetMethods) {
                     it(m, async () => {
+                        const engine = modelEngines.getEngine()
                         const key = `${engineName}::${capsule.MODEL_NAME}::${m}`
                         const isolated = isolatedResults.get(key)
                         expect(isolated).toBeDefined()
@@ -229,6 +232,7 @@ for (const engineName of engineNames) {
                 // Methods with extra args — capsule-level, use superset check
                 for (const [m, extra] of Object.entries(config)) {
                     it(m, async () => {
+                        const engine = modelEngines.getEngine()
                         const key = `${engineName}::${capsule.MODEL_NAME}::${m}`
                         const isolated = isolatedResults.get(key)
                         expect(isolated).toBeDefined()

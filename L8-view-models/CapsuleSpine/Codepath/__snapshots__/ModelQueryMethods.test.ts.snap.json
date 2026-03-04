@@ -140,7 +140,6 @@
             "eventIndex": 0,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "a1941e43c0f56a557f3ba1222b2027eff16d3828428799e7399b1ed571914aaf",
               "prop": "runModel",
               "spineContractCapsuleInstanceId": "$L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53"
             }
@@ -156,6 +155,7 @@
           "#": "CodepathCell",
           "activeInvocationCount": 1,
           "columnIndex": 0,
+          "dataSeen": "{\"#@stream44.studio/encapsulate/structs/Capsule\":{},\"_prefix\":\"Hello\"}",
           "eventType": "get",
           "isMappingRef": true,
           "mappingTargetColumnIndex": 1,
@@ -164,7 +164,6 @@
           "propertyName": "greeter",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "a1941e43c0f56a557f3ba1222b2027eff16d3828428799e7399b1ed571914aaf",
               "prop": "runModel",
               "spineContractCapsuleInstanceId": "$L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53"
             },
@@ -191,12 +190,12 @@
           "#": "CodepathCell",
           "activeInvocationCount": 0,
           "columnIndex": 2,
+          "dataSeen": "",
           "eventType": "get",
           "membrane": "external",
           "propertyName": "capsuleSourceNameRefHash",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "2222d2818c6fd3985a9e9df7f01e59e466a44f13da1450b7c8b3d8de44ec618b",
               "filepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
               "line": 200,
               "spineContractCapsuleInstanceId": "$L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28",
@@ -281,7 +280,6 @@
           "propertyName": "_prefix",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "2222d2818c6fd3985a9e9df7f01e59e466a44f13da1450b7c8b3d8de44ec618b",
               "filepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
               "line": 200,
               "spineContractCapsuleInstanceId": "$L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28",
@@ -366,7 +364,6 @@
           "propertyName": "greet",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "a1941e43c0f56a557f3ba1222b2027eff16d3828428799e7399b1ed571914aaf",
               "prop": "runModel",
               "spineContractCapsuleInstanceId": "$L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53"
             },
@@ -374,7 +371,6 @@
             "eventIndex": 4,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "2222d2818c6fd3985a9e9df7f01e59e466a44f13da1450b7c8b3d8de44ec618b",
               "prop": "greet",
               "spineContractCapsuleInstanceId": "$L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28"
             }
@@ -396,7 +392,6 @@
           "propertyName": "_prefix",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "2222d2818c6fd3985a9e9df7f01e59e466a44f13da1450b7c8b3d8de44ec618b",
               "prop": "greet",
               "spineContractCapsuleInstanceId": "$L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28"
             },
@@ -478,12 +473,12 @@
           "#": "CodepathCell",
           "activeInvocationCount": 0,
           "columnIndex": 2,
+          "dataSeen": "",
           "eventType": "get",
           "membrane": "external",
           "propertyName": "capsuleSourceNameRefHash",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "2222d2818c6fd3985a9e9df7f01e59e466a44f13da1450b7c8b3d8de44ec618b",
               "filepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
               "line": 200,
               "spineContractCapsuleInstanceId": "$L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28",
@@ -568,7 +563,6 @@
           "propertyName": "_prefix",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "2222d2818c6fd3985a9e9df7f01e59e466a44f13da1450b7c8b3d8de44ec618b",
               "filepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
               "line": 200,
               "spineContractCapsuleInstanceId": "$L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28",
@@ -640,441 +634,6 @@
         },
         "eventIndex": 9,
         "index": 7
-      }
-    ]
-  },
-  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0B-SimplePasswordLogin > getSwimlaneView #1": {
-    "#": "SwimlaneView",
-    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0B-SimplePasswordLogin",
-    "columns": [
-      {
-        "#": "CodepathColumn",
-        "$id": "../../../encapsulate.dev/packages/encapsulate/structs/Capsule.ts:@stream44.studio/encapsulate/structs/Capsule",
-        "index": 2,
-        "label": "Capsule"
-      },
-      {
-        "#": "CodepathColumn",
-        "$id": "L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
-        "index": 0,
-        "label": "0A-SimpleExecution"
-      },
-      {
-        "#": "CodepathColumn",
-        "$id": "L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
-        "index": 1,
-        "label": "Greeter"
-      }
-    ],
-    "rows": [
-      {
-        "#": "CodepathRow",
-        "$id": "row-0",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 1,
-          "columnIndex": 0,
-          "eventType": "call",
-          "propertyName": "runModel"
-        },
-        "eventIndex": 0,
-        "index": 0
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-1",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 1,
-          "columnIndex": 0,
-          "dataSeen": "{\"#@stream44.studio/encapsulate/structs/Capsule\":{},\"_prefix\":\"Hello\"}",
-          "eventType": "get",
-          "propertyName": "greeter"
-        },
-        "eventIndex": 1,
-        "index": 1
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-2",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 2,
-          "columnIndex": 1,
-          "eventType": "call",
-          "propertyName": "greet"
-        },
-        "eventIndex": 2,
-        "index": 2
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-3",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 2,
-          "columnIndex": 1,
-          "dataSeen": "\"Hello\"",
-          "eventType": "get",
-          "propertyName": "_prefix"
-        },
-        "eventIndex": 3,
-        "index": 3
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-4",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 1,
-          "callEventIndex": 2,
-          "columnIndex": 1,
-          "eventType": "call-result",
-          "propertyName": "",
-          "resolvedCaller": {
-            "propertyName": "greet"
-          }
-        },
-        "eventIndex": 4,
-        "index": 4
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-5",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 0,
-          "callEventIndex": 0,
-          "columnIndex": 0,
-          "eventType": "call-result",
-          "propertyName": "",
-          "resolvedCaller": {
-            "propertyName": "runModel"
-          }
-        },
-        "eventIndex": 5,
-        "index": 5
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-6",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 0,
-          "columnIndex": 2,
-          "eventType": "get",
-          "propertyName": "capsuleSourceNameRefHash"
-        },
-        "eventIndex": 6,
-        "index": 6
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-7",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 0,
-          "columnIndex": 1,
-          "dataSeen": "\"Hello\"",
-          "eventType": "get",
-          "propertyName": "_prefix"
-        },
-        "eventIndex": 7,
-        "index": 7
-      }
-    ]
-  },
-  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin > getSwimlaneView #1": {
-    "#": "SwimlaneView",
-    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin",
-    "columns": [
-      {
-        "#": "CodepathColumn",
-        "$id": "L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin",
-        "index": 0,
-        "label": "0A-SimplePasswordLogin"
-      },
-      {
-        "#": "CodepathColumn",
-        "$id": "L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/AuthService.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/AuthService",
-        "index": 4,
-        "label": "AuthService"
-      },
-      {
-        "#": "CodepathColumn",
-        "$id": "L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/HttpClient.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/HttpClient",
-        "index": 3,
-        "label": "HttpClient"
-      },
-      {
-        "#": "CodepathColumn",
-        "$id": "L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/LoginForm",
-        "index": 2,
-        "label": "LoginForm"
-      },
-      {
-        "#": "CodepathColumn",
-        "$id": "L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/User",
-        "index": 1,
-        "label": "User"
-      }
-    ],
-    "rows": [
-      {
-        "#": "CodepathRow",
-        "$id": "row-0",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 1,
-          "columnIndex": 0,
-          "eventType": "call",
-          "membrane": "external",
-          "propertyName": "runModel"
-        },
-        "eventIndex": 0,
-        "index": 0
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-1",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 2,
-          "columnIndex": 1,
-          "eventType": "call",
-          "membrane": "external",
-          "propertyName": "login"
-        },
-        "eventIndex": 1,
-        "index": 1
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-10",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 5,
-          "columnIndex": 4,
-          "eventType": "call",
-          "membrane": "external",
-          "propertyName": "authenticate"
-        },
-        "eventIndex": 10,
-        "index": 10
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-11",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 4,
-          "callEventIndex": 10,
-          "columnIndex": 4,
-          "eventType": "call-result",
-          "membrane": "external",
-          "propertyName": "",
-          "resolvedCaller": {
-            "propertyName": "authenticate"
-          }
-        },
-        "eventIndex": 11,
-        "index": 11
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-12",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 3,
-          "callEventIndex": 9,
-          "columnIndex": 3,
-          "eventType": "call-result",
-          "membrane": "external",
-          "propertyName": "",
-          "resolvedCaller": {
-            "propertyName": "post"
-          }
-        },
-        "eventIndex": 12,
-        "index": 12
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-13",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 2,
-          "callEventIndex": 6,
-          "columnIndex": 2,
-          "eventType": "call-result",
-          "membrane": "external",
-          "propertyName": "",
-          "resolvedCaller": {
-            "propertyName": "submit"
-          }
-        },
-        "eventIndex": 13,
-        "index": 13
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-14",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 1,
-          "callEventIndex": 1,
-          "columnIndex": 1,
-          "eventType": "call-result",
-          "membrane": "external",
-          "propertyName": "",
-          "resolvedCaller": {
-            "propertyName": "login"
-          }
-        },
-        "eventIndex": 14,
-        "index": 14
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-15",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 0,
-          "callEventIndex": 0,
-          "columnIndex": 0,
-          "eventType": "call-result",
-          "membrane": "external",
-          "propertyName": "",
-          "resolvedCaller": {
-            "propertyName": "runModel"
-          }
-        },
-        "eventIndex": 15,
-        "index": 15
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-2",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 3,
-          "columnIndex": 2,
-          "eventType": "call",
-          "membrane": "external",
-          "propertyName": "setEmail"
-        },
-        "eventIndex": 2,
-        "index": 2
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-3",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 2,
-          "callEventIndex": 2,
-          "columnIndex": 2,
-          "eventType": "call-result",
-          "membrane": "external",
-          "propertyName": "",
-          "resolvedCaller": {
-            "propertyName": "setEmail"
-          }
-        },
-        "eventIndex": 3,
-        "index": 3
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-4",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 3,
-          "columnIndex": 2,
-          "eventType": "call",
-          "membrane": "external",
-          "propertyName": "setPassword"
-        },
-        "eventIndex": 4,
-        "index": 4
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-5",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 2,
-          "callEventIndex": 4,
-          "columnIndex": 2,
-          "eventType": "call-result",
-          "membrane": "external",
-          "propertyName": "",
-          "resolvedCaller": {
-            "propertyName": "setPassword"
-          }
-        },
-        "eventIndex": 5,
-        "index": 5
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-6",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 3,
-          "columnIndex": 2,
-          "eventType": "call",
-          "membrane": "external",
-          "propertyName": "submit"
-        },
-        "eventIndex": 6,
-        "index": 6
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-7",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 4,
-          "columnIndex": 2,
-          "eventType": "call",
-          "membrane": "external",
-          "propertyName": "validate"
-        },
-        "eventIndex": 7,
-        "index": 7
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-8",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 3,
-          "callEventIndex": 7,
-          "columnIndex": 2,
-          "eventType": "call-result",
-          "membrane": "external",
-          "propertyName": "",
-          "resolvedCaller": {
-            "propertyName": "validate"
-          }
-        },
-        "eventIndex": 8,
-        "index": 8
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-9",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 4,
-          "columnIndex": 3,
-          "eventType": "call",
-          "membrane": "external",
-          "propertyName": "post"
-        },
-        "eventIndex": 9,
-        "index": 9
       }
     ]
   },
@@ -1195,7 +754,6 @@
             "eventIndex": 0,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "8a098d1667831865a8eef0bfab0db0eb312aebbaa1333cdacbb2c7c50fc5d44b",
               "prop": "runModel",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:53"
             }
@@ -1211,6 +769,7 @@
           "#": "CodepathCell",
           "activeInvocationCount": 1,
           "columnIndex": 0,
+          "dataSeen": "\"[object]\"",
           "eventType": "get",
           "isMappingRef": true,
           "mappingTargetColumnIndex": 1,
@@ -1219,7 +778,6 @@
           "propertyName": "user",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "8a098d1667831865a8eef0bfab0db0eb312aebbaa1333cdacbb2c7c50fc5d44b",
               "prop": "runModel",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:53"
             },
@@ -1248,7 +806,6 @@
           "propertyName": "setEmail",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "acda4f75cc658e62f493ebc07319589077c0833e79624cb294cca74f4bc90fe1",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -1256,7 +813,6 @@
             "eventIndex": 15,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "setEmail",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             }
@@ -1278,7 +834,6 @@
           "propertyName": "_email",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "setEmail",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1330,6 +885,7 @@
           "#": "CodepathCell",
           "activeInvocationCount": 2,
           "columnIndex": 1,
+          "dataSeen": "\"[object]\"",
           "eventType": "get",
           "isMappingRef": true,
           "mappingTargetColumnIndex": 2,
@@ -1338,7 +894,6 @@
           "propertyName": "loginForm",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "acda4f75cc658e62f493ebc07319589077c0833e79624cb294cca74f4bc90fe1",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -1367,7 +922,6 @@
           "propertyName": "setPassword",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "acda4f75cc658e62f493ebc07319589077c0833e79624cb294cca74f4bc90fe1",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -1375,7 +929,6 @@
             "eventIndex": 26,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "setPassword",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             }
@@ -1397,7 +950,6 @@
           "propertyName": "_password",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "setPassword",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1449,6 +1001,7 @@
           "#": "CodepathCell",
           "activeInvocationCount": 2,
           "columnIndex": 1,
+          "dataSeen": "\"[object]\"",
           "eventType": "get",
           "isMappingRef": true,
           "mappingTargetColumnIndex": 2,
@@ -1457,7 +1010,6 @@
           "propertyName": "loginForm",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "acda4f75cc658e62f493ebc07319589077c0833e79624cb294cca74f4bc90fe1",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -1486,7 +1038,6 @@
           "propertyName": "submit",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "acda4f75cc658e62f493ebc07319589077c0833e79624cb294cca74f4bc90fe1",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -1494,7 +1045,6 @@
             "eventIndex": 37,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             }
@@ -1516,7 +1066,6 @@
           "propertyName": "_error",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1545,7 +1094,6 @@
           "propertyName": "validate",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1553,7 +1101,6 @@
             "eventIndex": 39,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "validate",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             }
@@ -1575,7 +1122,6 @@
           "propertyName": "_email",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "validate",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1605,7 +1151,6 @@
           "propertyName": "_email",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "validate",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1635,7 +1180,6 @@
           "propertyName": "_password",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "validate",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1665,7 +1209,6 @@
           "propertyName": "_password",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "validate",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1718,6 +1261,7 @@
           "#": "CodepathCell",
           "activeInvocationCount": 3,
           "columnIndex": 2,
+          "dataSeen": "\"[object]\"",
           "eventType": "get",
           "isMappingRef": true,
           "mappingTargetColumnIndex": 3,
@@ -1726,7 +1270,6 @@
           "propertyName": "httpClient",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1756,7 +1299,6 @@
           "propertyName": "_email",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1786,7 +1328,6 @@
           "propertyName": "_password",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1815,7 +1356,6 @@
           "propertyName": "post",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1823,7 +1363,6 @@
             "eventIndex": 52,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "6e355e9cab5bddec47ff16e74119c1464af7867974f5d742c64f9d8c853bbc05",
               "prop": "post",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:31"
             }
@@ -1839,6 +1378,7 @@
           "#": "CodepathCell",
           "activeInvocationCount": 4,
           "columnIndex": 3,
+          "dataSeen": "{\"#@stream44.studio/encapsulate/structs/Capsule\":{}}",
           "eventType": "get",
           "isMappingRef": true,
           "mappingTargetColumnIndex": 4,
@@ -1847,7 +1387,6 @@
           "propertyName": "authService",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "6e355e9cab5bddec47ff16e74119c1464af7867974f5d742c64f9d8c853bbc05",
               "prop": "post",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:31"
             },
@@ -1878,7 +1417,6 @@
           "propertyName": "authenticate",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "6e355e9cab5bddec47ff16e74119c1464af7867974f5d742c64f9d8c853bbc05",
               "prop": "post",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:31"
             },
@@ -1886,7 +1424,6 @@
             "eventIndex": 55,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "e7ddd4d22945caa2d82e23f394f719cfcb504364c1363ae7c08348076773bcf0",
               "prop": "authenticate",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService.ts:38"
             }
@@ -1974,7 +1511,6 @@
           "propertyName": "_email",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -2004,7 +1540,6 @@
           "propertyName": "_password",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -2033,7 +1568,6 @@
           "propertyName": "login",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "8a098d1667831865a8eef0bfab0db0eb312aebbaa1333cdacbb2c7c50fc5d44b",
               "prop": "runModel",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:53"
             },
@@ -2041,7 +1575,6 @@
             "eventIndex": 6,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "acda4f75cc658e62f493ebc07319589077c0833e79624cb294cca74f4bc90fe1",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             }
@@ -2063,7 +1596,6 @@
           "propertyName": "_error",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -2186,12 +1718,12 @@
           "#": "CodepathCell",
           "activeInvocationCount": 0,
           "columnIndex": 5,
+          "dataSeen": "",
           "eventType": "get",
           "membrane": "external",
           "propertyName": "capsuleSourceNameRefHash",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "e7ddd4d22945caa2d82e23f394f719cfcb504364c1363ae7c08348076773bcf0",
               "filepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
               "line": 200,
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService.ts:38",
@@ -2270,6 +1802,7 @@
           "#": "CodepathCell",
           "activeInvocationCount": 2,
           "columnIndex": 1,
+          "dataSeen": "\"[object]\"",
           "eventType": "get",
           "isMappingRef": true,
           "mappingTargetColumnIndex": 2,
@@ -2278,7 +1811,6 @@
           "propertyName": "loginForm",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "acda4f75cc658e62f493ebc07319589077c0833e79624cb294cca74f4bc90fe1",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -2408,7 +1940,6 @@
             "eventIndex": 0,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "af62d880a0951908396f5e7d6bfdab8f610200db0a8e486a8aca52c9a90ff08e",
               "prop": "runModel",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/0A-FullStack1.ts:53"
             }
@@ -2424,6 +1955,7 @@
           "#": "CodepathCell",
           "activeInvocationCount": 1,
           "columnIndex": 0,
+          "dataSeen": "\"[object]\"",
           "eventType": "get",
           "isMappingRef": true,
           "mappingTargetColumnIndex": 1,
@@ -2432,7 +1964,6 @@
           "propertyName": "user",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "af62d880a0951908396f5e7d6bfdab8f610200db0a8e486a8aca52c9a90ff08e",
               "prop": "runModel",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/0A-FullStack1.ts:53"
             },
@@ -2461,7 +1992,6 @@
           "propertyName": "setEmail",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -2469,7 +1999,6 @@
             "eventIndex": 15,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab",
               "prop": "setEmail",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83"
             }
@@ -2491,7 +2020,6 @@
           "propertyName": "_email",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab",
               "prop": "setEmail",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -2543,6 +2071,7 @@
           "#": "CodepathCell",
           "activeInvocationCount": 2,
           "columnIndex": 1,
+          "dataSeen": "\"[object]\"",
           "eventType": "get",
           "isMappingRef": true,
           "mappingTargetColumnIndex": 2,
@@ -2551,7 +2080,6 @@
           "propertyName": "loginForm",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -2580,7 +2108,6 @@
           "propertyName": "setPassword",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -2588,7 +2115,6 @@
             "eventIndex": 26,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab",
               "prop": "setPassword",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83"
             }
@@ -2610,7 +2136,6 @@
           "propertyName": "_password",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab",
               "prop": "setPassword",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -2662,6 +2187,7 @@
           "#": "CodepathCell",
           "activeInvocationCount": 2,
           "columnIndex": 1,
+          "dataSeen": "\"[object]\"",
           "eventType": "get",
           "isMappingRef": true,
           "mappingTargetColumnIndex": 2,
@@ -2670,7 +2196,6 @@
           "propertyName": "loginForm",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -2699,7 +2224,6 @@
           "propertyName": "submit",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -2707,7 +2231,6 @@
             "eventIndex": 37,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83"
             }
@@ -2729,7 +2252,6 @@
           "propertyName": "_error",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -2758,7 +2280,6 @@
           "propertyName": "validate",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -2766,7 +2287,6 @@
             "eventIndex": 39,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab",
               "prop": "validate",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83"
             }
@@ -2788,7 +2308,6 @@
           "propertyName": "_email",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab",
               "prop": "validate",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -2818,7 +2337,6 @@
           "propertyName": "_email",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab",
               "prop": "validate",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -2848,7 +2366,6 @@
           "propertyName": "_password",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab",
               "prop": "validate",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -2878,7 +2395,6 @@
           "propertyName": "_password",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab",
               "prop": "validate",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -2931,6 +2447,7 @@
           "#": "CodepathCell",
           "activeInvocationCount": 3,
           "columnIndex": 2,
+          "dataSeen": "\"[object]\"",
           "eventType": "get",
           "isMappingRef": true,
           "mappingTargetColumnIndex": 3,
@@ -2939,7 +2456,6 @@
           "propertyName": "httpClient",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -2969,7 +2485,6 @@
           "propertyName": "_email",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -2999,7 +2514,6 @@
           "propertyName": "_password",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -3028,7 +2542,6 @@
           "propertyName": "post",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -3036,7 +2549,6 @@
             "eventIndex": 52,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "d74c34b6fc7c55bb99cbc096d2bcff36f6356ac7c8a9ccf1d455530414404610",
               "prop": "post",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/HttpClient.ts:31"
             }
@@ -3052,6 +2564,7 @@
           "#": "CodepathCell",
           "activeInvocationCount": 4,
           "columnIndex": 3,
+          "dataSeen": "{\"#@stream44.studio/encapsulate/structs/Capsule\":{}}",
           "eventType": "get",
           "isMappingRef": true,
           "mappingTargetColumnIndex": 4,
@@ -3060,7 +2573,6 @@
           "propertyName": "authService",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "d74c34b6fc7c55bb99cbc096d2bcff36f6356ac7c8a9ccf1d455530414404610",
               "prop": "post",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/HttpClient.ts:31"
             },
@@ -3091,7 +2603,6 @@
           "propertyName": "authenticate",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "d74c34b6fc7c55bb99cbc096d2bcff36f6356ac7c8a9ccf1d455530414404610",
               "prop": "post",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/HttpClient.ts:31"
             },
@@ -3099,7 +2610,6 @@
             "eventIndex": 55,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "322003d1d6f1409164d43cc22c22fdb6ed621cb6100c9bf901af838b53f65f17",
               "prop": "authenticate",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/AuthService.ts:38"
             }
@@ -3187,7 +2697,6 @@
           "propertyName": "_email",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -3217,7 +2726,6 @@
           "propertyName": "_password",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -3246,7 +2754,6 @@
           "propertyName": "login",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "af62d880a0951908396f5e7d6bfdab8f610200db0a8e486a8aca52c9a90ff08e",
               "prop": "runModel",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/0A-FullStack1.ts:53"
             },
@@ -3254,7 +2761,6 @@
             "eventIndex": 6,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/User.ts:30"
             }
@@ -3276,7 +2782,6 @@
           "propertyName": "_error",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -3399,6 +2904,7 @@
           "#": "CodepathCell",
           "activeInvocationCount": 2,
           "columnIndex": 1,
+          "dataSeen": "\"[object]\"",
           "eventType": "get",
           "isMappingRef": true,
           "mappingTargetColumnIndex": 2,
@@ -3407,7 +2913,6 @@
           "propertyName": "loginForm",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$examples/Codepath-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -3431,283 +2936,5 @@
     "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1",
     "columns": [],
     "rows": []
-  },
-  "L8 Codepath ModelQueryMethods > getVisualization snapshot #1": {
-    "#": "CodepathGrid",
-    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin",
-    "columns": [
-      {
-        "#": "CodepathColumn",
-        "$id": "L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin",
-        "index": 0,
-        "label": "0A-SimplePasswordLogin"
-      },
-      {
-        "#": "CodepathColumn",
-        "$id": "L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/AuthService.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/AuthService",
-        "index": 4,
-        "label": "AuthService"
-      },
-      {
-        "#": "CodepathColumn",
-        "$id": "L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/HttpClient.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/HttpClient",
-        "index": 3,
-        "label": "HttpClient"
-      },
-      {
-        "#": "CodepathColumn",
-        "$id": "L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/LoginForm",
-        "index": 2,
-        "label": "LoginForm"
-      },
-      {
-        "#": "CodepathColumn",
-        "$id": "L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/User",
-        "index": 1,
-        "label": "User"
-      }
-    ],
-    "rows": [
-      {
-        "#": "CodepathRow",
-        "$id": "row-0",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 1,
-          "columnIndex": 0,
-          "eventType": "call",
-          "propertyName": "runModel"
-        },
-        "eventIndex": 0,
-        "index": 0
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-1",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 2,
-          "columnIndex": 1,
-          "eventType": "call",
-          "propertyName": "login"
-        },
-        "eventIndex": 1,
-        "index": 1
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-10",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 5,
-          "columnIndex": 4,
-          "eventType": "call",
-          "propertyName": "authenticate"
-        },
-        "eventIndex": 10,
-        "index": 10
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-11",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 4,
-          "callEventIndex": 10,
-          "columnIndex": -1,
-          "eventType": "call-result",
-          "propertyName": "",
-          "resolvedCaller": {
-            "propertyName": "authenticate"
-          }
-        },
-        "eventIndex": 11,
-        "index": 11
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-12",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 3,
-          "callEventIndex": 9,
-          "columnIndex": -1,
-          "eventType": "call-result",
-          "propertyName": "",
-          "resolvedCaller": {
-            "propertyName": "post"
-          }
-        },
-        "eventIndex": 12,
-        "index": 12
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-13",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 2,
-          "callEventIndex": 6,
-          "columnIndex": -1,
-          "eventType": "call-result",
-          "propertyName": "",
-          "resolvedCaller": {
-            "propertyName": "submit"
-          }
-        },
-        "eventIndex": 13,
-        "index": 13
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-14",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 1,
-          "callEventIndex": 1,
-          "columnIndex": -1,
-          "eventType": "call-result",
-          "propertyName": "",
-          "resolvedCaller": {
-            "propertyName": "login"
-          }
-        },
-        "eventIndex": 14,
-        "index": 14
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-15",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 0,
-          "callEventIndex": 0,
-          "columnIndex": -1,
-          "eventType": "call-result",
-          "propertyName": "",
-          "resolvedCaller": {
-            "propertyName": "runModel"
-          }
-        },
-        "eventIndex": 15,
-        "index": 15
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-2",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 3,
-          "columnIndex": 2,
-          "eventType": "call",
-          "propertyName": "setEmail"
-        },
-        "eventIndex": 2,
-        "index": 2
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-3",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 2,
-          "callEventIndex": 2,
-          "columnIndex": -1,
-          "eventType": "call-result",
-          "propertyName": "",
-          "resolvedCaller": {
-            "propertyName": "setEmail"
-          }
-        },
-        "eventIndex": 3,
-        "index": 3
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-4",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 3,
-          "columnIndex": 2,
-          "eventType": "call",
-          "propertyName": "setPassword"
-        },
-        "eventIndex": 4,
-        "index": 4
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-5",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 2,
-          "callEventIndex": 4,
-          "columnIndex": -1,
-          "eventType": "call-result",
-          "propertyName": "",
-          "resolvedCaller": {
-            "propertyName": "setPassword"
-          }
-        },
-        "eventIndex": 5,
-        "index": 5
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-6",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 3,
-          "columnIndex": 2,
-          "eventType": "call",
-          "propertyName": "submit"
-        },
-        "eventIndex": 6,
-        "index": 6
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-7",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 4,
-          "columnIndex": 2,
-          "eventType": "call",
-          "propertyName": "validate"
-        },
-        "eventIndex": 7,
-        "index": 7
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-8",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 3,
-          "callEventIndex": 7,
-          "columnIndex": -1,
-          "eventType": "call-result",
-          "propertyName": "",
-          "resolvedCaller": {
-            "propertyName": "validate"
-          }
-        },
-        "eventIndex": 8,
-        "index": 8
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-9",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 4,
-          "columnIndex": 3,
-          "eventType": "call",
-          "propertyName": "post"
-        },
-        "eventIndex": 9,
-        "index": 9
-      }
-    ]
   }
 }

@@ -332,7 +332,7 @@
       "eventType": "call",
       "membrane": "external",
       "propertyName": "runModel",
-      "rawEvent": "{\"eventIndex\":0,\"event\":\"call\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:53\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:53\",\"prop\":\"runModel\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin\",\"capsuleSourceNameRefHash\":\"6e68d4c4d4615aaa3f0970328ed3903e4ca6050034289425b5d047d6164a5c9a\",\"capsuleSourceUriLineRefInstanceId\":\"8a098d1667831865a8eef0bfab0db0eb312aebbaa1333cdacbb2c7c50fc5d44b\"},\"caller\":{\"filepath\":\"/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts\",\"line\":184,\"stack\":[{\"function\":\"addCallerContextToEvent\",\"filepath\":\"/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts\",\"line\":886,\"column\":34},{\"filepath\":\"/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts\",\"line\":578,\"column\":26},{\"filepath\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts\",\"line\":59,\"column\":28},{\"filepath\":\"/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts\",\"line\":184,\"column\":37},{\"filepath\":\"/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/encapsulate.ts\",\"line\":317,\"column\":34},{\"function\":\"async run\",\"filepath\":\"/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts\",\"line\":168,\"column\":26},{\"function\":\"async runModel\",\"filepath\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts\",\"line\":6,\"column\":18},{\"filepath\":\"L4-space-models/Capsular/SpineInstanceTrees.ts\",\"line\":35,\"column\":46},{\"filepath\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.test.ts\",\"line\":74,\"column\":34},{\"filepath\":\"/Users/christoph/spaces/genesis/t44.sh/packages/t44/caps/ProjectTest.ts\",\"line\":328,\"column\":43},{\"function\":\"processTicksAndRejections\",\"filepath\":\"native\",\"line\":7,\"column\":39}]}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": ""
@@ -345,7 +345,7 @@
       "eventType": "get",
       "membrane": "internal",
       "propertyName": "user",
-      "rawEvent": "{\"eventIndex\":1,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:53\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:53\",\"prop\":\"user\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin\",\"capsuleSourceNameRefHash\":\"6e68d4c4d4615aaa3f0970328ed3903e4ca6050034289425b5d047d6164a5c9a\"},\"value\":\"[object]\",\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:53\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:53\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin\",\"capsuleSourceNameRefHash\":\"6e68d4c4d4615aaa3f0970328ed3903e4ca6050034289425b5d047d6164a5c9a\",\"capsuleSourceUriLineRefInstanceId\":\"8a098d1667831865a8eef0bfab0db0eb312aebbaa1333cdacbb2c7c50fc5d44b\",\"prop\":\"runModel\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": "\"[object]\""
@@ -358,7 +358,7 @@
       "eventType": "call",
       "membrane": "external",
       "propertyName": "login",
-      "rawEvent": "{\"eventIndex\":6,\"event\":\"call\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30\",\"prop\":\"login\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"eee152ecda0841d0c0e186cb758a31c3f9eb6b2a1b410ec703d3adfe50ba1887\",\"capsuleSourceUriLineRefInstanceId\":\"acda4f75cc658e62f493ebc07319589077c0833e79624cb294cca74f4bc90fe1\"},\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:53\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:53\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin\",\"capsuleSourceNameRefHash\":\"6e68d4c4d4615aaa3f0970328ed3903e4ca6050034289425b5d047d6164a5c9a\",\"capsuleSourceUriLineRefInstanceId\":\"8a098d1667831865a8eef0bfab0db0eb312aebbaa1333cdacbb2c7c50fc5d44b\",\"prop\":\"runModel\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": ""
@@ -371,7 +371,7 @@
       "eventType": "get",
       "membrane": "internal",
       "propertyName": "loginForm",
-      "rawEvent": "{\"eventIndex\":7,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30\",\"prop\":\"loginForm\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"eee152ecda0841d0c0e186cb758a31c3f9eb6b2a1b410ec703d3adfe50ba1887\"},\"value\":\"[object]\",\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"eee152ecda0841d0c0e186cb758a31c3f9eb6b2a1b410ec703d3adfe50ba1887\",\"capsuleSourceUriLineRefInstanceId\":\"acda4f75cc658e62f493ebc07319589077c0833e79624cb294cca74f4bc90fe1\",\"prop\":\"login\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": "\"[object]\""
@@ -384,7 +384,7 @@
       "eventType": "call",
       "membrane": "external",
       "propertyName": "setEmail",
-      "rawEvent": "{\"eventIndex\":15,\"event\":\"call\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"setEmail\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\",\"capsuleSourceUriLineRefInstanceId\":\"7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4\"},\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"eee152ecda0841d0c0e186cb758a31c3f9eb6b2a1b410ec703d3adfe50ba1887\",\"capsuleSourceUriLineRefInstanceId\":\"acda4f75cc658e62f493ebc07319589077c0833e79624cb294cca74f4bc90fe1\",\"prop\":\"login\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": ""
@@ -397,7 +397,7 @@
       "eventType": "set",
       "membrane": "internal",
       "propertyName": "_email",
-      "rawEvent": "{\"eventIndex\":16,\"event\":\"set\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_email\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\"},\"value\":\"user@example.com\",\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\",\"capsuleSourceUriLineRefInstanceId\":\"7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4\",\"prop\":\"setEmail\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": "\"user@example.com\""
@@ -410,7 +410,7 @@
       "eventType": "call-result",
       "membrane": "external",
       "propertyName": "",
-      "rawEvent": "{\"eventIndex\":17,\"event\":\"call-result\",\"membrane\":\"external\",\"target\":{\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\"},\"callEventIndex\":15}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": ""
@@ -423,7 +423,7 @@
       "eventType": "get",
       "membrane": "internal",
       "propertyName": "loginForm",
-      "rawEvent": "{\"eventIndex\":18,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30\",\"prop\":\"loginForm\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"eee152ecda0841d0c0e186cb758a31c3f9eb6b2a1b410ec703d3adfe50ba1887\"},\"value\":\"[object]\",\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"eee152ecda0841d0c0e186cb758a31c3f9eb6b2a1b410ec703d3adfe50ba1887\",\"capsuleSourceUriLineRefInstanceId\":\"acda4f75cc658e62f493ebc07319589077c0833e79624cb294cca74f4bc90fe1\",\"prop\":\"login\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": "\"[object]\""
@@ -436,7 +436,7 @@
       "eventType": "call",
       "membrane": "external",
       "propertyName": "setPassword",
-      "rawEvent": "{\"eventIndex\":26,\"event\":\"call\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"setPassword\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\",\"capsuleSourceUriLineRefInstanceId\":\"7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4\"},\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"eee152ecda0841d0c0e186cb758a31c3f9eb6b2a1b410ec703d3adfe50ba1887\",\"capsuleSourceUriLineRefInstanceId\":\"acda4f75cc658e62f493ebc07319589077c0833e79624cb294cca74f4bc90fe1\",\"prop\":\"login\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": ""
@@ -449,7 +449,7 @@
       "eventType": "set",
       "membrane": "internal",
       "propertyName": "_password",
-      "rawEvent": "{\"eventIndex\":27,\"event\":\"set\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_password\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\"},\"value\":\"validPassword123\",\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\",\"capsuleSourceUriLineRefInstanceId\":\"7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4\",\"prop\":\"setPassword\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": "\"validPassword123\""
@@ -462,7 +462,7 @@
       "eventType": "call-result",
       "membrane": "external",
       "propertyName": "",
-      "rawEvent": "{\"eventIndex\":28,\"event\":\"call-result\",\"membrane\":\"external\",\"target\":{\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\"},\"callEventIndex\":26}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": ""
@@ -475,7 +475,7 @@
       "eventType": "get",
       "membrane": "internal",
       "propertyName": "loginForm",
-      "rawEvent": "{\"eventIndex\":29,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30\",\"prop\":\"loginForm\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"eee152ecda0841d0c0e186cb758a31c3f9eb6b2a1b410ec703d3adfe50ba1887\"},\"value\":\"[object]\",\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"eee152ecda0841d0c0e186cb758a31c3f9eb6b2a1b410ec703d3adfe50ba1887\",\"capsuleSourceUriLineRefInstanceId\":\"acda4f75cc658e62f493ebc07319589077c0833e79624cb294cca74f4bc90fe1\",\"prop\":\"login\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": "\"[object]\""
@@ -488,7 +488,7 @@
       "eventType": "call",
       "membrane": "external",
       "propertyName": "submit",
-      "rawEvent": "{\"eventIndex\":37,\"event\":\"call\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"submit\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\",\"capsuleSourceUriLineRefInstanceId\":\"7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4\"},\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"eee152ecda0841d0c0e186cb758a31c3f9eb6b2a1b410ec703d3adfe50ba1887\",\"capsuleSourceUriLineRefInstanceId\":\"acda4f75cc658e62f493ebc07319589077c0833e79624cb294cca74f4bc90fe1\",\"prop\":\"login\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": ""
@@ -501,7 +501,7 @@
       "eventType": "set",
       "membrane": "internal",
       "propertyName": "_error",
-      "rawEvent": "{\"eventIndex\":38,\"event\":\"set\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_error\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\"},\"value\":null,\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\",\"capsuleSourceUriLineRefInstanceId\":\"7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4\",\"prop\":\"submit\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": "null"
@@ -514,7 +514,7 @@
       "eventType": "call",
       "membrane": "external",
       "propertyName": "validate",
-      "rawEvent": "{\"eventIndex\":39,\"event\":\"call\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"validate\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\",\"capsuleSourceUriLineRefInstanceId\":\"7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4\"},\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\",\"capsuleSourceUriLineRefInstanceId\":\"7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4\",\"prop\":\"submit\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": ""
@@ -527,7 +527,7 @@
       "eventType": "get",
       "membrane": "internal",
       "propertyName": "_email",
-      "rawEvent": "{\"eventIndex\":40,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_email\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\"},\"value\":\"user@example.com\",\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\",\"capsuleSourceUriLineRefInstanceId\":\"7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4\",\"prop\":\"validate\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": "\"user@example.com\""
@@ -540,7 +540,7 @@
       "eventType": "get",
       "membrane": "internal",
       "propertyName": "_email",
-      "rawEvent": "{\"eventIndex\":41,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_email\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\"},\"value\":\"user@example.com\",\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\",\"capsuleSourceUriLineRefInstanceId\":\"7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4\",\"prop\":\"validate\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": "\"user@example.com\""
@@ -553,7 +553,7 @@
       "eventType": "get",
       "membrane": "internal",
       "propertyName": "_password",
-      "rawEvent": "{\"eventIndex\":42,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_password\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\"},\"value\":\"validPassword123\",\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\",\"capsuleSourceUriLineRefInstanceId\":\"7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4\",\"prop\":\"validate\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": "\"validPassword123\""
@@ -566,7 +566,7 @@
       "eventType": "get",
       "membrane": "internal",
       "propertyName": "_password",
-      "rawEvent": "{\"eventIndex\":43,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_password\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\"},\"value\":\"validPassword123\",\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\",\"capsuleSourceUriLineRefInstanceId\":\"7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4\",\"prop\":\"validate\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": "\"validPassword123\""
@@ -579,7 +579,7 @@
       "eventType": "call-result",
       "membrane": "external",
       "propertyName": "",
-      "rawEvent": "{\"eventIndex\":44,\"event\":\"call-result\",\"membrane\":\"external\",\"target\":{\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\"},\"result\":[],\"callEventIndex\":39}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "[]",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": ""
@@ -592,7 +592,7 @@
       "eventType": "get",
       "membrane": "internal",
       "propertyName": "httpClient",
-      "rawEvent": "{\"eventIndex\":45,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"httpClient\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\"},\"value\":\"[object]\",\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\",\"capsuleSourceUriLineRefInstanceId\":\"7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4\",\"prop\":\"submit\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": "\"[object]\""
@@ -605,7 +605,7 @@
       "eventType": "get",
       "membrane": "internal",
       "propertyName": "_email",
-      "rawEvent": "{\"eventIndex\":50,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_email\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\"},\"value\":\"user@example.com\",\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\",\"capsuleSourceUriLineRefInstanceId\":\"7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4\",\"prop\":\"submit\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": "\"user@example.com\""
@@ -618,7 +618,7 @@
       "eventType": "get",
       "membrane": "internal",
       "propertyName": "_password",
-      "rawEvent": "{\"eventIndex\":51,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_password\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\"},\"value\":\"validPassword123\",\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\",\"capsuleSourceUriLineRefInstanceId\":\"7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4\",\"prop\":\"submit\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": "\"validPassword123\""
@@ -631,7 +631,7 @@
       "eventType": "call",
       "membrane": "external",
       "propertyName": "post",
-      "rawEvent": "{\"eventIndex\":52,\"event\":\"call\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:31\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:31\",\"prop\":\"post\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient\",\"capsuleSourceNameRefHash\":\"4a28c0790f4c758055b771cf990cd6387db3664596d1206d546b2fea991fe41e\",\"capsuleSourceUriLineRefInstanceId\":\"6e355e9cab5bddec47ff16e74119c1464af7867974f5d742c64f9d8c853bbc05\"},\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\",\"capsuleSourceUriLineRefInstanceId\":\"7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4\",\"prop\":\"submit\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": ""
@@ -644,7 +644,7 @@
       "eventType": "get",
       "membrane": "internal",
       "propertyName": "authService",
-      "rawEvent": "{\"eventIndex\":53,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:31\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:31\",\"prop\":\"authService\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient\",\"capsuleSourceNameRefHash\":\"4a28c0790f4c758055b771cf990cd6387db3664596d1206d546b2fea991fe41e\"},\"value\":{\"#@stream44.studio/encapsulate/structs/Capsule\":{}},\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:31\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:31\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient\",\"capsuleSourceNameRefHash\":\"4a28c0790f4c758055b771cf990cd6387db3664596d1206d546b2fea991fe41e\",\"capsuleSourceUriLineRefInstanceId\":\"6e355e9cab5bddec47ff16e74119c1464af7867974f5d742c64f9d8c853bbc05\",\"prop\":\"post\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": "{\"#@stream44.studio/encapsulate/structs/Capsule\":{}}"
@@ -657,7 +657,7 @@
       "eventType": "call",
       "membrane": "external",
       "propertyName": "authenticate",
-      "rawEvent": "{\"eventIndex\":55,\"event\":\"call\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService.ts:38\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService.ts:38\",\"prop\":\"authenticate\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService\",\"capsuleSourceNameRefHash\":\"7b06bceb4e744ded271e52bdfee6d9732c9ea95a6614c25199b86c1d9298f9ca\",\"capsuleSourceUriLineRefInstanceId\":\"e7ddd4d22945caa2d82e23f394f719cfcb504364c1363ae7c08348076773bcf0\"},\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:31\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:31\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient\",\"capsuleSourceNameRefHash\":\"4a28c0790f4c758055b771cf990cd6387db3664596d1206d546b2fea991fe41e\",\"capsuleSourceUriLineRefInstanceId\":\"6e355e9cab5bddec47ff16e74119c1464af7867974f5d742c64f9d8c853bbc05\",\"prop\":\"post\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": ""
@@ -670,7 +670,7 @@
       "eventType": "call-result",
       "membrane": "external",
       "propertyName": "",
-      "rawEvent": "{\"eventIndex\":56,\"event\":\"call-result\",\"membrane\":\"external\",\"target\":{\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService.ts:38\"},\"result\":{\"success\":true,\"token\":\"token-user@example.com\",\"redirectUrl\":\"/dashboard\"},\"callEventIndex\":55}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "{\"success\":true,\"token\":\"token-user@example.com\",\"redirectUrl\":\"/dashboard\"}",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": ""
@@ -683,7 +683,7 @@
       "eventType": "call-result",
       "membrane": "external",
       "propertyName": "",
-      "rawEvent": "{\"eventIndex\":57,\"event\":\"call-result\",\"membrane\":\"external\",\"target\":{\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:31\"},\"result\":{\"success\":true,\"token\":\"token-user@example.com\",\"redirectUrl\":\"/dashboard\"},\"callEventIndex\":52}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "{\"success\":true,\"token\":\"token-user@example.com\",\"redirectUrl\":\"/dashboard\"}",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": ""
@@ -696,7 +696,7 @@
       "eventType": "set",
       "membrane": "internal",
       "propertyName": "_email",
-      "rawEvent": "{\"eventIndex\":58,\"event\":\"set\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_email\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\"},\"value\":\"\",\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\",\"capsuleSourceUriLineRefInstanceId\":\"7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4\",\"prop\":\"submit\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": "\"\""
@@ -709,7 +709,7 @@
       "eventType": "set",
       "membrane": "internal",
       "propertyName": "_password",
-      "rawEvent": "{\"eventIndex\":59,\"event\":\"set\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_password\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\"},\"value\":\"\",\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\",\"capsuleSourceUriLineRefInstanceId\":\"7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4\",\"prop\":\"submit\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": "\"\""
@@ -722,7 +722,7 @@
       "eventType": "set",
       "membrane": "internal",
       "propertyName": "_error",
-      "rawEvent": "{\"eventIndex\":60,\"event\":\"set\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_error\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\"},\"value\":null,\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"f53320ca12f91f87db0fe1b01fa7e45929fa3428d37b1db076f52c236abd5bf5\",\"capsuleSourceUriLineRefInstanceId\":\"7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4\",\"prop\":\"submit\"}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": "null"
@@ -735,7 +735,7 @@
       "eventType": "call-result",
       "membrane": "external",
       "propertyName": "",
-      "rawEvent": "{\"eventIndex\":61,\"event\":\"call-result\",\"membrane\":\"external\",\"target\":{\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83\"},\"result\":{\"success\":true,\"redirectUrl\":\"/dashboard\",\"token\":\"token-user@example.com\"},\"callEventIndex\":37}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "{\"success\":true,\"redirectUrl\":\"/dashboard\",\"token\":\"token-user@example.com\"}",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": ""
@@ -748,7 +748,7 @@
       "eventType": "call-result",
       "membrane": "external",
       "propertyName": "",
-      "rawEvent": "{\"eventIndex\":62,\"event\":\"call-result\",\"membrane\":\"external\",\"target\":{\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30\"},\"result\":{\"success\":true,\"redirectUrl\":\"/dashboard\",\"token\":\"token-user@example.com\"},\"callEventIndex\":6}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "{\"success\":true,\"redirectUrl\":\"/dashboard\",\"token\":\"token-user@example.com\"}",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": ""
@@ -761,7 +761,7 @@
       "eventType": "call-result",
       "membrane": "external",
       "propertyName": "",
-      "rawEvent": "{\"eventIndex\":63,\"event\":\"call-result\",\"membrane\":\"external\",\"target\":{\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:53\"},\"result\":{\"success\":true,\"redirectUrl\":\"/dashboard\",\"token\":\"token-user@example.com\"},\"callEventIndex\":0}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "{\"success\":true,\"redirectUrl\":\"/dashboard\",\"token\":\"token-user@example.com\"}",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": ""
@@ -774,7 +774,7 @@
       "eventType": "get",
       "membrane": "external",
       "propertyName": "capsuleSourceNameRefHash",
-      "rawEvent": "{\"eventIndex\":64,\"event\":\"get\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"../../../encapsulate.dev/packages/encapsulate/structs/Capsule.ts:18\",\"spineContractCapsuleInstanceId\":\"$../../../encapsulate.dev/packages/encapsulate/structs/Capsule.ts:18\",\"prop\":\"capsuleSourceNameRefHash\",\"capsuleSourceNameRef\":\"../../../encapsulate.dev/packages/encapsulate/structs/Capsule.ts:@stream44.studio/encapsulate/structs/Capsule\",\"capsuleSourceNameRefHash\":\"ced34131ef346560e0737b2d295858d4244131ccb6f8e7424f7d5f93a775bc07\"},\"caller\":{\"capsuleSourceLineRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService.ts:38\",\"spineContractCapsuleInstanceId\":\"$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService.ts:38\",\"capsuleSourceNameRef\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService\",\"capsuleSourceNameRefHash\":\"7b06bceb4e744ded271e52bdfee6d9732c9ea95a6614c25199b86c1d9298f9ca\",\"capsuleSourceUriLineRefInstanceId\":\"e7ddd4d22945caa2d82e23f394f719cfcb504364c1363ae7c08348076773bcf0\",\"filepath\":\"/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts\",\"line\":200,\"stack\":[{\"function\":\"get\",\"filepath\":\"/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts\",\"line\":305,\"column\":46},{\"function\":\"get\",\"filepath\":\"/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts\",\"line\":334,\"column\":59},{\"function\":\"stringify\"},{\"filepath\":\"/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts\",\"line\":200,\"column\":58},{\"filepath\":\"/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/encapsulate.ts\",\"line\":317,\"column\":34},{\"function\":\"async run\",\"filepath\":\"/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts\",\"line\":168,\"column\":26},{\"function\":\"async runModel\",\"filepath\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts\",\"line\":6,\"column\":18},{\"filepath\":\"L4-space-models/Capsular/SpineInstanceTrees.ts\",\"line\":35,\"column\":46},{\"filepath\":\"L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.test.ts\",\"line\":74,\"column\":34},{\"filepath\":\"/Users/christoph/spaces/genesis/t44.sh/packages/t44/caps/ProjectTest.ts\",\"line\":328,\"column\":43},{\"function\":\"processTicksAndRejections\",\"filepath\":\"native\",\"line\":7,\"column\":39}]}}",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
       "result": "",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": ""
@@ -912,7 +912,6 @@
             "eventIndex": 0,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "8a098d1667831865a8eef0bfab0db0eb312aebbaa1333cdacbb2c7c50fc5d44b",
               "prop": "runModel",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:53"
             }
@@ -928,6 +927,7 @@
           "#": "CodepathCell",
           "activeInvocationCount": 1,
           "columnIndex": 0,
+          "dataSeen": "\"[object]\"",
           "eventType": "get",
           "isMappingRef": true,
           "mappingTargetColumnIndex": 1,
@@ -936,7 +936,6 @@
           "propertyName": "user",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "8a098d1667831865a8eef0bfab0db0eb312aebbaa1333cdacbb2c7c50fc5d44b",
               "prop": "runModel",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:53"
             },
@@ -965,7 +964,6 @@
           "propertyName": "setEmail",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "acda4f75cc658e62f493ebc07319589077c0833e79624cb294cca74f4bc90fe1",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -973,7 +971,6 @@
             "eventIndex": 15,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "setEmail",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             }
@@ -995,7 +992,6 @@
           "propertyName": "_email",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "setEmail",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1047,6 +1043,7 @@
           "#": "CodepathCell",
           "activeInvocationCount": 2,
           "columnIndex": 1,
+          "dataSeen": "\"[object]\"",
           "eventType": "get",
           "isMappingRef": true,
           "mappingTargetColumnIndex": 2,
@@ -1055,7 +1052,6 @@
           "propertyName": "loginForm",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "acda4f75cc658e62f493ebc07319589077c0833e79624cb294cca74f4bc90fe1",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -1084,7 +1080,6 @@
           "propertyName": "setPassword",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "acda4f75cc658e62f493ebc07319589077c0833e79624cb294cca74f4bc90fe1",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -1092,7 +1087,6 @@
             "eventIndex": 26,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "setPassword",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             }
@@ -1114,7 +1108,6 @@
           "propertyName": "_password",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "setPassword",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1166,6 +1159,7 @@
           "#": "CodepathCell",
           "activeInvocationCount": 2,
           "columnIndex": 1,
+          "dataSeen": "\"[object]\"",
           "eventType": "get",
           "isMappingRef": true,
           "mappingTargetColumnIndex": 2,
@@ -1174,7 +1168,6 @@
           "propertyName": "loginForm",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "acda4f75cc658e62f493ebc07319589077c0833e79624cb294cca74f4bc90fe1",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -1203,7 +1196,6 @@
           "propertyName": "submit",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "acda4f75cc658e62f493ebc07319589077c0833e79624cb294cca74f4bc90fe1",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             },
@@ -1211,7 +1203,6 @@
             "eventIndex": 37,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             }
@@ -1233,7 +1224,6 @@
           "propertyName": "_error",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1262,7 +1252,6 @@
           "propertyName": "validate",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1270,7 +1259,6 @@
             "eventIndex": 39,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "validate",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             }
@@ -1292,7 +1280,6 @@
           "propertyName": "_email",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "validate",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1322,7 +1309,6 @@
           "propertyName": "_email",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "validate",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1352,7 +1338,6 @@
           "propertyName": "_password",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "validate",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1382,7 +1367,6 @@
           "propertyName": "_password",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "validate",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1435,6 +1419,7 @@
           "#": "CodepathCell",
           "activeInvocationCount": 3,
           "columnIndex": 2,
+          "dataSeen": "\"[object]\"",
           "eventType": "get",
           "isMappingRef": true,
           "mappingTargetColumnIndex": 3,
@@ -1443,7 +1428,6 @@
           "propertyName": "httpClient",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1473,7 +1457,6 @@
           "propertyName": "_email",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1503,7 +1486,6 @@
           "propertyName": "_password",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1532,7 +1514,6 @@
           "propertyName": "post",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1540,7 +1521,6 @@
             "eventIndex": 52,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "6e355e9cab5bddec47ff16e74119c1464af7867974f5d742c64f9d8c853bbc05",
               "prop": "post",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:31"
             }
@@ -1556,6 +1536,7 @@
           "#": "CodepathCell",
           "activeInvocationCount": 4,
           "columnIndex": 3,
+          "dataSeen": "{\"#@stream44.studio/encapsulate/structs/Capsule\":{}}",
           "eventType": "get",
           "isMappingRef": true,
           "mappingTargetColumnIndex": 4,
@@ -1564,7 +1545,6 @@
           "propertyName": "authService",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "6e355e9cab5bddec47ff16e74119c1464af7867974f5d742c64f9d8c853bbc05",
               "prop": "post",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:31"
             },
@@ -1595,7 +1575,6 @@
           "propertyName": "authenticate",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "6e355e9cab5bddec47ff16e74119c1464af7867974f5d742c64f9d8c853bbc05",
               "prop": "post",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/HttpClient.ts:31"
             },
@@ -1603,7 +1582,6 @@
             "eventIndex": 55,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "e7ddd4d22945caa2d82e23f394f719cfcb504364c1363ae7c08348076773bcf0",
               "prop": "authenticate",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService.ts:38"
             }
@@ -1691,7 +1669,6 @@
           "propertyName": "_email",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1721,7 +1698,6 @@
           "propertyName": "_password",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1750,7 +1726,6 @@
           "propertyName": "login",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "8a098d1667831865a8eef0bfab0db0eb312aebbaa1333cdacbb2c7c50fc5d44b",
               "prop": "runModel",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:53"
             },
@@ -1758,7 +1733,6 @@
             "eventIndex": 6,
             "membrane": "external",
             "target": {
-              "capsuleSourceUriLineRefInstanceId": "acda4f75cc658e62f493ebc07319589077c0833e79624cb294cca74f4bc90fe1",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             }
@@ -1780,7 +1754,6 @@
           "propertyName": "_error",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "7e4df8a32f857879dbcaeb610de7350e288263961928f15c641339bba61999e4",
               "prop": "submit",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/LoginForm.ts:83"
             },
@@ -1903,12 +1876,12 @@
           "#": "CodepathCell",
           "activeInvocationCount": 0,
           "columnIndex": 5,
+          "dataSeen": "",
           "eventType": "get",
           "membrane": "external",
           "propertyName": "capsuleSourceNameRefHash",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "e7ddd4d22945caa2d82e23f394f719cfcb504364c1363ae7c08348076773bcf0",
               "filepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
               "line": 200,
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService.ts:38",
@@ -1997,6 +1970,7 @@
           "#": "CodepathCell",
           "activeInvocationCount": 2,
           "columnIndex": 1,
+          "dataSeen": "\"[object]\"",
           "eventType": "get",
           "isMappingRef": true,
           "mappingTargetColumnIndex": 2,
@@ -2005,7 +1979,6 @@
           "propertyName": "loginForm",
           "rawEvent": {
             "caller": {
-              "capsuleSourceUriLineRefInstanceId": "acda4f75cc658e62f493ebc07319589077c0833e79624cb294cca74f4bc90fe1",
               "prop": "login",
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/User.ts:30"
             },
