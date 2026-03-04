@@ -34,13 +34,14 @@ open http://localhost:3000
 bun run test
 ```
 
-### Quadrant View Example
+### Quadrant & Codepath View Examples
 
-![Preview Quandrant View](./docs/PreviewQuadrant.png)
-
-### Codepath View Example
-
-![Preview Codepath View](./docs/PreviewCodepath.png)
+<table>
+  <tr>
+    <td><img src="./docs/PreviewQuadrant.png"></td>
+    <td><img src="./docs/PreviewCodepath.png"></td>
+  </tr>
+</table>
 
 
 Problem Statement
