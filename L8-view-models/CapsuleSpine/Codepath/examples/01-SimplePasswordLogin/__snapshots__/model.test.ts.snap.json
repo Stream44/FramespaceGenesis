@@ -829,12 +829,6 @@
     "columns": [
       {
         "#": "CodepathColumn",
-        "$id": "../../../encapsulate.dev/packages/encapsulate/structs/Capsule.ts:@stream44.studio/encapsulate/structs/Capsule",
-        "index": 5,
-        "label": "Capsule"
-      },
-      {
-        "#": "CodepathColumn",
         "$id": "L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService",
         "index": 4,
         "label": "AuthService"
@@ -862,6 +856,12 @@
         "$id": "L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
         "index": 0,
         "label": "01-SimplePasswordLogin"
+      },
+      {
+        "#": "CodepathColumn",
+        "$id": "node_modules/@stream44.studio/encapsulate/structs/Capsule.ts:@stream44.studio/encapsulate/structs/Capsule",
+        "index": 5,
+        "label": "Capsule"
       }
     ],
     "rows": [
@@ -877,18 +877,18 @@
           "propertyName": "runModel",
           "rawEvent": {
             "caller": {
-              "filepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+              "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
               "line": 184,
               "stack": [
                 {
                   "column": 34,
-                  "filepath": "/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
+                  "filepath": "node_modules/@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
                   "function": "addCallerContextToEvent",
                   "line": 886
                 },
                 {
                   "column": 26,
-                  "filepath": "/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
+                  "filepath": "node_modules/@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
                   "line": 578
                 },
                 {
@@ -898,17 +898,17 @@
                 },
                 {
                   "column": 37,
-                  "filepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+                  "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
                   "line": 184
                 },
                 {
                   "column": 34,
-                  "filepath": "/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/encapsulate.ts",
+                  "filepath": "node_modules/@stream44.studio/encapsulate/src/encapsulate.ts",
                   "line": 317
                 },
                 {
                   "column": 26,
-                  "filepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+                  "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
                   "function": "async run",
                   "line": 168
                 },
@@ -935,7 +935,7 @@
                 },
                 {
                   "column": 43,
-                  "filepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/caps/ProjectTest.ts",
+                  "filepath": "node_modules/@stream44.studio/t44/caps/ProjectTest.ts",
                   "line": 328
                 },
                 {
@@ -1978,19 +1978,19 @@
           "rawEvent": {
             "caller": {
               "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService",
-              "filepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+              "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
               "line": 200,
               "spineContractCapsuleInstanceId": "$L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService.ts:38",
               "stack": [
                 {
                   "column": 46,
-                  "filepath": "/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
+                  "filepath": "node_modules/@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
                   "function": "get",
                   "line": 305
                 },
                 {
                   "column": 59,
-                  "filepath": "/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
+                  "filepath": "node_modules/@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
                   "function": "get",
                   "line": 334
                 },
@@ -1999,17 +1999,17 @@
                 },
                 {
                   "column": 58,
-                  "filepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+                  "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
                   "line": 200
                 },
                 {
                   "column": 34,
-                  "filepath": "/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/encapsulate.ts",
+                  "filepath": "node_modules/@stream44.studio/encapsulate/src/encapsulate.ts",
                   "line": 317
                 },
                 {
                   "column": 26,
-                  "filepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+                  "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
                   "function": "async run",
                   "line": 168
                 },
@@ -2036,7 +2036,7 @@
                 },
                 {
                   "column": 43,
-                  "filepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/caps/ProjectTest.ts",
+                  "filepath": "node_modules/@stream44.studio/t44/caps/ProjectTest.ts",
                   "line": 328
                 },
                 {
@@ -2053,7 +2053,7 @@
             "target": {
               "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
               "prop": "capsuleSourceNameRefHash",
-              "spineContractCapsuleInstanceId": "$../../../encapsulate.dev/packages/encapsulate/structs/Capsule.ts:18"
+              "spineContractCapsuleInstanceId": "$node_modules/@stream44.studio/encapsulate/structs/Capsule.ts:18"
             }
           }
         },
