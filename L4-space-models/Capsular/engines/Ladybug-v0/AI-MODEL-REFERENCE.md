@@ -31,6 +31,7 @@ via `CREATE NODE TABLE` and `CREATE REL TABLE` statements in `_ensureSchema`.
 | **PropertyContract** | `id` (STRING) — `<lineRef>::pc::<spine>::<key>` | `contractKey`, `propertyContractUri`, `capsuleSourceLineRef`, `spineContractId`, `options` (STRING) | A property contract group within a spine contract. |
 | **CapsuleProperty** | `id` (STRING) — `<lineRef>::prop::<name>` | `name`, `propertyType`, `valueType`, `valueExpression`, `mappedModuleUri`, `declarationLine`, `definitionStartLine`, `definitionEndLine`, `propertyContractDelegate`, `capsuleSourceLineRef`, `propertyContractId` | A single property within a property contract. |
 | **CapsuleInstance** | `instanceId` (STRING) | `capsuleName`, `capsuleSourceUriLineRef`, `spineInstanceTreeId` | Runtime instance of a capsule within a spine instance tree. |
+| **MembraneEvent** | `id` (STRING) — `<treeId>::evt::<index>` | `eventIndex`, `spineInstanceTreeId`, `eventType`, `membrane` (`external`/`internal`), `capsuleSourceLineRef`, `capsuleSourceNameRef`, `capsuleSourceNameRefHash`, `propertyName`, `value`, `result`, `callerFilepath`, `callerLine`, `callEventIndex` | A runtime membrane event captured during capsule execution. |
 
 ### Edge Tables (Relationships)
 
@@ -45,6 +46,7 @@ via `CREATE NODE TABLE` and `CREATE REL TABLE` statements in `_ensureSchema`.
 | **DELEGATES_TO** | CapsuleProperty → PropertyContract | A delegate property points to its source property contract. |
 | **INSTANCE_OF** | CapsuleInstance → Capsule | Links a runtime instance to its capsule definition. |
 | **PARENT_INSTANCE** | CapsuleInstance → CapsuleInstance | Links a child instance to its parent instance in the tree. |
+| **HAS_MEMBRANE_EVENT** | Capsule → MembraneEvent | Links a capsule to its captured membrane events. |
 
 ### Mutation Pattern
 
@@ -140,7 +142,11 @@ Each `.csts.json` file contains entries keyed by `capsuleSourceLineRef`:
 4. **`linkMappings()`** — post-import bulk Cypher edge creation:
    - `MAPS_TO`: `MATCH` CapsuleProperty with non-empty `mappedModuleUri` and Capsule in same tree (by `capsuleName` or `moduleUri`), then `MERGE` edge
    - `EXTENDS`: `MATCH` CapsuleSource with non-empty `extendsCapsuleUri` via HAS_SOURCE, find parent Capsule in same tree (by `capsuleName` or `moduleUri`), then `MERGE` edge
-5. **`importCstDirectory(dirPath)`** — @deprecated, use `importSitDirectory` instead
+5. **`importMembraneEvents(events, spineInstanceTreeId)`** — imports captured membrane events:
+   - Creates `MembraneEvent` nodes via Cypher `MERGE` with event data (eventType, capsuleSourceLineRef, propertyName, value, result, caller info)
+   - Creates `HAS_MEMBRANE_EVENT` edges from owning Capsule to each event node
+   - Returns `{ imported }` count
+6. **`importCstDirectory(dirPath)`** — @deprecated, use `importSitDirectory` instead
 
 ### Key Invariants
 
@@ -168,6 +174,8 @@ All queries are implemented as `_`-prefixed methods in `QueryAPI.ts`. The public
 | `getRootInstance(spineInstanceTreeId)` | Root instance (via `NOT EXISTS { MATCH (inst)-[:PARENT_INSTANCE]->(:CapsuleInstance) }`) | `{ instanceId, capsuleName, capsuleSourceUriLineRef }` or `null` |
 | `getChildInstances(parentInstanceId)` | Children of an instance | `[{ instanceId, capsuleName, capsuleSourceUriLineRef }]` sorted by `capsuleName` |
 | `fetchInstanceRelations(spineInstanceTreeId)` | Batch instance data (3 parallel Cypher queries) | `{ instances, parentMap, capsuleInfo }` |
+| `_getMembraneEvents(spineInstanceTreeId)` | All membrane events in tree | `MembraneEvent[]` sorted by `eventIndex` |
+| `_getMembraneEventsByCapsule(spineInstanceTreeId, capsuleSourceLineRef)` | Membrane events for one capsule | `MembraneEvent[]` sorted by `eventIndex` |
 
 ### `fetchCapsuleRelations` Return Shape
 

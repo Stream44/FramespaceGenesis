@@ -7,8 +7,8 @@ import { mkdirSync, existsSync, readFileSync, writeFileSync, rmSync } from 'fs'
 // Edge tables: <dataDir>/edges/<Edge>.json   →  [ { fromTable, from, toTable, to } ]
 // ---------------------------------------------------------------------------
 
-const NODE_TABLES = ['Capsule', 'CapsuleSource', 'SpineContract', 'PropertyContract', 'CapsuleProperty', 'CapsuleInstance'] as const
-const EDGE_TABLES = ['HAS_SOURCE', 'IMPLEMENTS_SPINE', 'HAS_PROPERTY_CONTRACT', 'HAS_PROPERTY', 'MAPS_TO', 'EXTENDS', 'DELEGATES_TO', 'INSTANCE_OF', 'PARENT_INSTANCE'] as const
+const NODE_TABLES = ['Capsule', 'CapsuleSource', 'SpineContract', 'PropertyContract', 'CapsuleProperty', 'CapsuleInstance', 'MembraneEvent'] as const
+const EDGE_TABLES = ['HAS_SOURCE', 'IMPLEMENTS_SPINE', 'HAS_PROPERTY_CONTRACT', 'HAS_PROPERTY', 'MAPS_TO', 'EXTENDS', 'DELEGATES_TO', 'INSTANCE_OF', 'PARENT_INSTANCE', 'HAS_MEMBRANE_EVENT'] as const
 
 function _readJson(filePath: string, fallback: any): any {
     if (!existsSync(filePath)) return fallback
@@ -507,6 +507,40 @@ export async function capsule({
                         }
 
                         return { instances, parentMap, capsuleInfo }
+                    }
+                },
+
+                // =============================================================
+                // Membrane Event Query Methods
+                // =============================================================
+
+                /**
+                 * Get all membrane events for a spine instance tree, ordered by eventIndex.
+                 * Returns [{ eventIndex, eventType, capsuleSourceLineRef, ... }].
+                 */
+                _getMembraneEvents: {
+                    type: CapsulePropertyTypes.Function,
+                    value: async function (this: any, spineInstanceTreeId: string): Promise<any[]> {
+                        if (!spineInstanceTreeId) throw new Error('_getMembraneEvents: spineInstanceTreeId is required')
+                        const eventNodes = this._readNodeTable('MembraneEvent')
+                        return (Object.values(eventNodes) as any[])
+                            .filter((e: any) => e.spineInstanceTreeId === spineInstanceTreeId)
+                            .sort((a: any, b: any) => a.eventIndex - b.eventIndex)
+                    }
+                },
+
+                /**
+                 * Get membrane events for a specific capsule within a spine instance tree.
+                 * Returns events where capsuleSourceLineRef matches, ordered by eventIndex.
+                 */
+                _getMembraneEventsByCapsule: {
+                    type: CapsulePropertyTypes.Function,
+                    value: async function (this: any, spineInstanceTreeId: string, capsuleSourceLineRef: string): Promise<any[]> {
+                        if (!spineInstanceTreeId) throw new Error('_getMembraneEventsByCapsule: spineInstanceTreeId is required')
+                        const eventNodes = this._readNodeTable('MembraneEvent')
+                        return (Object.values(eventNodes) as any[])
+                            .filter((e: any) => e.spineInstanceTreeId === spineInstanceTreeId && e.capsuleSourceLineRef === capsuleSourceLineRef)
+                            .sort((a: any, b: any) => a.eventIndex - b.eventIndex)
                     }
                 },
 

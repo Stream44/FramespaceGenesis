@@ -54,6 +54,7 @@ body {
     border-bottom: 1px solid var(--wb-rule-blue-strong);
     padding: 10px 20px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 16px;
     flex-shrink: 0;
@@ -264,6 +265,296 @@ body {
 
 .wb-instance-filter:has(.wb-instance-clear-zone:hover) .wb-instance-clear {
     color: var(--wb-accent-red);
+}
+
+/* ── Timeline (time-travel) ───────────────────────────────────────── */
+
+.wb-timeline-row {
+    display: flex;
+    padding: 6px 0 2px;
+    border-top: 1px solid var(--wb-rule);
+    margin-top: 4px;
+    width: 100%;
+    flex-basis: 100%;
+}
+
+.wb-timeline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.wb-timeline-speed-wrap {
+    position: relative;
+}
+
+.wb-timeline-speed-btn {
+    background: none;
+    border: 1px solid var(--wb-rule);
+    color: var(--wb-ink-muted);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-variant-numeric: tabular-nums;
+    min-width: 32px;
+    text-align: center;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.wb-timeline-speed-btn:hover {
+    background: var(--wb-blue-wash);
+    border-color: var(--wb-blue);
+}
+
+.wb-timeline-speed-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 4px;
+    background: var(--wb-paper-base);
+    border: 1px solid var(--wb-rule);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    min-width: 48px;
+}
+
+.wb-timeline-speed-option {
+    background: none;
+    border: none;
+    padding: 4px 8px;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--wb-ink);
+    cursor: pointer;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+
+.wb-timeline-speed-option:hover {
+    background: var(--wb-blue-wash);
+}
+
+.wb-timeline-speed-option.selected {
+    color: var(--wb-blue);
+    font-weight: 700;
+}
+
+.wb-timeline-play {
+    background: none;
+    border: 1px solid var(--wb-rule);
+    color: var(--wb-ink);
+    font-size: 12px;
+    width: 26px;
+    height: 22px;
+    border-radius: var(--wb-radius-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.wb-timeline-play:hover {
+    background: var(--wb-blue-wash);
+    border-color: var(--wb-blue);
+}
+
+.wb-timeline-slider-wrap {
+    flex: 1;
+    position: relative;
+    min-width: 80px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+}
+
+.wb-timeline-slider {
+    width: 100%;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--wb-rule);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+
+.wb-timeline-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--wb-blue);
+    border: 2px solid var(--wb-paper-base);
+    box-shadow: 0 0 0 1px var(--wb-blue);
+    cursor: pointer;
+}
+
+.wb-timeline-slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--wb-blue);
+    border: 2px solid var(--wb-paper-base);
+    box-shadow: 0 0 0 1px var(--wb-blue);
+    cursor: pointer;
+}
+
+.wb-timeline-notches {
+    position: absolute;
+    left: 6px;
+    right: 6px;
+    top: 50%;
+    height: 0;
+    pointer-events: none;
+}
+
+.wb-timeline-notch {
+    position: absolute;
+    width: 3px;
+    height: 8px;
+    background: var(--wb-rule);
+    border-radius: 1px;
+    transform: translate(-50%, -50%);
+    transition: background 0.1s;
+}
+
+.wb-timeline-notch.active {
+    background: var(--wb-blue);
+    height: 12px;
+    width: 3px;
+}
+
+.wb-timeline-notch.blank {
+    background: var(--wb-ink-ghost);
+}
+
+.wb-timeline-step {
+    background: none;
+    border: 1px solid var(--wb-rule);
+    color: var(--wb-ink);
+    font-size: 10px;
+    width: 22px;
+    height: 22px;
+    border-radius: var(--wb-radius-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.wb-timeline-step:hover:not(:disabled) {
+    background: var(--wb-blue-wash);
+    border-color: var(--wb-blue);
+}
+
+.wb-timeline-step:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.wb-timeline-info {
+    font-size: 10px;
+    color: var(--wb-ink-muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    min-width: 40px;
+    text-align: right;
+}
+
+/* ── Swimlane active event highlighting ──────────────────────────────── */
+
+.swimlane-row-active {
+    outline: 2px solid #ef4444 !important;
+    outline-offset: -1px;
+    border-radius: 3px;
+    z-index: 1;
+    position: relative;
+}
+
+/* ── Swimlane Property State Panel ──────────────────────────────────── */
+
+.swimlane-state-panel {
+    margin-top: 12px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 8px;
+}
+
+.swimlane-state-header {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #94a3b8;
+    margin-bottom: 6px;
+}
+
+.swimlane-state-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 2px 4px;
+    background: #f8fafc;
+    border-radius: 3px;
+    min-height: 20px;
+}
+
+.swimlane-state-entry {
+    display: flex;
+    align-items: baseline;
+    gap: 3px;
+    font-size: 10px;
+    padding: 1px 4px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.swimlane-state-entry.active.is-set {
+    background: #fef2f2;
+    border-color: #ef4444;
+}
+
+.swimlane-state-entry.active.is-get {
+    background: #fffbeb;
+    border-color: #f59e0b;
+}
+
+.swimlane-state-prop {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.swimlane-state-eq {
+    color: #94a3b8;
+}
+
+.swimlane-state-val {
+    color: #64748b;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 200px;
+}
+
+.swimlane-state-mapping {
+    background: #1e293b;
+    color: #e2e8f0;
+    font-weight: 600;
+    font-size: 9px;
+    padding: 1px 6px;
+    border-radius: 3px;
+    white-space: nowrap;
 }
 
 /* ── Engine Status ────────────────────────────────────────────────── */
@@ -832,18 +1123,21 @@ body {
     font-weight: 600;
 }
 
-/* ── Model level ─────────────────────────────────────────────────── */
+/* ── Model level (L4-space-models/Capsular heading) ─────────────── */
 
 .instance-model {
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
 .instance-model-row {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 6px 0;
-    border-bottom: 1px solid var(--wb-rule);
+    padding: 10px 12px;
+    margin: 0 -12px;
+    background: var(--wb-paper-deep);
+    border-bottom: 2px solid var(--wb-blue);
+    border-radius: var(--wb-radius-sm) var(--wb-radius-sm) 0 0;
 }
 
 .instance-model-name {
@@ -853,9 +1147,10 @@ body {
 }
 
 .instance-examples-path {
-    font-size: 12px;
+    font-size: 13px;
     font-family: var(--wb-font-mono);
-    color: var(--wb-ink-secondary);
+    font-weight: 400;
+    color: var(--wb-blue);
     word-break: break-all;
 }
 
@@ -881,24 +1176,26 @@ body {
     color: var(--wb-accent-orange);
 }
 
-/* ── Example level ───────────────────────────────────────────────── */
+/* ── Example level (01-Documentation, 03-MembraneEvents, etc.) ───── */
 
 .instance-example {
-    margin-left: 0;
-    margin-top: 6px;
+    margin-left: 8px;
+    margin-top: 12px;
+    padding-left: 12px;
+    border-left: 3px solid var(--wb-rule);
 }
 
 .instance-example-row {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 4px 0 4px 0;
+    padding: 6px 0 4px 0;
 }
 
 .instance-example-name {
     font-size: 13px;
-    font-weight: 500;
-    color: var(--wb-ink-secondary);
+    font-weight: 600;
+    color: var(--wb-ink);
 }
 
 .instance-example-count {
@@ -1107,6 +1404,114 @@ body {
     display: flex;
     align-items: baseline;
     gap: 10px;
+}
+
+.fapi-group-header--toggle {
+    cursor: pointer;
+    user-select: none;
+    padding: 4px 0;
+    border-radius: var(--wb-radius-sm);
+}
+
+.fapi-group-header--toggle:hover {
+    background: var(--wb-paper-deep);
+}
+
+.fapi-group-chevron {
+    font-size: 10px;
+    color: var(--wb-ink-muted);
+    flex-shrink: 0;
+    width: 12px;
+}
+
+/* Category level (L4, L6, L8, etc.) */
+.fapi-category {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.fapi-category-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 4px;
+    cursor: pointer;
+    user-select: none;
+    border-radius: var(--wb-radius-sm);
+    background: var(--wb-paper-deep);
+    font-weight: 600;
+}
+
+.fapi-category-header:hover {
+    background: var(--wb-paper-raised);
+}
+
+.fapi-category-name {
+    font-size: 12px;
+    color: var(--wb-ink);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.fapi-category-models {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-left: 12px;
+    margin-top: 4px;
+}
+
+/* Model level (within category) */
+.fapi-model {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.fapi-model-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 4px;
+    cursor: pointer;
+    user-select: none;
+    border-radius: var(--wb-radius-sm);
+}
+
+.fapi-model-header:hover {
+    background: var(--wb-paper-deep);
+}
+
+.fapi-model-header--active {
+    background: var(--wb-blue-faint);
+}
+
+.fapi-model-header--active:hover {
+    background: var(--wb-blue-light);
+}
+
+.fapi-model-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--wb-blue);
+    flex: 1;
+}
+
+/* Methods - open methods always visible */
+.fapi-methods--open {
+    padding-left: 18px;
+    border-left: 2px solid var(--wb-blue);
+    margin-left: 6px;
+}
+
+.fapi-method--active {
+    background: var(--wb-blue-faint);
+    border-color: var(--wb-blue);
+}
+
+.fapi-method--active:hover {
+    background: var(--wb-blue-light);
 }
 
 .fapi-group-name {

@@ -195,6 +195,57 @@ export async function capsule({
                 },
 
                 /**
+                 * Import membrane events from a captured events array.
+                 * Each event is stored as a MembraneEvent node with HAS_MEMBRANE_EVENT edge from the owning Capsule.
+                 */
+                importMembraneEvents: {
+                    type: CapsulePropertyTypes.Function,
+                    value: async function (this: any, events: any[], spineInstanceTreeId: string): Promise<{ imported: number }> {
+                        if (!spineInstanceTreeId) throw new Error('importMembraneEvents: spineInstanceTreeId is required')
+                        if (this.verbose) console.log(`[sqlite] Importing ${events.length} membrane events for ${spineInstanceTreeId}`)
+                        const db = this._ensureConnection()
+                        let imported = 0
+
+                        for (const evt of events) {
+                            const pk = `${spineInstanceTreeId}::evt::${evt.eventIndex}`
+                            const capsuleSourceLineRef = evt.target?.capsuleSourceLineRef || ''
+
+                            this.mergeNode('MembraneEvent', pk, {
+                                id: pk,
+                                eventIndex: evt.eventIndex,
+                                spineInstanceTreeId,
+                                eventType: evt.event,
+                                membrane: evt.membrane || 'external',
+                                capsuleSourceLineRef,
+                                capsuleSourceNameRef: evt.target?.capsuleSourceNameRef || '',
+                                capsuleSourceNameRefHash: evt.target?.capsuleSourceNameRefHash || '',
+                                propertyName: evt.target?.prop || '',
+                                value: evt.value !== undefined ? JSON.stringify(evt.value) : '',
+                                result: evt.result !== undefined ? JSON.stringify(evt.result) : '',
+                                callerFilepath: evt.caller?.filepath || '',
+                                callerLine: evt.caller?.line ?? -1,
+                                callEventIndex: evt.callEventIndex ?? -1,
+                                rawEvent: JSON.stringify(evt),
+                            })
+
+                            // Create HAS_MEMBRANE_EVENT edge from owning Capsule (if found)
+                            if (capsuleSourceLineRef) {
+                                const scopedRef = `${spineInstanceTreeId}::${capsuleSourceLineRef}`
+                                const row = db.query(`SELECT scopedId FROM Capsule WHERE scopedId = ?1`).get(scopedRef) as any
+                                if (row) {
+                                    this.mergeEdge('HAS_MEMBRANE_EVENT', 'Capsule', scopedRef, 'MembraneEvent', pk)
+                                }
+                            }
+
+                            imported++
+                        }
+
+                        if (this.verbose) console.log(`[sqlite] Imported ${imported} membrane events`)
+                        return { imported }
+                    }
+                },
+
+                /**
                  * Create all MAPS_TO and EXTENDS edges in bulk.
                  * Call once after all CST files have been imported.
                  */

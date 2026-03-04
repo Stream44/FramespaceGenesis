@@ -292,6 +292,68 @@ export async function capsule({
                 },
 
                 /**
+                 * Import membrane events from a captured events array.
+                 * Each event is stored as a MembraneEvent node with HAS_MEMBRANE_EVENT edge from the owning Capsule.
+                 */
+                importMembraneEvents: {
+                    type: CapsulePropertyTypes.Function,
+                    value: async function (this: any, events: any[], spineInstanceTreeId: string): Promise<{ imported: number }> {
+                        if (!spineInstanceTreeId) throw new Error('importMembraneEvents: spineInstanceTreeId is required')
+                        if (this.verbose) console.log(`[ladybug] Importing ${events.length} membrane events for ${spineInstanceTreeId}`)
+                        const conn = await this._ensureConnection()
+                        const esc = this._esc.bind(this)
+                        const escLong = (s: string | undefined | null) => {
+                            if (s == null) return ''
+                            return s.replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/\n/g, "\\n").replace(/\r/g, "\\r").replace(/\t/g, "\\t")
+                        }
+                        let imported = 0
+
+                        for (const evt of events) {
+                            const pk = `${spineInstanceTreeId}::evt::${evt.eventIndex}`
+                            const capsuleSourceLineRef = evt.target?.capsuleSourceLineRef || ''
+                            const valueStr = evt.value !== undefined ? JSON.stringify(evt.value) : ''
+                            const resultStr = evt.result !== undefined ? JSON.stringify(evt.result) : ''
+
+                            const rawEventStr = escLong(JSON.stringify(evt))
+
+                            await conn.query(`
+                                MERGE (e:MembraneEvent {id: '${esc(pk)}'})
+                                ON CREATE SET
+                                    e.eventIndex = ${evt.eventIndex},
+                                    e.spineInstanceTreeId = '${esc(spineInstanceTreeId)}',
+                                    e.eventType = '${esc(evt.event)}',
+                                    e.membrane = '${esc(evt.membrane || 'external')}',
+                                    e.capsuleSourceLineRef = '${esc(capsuleSourceLineRef)}',
+                                    e.capsuleSourceNameRef = '${esc(evt.target?.capsuleSourceNameRef || '')}',
+                                    e.capsuleSourceNameRefHash = '${esc(evt.target?.capsuleSourceNameRefHash || '')}',
+                                    e.propertyName = '${esc(evt.target?.prop || '')}',
+                                    e.value = '${escLong(valueStr)}',
+                                    e.result = '${escLong(resultStr)}',
+                                    e.callerFilepath = '${esc(evt.caller?.filepath || '')}',
+                                    e.callerLine = ${evt.caller?.line ?? -1},
+                                    e.callEventIndex = ${evt.callEventIndex ?? -1},
+                                    e.rawEvent = '${rawEventStr}'
+                            `)
+
+                            // Create HAS_MEMBRANE_EVENT edge from owning Capsule (if found)
+                            if (capsuleSourceLineRef) {
+                                const scopedRef = `${spineInstanceTreeId}::${capsuleSourceLineRef}`
+                                await conn.query(`
+                                    MATCH (cap:Capsule {scopedId: '${esc(scopedRef)}'})
+                                    MATCH (e:MembraneEvent {id: '${esc(pk)}'})
+                                    MERGE (cap)-[:HAS_MEMBRANE_EVENT]->(e)
+                                `)
+                            }
+
+                            imported++
+                        }
+
+                        if (this.verbose) console.log(`[ladybug] Imported ${imported} membrane events`)
+                        return { imported }
+                    }
+                },
+
+                /**
                  * Create all MAPS_TO and EXTENDS edges in bulk.
                  * Call once after all CST files have been imported.
                  */
@@ -358,9 +420,9 @@ export async function capsule({
                     value: async function (this: any, sitFilePath: string, opts?: { reset?: boolean }): Promise<{ imported: number; capsules: number; instances: number }> {
                         if (opts?.reset) {
                             const conn = await this._ensureConnection()
-                            const tables = ['PARENT_INSTANCE', 'INSTANCE_OF', 'DELEGATES_TO', 'EXTENDS', 'MAPS_TO', 'HAS_PROPERTY', 'HAS_PROPERTY_CONTRACT', 'IMPLEMENTS_SPINE', 'HAS_SOURCE']
+                            const tables = ['HAS_MEMBRANE_EVENT', 'PARENT_INSTANCE', 'INSTANCE_OF', 'DELEGATES_TO', 'EXTENDS', 'MAPS_TO', 'HAS_PROPERTY', 'HAS_PROPERTY_CONTRACT', 'IMPLEMENTS_SPINE', 'HAS_SOURCE']
                             for (const t of tables) { await conn.query(`DROP TABLE IF EXISTS ${t}`) }
-                            const nodes = ['CapsuleInstance', 'CapsuleProperty', 'PropertyContract', 'SpineContract', 'CapsuleSource', 'Capsule']
+                            const nodes = ['MembraneEvent', 'CapsuleInstance', 'CapsuleProperty', 'PropertyContract', 'SpineContract', 'CapsuleSource', 'Capsule']
                             for (const t of nodes) { await conn.query(`DROP TABLE IF EXISTS ${t}`) }
                             this._schemaCreated = false
                             await this._ensureSchema()

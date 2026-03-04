@@ -62,8 +62,8 @@ const trees = await engine._listSpineInstanceTrees({ prefix: '@stream44.studio/F
 describe('Schema', () => {
     const schema = modelServer._models.find((m: any) => m.schema.namespace === MOUNT_KEY)?.schema
 
-    it('getVisualization has Models panel tag', () => {
-        const method = schema?.methods?.getVisualization
+    it('getTableView has Models panel tag', () => {
+        const method = schema?.methods?.getTableView
         expect(method).toBeDefined()
         expect(method.tags).toBeDefined()
         expect(method.tags['@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/Framespaces/Panel']).toBeDefined()
@@ -95,8 +95,8 @@ for (const { spineInstanceTreeId } of trees) {
             await expectSnapshotMatch(normalize(result))
         })
 
-        it('getVisualization', async () => {
-            const result = await api.getVisualization(spineInstanceTreeId)
+        it('getTableView', async () => {
+            const result = await api.getTableView(spineInstanceTreeId)
             await expectSnapshotMatch(normalize(result))
         })
     })

@@ -363,6 +363,50 @@ export async function capsule({
                     }
                 },
 
+                // =============================================================
+                // Membrane Event Query Methods
+                // =============================================================
+
+                /**
+                 * Get all membrane events for a spine instance tree, ordered by eventIndex.
+                 */
+                _getMembraneEvents: {
+                    type: CapsulePropertyTypes.Function,
+                    value: async function (this: any, spineInstanceTreeId: string): Promise<any[]> {
+                        if (!spineInstanceTreeId) throw new Error('_getMembraneEvents: spineInstanceTreeId is required')
+                        return await this._queryAll(`
+                            MATCH (evt:MembraneEvent)
+                            WHERE evt.spineInstanceTreeId = '${this._esc(spineInstanceTreeId)}'
+                            RETURN evt.id AS id, evt.eventIndex AS eventIndex, evt.spineInstanceTreeId AS spineInstanceTreeId,
+                                   evt.eventType AS eventType, evt.capsuleSourceLineRef AS capsuleSourceLineRef,
+                                   evt.capsuleSourceNameRef AS capsuleSourceNameRef, evt.capsuleSourceNameRefHash AS capsuleSourceNameRefHash,
+                                   evt.propertyName AS propertyName, evt.value AS value, evt.result AS result,
+                                   evt.callerFilepath AS callerFilepath, evt.callerLine AS callerLine, evt.callEventIndex AS callEventIndex
+                            ORDER BY evt.eventIndex
+                        `)
+                    }
+                },
+
+                /**
+                 * Get membrane events for a specific capsule within a spine instance tree.
+                 */
+                _getMembraneEventsByCapsule: {
+                    type: CapsulePropertyTypes.Function,
+                    value: async function (this: any, spineInstanceTreeId: string, capsuleSourceLineRef: string): Promise<any[]> {
+                        if (!spineInstanceTreeId) throw new Error('_getMembraneEventsByCapsule: spineInstanceTreeId is required')
+                        return await this._queryAll(`
+                            MATCH (evt:MembraneEvent)
+                            WHERE evt.spineInstanceTreeId = '${this._esc(spineInstanceTreeId)}' AND evt.capsuleSourceLineRef = '${this._esc(capsuleSourceLineRef)}'
+                            RETURN evt.id AS id, evt.eventIndex AS eventIndex, evt.spineInstanceTreeId AS spineInstanceTreeId,
+                                   evt.eventType AS eventType, evt.capsuleSourceLineRef AS capsuleSourceLineRef,
+                                   evt.capsuleSourceNameRef AS capsuleSourceNameRef, evt.capsuleSourceNameRefHash AS capsuleSourceNameRefHash,
+                                   evt.propertyName AS propertyName, evt.value AS value, evt.result AS result,
+                                   evt.callerFilepath AS callerFilepath, evt.callerLine AS callerLine, evt.callEventIndex AS callEventIndex
+                            ORDER BY evt.eventIndex
+                        `)
+                    }
+                },
+
             }
         }
     }, {

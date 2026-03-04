@@ -31,6 +31,7 @@ _conn.nodes = {
     PropertyContract: { [id: string]: PropertyContractRecord },
     CapsuleProperty:  { [id: string]: CapsulePropertyRecord },
     CapsuleInstance:  { [instanceId: string]: CapsuleInstanceRecord },
+    MembraneEvent:    { [id: string]: MembraneEventRecord },
 }
 ```
 
@@ -43,6 +44,7 @@ Each node table is a `Record<string, object>` keyed by primary key.
 |-------|---------------|------------|
 | **Capsule** | `scopedRef` (`<spineInstanceTreeId>::<absoluteCapsuleLineRef>`) | `capsuleName`, `capsuleSourceLineRef`, `spineInstanceTreeId`, `cstFilepath`, `capsuleSourceNameRef`, `capsuleSourceNameRefHash`, `capsuleSourceUriLineRef`, `cacheBustVersion` |
 | **CapsuleInstance** | `instanceId` | `capsuleName`, `capsuleSourceUriLineRef`, `spineInstanceTreeId` |
+| **MembraneEvent** | `id` (`<treeId>::evt::<eventIndex>`) | `eventIndex`, `eventType` (`call`/`call-result`/`get`/`set`), `membrane` (`external`/`internal`), `capsuleSourceLineRef`, `capsuleSourceNameRef`, `propertyName`, `callerFilepath`, `callerLine`, `callEventIndex`, `spineInstanceTreeId` |
 | **CapsuleSource** | `id` (`<lineRef>::source`) | `capsuleSourceLineRef`, `moduleFilepath`, `moduleUri`, `capsuleName`, `declarationLine`, `importStackLine`, `definitionStartLine`, `definitionEndLine`, `optionsStartLine`, `optionsEndLine`, `extendsCapsule`, `extendsCapsuleUri` |
 | **SpineContract** | `id` (`<lineRef>::spine::<uri>`) | `contractUri`, `capsuleSourceLineRef` |
 | **PropertyContract** | `id` (`<lineRef>::pc::<spine>::<key>`) | `contractKey`, `propertyContractUri`, `capsuleSourceLineRef`, `spineContractId`, `options` |
@@ -61,6 +63,7 @@ _conn.edges = {
     DELEGATES_TO:           Edge[],
     INSTANCE_OF:            Edge[],
     PARENT_INSTANCE:        Edge[],
+    HAS_MEMBRANE_EVENT:     Edge[],
 }
 ```
 
@@ -85,6 +88,7 @@ Each edge is stored as:
 | **DELEGATES_TO** | CapsuleProperty → PropertyContract | Delegate property points to source contract |
 | **INSTANCE_OF** | CapsuleInstance → Capsule | Links a runtime instance to its capsule definition |
 | **PARENT_INSTANCE** | CapsuleInstance → CapsuleInstance | Links a child instance to its parent instance in the tree |
+| **HAS_MEMBRANE_EVENT** | Capsule → MembraneEvent | Links a capsule to its runtime membrane events |
 
 ---
 
@@ -198,6 +202,8 @@ All queries are implemented as `_`-prefixed methods in `QueryAPI.ts`. The public
 | `getRootInstance(spineInstanceTreeId)` | Root instance (no `PARENT_INSTANCE` edge) | `{ instanceId, capsuleName, capsuleSourceUriLineRef }` or `null` |
 | `getChildInstances(parentInstanceId)` | Children of an instance | `[{ instanceId, capsuleName, capsuleSourceUriLineRef }]` sorted by `capsuleName` |
 | `fetchInstanceRelations(spineInstanceTreeId)` | Batch instance data | `{ instances, parentMap, capsuleInfo }` |
+| `getMembraneEvents(spineInstanceTreeId)` | All events in tree | `MembraneEventRecord[]` sorted by `eventIndex` |
+| `getMembraneEventsByCapsule(spineInstanceTreeId, capsuleName)` | Events for one capsule | `MembraneEventRecord[]` sorted by `eventIndex` |
 
 ### Query Implementation Pattern
 
@@ -266,7 +272,17 @@ Capsule → ... → CapsuleProperty {propertyContractDelegate: "#<schemaUri>"}
 - **Storage**: Options stored as raw JS object in `PropertyContract.options` field.
 - **Access**: Available directly (no parsing needed, unlike SqLite/Ladybug which store serialized STRING).
 
-### Pattern E: Element-to-Column Tagging
+### Pattern E: Membrane Event Capture
+```
+Capsule → HAS_MEMBRANE_EVENT → MembraneEvent {eventType: 'call', propertyName: 'submit', ...}
+```
+- **Use case**: Tracking runtime execution flow through capsule membranes.
+- **Data flow**: `standalone-rt` captures events with `captureEvents: true` → `.events.json` written alongside `.sit.json` → `SpineInstanceTrees` imports via `engine.importMembraneEvents()`.
+- **Query**: `getMembraneEvents(treeId)` returns all events sorted by `eventIndex`.
+- **L6 API**: `getEventLog(treeId)` resolves call/call-result pairs and tracks active invocations.
+- **L8 API**: `getSwimlaneView(treeId)` returns `SwimlaneView` with columns (capsules) and rows (events).
+
+### Pattern F: Element-to-Column Tagging
 ```
 Capsule (element) → ... → CapsuleProperty {delegate: "#<columnUri>"} → MAPS_TO → Capsule (column)
 ```

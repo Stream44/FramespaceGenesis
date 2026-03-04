@@ -56,11 +56,11 @@ export async function capsule({
                                     }
                                 },
                             },
-                            getVisualization: {
+                            getTableView: {
                                 args: [
                                     { name: 'spineInstanceTreeId', type: 'string' },
                                 ],
-                                description: 'Get the full Quadrant visualization data including column tree, row tree, and grid placement for rendering.',
+                                description: 'Get the Quadrant table view: column tree, row tree, and grid placement for rendering.',
                                 tags: {
                                     '@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel': {
                                         discovery: 'Framespace/Workbench/listSpineInstanceTrees',
@@ -235,12 +235,12 @@ export async function capsule({
                 /**
                  * Get visualization reference for rendering the Quadrant grid.
                  */
-                getVisualization: {
+                getTableView: {
                     type: CapsulePropertyTypes.Function,
                     value: async function (this: any, { graph, server }: any, spineInstanceTreeId: string): Promise<any> {
-                        if (!spineInstanceTreeId) throw new Error('getVisualization: spineInstanceTreeId is required')
+                        if (!spineInstanceTreeId) throw new Error('getTableView: spineInstanceTreeId is required')
                         return {
-                            '#': 'QuadrantGrid',
+                            '#': 'TableView',
                             spineInstanceTreeId,
                         }
                     }

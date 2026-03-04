@@ -1,0 +1,11 @@
+# Framespace Genesis Configuration
+# Controls which engines are active for tests and model server.
+#
+# Available engines:
+#   - @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/Memory-v0/ImportAPI       (in-memory, fast)
+#   - @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/JsonFiles-v0/ImportAPI    (file-based JSON storage, default)
+#   - @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/SqLite-v0/ImportAPI       (SQLite database)
+#   - @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/Ladybug-v0/ImportAPI      (Ladybug graph database)
+
+engines:
+  - "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/JsonFiles-v0/ImportAPI"

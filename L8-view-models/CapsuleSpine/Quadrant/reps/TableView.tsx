@@ -4,7 +4,7 @@
 // - Row headers as left columns with rowspan for parent rows
 // - Grid cells at leaf column/row intersections containing elements
 //
-// The rep receives {'#': 'QuadrantGrid', spineInstanceTreeId?} and
+// The rep receives {'#': 'TableView', spineInstanceTreeId?} and
 // fetches column/row data internally via the apiCall context.
 
 import { onMount, onCleanup, createSignal, For, Show } from "solid-js";
@@ -405,11 +405,7 @@ function vlog(...args: any[]) {
 // ═══════════════════════════════════════════════════════════════════════
 
 registerRep({
-    name: "QuadrantGrid",
-    match: (data) =>
-        typeof data === "object" && data !== null && !Array.isArray(data) &&
-        (data as JsonObject)["#"] === "QuadrantGrid",
-
+    name: "TableView",
     render: (data: JsonObject, ctx: RepContext): JSX.Element => {
         const [loading, setLoading] = createSignal(true);
         const [error, setError] = createSignal<string | null>(null);

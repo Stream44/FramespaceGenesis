@@ -42,6 +42,11 @@ async function bootCapsule() {
                                         '@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/JsonFiles-v0/ImportAPI': {}
                                     }
                                 },
+                                '@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/ModelQueryMethods': {
+                                    engine: {
+                                        '@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/JsonFiles-v0/ImportAPI': {}
+                                    }
+                                },
                             }
                         }
                     }

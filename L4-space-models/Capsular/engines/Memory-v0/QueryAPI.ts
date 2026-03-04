@@ -28,8 +28,8 @@ export async function capsule({
                         if (this._conn) return this._conn
                         if (this.verbose) console.log('[memory] Creating in-memory store')
                         this._conn = {
-                            nodes: { Capsule: {}, CapsuleSource: {}, SpineContract: {}, PropertyContract: {}, CapsuleProperty: {}, CapsuleInstance: {} },
-                            edges: { HAS_SOURCE: [], IMPLEMENTS_SPINE: [], HAS_PROPERTY_CONTRACT: [], HAS_PROPERTY: [], MAPS_TO: [], EXTENDS: [], DELEGATES_TO: [], INSTANCE_OF: [], PARENT_INSTANCE: [] },
+                            nodes: { Capsule: {}, CapsuleSource: {}, SpineContract: {}, PropertyContract: {}, CapsuleProperty: {}, CapsuleInstance: {}, MembraneEvent: {} },
+                            edges: { HAS_SOURCE: [], IMPLEMENTS_SPINE: [], HAS_PROPERTY_CONTRACT: [], HAS_PROPERTY: [], MAPS_TO: [], EXTENDS: [], DELEGATES_TO: [], INSTANCE_OF: [], PARENT_INSTANCE: [], HAS_MEMBRANE_EVENT: [] },
                         }
                         return this._conn
                     }
@@ -417,6 +417,40 @@ export async function capsule({
                         }
 
                         return { instances, parentMap, capsuleInfo }
+                    }
+                },
+
+                // =============================================================
+                // Membrane Event Query Methods
+                // =============================================================
+
+                /**
+                 * Get all membrane events for a spine instance tree, ordered by eventIndex.
+                 * Returns [{ eventIndex, eventType, capsuleSourceLineRef, ... }].
+                 */
+                _getMembraneEvents: {
+                    type: CapsulePropertyTypes.Function,
+                    value: async function (this: any, spineInstanceTreeId: string): Promise<any[]> {
+                        if (!spineInstanceTreeId) throw new Error('_getMembraneEvents: spineInstanceTreeId is required')
+                        const conn = this._ensureConnection()
+                        return (Object.values(conn.nodes.MembraneEvent) as any[])
+                            .filter((e: any) => e.spineInstanceTreeId === spineInstanceTreeId)
+                            .sort((a: any, b: any) => a.eventIndex - b.eventIndex)
+                    }
+                },
+
+                /**
+                 * Get membrane events for a specific capsule within a spine instance tree.
+                 * Returns events where capsuleSourceLineRef matches, ordered by eventIndex.
+                 */
+                _getMembraneEventsByCapsule: {
+                    type: CapsulePropertyTypes.Function,
+                    value: async function (this: any, spineInstanceTreeId: string, capsuleSourceLineRef: string): Promise<any[]> {
+                        if (!spineInstanceTreeId) throw new Error('_getMembraneEventsByCapsule: spineInstanceTreeId is required')
+                        const conn = this._ensureConnection()
+                        return (Object.values(conn.nodes.MembraneEvent) as any[])
+                            .filter((e: any) => e.spineInstanceTreeId === spineInstanceTreeId && e.capsuleSourceLineRef === capsuleSourceLineRef)
+                            .sort((a: any, b: any) => a.eventIndex - b.eventIndex)
                     }
                 },
 

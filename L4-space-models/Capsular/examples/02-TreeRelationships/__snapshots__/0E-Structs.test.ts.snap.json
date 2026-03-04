@@ -284,6 +284,8 @@
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/structs/ConfigSchema:29"
     }
   ],
+  "0E-Structs > getMembraneEvents #1": [],
+  "0E-Structs > getMembraneEventsByCapsule #1": [],
   "0E-Structs > getRootInstance #1": {
     "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs",
     "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs:22"

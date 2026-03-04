@@ -345,6 +345,8 @@
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/structs/RequestSchema:30"
     }
   ],
+  "0A-CapsuleAnatomy > getMembraneEvents #1": [],
+  "0A-CapsuleAnatomy > getMembraneEventsByCapsule #1": [],
   "0A-CapsuleAnatomy > getRootInstance #1": {
     "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
     "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy:33"

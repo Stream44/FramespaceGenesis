@@ -1,0 +1,457 @@
+{
+  "0A-SimpleExecution (MembraneEvents) > fetchCapsuleRelations #1": {
+    "capsuleInfo": {
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution": {}
+    },
+    "extends": {},
+    "found": {},
+    "mappings": {
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution": [
+        {
+          "delegate": "#@stream44.studio/encapsulate/structs/Capsule",
+          "propName": "#@stream44.studio/encapsulate/structs/Capsule",
+          "target": "@stream44.studio/encapsulate/structs/Capsule"
+        },
+        {
+          "delegate": "",
+          "propName": "greeter",
+          "target": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter"
+        }
+      ]
+    },
+    "properties": {
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution": [
+        {
+          "pcOptions": null,
+          "propName": "#@stream44.studio/encapsulate/structs/Capsule",
+          "propertyContract": "#",
+          "propertyContractDelegate": "#@stream44.studio/encapsulate/structs/Capsule",
+          "propertyContractUri": "",
+          "propertyType": "CapsulePropertyTypes.Mapping",
+          "valueExpression": "\"@stream44.studio/encapsulate/structs/Capsule\""
+        },
+        {
+          "pcOptions": null,
+          "propName": "config",
+          "propertyContract": "#",
+          "propertyContractDelegate": "",
+          "propertyContractUri": "",
+          "propertyType": "CapsulePropertyTypes.Constant",
+          "valueExpression": "{\n                            framespaces: {\n                                '@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/ModelQueryMethods': {\n                                    visualizationMethod: {\n                                        'getSwimlaneView': {\n                                            label: 'Codepath Swimlane View'\n                                        }\n                                    }\n                                },\n                                '@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods': {\n                                    visualizationMethod: {\n                                        'getSpineInstanceTree': {\n                                            label: 'Spine Instance Tree'\n                                        }\n                                    }\n                                },\n                                '@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods#getSpineDeclarationTree': {\n                                    visualizationMethod: {\n                                        'getSpineDeclarationTree': {\n                                            label: 'Spine Declaration Tree'\n                                        }\n                                    }\n                                },\n                            }\n                        }"
+        },
+        {
+          "pcOptions": null,
+          "propName": "greeter",
+          "propertyContract": "#",
+          "propertyContractDelegate": "",
+          "propertyContractUri": "",
+          "propertyType": "CapsulePropertyTypes.Mapping",
+          "valueExpression": "'./caps/Greeter'"
+        },
+        {
+          "pcOptions": null,
+          "propName": "runModel",
+          "propertyContract": "#",
+          "propertyContractDelegate": "",
+          "propertyContractUri": "",
+          "propertyType": "CapsulePropertyTypes.Function",
+          "valueExpression": "function (this: any): string {\n                            return this.greeter.greet('World')\n                        }"
+        }
+      ]
+    }
+  },
+  "0A-SimpleExecution (MembraneEvents) > fetchInstanceRelations #1": {
+    "capsuleInfo": {
+      "@stream44.studio/encapsulate/structs/Capsule:18": {
+        "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+        "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+      },
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution:53": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution:53"
+      },
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter:28": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter:28"
+      }
+    },
+    "instances": {
+      "@stream44.studio/encapsulate/structs/Capsule:18": {
+        "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+        "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+      },
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution:53": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution:53"
+      },
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter:28": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter:28"
+      }
+    },
+    "parentMap": {
+      "@stream44.studio/encapsulate/structs/Capsule:18": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution:53",
+      "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter:28": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution:53"
+    }
+  },
+  "0A-SimpleExecution (MembraneEvents) > getCapsuleNamesBySpineTree #1": [
+    "@stream44.studio/encapsulate/structs/Capsule",
+    "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+    "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter"
+  ],
+  "0A-SimpleExecution (MembraneEvents) > getCapsuleSpineTree_data #1": [
+    {
+      "p": {
+        "declarationLine": -1,
+        "definitionEndLine": -1,
+        "definitionStartLine": -1,
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::prop::#@stream44.studio/encapsulate/structs/Capsule",
+        "mappedModuleUri": "@stream44.studio/encapsulate/structs/Capsule",
+        "name": "#@stream44.studio/encapsulate/structs/Capsule",
+        "propertyContractDelegate": "#@stream44.studio/encapsulate/structs/Capsule",
+        "propertyContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "propertyType": "CapsulePropertyTypes.Mapping",
+        "valueExpression": "\"@stream44.studio/encapsulate/structs/Capsule\"",
+        "valueType": "string"
+      },
+      "pc": {
+        "contractKey": "#",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "options": null,
+        "propertyContractUri": "",
+        "spineContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      },
+      "s": {
+        "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      }
+    },
+    {
+      "p": {
+        "declarationLine": 11,
+        "definitionEndLine": 38,
+        "definitionStartLine": 11,
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::prop::config",
+        "mappedModuleUri": "",
+        "name": "config",
+        "propertyContractDelegate": "",
+        "propertyContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "propertyType": "CapsulePropertyTypes.Constant",
+        "valueExpression": "{\n                            framespaces: {\n                                '@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/ModelQueryMethods': {\n                                    visualizationMethod: {\n                                        'getSwimlaneView': {\n                                            label: 'Codepath Swimlane View'\n                                        }\n                                    }\n                                },\n                                '@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods': {\n                                    visualizationMethod: {\n                                        'getSpineInstanceTree': {\n                                            label: 'Spine Instance Tree'\n                                        }\n                                    }\n                                },\n                                '@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods#getSpineDeclarationTree': {\n                                    visualizationMethod: {\n                                        'getSpineDeclarationTree': {\n                                            label: 'Spine Declaration Tree'\n                                        }\n                                    }\n                                },\n                            }\n                        }",
+        "valueType": "object"
+      },
+      "pc": {
+        "contractKey": "#",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "options": null,
+        "propertyContractUri": "",
+        "spineContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      },
+      "s": {
+        "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      }
+    },
+    {
+      "p": {
+        "declarationLine": 39,
+        "definitionEndLine": 42,
+        "definitionStartLine": 39,
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::prop::greeter",
+        "mappedModuleUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
+        "name": "greeter",
+        "propertyContractDelegate": "",
+        "propertyContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "propertyType": "CapsulePropertyTypes.Mapping",
+        "valueExpression": "'./caps/Greeter'",
+        "valueType": "string"
+      },
+      "pc": {
+        "contractKey": "#",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "options": null,
+        "propertyContractUri": "",
+        "spineContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      },
+      "s": {
+        "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      }
+    },
+    {
+      "p": {
+        "declarationLine": 43,
+        "definitionEndLine": 48,
+        "definitionStartLine": 43,
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::prop::runModel",
+        "mappedModuleUri": "",
+        "name": "runModel",
+        "propertyContractDelegate": "",
+        "propertyContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "propertyType": "CapsulePropertyTypes.Function",
+        "valueExpression": "function (this: any): string {\n                            return this.greeter.greet('World')\n                        }",
+        "valueType": "(this: any) => string"
+      },
+      "pc": {
+        "contractKey": "#",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "options": null,
+        "propertyContractUri": "",
+        "spineContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      },
+      "s": {
+        "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      }
+    },
+    {
+      "p": null,
+      "pc": {
+        "contractKey": "#@stream44.studio/encapsulate/structs/Capsule",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#@stream44.studio/encapsulate/structs/Capsule",
+        "options": null,
+        "propertyContractUri": "@stream44.studio/encapsulate/structs/Capsule",
+        "spineContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      },
+      "s": {
+        "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
+        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      }
+    }
+  ],
+  "0A-SimpleExecution (MembraneEvents) > getCapsuleWithSource #1": {
+    "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution:53": {
+      "cacheBustVersion": 21,
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution:53",
+      "cstFilepath": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/.~o/encapsulate.dev/static-analysis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53.csts.json",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution"
+    },
+    "source": {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+      "declarationLine": 7,
+      "definitionEndLine": 51,
+      "definitionStartLine": 7,
+      "extendsCapsule": "",
+      "extendsCapsuleUri": "",
+      "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53::source",
+      "importStackLine": 53,
+      "moduleUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+      "optionsEndLine": 55,
+      "optionsStartLine": 51
+    }
+  },
+  "0A-SimpleExecution (MembraneEvents) > getChildInstances #1": [
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter:28"
+    }
+  ],
+  "0A-SimpleExecution (MembraneEvents) > getInstancesBySpineTree #1": [
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution:53"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter:28"
+    }
+  ],
+  "0A-SimpleExecution (MembraneEvents) > getMembraneEvents #1": [
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+      "callerLine": 158,
+      "eventIndex": 0,
+      "eventType": "call",
+      "membrane": "external",
+      "propertyName": "runModel",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+      "value": ""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "",
+      "callerLine": -1,
+      "eventIndex": 1,
+      "eventType": "get",
+      "membrane": "internal",
+      "propertyName": "greeter",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+      "value": "{\"#@stream44.studio/encapsulate/structs/Capsule\":{},\"_prefix\":\"Hello\"}"
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "",
+      "callerLine": -1,
+      "eventIndex": 2,
+      "eventType": "call",
+      "membrane": "external",
+      "propertyName": "greet",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+      "value": ""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "",
+      "callerLine": -1,
+      "eventIndex": 3,
+      "eventType": "get",
+      "membrane": "internal",
+      "propertyName": "_prefix",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+      "value": "\"Hello\""
+    },
+    {
+      "callEventIndex": 2,
+      "callerFilepath": "",
+      "callerLine": -1,
+      "eventIndex": 4,
+      "eventType": "call-result",
+      "membrane": "external",
+      "propertyName": "",
+      "result": "\"Hello, World!\"",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+      "value": ""
+    },
+    {
+      "callEventIndex": 0,
+      "callerFilepath": "",
+      "callerLine": -1,
+      "eventIndex": 5,
+      "eventType": "call-result",
+      "membrane": "external",
+      "propertyName": "",
+      "result": "\"Hello, World!\"",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+      "value": ""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+      "callerLine": 175,
+      "eventIndex": 6,
+      "eventType": "get",
+      "membrane": "external",
+      "propertyName": "capsuleSourceNameRefHash",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+      "value": ""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+      "callerLine": 175,
+      "eventIndex": 7,
+      "eventType": "get",
+      "membrane": "external",
+      "propertyName": "_prefix",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+      "value": "\"Hello\""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+      "callerLine": 175,
+      "eventIndex": 8,
+      "eventType": "get",
+      "membrane": "external",
+      "propertyName": "capsuleSourceNameRefHash",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+      "value": ""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+      "callerLine": 175,
+      "eventIndex": 9,
+      "eventType": "get",
+      "membrane": "external",
+      "propertyName": "_prefix",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+      "value": "\"Hello\""
+    }
+  ],
+  "0A-SimpleExecution (MembraneEvents) > getMembraneEventsByCapsule #1": [],
+  "0A-SimpleExecution (MembraneEvents) > getRootInstance #1": {
+    "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+    "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution:53"
+  },
+  "0A-SimpleExecution (MembraneEvents) > listCapsules #1": [
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter"
+    }
+  ],
+  "0A-SimpleExecution (MembraneEvents) > listSpineInstanceTrees #1": [
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution:53",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter:28",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution"
+    }
+  ],
+  "0A-SimpleExecution (MembraneEvents) > membrane events snapshot #1": [
+    {
+      "callEventIndex": -1,
+      "capsuleSourceNameRef": "L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+      "eventIndex": 0,
+      "eventType": "call",
+      "propertyName": "runModel"
+    },
+    {
+      "callEventIndex": -1,
+      "capsuleSourceNameRef": "L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
+      "eventIndex": 1,
+      "eventType": "call",
+      "propertyName": "greet"
+    },
+    {
+      "callEventIndex": 1,
+      "capsuleSourceNameRef": "",
+      "eventIndex": 2,
+      "eventType": "call-result",
+      "propertyName": ""
+    },
+    {
+      "callEventIndex": 0,
+      "capsuleSourceNameRef": "",
+      "eventIndex": 3,
+      "eventType": "call-result",
+      "propertyName": ""
+    }
+  ]
+}

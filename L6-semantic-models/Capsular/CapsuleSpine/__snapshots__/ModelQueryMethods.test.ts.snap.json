@@ -56,6 +56,16 @@
       }
     }
   },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy > getEventLog #1": {
+    "#": "EventLog",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
+    "entries": []
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy > getMembraneEvents #1": {
+    "#": "MembraneEvents",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
+    "list": []
+  },
   "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy > getSpineDeclarationTree #1": {
     "#": "SpineDeclarationTree",
     "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy",
@@ -236,6 +246,16 @@
       }
     }
   },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule > getEventLog #1": {
+    "#": "EventLog",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule",
+    "entries": []
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule > getMembraneEvents #1": {
+    "#": "MembraneEvents",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule",
+    "list": []
+  },
   "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule > getSpineDeclarationTree #1": {
     "#": "SpineDeclarationTree",
     "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule",
@@ -324,6 +344,16 @@
         }
       }
     }
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule > getEventLog #1": {
+    "#": "EventLog",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule",
+    "entries": []
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule > getMembraneEvents #1": {
+    "#": "MembraneEvents",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule",
+    "list": []
   },
   "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule > getSpineDeclarationTree #1": {
     "#": "SpineDeclarationTree",
@@ -459,6 +489,16 @@
       }
     }
   },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule > getEventLog #1": {
+    "#": "EventLog",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule",
+    "entries": []
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule > getMembraneEvents #1": {
+    "#": "MembraneEvents",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule",
+    "list": []
+  },
   "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule > getSpineDeclarationTree #1": {
     "#": "SpineDeclarationTree",
     "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule",
@@ -593,6 +633,16 @@
       }
     }
   },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule > getEventLog #1": {
+    "#": "EventLog",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule",
+    "entries": []
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule > getMembraneEvents #1": {
+    "#": "MembraneEvents",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule",
+    "list": []
+  },
   "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule > getSpineDeclarationTree #1": {
     "#": "SpineDeclarationTree",
     "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule",
@@ -726,6 +776,16 @@
         }
       }
     }
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs > getEventLog #1": {
+    "#": "EventLog",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs",
+    "entries": []
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs > getMembraneEvents #1": {
+    "#": "MembraneEvents",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs",
+    "list": []
   },
   "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs > getSpineDeclarationTree #1": {
     "#": "SpineDeclarationTree",
@@ -951,6 +1011,16 @@
         }
       }
     }
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing > getEventLog #1": {
+    "#": "EventLog",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing",
+    "entries": []
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing > getMembraneEvents #1": {
+    "#": "MembraneEvents",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing",
+    "list": []
   },
   "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing > getSpineDeclarationTree #1": {
     "#": "SpineDeclarationTree",
@@ -1225,6 +1295,3179 @@
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/models/Encapsulate/CapsuleSpine/examples/01-TreeRelationships/caps/Service2"
+      }
+    ]
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution > getCapsule (first capsule) #1": {
+    "#": "Capsule",
+    "$id": "@stream44.studio/encapsulate/structs/Capsule",
+    "cacheBustVersion": 21,
+    "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
+    "source": {
+      "#": "Capsule/Source",
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "declarationLine": 7,
+      "definitionEndLine": 16,
+      "definitionStartLine": 7,
+      "importStackLine": 18,
+      "moduleUri": "@stream44.studio/encapsulate/structs/Capsule",
+      "optionsEndLine": 20,
+      "optionsStartLine": 16
+    },
+    "spineContracts": {
+      "#": "Capsule/SpineContracts",
+      "#@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0": {
+        "#": "Capsule/SpineContract",
+        "propertyContracts": {
+          "#": {
+            "#": "Capsule/PropertyContract",
+            "properties": {},
+            "propertyContractUri": ""
+          }
+        }
+      }
+    }
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution > getEventLog #1": {
+    "#": "EventLog",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+    "entries": [
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          }
+        ],
+        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerLine": 184,
+        "eventIndex": 0,
+        "eventType": "call",
+        "membrane": "external",
+        "propertyName": "runModel",
+        "rawEvent": "{\"eventIndex\":0,\"event\":\"call\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53\",\"spineContractCapsuleInstanceId\":\"$L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53\",\"prop\":\"runModel\",\"capsuleSourceNameRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution\",\"capsuleSourceNameRefHash\":\"233a25bae96525d212deb17db2ccc9ad4d8be11efe9ad0a311220bf2b72b7d69\",\"capsuleSourceUriLineRefInstanceId\":\"a1941e43c0f56a557f3ba1222b2027eff16d3828428799e7399b1ed571914aaf\"},\"caller\":{\"filepath\":\"/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts\",\"line\":184,\"stack\":[{\"function\":\"addCallerContextToEvent\",\"filepath\":\"/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts\",\"line\":893,\"column\":34},{\"filepath\":\"/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts\",\"line\":585,\"column\":26},{\"filepath\":\"L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts\",\"line\":59,\"column\":28},{\"filepath\":\"/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts\",\"line\":184,\"column\":37},{\"filepath\":\"/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/encapsulate.ts\",\"line\":317,\"column\":34},{\"function\":\"async run\",\"filepath\":\"/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts\",\"line\":168,\"column\":26},{\"function\":\"async runModel\",\"filepath\":\"L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts\",\"line\":6,\"column\":18},{\"filepath\":\"L4-space-models/Capsular/SpineInstanceTrees.ts\",\"line\":35,\"column\":46},{\"filepath\":\"L3-model-server/ModelServer.ts\",\"line\":184,\"column\":63},{\"function\":\"processTicksAndRejections\",\"filepath\":\"native\",\"line\":7,\"column\":39}]}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "{\"#@stream44.studio/encapsulate/structs/Capsule\":{},\"_prefix\":\"Hello\"}",
+        "eventIndex": 1,
+        "eventType": "get",
+        "membrane": "internal",
+        "propertyName": "greeter",
+        "rawEvent": "{\"eventIndex\":1,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53\",\"spineContractCapsuleInstanceId\":\"$L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53\",\"prop\":\"greeter\",\"capsuleSourceNameRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution\",\"capsuleSourceNameRefHash\":\"233a25bae96525d212deb17db2ccc9ad4d8be11efe9ad0a311220bf2b72b7d69\"},\"value\":{\"#@stream44.studio/encapsulate/structs/Capsule\":{},\"_prefix\":\"Hello\"},\"caller\":{\"capsuleSourceLineRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53\",\"spineContractCapsuleInstanceId\":\"$L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53\",\"capsuleSourceNameRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution\",\"capsuleSourceNameRefHash\":\"233a25bae96525d212deb17db2ccc9ad4d8be11efe9ad0a311220bf2b72b7d69\",\"capsuleSourceUriLineRefInstanceId\":\"a1941e43c0f56a557f3ba1222b2027eff16d3828428799e7399b1ed571914aaf\",\"prop\":\"runModel\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"Hello\"",
+        "eventIndex": 2,
+        "eventType": "get",
+        "membrane": "external",
+        "propertyName": "_prefix",
+        "rawEvent": "{\"eventIndex\":2,\"event\":\"get\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28\",\"spineContractCapsuleInstanceId\":\"$L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28\",\"prop\":\"_prefix\",\"capsuleSourceNameRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter\",\"capsuleSourceNameRefHash\":\"f7f446b5bd5af646448acf4cece2a28178fb760e7cd5d915b867b2c41d73b656\"},\"value\":\"Hello\",\"caller\":{\"capsuleSourceLineRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53\",\"spineContractCapsuleInstanceId\":\"$L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53\",\"capsuleSourceNameRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution\",\"capsuleSourceNameRefHash\":\"233a25bae96525d212deb17db2ccc9ad4d8be11efe9ad0a311220bf2b72b7d69\",\"capsuleSourceUriLineRefInstanceId\":\"a1941e43c0f56a557f3ba1222b2027eff16d3828428799e7399b1ed571914aaf\",\"prop\":\"runModel\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "greet"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 3,
+        "eventType": "call",
+        "membrane": "external",
+        "propertyName": "greet",
+        "rawEvent": "{\"eventIndex\":3,\"event\":\"call\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28\",\"spineContractCapsuleInstanceId\":\"$L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28\",\"prop\":\"greet\",\"capsuleSourceNameRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter\",\"capsuleSourceNameRefHash\":\"f7f446b5bd5af646448acf4cece2a28178fb760e7cd5d915b867b2c41d73b656\",\"capsuleSourceUriLineRefInstanceId\":\"2222d2818c6fd3985a9e9df7f01e59e466a44f13da1450b7c8b3d8de44ec618b\"},\"caller\":{\"capsuleSourceLineRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53\",\"spineContractCapsuleInstanceId\":\"$L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53\",\"capsuleSourceNameRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution\",\"capsuleSourceNameRefHash\":\"233a25bae96525d212deb17db2ccc9ad4d8be11efe9ad0a311220bf2b72b7d69\",\"capsuleSourceUriLineRefInstanceId\":\"a1941e43c0f56a557f3ba1222b2027eff16d3828428799e7399b1ed571914aaf\",\"prop\":\"runModel\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "greet"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"Hello\"",
+        "eventIndex": 4,
+        "eventType": "get",
+        "membrane": "internal",
+        "propertyName": "_prefix",
+        "rawEvent": "{\"eventIndex\":4,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28\",\"spineContractCapsuleInstanceId\":\"$L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28\",\"prop\":\"_prefix\",\"capsuleSourceNameRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter\",\"capsuleSourceNameRefHash\":\"f7f446b5bd5af646448acf4cece2a28178fb760e7cd5d915b867b2c41d73b656\"},\"value\":\"Hello\",\"caller\":{\"capsuleSourceLineRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28\",\"spineContractCapsuleInstanceId\":\"$L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28\",\"capsuleSourceNameRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter\",\"capsuleSourceNameRefHash\":\"f7f446b5bd5af646448acf4cece2a28178fb760e7cd5d915b867b2c41d73b656\",\"capsuleSourceUriLineRefInstanceId\":\"2222d2818c6fd3985a9e9df7f01e59e466a44f13da1450b7c8b3d8de44ec618b\",\"prop\":\"greet\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          }
+        ],
+        "callEventIndex": 3,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 5,
+        "eventType": "call-result",
+        "membrane": "external",
+        "propertyName": "",
+        "rawEvent": "{\"eventIndex\":5,\"event\":\"call-result\",\"membrane\":\"external\",\"target\":{\"spineContractCapsuleInstanceId\":\"$L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28\"},\"result\":\"Hello, World!\",\"callEventIndex\":3}",
+        "resolvedCaller": {
+          "propertyName": "greet"
+        }
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [],
+        "callEventIndex": 0,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 6,
+        "eventType": "call-result",
+        "membrane": "external",
+        "propertyName": "",
+        "rawEvent": "{\"eventIndex\":6,\"event\":\"call-result\",\"membrane\":\"external\",\"target\":{\"spineContractCapsuleInstanceId\":\"$L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts:53\"},\"result\":\"Hello, World!\",\"callEventIndex\":0}",
+        "resolvedCaller": {
+          "propertyName": "runModel"
+        }
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [],
+        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerLine": 200,
+        "dataSeen": "\"Hello\"",
+        "eventIndex": 7,
+        "eventType": "get",
+        "membrane": "external",
+        "propertyName": "_prefix",
+        "rawEvent": "{\"eventIndex\":7,\"event\":\"get\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28\",\"spineContractCapsuleInstanceId\":\"$L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28\",\"prop\":\"_prefix\",\"capsuleSourceNameRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter\",\"capsuleSourceNameRefHash\":\"f7f446b5bd5af646448acf4cece2a28178fb760e7cd5d915b867b2c41d73b656\"},\"value\":\"Hello\",\"caller\":{\"capsuleSourceLineRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28\",\"spineContractCapsuleInstanceId\":\"$L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28\",\"capsuleSourceNameRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter\",\"capsuleSourceNameRefHash\":\"f7f446b5bd5af646448acf4cece2a28178fb760e7cd5d915b867b2c41d73b656\",\"capsuleSourceUriLineRefInstanceId\":\"2222d2818c6fd3985a9e9df7f01e59e466a44f13da1450b7c8b3d8de44ec618b\",\"filepath\":\"/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts\",\"line\":200,\"stack\":[{\"function\":\"get\",\"filepath\":\"/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts\",\"line\":305,\"column\":46},{\"function\":\"get\",\"filepath\":\"/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts\",\"line\":334,\"column\":59},{\"function\":\"stringify\"},{\"filepath\":\"/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts\",\"line\":200,\"column\":58},{\"filepath\":\"/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/encapsulate.ts\",\"line\":317,\"column\":34},{\"function\":\"async run\",\"filepath\":\"/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts\",\"line\":168,\"column\":26},{\"function\":\"async runModel\",\"filepath\":\"L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts\",\"line\":6,\"column\":18},{\"filepath\":\"L4-space-models/Capsular/SpineInstanceTrees.ts\",\"line\":35,\"column\":46},{\"filepath\":\"L3-model-server/ModelServer.ts\",\"line\":184,\"column\":63},{\"function\":\"processTicksAndRejections\",\"filepath\":\"native\",\"line\":7,\"column\":39}]}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [],
+        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerLine": 200,
+        "dataSeen": "\"Hello\"",
+        "eventIndex": 8,
+        "eventType": "get",
+        "membrane": "external",
+        "propertyName": "_prefix",
+        "rawEvent": "{\"eventIndex\":8,\"event\":\"get\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28\",\"spineContractCapsuleInstanceId\":\"$L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28\",\"prop\":\"_prefix\",\"capsuleSourceNameRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter\",\"capsuleSourceNameRefHash\":\"f7f446b5bd5af646448acf4cece2a28178fb760e7cd5d915b867b2c41d73b656\"},\"value\":\"Hello\",\"caller\":{\"capsuleSourceLineRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28\",\"spineContractCapsuleInstanceId\":\"$L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:28\",\"capsuleSourceNameRef\":\"L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter\",\"capsuleSourceNameRefHash\":\"f7f446b5bd5af646448acf4cece2a28178fb760e7cd5d915b867b2c41d73b656\",\"capsuleSourceUriLineRefInstanceId\":\"2222d2818c6fd3985a9e9df7f01e59e466a44f13da1450b7c8b3d8de44ec618b\",\"filepath\":\"/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts\",\"line\":200,\"stack\":[{\"function\":\"get\",\"filepath\":\"/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts\",\"line\":305,\"column\":46},{\"function\":\"get\",\"filepath\":\"/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts\",\"line\":334,\"column\":59},{\"function\":\"stringify\"},{\"filepath\":\"/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts\",\"line\":200,\"column\":58},{\"filepath\":\"/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/encapsulate.ts\",\"line\":317,\"column\":34},{\"function\":\"async run\",\"filepath\":\"/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts\",\"line\":168,\"column\":26},{\"function\":\"async runModel\",\"filepath\":\"L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts\",\"line\":6,\"column\":18},{\"filepath\":\"L4-space-models/Capsular/SpineInstanceTrees.ts\",\"line\":35,\"column\":46},{\"filepath\":\"L3-model-server/ModelServer.ts\",\"line\":184,\"column\":63},{\"function\":\"processTicksAndRejections\",\"filepath\":\"native\",\"line\":7,\"column\":39}]}}"
+      }
+    ]
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution > getMembraneEvents #1": {
+    "#": "MembraneEvents",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+    "list": [
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerLine": 184,
+        "eventIndex": 0,
+        "eventType": "call",
+        "propertyName": "runModel"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 1,
+        "eventType": "get",
+        "propertyName": "greeter"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 2,
+        "eventType": "get",
+        "propertyName": "_prefix"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 3,
+        "eventType": "call",
+        "propertyName": "greet"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 4,
+        "eventType": "get",
+        "propertyName": "_prefix"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": 3,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 5,
+        "eventType": "call-result",
+        "propertyName": ""
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": 0,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 6,
+        "eventType": "call-result",
+        "propertyName": ""
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerLine": 200,
+        "eventIndex": 7,
+        "eventType": "get",
+        "propertyName": "_prefix"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerLine": 200,
+        "eventIndex": 8,
+        "eventType": "get",
+        "propertyName": "_prefix"
+      }
+    ]
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution > getSpineDeclarationTree #1": {
+    "#": "SpineDeclarationTree",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+    "rootCapsule": {
+      "#": "Capsule",
+      "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+      "mappings": {
+        "#": "Capsule/Mappings",
+        "#@stream44.studio/encapsulate/structs/Capsule": {
+          "#": "Capsule/PropertyContractMapping",
+          "capsule": {
+            "#": "Capsule",
+            "$id": "@stream44.studio/encapsulate/structs/Capsule",
+            "properties": {
+              "#": "Capsule/Properties"
+            }
+          },
+          "isPropertyContractDelegate": true
+        },
+        "greeter": {
+          "#": "Capsule/PropertyMapping",
+          "capsule": {
+            "#": "Capsule",
+            "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
+            "mappings": {
+              "#": "Capsule/Mappings",
+              "#@stream44.studio/encapsulate/structs/Capsule": {
+                "#": "Capsule/PropertyContractMapping",
+                "capsule": {
+                  "#": "Capsule",
+                  "$id": "@stream44.studio/encapsulate/structs/Capsule",
+                  "properties": {
+                    "#": "Capsule/Properties"
+                  }
+                },
+                "isPropertyContractDelegate": true
+              }
+            },
+            "properties": {
+              "#": "Capsule/Properties"
+            }
+          }
+        }
+      },
+      "properties": {
+        "#": "Capsule/Properties"
+      }
+    }
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution > getSpineInstanceTree #1": {
+    "#": "SpineInstanceTree",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+    "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution:53": {
+      "#": "CapsuleInstance",
+      "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution:53",
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution:53",
+      "children": {
+        "#": "CapsuleInstance/Children",
+        "list": [
+          {
+            "#": "CapsuleInstance",
+            "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+            "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+            "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+          },
+          {
+            "#": "CapsuleInstance",
+            "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter:28",
+            "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter:28",
+            "children": {
+              "#": "CapsuleInstance/Children",
+              "list": [
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                  "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                  "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution > listCapsules #1": {
+    "#": "Capsules",
+    "list": [
+      {
+        "#": "Capsule",
+        "$id": "@stream44.studio/encapsulate/structs/Capsule"
+      },
+      {
+        "#": "Capsule",
+        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution"
+      },
+      {
+        "#": "Capsule",
+        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter"
+      }
+    ]
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0B-SimplePasswordLogin > getCapsule (first capsule) #1": {
+    "#": "Capsule",
+    "$id": "@stream44.studio/encapsulate/structs/Capsule",
+    "cacheBustVersion": 21,
+    "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
+    "source": {
+      "#": "Capsule/Source",
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "declarationLine": 7,
+      "definitionEndLine": 16,
+      "definitionStartLine": 7,
+      "importStackLine": 18,
+      "moduleUri": "@stream44.studio/encapsulate/structs/Capsule",
+      "optionsEndLine": 20,
+      "optionsStartLine": 16
+    },
+    "spineContracts": {
+      "#": "Capsule/SpineContracts",
+      "#@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0": {
+        "#": "Capsule/SpineContract",
+        "propertyContracts": {
+          "#": {
+            "#": "Capsule/PropertyContract",
+            "properties": {},
+            "propertyContractUri": ""
+          }
+        }
+      }
+    }
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0B-SimplePasswordLogin > getEventLog #1": {
+    "#": "EventLog",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0B-SimplePasswordLogin",
+    "entries": [
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          }
+        ],
+        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerLine": 158,
+        "eventIndex": 0,
+        "eventType": "call",
+        "propertyName": "runModel"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "{\"#@stream44.studio/encapsulate/structs/Capsule\":{},\"_prefix\":\"Hello\"}",
+        "eventIndex": 1,
+        "eventType": "get",
+        "propertyName": "greeter"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "greet"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 2,
+        "eventType": "call",
+        "propertyName": "greet"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "greet"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"Hello\"",
+        "eventIndex": 3,
+        "eventType": "get",
+        "propertyName": "_prefix"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          }
+        ],
+        "callEventIndex": 2,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 4,
+        "eventType": "call-result",
+        "propertyName": "",
+        "resolvedCaller": {
+          "propertyName": "greet"
+        }
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [],
+        "callEventIndex": 0,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 5,
+        "eventType": "call-result",
+        "propertyName": "",
+        "resolvedCaller": {
+          "propertyName": "runModel"
+        }
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [],
+        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerLine": 175,
+        "eventIndex": 6,
+        "eventType": "get",
+        "propertyName": "capsuleSourceNameRefHash"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [],
+        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerLine": 175,
+        "dataSeen": "\"Hello\"",
+        "eventIndex": 7,
+        "eventType": "get",
+        "propertyName": "_prefix"
+      }
+    ]
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0B-SimplePasswordLogin > getMembraneEvents #1": {
+    "#": "MembraneEvents",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0B-SimplePasswordLogin",
+    "list": [
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerLine": 158,
+        "eventIndex": 0,
+        "eventType": "call",
+        "propertyName": "runModel"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 1,
+        "eventType": "get",
+        "propertyName": "greeter"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 2,
+        "eventType": "call",
+        "propertyName": "greet"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 3,
+        "eventType": "get",
+        "propertyName": "_prefix"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": 2,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 4,
+        "eventType": "call-result",
+        "propertyName": ""
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": 0,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 5,
+        "eventType": "call-result",
+        "propertyName": ""
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerLine": 175,
+        "eventIndex": 6,
+        "eventType": "get",
+        "propertyName": "capsuleSourceNameRefHash"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerLine": 175,
+        "eventIndex": 7,
+        "eventType": "get",
+        "propertyName": "_prefix"
+      }
+    ]
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0B-SimplePasswordLogin > getSpineDeclarationTree #1": {
+    "#": "SpineDeclarationTree",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0B-SimplePasswordLogin",
+    "rootCapsule": {
+      "#": "Capsule",
+      "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0B-SimplePasswordLogin",
+      "mappings": {
+        "#": "Capsule/Mappings",
+        "#@stream44.studio/encapsulate/structs/Capsule": {
+          "#": "Capsule/PropertyContractMapping",
+          "capsule": {
+            "#": "Capsule",
+            "$id": "@stream44.studio/encapsulate/structs/Capsule",
+            "properties": {
+              "#": "Capsule/Properties"
+            }
+          },
+          "isPropertyContractDelegate": true
+        },
+        "user": {
+          "#": "Capsule/PropertyMapping",
+          "capsule": {
+            "#": "Capsule",
+            "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/User",
+            "mappings": {
+              "#": "Capsule/Mappings",
+              "#@stream44.studio/encapsulate/structs/Capsule": {
+                "#": "Capsule/PropertyContractMapping",
+                "capsule": {
+                  "#": "Capsule",
+                  "$id": "@stream44.studio/encapsulate/structs/Capsule",
+                  "properties": {
+                    "#": "Capsule/Properties"
+                  }
+                },
+                "isPropertyContractDelegate": true
+              },
+              "loginForm": {
+                "#": "Capsule/PropertyMapping",
+                "capsule": {
+                  "#": "Capsule",
+                  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/LoginForm",
+                  "mappings": {
+                    "#": "Capsule/Mappings",
+                    "#@stream44.studio/encapsulate/structs/Capsule": {
+                      "#": "Capsule/PropertyContractMapping",
+                      "capsule": {
+                        "#": "Capsule",
+                        "$id": "@stream44.studio/encapsulate/structs/Capsule",
+                        "properties": {
+                          "#": "Capsule/Properties"
+                        }
+                      },
+                      "isPropertyContractDelegate": true
+                    },
+                    "httpClient": {
+                      "#": "Capsule/PropertyMapping",
+                      "capsule": {
+                        "#": "Capsule",
+                        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/HttpClient",
+                        "mappings": {
+                          "#": "Capsule/Mappings",
+                          "#@stream44.studio/encapsulate/structs/Capsule": {
+                            "#": "Capsule/PropertyContractMapping",
+                            "capsule": {
+                              "#": "Capsule",
+                              "$id": "@stream44.studio/encapsulate/structs/Capsule",
+                              "properties": {
+                                "#": "Capsule/Properties"
+                              }
+                            },
+                            "isPropertyContractDelegate": true
+                          },
+                          "authService": {
+                            "#": "Capsule/PropertyMapping",
+                            "capsule": {
+                              "#": "Capsule",
+                              "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/AuthService",
+                              "mappings": {
+                                "#": "Capsule/Mappings",
+                                "#@stream44.studio/encapsulate/structs/Capsule": {
+                                  "#": "Capsule/PropertyContractMapping",
+                                  "capsule": {
+                                    "#": "Capsule",
+                                    "$id": "@stream44.studio/encapsulate/structs/Capsule",
+                                    "properties": {
+                                      "#": "Capsule/Properties"
+                                    }
+                                  },
+                                  "isPropertyContractDelegate": true
+                                }
+                              },
+                              "properties": {
+                                "#": "Capsule/Properties"
+                              }
+                            }
+                          }
+                        },
+                        "properties": {
+                          "#": "Capsule/Properties"
+                        }
+                      }
+                    }
+                  },
+                  "properties": {
+                    "#": "Capsule/Properties"
+                  }
+                }
+              }
+            },
+            "properties": {
+              "#": "Capsule/Properties"
+            }
+          }
+        }
+      },
+      "properties": {
+        "#": "Capsule/Properties"
+      }
+    }
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0B-SimplePasswordLogin > getSpineInstanceTree #1": {
+    "#": "SpineInstanceTree",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0B-SimplePasswordLogin",
+    "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0B-SimplePasswordLogin:53": {
+      "#": "CapsuleInstance",
+      "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0B-SimplePasswordLogin:53",
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0B-SimplePasswordLogin",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0B-SimplePasswordLogin:53",
+      "children": {
+        "#": "CapsuleInstance/Children",
+        "list": [
+          {
+            "#": "CapsuleInstance",
+            "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+            "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+            "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+          },
+          {
+            "#": "CapsuleInstance",
+            "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/User:30",
+            "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/User",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/User:30",
+            "children": {
+              "#": "CapsuleInstance/Children",
+              "list": [
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                  "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                  "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                },
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/LoginForm:83",
+                  "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/LoginForm",
+                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/LoginForm:83",
+                  "children": {
+                    "#": "CapsuleInstance/Children",
+                    "list": [
+                      {
+                        "#": "CapsuleInstance",
+                        "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                        "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                        "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                      },
+                      {
+                        "#": "CapsuleInstance",
+                        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/HttpClient:31",
+                        "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/HttpClient",
+                        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/HttpClient:31",
+                        "children": {
+                          "#": "CapsuleInstance/Children",
+                          "list": [
+                            {
+                              "#": "CapsuleInstance",
+                              "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                              "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                              "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                            },
+                            {
+                              "#": "CapsuleInstance",
+                              "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/AuthService:38",
+                              "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/AuthService",
+                              "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/AuthService:38",
+                              "children": {
+                                "#": "CapsuleInstance/Children",
+                                "list": [
+                                  {
+                                    "#": "CapsuleInstance",
+                                    "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                                    "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                                    "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0B-SimplePasswordLogin > listCapsules #1": {
+    "#": "Capsules",
+    "list": [
+      {
+        "#": "Capsule",
+        "$id": "@stream44.studio/encapsulate/structs/Capsule"
+      },
+      {
+        "#": "Capsule",
+        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0B-SimplePasswordLogin"
+      },
+      {
+        "#": "Capsule",
+        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/AuthService"
+      },
+      {
+        "#": "Capsule",
+        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/HttpClient"
+      },
+      {
+        "#": "Capsule",
+        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/LoginForm"
+      },
+      {
+        "#": "Capsule",
+        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/User"
+      }
+    ]
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin > getCapsule (first capsule) #1": {
+    "#": "Capsule",
+    "$id": "@stream44.studio/encapsulate/structs/Capsule",
+    "cacheBustVersion": 21,
+    "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
+    "source": {
+      "#": "Capsule/Source",
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "declarationLine": 7,
+      "definitionEndLine": 16,
+      "definitionStartLine": 7,
+      "importStackLine": 18,
+      "moduleUri": "@stream44.studio/encapsulate/structs/Capsule",
+      "optionsEndLine": 20,
+      "optionsStartLine": 16
+    },
+    "spineContracts": {
+      "#": "Capsule/SpineContracts",
+      "#@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0": {
+        "#": "Capsule/SpineContract",
+        "propertyContracts": {
+          "#": {
+            "#": "Capsule/PropertyContract",
+            "properties": {},
+            "propertyContractUri": ""
+          }
+        }
+      }
+    }
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin > getEventLog #1": {
+    "#": "EventLog",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin",
+    "entries": [
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          }
+        ],
+        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerLine": 157,
+        "eventIndex": 0,
+        "eventType": "call",
+        "membrane": "external",
+        "propertyName": "runModel"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 1,
+        "eventType": "call",
+        "membrane": "external",
+        "propertyName": "login"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "setEmail"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 2,
+        "eventType": "call",
+        "membrane": "external",
+        "propertyName": "setEmail"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          }
+        ],
+        "callEventIndex": 2,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 3,
+        "eventType": "call-result",
+        "membrane": "external",
+        "propertyName": "",
+        "resolvedCaller": {
+          "propertyName": "setEmail"
+        }
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "setPassword"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 4,
+        "eventType": "call",
+        "membrane": "external",
+        "propertyName": "setPassword"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          }
+        ],
+        "callEventIndex": 4,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 5,
+        "eventType": "call-result",
+        "membrane": "external",
+        "propertyName": "",
+        "resolvedCaller": {
+          "propertyName": "setPassword"
+        }
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 6,
+        "eventType": "call",
+        "membrane": "external",
+        "propertyName": "submit"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          },
+          {
+            "propertyName": "validate"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 7,
+        "eventType": "call",
+        "membrane": "external",
+        "propertyName": "validate"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          }
+        ],
+        "callEventIndex": 7,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 8,
+        "eventType": "call-result",
+        "membrane": "external",
+        "propertyName": "",
+        "resolvedCaller": {
+          "propertyName": "validate"
+        }
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          },
+          {
+            "propertyName": "post"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 9,
+        "eventType": "call",
+        "membrane": "external",
+        "propertyName": "post"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          },
+          {
+            "propertyName": "post"
+          },
+          {
+            "propertyName": "authenticate"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 10,
+        "eventType": "call",
+        "membrane": "external",
+        "propertyName": "authenticate"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          },
+          {
+            "propertyName": "post"
+          }
+        ],
+        "callEventIndex": 10,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 11,
+        "eventType": "call-result",
+        "membrane": "external",
+        "propertyName": "",
+        "resolvedCaller": {
+          "propertyName": "authenticate"
+        }
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          }
+        ],
+        "callEventIndex": 9,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 12,
+        "eventType": "call-result",
+        "membrane": "external",
+        "propertyName": "",
+        "resolvedCaller": {
+          "propertyName": "post"
+        }
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          }
+        ],
+        "callEventIndex": 6,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 13,
+        "eventType": "call-result",
+        "membrane": "external",
+        "propertyName": "",
+        "resolvedCaller": {
+          "propertyName": "submit"
+        }
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          }
+        ],
+        "callEventIndex": 1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 14,
+        "eventType": "call-result",
+        "membrane": "external",
+        "propertyName": "",
+        "resolvedCaller": {
+          "propertyName": "login"
+        }
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [],
+        "callEventIndex": 0,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 15,
+        "eventType": "call-result",
+        "membrane": "external",
+        "propertyName": "",
+        "resolvedCaller": {
+          "propertyName": "runModel"
+        }
+      }
+    ]
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin > getMembraneEvents #1": {
+    "#": "MembraneEvents",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin",
+    "list": [
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerLine": 157,
+        "eventIndex": 0,
+        "eventType": "call",
+        "propertyName": "runModel"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 1,
+        "eventType": "call",
+        "propertyName": "login"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 2,
+        "eventType": "call",
+        "propertyName": "setEmail"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": 2,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 3,
+        "eventType": "call-result",
+        "propertyName": ""
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 4,
+        "eventType": "call",
+        "propertyName": "setPassword"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": 4,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 5,
+        "eventType": "call-result",
+        "propertyName": ""
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 6,
+        "eventType": "call",
+        "propertyName": "submit"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 7,
+        "eventType": "call",
+        "propertyName": "validate"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": 7,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 8,
+        "eventType": "call-result",
+        "propertyName": ""
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 9,
+        "eventType": "call",
+        "propertyName": "post"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 10,
+        "eventType": "call",
+        "propertyName": "authenticate"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": 10,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 11,
+        "eventType": "call-result",
+        "propertyName": ""
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": 9,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 12,
+        "eventType": "call-result",
+        "propertyName": ""
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": 6,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 13,
+        "eventType": "call-result",
+        "propertyName": ""
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": 1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 14,
+        "eventType": "call-result",
+        "propertyName": ""
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": 0,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 15,
+        "eventType": "call-result",
+        "propertyName": ""
+      }
+    ]
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin > getSpineDeclarationTree #1": {
+    "#": "SpineDeclarationTree",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin",
+    "rootCapsule": {
+      "#": "Capsule",
+      "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin",
+      "mappings": {
+        "#": "Capsule/Mappings",
+        "#@stream44.studio/encapsulate/structs/Capsule": {
+          "#": "Capsule/PropertyContractMapping",
+          "capsule": {
+            "#": "Capsule",
+            "$id": "@stream44.studio/encapsulate/structs/Capsule",
+            "properties": {
+              "#": "Capsule/Properties"
+            }
+          },
+          "isPropertyContractDelegate": true
+        },
+        "user": {
+          "#": "Capsule/PropertyMapping",
+          "capsule": {
+            "#": "Capsule",
+            "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/User",
+            "mappings": {
+              "#": "Capsule/Mappings",
+              "#@stream44.studio/encapsulate/structs/Capsule": {
+                "#": "Capsule/PropertyContractMapping",
+                "capsule": {
+                  "#": "Capsule",
+                  "$id": "@stream44.studio/encapsulate/structs/Capsule",
+                  "properties": {
+                    "#": "Capsule/Properties"
+                  }
+                },
+                "isPropertyContractDelegate": true
+              },
+              "loginForm": {
+                "#": "Capsule/PropertyMapping",
+                "capsule": {
+                  "#": "Capsule",
+                  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/LoginForm",
+                  "mappings": {
+                    "#": "Capsule/Mappings",
+                    "#@stream44.studio/encapsulate/structs/Capsule": {
+                      "#": "Capsule/PropertyContractMapping",
+                      "capsule": {
+                        "#": "Capsule",
+                        "$id": "@stream44.studio/encapsulate/structs/Capsule",
+                        "properties": {
+                          "#": "Capsule/Properties"
+                        }
+                      },
+                      "isPropertyContractDelegate": true
+                    },
+                    "httpClient": {
+                      "#": "Capsule/PropertyMapping",
+                      "capsule": {
+                        "#": "Capsule",
+                        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/HttpClient",
+                        "mappings": {
+                          "#": "Capsule/Mappings",
+                          "#@stream44.studio/encapsulate/structs/Capsule": {
+                            "#": "Capsule/PropertyContractMapping",
+                            "capsule": {
+                              "#": "Capsule",
+                              "$id": "@stream44.studio/encapsulate/structs/Capsule",
+                              "properties": {
+                                "#": "Capsule/Properties"
+                              }
+                            },
+                            "isPropertyContractDelegate": true
+                          },
+                          "authService": {
+                            "#": "Capsule/PropertyMapping",
+                            "capsule": {
+                              "#": "Capsule",
+                              "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/AuthService",
+                              "mappings": {
+                                "#": "Capsule/Mappings",
+                                "#@stream44.studio/encapsulate/structs/Capsule": {
+                                  "#": "Capsule/PropertyContractMapping",
+                                  "capsule": {
+                                    "#": "Capsule",
+                                    "$id": "@stream44.studio/encapsulate/structs/Capsule",
+                                    "properties": {
+                                      "#": "Capsule/Properties"
+                                    }
+                                  },
+                                  "isPropertyContractDelegate": true
+                                }
+                              },
+                              "properties": {
+                                "#": "Capsule/Properties"
+                              }
+                            }
+                          }
+                        },
+                        "properties": {
+                          "#": "Capsule/Properties"
+                        }
+                      }
+                    }
+                  },
+                  "properties": {
+                    "#": "Capsule/Properties"
+                  }
+                }
+              }
+            },
+            "properties": {
+              "#": "Capsule/Properties"
+            }
+          }
+        }
+      },
+      "properties": {
+        "#": "Capsule/Properties"
+      }
+    }
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin > getSpineInstanceTree #1": {
+    "#": "SpineInstanceTree",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin",
+    "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin:53": {
+      "#": "CapsuleInstance",
+      "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin:53",
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin:53",
+      "children": {
+        "#": "CapsuleInstance/Children",
+        "list": [
+          {
+            "#": "CapsuleInstance",
+            "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+            "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+            "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+          },
+          {
+            "#": "CapsuleInstance",
+            "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/User:30",
+            "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/User",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/User:30",
+            "children": {
+              "#": "CapsuleInstance/Children",
+              "list": [
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                  "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                  "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                },
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/LoginForm:83",
+                  "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/LoginForm",
+                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/LoginForm:83",
+                  "children": {
+                    "#": "CapsuleInstance/Children",
+                    "list": [
+                      {
+                        "#": "CapsuleInstance",
+                        "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                        "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                        "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                      },
+                      {
+                        "#": "CapsuleInstance",
+                        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/HttpClient:31",
+                        "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/HttpClient",
+                        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/HttpClient:31",
+                        "children": {
+                          "#": "CapsuleInstance/Children",
+                          "list": [
+                            {
+                              "#": "CapsuleInstance",
+                              "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                              "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                              "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                            },
+                            {
+                              "#": "CapsuleInstance",
+                              "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/AuthService:38",
+                              "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/AuthService",
+                              "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/AuthService:38",
+                              "children": {
+                                "#": "CapsuleInstance/Children",
+                                "list": [
+                                  {
+                                    "#": "CapsuleInstance",
+                                    "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                                    "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                                    "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin > listCapsules #1": {
+    "#": "Capsules",
+    "list": [
+      {
+        "#": "Capsule",
+        "$id": "@stream44.studio/encapsulate/structs/Capsule"
+      },
+      {
+        "#": "Capsule",
+        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/0A-SimplePasswordLogin"
+      },
+      {
+        "#": "Capsule",
+        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/AuthService"
+      },
+      {
+        "#": "Capsule",
+        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/HttpClient"
+      },
+      {
+        "#": "Capsule",
+        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/LoginForm"
+      },
+      {
+        "#": "Capsule",
+        "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/04-SimplePasswordLogin/caps/User"
+      }
+    ]
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1 > getCapsule (first capsule) #1": {
+    "#": "Capsule",
+    "$id": "@stream44.studio/encapsulate/structs/Capsule",
+    "cacheBustVersion": 21,
+    "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
+    "source": {
+      "#": "Capsule/Source",
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "declarationLine": 7,
+      "definitionEndLine": 16,
+      "definitionStartLine": 7,
+      "importStackLine": 18,
+      "moduleUri": "@stream44.studio/encapsulate/structs/Capsule",
+      "optionsEndLine": 20,
+      "optionsStartLine": 16
+    },
+    "spineContracts": {
+      "#": "Capsule/SpineContracts",
+      "#@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0": {
+        "#": "Capsule/SpineContract",
+        "propertyContracts": {
+          "#": {
+            "#": "Capsule/PropertyContract",
+            "properties": {},
+            "propertyContractUri": ""
+          }
+        }
+      }
+    }
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1 > getEventLog #1": {
+    "#": "EventLog",
+    "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+    "entries": [
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          }
+        ],
+        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerLine": 184,
+        "eventIndex": 0,
+        "eventType": "call",
+        "membrane": "external",
+        "propertyName": "runModel",
+        "rawEvent": "{\"eventIndex\":0,\"event\":\"call\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/0A-FullStack1.ts:53\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/0A-FullStack1.ts:53\",\"prop\":\"runModel\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/0A-FullStack1.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1\",\"capsuleSourceNameRefHash\":\"d4b7bb321857317a307d570460680d097f0ef403e909760669e99e3c2f1a8914\",\"capsuleSourceUriLineRefInstanceId\":\"af62d880a0951908396f5e7d6bfdab8f610200db0a8e486a8aca52c9a90ff08e\"},\"caller\":{\"filepath\":\"/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts\",\"line\":184,\"stack\":[{\"function\":\"addCallerContextToEvent\",\"filepath\":\"/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts\",\"line\":893,\"column\":34},{\"filepath\":\"/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts\",\"line\":585,\"column\":26},{\"filepath\":\"examples/Codepath-SimplePasswordLogin/0A-FullStack1.ts\",\"line\":59,\"column\":28},{\"filepath\":\"/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts\",\"line\":184,\"column\":37},{\"filepath\":\"/Users/christoph/spaces/genesis/encapsulate.dev/packages/encapsulate/src/encapsulate.ts\",\"line\":317,\"column\":34},{\"function\":\"async run\",\"filepath\":\"/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts\",\"line\":168,\"column\":26},{\"function\":\"async runModel\",\"filepath\":\"examples/Codepath-SimplePasswordLogin/0A-FullStack1.ts\",\"line\":6,\"column\":18},{\"filepath\":\"L4-space-models/Capsular/SpineInstanceTrees.ts\",\"line\":35,\"column\":46},{\"filepath\":\"L3-model-server/ModelServer.ts\",\"line\":184,\"column\":63},{\"function\":\"processTicksAndRejections\",\"filepath\":\"native\",\"line\":7,\"column\":39}]}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"[object]\"",
+        "eventIndex": 1,
+        "eventType": "get",
+        "membrane": "internal",
+        "propertyName": "user",
+        "rawEvent": "{\"eventIndex\":1,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/0A-FullStack1.ts:53\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/0A-FullStack1.ts:53\",\"prop\":\"user\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/0A-FullStack1.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1\",\"capsuleSourceNameRefHash\":\"d4b7bb321857317a307d570460680d097f0ef403e909760669e99e3c2f1a8914\"},\"value\":\"[object]\",\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/0A-FullStack1.ts:53\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/0A-FullStack1.ts:53\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/0A-FullStack1.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1\",\"capsuleSourceNameRefHash\":\"d4b7bb321857317a307d570460680d097f0ef403e909760669e99e3c2f1a8914\",\"capsuleSourceUriLineRefInstanceId\":\"af62d880a0951908396f5e7d6bfdab8f610200db0a8e486a8aca52c9a90ff08e\",\"prop\":\"runModel\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 2,
+        "eventType": "call",
+        "membrane": "external",
+        "propertyName": "login",
+        "rawEvent": "{\"eventIndex\":2,\"event\":\"call\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"prop\":\"login\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"94ce9309768d1057f7c5e0cf80ffba57a512f277965932e8b8d1aa579553befb\",\"capsuleSourceUriLineRefInstanceId\":\"bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239\"},\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/0A-FullStack1.ts:53\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/0A-FullStack1.ts:53\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/0A-FullStack1.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1\",\"capsuleSourceNameRefHash\":\"d4b7bb321857317a307d570460680d097f0ef403e909760669e99e3c2f1a8914\",\"capsuleSourceUriLineRefInstanceId\":\"af62d880a0951908396f5e7d6bfdab8f610200db0a8e486a8aca52c9a90ff08e\",\"prop\":\"runModel\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"[object]\"",
+        "eventIndex": 3,
+        "eventType": "get",
+        "membrane": "internal",
+        "propertyName": "loginForm",
+        "rawEvent": "{\"eventIndex\":3,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"prop\":\"loginForm\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"94ce9309768d1057f7c5e0cf80ffba57a512f277965932e8b8d1aa579553befb\"},\"value\":\"[object]\",\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"94ce9309768d1057f7c5e0cf80ffba57a512f277965932e8b8d1aa579553befb\",\"capsuleSourceUriLineRefInstanceId\":\"bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239\",\"prop\":\"login\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"\"",
+        "eventIndex": 4,
+        "eventType": "get",
+        "membrane": "external",
+        "propertyName": "_email",
+        "rawEvent": "{\"eventIndex\":4,\"event\":\"get\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_email\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\"},\"value\":\"\",\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"94ce9309768d1057f7c5e0cf80ffba57a512f277965932e8b8d1aa579553befb\",\"capsuleSourceUriLineRefInstanceId\":\"bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239\",\"prop\":\"login\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"\"",
+        "eventIndex": 5,
+        "eventType": "get",
+        "membrane": "external",
+        "propertyName": "_password",
+        "rawEvent": "{\"eventIndex\":5,\"event\":\"get\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_password\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\"},\"value\":\"\",\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"94ce9309768d1057f7c5e0cf80ffba57a512f277965932e8b8d1aa579553befb\",\"capsuleSourceUriLineRefInstanceId\":\"bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239\",\"prop\":\"login\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "null",
+        "eventIndex": 6,
+        "eventType": "get",
+        "membrane": "external",
+        "propertyName": "_error",
+        "rawEvent": "{\"eventIndex\":6,\"event\":\"get\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_error\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\"},\"value\":null,\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"94ce9309768d1057f7c5e0cf80ffba57a512f277965932e8b8d1aa579553befb\",\"capsuleSourceUriLineRefInstanceId\":\"bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239\",\"prop\":\"login\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "setEmail"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 7,
+        "eventType": "call",
+        "membrane": "external",
+        "propertyName": "setEmail",
+        "rawEvent": "{\"eventIndex\":7,\"event\":\"call\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"setEmail\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\",\"capsuleSourceUriLineRefInstanceId\":\"799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab\"},\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"94ce9309768d1057f7c5e0cf80ffba57a512f277965932e8b8d1aa579553befb\",\"capsuleSourceUriLineRefInstanceId\":\"bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239\",\"prop\":\"login\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "setEmail"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"user@example.com\"",
+        "eventIndex": 8,
+        "eventType": "set",
+        "membrane": "internal",
+        "propertyName": "_email",
+        "rawEvent": "{\"eventIndex\":8,\"event\":\"set\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_email\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\"},\"value\":\"user@example.com\",\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\",\"capsuleSourceUriLineRefInstanceId\":\"799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab\",\"prop\":\"setEmail\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          }
+        ],
+        "callEventIndex": 7,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 9,
+        "eventType": "call-result",
+        "membrane": "external",
+        "propertyName": "",
+        "rawEvent": "{\"eventIndex\":9,\"event\":\"call-result\",\"membrane\":\"external\",\"target\":{\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\"},\"callEventIndex\":7}",
+        "resolvedCaller": {
+          "propertyName": "setEmail"
+        }
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"[object]\"",
+        "eventIndex": 10,
+        "eventType": "get",
+        "membrane": "internal",
+        "propertyName": "loginForm",
+        "rawEvent": "{\"eventIndex\":10,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"prop\":\"loginForm\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"94ce9309768d1057f7c5e0cf80ffba57a512f277965932e8b8d1aa579553befb\"},\"value\":\"[object]\",\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"94ce9309768d1057f7c5e0cf80ffba57a512f277965932e8b8d1aa579553befb\",\"capsuleSourceUriLineRefInstanceId\":\"bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239\",\"prop\":\"login\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"user@example.com\"",
+        "eventIndex": 11,
+        "eventType": "get",
+        "membrane": "external",
+        "propertyName": "_email",
+        "rawEvent": "{\"eventIndex\":11,\"event\":\"get\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_email\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\"},\"value\":\"user@example.com\",\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"94ce9309768d1057f7c5e0cf80ffba57a512f277965932e8b8d1aa579553befb\",\"capsuleSourceUriLineRefInstanceId\":\"bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239\",\"prop\":\"login\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"\"",
+        "eventIndex": 12,
+        "eventType": "get",
+        "membrane": "external",
+        "propertyName": "_password",
+        "rawEvent": "{\"eventIndex\":12,\"event\":\"get\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_password\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\"},\"value\":\"\",\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"94ce9309768d1057f7c5e0cf80ffba57a512f277965932e8b8d1aa579553befb\",\"capsuleSourceUriLineRefInstanceId\":\"bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239\",\"prop\":\"login\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "null",
+        "eventIndex": 13,
+        "eventType": "get",
+        "membrane": "external",
+        "propertyName": "_error",
+        "rawEvent": "{\"eventIndex\":13,\"event\":\"get\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_error\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\"},\"value\":null,\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"94ce9309768d1057f7c5e0cf80ffba57a512f277965932e8b8d1aa579553befb\",\"capsuleSourceUriLineRefInstanceId\":\"bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239\",\"prop\":\"login\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "setPassword"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 14,
+        "eventType": "call",
+        "membrane": "external",
+        "propertyName": "setPassword",
+        "rawEvent": "{\"eventIndex\":14,\"event\":\"call\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"setPassword\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\",\"capsuleSourceUriLineRefInstanceId\":\"799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab\"},\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"94ce9309768d1057f7c5e0cf80ffba57a512f277965932e8b8d1aa579553befb\",\"capsuleSourceUriLineRefInstanceId\":\"bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239\",\"prop\":\"login\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "setPassword"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"validPassword123\"",
+        "eventIndex": 15,
+        "eventType": "set",
+        "membrane": "internal",
+        "propertyName": "_password",
+        "rawEvent": "{\"eventIndex\":15,\"event\":\"set\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_password\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\"},\"value\":\"validPassword123\",\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\",\"capsuleSourceUriLineRefInstanceId\":\"799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab\",\"prop\":\"setPassword\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          }
+        ],
+        "callEventIndex": 14,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 16,
+        "eventType": "call-result",
+        "membrane": "external",
+        "propertyName": "",
+        "rawEvent": "{\"eventIndex\":16,\"event\":\"call-result\",\"membrane\":\"external\",\"target\":{\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\"},\"callEventIndex\":14}",
+        "resolvedCaller": {
+          "propertyName": "setPassword"
+        }
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"[object]\"",
+        "eventIndex": 17,
+        "eventType": "get",
+        "membrane": "internal",
+        "propertyName": "loginForm",
+        "rawEvent": "{\"eventIndex\":17,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"prop\":\"loginForm\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"94ce9309768d1057f7c5e0cf80ffba57a512f277965932e8b8d1aa579553befb\"},\"value\":\"[object]\",\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"94ce9309768d1057f7c5e0cf80ffba57a512f277965932e8b8d1aa579553befb\",\"capsuleSourceUriLineRefInstanceId\":\"bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239\",\"prop\":\"login\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"user@example.com\"",
+        "eventIndex": 18,
+        "eventType": "get",
+        "membrane": "external",
+        "propertyName": "_email",
+        "rawEvent": "{\"eventIndex\":18,\"event\":\"get\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_email\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\"},\"value\":\"user@example.com\",\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"94ce9309768d1057f7c5e0cf80ffba57a512f277965932e8b8d1aa579553befb\",\"capsuleSourceUriLineRefInstanceId\":\"bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239\",\"prop\":\"login\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"validPassword123\"",
+        "eventIndex": 19,
+        "eventType": "get",
+        "membrane": "external",
+        "propertyName": "_password",
+        "rawEvent": "{\"eventIndex\":19,\"event\":\"get\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_password\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\"},\"value\":\"validPassword123\",\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"94ce9309768d1057f7c5e0cf80ffba57a512f277965932e8b8d1aa579553befb\",\"capsuleSourceUriLineRefInstanceId\":\"bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239\",\"prop\":\"login\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "null",
+        "eventIndex": 20,
+        "eventType": "get",
+        "membrane": "external",
+        "propertyName": "_error",
+        "rawEvent": "{\"eventIndex\":20,\"event\":\"get\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_error\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\"},\"value\":null,\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"94ce9309768d1057f7c5e0cf80ffba57a512f277965932e8b8d1aa579553befb\",\"capsuleSourceUriLineRefInstanceId\":\"bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239\",\"prop\":\"login\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 21,
+        "eventType": "call",
+        "membrane": "external",
+        "propertyName": "submit",
+        "rawEvent": "{\"eventIndex\":21,\"event\":\"call\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"submit\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\",\"capsuleSourceUriLineRefInstanceId\":\"799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab\"},\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/User.ts:30\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User\",\"capsuleSourceNameRefHash\":\"94ce9309768d1057f7c5e0cf80ffba57a512f277965932e8b8d1aa579553befb\",\"capsuleSourceUriLineRefInstanceId\":\"bb5cfc09b7b048e82f5cffdc109d62192b93b443ce62ce9c45b79e5c4de69239\",\"prop\":\"login\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "null",
+        "eventIndex": 22,
+        "eventType": "set",
+        "membrane": "internal",
+        "propertyName": "_error",
+        "rawEvent": "{\"eventIndex\":22,\"event\":\"set\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_error\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\"},\"value\":null,\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\",\"capsuleSourceUriLineRefInstanceId\":\"799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab\",\"prop\":\"submit\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          },
+          {
+            "propertyName": "validate"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 23,
+        "eventType": "call",
+        "membrane": "external",
+        "propertyName": "validate",
+        "rawEvent": "{\"eventIndex\":23,\"event\":\"call\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"validate\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\",\"capsuleSourceUriLineRefInstanceId\":\"799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab\"},\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\",\"capsuleSourceUriLineRefInstanceId\":\"799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab\",\"prop\":\"submit\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          },
+          {
+            "propertyName": "validate"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"user@example.com\"",
+        "eventIndex": 24,
+        "eventType": "get",
+        "membrane": "internal",
+        "propertyName": "_email",
+        "rawEvent": "{\"eventIndex\":24,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_email\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\"},\"value\":\"user@example.com\",\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\",\"capsuleSourceUriLineRefInstanceId\":\"799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab\",\"prop\":\"validate\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          },
+          {
+            "propertyName": "validate"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"user@example.com\"",
+        "eventIndex": 25,
+        "eventType": "get",
+        "membrane": "internal",
+        "propertyName": "_email",
+        "rawEvent": "{\"eventIndex\":25,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_email\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\"},\"value\":\"user@example.com\",\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\",\"capsuleSourceUriLineRefInstanceId\":\"799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab\",\"prop\":\"validate\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          },
+          {
+            "propertyName": "validate"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"validPassword123\"",
+        "eventIndex": 26,
+        "eventType": "get",
+        "membrane": "internal",
+        "propertyName": "_password",
+        "rawEvent": "{\"eventIndex\":26,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_password\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\"},\"value\":\"validPassword123\",\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\",\"capsuleSourceUriLineRefInstanceId\":\"799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab\",\"prop\":\"validate\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          },
+          {
+            "propertyName": "validate"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"validPassword123\"",
+        "eventIndex": 27,
+        "eventType": "get",
+        "membrane": "internal",
+        "propertyName": "_password",
+        "rawEvent": "{\"eventIndex\":27,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_password\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\"},\"value\":\"validPassword123\",\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\",\"capsuleSourceUriLineRefInstanceId\":\"799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab\",\"prop\":\"validate\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          }
+        ],
+        "callEventIndex": 23,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 28,
+        "eventType": "call-result",
+        "membrane": "external",
+        "propertyName": "",
+        "rawEvent": "{\"eventIndex\":28,\"event\":\"call-result\",\"membrane\":\"external\",\"target\":{\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\"},\"result\":[],\"callEventIndex\":23}",
+        "resolvedCaller": {
+          "propertyName": "validate"
+        }
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"[object]\"",
+        "eventIndex": 29,
+        "eventType": "get",
+        "membrane": "internal",
+        "propertyName": "httpClient",
+        "rawEvent": "{\"eventIndex\":29,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"httpClient\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\"},\"value\":\"[object]\",\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\",\"capsuleSourceUriLineRefInstanceId\":\"799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab\",\"prop\":\"submit\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"user@example.com\"",
+        "eventIndex": 30,
+        "eventType": "get",
+        "membrane": "internal",
+        "propertyName": "_email",
+        "rawEvent": "{\"eventIndex\":30,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_email\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\"},\"value\":\"user@example.com\",\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\",\"capsuleSourceUriLineRefInstanceId\":\"799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab\",\"prop\":\"submit\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"validPassword123\"",
+        "eventIndex": 31,
+        "eventType": "get",
+        "membrane": "internal",
+        "propertyName": "_password",
+        "rawEvent": "{\"eventIndex\":31,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_password\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\"},\"value\":\"validPassword123\",\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\",\"capsuleSourceUriLineRefInstanceId\":\"799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab\",\"prop\":\"submit\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          },
+          {
+            "propertyName": "post"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 32,
+        "eventType": "call",
+        "membrane": "external",
+        "propertyName": "post",
+        "rawEvent": "{\"eventIndex\":32,\"event\":\"call\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/HttpClient.ts:31\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/HttpClient.ts:31\",\"prop\":\"post\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/HttpClient.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient\",\"capsuleSourceNameRefHash\":\"64be7b9b8d0801ede06a478de6845de5da033958721ca558e72a0d69fc6d964f\",\"capsuleSourceUriLineRefInstanceId\":\"d74c34b6fc7c55bb99cbc096d2bcff36f6356ac7c8a9ccf1d455530414404610\"},\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\",\"capsuleSourceUriLineRefInstanceId\":\"799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab\",\"prop\":\"submit\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          },
+          {
+            "propertyName": "post"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "{\"#@stream44.studio/encapsulate/structs/Capsule\":{}}",
+        "eventIndex": 33,
+        "eventType": "get",
+        "membrane": "internal",
+        "propertyName": "authService",
+        "rawEvent": "{\"eventIndex\":33,\"event\":\"get\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/HttpClient.ts:31\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/HttpClient.ts:31\",\"prop\":\"authService\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/HttpClient.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient\",\"capsuleSourceNameRefHash\":\"64be7b9b8d0801ede06a478de6845de5da033958721ca558e72a0d69fc6d964f\"},\"value\":{\"#@stream44.studio/encapsulate/structs/Capsule\":{}},\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/HttpClient.ts:31\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/HttpClient.ts:31\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/HttpClient.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient\",\"capsuleSourceNameRefHash\":\"64be7b9b8d0801ede06a478de6845de5da033958721ca558e72a0d69fc6d964f\",\"capsuleSourceUriLineRefInstanceId\":\"d74c34b6fc7c55bb99cbc096d2bcff36f6356ac7c8a9ccf1d455530414404610\",\"prop\":\"post\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          },
+          {
+            "propertyName": "post"
+          },
+          {
+            "propertyName": "authenticate"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 34,
+        "eventType": "call",
+        "membrane": "external",
+        "propertyName": "authenticate",
+        "rawEvent": "{\"eventIndex\":34,\"event\":\"call\",\"membrane\":\"external\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/AuthService.ts:38\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/AuthService.ts:38\",\"prop\":\"authenticate\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/AuthService.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/AuthService\",\"capsuleSourceNameRefHash\":\"c58002eedea774011351c67a815202e8567f64fc9c584ea36254e0cef9e9c924\",\"capsuleSourceUriLineRefInstanceId\":\"322003d1d6f1409164d43cc22c22fdb6ed621cb6100c9bf901af838b53f65f17\"},\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/HttpClient.ts:31\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/HttpClient.ts:31\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/HttpClient.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient\",\"capsuleSourceNameRefHash\":\"64be7b9b8d0801ede06a478de6845de5da033958721ca558e72a0d69fc6d964f\",\"capsuleSourceUriLineRefInstanceId\":\"d74c34b6fc7c55bb99cbc096d2bcff36f6356ac7c8a9ccf1d455530414404610\",\"prop\":\"post\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          },
+          {
+            "propertyName": "post"
+          }
+        ],
+        "callEventIndex": 34,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 35,
+        "eventType": "call-result",
+        "membrane": "external",
+        "propertyName": "",
+        "rawEvent": "{\"eventIndex\":35,\"event\":\"call-result\",\"membrane\":\"external\",\"target\":{\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/AuthService.ts:38\"},\"result\":{\"success\":true,\"token\":\"token-user@example.com\",\"redirectUrl\":\"/dashboard\"},\"callEventIndex\":34}",
+        "resolvedCaller": {
+          "propertyName": "authenticate"
+        }
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          }
+        ],
+        "callEventIndex": 32,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 36,
+        "eventType": "call-result",
+        "membrane": "external",
+        "propertyName": "",
+        "rawEvent": "{\"eventIndex\":36,\"event\":\"call-result\",\"membrane\":\"external\",\"target\":{\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/HttpClient.ts:31\"},\"result\":{\"success\":true,\"token\":\"token-user@example.com\",\"redirectUrl\":\"/dashboard\"},\"callEventIndex\":32}",
+        "resolvedCaller": {
+          "propertyName": "post"
+        }
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"\"",
+        "eventIndex": 37,
+        "eventType": "set",
+        "membrane": "internal",
+        "propertyName": "_email",
+        "rawEvent": "{\"eventIndex\":37,\"event\":\"set\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_email\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\"},\"value\":\"\",\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\",\"capsuleSourceUriLineRefInstanceId\":\"799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab\",\"prop\":\"submit\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "\"\"",
+        "eventIndex": 38,
+        "eventType": "set",
+        "membrane": "internal",
+        "propertyName": "_password",
+        "rawEvent": "{\"eventIndex\":38,\"event\":\"set\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_password\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\"},\"value\":\"\",\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\",\"capsuleSourceUriLineRefInstanceId\":\"799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab\",\"prop\":\"submit\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          },
+          {
+            "propertyName": "submit"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "dataSeen": "null",
+        "eventIndex": 39,
+        "eventType": "set",
+        "membrane": "internal",
+        "propertyName": "_error",
+        "rawEvent": "{\"eventIndex\":39,\"event\":\"set\",\"membrane\":\"internal\",\"target\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"prop\":\"_error\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\"},\"value\":null,\"caller\":{\"capsuleSourceLineRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\",\"capsuleSourceNameRef\":\"examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm\",\"capsuleSourceNameRefHash\":\"e987eb2ea93428a88e256a38607cb3645270297367cb28f264c4093cb3c57aef\",\"capsuleSourceUriLineRefInstanceId\":\"799996b079c633120951a088bb746adc6edc1c904872088fe138a5c98e9ab1ab\",\"prop\":\"submit\"}}"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "login"
+          }
+        ],
+        "callEventIndex": 21,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 40,
+        "eventType": "call-result",
+        "membrane": "external",
+        "propertyName": "",
+        "rawEvent": "{\"eventIndex\":40,\"event\":\"call-result\",\"membrane\":\"external\",\"target\":{\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:83\"},\"result\":{\"success\":true,\"redirectUrl\":\"/dashboard\",\"token\":\"token-user@example.com\"},\"callEventIndex\":21}",
+        "resolvedCaller": {
+          "propertyName": "submit"
+        }
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          }
+        ],
+        "callEventIndex": 2,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 41,
+        "eventType": "call-result",
+        "membrane": "external",
+        "propertyName": "",
+        "rawEvent": "{\"eventIndex\":41,\"event\":\"call-result\",\"membrane\":\"external\",\"target\":{\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/caps/User.ts:30\"},\"result\":{\"success\":true,\"redirectUrl\":\"/dashboard\",\"token\":\"token-user@example.com\"},\"callEventIndex\":2}",
+        "resolvedCaller": {
+          "propertyName": "login"
+        }
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [],
+        "callEventIndex": 0,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 42,
+        "eventType": "call-result",
+        "membrane": "external",
+        "propertyName": "",
+        "rawEvent": "{\"eventIndex\":42,\"event\":\"call-result\",\"membrane\":\"external\",\"target\":{\"spineContractCapsuleInstanceId\":\"$examples/Codepath-SimplePasswordLogin/0A-FullStack1.ts:53\"},\"result\":{\"success\":true,\"redirectUrl\":\"/dashboard\",\"token\":\"token-user@example.com\"},\"callEventIndex\":0}",
+        "resolvedCaller": {
+          "propertyName": "runModel"
+        }
+      }
+    ]
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1 > getMembraneEvents #1": {
+    "#": "MembraneEvents",
+    "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+    "list": [
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerLine": 184,
+        "eventIndex": 0,
+        "eventType": "call",
+        "propertyName": "runModel"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 1,
+        "eventType": "get",
+        "propertyName": "user"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 2,
+        "eventType": "call",
+        "propertyName": "login"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 3,
+        "eventType": "get",
+        "propertyName": "loginForm"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 4,
+        "eventType": "get",
+        "propertyName": "_email"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 5,
+        "eventType": "get",
+        "propertyName": "_password"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 6,
+        "eventType": "get",
+        "propertyName": "_error"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 7,
+        "eventType": "call",
+        "propertyName": "setEmail"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 8,
+        "eventType": "set",
+        "propertyName": "_email"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": 7,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 9,
+        "eventType": "call-result",
+        "propertyName": ""
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 10,
+        "eventType": "get",
+        "propertyName": "loginForm"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 11,
+        "eventType": "get",
+        "propertyName": "_email"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 12,
+        "eventType": "get",
+        "propertyName": "_password"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 13,
+        "eventType": "get",
+        "propertyName": "_error"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 14,
+        "eventType": "call",
+        "propertyName": "setPassword"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 15,
+        "eventType": "set",
+        "propertyName": "_password"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": 14,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 16,
+        "eventType": "call-result",
+        "propertyName": ""
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 17,
+        "eventType": "get",
+        "propertyName": "loginForm"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 18,
+        "eventType": "get",
+        "propertyName": "_email"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 19,
+        "eventType": "get",
+        "propertyName": "_password"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 20,
+        "eventType": "get",
+        "propertyName": "_error"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 21,
+        "eventType": "call",
+        "propertyName": "submit"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 22,
+        "eventType": "set",
+        "propertyName": "_error"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 23,
+        "eventType": "call",
+        "propertyName": "validate"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 24,
+        "eventType": "get",
+        "propertyName": "_email"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 25,
+        "eventType": "get",
+        "propertyName": "_email"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 26,
+        "eventType": "get",
+        "propertyName": "_password"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 27,
+        "eventType": "get",
+        "propertyName": "_password"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": 23,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 28,
+        "eventType": "call-result",
+        "propertyName": ""
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 29,
+        "eventType": "get",
+        "propertyName": "httpClient"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 30,
+        "eventType": "get",
+        "propertyName": "_email"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 31,
+        "eventType": "get",
+        "propertyName": "_password"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 32,
+        "eventType": "call",
+        "propertyName": "post"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 33,
+        "eventType": "get",
+        "propertyName": "authService"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 34,
+        "eventType": "call",
+        "propertyName": "authenticate"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": 34,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 35,
+        "eventType": "call-result",
+        "propertyName": ""
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": 32,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 36,
+        "eventType": "call-result",
+        "propertyName": ""
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 37,
+        "eventType": "set",
+        "propertyName": "_email"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 38,
+        "eventType": "set",
+        "propertyName": "_password"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 39,
+        "eventType": "set",
+        "propertyName": "_error"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": 21,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 40,
+        "eventType": "call-result",
+        "propertyName": ""
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": 2,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 41,
+        "eventType": "call-result",
+        "propertyName": ""
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": 0,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 42,
+        "eventType": "call-result",
+        "propertyName": ""
+      }
+    ]
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1 > getSpineDeclarationTree #1": {
+    "#": "SpineDeclarationTree",
+    "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+    "rootCapsule": {
+      "#": "Capsule",
+      "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+      "mappings": {
+        "#": "Capsule/Mappings",
+        "#@stream44.studio/encapsulate/structs/Capsule": {
+          "#": "Capsule/PropertyContractMapping",
+          "capsule": {
+            "#": "Capsule",
+            "$id": "@stream44.studio/encapsulate/structs/Capsule",
+            "properties": {
+              "#": "Capsule/Properties"
+            }
+          },
+          "isPropertyContractDelegate": true
+        },
+        "user": {
+          "#": "Capsule/PropertyMapping",
+          "capsule": {
+            "#": "Capsule",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "mappings": {
+              "#": "Capsule/Mappings",
+              "#@stream44.studio/encapsulate/structs/Capsule": {
+                "#": "Capsule/PropertyContractMapping",
+                "capsule": {
+                  "#": "Capsule",
+                  "$id": "@stream44.studio/encapsulate/structs/Capsule",
+                  "properties": {
+                    "#": "Capsule/Properties"
+                  }
+                },
+                "isPropertyContractDelegate": true
+              },
+              "loginForm": {
+                "#": "Capsule/PropertyMapping",
+                "capsule": {
+                  "#": "Capsule",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+                  "mappings": {
+                    "#": "Capsule/Mappings",
+                    "#@stream44.studio/encapsulate/structs/Capsule": {
+                      "#": "Capsule/PropertyContractMapping",
+                      "capsule": {
+                        "#": "Capsule",
+                        "$id": "@stream44.studio/encapsulate/structs/Capsule",
+                        "properties": {
+                          "#": "Capsule/Properties"
+                        }
+                      },
+                      "isPropertyContractDelegate": true
+                    },
+                    "httpClient": {
+                      "#": "Capsule/PropertyMapping",
+                      "capsule": {
+                        "#": "Capsule",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient",
+                        "mappings": {
+                          "#": "Capsule/Mappings",
+                          "#@stream44.studio/encapsulate/structs/Capsule": {
+                            "#": "Capsule/PropertyContractMapping",
+                            "capsule": {
+                              "#": "Capsule",
+                              "$id": "@stream44.studio/encapsulate/structs/Capsule",
+                              "properties": {
+                                "#": "Capsule/Properties"
+                              }
+                            },
+                            "isPropertyContractDelegate": true
+                          },
+                          "authService": {
+                            "#": "Capsule/PropertyMapping",
+                            "capsule": {
+                              "#": "Capsule",
+                              "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/AuthService",
+                              "mappings": {
+                                "#": "Capsule/Mappings",
+                                "#@stream44.studio/encapsulate/structs/Capsule": {
+                                  "#": "Capsule/PropertyContractMapping",
+                                  "capsule": {
+                                    "#": "Capsule",
+                                    "$id": "@stream44.studio/encapsulate/structs/Capsule",
+                                    "properties": {
+                                      "#": "Capsule/Properties"
+                                    }
+                                  },
+                                  "isPropertyContractDelegate": true
+                                }
+                              },
+                              "properties": {
+                                "#": "Capsule/Properties"
+                              }
+                            }
+                          }
+                        },
+                        "properties": {
+                          "#": "Capsule/Properties"
+                        }
+                      }
+                    }
+                  },
+                  "properties": {
+                    "#": "Capsule/Properties"
+                  }
+                }
+              }
+            },
+            "properties": {
+              "#": "Capsule/Properties"
+            }
+          }
+        }
+      },
+      "properties": {
+        "#": "Capsule/Properties"
+      }
+    }
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1 > getSpineInstanceTree #1": {
+    "#": "SpineInstanceTree",
+    "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+    "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1:53": {
+      "#": "CapsuleInstance",
+      "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1:53",
+      "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1:53",
+      "children": {
+        "#": "CapsuleInstance/Children",
+        "list": [
+          {
+            "#": "CapsuleInstance",
+            "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+            "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+            "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+          },
+          {
+            "#": "CapsuleInstance",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User:30",
+            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User:30",
+            "children": {
+              "#": "CapsuleInstance/Children",
+              "list": [
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                  "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                  "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                },
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm:83",
+                  "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm:83",
+                  "children": {
+                    "#": "CapsuleInstance/Children",
+                    "list": [
+                      {
+                        "#": "CapsuleInstance",
+                        "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                        "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                        "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                      },
+                      {
+                        "#": "CapsuleInstance",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient:31",
+                        "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient",
+                        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient:31",
+                        "children": {
+                          "#": "CapsuleInstance/Children",
+                          "list": [
+                            {
+                              "#": "CapsuleInstance",
+                              "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                              "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                              "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                            },
+                            {
+                              "#": "CapsuleInstance",
+                              "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/AuthService:38",
+                              "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/AuthService",
+                              "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/AuthService:38",
+                              "children": {
+                                "#": "CapsuleInstance/Children",
+                                "list": [
+                                  {
+                                    "#": "CapsuleInstance",
+                                    "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                                    "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                                    "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1 > listCapsules #1": {
+    "#": "Capsules",
+    "list": [
+      {
+        "#": "Capsule",
+        "$id": "@stream44.studio/encapsulate/structs/Capsule"
+      },
+      {
+        "#": "Capsule",
+        "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1"
+      },
+      {
+        "#": "Capsule",
+        "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/AuthService"
+      },
+      {
+        "#": "Capsule",
+        "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient"
+      },
+      {
+        "#": "Capsule",
+        "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm"
+      },
+      {
+        "#": "Capsule",
+        "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User"
       }
     ]
   },
@@ -3619,6 +6862,16 @@
       }
     }
   },
+  "Instance: @stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1 > getEventLog #1": {
+    "#": "EventLog",
+    "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1",
+    "entries": []
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1 > getMembraneEvents #1": {
+    "#": "MembraneEvents",
+    "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1",
+    "list": []
+  },
   "Instance: @stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1 > getSpineDeclarationTree #1": {
     "#": "SpineDeclarationTree",
     "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1",
@@ -5947,6 +9200,113 @@
       {
         "#": "Capsule",
         "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row"
+      }
+    ]
+  },
+  "Membrane Events (0A-SimpleExecution) > getEventLog snapshot #1": {
+    "#": "EventLog",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+    "entries": [
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          }
+        ],
+        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerLine": 157,
+        "eventIndex": 0,
+        "eventType": "call",
+        "propertyName": "runModel"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          },
+          {
+            "propertyName": "greet"
+          }
+        ],
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 1,
+        "eventType": "call",
+        "propertyName": "greet"
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [
+          {
+            "propertyName": "runModel"
+          }
+        ],
+        "callEventIndex": 1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 2,
+        "eventType": "call-result",
+        "propertyName": "",
+        "resolvedCaller": {
+          "propertyName": "greet"
+        }
+      },
+      {
+        "#": "EventLogEntry",
+        "activeInvocations": [],
+        "callEventIndex": 0,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 3,
+        "eventType": "call-result",
+        "propertyName": "",
+        "resolvedCaller": {
+          "propertyName": "runModel"
+        }
+      }
+    ]
+  },
+  "Membrane Events (0A-SimpleExecution) > getMembraneEvents snapshot #1": {
+    "#": "MembraneEvents",
+    "$id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
+    "list": [
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "/Users/christoph/spaces/genesis/t44.sh/packages/t44/standalone-rt.ts",
+        "callerLine": 157,
+        "eventIndex": 0,
+        "eventType": "call",
+        "propertyName": "runModel"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": -1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 1,
+        "eventType": "call",
+        "propertyName": "greet"
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": 1,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 2,
+        "eventType": "call-result",
+        "propertyName": ""
+      },
+      {
+        "#": "MembraneEvent",
+        "callEventIndex": 0,
+        "callerFilepath": "",
+        "callerLine": -1,
+        "eventIndex": 3,
+        "eventType": "call-result",
+        "propertyName": ""
       }
     ]
   }

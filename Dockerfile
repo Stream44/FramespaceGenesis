@@ -18,5 +18,7 @@ RUN bun install
 # Copy the rest of the project
 COPY --chown=bun:bun . .
 
-# Default: run tests
-CMD ["bun", "test", "--bail"]
+# Default: run model server (use CMD ["bun", "test", "--bail"] for testing)
+ENV PORT=4000
+EXPOSE 4000
+CMD ["bun", "run", "L3-model-server/server.ts"]

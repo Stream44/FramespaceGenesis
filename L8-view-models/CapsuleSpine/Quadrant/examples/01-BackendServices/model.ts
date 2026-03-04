@@ -1,7 +1,7 @@
 
 export const MODEL_NAME = `@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-BackendServices`
 
-export async function runModel({ run }) {
+export async function runModel({ run }: { run: any }) {
 
     return await run(async ({ encapsulate, CapsulePropertyTypes, makeImportStack }: any) => {
         const spine = await encapsulate({
@@ -14,8 +14,8 @@ export async function runModel({ run }) {
                             framespaces: {
                                 '@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/ModelQueryMethods': {
                                     visualizationMethod: {
-                                        'getVisualization': {
-                                            label: 'Quadrant View'
+                                        'getTableView': {
+                                            label: 'Quadrant Table View'
                                         }
                                     }
                                 },

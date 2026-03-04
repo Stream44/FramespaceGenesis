@@ -3,8 +3,31 @@
 import * as bunTest from 'bun:test'
 import { join } from 'path'
 import { readdir, stat } from 'fs/promises'
+import { readFileSync } from 'fs'
 import { run } from '@stream44.studio/t44/standalone-rt'
 import { normalizeForSnapshot } from '../../L3-model-server/lib'
+
+function readActiveEngines(): string[] | null {
+    try {
+        const configPath = join(import.meta.dir, '..', '..', 'framespace.yaml')
+        const content = readFileSync(configPath, 'utf-8')
+        const engines: string[] = []
+        let inEngines = false
+        for (const line of content.split('\n')) {
+            const trimmed = line.trim()
+            if (trimmed === 'engines:') { inEngines = true; continue }
+            if (inEngines && trimmed.startsWith('- ')) {
+                engines.push(trimmed.slice(2).trim())
+            } else if (inEngines && trimmed && !trimmed.startsWith('#')) {
+                inEngines = false
+            }
+        }
+        if (engines.length === 0) return null
+        return engines
+    } catch {
+        return null
+    }
+}
 
 const {
     test: { describe, it, expect, expectSnapshotMatch },
@@ -71,7 +94,9 @@ for (const dir of exampleDirs) {
     }
 }
 
-const engineNames = modelEngines.getEngineNames()
+const allEngineNames = modelEngines.getEngineNames()
+const activeEngines = readActiveEngines()
+const engineNames = activeEngines ?? allEngineNames
 const packageRoot = join(import.meta.dir, '..', '..')
 const normalize = (obj: any) => normalizeForSnapshot(obj, packageRoot)
 

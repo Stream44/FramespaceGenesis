@@ -84,5 +84,19 @@ for (const { spineInstanceTreeId } of trees) {
             const result = await api.getSpineInstanceTree(spineInstanceTreeId)
             await expectSnapshotMatch(normalize(result))
         })
+
+        it('getMembraneEvents', async () => {
+            const result = await api.getMembraneEvents(spineInstanceTreeId)
+            expect(result['#']).toBe('MembraneEvents')
+            expect(result.$id).toBe(spineInstanceTreeId)
+            await expectSnapshotMatch(normalize(result))
+        })
+
+        it('getEventLog', async () => {
+            const result = await api.getEventLog(spineInstanceTreeId)
+            expect(result['#']).toBe('EventLog')
+            expect(result.$id).toBe(spineInstanceTreeId)
+            await expectSnapshotMatch(normalize(result))
+        })
     })
 }

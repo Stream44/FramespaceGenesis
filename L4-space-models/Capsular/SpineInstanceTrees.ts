@@ -55,9 +55,19 @@ export async function capsule({
                         for (const model of models) {
                             const { sitRoot } = model.result
                             const sitDirName = model.name.replace(/\//g, '~')
-                            const sitFile = join(sitRoot, '.~o/encapsulate.dev/spine-instances', sitDirName, 'root-capsule.sit.json')
+                            const sitDir = join(sitRoot, '.~o/encapsulate.dev/spine-instances', sitDirName)
+                            const sitFile = join(sitDir, 'root-capsule.sit.json')
                             if (await exists(sitFile)) {
                                 await opts.engine.importSitFile(sitFile, { reset: opts.reset })
+
+                                // Import membrane events if .events.json exists alongside .sit.json
+                                const eventsFile = join(sitDir, 'root-capsule.events.json')
+                                if (await exists(eventsFile)) {
+                                    const eventsContent = await Bun.file(eventsFile).json()
+                                    if (typeof opts.engine.importMembraneEvents === 'function') {
+                                        await opts.engine.importMembraneEvents(eventsContent, model.name)
+                                    }
+                                }
                             }
                         }
 

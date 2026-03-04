@@ -84,6 +84,30 @@ export async function capsule({
                                     '@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel': {},
                                 },
                             },
+                            getMembraneEvents: {
+                                args: [
+                                    { name: 'spineInstanceTreeId', type: 'string' },
+                                ],
+                                description: 'Get all membrane events for a spine instance tree, ordered by eventIndex.',
+                                tags: {
+                                    '@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel': {
+                                        discovery: 'Framespace/Workbench/listSpineInstanceTrees',
+                                        filterField: '$id',
+                                    },
+                                },
+                            },
+                            getEventLog: {
+                                args: [
+                                    { name: 'spineInstanceTreeId', type: 'string' },
+                                ],
+                                description: 'Get a structured event log with caller resolution and active invocation tracking.',
+                                tags: {
+                                    '@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel': {
+                                        discovery: 'Framespace/Workbench/listSpineInstanceTrees',
+                                        filterField: '$id',
+                                    },
+                                },
+                            },
                         },
                     },
                 },
@@ -363,6 +387,144 @@ export async function capsule({
                         }
 
                         return node
+                    }
+                },
+
+                /**
+                 * Get all membrane events for a spine instance tree.
+                 * Returns { '#': 'MembraneEvents', list: [...] }.
+                 */
+                getMembraneEvents: {
+                    type: CapsulePropertyTypes.Function,
+                    value: async function (this: any, { graph, server }: any, spineInstanceTreeId: string): Promise<any> {
+                        if (!spineInstanceTreeId) throw new Error('getMembraneEvents: spineInstanceTreeId is required')
+                        const events = await graph.getMembraneEvents(spineInstanceTreeId)
+                        const list = events.map((e: any) => ({
+                            '#': 'MembraneEvent',
+                            eventIndex: e.eventIndex,
+                            eventType: e.eventType,
+                            capsuleSourceLineRef: e.capsuleSourceLineRef,
+                            capsuleSourceNameRef: e.capsuleSourceNameRef,
+                            propertyName: e.propertyName,
+                            callerFilepath: e.callerFilepath,
+                            callerLine: e.callerLine,
+                            callEventIndex: e.callEventIndex,
+                        }))
+                        return { '#': 'MembraneEvents', $id: spineInstanceTreeId, list }
+                    }
+                },
+
+                /**
+                 * Get a structured event log with caller resolution and active invocation tracking.
+                 * Resolves call/call-result pairs, computes activeInvocations at each step,
+                 * and tracks data seen (get/set values).
+                 * Returns { '#': 'EventLog', entries: [...] }.
+                 */
+                getEventLog: {
+                    type: CapsulePropertyTypes.Function,
+                    value: async function (this: any, { graph, server }: any, spineInstanceTreeId: string): Promise<any> {
+                        if (!spineInstanceTreeId) throw new Error('getEventLog: spineInstanceTreeId is required')
+                        const events = await graph.getMembraneEvents(spineInstanceTreeId)
+
+                        // Pre-fetch capsule property info to detect mapping properties
+                        // Build a lookup: capsuleSourceNameRef -> propName -> { propertyType, mappingTarget }
+                        const capsuleNames = await graph.getCapsuleNamesBySpineTree(spineInstanceTreeId)
+                        const relations = await graph.fetchCapsuleRelations(spineInstanceTreeId, capsuleNames)
+                        const propertyLookup = new Map<string, Map<string, { propertyType: string, mappingTarget?: string }>>()
+
+                        // Build property lookup from relations.properties
+                        for (const [capsuleName, props] of Object.entries(relations.properties || {}) as [string, any[]][]) {
+                            const capsuleInfo = relations.capsuleInfo?.[capsuleName]
+                            const capsuleRef = capsuleInfo?.capsuleSourceNameRef || capsuleName
+                            if (!propertyLookup.has(capsuleRef)) {
+                                propertyLookup.set(capsuleRef, new Map())
+                            }
+                            const propMap = propertyLookup.get(capsuleRef)!
+                            for (const prop of props) {
+                                propMap.set(prop.propName, { propertyType: prop.propertyType })
+                            }
+                        }
+
+                        // Add mapping targets from relations.mappings
+                        for (const [capsuleName, mappings] of Object.entries(relations.mappings || {}) as [string, any[]][]) {
+                            const capsuleInfo = relations.capsuleInfo?.[capsuleName]
+                            const capsuleRef = capsuleInfo?.capsuleSourceNameRef || capsuleName
+                            const propMap = propertyLookup.get(capsuleRef)
+                            if (propMap) {
+                                for (const mapping of mappings) {
+                                    const existing = propMap.get(mapping.propName)
+                                    if (existing) {
+                                        // Look up target capsule's capsuleSourceNameRef
+                                        const targetInfo = relations.capsuleInfo?.[mapping.target]
+                                        existing.mappingTarget = targetInfo?.capsuleSourceNameRef || mapping.target
+                                    }
+                                }
+                            }
+                        }
+
+                        // Build call stack to track active invocations
+                        const activeInvocations: Map<number, any> = new Map()
+                        const entries: any[] = []
+
+                        for (const evt of events) {
+                            const entry: any = {
+                                '#': 'EventLogEntry',
+                                eventIndex: evt.eventIndex,
+                                eventType: evt.eventType,
+                                membrane: evt.membrane || 'external',
+                                capsuleSourceLineRef: evt.capsuleSourceLineRef,
+                                capsuleSourceNameRef: evt.capsuleSourceNameRef,
+                                propertyName: evt.propertyName,
+                                callerFilepath: evt.callerFilepath,
+                                callerLine: evt.callerLine,
+                            }
+
+                            if (evt.eventType === 'call') {
+                                activeInvocations.set(evt.eventIndex, {
+                                    capsuleSourceLineRef: evt.capsuleSourceLineRef,
+                                    capsuleSourceNameRef: evt.capsuleSourceNameRef,
+                                    propertyName: evt.propertyName,
+                                })
+                            } else if (evt.eventType === 'call-result' && evt.callEventIndex >= 0) {
+                                entry.callEventIndex = evt.callEventIndex
+                                const callInfo = activeInvocations.get(evt.callEventIndex)
+                                if (callInfo) {
+                                    entry.resolvedCaller = callInfo
+                                    activeInvocations.delete(evt.callEventIndex)
+                                }
+                            }
+
+                            if (evt.eventType === 'get' || evt.eventType === 'set') {
+                                // Always include dataSeen so client can detect "set to empty"
+                                entry.dataSeen = evt.value ?? ''
+
+                                // Check if this property is a mapping
+                                const capsuleRef = evt.capsuleSourceNameRef || ''
+                                const propInfo = propertyLookup.get(capsuleRef)?.get(evt.propertyName)
+                                const isMapping = propInfo?.propertyType === 'Mapping' || propInfo?.propertyType?.endsWith('.Mapping')
+
+                                // Also detect mapping by value: if value is [object Object] or rawEvent.value has capsuleSourceNameRef
+                                const rawVal = evt.rawEvent?.value
+                                const valueIsCapsuleRef = rawVal && typeof rawVal === 'object' && rawVal.capsuleSourceNameRef
+                                const valueIsObjectString = evt.value === '[object Object]'
+
+                                if ((isMapping && propInfo?.mappingTarget) || valueIsCapsuleRef) {
+                                    entry.isMappingRef = true
+                                    entry.mappingTargetRef = propInfo?.mappingTarget || rawVal?.capsuleSourceNameRef
+                                } else if (valueIsObjectString) {
+                                    entry.isMappingRef = true
+                                    entry.mappingTargetRef = null
+                                }
+                            }
+
+                            // Pass through full raw encapsulate event if available
+                            if (evt.rawEvent) entry.rawEvent = evt.rawEvent
+
+                            entry.activeInvocations = [...activeInvocations.values()]
+                            entries.push(entry)
+                        }
+
+                        return { '#': 'EventLog', $id: spineInstanceTreeId, entries }
                     }
                 },
 

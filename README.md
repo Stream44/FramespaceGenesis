@@ -38,6 +38,10 @@ bun run test
 
 ![Preview Quandrant View](./docs/PreviewQuadrant.png)
 
+### Codepath View Example
+
+![Preview Codepath View](./docs/PreviewCodepath.png)
+
 
 Problem Statement
 ---

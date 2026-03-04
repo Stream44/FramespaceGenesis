@@ -16,7 +16,7 @@ export type JsonObject = { [key: string]: JsonValue };
 
 export type Rep = {
     name: string;
-    match: (data: JsonValue) => boolean;
+    match?: (data: JsonValue) => boolean;
     render: (data: JsonObject, ctx: RepContext) => JSX.Element;
 };
 
@@ -29,6 +29,7 @@ export type RepContext = {
     spineInstanceTreeId?: string;
     apiCall?: (path: string, args?: Record<string, string>, engine?: string) => Promise<any>;
     lib?: WorkbenchLib;
+    activeEventIndex?: () => number;
 };
 
 const repRegistry: Rep[] = [];
@@ -43,7 +44,9 @@ export function findRep(data: JsonValue): Rep | null {
         const hashType = (data as JsonObject)["#"];
         if (typeof hashType === "string") {
             for (const rep of repRegistry) {
-                if (rep.match(data)) {
+                // If match is provided, use it; otherwise match by name against '#'
+                const matches = rep.match ? rep.match(data) : rep.name === hashType;
+                if (matches) {
                     vlog("findRep", `# = "${hashType}" → rep "${rep.name}"`);
                     return rep;
                 }
@@ -241,6 +244,7 @@ export function RenderItem(props: {
     spineInstanceTreeId?: string;
     apiCall?: (path: string, args?: Record<string, string>, engine?: string) => Promise<any>;
     lib?: WorkbenchLib;
+    activeEventIndex?: () => number;
 }): JSX.Element {
     const rep = () => findRep(props.data);
     vlog("RenderItem", "parentRep:", props.parentRep ?? "(none)", "data #:", typeof props.data === "object" && props.data !== null && !Array.isArray(props.data) ? (props.data as any)["#"] ?? "(no #)" : typeof props.data);
@@ -262,6 +266,7 @@ export function RenderItem(props: {
                 spineInstanceTreeId: props.spineInstanceTreeId,
                 apiCall: props.apiCall,
                 lib: props.lib,
+                activeEventIndex: props.activeEventIndex,
             })}
         </Show>
     );
@@ -277,6 +282,7 @@ export function ResultView(props: {
     spineInstanceTreeId?: string;
     apiCall?: (path: string, args?: Record<string, string>, engine?: string) => Promise<any>;
     lib?: WorkbenchLib;
+    activeEventIndex?: () => number;
 }): JSX.Element {
     return (
         <div class="result-view">
@@ -288,6 +294,7 @@ export function ResultView(props: {
                 spineInstanceTreeId={props.spineInstanceTreeId}
                 apiCall={props.apiCall}
                 lib={props.lib}
+                activeEventIndex={props.activeEventIndex}
             />
         </div>
     );

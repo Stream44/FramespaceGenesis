@@ -28,6 +28,7 @@
 | **SpineContract** | `id` (TEXT) — `<lineRef>::spine::<uri>` | `contractUri`, `capsuleSourceLineRef` | A spine contract implemented by a capsule. |
 | **PropertyContract** | `id` (TEXT) — `<lineRef>::pc::<spine>::<key>` | `contractKey`, `propertyContractUri`, `capsuleSourceLineRef`, `spineContractId`, `options` (JSON TEXT) | A property contract group within a spine contract. |
 | **CapsuleProperty** | `id` (TEXT) — `<lineRef>::prop::<name>` | `name`, `propertyType`, `valueType`, `valueExpression`, `mappedModuleUri`, `declarationLine`, `definitionStartLine`, `definitionEndLine`, `propertyContractDelegate`, `capsuleSourceLineRef`, `propertyContractId` | A single property within a property contract. |
+| **MembraneEvent** | `id` (TEXT) — `<treeId>::evt::<index>` | `eventIndex`, `spineInstanceTreeId`, `eventType`, `membrane` (`external`/`internal`), `capsuleSourceLineRef`, `capsuleSourceNameRef`, `capsuleSourceNameRefHash`, `propertyName`, `value`, `result`, `callerFilepath`, `callerLine`, `callEventIndex` | A runtime membrane event captured during capsule execution. |
 
 ### Edge Tables (Junction Tables)
 
@@ -44,6 +45,7 @@ All edge tables have composite PK `(from_id TEXT, to_id TEXT)`.
 | **DELEGATES_TO** | CapsuleProperty.id → PropertyContract.id | A delegate property points to its source property contract. |
 | **INSTANCE_OF** | CapsuleInstance.instanceId → Capsule.scopedId | Links a runtime instance to its capsule definition. |
 | **PARENT_INSTANCE** | CapsuleInstance.instanceId → CapsuleInstance.instanceId | Links a child instance to its parent instance in the tree. |
+| **HAS_MEMBRANE_EVENT** | Capsule.scopedId → MembraneEvent.id | Links a capsule to its captured membrane events. |
 
 ### Indexes
 
@@ -142,7 +144,11 @@ Each `.csts.json` file contains entries keyed by `capsuleSourceLineRef`:
    - Creates `CapsuleInstance` rows for each entry in `capsuleInstances`
    - Creates `INSTANCE_OF` edges — finds matching Capsule via SQL `WHERE spineInstanceTreeId = ? AND capsuleName = ?`
    - Creates `PARENT_INSTANCE` edges based on `parentCapsuleSourceUriLineRefInstanceId`
-4. **`linkMappings()`** — post-import bulk SQL edge creation:
+4. **`importMembraneEvents(events, spineInstanceTreeId)`** — imports captured membrane events:
+   - Creates `MembraneEvent` rows via `mergeNode` with event data (eventType, capsuleSourceLineRef, propertyName, value, result, caller info)
+   - Creates `HAS_MEMBRANE_EVENT` edges from owning Capsule to each event node via `mergeEdge`
+   - Returns `{ imported }` count
+5. **`linkMappings()`** — post-import bulk SQL edge creation:
    - `MAPS_TO`: bulk `INSERT OR IGNORE` joining `CapsuleProperty` → `Capsule` in same tree via `COALESCE(target1.scopedId, target2.scopedId)`, matching by `capsuleName` or `CapsuleSource.moduleUri`
    - `EXTENDS`: bulk `INSERT OR IGNORE` joining `CapsuleSource.extendsCapsuleUri` → `Capsule` in same tree via same `COALESCE` pattern
 
@@ -171,6 +177,8 @@ All queries are implemented as `_`-prefixed methods in `QueryAPI.ts`. The public
 | `getRootInstance(spineInstanceTreeId)` | Root instance (no `PARENT_INSTANCE` edge via `NOT EXISTS`) | `{ instanceId, capsuleName, capsuleSourceUriLineRef }` or `null` |
 | `getChildInstances(parentInstanceId)` | Children of an instance | `[{ instanceId, capsuleName, capsuleSourceUriLineRef }]` sorted by `capsuleName` |
 | `fetchInstanceRelations(spineInstanceTreeId)` | Batch instance data | `{ instances, parentMap, capsuleInfo }` |
+| `_getMembraneEvents(spineInstanceTreeId)` | All membrane events in tree | `MembraneEvent[]` sorted by `eventIndex` |
+| `_getMembraneEventsByCapsule(spineInstanceTreeId, capsuleSourceLineRef)` | Membrane events for one capsule | `MembraneEvent[]` sorted by `eventIndex` |
 
 ### `fetchCapsuleRelations` Return Shape
 

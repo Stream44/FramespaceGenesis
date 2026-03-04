@@ -234,6 +234,8 @@
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/Storage:33"
     }
   ],
+  "0D-MappedNewCapsule > getMembraneEvents #1": [],
+  "0D-MappedNewCapsule > getMembraneEventsByCapsule #1": [],
   "0D-MappedNewCapsule > getRootInstance #1": {
     "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule",
     "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule:28"

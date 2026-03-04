@@ -169,6 +169,27 @@ export async function capsule({
                             to_id TEXT NOT NULL,
                             PRIMARY KEY (from_id, to_id)
                         )`)
+                        db.run(`CREATE TABLE IF NOT EXISTS MembraneEvent (
+                            id TEXT PRIMARY KEY,
+                            eventIndex INTEGER,
+                            spineInstanceTreeId TEXT,
+                            eventType TEXT,
+                            membrane TEXT,
+                            capsuleSourceLineRef TEXT,
+                            capsuleSourceNameRef TEXT,
+                            capsuleSourceNameRefHash TEXT,
+                            propertyName TEXT,
+                            value TEXT,
+                            result TEXT,
+                            callerFilepath TEXT,
+                            callerLine INTEGER,
+                            callEventIndex INTEGER
+                        )`)
+                        db.run(`CREATE TABLE IF NOT EXISTS HAS_MEMBRANE_EVENT (
+                            from_id TEXT NOT NULL,
+                            to_id TEXT NOT NULL,
+                            PRIMARY KEY (from_id, to_id)
+                        )`)
                         db.run(`CREATE TABLE IF NOT EXISTS CapsuleInstance (
                             instanceId TEXT PRIMARY KEY,
                             capsuleName TEXT,
@@ -577,6 +598,42 @@ export async function capsule({
                         }
 
                         return { instances, parentMap, capsuleInfo }
+                    }
+                },
+
+                // =============================================================
+                // Membrane Event Query Methods
+                // =============================================================
+
+                /**
+                 * Get all membrane events for a spine instance tree, ordered by eventIndex.
+                 */
+                _getMembraneEvents: {
+                    type: CapsulePropertyTypes.Function,
+                    value: async function (this: any, spineInstanceTreeId: string): Promise<any[]> {
+                        if (!spineInstanceTreeId) throw new Error('_getMembraneEvents: spineInstanceTreeId is required')
+                        const db = this._ensureConnection()
+                        return db.query(`
+                            SELECT * FROM MembraneEvent
+                            WHERE spineInstanceTreeId = ?1
+                            ORDER BY eventIndex
+                        `).all(spineInstanceTreeId)
+                    }
+                },
+
+                /**
+                 * Get membrane events for a specific capsule within a spine instance tree.
+                 */
+                _getMembraneEventsByCapsule: {
+                    type: CapsulePropertyTypes.Function,
+                    value: async function (this: any, spineInstanceTreeId: string, capsuleSourceLineRef: string): Promise<any[]> {
+                        if (!spineInstanceTreeId) throw new Error('_getMembraneEventsByCapsule: spineInstanceTreeId is required')
+                        const db = this._ensureConnection()
+                        return db.query(`
+                            SELECT * FROM MembraneEvent
+                            WHERE spineInstanceTreeId = ?1 AND capsuleSourceLineRef = ?2
+                            ORDER BY eventIndex
+                        `).all(spineInstanceTreeId, capsuleSourceLineRef)
                     }
                 },
 

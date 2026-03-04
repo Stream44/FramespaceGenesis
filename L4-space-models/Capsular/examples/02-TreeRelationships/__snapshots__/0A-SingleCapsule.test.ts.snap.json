@@ -172,6 +172,8 @@
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule:19"
     }
   ],
+  "0A-SingleCapsule > getMembraneEvents #1": [],
+  "0A-SingleCapsule > getMembraneEventsByCapsule #1": [],
   "0A-SingleCapsule > getRootInstance #1": {
     "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule",
     "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule:19"

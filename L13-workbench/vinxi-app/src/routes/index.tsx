@@ -9,6 +9,7 @@ import type { JsonValue } from "~/lib/renderLib";
 import { visualizations, onDemandPanels, FramespacesPanel } from "~/lib/visualizations";
 import type { FramespaceLink } from "~/lib/visualizations";
 import { REQUEST_LOG_PANEL_ID, MODEL_APIS_PANEL_ID, MODELS_PANEL_ID, requestLogPanelDef, modelApisPanelDef } from "~L8/Workbench/ModelAPIs/HeaderStatusElement";
+import { Timeline } from "~L8/Workbench/Timeline";
 import { createDockview } from "dockview-core";
 import type { DockviewTheme } from "dockview-core";
 import type {
@@ -206,7 +207,9 @@ function SpineInstanceSelector(props: { onCodeClick?: (filepath: string) => void
     const isConnecting = () => workbenchStore.api.status() === "connecting";
     const groups = () => workbenchStore.spineInstanceGroups();
 
-    const [activeTab, setActiveTab] = createSignal<"examples" | "tests">("examples");
+    // Use persisted tab state from workbench store
+    const activeTab = () => workbenchStore.instanceSelectorTab();
+    const setActiveTab = (tab: "examples" | "tests") => workbenchStore.setInstanceSelectorTab(tab);
 
     // Separate groups by type
     const exampleGroups = () => groups().filter((g: any) => g.type !== 'test');
@@ -562,6 +565,25 @@ function WorkbenchHeader(props: {
                     </div>
                 </div>
             </div>
+
+            {/* Timeline slider — shown when events are loaded, positioned to align with instance box */}
+            <Show when={workbenchStore.eventLogEntries().length > 0}>
+                <div class="wb-timeline-row">
+                    <Timeline
+                        currentEventIndex={workbenchStore.activeEventIndex}
+                        totalEvents={() => workbenchStore.eventLogEntries().length}
+                        isPlaying={workbenchStore.isPlaying}
+                        onEventChange={(idx) => {
+                            workbenchStore.stopPlaying();
+                            workbenchStore.setActiveEventIndex(idx);
+                        }}
+                        onPlayPause={workbenchStore.togglePlayPause}
+                        speedIndex={workbenchStore.playSpeedIndex}
+                        speedLabels={workbenchStore.PLAY_SPEED_LABELS}
+                        onSpeedChange={workbenchStore.setPlaySpeedIndex}
+                    />
+                </div>
+            </Show>
         </div>
     );
 }
@@ -840,6 +862,7 @@ function MethodPanelContent(props: {
                             spineInstanceTreeId={props.workbenchContext().spineInstanceTreeId}
                             apiCall={(path, args, engine) => workbenchStore.api.call(path, args, engine ?? workbenchStore.selectedEngine() ?? undefined)}
                             lib={workbenchLib}
+                            activeEventIndex={workbenchStore.activeEventIndex}
                         />
                     </Show>
                 </Show>
@@ -853,56 +876,178 @@ function MethodPanelContent(props: {
 const NS_TRIM_PREFIX = '@stream44.studio~FramespaceGenesis~';
 const NS_TRIM_SUFFIX = '~ModelQueryMethods';
 
-function trimNamespace(ns: string): string {
-    let result = ns;
-    if (result.startsWith(NS_TRIM_PREFIX)) {
-        result = result.substring(NS_TRIM_PREFIX.length);
+function parseNamespace(ns: string): { category: string; modelName: string; displayPath: string } {
+    // Replace ~ with / for display
+    let displayPath = ns.replace(/~/g, '/');
+    // Trim common prefix/suffix
+    if (displayPath.startsWith('@stream44.studio/FramespaceGenesis/')) {
+        displayPath = displayPath.substring('@stream44.studio/FramespaceGenesis/'.length);
     }
-    if (result.endsWith(NS_TRIM_SUFFIX)) {
-        result = result.substring(0, result.length - NS_TRIM_SUFFIX.length);
+    if (displayPath.endsWith('/ModelQueryMethods')) {
+        displayPath = displayPath.substring(0, displayPath.length - '/ModelQueryMethods'.length);
     }
-    return result;
+    // Split into category (first segment) and model name (rest)
+    const parts = displayPath.split('/');
+    const category = parts[0] || 'Other';
+    const modelName = parts.slice(1).join('/') || displayPath;
+    return { category, modelName, displayPath };
 }
+
+type ApiModel = {
+    namespace: string;
+    category: string;
+    modelName: string;
+    displayPath: string;
+    description: string;
+    methods: { path: string; name: string; description?: string }[];
+};
+
+type ApiCategory = {
+    category: string;
+    models: ApiModel[];
+};
 
 function FramespaceApiListPanel(props: {
     schema: () => EngineSchema | null;
     onMethodClick: (path: string, name: string) => void;
+    openPanelIds?: () => Set<string>;
 }) {
-    const apis = () => {
+    const [expandedCategories, setExpandedCategories] = createSignal<Set<string>>(new Set());
+    const [expandedModels, setExpandedModels] = createSignal<Set<string>>(new Set());
+
+    const toggleCategory = (cat: string) => {
+        setExpandedCategories(prev => {
+            const next = new Set(prev);
+            if (next.has(cat)) next.delete(cat); else next.add(cat);
+            return next;
+        });
+    };
+
+    const toggleModel = (ns: string) => {
+        setExpandedModels(prev => {
+            const next = new Set(prev);
+            if (next.has(ns)) next.delete(ns); else next.add(ns);
+            return next;
+        });
+    };
+
+    // Check if a model has any open method panels
+    const modelHasOpenPanel = (model: ApiModel): boolean => {
+        const openIds = props.openPanelIds?.() ?? new Set();
+        return model.methods.some(m => openIds.has(m.path));
+    };
+
+    // Get open methods for a model (always shown even when collapsed)
+    const getOpenMethods = (model: ApiModel) => {
+        const openIds = props.openPanelIds?.() ?? new Set();
+        return model.methods.filter(m => openIds.has(m.path));
+    };
+
+    // Get non-open methods for a model (shown when expanded)
+    const getOtherMethods = (model: ApiModel) => {
+        const openIds = props.openPanelIds?.() ?? new Set();
+        return model.methods.filter(m => !openIds.has(m.path));
+    };
+
+    const categories = (): ApiCategory[] => {
         const s = props.schema();
         if (!s) return [];
-        return Object.entries(s.apis ?? {}).map(([ns, api]) => {
+
+        // Build models with parsed namespace info
+        const models: ApiModel[] = Object.entries(s.apis ?? {}).map(([ns, api]) => {
+            const parsed = parseNamespace(ns);
             const methods = Object.entries(s.endpoints)
                 .filter(([, def]) => def.namespace === ns)
-                .map(([path, def]) => ({ path, name: path.split("/").pop()!, ...def }))
+                .map(([path, def]) => ({ path, name: path.split("/").pop()!, description: def.description }))
                 .sort((a, b) => a.name.localeCompare(b.name));
-            return { namespace: ns, displayNamespace: trimNamespace(ns), ...api, methods };
+            return { namespace: ns, ...parsed, description: (api as any).description ?? '', methods };
         });
+
+        // Group by category
+        const catMap = new Map<string, ApiModel[]>();
+        for (const model of models) {
+            const existing = catMap.get(model.category) ?? [];
+            existing.push(model);
+            catMap.set(model.category, existing);
+        }
+
+        // Sort categories and models within
+        return Array.from(catMap.entries())
+            .map(([category, models]) => ({ category, models: models.sort((a, b) => a.modelName.localeCompare(b.modelName)) }))
+            .sort((a, b) => a.category.localeCompare(b.category));
     };
 
     return (
         <div class="fapi-list">
-            <For each={apis()}>
-                {(api) => (
-                    <div class="fapi-group">
-                        <div class="fapi-group-header">
-                            <span class="fapi-group-name">{api.displayNamespace}</span>
-                            <span class="fapi-group-count">{api.methods.length} methods</span>
+            <For each={categories()}>
+                {(cat) => (
+                    <div class="fapi-category">
+                        <div
+                            class="fapi-category-header"
+                            onClick={() => toggleCategory(cat.category)}
+                        >
+                            <span class="fapi-group-chevron">{expandedCategories().has(cat.category) ? '▼' : '▶'}</span>
+                            <span class="fapi-category-name">{cat.category}</span>
+                            <span class="fapi-group-count">{cat.models.length} models</span>
                         </div>
-                        <div class="fapi-group-desc" innerHTML={workbenchLib.marked.parseInline(api.description) as string} />
-                        <div class="fapi-methods">
-                            <For each={api.methods}>
-                                {(m) => (
-                                    <button
-                                        class="fapi-method"
-                                        onClick={() => props.onMethodClick(m.path, m.name)}
-                                    >
-                                        <span class="fapi-method-name">{m.name}</span>
-                                        <span class="fapi-method-desc">{m.description}</span>
-                                    </button>
-                                )}
-                            </For>
-                        </div>
+                        <Show when={expandedCategories().has(cat.category)}>
+                            <div class="fapi-category-models">
+                                <For each={cat.models}>
+                                    {(model) => {
+                                        const openMethods = () => getOpenMethods(model);
+                                        const otherMethods = () => getOtherMethods(model);
+                                        const isExpanded = () => expandedModels().has(model.namespace);
+                                        const hasOpen = () => modelHasOpenPanel(model);
+
+                                        return (
+                                            <div class="fapi-model">
+                                                <div
+                                                    class={`fapi-model-header ${hasOpen() ? 'fapi-model-header--active' : ''}`}
+                                                    onClick={() => toggleModel(model.namespace)}
+                                                >
+                                                    <span class="fapi-group-chevron">{isExpanded() ? '▼' : '▶'}</span>
+                                                    <span class="fapi-model-name">{model.modelName}</span>
+                                                    <span class="fapi-group-count">{model.methods.length}</span>
+                                                </div>
+                                                {/* Always show open methods */}
+                                                <Show when={openMethods().length > 0}>
+                                                    <div class="fapi-methods fapi-methods--open">
+                                                        <For each={openMethods()}>
+                                                            {(m) => (
+                                                                <button
+                                                                    class="fapi-method fapi-method--active"
+                                                                    onClick={() => props.onMethodClick(m.path, m.name)}
+                                                                >
+                                                                    <span class="fapi-method-name">{m.name}</span>
+                                                                </button>
+                                                            )}
+                                                        </For>
+                                                    </div>
+                                                </Show>
+                                                {/* Show other methods when expanded */}
+                                                <Show when={isExpanded() && otherMethods().length > 0}>
+                                                    <div class="fapi-methods">
+                                                        <For each={otherMethods()}>
+                                                            {(m) => (
+                                                                <button
+                                                                    class="fapi-method"
+                                                                    onClick={() => props.onMethodClick(m.path, m.name)}
+                                                                >
+                                                                    <span class="fapi-method-name">{m.name}</span>
+                                                                    <Show when={m.description}>
+                                                                        <span class="fapi-method-desc">{m.description}</span>
+                                                                    </Show>
+                                                                </button>
+                                                            )}
+                                                        </For>
+                                                    </div>
+                                                </Show>
+                                            </div>
+                                        );
+                                    }}
+                                </For>
+                            </div>
+                        </Show>
                     </div>
                 )}
             </For>
@@ -980,6 +1125,15 @@ function WorkbenchDockview() {
     let containerRef: HTMLDivElement | undefined;
     let dockApi: DockviewApi | undefined;
     const disposers: (() => void)[] = [];
+
+    // Track open panel IDs for the Model APIs panel to highlight active methods
+    const [openPanelIds, setOpenPanelIds] = createSignal<Set<string>>(new Set());
+
+    const updateOpenPanelIds = () => {
+        if (!dockApi) return;
+        const ids = new Set(dockApi.panels.map(p => p.id));
+        setOpenPanelIds(ids);
+    };
 
     const engine = () => {
         return workbenchStore.api;
@@ -1139,6 +1293,7 @@ function WorkbenchDockview() {
                                 <FramespaceApiListPanel
                                     schema={() => engine().schema()}
                                     onMethodClick={openMethodPanel}
+                                    openPanelIds={openPanelIds}
                                 />
                             ), el);
                             disposers.push(disposeRender);
@@ -1272,6 +1427,13 @@ function WorkbenchDockview() {
 
         // Store ref for header panel launchers
         setDockApiRef(dockApi);
+
+        // Track panel add/remove for Model APIs panel highlighting
+        const addDispose = dockApi.onDidAddPanel(() => updateOpenPanelIds());
+        const removeDispose = dockApi.onDidRemovePanel(() => updateOpenPanelIds());
+        disposers.push(() => addDispose.dispose());
+        disposers.push(() => removeDispose.dispose());
+        updateOpenPanelIds();
 
         // Try to restore saved layout, fall back to default panels
         const savedLayout = workbenchStore.dockviewLayout();
