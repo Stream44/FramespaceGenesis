@@ -34,7 +34,11 @@ open http://localhost:3000
 bun run test
 ```
 
+Point your AI at [docs/AI-MODEL-BUILDING.md](./docs/AI-MODEL-BUILDING.md) and make some changes to the [examples](./examples).
+
 ### Quadrant & Codepath View Examples
+
+See [docs/Roadmap.md](./docs/Roadmap.md) for planned visualization libraries.
 
 <table>
   <tr>
@@ -84,11 +88,6 @@ Visual models running in the workbench are constructed by calling model APIs imp
 
 Exposes model APIs for querying data. In the process model layers are linked into reactive data processing graphs.
 
-**Roadmap:**
-
-- [x] initial engine and test structure
-- [ ] tune engine data schemas for rapid querying
-
 ### L4: Space Models
 
 Space models are modular & self-contained graph models with strict boundaries.
@@ -116,13 +115,6 @@ See [L8-view-models/README.md](L8-view-models/README.md) for details.
 ### L13: Workbench
 
 The framespace workbench UI SPA implementation that connects to the **Model Server**.
-
-**Roadmap:**
-
-- [x] initial UI
-- [ ] cleanup reps approach
-- [ ] shift complete UI to model entity reps
-- [ ] tune for 1k entity count
 
 Provenance
 ===
