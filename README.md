@@ -57,6 +57,10 @@ Semantic modeling becomes a complex task when combining multiple models horizont
 
 Knowledge models require better tooling and toolchain integration to evolve into a well-understood and leveraged technology.
 
+Much focus is on storing the data of a system in a graph.
+
+We are focused on storing the **structure of a system** in a graph to provide the data-processing indepent blueprint for a distributed system.
+
 
 Innovation
 ---
