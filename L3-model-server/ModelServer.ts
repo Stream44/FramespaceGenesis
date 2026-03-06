@@ -335,6 +335,9 @@ export async function capsule({
                             port: actualPort,
                             async fetch(req: any) {
                                 const url = new URL(req.url)
+                                const cacheBustId = req.headers.get('X-CacheBustId')
+                                const timestamp = new Date().toISOString()
+                                console.log(`[${timestamp}] ${req.method} ${url.pathname}${url.search}${cacheBustId ? ` [CacheBustId: ${cacheBustId}]` : ''}`)
 
                                 if (req.method === "OPTIONS") {
                                     return new Response(null, { status: 204, headers: _corsHeaders })
