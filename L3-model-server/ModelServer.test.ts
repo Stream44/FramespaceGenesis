@@ -1,10 +1,12 @@
 #!/usr/bin/env bun test
 
 import * as bunTest from 'bun:test'
+import { resolve } from 'path'
 import { run } from '@stream44.studio/t44/standalone-rt'
 
 const MOUNT_KEY = '@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods'
 const ENGINE_KEY = '@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/JsonFiles-v0/ImportAPI'
+const PACKAGE_ROOT = resolve(import.meta.dir, '..')
 
 const {
     test: { describe, it, expect },
@@ -27,7 +29,7 @@ const {
                             models: {
                                 '@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods': {
                                     engine: {
-                                        '@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/JsonFiles-v0/ImportAPI': {}
+                                        [ENGINE_KEY]: {}
                                     }
                                 }
                             }
@@ -45,15 +47,19 @@ const {
 }, async ({ spine, apis }: any) => {
     return apis[spine.capsuleSourceLineRef]
 }, {
-    importMeta: import.meta,
+    importMeta: { dir: PACKAGE_ROOT } as any,
     runFromSnapshot: false,
 })
 
 // ── Discover a spineInstanceTreeId for testing ──────────────────────
 await modelServer.init()
-const engine = modelServer.modelEngines[ENGINE_KEY]
+// Get the engine from the loaded model (not from modelEngines which is the raw mapping)
+const loadedModel = modelServer._models.find((m: any) => m.engineUri === ENGINE_KEY)
+if (!loadedModel) throw new Error(`No loaded model found for engine ${ENGINE_KEY}`)
+const engine = loadedModel.engine
 const _trees = await engine._listSpineInstanceTrees()
-const TREE_ID = _trees[0]?.spineInstanceTreeId ?? ''
+if (_trees.length === 0) throw new Error('No spine instance trees found - engine may not have loaded data correctly')
+const TREE_ID = _trees[0].spineInstanceTreeId
 
 const port = 14000 + Math.floor(Math.random() * 1000)
 const BASE_URL = `http://localhost:${port}`

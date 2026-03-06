@@ -69,5 +69,6 @@ const { spine, run } = await bootCapsule()
 
 await run({}, async ({ apis }: any) => {
     const modelServer = apis[spine.capsuleSourceLineRef].modelServer
-    await modelServer.startServer()
+    const uiDistDir = resolve(import.meta.dir, '../L13-workbench/vinxi-app/.output/public')
+    await modelServer.startServer(undefined, { uiDistDir })
 })

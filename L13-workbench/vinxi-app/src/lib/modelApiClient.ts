@@ -73,7 +73,9 @@ const NS = {
     Quadrant: '@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods',
 } as const;
 
-const DEFAULT_BASE_URL = "/api-server";
+// In dev, vinxi proxies /api-server → model server's /api.
+// In production (NODE_ENV=production), the model server serves the UI directly, so use /api.
+const DEFAULT_BASE_URL = import.meta.env.DEV ? "/api-server" : "/api";
 
 export function createModelApiClient(baseUrl = DEFAULT_BASE_URL) {
     const [status, setStatus] = createSignal<ConnectionStatus>("disconnected");

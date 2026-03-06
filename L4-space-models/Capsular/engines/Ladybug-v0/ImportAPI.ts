@@ -463,16 +463,22 @@ export async function capsule({
                             if (!uriMatch) continue
 
                             const [, uriPath, line] = uriMatch
-                            // Derive local package-relative path by stripping scope/package prefix
-                            // e.g. 'framespace.dev/FramespaceGenesis/L4-space-models/...' → 'L4-space-models/...'
+
+                            // CST files are stored using npm URI paths (cache path = moduleUri)
+                            // Try: 1) @<uri>:<line>.csts.json (current format)
+                            //      2) <localRelPath>.ts:<line>.csts.json (legacy local format)
+                            //      3) o/npmjs.com/node_modules/@<uri>.ts:<line>.csts.json (external packages)
+                            const npmUriCstPath = join(staticAnalysisDir, `@${uriPath}:${line}.csts.json`)
                             const uriSegments = uriPath.split('/')
                             const localRelPath = uriSegments.length > 2 ? uriSegments.slice(2).join('/') : null
                             const localCstPath = localRelPath ? join(staticAnalysisDir, `${localRelPath}.ts:${line}.csts.json`) : null
                             const npmCstPath = join(staticAnalysisDir, `o/npmjs.com/node_modules/@${uriPath}.ts:${line}.csts.json`)
 
-                            const cstFilePath = (localCstPath && existsSync(localCstPath)) ? localCstPath : npmCstPath
+                            const cstFilePath = existsSync(npmUriCstPath) ? npmUriCstPath
+                                : (localCstPath && existsSync(localCstPath)) ? localCstPath
+                                    : npmCstPath
                             if (!existsSync(cstFilePath)) {
-                                if (this.verbose) console.log(`[cst-v1] CST file not found: ${cstFilePath} for capsule: ${capsuleName}`)
+                                if (this.verbose) console.log(`[cst-v1] CST file not found: ${npmUriCstPath} for capsule: ${capsuleName}`)
                                 continue
                             }
 

@@ -517,7 +517,7 @@ function WorkbenchHeader(props: {
             <div class="wb-title-block">
                 <h1 class="wb-title">Framespace Genesis Workbench</h1>
                 <div class="wb-branding">
-                    <img src="/assets/Stream44Studio-Icon-v1.svg" alt="Stream44 Studio" class="wb-branding-icon" />
+                    <img src={`${import.meta.env.BASE_URL}assets/Stream44Studio-Icon-v1.svg`} alt="Stream44 Studio" class="wb-branding-icon" />
                     <span>a <a href="https://Stream44.Studio" target="_blank" rel="noopener noreferrer" class="wb-branding-link">Stream44.Studio</a> open dev project</span>
                 </div>
             </div>

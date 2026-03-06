@@ -146,25 +146,25 @@
         "declarationLine": -1,
         "definitionEndLine": -1,
         "definitionStartLine": -1,
-        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::prop::#@stream44.studio/encapsulate/structs/Capsule",
+        "id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::prop::#@stream44.studio/encapsulate/structs/Capsule",
         "mappedModuleUri": "@stream44.studio/encapsulate/structs/Capsule",
         "name": "#@stream44.studio/encapsulate/structs/Capsule",
         "propertyContractDelegate": "#@stream44.studio/encapsulate/structs/Capsule",
-        "propertyContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "propertyContractId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
         "propertyType": "CapsulePropertyTypes.Mapping",
         "valueExpression": "\"@stream44.studio/encapsulate/structs/Capsule\"",
         "valueType": "string"
       },
       "pc": {
         "contractKey": "#",
-        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
         "options": null,
         "propertyContractUri": "",
-        "spineContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+        "spineContractId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
       },
       "s": {
         "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
-        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+        "id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
       }
     },
     {
@@ -172,25 +172,25 @@
         "declarationLine": 11,
         "definitionEndLine": 14,
         "definitionStartLine": 11,
-        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::prop::alias",
+        "id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::prop::alias",
         "mappedModuleUri": "",
         "name": "alias",
         "propertyContractDelegate": "",
-        "propertyContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "propertyContractId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
         "propertyType": "CapsulePropertyTypes.String",
         "valueExpression": "'instance-sharing'",
         "valueType": "string"
       },
       "pc": {
         "contractKey": "#",
-        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
         "options": null,
         "propertyContractUri": "",
-        "spineContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+        "spineContractId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
       },
       "s": {
         "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
-        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+        "id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
       }
     },
     {
@@ -198,25 +198,25 @@
         "declarationLine": 15,
         "definitionEndLine": 18,
         "definitionStartLine": 15,
-        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::prop::service1",
+        "id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::prop::service1",
         "mappedModuleUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/Service1",
         "name": "service1",
         "propertyContractDelegate": "",
-        "propertyContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "propertyContractId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
         "propertyType": "CapsulePropertyTypes.Mapping",
         "valueExpression": "'./caps/Service1'",
         "valueType": "string"
       },
       "pc": {
         "contractKey": "#",
-        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
         "options": null,
         "propertyContractUri": "",
-        "spineContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+        "spineContractId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
       },
       "s": {
         "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
-        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+        "id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
       }
     },
     {
@@ -224,25 +224,25 @@
         "declarationLine": 19,
         "definitionEndLine": 22,
         "definitionStartLine": 19,
-        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::prop::service2",
+        "id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::prop::service2",
         "mappedModuleUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/Service2",
         "name": "service2",
         "propertyContractDelegate": "",
-        "propertyContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "propertyContractId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
         "propertyType": "CapsulePropertyTypes.Mapping",
         "valueExpression": "'./caps/Service2'",
         "valueType": "string"
       },
       "pc": {
         "contractKey": "#",
-        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
         "options": null,
         "propertyContractUri": "",
-        "spineContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+        "spineContractId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
       },
       "s": {
         "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
-        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+        "id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
       }
     },
     {
@@ -250,49 +250,49 @@
         "declarationLine": 23,
         "definitionEndLine": 31,
         "definitionStartLine": 23,
-        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::prop::serviceApi",
+        "id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::prop::serviceApi",
         "mappedModuleUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/caps/Service",
         "name": "serviceApi",
         "propertyContractDelegate": "",
-        "propertyContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "propertyContractId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
         "propertyType": "CapsulePropertyTypes.Mapping",
         "valueExpression": "'./caps/Service'",
         "valueType": "string"
       },
       "pc": {
         "contractKey": "#",
-        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
         "options": null,
         "propertyContractUri": "",
-        "spineContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+        "spineContractId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
       },
       "s": {
         "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
-        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+        "id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
       }
     },
     {
       "p": null,
       "pc": {
         "contractKey": "#@stream44.studio/encapsulate/structs/Capsule",
-        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#@stream44.studio/encapsulate/structs/Capsule",
+        "id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#@stream44.studio/encapsulate/structs/Capsule",
         "options": null,
         "propertyContractUri": "@stream44.studio/encapsulate/structs/Capsule",
-        "spineContractId": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+        "spineContractId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
       },
       "s": {
         "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
-        "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+        "id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
       }
     }
   ],
   "0F-MappedInstanceSharing > getCapsuleWithSource #1": {
     "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36": {
-      "cacheBustVersion": 21,
+      "cacheBustVersion": 22,
       "capsuleName": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing",
       "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36",
-      "cstFilepath": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/.~o/encapsulate.dev/static-analysis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36.csts.json",
+      "cstFilepath": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/.~o/encapsulate.dev/static-analysis/@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36.csts.json",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing"
     },
     "source": {
@@ -302,7 +302,7 @@
       "definitionStartLine": 7,
       "extendsCapsule": "",
       "extendsCapsuleUri": "",
-      "id": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing.ts:36::source",
+      "id": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing:36::source",
       "importStackLine": 36,
       "moduleUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing",
       "optionsEndLine": 38,

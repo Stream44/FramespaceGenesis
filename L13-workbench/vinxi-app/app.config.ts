@@ -5,13 +5,18 @@ import { fileURLToPath } from "url";
 const __dir = dirname(fileURLToPath(import.meta.url));
 
 const MODEL_SERVER_ORIGIN = `http://localhost:${process.env.MODEL_SERVER_PORT || 4000}`;
+const CACHE_BUST_PATH_PREFIX = process.env.CACHE_BUST_PATH_PREFIX || "dev";
 
 export default defineConfig({
     ssr: false,
     server: {
+        baseURL: `/${CACHE_BUST_PATH_PREFIX}`,
         routeRules: {
             "/api-server/**": {
                 proxy: { to: `${MODEL_SERVER_ORIGIN}/api/**` },
+            },
+            "/": {
+                redirect: `/${CACHE_BUST_PATH_PREFIX}/`,
             },
         },
     },

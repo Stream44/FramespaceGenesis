@@ -2,7 +2,7 @@
   "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy > getCapsule (first capsule) #1": {
     "#": "Capsule",
     "$id": "@acme/web-toolkit/caps/Logger",
-    "cacheBustVersion": 21,
+    "cacheBustVersion": 22,
     "capsuleSourceNameRef": "@acme/web-toolkit/caps/Logger",
     "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/caps/Logger:23",
     "source": {
@@ -220,7 +220,7 @@
   "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule > getCapsule (first capsule) #1": {
     "#": "Capsule",
     "$id": "@stream44.studio/encapsulate/structs/Capsule",
-    "cacheBustVersion": 21,
+    "cacheBustVersion": 22,
     "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
     "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
     "source": {
@@ -320,7 +320,7 @@
   "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule > getCapsule (first capsule) #1": {
     "#": "Capsule",
     "$id": "@stream44.studio/encapsulate/structs/Capsule",
-    "cacheBustVersion": 21,
+    "cacheBustVersion": 22,
     "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
     "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
     "source": {
@@ -465,7 +465,7 @@
   "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule > getCapsule (first capsule) #1": {
     "#": "Capsule",
     "$id": "@stream44.studio/encapsulate/structs/Capsule",
-    "cacheBustVersion": 21,
+    "cacheBustVersion": 22,
     "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
     "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
     "source": {
@@ -610,7 +610,7 @@
   "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule > getCapsule (first capsule) #1": {
     "#": "Capsule",
     "$id": "@stream44.studio/encapsulate/structs/Capsule",
-    "cacheBustVersion": 21,
+    "cacheBustVersion": 22,
     "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
     "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
     "source": {
@@ -755,7 +755,7 @@
   "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs > getCapsule (first capsule) #1": {
     "#": "Capsule",
     "$id": "@stream44.studio/encapsulate/structs/Capsule",
-    "cacheBustVersion": 21,
+    "cacheBustVersion": 22,
     "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
     "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
     "source": {
@@ -991,7 +991,7 @@
   "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing > getCapsule (first capsule) #1": {
     "#": "Capsule",
     "$id": "@stream44.studio/encapsulate/structs/Capsule",
-    "cacheBustVersion": 21,
+    "cacheBustVersion": 22,
     "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
     "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
     "source": {
@@ -1308,7 +1308,7 @@
   "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution > getCapsule (first capsule) #1": {
     "#": "Capsule",
     "$id": "@stream44.studio/encapsulate/structs/Capsule",
-    "cacheBustVersion": 21,
+    "cacheBustVersion": 22,
     "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
     "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
     "source": {
@@ -1372,7 +1372,7 @@
         "eventIndex": 1,
         "eventType": "get",
         "isMappingRef": true,
-        "mappingTargetRef": "L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter.ts:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
+        "mappingTargetRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
         "membrane": "internal",
         "propertyName": "greeter",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>"
@@ -1726,7 +1726,7 @@
   "Instance: @stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1 > getCapsule (first capsule) #1": {
     "#": "Capsule",
     "$id": "@stream44.studio/encapsulate/structs/Capsule",
-    "cacheBustVersion": 21,
+    "cacheBustVersion": 22,
     "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
     "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
     "source": {
@@ -1790,7 +1790,7 @@
         "eventIndex": 1,
         "eventType": "get",
         "isMappingRef": true,
-        "mappingTargetRef": "examples/Codepath-SimplePasswordLogin/caps/User.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+        "mappingTargetRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
         "membrane": "internal",
         "propertyName": "user",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>"
@@ -1835,7 +1835,7 @@
         "eventIndex": 7,
         "eventType": "get",
         "isMappingRef": true,
-        "mappingTargetRef": "examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "mappingTargetRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "membrane": "internal",
         "propertyName": "loginForm",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>"
@@ -1936,7 +1936,7 @@
         "eventIndex": 18,
         "eventType": "get",
         "isMappingRef": true,
-        "mappingTargetRef": "examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "mappingTargetRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "membrane": "internal",
         "propertyName": "loginForm",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>"
@@ -2037,7 +2037,7 @@
         "eventIndex": 29,
         "eventType": "get",
         "isMappingRef": true,
-        "mappingTargetRef": "examples/Codepath-SimplePasswordLogin/caps/LoginForm.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "mappingTargetRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
         "membrane": "internal",
         "propertyName": "loginForm",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>"
@@ -2295,7 +2295,7 @@
         "eventIndex": 45,
         "eventType": "get",
         "isMappingRef": true,
-        "mappingTargetRef": "examples/Codepath-SimplePasswordLogin/caps/HttpClient.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient",
+        "mappingTargetRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient",
         "membrane": "internal",
         "propertyName": "httpClient",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>"
@@ -2408,7 +2408,7 @@
         "eventIndex": 53,
         "eventType": "get",
         "isMappingRef": true,
-        "mappingTargetRef": "examples/Codepath-SimplePasswordLogin/caps/AuthService.ts:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/AuthService",
+        "mappingTargetRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/AuthService:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/AuthService",
         "membrane": "internal",
         "propertyName": "authService",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>"
@@ -3243,7 +3243,7 @@
   "Instance: @stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1 > getCapsule (first capsule) #1": {
     "#": "Capsule",
     "$id": "@stream44.studio/encapsulate/structs/Capsule",
-    "cacheBustVersion": 21,
+    "cacheBustVersion": 22,
     "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
     "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
     "source": {

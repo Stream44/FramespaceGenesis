@@ -11,6 +11,7 @@ const {
     test: { describe, it, expect, expectSnapshotMatch },
     modelServer,
 } = await run(async ({ encapsulate, CapsulePropertyTypes, makeImportStack }: any) => {
+
     const spine = await encapsulate({
         '#@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0': {
             '#@stream44.studio/encapsulate/structs/Capsule': {},
@@ -61,7 +62,7 @@ const {
 }, async ({ spine, apis }: any) => {
     return apis[spine.capsuleSourceLineRef]
 }, {
-    importMeta: import.meta,
+    importMeta: { dir: PACKAGE_ROOT } as any,
     runFromSnapshot: false,
 })
 

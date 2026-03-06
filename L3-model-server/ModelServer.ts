@@ -1,5 +1,5 @@
 import { run } from '@stream44.studio/t44/standalone-rt'
-import { join, dirname } from 'path'
+import { join, dirname, extname } from 'path'
 import { readdir, stat } from 'fs/promises'
 import { writeFile } from 'fs/promises'
 
@@ -58,6 +58,16 @@ export async function capsule({
                 _fallbackMap: {
                     type: CapsulePropertyTypes.Literal,
                     value: new Map<string, string>(),
+                },
+
+                _cacheBustPathPrefix: {
+                    type: CapsulePropertyTypes.Literal,
+                    value: process.env.CACHE_BUST_PATH_PREFIX || 'dev',
+                },
+
+                _uiDistDir: {
+                    type: CapsulePropertyTypes.Literal,
+                    value: null as string | null,
                 },
 
                 _api: {
@@ -312,12 +322,16 @@ export async function capsule({
 
                 startServer: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, port?: number, opts?: { skipInit?: boolean }): Promise<{ server: any; port: number }> {
+                    value: async function (this: any, port?: number, opts?: { skipInit?: boolean; uiDistDir?: string }): Promise<{ server: any; port: number }> {
                         const actualPort = port ?? Number(process.env.MODEL_SERVER_PORT || 4000)
 
                         if (!opts?.skipInit) await this.init()
 
+                        if (opts?.uiDistDir) this._uiDistDir = opts.uiDistDir
+
                         const self = this
+                        const prefix = self._cacheBustPathPrefix
+                        const uiDistDir = self._uiDistDir
                         const _corsHeaders = {
                             "Access-Control-Allow-Origin": "*",
                             "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
@@ -330,23 +344,110 @@ export async function capsule({
                             })
                         }
 
+                        // MIME type lookup for static file serving
+                        const MIME_TYPES: Record<string, string> = {
+                            '.html': 'text/html',
+                            '.css': 'text/css',
+                            '.js': 'application/javascript',
+                            '.mjs': 'application/javascript',
+                            '.json': 'application/json',
+                            '.svg': 'image/svg+xml',
+                            '.png': 'image/png',
+                            '.jpg': 'image/jpeg',
+                            '.jpeg': 'image/jpeg',
+                            '.gif': 'image/gif',
+                            '.ico': 'image/x-icon',
+                            '.woff': 'font/woff',
+                            '.woff2': 'font/woff2',
+                            '.ttf': 'font/ttf',
+                            '.webp': 'image/webp',
+                            '.webm': 'video/webm',
+                            '.mp4': 'video/mp4',
+                            '.txt': 'text/plain',
+                            '.map': 'application/json',
+                        }
+
                         const bunServe = require('bun').serve
+                        const BunFile = require('bun').file
                         const server = bunServe({
                             port: actualPort,
                             async fetch(req: any) {
                                 const url = new URL(req.url)
-                                const cacheBustId = req.headers.get('X-CacheBustId')
-                                const timestamp = new Date().toISOString()
-                                console.log(`[${timestamp}] ${req.method} ${url.pathname}${url.search}${cacheBustId ? ` [CacheBustId: ${cacheBustId}]` : ''}`)
 
                                 if (req.method === "OPTIONS") {
                                     return new Response(null, { status: 204, headers: _corsHeaders })
                                 }
 
+                                // ── Redirect / and /index.html to /<prefix>/index.html ──
+                                if (url.pathname === '/' || url.pathname === '/index.html') {
+                                    return Response.redirect(`/${prefix}/index.html`, 302)
+                                }
+
+                                // ── Serve favicon.ico from UI dist root ──
+                                if (uiDistDir && url.pathname === '/favicon.ico') {
+                                    const faviconFile = BunFile(join(uiDistDir, 'favicon.ico'))
+                                    if (await faviconFile.exists()) {
+                                        return new Response(faviconFile, {
+                                            headers: { 'Content-Type': 'image/x-icon', 'Cache-Control': 'public, max-age=86400', ..._corsHeaders },
+                                        })
+                                    }
+                                }
+
+                                // ── Serve static UI files under /<prefix>/ ──
+                                if (uiDistDir && url.pathname.startsWith(`/${prefix}/`)) {
+                                    const relPath = url.pathname.slice(`/${prefix}/`.length) || 'index.html'
+                                    const filePath = join(uiDistDir, relPath)
+
+                                    // Prevent directory traversal
+                                    if (!filePath.startsWith(uiDistDir)) {
+                                        return new Response('Forbidden', { status: 403 })
+                                    }
+
+                                    const ext = extname(filePath).toLowerCase()
+                                    const bunFile = BunFile(filePath)
+                                    if (await bunFile.exists()) {
+                                        const contentType = MIME_TYPES[ext] || 'application/octet-stream'
+                                        // Immutable caching for hashed assets, short cache for HTML
+                                        const cacheControl = ext === '.html'
+                                            ? 'no-cache'
+                                            : 'public, max-age=31536000, immutable'
+                                        return new Response(bunFile, {
+                                            headers: {
+                                                'Content-Type': contentType,
+                                                'Cache-Control': cacheControl,
+                                                ..._corsHeaders,
+                                            },
+                                        })
+                                    }
+
+                                    // SPA fallback: serve index.html for non-file paths
+                                    if (!ext || ext === '.html') {
+                                        const indexPath = join(uiDistDir, 'index.html')
+                                        const indexFile = BunFile(indexPath)
+                                        if (await indexFile.exists()) {
+                                            return new Response(indexFile, {
+                                                headers: {
+                                                    'Content-Type': 'text/html',
+                                                    'Cache-Control': 'no-cache',
+                                                    ..._corsHeaders,
+                                                },
+                                            })
+                                        }
+                                    }
+                                }
+
+                                // ── Redirect bare /<prefix> to /<prefix>/ ──
+                                if (url.pathname === `/${prefix}`) {
+                                    return Response.redirect(`/${prefix}/index.html`, 302)
+                                }
+
+                                // ── API routes ──
+
                                 if (url.pathname === "/api/health") {
                                     return _json({
                                         status: "ok",
                                         timestamp: new Date().toISOString(),
+                                        cacheBustPathPrefix: prefix,
                                         models: self._models.map((m: any) => ({ modelUri: m.modelUri, engineUri: m.engineUri, namespace: m.schema.namespace })),
                                         methods: self._methods.length,
                                     })
@@ -436,8 +537,12 @@ export async function capsule({
 
                         this._server = server
 
-                        console.log(`🚀 API server running on http://localhost:${actualPort}`)
-                        console.log(`📋 ${this._methods.length} methods available`)
+                        console.log(`🚀 Server running on http://localhost:${actualPort}`)
+                        console.log(`📋 ${this._methods.length} API methods available`)
+                        console.log(`🔗 Cache-bust prefix: /${prefix}/`)
+                        if (uiDistDir) {
+                            console.log(`🌐 UI served at http://localhost:${actualPort}/${prefix}/`)
+                        }
 
                         return { server, port: actualPort }
                     }

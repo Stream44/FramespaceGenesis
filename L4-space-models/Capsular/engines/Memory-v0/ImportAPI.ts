@@ -371,24 +371,22 @@ export async function capsule({
 
                             const [, uriPath, line] = uriMatch
 
-                            // URI format: <org>/<package>/<local-path>
-                            // Strip first 2 segments (org/package) to get the local path
+                            // CST files are stored using npm URI paths (cache path = moduleUri)
+                            // Try: 1) @<uri>:<line>.csts.json (current format)
+                            //      2) <localRelPath>.ts:<line>.csts.json (legacy local format)
+                            //      3) o/npmjs.com/node_modules/@<uri>.ts:<line>.csts.json (external packages)
+                            const npmUriCstPath = join(staticAnalysisDir, `@${uriPath}:${line}.csts.json`)
                             const segments = uriPath.split('/')
                             const localPath = segments.slice(2).join('/')
-                            const localCstRelPath = `${localPath}.ts:${line}.csts.json`
-                            const localCstFilePath = join(staticAnalysisDir, localCstRelPath)
+                            const localCstFilePath = join(staticAnalysisDir, `${localPath}.ts:${line}.csts.json`)
+                            const npmCstFilePath = join(staticAnalysisDir, `o/npmjs.com/node_modules/@${uriPath}.ts:${line}.csts.json`)
 
-                            let cstFilePath: string
-                            if (existsSync(localCstFilePath)) {
-                                cstFilePath = localCstFilePath
-                            } else {
-                                // Fall back to npm-style path for external packages
-                                const npmCstFilePath = join(staticAnalysisDir, `o/npmjs.com/node_modules/@${uriPath}.ts:${line}.csts.json`)
-                                if (!existsSync(npmCstFilePath)) {
-                                    if (this.verbose) console.log(`[memory] CST file not found: ${localCstFilePath} or ${npmCstFilePath}`)
-                                    continue
-                                }
-                                cstFilePath = npmCstFilePath
+                            const cstFilePath = existsSync(npmUriCstPath) ? npmUriCstPath
+                                : existsSync(localCstFilePath) ? localCstFilePath
+                                    : npmCstFilePath
+                            if (!existsSync(cstFilePath)) {
+                                if (this.verbose) console.log(`[memory] CST file not found: ${npmUriCstPath} for capsule: ${capsuleName}`)
+                                continue
                             }
 
                             const result = await this.importCstFile(cstFilePath, spineInstanceTreeId)

@@ -19,7 +19,7 @@
         "#": "SpineInstanceGroup",
         "engines": {},
         "exampleDir": "Codepath-SimplePasswordLogin",
-        "examplesPath": "<PACKAGE_ROOT>/examples/Codepath-SimplePasswordLogin",
+        "examplesPath": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin",
         "list": [
           {
             "#": "SpineInstanceTree",
@@ -59,7 +59,7 @@
         "#": "SpineInstanceGroup",
         "engines": {},
         "exampleDir": "Quadrant-BackendServices",
-        "examplesPath": "<PACKAGE_ROOT>/examples/Quadrant-BackendServices",
+        "examplesPath": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices",
         "list": [
           {
             "#": "SpineInstanceTree",
@@ -99,7 +99,7 @@
         "#": "SpineInstanceGroup",
         "engines": {},
         "exampleDir": "01-Documentation",
-        "examplesPath": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/01-Documentation",
+        "examplesPath": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation",
         "list": [
           {
             "#": "SpineInstanceTree",
@@ -114,7 +114,7 @@
         "#": "SpineInstanceGroup",
         "engines": {},
         "exampleDir": "02-TreeRelationships",
-        "examplesPath": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/02-TreeRelationships",
+        "examplesPath": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships",
         "list": [
           {
             "#": "SpineInstanceTree",
@@ -155,7 +155,7 @@
         "#": "SpineInstanceGroup",
         "engines": {},
         "exampleDir": "03-MembraneEvents",
-        "examplesPath": "<PACKAGE_ROOT>/L4-space-models/Capsular/examples/03-MembraneEvents",
+        "examplesPath": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents",
         "list": [
           {
             "#": "SpineInstanceTree",
