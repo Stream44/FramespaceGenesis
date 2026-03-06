@@ -1,0 +1,10 @@
+
+.~*
+.env*
+
+.$*.drawio.bkp
+
+.turbo/
+.cst-data/
+
+___/
