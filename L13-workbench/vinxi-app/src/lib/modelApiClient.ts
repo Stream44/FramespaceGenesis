@@ -265,6 +265,23 @@ export function createModelApiClient(baseUrl = DEFAULT_BASE_URL) {
         return fetchJson(url);
     }
 
+    async function listCapsuleSourceFiles(spineInstanceTreeId: string): Promise<any> {
+        const url = apiUrl(NS.Workbench, 'listSpineInstanceTreeCapsuleSourceFiles', { spineInstanceTreeId });
+        return fetchJson(url);
+    }
+
+    async function getCapsuleSourceFile(filePath: string, format?: string): Promise<any> {
+        const params: any = { filePath };
+        if (format) params.format = format;
+        const url = apiUrl(NS.Workbench, 'getCapsuleSourceFile', params);
+        return fetchJson(url);
+    }
+
+    async function saveCapsuleSourceFile(filePath: string, content: string): Promise<any> {
+        const url = apiUrl(NS.Workbench, 'saveCapsuleSourceFile', { filePath, content });
+        return fetchJson(url);
+    }
+
     // ── CapsuleSpine API ────────────────────────────────────────────
 
     async function getCapsule(capsuleName: string, engine?: string, spineInstanceTreeId?: string): Promise<any> {
@@ -310,6 +327,9 @@ export function createModelApiClient(baseUrl = DEFAULT_BASE_URL) {
         openFile,
         getReps,
         getCapsule,
+        listCapsuleSourceFiles,
+        getCapsuleSourceFile,
+        saveCapsuleSourceFile,
 
         // ── Stats / monitoring ──────────────────────────────────────
         requestCount,

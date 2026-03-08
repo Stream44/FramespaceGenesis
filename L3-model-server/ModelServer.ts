@@ -1,5 +1,5 @@
 import { run } from '@stream44.studio/t44/standalone-rt'
-import { join, dirname, extname } from 'path'
+import { join, dirname, extname, resolve } from 'path'
 import { readdir, stat } from 'fs/promises'
 import { writeFile } from 'fs/promises'
 
@@ -256,6 +256,14 @@ export async function capsule({
                             await writeFile(schemaPath, JSON.stringify(schema, null, 4))
                             console.log(`📝 Schema written to ${schemaPath}`)
                         }
+                    }
+                },
+
+                resolvePackagePath: {
+                    type: CapsulePropertyTypes.Function,
+                    value: function (this: any, relativePath: string): string {
+                        const packageRoot = join(dirname(import.meta.path), '..')
+                        return resolve(packageRoot, relativePath)
                     }
                 },
 

@@ -2677,6 +2677,206 @@ body {
     margin-top: 6px;
 }
 
+/* ── Source Browser Dialog ─────────────────────────────────────────── */
+
+.source-browser-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(46, 35, 24, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.source-browser {
+    width: 90vw;
+    height: 90vh;
+    background: var(--wb-paper-highlight);
+    border: 1px solid var(--wb-rule-blue-strong);
+    border-radius: var(--wb-radius-lg);
+    box-shadow: var(--wb-shadow-float);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.source-browser-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--wb-rule);
+    flex-shrink: 0;
+}
+
+.source-browser-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--wb-ink);
+}
+
+.source-browser-body {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.source-browser-sidebar {
+    width: max-content;
+    min-width: 200px;
+    max-width: 50%;
+    border-right: 1px solid var(--wb-rule);
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    gap: 1px;
+    padding: 4px 0;
+    background: var(--wb-paper-base);
+}
+
+.source-browser-file {
+    display: block;
+    width: max-content;
+    min-width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 6px 12px;
+    font-family: inherit;
+    font-size: 12px;
+    color: var(--wb-ink);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.1s;
+}
+
+.source-browser-file:hover {
+    background: var(--wb-blue-wash);
+}
+
+.source-browser-file.active {
+    background: var(--wb-blue-wash-strong);
+    color: var(--wb-blue);
+    font-weight: 600;
+}
+
+.source-browser-file-name {
+    font-size: 12px;
+}
+
+.source-browser-editor-area {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.source-browser-editor-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--wb-rule);
+    flex-shrink: 0;
+    background: var(--wb-paper-raised);
+}
+
+.source-browser-editor-header-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.source-browser-view-toggle {
+    display: flex;
+    gap: 0;
+}
+
+.source-browser-view-btn {
+    background: none;
+    border: 1px solid var(--wb-rule);
+    padding: 3px 10px;
+    font-size: 11px;
+    font-family: inherit;
+    color: var(--wb-ink-faint);
+    cursor: pointer;
+    transition: background 0.1s, color 0.1s;
+}
+
+.source-browser-view-btn:first-child {
+    border-radius: 4px 0 0 4px;
+}
+
+.source-browser-view-btn:last-child {
+    border-radius: 0 4px 4px 0;
+    border-left: none;
+}
+
+.source-browser-view-btn.active {
+    background: var(--wb-blue-wash-strong);
+    color: var(--wb-blue);
+    border-color: var(--wb-blue);
+    font-weight: 600;
+}
+
+.source-browser-view-btn:hover:not(.active) {
+    background: var(--wb-blue-wash);
+    color: var(--wb-ink);
+}
+
+.source-browser-filepath {
+    flex: 1;
+    font-size: 11px;
+    color: var(--wb-blue);
+    font-family: var(--wb-font-mono);
+    word-break: break-all;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.source-browser-editor-actions {
+    flex-shrink: 0;
+    display: flex;
+    gap: 6px;
+}
+
+.source-browser-command-picker {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--wb-rule);
+    background: var(--wb-paper-raised);
+    flex-shrink: 0;
+}
+
+.source-browser-editor {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.source-browser-editor .cm-editor {
+    height: 100%;
+}
+
+.source-browser-placeholder,
+.source-browser-loading,
+.source-browser-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--wb-ink-muted);
+    font-size: 13px;
+    font-style: italic;
+}
+
 /* ── Error rep ─────────────────────────────────────────────────────── */
 
 .error-rep {

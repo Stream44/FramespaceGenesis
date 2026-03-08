@@ -1,4 +1,4 @@
-import { writeFile } from 'fs/promises'
+import { writeFile, readFile } from 'fs/promises'
 import { join, dirname, relative } from 'path'
 import { readdirSync, statSync, existsSync } from 'fs'
 import { exec } from 'child_process'
@@ -53,6 +53,27 @@ export async function capsule({
                                     { name: 'file', type: 'string' },
                                 ],
                                 description: 'Open a file in an editor. Command is the editor binary (e.g. "code"), file is an absolute path optionally with :line suffix.',
+                            },
+                            listSpineInstanceTreeCapsuleSourceFiles: {
+                                args: [
+                                    { name: 'spineInstanceTreeId', type: 'string' },
+                                ],
+                                description: 'List all capsule source files for a spine instance tree, grouped by capsule name.',
+                                graphMethod: true,
+                            },
+                            getCapsuleSourceFile: {
+                                args: [
+                                    { name: 'filePath', type: 'string' },
+                                    { name: 'format', type: 'string' },
+                                ],
+                                description: 'Read the contents of a capsule source file by its absolute path. Format: "raw" (default) or "simplified".',
+                            },
+                            saveCapsuleSourceFile: {
+                                args: [
+                                    { name: 'filePath', type: 'string' },
+                                    { name: 'content', type: 'string' },
+                                ],
+                                description: 'Save content to a capsule source file by its absolute path.',
                             },
                         },
                     },
@@ -333,6 +354,111 @@ export async function capsule({
                     }
                 },
 
+                /**
+                 * List all capsule source files for a spine instance tree.
+                 * Resolves npm URIs to absolute filesystem paths via getCapsuleWithSource.
+                 */
+                listSpineInstanceTreeCapsuleSourceFiles: {
+                    type: CapsulePropertyTypes.Function,
+                    value: async function (this: any, { graph, server }: any, spineInstanceTreeId: string): Promise<any> {
+                        if (!spineInstanceTreeId) return { '#': 'Error', method: 'listSpineInstanceTreeCapsuleSourceFiles', message: 'spineInstanceTreeId is required' }
+
+                        // Use CapsuleSpine to list all capsules for this tree
+                        const capsulesList = await this.CapsuleSpine.listCapsules({ graph, server }, spineInstanceTreeId)
+                        const capsules = capsulesList?.list ?? []
+
+                        const files: any[] = []
+                        for (const cap of capsules) {
+                            const capsuleName = cap.$id as string
+                            if (!capsuleName) continue
+
+                            // Resolve the actual filesystem path via getCapsuleWithSource
+                            const raw = await graph.getCapsuleWithSource(spineInstanceTreeId, capsuleName)
+                            if (!raw?.source) continue
+
+                            const rawFilepath = raw.source.moduleFilepath as string | undefined
+                            if (!rawFilepath) continue
+
+                            // moduleFilepath may be relative — resolve via server's package root
+                            const moduleFilepath = rawFilepath.startsWith('/')
+                                ? rawFilepath
+                                : server.resolvePackagePath(rawFilepath)
+                            if (!existsSync(moduleFilepath)) continue
+
+                            const line = raw.source.declarationLine as number | null ?? null
+                            const shortName = capsuleName.split('/').pop() ?? capsuleName
+                            const capsuleSourceLineRef = line ? `${moduleFilepath}:${line}` : moduleFilepath
+
+                            files.push({
+                                '#': 'CapsuleSourceFile',
+                                capsuleName,
+                                shortName,
+                                filePath: moduleFilepath,
+                                line,
+                                capsuleSourceLineRef,
+                            })
+                        }
+
+                        // Deduplicate by filePath (multiple capsules may share a file)
+                        const seen = new Set<string>()
+                        const dedupedFiles: any[] = []
+                        for (const f of files) {
+                            if (!seen.has(f.filePath)) {
+                                seen.add(f.filePath)
+                                dedupedFiles.push(f)
+                            }
+                        }
+
+                        return { '#': 'CapsuleSourceFiles', list: dedupedFiles }
+                    }
+                },
+
+                /**
+                 * Read the contents of a capsule source file by absolute path.
+                 */
+                getCapsuleSourceFile: {
+                    type: CapsulePropertyTypes.Function,
+                    value: async function (this: any, filePath: string, format?: string): Promise<any> {
+                        if (!filePath || typeof filePath !== 'string') return { '#': 'Error', method: 'getCapsuleSourceFile', message: 'No filePath provided' }
+                        if (!filePath.startsWith('/')) return { '#': 'Error', method: 'getCapsuleSourceFile', message: `filePath must be absolute: ${filePath}` }
+                        if (!existsSync(filePath)) return { '#': 'Error', method: 'getCapsuleSourceFile', message: `File not found: ${filePath}` }
+
+                        try {
+                            let content = await readFile(filePath, 'utf-8')
+                            const language = filePath.endsWith('.ts') || filePath.endsWith('.tsx') ? 'typescript'
+                                : filePath.endsWith('.js') || filePath.endsWith('.jsx') ? 'javascript'
+                                    : filePath.endsWith('.json') ? 'json'
+                                        : filePath.endsWith('.css') ? 'css'
+                                            : 'text'
+                            if (format === 'simplified') {
+                                content = this._simplifyCapsuleSource(content)
+                            }
+                            return { '#': 'CapsuleSourceFileContent', filePath, content, language, format: format || 'raw' }
+                        } catch (err: any) {
+                            return { '#': 'Error', method: 'getCapsuleSourceFile', message: err.message ?? String(err) }
+                        }
+                    }
+                },
+
+                /**
+                 * Save content to a capsule source file by absolute path.
+                 */
+                saveCapsuleSourceFile: {
+                    type: CapsulePropertyTypes.Function,
+                    value: async function (filePath: string, content: string): Promise<any> {
+                        if (!filePath || typeof filePath !== 'string') return { '#': 'Error', method: 'saveCapsuleSourceFile', message: 'No filePath provided' }
+                        if (!filePath.startsWith('/')) return { '#': 'Error', method: 'saveCapsuleSourceFile', message: `filePath must be absolute: ${filePath}` }
+                        if (typeof content !== 'string') return { '#': 'Error', method: 'saveCapsuleSourceFile', message: 'No content provided' }
+
+                        try {
+                            await writeFile(filePath, content, 'utf-8')
+                            return { '#': 'CapsuleSourceFileSaved', filePath, ok: true }
+                        } catch (err: any) {
+                            return { '#': 'Error', method: 'saveCapsuleSourceFile', message: err.message ?? String(err) }
+                        }
+                    }
+                },
+
                 // =============================================================
                 // Internal helpers
                 // =============================================================
@@ -343,6 +469,172 @@ export async function capsule({
                         // L6-semantic-models/Framespace/Workbench/ModelQueryMethods.ts → 4 levels up
                         const moduleFilepath = this['#@stream44.studio/encapsulate/structs/Capsule'].rootCapsule.moduleFilepath
                         return join(dirname(moduleFilepath), '..', '..', '..', '..')
+                    }
+                },
+
+                /**
+                 * Simplify capsule source code by stripping boilerplate header/footer.
+                 * Extracts content from the spine contract block, handles both '#': {} capsules
+                 * and capsules with only dimension refs (no '#': {} block).
+                 */
+                _simplifyCapsuleSource: {
+                    type: CapsulePropertyTypes.Function,
+                    value: function (this: any, raw: string): string {
+                        let lines = raw.split('\n')
+
+                        // Strip leading block comments (/** ... */) and empty lines
+                        let startIdx = 0
+                        let inBlockComment = false
+                        for (let i = 0; i < lines.length; i++) {
+                            const trimmed = lines[i].trim()
+                            if (trimmed.length === 0) {
+                                startIdx = i + 1
+                                continue
+                            }
+                            if (trimmed.indexOf('/**') !== -1) {
+                                inBlockComment = true
+                                startIdx = i + 1
+                                continue
+                            }
+                            if (inBlockComment) {
+                                if (trimmed.indexOf('*/') !== -1) {
+                                    inBlockComment = false
+                                    startIdx = i + 1
+                                    continue
+                                }
+                                startIdx = i + 1
+                                continue
+                            }
+                            break
+                        }
+                        if (startIdx > 0) {
+                            lines = lines.slice(startIdx)
+                        }
+
+                        // Helper: find matching closing brace from a given line
+                        const findClosingBrace = function (fromIdx: number): number {
+                            let bc = 0
+                            let st = false
+                            for (let i = fromIdx; i < lines.length; i++) {
+                                for (let c = 0; c < lines[i].length; c++) {
+                                    if (lines[i][c] === '{') { bc++; st = true }
+                                    else if (lines[i][c] === '}') {
+                                        bc--
+                                        if (st && bc === 0) return i
+                                    }
+                                }
+                            }
+                            return -1
+                        }
+
+                        // Helper: compute leading whitespace count
+                        const leadingSpaces = function (s: string): number {
+                            let n = 0
+                            for (let i = 0; i < s.length; i++) {
+                                if (s[i] === ' ' || s[i] === '\t') n++
+                                else break
+                            }
+                            return n
+                        }
+
+                        // Helper: dedent lines to minIndent, then re-indent with given prefix
+                        const dedentAndIndent = function (bodyLines: string[], indent: string): string[] {
+                            let mi = 999999
+                            for (let i = 0; i < bodyLines.length; i++) {
+                                if (bodyLines[i].trim().length === 0) continue
+                                const ls = leadingSpaces(bodyLines[i])
+                                if (ls < mi) mi = ls
+                            }
+                            if (mi === 999999) mi = 0
+                            const out: string[] = []
+                            for (let i = 0; i < bodyLines.length; i++) {
+                                if (bodyLines[i].trim().length === 0) out.push('')
+                                else out.push(indent + bodyLines[i].slice(mi))
+                            }
+                            // Remove trailing empty lines
+                            while (out.length > 0 && out[out.length - 1].trim() === '') out.pop()
+                            return out
+                        }
+
+                        // Find the spine contract block
+                        const spineContractMarker = 'CapsuleSpineContract.v0'
+                        let spineIdx = -1
+                        for (let i = 0; i < lines.length; i++) {
+                            if (lines[i].indexOf(spineContractMarker) !== -1) {
+                                spineIdx = i
+                                break
+                            }
+                        }
+
+                        if (spineIdx === -1) return raw
+
+                        const spineCloseIdx = findClosingBrace(spineIdx)
+                        if (spineCloseIdx === -1) return raw
+
+                        // Extract body inside spine contract block
+                        const spineBody = lines.slice(spineIdx + 1, spineCloseIdx)
+
+                        // Remove the Capsule struct line and empty lines around it
+                        const capsuleStructMarker = "structs/Capsule'"
+                        const filteredBody: string[] = []
+                        for (let i = 0; i < spineBody.length; i++) {
+                            if (spineBody[i].indexOf(capsuleStructMarker) !== -1) continue
+                            filteredBody.push(spineBody[i])
+                        }
+
+                        // Remove leading empty lines from filtered body
+                        while (filteredBody.length > 0 && filteredBody[0].trim().length === 0) {
+                            filteredBody.shift()
+                        }
+
+                        // Check if the filtered content is a single '#': { ... } block
+                        // by looking at the first non-empty line
+                        let hasHashBlock = false
+                        let hashLineIdx = -1
+                        for (let i = 0; i < filteredBody.length; i++) {
+                            if (filteredBody[i].trim().length === 0) continue
+                            if (filteredBody[i].indexOf("'#': {") !== -1 || filteredBody[i].indexOf('"#": {') !== -1) {
+                                hasHashBlock = true
+                                hashLineIdx = i
+                            }
+                            break
+                        }
+
+                        if (hasHashBlock && hashLineIdx !== -1) {
+                            // Find the closing brace of '#': { within filteredBody
+                            let bc = 0
+                            let st = false
+                            let closeIdx = -1
+                            for (let i = hashLineIdx; i < filteredBody.length; i++) {
+                                for (let c = 0; c < filteredBody[i].length; c++) {
+                                    if (filteredBody[i][c] === '{') { bc++; st = true }
+                                    else if (filteredBody[i][c] === '}') {
+                                        bc--
+                                        if (st && bc === 0) { closeIdx = i; break }
+                                    }
+                                }
+                                if (closeIdx !== -1) break
+                            }
+
+                            if (closeIdx !== -1) {
+                                // Extract content inside '#': { ... }
+                                const hashBody = filteredBody.slice(hashLineIdx + 1, closeIdx)
+                                const dedented = dedentAndIndent(hashBody, '        ')
+                                const result: string[] = ['return Encapsulate({', "    '#': {"]
+                                for (let i = 0; i < dedented.length; i++) result.push(dedented[i])
+                                result.push('    }')
+                                result.push('})')
+                                return result.join('\n')
+                            }
+                        }
+
+                        // No '#': { block found — use spine contract content directly
+                        // (files with only dimension refs like LoginService.ts)
+                        const dedented = dedentAndIndent(filteredBody, '    ')
+                        const result: string[] = ['return Encapsulate({']
+                        for (let i = 0; i < dedented.length; i++) result.push(dedented[i])
+                        result.push('})')
+                        return result.join('\n')
                     }
                 },
             }

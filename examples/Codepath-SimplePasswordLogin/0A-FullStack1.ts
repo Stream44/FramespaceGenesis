@@ -43,7 +43,7 @@ export async function runModel({ run }) {
                     runModel: {
                         type: CapsulePropertyTypes.Function,
                         value: function (this: any) {
-                            return this.user.login('user@example.com', 'validPassword123')
+                            return this.user.login('userexample.com', 'validPassword123')
                         }
                     },
                 }

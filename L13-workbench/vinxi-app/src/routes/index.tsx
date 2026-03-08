@@ -21,6 +21,12 @@ import type {
 import "dockview-core/dist/styles/dockview.css";
 import { render } from "solid-js/web";
 import { workbenchLib } from "~/lib/workbenchLib";
+import { EditorView, basicSetup } from "codemirror";
+import { EditorState } from "@codemirror/state";
+import { javascript } from "@codemirror/lang-javascript";
+import { json as jsonLang } from "@codemirror/lang-json";
+import { css as cssLang } from "@codemirror/lang-css";
+import { oneDark } from "@codemirror/theme-one-dark";
 
 const themeBlueprintVellum: DockviewTheme = {
     name: "blueprint-vellum",
@@ -1678,6 +1684,282 @@ function SettingsDialog(props: {
     );
 }
 
+// ── Source Browser Dialog (CodeMirror file browser) ─────────────────
+
+type SourceFile = {
+    '#': string;
+    capsuleName: string;
+    shortName: string;
+    filePath: string;
+    line: number | null;
+    capsuleSourceLineRef: string;
+};
+
+function SourceBrowserDialog(props: {
+    spineInstanceTreeId: string;
+    settings: WorkbenchSettings;
+    onSaveSettings: (s: WorkbenchSettings) => void;
+    onClose: () => void;
+    showError: (e: ErrorInfo) => void;
+}) {
+    const [files, setFiles] = createSignal<SourceFile[]>([]);
+    const [selectedFile, setSelectedFile] = createSignal<SourceFile | null>(null);
+    const [fileContent, setFileContent] = createSignal<string>("");
+    const [fileLanguage, setFileLanguage] = createSignal<string>("text");
+    const [loadingFiles, setLoadingFiles] = createSignal(true);
+    const [loadingContent, setLoadingContent] = createSignal(false);
+    const [showCommandPicker, setShowCommandPicker] = createSignal(!props.settings.openFileCommand);
+    const [isDirty, setIsDirty] = createSignal(false);
+    const [isSaving, setIsSaving] = createSignal(false);
+    const [viewMode, setViewMode] = createSignal<'simplified' | 'raw'>('simplified');
+
+    let editorRef: HTMLDivElement | undefined;
+    let editorView: EditorView | undefined;
+
+    // Compute prefix to trim from capsule names: dirname(dirname(spineInstanceTreeId))
+    const computeTrimPrefix = (treeId: string): string => {
+        const parts = treeId.split('/');
+        if (parts.length < 3) return '';
+        return parts.slice(0, -1).join('/') + '/';
+    };
+
+    const trimPrefix = computeTrimPrefix(props.spineInstanceTreeId);
+
+    const getDisplayName = (capsuleName: string): string => {
+        if (trimPrefix && capsuleName.startsWith(trimPrefix)) {
+            return capsuleName.slice(trimPrefix.length);
+        }
+        return capsuleName;
+    };
+
+    // Load file list on mount
+    onMount(async () => {
+        try {
+            const data = await workbenchStore.api.listCapsuleSourceFiles(props.spineInstanceTreeId);
+            if (isApiError(data.result)) {
+                props.showError(data.result);
+                setLoadingFiles(false);
+                return;
+            }
+            const list = data.result?.list ?? [];
+            list.sort((a: SourceFile, b: SourceFile) => a.capsuleName.localeCompare(b.capsuleName));
+            setFiles(list);
+        } catch (err: any) {
+            props.showError({ method: "listCapsuleSourceFiles", message: err.message ?? String(err) });
+        }
+        setLoadingFiles(false);
+    });
+
+    const getLangExtension = (lang: string) => {
+        switch (lang) {
+            case "typescript":
+            case "javascript":
+                return javascript({ typescript: lang === "typescript", jsx: true });
+            case "json":
+                return jsonLang();
+            case "css":
+                return cssLang();
+            default:
+                return [];
+        }
+    };
+
+    const createOrUpdateEditor = (content: string, lang: string, readOnly: boolean = false) => {
+        if (!editorRef) return;
+        if (editorView) {
+            editorView.destroy();
+            editorView = undefined;
+        }
+        const extensions: any[] = [
+            basicSetup,
+            getLangExtension(lang),
+            oneDark,
+            EditorView.theme({
+                "&": { height: "100%", fontSize: "12px" },
+                ".cm-scroller": { overflow: "auto" },
+                ".cm-content": { fontFamily: "var(--wb-font-mono)" },
+            }),
+        ];
+        if (readOnly) {
+            extensions.push(EditorView.editable.of(false));
+            extensions.push(EditorState.readOnly.of(true));
+        } else {
+            extensions.push(EditorView.updateListener.of((update) => {
+                if (update.docChanged) {
+                    setIsDirty(true);
+                }
+            }));
+        }
+        const state = EditorState.create({ doc: content, extensions });
+        editorView = new EditorView({ state, parent: editorRef });
+    };
+
+    const loadFileContent = async (filePath: string, format: 'simplified' | 'raw') => {
+        setLoadingContent(true);
+        try {
+            const data = await workbenchStore.api.getCapsuleSourceFile(filePath, format);
+            if (isApiError(data.result)) {
+                props.showError(data.result);
+                setLoadingContent(false);
+                return;
+            }
+            const content = data.result?.content ?? "";
+            const lang = data.result?.language ?? "text";
+            if (format === 'raw') {
+                setFileContent(content);
+                setFileLanguage(lang);
+            }
+            const isReadOnly = format === 'simplified';
+            createOrUpdateEditor(content, lang, isReadOnly);
+        } catch (err: any) {
+            props.showError({ method: "getCapsuleSourceFile", message: err.message ?? String(err) });
+        }
+        setLoadingContent(false);
+    };
+
+    const selectFile = async (file: SourceFile) => {
+        setSelectedFile(file);
+        setIsDirty(false);
+        await loadFileContent(file.filePath, viewMode());
+    };
+
+    const switchViewMode = async (mode: 'simplified' | 'raw') => {
+        if (mode === viewMode()) return;
+        setViewMode(mode);
+        setIsDirty(false);
+        const file = selectedFile();
+        if (file) {
+            await loadFileContent(file.filePath, mode);
+        }
+    };
+
+    const handleSave = async () => {
+        const file = selectedFile();
+        if (!file || !editorView) return;
+        const content = editorView.state.doc.toString();
+        setIsSaving(true);
+        try {
+            const data = await workbenchStore.api.saveCapsuleSourceFile(file.filePath, content);
+            if (isApiError(data.result)) {
+                props.showError(data.result);
+            } else {
+                setIsDirty(false);
+                setFileContent(content);
+            }
+        } catch (err: any) {
+            props.showError({ method: "saveCapsuleSourceFile", message: err.message ?? String(err) });
+        }
+        setIsSaving(false);
+    };
+
+    const handleOpenExternally = () => {
+        const file = selectedFile();
+        if (!file) return;
+        const cmd = props.settings.openFileCommand;
+        if (cmd) {
+            execOpenFile(cmd, file.capsuleSourceLineRef, props.showError);
+        } else {
+            setShowCommandPicker(true);
+        }
+    };
+
+    const handleCommandSelect = (cmd: string) => {
+        if (!cmd.trim()) return;
+        props.onSaveSettings({ ...props.settings, openFileCommand: cmd.trim() });
+        const file = selectedFile();
+        if (file) {
+            execOpenFile(cmd.trim(), file.capsuleSourceLineRef, props.showError);
+        }
+        setShowCommandPicker(false);
+    };
+
+    onCleanup(() => {
+        editorView?.destroy();
+    });
+
+    return (
+        <div class="source-browser-overlay" onClick={(e) => { if (e.target === e.currentTarget) props.onClose(); }}>
+            <div class="source-browser">
+                <div class="source-browser-header">
+                    <span class="source-browser-title">Capsule Source Files</span>
+                    <button class="code-dialog-close" onClick={props.onClose}>×</button>
+                </div>
+                <div class="source-browser-body">
+                    <div class="source-browser-sidebar">
+                        <Show when={!loadingFiles()} fallback={
+                            <div class="source-browser-loading">Loading files...</div>
+                        }>
+                            <Show when={files().length > 0} fallback={
+                                <div class="source-browser-empty">No source files found</div>
+                            }>
+                                <For each={files()}>
+                                    {(file) => (
+                                        <button
+                                            class={`source-browser-file ${selectedFile()?.filePath === file.filePath ? "active" : ""}`}
+                                            onClick={() => selectFile(file)}
+                                            title={file.capsuleName}
+                                        >
+                                            <span class="source-browser-file-name">{getDisplayName(file.capsuleName)}</span>
+                                        </button>
+                                    )}
+                                </For>
+                            </Show>
+                        </Show>
+                    </div>
+                    <div class="source-browser-editor-area">
+                        <Show when={selectedFile()}>
+                            {(file) => (
+                                <div class="source-browser-editor-header">
+                                    <div class="source-browser-editor-header-top">
+                                        <code class="source-browser-filepath">{file().filePath}</code>
+                                        <div class="source-browser-editor-actions">
+                                            <button
+                                                class="code-dialog-btn"
+                                                onClick={handleSave}
+                                                disabled={viewMode() === 'simplified' || !isDirty() || isSaving()}
+                                            >{isSaving() ? "Saving..." : "Save"}</button>
+                                            <button
+                                                class="code-dialog-btn code-dialog-btn-primary"
+                                                onClick={handleOpenExternally}
+                                            >Open Externally</button>
+                                        </div>
+                                    </div>
+                                    <div class="source-browser-view-toggle">
+                                        <button
+                                            class={`source-browser-view-btn ${viewMode() === 'simplified' ? 'active' : ''}`}
+                                            onClick={() => switchViewMode('simplified')}
+                                        >Simplified Source</button>
+                                        <button
+                                            class={`source-browser-view-btn ${viewMode() === 'raw' ? 'active' : ''}`}
+                                            onClick={() => switchViewMode('raw')}
+                                        >Raw Source</button>
+                                    </div>
+                                </div>
+                            )}
+                        </Show>
+                        <Show when={showCommandPicker() && selectedFile()}>
+                            <div class="source-browser-command-picker">
+                                <SettingCommandPicker
+                                    value={props.settings.openFileCommand}
+                                    onChange={handleCommandSelect}
+                                />
+                            </div>
+                        </Show>
+                        <div class="source-browser-editor" ref={editorRef}>
+                            <Show when={!selectedFile() && !loadingContent()}>
+                                <div class="source-browser-placeholder">Select a file to view its source</div>
+                            </Show>
+                            <Show when={loadingContent()}>
+                                <div class="source-browser-loading">Loading file...</div>
+                            </Show>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
 // ── Code Dialog (first-time command selection + file path) ──────────
 
 function CodeDialog(props: {
@@ -1803,6 +2085,7 @@ export default function Home() {
     const [ready, setReady] = createSignal(false);
     const [settings, setSettings] = createSignal<WorkbenchSettings>(loadSettings());
     const [codeDialog, setCodeDialog] = createSignal<{ title: string; fullpath: string } | null>(null);
+    const [showSourceBrowser, setShowSourceBrowser] = createSignal(false);
     const [showSettings, setShowSettings] = createSignal(false);
     const [errorDialog, setErrorDialog] = createSignal<ErrorInfo | null>(null);
 
@@ -1903,9 +2186,9 @@ export default function Home() {
                 selectedLineSuffix={selectedLineSuffix}
                 onSettingsClick={() => setShowSettings(true)}
                 onCodeClick={() => {
-                    const ref = selectedLineRef();
-                    if (ref) openCodeFile("Open Capsule Source", ref);
-                    else openCapsuleCode(selected()!);
+                    if (selected()) {
+                        setShowSourceBrowser(true);
+                    }
                 }}
                 onClearInstance={() => workbenchStore.clearSpineInstance()}
             />
@@ -1929,6 +2212,16 @@ export default function Home() {
                     </div>
                 </Show>
             </div>
+
+            <Show when={showSourceBrowser() && selected()}>
+                <SourceBrowserDialog
+                    spineInstanceTreeId={selected()!}
+                    settings={settings()}
+                    onSaveSettings={persistSettings}
+                    onClose={() => setShowSourceBrowser(false)}
+                    showError={showError}
+                />
+            </Show>
 
             <Show when={codeDialog()}>
                 {(dlg) => (
