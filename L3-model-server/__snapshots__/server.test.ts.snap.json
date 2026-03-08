@@ -702,6 +702,32 @@
           }
         }
       },
+      "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/getCapsuleSourceFile": {
+        "args": [
+          {
+            "name": "filePath",
+            "type": "string"
+          },
+          {
+            "name": "format",
+            "type": "string"
+          }
+        ],
+        "description": "Read the contents of a capsule source file by its absolute path. Format: \"raw\" (default) or \"simplified\".",
+        "method": "GET or POST",
+        "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods",
+        "usage": {
+          "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/getCapsuleSourceFile?filePath=<string>&format=<string>",
+          "POST": {
+            "body": {
+              "args": [
+                "<string>",
+                "<string>"
+              ]
+            }
+          }
+        }
+      },
       "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/getProcessStats": {
         "args": [],
         "description": "Get backend process memory and CPU usage.",
@@ -726,6 +752,28 @@
           "POST": {
             "body": {
               "args": []
+            }
+          }
+        }
+      },
+      "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/listSpineInstanceTreeCapsuleSourceFiles": {
+        "args": [
+          {
+            "name": "spineInstanceTreeId",
+            "type": "string"
+          }
+        ],
+        "description": "List all capsule source files for a spine instance tree, grouped by capsule name.",
+        "engineParam": true,
+        "method": "GET or POST",
+        "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods",
+        "usage": {
+          "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/listSpineInstanceTreeCapsuleSourceFiles?spineInstanceTreeId=<string>",
+          "POST": {
+            "body": {
+              "args": [
+                "<string>"
+              ]
             }
           }
         }
@@ -761,6 +809,32 @@
         "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods",
         "usage": {
           "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/openFile?command=<string>&file=<string>",
+          "POST": {
+            "body": {
+              "args": [
+                "<string>",
+                "<string>"
+              ]
+            }
+          }
+        }
+      },
+      "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/saveCapsuleSourceFile": {
+        "args": [
+          {
+            "name": "filePath",
+            "type": "string"
+          },
+          {
+            "name": "content",
+            "type": "string"
+          }
+        ],
+        "description": "Save content to a capsule source file by its absolute path.",
+        "method": "GET or POST",
+        "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods",
+        "usage": {
+          "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/saveCapsuleSourceFile?filePath=<string>&content=<string>",
           "POST": {
             "body": {
               "args": [

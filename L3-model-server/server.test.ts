@@ -92,9 +92,8 @@ describe('L3 Model Server - Full Stack Debug', () => {
     })
 
     it('listSpineInstanceTrees via HTTP', async () => {
-        const port = 14000 + Math.floor(Math.random() * 1000)
+        const { port } = await modelServer.startServer(0, { skipInit: true })
         const BASE_URL = `http://localhost:${port}`
-        await modelServer.startServer(port, { skipInit: true })
 
         // Wait for server ready
         let ready = false
@@ -120,6 +119,16 @@ describe('L3 Model Server - Full Stack Debug', () => {
         const listData = await listRes.json() as any
         expect(listData.result['#']).toBe('SpineInstances')
         expect(listData.result.list.length).toBeGreaterThan(0)
+
+        // Verify /api-server/* rewrite to /api/*
+        const rewriteRes = await fetch(`${BASE_URL}/api-server/health`)
+        expect(rewriteRes.status).toBe(200)
+        const rewriteData = await rewriteRes.json() as any
+        expect(rewriteData.status).toBe('ok')
+
+        // Verify /api-server/* rewrite for schema
+        const rewriteSchemaRes = await fetch(`${BASE_URL}/api-server/schema`)
+        expect(rewriteSchemaRes.status).toBe(200)
 
         modelServer.stop()
     }, 30_000)

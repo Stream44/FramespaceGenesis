@@ -386,8 +386,13 @@ export async function capsule({
                                     return new Response(null, { status: 204, headers: _corsHeaders })
                                 }
 
+                                // ── Rewrite /api-server/* to /api/* (mirrors dev proxy) ──
+                                if (url.pathname.startsWith('/api-server/')) {
+                                    url.pathname = '/api/' + url.pathname.slice('/api-server/'.length)
+                                }
+
                                 // ── Redirect / and /index.html to /<prefix>/index.html ──
-                                if (url.pathname === '/' || url.pathname === '/index.html') {
+                                if (uiDistDir && (url.pathname === '/' || url.pathname === '/index.html')) {
                                     return Response.redirect(`/${prefix}/index.html`, 302)
                                 }
 
@@ -544,15 +549,16 @@ export async function capsule({
                         })
 
                         this._server = server
+                        const boundPort = server.port ?? actualPort
 
-                        console.log(`🚀 Server running on http://localhost:${actualPort}`)
+                        console.log(`🚀 Server running on http://localhost:${boundPort}`)
                         console.log(`📋 ${this._methods.length} API methods available`)
                         console.log(`🔗 Cache-bust prefix: /${prefix}/`)
                         if (uiDistDir) {
-                            console.log(`🌐 UI served at http://localhost:${actualPort}/${prefix}/`)
+                            console.log(`🌐 UI served at http://localhost:${boundPort}/${prefix}/`)
                         }
 
-                        return { server, port: actualPort }
+                        return { server, port: boundPort }
                     }
                 },
 
