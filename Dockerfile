@@ -25,7 +25,8 @@ ENV MODEL_SERVER_PORT=4000
 # Bun auto-loads .env from CWD, so both `bun run build` (vinxi) and the runtime server pick it up.
 RUN bun -e 'const v = require("./package.json").version; require("fs").writeFileSync("/app/.env", "CACHE_BUST_PATH_PREFIX=" + v + "\n")' && \
     cat /app/.env && \
-    bun run build
+    bun run build && \
+    bun run L13-workbench/vinxi-app/generate-spa-html.ts
 
 CMD ["bun", "run", "L3-model-server/server.ts"]
 
