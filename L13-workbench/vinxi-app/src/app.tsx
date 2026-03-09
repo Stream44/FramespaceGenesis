@@ -5,7 +5,15 @@ import { Suspense } from "solid-js";
 import "./theme.css";
 import "./app.css";
 
-const BASE_PATH = import.meta.env.SERVER_BASE_URL || "";
+// Detect base path at runtime: if URL is /0.2.0-rc.10/foo, base is /0.2.0-rc.10
+// This handles the cache-bust prefix injected by ModelServer
+function getBasePath(): string {
+    if (typeof window === "undefined") return "";
+    const match = window.location.pathname.match(/^(\/[\d]+\.[\d]+\.[\d]+[^/]*)/);
+    return match ? match[1] : "";
+}
+
+const BASE_PATH = getBasePath();
 
 export default function App() {
     return (
