@@ -558,6 +558,10 @@ export async function capsule({
                         if (uiDistDir) {
                             console.log(`🌐 UI served at http://localhost:${boundPort}/${prefix}/`)
                         }
+                        const buildTimestamp = process.env.BUILD_TIMESTAMP
+                        if (buildTimestamp) {
+                            console.log(`\x1b[35m🕐 Built: ${buildTimestamp}\x1b[0m`)
+                        }
 
                         return { server, port: boundPort }
                     }
