@@ -106,27 +106,33 @@ describe('L3 Model Server - Full Stack Debug', () => {
         }
         expect(ready).toBe(true)
 
-        // Fetch schema
-        const schemaRes = await fetch(`${BASE_URL}/api/schema`)
+        // /api/health is at root with no-cache
+        const healthRes = await fetch(`${BASE_URL}/api/health`)
+        expect(healthRes.status).toBe(200)
+        expect(healthRes.headers.get('cache-control')).toBe('no-cache')
+        const healthData = await healthRes.json() as any
+        const prefix = healthData.cacheBustPathPrefix
+
+        // Fetch schema via /<prefix>/api/schema (dev mode: no-cache)
+        const schemaRes = await fetch(`${BASE_URL}/${prefix}/api/schema`)
         expect(schemaRes.status).toBe(200)
+        expect(schemaRes.headers.get('cache-control')).toBe('no-cache')
         const schemaData = await schemaRes.json() as any
         expect(Object.keys(schemaData.apis).length).toBe(4)
 
-        // Fetch listSpineInstanceTrees
+        // Old /api/schema should return 404
+        const oldSchemaRes = await fetch(`${BASE_URL}/api/schema`)
+        expect(oldSchemaRes.status).toBe(404)
+
+        // Fetch listSpineInstanceTrees via /<prefix>/api/
         const workbenchNs = '@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods'
-        const listRes = await fetch(`${BASE_URL}/api/${workbenchNs}/listSpineInstanceTrees`)
+        const listRes = await fetch(`${BASE_URL}/${prefix}/api/${workbenchNs}/listSpineInstanceTrees`)
         expect(listRes.status).toBe(200)
         const listData = await listRes.json() as any
         expect(listData.result['#']).toBe('SpineInstances')
         expect(listData.result.list.length).toBeGreaterThan(0)
 
-        // Verify /api-server/* rewrite to /api/*
-        const rewriteRes = await fetch(`${BASE_URL}/api-server/health`)
-        expect(rewriteRes.status).toBe(200)
-        const rewriteData = await rewriteRes.json() as any
-        expect(rewriteData.status).toBe('ok')
-
-        // Verify /api-server/* rewrite for schema
+        // Verify /api-server/* rewrite to /<prefix>/api/*
         const rewriteSchemaRes = await fetch(`${BASE_URL}/api-server/schema`)
         expect(rewriteSchemaRes.status).toBe(200)
 

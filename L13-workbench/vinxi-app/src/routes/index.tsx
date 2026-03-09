@@ -319,7 +319,7 @@ function SpineInstanceSelector(props: { onCodeClick?: (filepath: string) => void
                                                                             <span class="instance-tag instance-tag-instance">Instance</span>
                                                                             <span class="instance-capsule-name">{instanceName()}<Show when={lineSuffix()}><span class="instance-line-ref">{lineSuffix()}</span></Show></span>
                                                                         </button>
-                                                                        <Show when={inst.capsuleSourceLineRef && props.onCodeClick}>
+                                                                        <Show when={import.meta.env.DEV && inst.capsuleSourceLineRef && props.onCodeClick}>
                                                                             <button
                                                                                 class="instance-card-code-btn"
                                                                                 onClick={(e) => {
@@ -376,7 +376,7 @@ function SpineInstanceSelector(props: { onCodeClick?: (filepath: string) => void
                                                                         <span class="instance-tag instance-tag-instance">Instance</span>
                                                                         <span class="instance-capsule-name">{instanceName()}<Show when={lineSuffix()}><span class="instance-line-ref">{lineSuffix()}</span></Show></span>
                                                                     </button>
-                                                                    <Show when={inst.capsuleSourceLineRef && props.onCodeClick}>
+                                                                    <Show when={import.meta.env.DEV && inst.capsuleSourceLineRef && props.onCodeClick}>
                                                                         <button
                                                                             class="instance-card-code-btn"
                                                                             onClick={(e) => {
@@ -556,7 +556,9 @@ function WorkbenchHeader(props: {
                 <div class="wb-header-detail-row">
                     <div class="wb-header-detail-left">
                         <Show when={props.selected()}>
-                            <button class="wb-code-btn" onClick={props.onCodeClick} title="Open source file">Code</button>
+                            <Show when={import.meta.env.DEV}>
+                                <button class="wb-code-btn" onClick={props.onCodeClick} title="Open source file">Code</button>
+                            </Show>
                             <div class="wb-instance-filter">
                                 <span class="wb-instance-label">{props.selected()}<Show when={props.selectedLineSuffix()}><span class="wb-instance-line">{props.selectedLineSuffix()}</span></Show></span>
                                 <span class="wb-instance-clear">×</span>
@@ -565,7 +567,7 @@ function WorkbenchHeader(props: {
                         </Show>
                     </div>
                     <div class="wb-header-detail-right">
-                        <Show when={client.status() === "connected"}>
+                        <Show when={import.meta.env.DEV && client.status() === "connected"}>
                             <span class="engine-status-stats">{statsText()}</span>
                         </Show>
                     </div>

@@ -71,4 +71,13 @@ await run({}, async ({ apis }: any) => {
     const modelServer = apis[spine.capsuleSourceLineRef].modelServer
     const uiDistDir = resolve(import.meta.dir, '../L13-workbench/vinxi-app/.output/public')
     await modelServer.startServer(undefined, { uiDistDir })
+
+    // Graceful shutdown on SIGINT/SIGTERM
+    const shutdown = () => {
+        console.log('\n🛑 Shutting down server...')
+        modelServer.stop()
+        process.exit(0)
+    }
+    process.on('SIGINT', shutdown)
+    process.on('SIGTERM', shutdown)
 })

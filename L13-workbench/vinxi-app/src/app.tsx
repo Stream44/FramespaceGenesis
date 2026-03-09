@@ -5,15 +5,11 @@ import { Suspense } from "solid-js";
 import "./theme.css";
 import "./app.css";
 
-// Detect base path at runtime: if URL is /0.2.0-rc.10/foo, base is /0.2.0-rc.10
-// This handles the cache-bust prefix injected by ModelServer
-function getBasePath(): string {
-    if (typeof window === "undefined") return "";
-    const match = window.location.pathname.match(/^(\/[\d]+\.[\d]+\.[\d]+[^/]*)/);
-    return match ? match[1] : "";
-}
-
-const BASE_PATH = getBasePath();
+// Vite's base config (set via CACHE_BUST_PATH_PREFIX in app.config.ts) controls
+// all asset URLs at build time. The Router base uses the same value so client-side
+// routing matches the URL prefix (e.g. /0.2.0-rc.10/).
+// import.meta.env.BASE_URL is "/" in dev, "/<version>/" in production builds.
+const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 export default function App() {
     return (

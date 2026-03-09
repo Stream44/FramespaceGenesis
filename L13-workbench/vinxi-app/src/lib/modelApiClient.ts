@@ -73,11 +73,13 @@ const NS = {
     Quadrant: '@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods',
 } as const;
 
-// In dev, vinxi proxies /api-server → model server's /api.
-// In production (NODE_ENV=production), the model server serves the UI directly, so use /api.
-const DEFAULT_BASE_URL = import.meta.env.DEV ? "/api-server" : "/api";
+// In dev, vinxi proxies /api-server → model server rewrites to /<prefix>/api/.
+// In production, we first call /api/health to discover the cacheBustPathPrefix,
+// then use /<prefix>/api/ for all subsequent (cacheable) API calls.
+const DEFAULT_BASE_URL = import.meta.env.DEV ? "/api-server" : "";
 
-export function createModelApiClient(baseUrl = DEFAULT_BASE_URL) {
+export function createModelApiClient(initialBaseUrl = DEFAULT_BASE_URL) {
+    let baseUrl = initialBaseUrl;
     const [status, setStatus] = createSignal<ConnectionStatus>("disconnected");
     const [schema, setSchema] = createSignal<EngineSchema | null>(null);
 
@@ -187,6 +189,15 @@ export function createModelApiClient(baseUrl = DEFAULT_BASE_URL) {
     async function connect() {
         setStatus("connecting");
         try {
+            // In production, discover the cache-bust prefix from /api/health
+            // and use it as the base URL for all subsequent API calls.
+            if (!import.meta.env.DEV) {
+                const health = await fetchJson('/api/health');
+                const prefix = health.cacheBustPathPrefix;
+                if (prefix) {
+                    baseUrl = `/${prefix}/api`;
+                }
+            }
             const s = await fetchJson(`${baseUrl}/schema`);
             setSchema(s);
             setStatus("connected");
@@ -292,6 +303,7 @@ export function createModelApiClient(baseUrl = DEFAULT_BASE_URL) {
     // ── Stats polling ───────────────────────────────────────────────
 
     function startStatsPolling() {
+        if (import.meta.env.DEV === false || !import.meta.env.DEV) return;
         if (statsInterval) return;
         getProcessStats();
         statsInterval = setInterval(() => { getProcessStats(); }, 5000);

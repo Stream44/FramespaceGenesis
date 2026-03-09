@@ -345,10 +345,18 @@ export async function capsule({
                             "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
                             "Access-Control-Allow-Headers": "Content-Type",
                         }
+                        const isDevMode = prefix === 'dev'
+                        const _apiCacheControl = isDevMode ? 'no-cache' : 'public, max-age=31536000, immutable'
                         const _json = (data: any, init?: any) => {
                             return Response.json(data, {
                                 ...init,
                                 headers: { ..._corsHeaders, ...(init?.headers ?? {}) },
+                            })
+                        }
+                        const _cachedJson = (data: any, cacheControl: string, init?: any) => {
+                            return Response.json(data, {
+                                ...init,
+                                headers: { ..._corsHeaders, 'Cache-Control': cacheControl, ...(init?.headers ?? {}) },
                             })
                         }
 
@@ -386,19 +394,15 @@ export async function capsule({
                                     return new Response(null, { status: 204, headers: _corsHeaders })
                                 }
 
-                                // ── Rewrite /api-server/* → /api/* (mirrors dev proxy) ──
+                                // ── Rewrite /api-server/* → /<prefix>/api/* (mirrors dev proxy) ──
                                 if (url.pathname.startsWith('/api-server/')) {
-                                    url.pathname = '/api/' + url.pathname.slice('/api-server/'.length)
+                                    url.pathname = `/${prefix}/api/` + url.pathname.slice('/api-server/'.length)
                                 }
 
                                 // ── UI static file serving ──
-                                // Vinxi builds a static SPA into uiDistDir with:
-                                //   index.html          – prerendered SPA shell
-                                //   _build/assets/*     – hashed JS/CSS bundles
-                                //   assets/*            – static assets (icons etc.)
-                                //   favicon.ico
-                                // ModelServer serves these under /<prefix>/ for cache busting.
-                                // The SPA HTML references /_build/* with absolute paths.
+                                // Vite's `base` is set to /<prefix>/ at build time, so the
+                                // built SPA references all assets under /<prefix>/ already.
+                                // ModelServer serves the dist dir under /<prefix>/.
                                 if (uiDistDir) {
                                     // Helper: serve a static file from uiDistDir
                                     const serveStatic = async (relPath: string, cacheControl: string) => {
@@ -428,21 +432,17 @@ export async function capsule({
                                         return Response.redirect(`/${prefix}/`, 301)
                                     }
 
-                                    // Serve /<prefix>/ and /<prefix>/index.html → SPA shell
-                                    if (url.pathname === `/${prefix}/` || url.pathname === `/${prefix}/index.html`) {
-                                        const r = await serveStatic('index.html', 'no-cache')
-                                        if (r) return r
-                                    }
-
-                                    // Serve /_build/* and /assets/* → static assets (absolute paths in the SPA HTML)
-                                    if (url.pathname.startsWith('/_build/') || url.pathname.startsWith('/assets/') || url.pathname === '/favicon.ico') {
-                                        const r = await serveStatic(url.pathname, 'public, max-age=31536000, immutable')
-                                        if (r) return r
-                                    }
-
-                                    // Serve /<prefix>/* → static files or SPA fallback
-                                    if (url.pathname.startsWith(`/${prefix}/`)) {
+                                    // Serve /<prefix>/* (skip /<prefix>/api/* which is handled below)
+                                    if (url.pathname.startsWith(`/${prefix}/`) && !url.pathname.startsWith(`/${prefix}/api/`)) {
                                         const relPath = url.pathname.slice(`/${prefix}/`.length)
+
+                                        // /<prefix>/ or /<prefix>/index.html → SPA shell (no-cache so reloads pick up new versions)
+                                        if (!relPath || relPath === 'index.html') {
+                                            const r = await serveStatic('index.html', 'no-cache')
+                                            if (r) return r
+                                        }
+
+                                        // /<prefix>/<file> → static asset (immutable — hashed filenames)
                                         if (relPath) {
                                             const r = await serveStatic(relPath, 'public, max-age=31536000, immutable')
                                             if (r) return r
@@ -453,30 +453,44 @@ export async function capsule({
                                             }
                                         }
                                     }
+
+                                    // Serve /favicon.ico from dist root
+                                    if (url.pathname === '/favicon.ico') {
+                                        const r = await serveStatic('favicon.ico', 'public, max-age=86400')
+                                        if (r) return r
+                                    }
                                 }
 
                                 // ── API routes ──
 
+                                // /api/health — always at root, always no-cache
                                 if (url.pathname === "/api/health") {
-                                    return _json({
+                                    return _cachedJson({
                                         status: "ok",
                                         timestamp: new Date().toISOString(),
                                         cacheBustPathPrefix: prefix,
                                         models: self._models.map((m: any) => ({ modelUri: m.modelUri, engineUri: m.engineUri, namespace: m.schema.namespace })),
                                         methods: self._methods.length,
-                                    })
+                                    }, 'no-cache')
                                 }
 
-                                if (url.pathname === "/api/schema") {
-                                    return _json(self._buildSchema())
+                                // /<prefix>/api/* — all other API endpoints
+                                const apiPrefix = `/${prefix}/api/`
+                                let apiPath = ''
+                                if (url.pathname.startsWith(apiPrefix)) {
+                                    apiPath = url.pathname.slice(apiPrefix.length)
                                 }
 
-                                // Dynamic method dispatch: /api/<namespace...>/<methodName>
-                                const match = url.pathname.match(/^\/api\/(.+)\/([a-zA-Z_][a-zA-Z0-9_]*)$/)
+                                if (apiPath === 'schema') {
+                                    return _cachedJson(self._buildSchema(), _apiCacheControl)
+                                }
+
+                                // Dynamic method dispatch: /<prefix>/api/<namespace...>/<methodName>
+                                const match = apiPath ? apiPath.match(/^(.+)\/([a-zA-Z_][a-zA-Z0-9_]*)$/) : null
                                 if (match) {
                                     const [, ns, methodName] = match
                                     const method = self._methodMap.get(`${ns}/${methodName}`)
-                                    if (!method) return _json({ error: `Unknown method: ${ns}/${methodName}` }, { status: 404 })
+                                    if (!method) return _cachedJson({ error: `Unknown method: ${ns}/${methodName}` }, 'no-cache', { status: 404 })
 
                                     let args: any[] = []
                                     try {
@@ -525,23 +539,23 @@ export async function capsule({
                                                 const result = (fb.schema.tags || fb.schema.graphMethod)
                                                     ? await fb.capsule[fb.name]({ graph: fb.engine, server: self }, ...fbArgs)
                                                     : await fb.capsule[fb.name](...fbArgs)
-                                                return _json({ method: fb.name, namespace: fb.namespace, result, fallbackFrom: methodName })
+                                                return _cachedJson({ method: fb.name, namespace: fb.namespace, result, fallbackFrom: methodName }, _apiCacheControl)
                                             }
                                         }
 
                                         const result = (method.schema.tags || method.schema.graphMethod)
                                             ? await method.capsule[method.name]({ graph: method.engine, server: self }, ...args)
                                             : await method.capsule[method.name](...args)
-                                        return _json({ method: methodName, namespace: method.namespace, result })
+                                        return _cachedJson({ method: methodName, namespace: method.namespace, result }, _apiCacheControl)
                                     } catch (err: any) {
                                         const message = err.message ?? String(err)
                                         const stack = err.stack ?? ''
                                         console.error(`❌ ${ns}/${methodName}`, `URI: ${url.pathname}${url.search}`, `args: ${JSON.stringify(args)}`, stack || message)
-                                        return _json({
+                                        return _cachedJson({
                                             method: methodName,
                                             namespace: ns,
                                             result: { '#': 'Error', method: `${ns}/${methodName}`, message, stack },
-                                        })
+                                        }, 'no-cache')
                                     }
                                 }
 

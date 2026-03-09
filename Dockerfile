@@ -21,11 +21,10 @@ COPY --chown=bun:bun . .
 ENV NODE_ENV=production
 ENV MODEL_SERVER_PORT=4000
 
-# Derive cache-bust prefix from package.json version, set build timestamp, and write .env
+# .env is provided by the build system (via files option in buildDistribution).
+# It contains CACHE_BUST_PATH_PREFIX and BUILD_TIMESTAMP.
 # Bun auto-loads .env from CWD, so both `bun run build` (vinxi) and the runtime server pick it up.
-RUN bun -e 'const v = require("./package.json").version; const ts = new Date().toISOString(); require("fs").writeFileSync("/app/.env", "CACHE_BUST_PATH_PREFIX=" + v + "\nBUILD_TIMESTAMP=" + ts + "\n")' && \
-    cat /app/.env && \
-    bun run build
+RUN cat /app/.env && bun run build
 
 CMD ["bun", "run", "L3-model-server/server.ts"]
 
