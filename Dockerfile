@@ -21,12 +21,11 @@ COPY --chown=bun:bun . .
 ENV NODE_ENV=production
 ENV MODEL_SERVER_PORT=4000
 
-# Derive cache-bust prefix from package.json version and bake it into .env
-# Bun automatically loads .env files from the working directory at startup.
-RUN export CACHE_BUST_PATH_PREFIX=$(bun -e "console.log(require('./package.json').version)") && \
-    echo "CACHE_BUST_PATH_PREFIX=$CACHE_BUST_PATH_PREFIX" && \
-    CACHE_BUST_PATH_PREFIX=$CACHE_BUST_PATH_PREFIX bun run build && \
-    echo "CACHE_BUST_PATH_PREFIX=$CACHE_BUST_PATH_PREFIX" > /app/.env
+# Derive cache-bust prefix from package.json version and write .env
+# Bun auto-loads .env from CWD, so both `bun run build` (vinxi) and the runtime server pick it up.
+RUN bun -e 'const v = require("./package.json").version; require("fs").writeFileSync("/app/.env", "CACHE_BUST_PATH_PREFIX=" + v + "\n")' && \
+    cat /app/.env && \
+    bun run build
 
 CMD ["bun", "run", "L3-model-server/server.ts"]
 

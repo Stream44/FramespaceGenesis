@@ -6,10 +6,19 @@
             "persistent": true
         },
         "build": {
-            "outputs": ["dist/**", ".output/**", ".vinxi/**"]
+            "env": [
+                "CACHE_BUST_PATH_PREFIX"
+            ],
+            "outputs": [
+                "dist/**",
+                ".output/**",
+                ".vinxi/**"
+            ]
         },
         "start": {
-            "dependsOn": ["build"],
+            "dependsOn": [
+                "build"
+            ],
             "persistent": true
         }
     }
