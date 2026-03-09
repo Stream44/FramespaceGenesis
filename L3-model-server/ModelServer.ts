@@ -392,8 +392,33 @@ export async function capsule({
                                 }
 
                                 // ── UI static file serving ──
+                                // Vinxi builds a static SPA into uiDistDir with:
+                                //   index.html          – prerendered SPA shell
+                                //   _build/assets/*     – hashed JS/CSS bundles
+                                //   assets/*            – static assets (icons etc.)
+                                //   favicon.ico
+                                // ModelServer serves these under /<prefix>/ for cache busting.
+                                // The SPA HTML references /_build/* with absolute paths.
                                 if (uiDistDir) {
-                                    // Redirect / or /index.html → /<prefix>/
+                                    // Helper: serve a static file from uiDistDir
+                                    const serveStatic = async (relPath: string, cacheControl: string) => {
+                                        const filePath = join(uiDistDir, relPath)
+                                        if (!filePath.startsWith(uiDistDir)) return null
+                                        const ext = extname(filePath).toLowerCase()
+                                        const bunFile = BunFile(filePath)
+                                        if (await bunFile.exists()) {
+                                            return new Response(bunFile, {
+                                                headers: {
+                                                    'Content-Type': MIME_TYPES[ext] || 'application/octet-stream',
+                                                    'Cache-Control': cacheControl,
+                                                    ..._corsHeaders,
+                                                },
+                                            })
+                                        }
+                                        return null
+                                    }
+
+                                    // Redirect / → /<prefix>/
                                     if (url.pathname === '/' || url.pathname === '/index.html') {
                                         return Response.redirect(`/${prefix}/`, 302)
                                     }
@@ -403,70 +428,28 @@ export async function capsule({
                                         return Response.redirect(`/${prefix}/`, 301)
                                     }
 
-                                    // Serve /<prefix>/ and /<prefix>/index.html → SPA index.html
+                                    // Serve /<prefix>/ and /<prefix>/index.html → SPA shell
                                     if (url.pathname === `/${prefix}/` || url.pathname === `/${prefix}/index.html`) {
-                                        const indexFile = BunFile(join(uiDistDir, 'index.html'))
-                                        if (await indexFile.exists()) {
-                                            return new Response(indexFile, {
-                                                headers: { 'Content-Type': 'text/html', 'Cache-Control': 'no-cache', ..._corsHeaders },
-                                            })
-                                        }
+                                        const r = await serveStatic('index.html', 'no-cache')
+                                        if (r) return r
                                     }
 
-                                    // Serve /_build/* → vite client assets (absolute paths baked into the SPA HTML)
-                                    if (url.pathname.startsWith('/_build/')) {
-                                        const filePath = join(uiDistDir, url.pathname)
-                                        if (!filePath.startsWith(uiDistDir)) return new Response('Forbidden', { status: 403 })
-                                        const bunFile = BunFile(filePath)
-                                        if (await bunFile.exists()) {
-                                            const ext = extname(filePath).toLowerCase()
-                                            return new Response(bunFile, {
-                                                headers: {
-                                                    'Content-Type': MIME_TYPES[ext] || 'application/octet-stream',
-                                                    'Cache-Control': 'public, max-age=31536000, immutable',
-                                                    ..._corsHeaders,
-                                                },
-                                            })
-                                        }
+                                    // Serve /_build/* and /assets/* → static assets (absolute paths in the SPA HTML)
+                                    if (url.pathname.startsWith('/_build/') || url.pathname.startsWith('/assets/') || url.pathname === '/favicon.ico') {
+                                        const r = await serveStatic(url.pathname, 'public, max-age=31536000, immutable')
+                                        if (r) return r
                                     }
 
-                                    // Serve favicon.ico from UI dist root
-                                    if (url.pathname === '/favicon.ico') {
-                                        const faviconFile = BunFile(join(uiDistDir, 'favicon.ico'))
-                                        if (await faviconFile.exists()) {
-                                            return new Response(faviconFile, {
-                                                headers: { 'Content-Type': 'image/x-icon', 'Cache-Control': 'public, max-age=86400', ..._corsHeaders },
-                                            })
-                                        }
-                                    }
-
-                                    // Serve other static files under /<prefix>/*
+                                    // Serve /<prefix>/* → static files or SPA fallback
                                     if (url.pathname.startsWith(`/${prefix}/`)) {
                                         const relPath = url.pathname.slice(`/${prefix}/`.length)
                                         if (relPath) {
-                                            const filePath = join(uiDistDir, relPath)
-                                            if (!filePath.startsWith(uiDistDir)) return new Response('Forbidden', { status: 403 })
-                                            const ext = extname(filePath).toLowerCase()
-                                            const bunFile = BunFile(filePath)
-                                            if (await bunFile.exists()) {
-                                                const cacheControl = ext === '.html' ? 'no-cache' : 'public, max-age=31536000, immutable'
-                                                return new Response(bunFile, {
-                                                    headers: {
-                                                        'Content-Type': MIME_TYPES[ext] || 'application/octet-stream',
-                                                        'Cache-Control': cacheControl,
-                                                        ..._corsHeaders,
-                                                    },
-                                                })
-                                            }
-
-                                            // SPA fallback: non-file paths under /<prefix>/ serve index.html
-                                            if (!ext) {
-                                                const indexFile = BunFile(join(uiDistDir, 'index.html'))
-                                                if (await indexFile.exists()) {
-                                                    return new Response(indexFile, {
-                                                        headers: { 'Content-Type': 'text/html', 'Cache-Control': 'no-cache', ..._corsHeaders },
-                                                    })
-                                                }
+                                            const r = await serveStatic(relPath, 'public, max-age=31536000, immutable')
+                                            if (r) return r
+                                            // SPA fallback: non-file paths serve index.html
+                                            if (!extname(relPath)) {
+                                                const r = await serveStatic('index.html', 'no-cache')
+                                                if (r) return r
                                             }
                                         }
                                     }
