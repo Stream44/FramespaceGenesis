@@ -21,14 +21,13 @@ COPY --chown=bun:bun . .
 ENV NODE_ENV=production
 ENV MODEL_SERVER_PORT=4000
 
-# Derive cache-bust prefix from package.json version and bake it in.
-# This ensures each release busts browser caches for the UI.
+# Derive cache-bust prefix from package.json version and bake it into .env
+# Bun automatically loads .env files from the working directory at startup.
 RUN export CACHE_BUST_PATH_PREFIX=$(bun -e "console.log(require('./package.json').version)") && \
     echo "CACHE_BUST_PATH_PREFIX=$CACHE_BUST_PATH_PREFIX" && \
     CACHE_BUST_PATH_PREFIX=$CACHE_BUST_PATH_PREFIX bun run build && \
-    echo "$CACHE_BUST_PATH_PREFIX" > /app/.cache-bust-prefix
-ENV CACHE_BUST_PATH_PREFIX=""
-# Set the prefix at runtime from the baked-in file
-CMD ["sh", "-c", "export CACHE_BUST_PATH_PREFIX=$(cat /app/.cache-bust-prefix) && exec bun run L3-model-server/server.ts"]
+    echo "CACHE_BUST_PATH_PREFIX=$CACHE_BUST_PATH_PREFIX" > /app/L3-model-server/.env
+
+CMD ["bun", "run", "L3-model-server/server.ts"]
 
 EXPOSE 4000
