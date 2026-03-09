@@ -26,7 +26,7 @@ ENV MODEL_SERVER_PORT=4000
 RUN export CACHE_BUST_PATH_PREFIX=$(bun -e "console.log(require('./package.json').version)") && \
     echo "CACHE_BUST_PATH_PREFIX=$CACHE_BUST_PATH_PREFIX" && \
     CACHE_BUST_PATH_PREFIX=$CACHE_BUST_PATH_PREFIX bun run build && \
-    echo "CACHE_BUST_PATH_PREFIX=$CACHE_BUST_PATH_PREFIX" > /app/L3-model-server/.env
+    echo "CACHE_BUST_PATH_PREFIX=$CACHE_BUST_PATH_PREFIX" > /app/.env
 
 CMD ["bun", "run", "L3-model-server/server.ts"]
 
