@@ -51,6 +51,7 @@ Logic Engines
     - https://github.com/DaphneOdekerken/PyArg
     - https://github.com/stefano-bragaglia/DePYsible
     - https://github.com/hstrass/defeasible-rules
+  - Google: "defeasible logic visualization"
 
 - [ ] https://eyereasoner.github.io/eye/ - Euler Yet another proof Engine - EYE
 

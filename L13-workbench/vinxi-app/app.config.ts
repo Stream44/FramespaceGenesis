@@ -21,6 +21,7 @@ export default defineConfig({
                 proxy: { to: `${MODEL_SERVER_ORIGIN}/api-server/**` },
             },
         },
+        ...(base ? { baseURL: base } : {}),
     },
     vite: {
         ...(base ? { base } : {}),
