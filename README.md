@@ -38,7 +38,7 @@ Point your AI at [docs/AI-MODEL-BUILDING.md](./docs/AI-MODEL-BUILDING.md) and ma
 
 ### Quadrant & Swimlane Codepath View Examples
 
-These visualizations are generated from execution traces dumped when running [examples/03-QuadrantCodepath-SimplePasswordLogin/](examples/03-QuadrantCodepath-SimplePasswordLogin).
+These visualizations are generated from execution traces logged when running [examples/03-QuadrantCodepath-SimplePasswordLogin/](examples/03-QuadrantCodepath-SimplePasswordLogin).
 
 See [docs/Roadmap.md](./docs/Roadmap.md) for planned visualization libraries.
 
