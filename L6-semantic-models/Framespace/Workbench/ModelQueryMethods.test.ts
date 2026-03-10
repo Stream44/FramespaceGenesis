@@ -158,8 +158,10 @@ describe('L6 Framespace/Workbench ModelQueryMethods', () => {
         const treeId = trees.list[0]?.$id
         const listing = await api.listSpineInstanceTreeCapsuleSourceFiles(treeId)
         expect(listing.list.length).toBeGreaterThan(0)
-        // Find a capsule file (not the root model file)
-        const capsFile = listing.list.find((f: any) => f.filePath.includes('/caps/'))
+        // Find a non-root capsule file (in /caps/ or /elements/ or /structs/ subdirectory)
+        const capsFile = listing.list.find((f: any) =>
+            f.filePath.includes('/caps/') || f.filePath.includes('/elements/') || f.filePath.includes('/structs/')
+        )
         expect(capsFile).toBeTruthy()
         const result = await api.getCapsuleSourceFile(capsFile.filePath, 'simplified')
         expect(result['#']).toBe('CapsuleSourceFileContent')
@@ -192,8 +194,10 @@ describe('L6 Framespace/Workbench ModelQueryMethods', () => {
         const trees = await api.listSpineInstanceTrees()
         const treeId = trees.list[0]?.$id
         const listing = await api.listSpineInstanceTreeCapsuleSourceFiles(treeId)
-        // Find the root model file (not in /caps/ dir)
-        const modelFile = listing.list.find((f: any) => !f.filePath.includes('/caps/') && f.filePath.endsWith('.ts'))
+        // Find the root model file (not in /caps/, /elements/, or /structs/ dir)
+        const modelFile = listing.list.find((f: any) =>
+            !f.filePath.includes('/caps/') && !f.filePath.includes('/elements/') && !f.filePath.includes('/structs/') && f.filePath.endsWith('.ts')
+        )
         expect(modelFile).toBeTruthy()
         const result = await api.getCapsuleSourceFile(modelFile.filePath, 'simplified')
         expect(result['#']).toBe('CapsuleSourceFileContent')

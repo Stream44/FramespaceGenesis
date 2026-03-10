@@ -208,7 +208,7 @@ function getPanelStatus(id: string): PanelStatus {
 
 // ── Spine Instance Selection Page ────────────────────────────────────
 
-function SpineInstanceSelector(props: { onCodeClick?: (filepath: string) => void }) {
+function SpineInstanceSelector(props: { onCodeClick?: (spineInstanceTreeId: string, filepath: string) => void }) {
     const instances = () => workbenchStore.spineInstances();
     const isConnecting = () => workbenchStore.api.status() === "connecting";
     const groups = () => workbenchStore.spineInstanceGroups();
@@ -319,12 +319,12 @@ function SpineInstanceSelector(props: { onCodeClick?: (filepath: string) => void
                                                                             <span class="instance-tag instance-tag-instance">Instance</span>
                                                                             <span class="instance-capsule-name">{instanceName()}<Show when={lineSuffix()}><span class="instance-line-ref">{lineSuffix()}</span></Show></span>
                                                                         </button>
-                                                                        <Show when={import.meta.env.DEV && inst.capsuleSourceLineRef && props.onCodeClick}>
+                                                                        <Show when={inst.capsuleSourceLineRef && props.onCodeClick}>
                                                                             <button
                                                                                 class="instance-card-code-btn"
                                                                                 onClick={(e) => {
                                                                                     e.stopPropagation();
-                                                                                    props.onCodeClick!(inst.capsuleSourceLineRef);
+                                                                                    props.onCodeClick!(inst.$id, inst.capsuleSourceLineRef);
                                                                                 }}
                                                                                 title="Open source file"
                                                                             >Code</button>
@@ -376,12 +376,12 @@ function SpineInstanceSelector(props: { onCodeClick?: (filepath: string) => void
                                                                         <span class="instance-tag instance-tag-instance">Instance</span>
                                                                         <span class="instance-capsule-name">{instanceName()}<Show when={lineSuffix()}><span class="instance-line-ref">{lineSuffix()}</span></Show></span>
                                                                     </button>
-                                                                    <Show when={import.meta.env.DEV && inst.capsuleSourceLineRef && props.onCodeClick}>
+                                                                    <Show when={inst.capsuleSourceLineRef && props.onCodeClick}>
                                                                         <button
                                                                             class="instance-card-code-btn"
                                                                             onClick={(e) => {
                                                                                 e.stopPropagation();
-                                                                                props.onCodeClick!(inst.capsuleSourceLineRef);
+                                                                                props.onCodeClick!(inst.$id, inst.capsuleSourceLineRef);
                                                                             }}
                                                                             title="Open source file"
                                                                         >Code</button>
@@ -556,9 +556,7 @@ function WorkbenchHeader(props: {
                 <div class="wb-header-detail-row">
                     <div class="wb-header-detail-left">
                         <Show when={props.selected()}>
-                            <Show when={import.meta.env.DEV}>
-                                <button class="wb-code-btn" onClick={props.onCodeClick} title="Open source file">Code</button>
-                            </Show>
+                            <button class="wb-code-btn" onClick={props.onCodeClick} title="Open source file">Code</button>
                             <div class="wb-instance-filter">
                                 <span class="wb-instance-label">{props.selected()}<Show when={props.selectedLineSuffix()}><span class="wb-instance-line">{props.selectedLineSuffix()}</span></Show></span>
                                 <span class="wb-instance-clear">×</span>
@@ -1738,6 +1736,7 @@ function SourceBrowserDialog(props: {
     onSaveSettings: (s: WorkbenchSettings) => void;
     onClose: () => void;
     showError: (e: ErrorInfo) => void;
+    initialFilePath?: string;
 }) {
     const [files, setFiles] = createSignal<SourceFile[]>([]);
     const [selectedFile, setSelectedFile] = createSignal<SourceFile | null>(null);
@@ -1781,6 +1780,25 @@ function SourceBrowserDialog(props: {
             const list = data.result?.list ?? [];
             list.sort((a: SourceFile, b: SourceFile) => a.capsuleName.localeCompare(b.capsuleName));
             setFiles(list);
+            // Auto-select file if initialFilePath was provided
+            if (props.initialFilePath && list.length > 0) {
+                // Strip :line suffix for comparison (capsuleSourceLineRef may have different line numbers)
+                const stripLine = (ref: string) => ref.replace(/:\d+$/, '');
+                const target = stripLine(props.initialFilePath);
+                vlog("SourceBrowserDialog", `initialFilePath=${props.initialFilePath} target=${target}`);
+                vlog("SourceBrowserDialog", `files: ${list.map((f: SourceFile) => f.capsuleSourceLineRef).join(', ')}`);
+                const match = list.find((f: SourceFile) =>
+                    stripLine(f.capsuleSourceLineRef) === target ||
+                    f.capsuleSourceLineRef === props.initialFilePath ||
+                    f.filePath === props.initialFilePath ||
+                    f.capsuleName === target ||
+                    props.initialFilePath!.startsWith(f.filePath)
+                );
+                vlog("SourceBrowserDialog", `match=${match ? match.capsuleName : 'NONE'}`);
+                if (match) {
+                    selectFile(match);
+                }
+            }
         } catch (err: any) {
             props.showError({ method: "listCapsuleSourceFiles", message: err.message ?? String(err) });
         }
@@ -1949,17 +1967,19 @@ function SourceBrowserDialog(props: {
                                 <div class="source-browser-editor-header">
                                     <div class="source-browser-editor-header-top">
                                         <code class="source-browser-filepath">{file().filePath}</code>
-                                        <div class="source-browser-editor-actions">
-                                            <button
-                                                class="code-dialog-btn"
-                                                onClick={handleSave}
-                                                disabled={viewMode() === 'simplified' || !isDirty() || isSaving()}
-                                            >{isSaving() ? "Saving..." : "Save"}</button>
-                                            <button
-                                                class="code-dialog-btn code-dialog-btn-primary"
-                                                onClick={handleOpenExternally}
-                                            >Open Externally</button>
-                                        </div>
+                                        <Show when={import.meta.env.DEV}>
+                                            <div class="source-browser-editor-actions">
+                                                <button
+                                                    class="code-dialog-btn"
+                                                    onClick={handleSave}
+                                                    disabled={viewMode() === 'simplified' || !isDirty() || isSaving()}
+                                                >{isSaving() ? "Saving..." : "Save"}</button>
+                                                <button
+                                                    class="code-dialog-btn code-dialog-btn-primary"
+                                                    onClick={handleOpenExternally}
+                                                >Open Externally</button>
+                                            </div>
+                                        </Show>
                                     </div>
                                     <div class="source-browser-view-toggle">
                                         <button
@@ -1974,7 +1994,7 @@ function SourceBrowserDialog(props: {
                                 </div>
                             )}
                         </Show>
-                        <Show when={showCommandPicker() && selectedFile()}>
+                        <Show when={import.meta.env.DEV && showCommandPicker() && selectedFile()}>
                             <div class="source-browser-command-picker">
                                 <SettingCommandPicker
                                     value={props.settings.openFileCommand}
@@ -2123,6 +2143,8 @@ export default function Home() {
     const [settings, setSettings] = createSignal<WorkbenchSettings>(loadSettings());
     const [codeDialog, setCodeDialog] = createSignal<{ title: string; fullpath: string } | null>(null);
     const [showSourceBrowser, setShowSourceBrowser] = createSignal(false);
+    const [sourceBrowserInitialFile, setSourceBrowserInitialFile] = createSignal<string | undefined>(undefined);
+    const [sourceBrowserTreeId, setSourceBrowserTreeId] = createSignal<string | undefined>(undefined);
     const [showSettings, setShowSettings] = createSignal(false);
     const [errorDialog, setErrorDialog] = createSignal<ErrorInfo | null>(null);
 
@@ -2188,12 +2210,22 @@ export default function Home() {
             openCodeFile("Open Rep Source", fullpath);
         }) as EventListener);
 
-        // Listen for Capsule.code.open events (from Capsule rep Code button)
+        // Listen for Capsule.code.open events (from component card Code button)
         document.addEventListener("Capsule.code.open", ((e: Event) => {
             const filepath = (e as CustomEvent).detail?.filepath;
             if (!filepath) return;
             vlog("Home", `Capsule.code.open: ${filepath}`);
-            openCodeFile("Open Capsule Source", filepath);
+            // Force remount if already open by closing first
+            if (showSourceBrowser()) {
+                setShowSourceBrowser(false);
+                queueMicrotask(() => {
+                    setSourceBrowserInitialFile(filepath);
+                    setShowSourceBrowser(true);
+                });
+            } else {
+                setSourceBrowserInitialFile(filepath);
+                setShowSourceBrowser(true);
+            }
         }) as EventListener);
     });
 
@@ -2224,6 +2256,7 @@ export default function Home() {
                 onSettingsClick={() => setShowSettings(true)}
                 onCodeClick={() => {
                     if (selected()) {
+                        setSourceBrowserInitialFile(selectedLineRef() ?? undefined);
                         setShowSourceBrowser(true);
                     }
                 }}
@@ -2235,7 +2268,11 @@ export default function Home() {
                     <div class="wb-loading">Connecting to engines...</div>
                 }>
                     <Show when={selected()} fallback={
-                        <SpineInstanceSelector onCodeClick={(filepath) => openCodeFile("Open Capsule Source", filepath)} />
+                        <SpineInstanceSelector onCodeClick={(treeId, filepath) => {
+                            setSourceBrowserTreeId(treeId);
+                            setSourceBrowserInitialFile(filepath);
+                            setShowSourceBrowser(true);
+                        }} />
                     }>
                         <WorkbenchDockview />
                     </Show>
@@ -2250,13 +2287,14 @@ export default function Home() {
                 </Show>
             </div>
 
-            <Show when={showSourceBrowser() && selected()}>
+            <Show when={showSourceBrowser() && (selected() || sourceBrowserTreeId())}>
                 <SourceBrowserDialog
-                    spineInstanceTreeId={selected()!}
+                    spineInstanceTreeId={(selected() || sourceBrowserTreeId())!}
                     settings={settings()}
                     onSaveSettings={persistSettings}
-                    onClose={() => setShowSourceBrowser(false)}
+                    onClose={() => { setShowSourceBrowser(false); setSourceBrowserInitialFile(undefined); setSourceBrowserTreeId(undefined); }}
                     showError={showError}
+                    initialFilePath={sourceBrowserInitialFile()}
                 />
             </Show>
 

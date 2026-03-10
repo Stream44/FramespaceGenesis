@@ -398,7 +398,8 @@ export async function capsule({
                             "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
                             "Access-Control-Allow-Headers": "Content-Type",
                         }
-                        const isDevMode = prefix === 'dev'
+                        const isProduction = process.env.NODE_ENV === 'production'
+                        const isDevMode = !isProduction
                         const _apiCacheControl = isDevMode ? 'no-cache' : 'public, max-age=31536000, immutable'
                         const _json = (data: any, init?: any) => {
                             return Response.json(data, {

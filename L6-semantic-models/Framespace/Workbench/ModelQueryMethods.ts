@@ -191,7 +191,7 @@ export async function capsule({
                             if (allEntries.length > 0) manifestOrder = allEntries
                         } catch { }
 
-                        // Re-order to match manifest if available
+                        // Re-order to match manifest if available, otherwise sort by $id for deterministic output
                         if (manifestOrder) {
                             const orderMap: Record<string, number> = {}
                             for (let i = 0; i < manifestOrder.length; i++) orderMap[manifestOrder[i]] = i
@@ -199,8 +199,12 @@ export async function capsule({
                             list.sort((a: any, b: any) => {
                                 const ai = a.$id in orderMap ? orderMap[a.$id] : fallback
                                 const bi = b.$id in orderMap ? orderMap[b.$id] : fallback
-                                return ai - bi
+                                if (ai !== bi) return ai - bi
+                                // Fallback: sort by $id for items not in manifest
+                                return (a.$id as string).localeCompare(b.$id as string)
                             })
+                        } else {
+                            list.sort((a: any, b: any) => (a.$id as string).localeCompare(b.$id as string))
                         }
 
                         // Load models.json for engine availability per model
@@ -297,6 +301,13 @@ export async function capsule({
                             })
                         }
 
+                        // Sort groups for deterministic output across environments
+                        groups.sort((a: any, b: any) => {
+                            const ka = `${a.examplesPath}/${a.exampleDir}`
+                            const kb = `${b.examplesPath}/${b.exampleDir}`
+                            return ka.localeCompare(kb)
+                        })
+
                         return { '#': 'SpineInstances', list, groups, registeredModels }
                     }
                 },
@@ -376,6 +387,7 @@ export async function capsule({
                 openFile: {
                     type: CapsulePropertyTypes.Function,
                     value: async function (command: string, file: string): Promise<any> {
+                        if (process.env.NODE_ENV === 'production') return { '#': 'Error', method: 'openFile', message: 'openFile is disabled in production' }
                         if (!command || typeof command !== 'string') return { '#': 'Error', method: 'openFile', message: 'No command provided' }
                         if (!file || typeof file !== 'string') return { '#': 'Error', method: 'openFile', message: 'No file provided' }
                         if (!file.startsWith('/')) return { '#': 'Error', method: 'openFile', message: `File must be an absolute path: ${file}` }
@@ -458,6 +470,9 @@ export async function capsule({
                             }
                         }
 
+                        // Sort by capsuleName for deterministic output across environments
+                        dedupedFiles.sort((a: any, b: any) => a.capsuleName.localeCompare(b.capsuleName))
+
                         return { '#': 'CapsuleSourceFiles', list: dedupedFiles }
                     }
                 },
@@ -495,6 +510,7 @@ export async function capsule({
                 saveCapsuleSourceFile: {
                     type: CapsulePropertyTypes.Function,
                     value: async function (filePath: string, content: string): Promise<any> {
+                        if (process.env.NODE_ENV === 'production') return { '#': 'Error', method: 'saveCapsuleSourceFile', message: 'saveCapsuleSourceFile is disabled in production' }
                         if (!filePath || typeof filePath !== 'string') return { '#': 'Error', method: 'saveCapsuleSourceFile', message: 'No filePath provided' }
                         if (!filePath.startsWith('/')) return { '#': 'Error', method: 'saveCapsuleSourceFile', message: `filePath must be absolute: ${filePath}` }
                         if (typeof content !== 'string') return { '#': 'Error', method: 'saveCapsuleSourceFile', message: 'No content provided' }
