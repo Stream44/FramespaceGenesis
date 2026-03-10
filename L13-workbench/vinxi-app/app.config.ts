@@ -8,9 +8,10 @@ const MODEL_SERVER_ORIGIN = `http://localhost:${process.env.MODEL_SERVER_PORT ||
 
 // In production builds, CACHE_BUST_PATH_PREFIX is set (e.g. "0.2.0-rc.10").
 // Vite's `base` controls the public path for all emitted assets.
-// In dev mode, base stays at default "/".
+// In dev mode, everything runs from root "/".
 const cacheBustPrefix = process.env.CACHE_BUST_PATH_PREFIX;
-const base = cacheBustPrefix ? `/${cacheBustPrefix}/` : undefined;
+const isProductionBuild = !!cacheBustPrefix;
+const base = isProductionBuild ? `/${cacheBustPrefix}/` : undefined;
 
 export default defineConfig({
     ssr: false,
@@ -20,7 +21,6 @@ export default defineConfig({
                 proxy: { to: `${MODEL_SERVER_ORIGIN}/api-server/**` },
             },
         },
-        ...(base ? { baseURL: base } : {}),
     },
     vite: {
         ...(base ? { base } : {}),

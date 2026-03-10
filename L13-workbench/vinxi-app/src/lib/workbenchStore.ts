@@ -130,7 +130,7 @@ async function loadEventLog(spineInstanceTreeId: string) {
     try {
         const result = await api.call(
             "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods/getEventLog",
-            { spineInstanceTreeId }
+            { spineInstanceTreeId, filter: 'codepath' }
         );
         const entries = result?.result?.entries ?? [];
         vlog("loadEventLog", `loaded ${entries.length} events`);

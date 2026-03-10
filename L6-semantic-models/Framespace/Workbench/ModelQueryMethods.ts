@@ -99,14 +99,75 @@ export async function capsule({
                 // =============================================================
 
                 /**
-                 * List all distinct spine instance tree IDs in the graph.
-                 * This method requires a graph (engine) to query.
+                 * List all distinct spine instance tree IDs.
+                 * Reads registered models and their SIT/CST files on disk.
+                 * Does NOT import into or query the engine — data imports lazily
+                 * on the first API request that contains a spineInstanceTreeId.
                  */
                 listSpineInstanceTrees: {
                     type: CapsulePropertyTypes.Function,
                     value: async function (this: any, { graph, server }: any): Promise<any> {
                         const PACKAGE_ROOT = this._getPackageRoot()
                         const generatedData = join(PACKAGE_ROOT, 'models', '.cst-data')
+
+                        // getModels is a GetterFunction (property getter), not a callable function.
+                        const registeredInstances: { name: string; result: any }[] =
+                            server?.spineInstanceTrees?.getModels ?? []
+
+                        // Build list from registered models + SIT/CST files on disk
+                        const list: any[] = []
+                        for (const model of registeredInstances) {
+                            const treeId = model.name
+                            const sitRoot = model.result?.sitRoot
+                            const entry: any = {
+                                '#': 'SpineInstanceTree',
+                                $id: treeId,
+                                capsuleSourceUriLineRef: null as string | null,
+                            }
+
+                            if (sitRoot) {
+                                const sitDirName = treeId.replace(/\//g, '~')
+                                const sitBase = join(sitRoot, '.~o/encapsulate.dev/spine-instances', sitDirName)
+                                const sitFile = join(sitBase, 'root-capsule.sit.json')
+                                try {
+                                    if (existsSync(sitFile)) {
+                                        const sit = JSON.parse(require('fs').readFileSync(sitFile, 'utf-8'))
+                                        const rootRef = sit.rootCapsule?.capsuleSourceUriLineRef
+                                        if (rootRef) entry.capsuleSourceUriLineRef = rootRef
+
+                                        // Read the matching CST file for capsuleSourceLineRef and config
+                                        const staticDir = join(sitRoot, '.~o/encapsulate.dev/static-analysis')
+                                        const cstFile = join(staticDir, rootRef + '.csts.json')
+                                        if (existsSync(cstFile)) {
+                                            const cst = JSON.parse(require('fs').readFileSync(cstFile, 'utf-8'))
+                                            const cstData = cst[rootRef]
+                                            if (cstData) {
+                                                if (cstData.capsuleSourceLineRef) {
+                                                    entry.capsuleSourceLineRef = cstData.capsuleSourceLineRef
+                                                }
+                                                // Extract config from spineContracts property contracts
+                                                const sc = cstData.spineContracts || {}
+                                                for (const scVal of Object.values(sc) as any[]) {
+                                                    const pcs = scVal?.propertyContracts || {}
+                                                    for (const pcVal of Object.values(pcs) as any[]) {
+                                                        const configProp = (pcVal as any)?.properties?.config
+                                                        if (configProp?.valueExpression) {
+                                                            try {
+                                                                entry.config = new Function('return ' + configProp.valueExpression)()
+                                                            } catch { }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                } catch { }
+                            }
+
+                            // Only include entries that resolved to a rootCapsule (have capsuleSourceUriLineRef)
+                            if (!entry.capsuleSourceUriLineRef) continue
+                            list.push(entry)
+                        }
 
                         // Try to read sits.json files for ordering
                         let manifestOrder: string[] | null = null
@@ -129,10 +190,6 @@ export async function capsule({
                             scanForSits(generatedData)
                             if (allEntries.length > 0) manifestOrder = allEntries
                         } catch { }
-
-                        // Delegate graph query to L6 CapsuleSpine
-                        const treesResult = await this.CapsuleSpine.getSpineInstanceTrees({ graph, server })
-                        let list = treesResult.list
 
                         // Re-order to match manifest if available
                         if (manifestOrder) {
@@ -184,27 +241,20 @@ export async function capsule({
                         }))
 
                         // Group by type (example vs test) > examplesPath > exampleDir
-                        // Only items from @stream44.studio/FramespaceGenesis/examples/ are "example", everything else is "test"
                         const groups: any[] = []
-                        // Key: type:examplesPath:exampleDir
                         const groupMap: Record<string, { type: string; examplesPath: string; modelName: string; exampleDir: string; items: any[] }> = {}
                         for (const item of list) {
-                            // Use capsuleSourceLineRef (absolute path) for full filepath
                             const absRef = (item.capsuleSourceLineRef ?? '') as string
-                            // Use capsuleSourceUriLineRef (npm URI) to derive model name
                             const ref = (item.capsuleSourceUriLineRef ?? item.$id) as string
                             const examplesIdx = ref.indexOf('/examples/')
                             let modelName = '(unknown)'
                             let exampleDir = '(default)'
                             let examplesPath = ''
 
-                            // Only items directly under @stream44.studio/FramespaceGenesis/examples/ are "example"
-                            // Check if the npm URI starts with the package prefix followed immediately by /examples/
                             const isPackageExample = ref.startsWith('@stream44.studio/FramespaceGenesis/examples/')
                             let type = isPackageExample ? 'example' : 'test'
 
                             if (examplesIdx >= 0) {
-                                // npm URI: @scope/package/path.../examples/dir/file
                                 let rawModelName = ref.substring(0, examplesIdx)
                                 if (rawModelName.startsWith(TRIM_PREFIX)) {
                                     rawModelName = rawModelName.substring(TRIM_PREFIX.length)
@@ -216,7 +266,6 @@ export async function capsule({
                                     exampleDir = afterExamples.substring(0, slashIdx)
                                 }
 
-                                // Extract full examples path from absolute ref
                                 const absExamplesIdx = absRef.indexOf('/examples/')
                                 if (absExamplesIdx >= 0) {
                                     const afterAbsExamples = absRef.substring(absExamplesIdx + '/examples/'.length)

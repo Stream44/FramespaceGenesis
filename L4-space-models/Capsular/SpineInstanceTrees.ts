@@ -32,6 +32,10 @@ export async function capsule({
                 registerInstance: {
                     type: CapsulePropertyTypes.Function,
                     value: async function (this: any, opts: { name: string }, capsuleFn: (ctx: { run: any }) => Promise<any>): Promise<any> {
+                        // Skip if already registered (multiple models share the same SpineInstanceTrees)
+                        if (this._models.some((m: any) => m.name === opts.name)) {
+                            return this._models.find((m: any) => m.name === opts.name)!.result
+                        }
                         const result = await capsuleFn({ run })
                         this._models.push({ name: opts.name, result })
                         return result

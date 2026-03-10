@@ -80,13 +80,17 @@ FramespaceGenesis/
 ├── L6-semantic-models/
 │   ├── Capsular/CapsuleSpine/         # Main semantic model (CapsuleSpine)
 │   └── Framespace/Workbench/          # Workbench utility methods
-├── L8-view-models/CapsuleSpine/
-│   ├── Quadrant/                      # Quadrant grid visualization
-│   └── Codepath/                      # Code execution path visualization
+├── L8-view-models/
+│   ├── CapsuleSpine/
+│   │   ├── Quadrant/                  # Quadrant grid visualization
+│   │   └── Codepath/                  # Code execution path visualization
+│   └── Composite/
+│       └── Quadrant-Codepath/         # Combined quadrant grid + codepath call lines
 ├── L13-workbench/vinxi-app/           # SolidJS workbench (port 3000)
 ├── examples/
 │   ├── Quadrant-BackendServices/      # Full example with elements + views
-│   └── Codepath-SimplePasswordLogin/  # Full example with executable code + events
+│   ├── Codepath-SimplePasswordLogin/  # Full example with executable code + events
+│   └── QuadrantCodepath-SimplePasswordLogin/  # Combined quadrant grid + codepath call lines
 └── docs/
     └── AI-MODELING.md                 # ← You are here
 ```
@@ -460,7 +464,12 @@ The CapsuleSpine semantic model at `L6-semantic-models/Capsular/CapsuleSpine/Mod
 | View Model | Method | Returns | Schema Structs |
 |------------|--------|---------|----------------|
 | **Quadrant** | `getTableView(treeId)` | `{ '#': 'TableView', spineInstanceTreeId }` | `schema/Column.ts`, `schema/Row.ts` |
+| **Quadrant** | `getColumnTree(treeId)` | Column dimension tree (proxied from L6) | `schema/Column.ts` |
+| **Quadrant** | `getRowTree(treeId)` | Row dimension tree (proxied from L6) | `schema/Row.ts` |
 | **Codepath** | `getSwimlaneView(treeId)` | `{ '#': 'SwimlaneView', columns, rows }` | Uses membrane events for columns/rows |
+| **Composite/Quadrant-Codepath** | `getQuadrantCodepathView(treeId)` | View reference for quadrant grid + call lines | Combines Quadrant + Codepath |
+| **Composite/Quadrant-Codepath** | `getComponentCards(treeId)` | Per-capsule cards with properties, actions, connections | Supplementary data |
+| **Composite/Quadrant-Codepath** | `getActiveCallPath(treeId, eventIndex)` | Active call edges at a given event index | Supplementary data |
 
 L8 models always access data through an L6 mapping:
 ```typescript
@@ -481,12 +490,15 @@ bun run dev    # Starts model-server (port 4000) + workbench (port 3000)
 
 The model server at `L3-model-server/server.ts` boots all registered semantic models, imports all discovered example models, and exposes every method via HTTP.
 
-**Registering a model** — add to the `models` config in `server.ts`:
+**Registering a model** — add to the `models` config in `server.ts`. **All L6 semantic models and L8 view models with an `apiSchema` must be registered** so their methods are exposed as HTTP routes:
 ```typescript
+// L6 semantic models — expose directly for client calls
+'@stream44.studio/FramespaceGenesis/L6-semantic-models/CapsuleSpine/Quadrant/ModelQueryMethods': {
+    engine: { '@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/JsonFiles-v0/ImportAPI': {} }
+},
+// L8 view models — higher-level visualization shaping
 '@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/ModelQueryMethods': {
-    engine: {
-        '@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/JsonFiles-v0/ImportAPI': {}
-    }
+    engine: { '@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/JsonFiles-v0/ImportAPI': {} }
 },
 ```
 
@@ -644,6 +656,7 @@ Examples live in different locations depending on their purpose:
 **Existing examples**:
 - `examples/Quadrant-BackendServices/` → self-contained, based on `L8-view-models/CapsuleSpine/Quadrant/examples/01-BackendServices/model.ts`
 - `examples/Codepath-SimplePasswordLogin/` → self-contained, based on `L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.ts`
+- `examples/QuadrantCodepath-SimplePasswordLogin/` → self-contained, based on `L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model.ts`
 
 ---
 
@@ -666,3 +679,4 @@ Examples live in different locations depending on their purpose:
 - **Custom visualization?** → Create L8 view model + SolidJS rep, register in `server.ts` + `visualizations/index.ts`
 - **New graph data types?** → Extend all 4 engines (QueryAPI + ImportAPI), then L4/L6 methods
 - **Show in Framespaces panel?** → Add `config.framespaces` to root capsule constant
+- **Composite visualization?** → Create L8 Composite model under `L8-view-models/Composite/<Name>/`, register in `server.ts`, create centralized example in `examples/`

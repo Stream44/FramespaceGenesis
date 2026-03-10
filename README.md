@@ -36,16 +36,13 @@ bun run test
 
 Point your AI at [docs/AI-MODEL-BUILDING.md](./docs/AI-MODEL-BUILDING.md) and make some changes to the [examples](./examples).
 
-### Quadrant & Codepath View Examples
+### Quadrant & Swimlane Codepath View Examples
+
+These visualizations are generated from execution traces dumped when running [examples/03-QuadrantCodepath-SimplePasswordLogin/](examples/03-QuadrantCodepath-SimplePasswordLogin).
 
 See [docs/Roadmap.md](./docs/Roadmap.md) for planned visualization libraries.
 
-<table>
-  <tr>
-    <td><img src="./docs/PreviewQuadrant.png"></td>
-    <td><img src="./docs/PreviewCodepath.png"></td>
-  </tr>
-</table>
+![Preview Quadrant Codepath Preview](./docs/PreviewQuadrantCodepath.png)
 
 
 Problem Statement
@@ -115,6 +112,10 @@ Semantic models define dimensions in a space by structuring primitives into link
 View models structure one or more semantic models into derived layout visual canvases.
 
 See [L8-view-models/README.md](L8-view-models/README.md) for details.
+
+### L10: Domain Models
+
+Domain models layer view models into topic specific observer oriented perspectives.
 
 ### L13: Workbench
 

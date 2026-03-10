@@ -1,0 +1,2735 @@
+{
+  "01-SimplePasswordLogin (Quadrant-Codepath) > L6 Codepath getCodepathRows #1": {
+    "#": "Codepath/Rows",
+    "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+    "columns": [
+      {
+        "#": "CodepathColumn",
+        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService:@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService",
+        "index": 4,
+        "label": "AuthService"
+      },
+      {
+        "#": "CodepathColumn",
+        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient:@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient",
+        "index": 3,
+        "label": "HttpClient"
+      },
+      {
+        "#": "CodepathColumn",
+        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+        "index": 2,
+        "label": "LoginForm"
+      },
+      {
+        "#": "CodepathColumn",
+        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User:@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User",
+        "index": 1,
+        "label": "User"
+      },
+      {
+        "#": "CodepathColumn",
+        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+        "index": 0,
+        "label": "01-SimplePasswordLogin"
+      }
+    ],
+    "rows": [
+      {
+        "#": "CodepathRow",
+        "$id": "row-0",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 1,
+          "columnIndex": 0,
+          "eventType": "call",
+          "membrane": "external",
+          "propertyName": "runModel",
+          "rawEvent": {
+            "caller": {
+              "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+              "line": 184,
+              "stack": [
+                {
+                  "column": 34,
+                  "filepath": "node_modules/@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
+                  "function": "addCallerContextToEvent",
+                  "line": 891
+                },
+                {
+                  "column": 26,
+                  "filepath": "node_modules/@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
+                  "line": 583
+                },
+                {
+                  "column": 28,
+                  "filepath": "L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model.ts",
+                  "line": 66
+                },
+                {
+                  "column": 37,
+                  "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+                  "line": 184
+                },
+                {
+                  "column": 34,
+                  "filepath": "node_modules/@stream44.studio/encapsulate/src/encapsulate.ts",
+                  "line": 317
+                },
+                {
+                  "column": 26,
+                  "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+                  "function": "async run",
+                  "line": 168
+                },
+                {
+                  "column": 18,
+                  "filepath": "L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model.ts",
+                  "function": "async runModel",
+                  "line": 6
+                },
+                {
+                  "column": 46,
+                  "filepath": "L4-space-models/Capsular/SpineInstanceTrees.ts",
+                  "line": 39
+                },
+                {
+                  "column": 34,
+                  "filepath": "L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model.test.ts",
+                  "line": 86
+                },
+                {
+                  "column": 43,
+                  "filepath": "node_modules/@stream44.studio/t44/caps/ProjectTest.ts",
+                  "line": 328
+                },
+                {
+                  "column": 39,
+                  "filepath": "native",
+                  "function": "processTicksAndRejections",
+                  "line": 7
+                }
+              ]
+            },
+            "event": "call",
+            "eventIndex": 0,
+            "membrane": "external",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+              "prop": "runModel",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60"
+            }
+          }
+        },
+        "eventIndex": 0,
+        "index": 0
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-12",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 3,
+          "columnIndex": 2,
+          "eventType": "call",
+          "membrane": "external",
+          "propertyName": "setEmail",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User",
+              "prop": "login",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User:37"
+            },
+            "event": "call",
+            "eventIndex": 12,
+            "membrane": "external",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "setEmail",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            }
+          }
+        },
+        "eventIndex": 12,
+        "index": 2
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-13",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 3,
+          "columnIndex": 2,
+          "dataSeen": "\"user@example.com\"",
+          "eventType": "set",
+          "membrane": "internal",
+          "propertyName": "_email",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "setEmail",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "event": "set",
+            "eventIndex": 13,
+            "membrane": "internal",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "_email",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "value": "user@example.com"
+          }
+        },
+        "eventIndex": 13,
+        "index": 3
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-14",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 2,
+          "callEventIndex": 12,
+          "callerColumnIndex": 2,
+          "columnIndex": 2,
+          "eventType": "call-result",
+          "membrane": "external",
+          "propertyName": "",
+          "rawEvent": {
+            "callEventIndex": 12,
+            "event": "call-result",
+            "eventIndex": 14,
+            "membrane": "external",
+            "target": {
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            }
+          },
+          "resolvedCaller": {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+            "propertyName": "setEmail"
+          }
+        },
+        "eventIndex": 14,
+        "index": 4
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-20",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 3,
+          "columnIndex": 2,
+          "eventType": "call",
+          "membrane": "external",
+          "propertyName": "setPassword",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User",
+              "prop": "login",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User:37"
+            },
+            "event": "call",
+            "eventIndex": 20,
+            "membrane": "external",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "setPassword",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            }
+          }
+        },
+        "eventIndex": 20,
+        "index": 5
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-21",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 3,
+          "columnIndex": 2,
+          "dataSeen": "\"validPassword123\"",
+          "eventType": "set",
+          "membrane": "internal",
+          "propertyName": "_password",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "setPassword",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "event": "set",
+            "eventIndex": 21,
+            "membrane": "internal",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "_password",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "value": "validPassword123"
+          }
+        },
+        "eventIndex": 21,
+        "index": 6
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-22",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 2,
+          "callEventIndex": 20,
+          "callerColumnIndex": 2,
+          "columnIndex": 2,
+          "eventType": "call-result",
+          "membrane": "external",
+          "propertyName": "",
+          "rawEvent": {
+            "callEventIndex": 20,
+            "event": "call-result",
+            "eventIndex": 22,
+            "membrane": "external",
+            "target": {
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            }
+          },
+          "resolvedCaller": {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+            "propertyName": "setPassword"
+          }
+        },
+        "eventIndex": 22,
+        "index": 7
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-28",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 3,
+          "columnIndex": 2,
+          "eventType": "call",
+          "membrane": "external",
+          "propertyName": "submit",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User",
+              "prop": "login",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User:37"
+            },
+            "event": "call",
+            "eventIndex": 28,
+            "membrane": "external",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "submit",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            }
+          }
+        },
+        "eventIndex": 28,
+        "index": 8
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-29",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 3,
+          "columnIndex": 2,
+          "dataSeen": "null",
+          "eventType": "set",
+          "membrane": "internal",
+          "propertyName": "_error",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "submit",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "event": "set",
+            "eventIndex": 29,
+            "membrane": "internal",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "_error",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "value": null
+          }
+        },
+        "eventIndex": 29,
+        "index": 9
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-30",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 4,
+          "columnIndex": 2,
+          "eventType": "call",
+          "membrane": "external",
+          "propertyName": "validate",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "submit",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "event": "call",
+            "eventIndex": 30,
+            "membrane": "external",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "validate",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            }
+          }
+        },
+        "eventIndex": 30,
+        "index": 10
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-31",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 4,
+          "columnIndex": 2,
+          "dataSeen": "\"user@example.com\"",
+          "eventType": "get",
+          "membrane": "internal",
+          "propertyName": "_email",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "validate",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "event": "get",
+            "eventIndex": 31,
+            "membrane": "internal",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "_email",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "value": "user@example.com"
+          }
+        },
+        "eventIndex": 31,
+        "index": 11
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-32",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 4,
+          "columnIndex": 2,
+          "dataSeen": "\"user@example.com\"",
+          "eventType": "get",
+          "membrane": "internal",
+          "propertyName": "_email",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "validate",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "event": "get",
+            "eventIndex": 32,
+            "membrane": "internal",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "_email",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "value": "user@example.com"
+          }
+        },
+        "eventIndex": 32,
+        "index": 12
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-33",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 4,
+          "columnIndex": 2,
+          "dataSeen": "\"validPassword123\"",
+          "eventType": "get",
+          "membrane": "internal",
+          "propertyName": "_password",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "validate",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "event": "get",
+            "eventIndex": 33,
+            "membrane": "internal",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "_password",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "value": "validPassword123"
+          }
+        },
+        "eventIndex": 33,
+        "index": 13
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-34",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 4,
+          "columnIndex": 2,
+          "dataSeen": "\"validPassword123\"",
+          "eventType": "get",
+          "membrane": "internal",
+          "propertyName": "_password",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "validate",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "event": "get",
+            "eventIndex": 34,
+            "membrane": "internal",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "_password",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "value": "validPassword123"
+          }
+        },
+        "eventIndex": 34,
+        "index": 14
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-35",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 3,
+          "callEventIndex": 30,
+          "callerColumnIndex": 2,
+          "columnIndex": 2,
+          "eventType": "call-result",
+          "membrane": "external",
+          "propertyName": "",
+          "rawEvent": {
+            "callEventIndex": 30,
+            "event": "call-result",
+            "eventIndex": 35,
+            "membrane": "external",
+            "result": [],
+            "target": {
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            }
+          },
+          "resolvedCaller": {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+            "propertyName": "validate"
+          }
+        },
+        "eventIndex": 35,
+        "index": 15
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-41",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 3,
+          "columnIndex": 2,
+          "dataSeen": "\"user@example.com\"",
+          "eventType": "get",
+          "membrane": "internal",
+          "propertyName": "_email",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "submit",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "event": "get",
+            "eventIndex": 41,
+            "membrane": "internal",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "_email",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "value": "user@example.com"
+          }
+        },
+        "eventIndex": 41,
+        "index": 16
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-42",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 3,
+          "columnIndex": 2,
+          "dataSeen": "\"validPassword123\"",
+          "eventType": "get",
+          "membrane": "internal",
+          "propertyName": "_password",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "submit",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "event": "get",
+            "eventIndex": 42,
+            "membrane": "internal",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "_password",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "value": "validPassword123"
+          }
+        },
+        "eventIndex": 42,
+        "index": 17
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-43",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 4,
+          "columnIndex": 3,
+          "eventType": "call",
+          "membrane": "external",
+          "propertyName": "post",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "submit",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "event": "call",
+            "eventIndex": 43,
+            "membrane": "external",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient",
+              "prop": "post",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient:38"
+            }
+          }
+        },
+        "eventIndex": 43,
+        "index": 18
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-49",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 5,
+          "columnIndex": 4,
+          "eventType": "call",
+          "membrane": "external",
+          "propertyName": "authenticate",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient",
+              "prop": "post",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient:38"
+            },
+            "event": "call",
+            "eventIndex": 49,
+            "membrane": "external",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService",
+              "prop": "authenticate",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService:45"
+            }
+          }
+        },
+        "eventIndex": 49,
+        "index": 19
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-50",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 4,
+          "callEventIndex": 49,
+          "callerColumnIndex": 4,
+          "columnIndex": 4,
+          "eventType": "call-result",
+          "membrane": "external",
+          "propertyName": "",
+          "rawEvent": {
+            "callEventIndex": 49,
+            "event": "call-result",
+            "eventIndex": 50,
+            "membrane": "external",
+            "result": {
+              "redirectUrl": "/dashboard",
+              "success": true,
+              "token": "token-user@example.com"
+            },
+            "target": {
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService:45"
+            }
+          },
+          "resolvedCaller": {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService",
+            "propertyName": "authenticate"
+          }
+        },
+        "eventIndex": 50,
+        "index": 20
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-51",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 3,
+          "callEventIndex": 43,
+          "callerColumnIndex": 3,
+          "columnIndex": 3,
+          "eventType": "call-result",
+          "membrane": "external",
+          "propertyName": "",
+          "rawEvent": {
+            "callEventIndex": 43,
+            "event": "call-result",
+            "eventIndex": 51,
+            "membrane": "external",
+            "result": {
+              "redirectUrl": "/dashboard",
+              "success": true,
+              "token": "token-user@example.com"
+            },
+            "target": {
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient:38"
+            }
+          },
+          "resolvedCaller": {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient",
+            "propertyName": "post"
+          }
+        },
+        "eventIndex": 51,
+        "index": 21
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-52",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 3,
+          "columnIndex": 2,
+          "dataSeen": "\"\"",
+          "eventType": "set",
+          "membrane": "internal",
+          "propertyName": "_email",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "submit",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "event": "set",
+            "eventIndex": 52,
+            "membrane": "internal",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "_email",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "value": ""
+          }
+        },
+        "eventIndex": 52,
+        "index": 22
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-53",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 3,
+          "columnIndex": 2,
+          "dataSeen": "\"\"",
+          "eventType": "set",
+          "membrane": "internal",
+          "propertyName": "_password",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "submit",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "event": "set",
+            "eventIndex": 53,
+            "membrane": "internal",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "_password",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "value": ""
+          }
+        },
+        "eventIndex": 53,
+        "index": 23
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-54",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 3,
+          "columnIndex": 2,
+          "dataSeen": "null",
+          "eventType": "set",
+          "membrane": "internal",
+          "propertyName": "_error",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "submit",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "event": "set",
+            "eventIndex": 54,
+            "membrane": "internal",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+              "prop": "_error",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            },
+            "value": null
+          }
+        },
+        "eventIndex": 54,
+        "index": 24
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-55",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 2,
+          "callEventIndex": 28,
+          "callerColumnIndex": 2,
+          "columnIndex": 2,
+          "eventType": "call-result",
+          "membrane": "external",
+          "propertyName": "",
+          "rawEvent": {
+            "callEventIndex": 28,
+            "event": "call-result",
+            "eventIndex": 55,
+            "membrane": "external",
+            "result": {
+              "redirectUrl": "/dashboard",
+              "success": true,
+              "token": "token-user@example.com"
+            },
+            "target": {
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+            }
+          },
+          "resolvedCaller": {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+            "propertyName": "submit"
+          }
+        },
+        "eventIndex": 55,
+        "index": 25
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-56",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 1,
+          "callEventIndex": 6,
+          "callerColumnIndex": 1,
+          "columnIndex": 1,
+          "eventType": "call-result",
+          "membrane": "external",
+          "propertyName": "",
+          "rawEvent": {
+            "callEventIndex": 6,
+            "event": "call-result",
+            "eventIndex": 56,
+            "membrane": "external",
+            "result": {
+              "redirectUrl": "/dashboard",
+              "success": true,
+              "token": "token-user@example.com"
+            },
+            "target": {
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User:37"
+            }
+          },
+          "resolvedCaller": {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User",
+            "propertyName": "login"
+          }
+        },
+        "eventIndex": 56,
+        "index": 26
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-57",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 0,
+          "callEventIndex": 0,
+          "callerColumnIndex": 0,
+          "columnIndex": 0,
+          "eventType": "call-result",
+          "membrane": "external",
+          "propertyName": "",
+          "rawEvent": {
+            "callEventIndex": 0,
+            "event": "call-result",
+            "eventIndex": 57,
+            "membrane": "external",
+            "result": {
+              "redirectUrl": "/dashboard",
+              "success": true,
+              "token": "token-user@example.com"
+            },
+            "target": {
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60"
+            }
+          },
+          "resolvedCaller": {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+            "propertyName": "runModel"
+          }
+        },
+        "eventIndex": 57,
+        "index": 27
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-6",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 2,
+          "columnIndex": 1,
+          "eventType": "call",
+          "membrane": "external",
+          "propertyName": "login",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+              "prop": "runModel",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60"
+            },
+            "event": "call",
+            "eventIndex": 6,
+            "membrane": "external",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User",
+              "prop": "login",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User:37"
+            }
+          }
+        },
+        "eventIndex": 6,
+        "index": 1
+      }
+    ]
+  },
+  "01-SimplePasswordLogin (Quadrant-Codepath) > L6 Quadrant getColumnTree #1": {
+    "#": "Quadrant/ColumnTree",
+    "columns": [
+      {
+        "#": "QuadrantTreeColumn",
+        "capsule": {
+          "#": "Capsule",
+          "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Person"
+        },
+        "capsules": [
+          {
+            "#": "Capsule",
+            "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User"
+          }
+        ],
+        "column": {
+          "#": "Column",
+          "label": "Person"
+        },
+        "columns": []
+      },
+      {
+        "#": "QuadrantTreeColumn",
+        "capsule": {
+          "#": "Capsule",
+          "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Form"
+        },
+        "capsules": [
+          {
+            "#": "Capsule",
+            "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm"
+          }
+        ],
+        "column": {
+          "#": "Column",
+          "label": "Form"
+        },
+        "columns": []
+      },
+      {
+        "#": "QuadrantTreeColumn",
+        "capsule": {
+          "#": "Capsule",
+          "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Network"
+        },
+        "capsules": [
+          {
+            "#": "Capsule",
+            "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient"
+          }
+        ],
+        "column": {
+          "#": "Column",
+          "label": "Network"
+        },
+        "columns": []
+      },
+      {
+        "#": "QuadrantTreeColumn",
+        "capsule": {
+          "#": "Capsule",
+          "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Service"
+        },
+        "capsules": [
+          {
+            "#": "Capsule",
+            "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService"
+          }
+        ],
+        "column": {
+          "#": "Column",
+          "label": "Service"
+        },
+        "columns": []
+      }
+    ]
+  },
+  "01-SimplePasswordLogin (Quadrant-Codepath) > L6 Quadrant getRowTree #1": {
+    "#": "Quadrant/RowTree",
+    "rows": [
+      {
+        "#": "QuadrantTreeRow",
+        "capsule": {
+          "#": "Capsule",
+          "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client"
+        },
+        "capsules": [
+          {
+            "#": "Capsule",
+            "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient"
+          },
+          {
+            "#": "Capsule",
+            "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm"
+          },
+          {
+            "#": "Capsule",
+            "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User"
+          }
+        ],
+        "row": {
+          "#": "Row",
+          "label": "Client"
+        },
+        "rows": []
+      },
+      {
+        "#": "QuadrantTreeRow",
+        "capsule": {
+          "#": "Capsule",
+          "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Server"
+        },
+        "capsules": [
+          {
+            "#": "Capsule",
+            "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService"
+          }
+        ],
+        "row": {
+          "#": "Row",
+          "label": "Server"
+        },
+        "rows": []
+      }
+    ]
+  },
+  "01-SimplePasswordLogin (Quadrant-Codepath) > fetchCapsuleRelations #1": {
+    "capsuleInfo": {
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin": {
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin"
+      }
+    },
+    "extends": {},
+    "found": {},
+    "mappings": {
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin": [
+        {
+          "delegate": "#@stream44.studio/encapsulate/structs/Capsule",
+          "propName": "#@stream44.studio/encapsulate/structs/Capsule",
+          "target": "@stream44.studio/encapsulate/structs/Capsule"
+        },
+        {
+          "delegate": "",
+          "propName": "user",
+          "target": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User"
+        }
+      ]
+    },
+    "properties": {
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin": [
+        {
+          "pcOptions": null,
+          "propName": "#@stream44.studio/encapsulate/structs/Capsule",
+          "propertyContract": "#",
+          "propertyContractDelegate": "#@stream44.studio/encapsulate/structs/Capsule",
+          "propertyContractUri": "",
+          "propertyType": "CapsulePropertyTypes.Mapping",
+          "valueExpression": "\"@stream44.studio/encapsulate/structs/Capsule\""
+        },
+        {
+          "pcOptions": null,
+          "propName": "config",
+          "propertyContract": "#",
+          "propertyContractDelegate": "",
+          "propertyContractUri": "",
+          "propertyType": "CapsulePropertyTypes.Constant",
+          "valueExpression": "{\n                            framespaces: {\n                                '@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/ModelQueryMethods': {\n                                    visualizationMethod: {\n                                        'getQuadrantCodepathView': {\n                                            label: 'Codepath Quadrant View'\n                                        }\n                                    }\n                                },\n                                '@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/ModelQueryMethods': {\n                                    visualizationMethod: {\n                                        'getSwimlaneView': {\n                                            label: 'Codepath Swimlane View'\n                                        }\n                                    }\n                                },\n                                '@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods': {\n                                    visualizationMethod: {\n                                        'getSpineInstanceTree': {\n                                            label: 'Spine Instance Tree'\n                                        }\n                                    }\n                                },\n                                '@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods#getSpineDeclarationTree': {\n                                    visualizationMethod: {\n                                        'getSpineDeclarationTree': {\n                                            label: 'Spine Declaration Tree'\n                                        }\n                                    }\n                                },\n                            }\n                        }"
+        },
+        {
+          "pcOptions": null,
+          "propName": "runModel",
+          "propertyContract": "#",
+          "propertyContractDelegate": "",
+          "propertyContractUri": "",
+          "propertyType": "CapsulePropertyTypes.Function",
+          "valueExpression": "function (this: any) {\n                            return this.user.login('user@example.com', 'validPassword123')\n                        }"
+        },
+        {
+          "pcOptions": null,
+          "propName": "user",
+          "propertyContract": "#",
+          "propertyContractDelegate": "",
+          "propertyContractUri": "",
+          "propertyType": "CapsulePropertyTypes.Mapping",
+          "valueExpression": "'./caps/User'"
+        }
+      ]
+    }
+  },
+  "01-SimplePasswordLogin (Quadrant-Codepath) > fetchInstanceRelations #1": {
+    "capsuleInfo": {
+      "@stream44.studio/encapsulate/structs/Capsule:18": {
+        "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+        "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column:21": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column:21"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row:21": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row:21"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService:45": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService:45"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient:38": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient:38"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User:37": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User:37"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Form:23": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Form",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Form:23"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Network:23": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Network",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Network:23"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Person:23": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Person",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Person:23"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Service:23": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Service",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Service:23"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client:23": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client:23"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Server:23": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Server",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Server:23"
+      }
+    },
+    "instances": {
+      "@stream44.studio/encapsulate/structs/Capsule:18": {
+        "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+        "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column:21": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column:21"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row:21": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row:21"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService:45": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService:45"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient:38": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient:38"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User:37": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User:37"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Form:23": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Form",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Form:23"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Network:23": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Network",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Network:23"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Person:23": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Person",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Person:23"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Service:23": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Service",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Service:23"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client:23": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client:23"
+      },
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Server:23": {
+        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Server",
+        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Server:23"
+      }
+    },
+    "parentMap": {
+      "@stream44.studio/encapsulate/structs/Capsule:18": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60",
+      "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column:21": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Person:23",
+      "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row:21": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client:23",
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService:45": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient:38",
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient:38": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90",
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User:37",
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User:37": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60",
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Form:23": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90",
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Network:23": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient:38",
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Person:23": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User:37",
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Service:23": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService:45",
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client:23": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User:37",
+      "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Server:23": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService:45"
+    }
+  },
+  "01-SimplePasswordLogin (Quadrant-Codepath) > getActiveCallPath at event 0 #1": {
+    "#": "ActiveCallPath",
+    "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+    "currentEvent": {
+      "#": "CurrentEvent",
+      "callerCapsuleId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model",
+      "capsuleId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model",
+      "eventType": "call",
+      "isMappingRef": false,
+      "mappingTargetCapsuleId": "",
+      "membrane": "external",
+      "propertyName": "runModel"
+    },
+    "edges": [
+      {
+        "#": "CallEdge",
+        "callEventIndex": 0,
+        "fromAction": "",
+        "fromCapsule": "",
+        "toAction": "runModel",
+        "toCapsule": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model"
+      }
+    ],
+    "eventIndex": 0
+  },
+  "01-SimplePasswordLogin (Quadrant-Codepath) > getActiveCallPath at mid-execution has edges #1": {
+    "#": "ActiveCallPath",
+    "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+    "currentEvent": {
+      "#": "CurrentEvent",
+      "callerCapsuleId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+      "capsuleId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+      "eventType": "get",
+      "isMappingRef": false,
+      "mappingTargetCapsuleId": "",
+      "membrane": "internal",
+      "propertyName": "_password"
+    },
+    "edges": [
+      {
+        "#": "CallEdge",
+        "callEventIndex": 0,
+        "fromAction": "",
+        "fromCapsule": "",
+        "toAction": "runModel",
+        "toCapsule": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model"
+      },
+      {
+        "#": "CallEdge",
+        "callEventIndex": 6,
+        "fromAction": "runModel",
+        "fromCapsule": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model",
+        "toAction": "login",
+        "toCapsule": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User"
+      },
+      {
+        "#": "CallEdge",
+        "callEventIndex": 28,
+        "fromAction": "login",
+        "fromCapsule": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User",
+        "toAction": "submit",
+        "toCapsule": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm"
+      },
+      {
+        "#": "CallEdge",
+        "callEventIndex": 30,
+        "fromAction": "submit",
+        "fromCapsule": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+        "toAction": "validate",
+        "toCapsule": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm"
+      }
+    ],
+    "eventIndex": 33
+  },
+  "01-SimplePasswordLogin (Quadrant-Codepath) > getCapsuleNamesBySpineTree #1": [
+    "@stream44.studio/encapsulate/structs/Capsule",
+    "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+    "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row",
+    "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+    "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService",
+    "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient",
+    "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+    "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User",
+    "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Form",
+    "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Network",
+    "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Person",
+    "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Service",
+    "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client",
+    "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Server"
+  ],
+  "01-SimplePasswordLogin (Quadrant-Codepath) > getCapsuleSpineTree_data #1": [
+    {
+      "p": {
+        "declarationLine": -1,
+        "definitionEndLine": -1,
+        "definitionStartLine": -1,
+        "id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::prop::#@stream44.studio/encapsulate/structs/Capsule",
+        "mappedModuleUri": "@stream44.studio/encapsulate/structs/Capsule",
+        "name": "#@stream44.studio/encapsulate/structs/Capsule",
+        "propertyContractDelegate": "#@stream44.studio/encapsulate/structs/Capsule",
+        "propertyContractId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "propertyType": "CapsulePropertyTypes.Mapping",
+        "valueExpression": "\"@stream44.studio/encapsulate/structs/Capsule\"",
+        "valueType": "string"
+      },
+      "pc": {
+        "contractKey": "#",
+        "id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "options": null,
+        "propertyContractUri": "",
+        "spineContractId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      },
+      "s": {
+        "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
+        "id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      }
+    },
+    {
+      "p": {
+        "declarationLine": 11,
+        "definitionEndLine": 45,
+        "definitionStartLine": 11,
+        "id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::prop::config",
+        "mappedModuleUri": "",
+        "name": "config",
+        "propertyContractDelegate": "",
+        "propertyContractId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "propertyType": "CapsulePropertyTypes.Constant",
+        "valueExpression": "{\n                            framespaces: {\n                                '@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/ModelQueryMethods': {\n                                    visualizationMethod: {\n                                        'getQuadrantCodepathView': {\n                                            label: 'Codepath Quadrant View'\n                                        }\n                                    }\n                                },\n                                '@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/ModelQueryMethods': {\n                                    visualizationMethod: {\n                                        'getSwimlaneView': {\n                                            label: 'Codepath Swimlane View'\n                                        }\n                                    }\n                                },\n                                '@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods': {\n                                    visualizationMethod: {\n                                        'getSpineInstanceTree': {\n                                            label: 'Spine Instance Tree'\n                                        }\n                                    }\n                                },\n                                '@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods#getSpineDeclarationTree': {\n                                    visualizationMethod: {\n                                        'getSpineDeclarationTree': {\n                                            label: 'Spine Declaration Tree'\n                                        }\n                                    }\n                                },\n                            }\n                        }",
+        "valueType": "object"
+      },
+      "pc": {
+        "contractKey": "#",
+        "id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "options": null,
+        "propertyContractUri": "",
+        "spineContractId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      },
+      "s": {
+        "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
+        "id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      }
+    },
+    {
+      "p": {
+        "declarationLine": 50,
+        "definitionEndLine": 55,
+        "definitionStartLine": 50,
+        "id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::prop::runModel",
+        "mappedModuleUri": "",
+        "name": "runModel",
+        "propertyContractDelegate": "",
+        "propertyContractId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "propertyType": "CapsulePropertyTypes.Function",
+        "valueExpression": "function (this: any) {\n                            return this.user.login('user@example.com', 'validPassword123')\n                        }",
+        "valueType": "(this: any) => any"
+      },
+      "pc": {
+        "contractKey": "#",
+        "id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "options": null,
+        "propertyContractUri": "",
+        "spineContractId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      },
+      "s": {
+        "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
+        "id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      }
+    },
+    {
+      "p": {
+        "declarationLine": 46,
+        "definitionEndLine": 49,
+        "definitionStartLine": 46,
+        "id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::prop::user",
+        "mappedModuleUri": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User",
+        "name": "user",
+        "propertyContractDelegate": "",
+        "propertyContractId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "propertyType": "CapsulePropertyTypes.Mapping",
+        "valueExpression": "'./caps/User'",
+        "valueType": "string"
+      },
+      "pc": {
+        "contractKey": "#",
+        "id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#",
+        "options": null,
+        "propertyContractUri": "",
+        "spineContractId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      },
+      "s": {
+        "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
+        "id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      }
+    },
+    {
+      "p": null,
+      "pc": {
+        "contractKey": "#@stream44.studio/encapsulate/structs/Capsule",
+        "id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::pc::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0::#@stream44.studio/encapsulate/structs/Capsule",
+        "options": null,
+        "propertyContractUri": "@stream44.studio/encapsulate/structs/Capsule",
+        "spineContractId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      },
+      "s": {
+        "contractUri": "@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0",
+        "id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::spine::@stream44.studio/encapsulate/spine-contracts/CapsuleSpineContract.v0"
+      }
+    }
+  ],
+  "01-SimplePasswordLogin (Quadrant-Codepath) > getCapsuleWithSource #1": {
+    "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60": {
+      "cacheBustVersion": 22,
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60",
+      "cstFilepath": "<PACKAGE_ROOT>/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/.~o/encapsulate.dev/static-analysis/@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60.csts.json",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin"
+    },
+    "source": {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "declarationLine": 7,
+      "definitionEndLine": 58,
+      "definitionStartLine": 7,
+      "extendsCapsule": "",
+      "extendsCapsuleUri": "",
+      "id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60::source",
+      "importStackLine": 60,
+      "moduleUri": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model",
+      "optionsEndLine": 62,
+      "optionsStartLine": 58
+    }
+  },
+  "01-SimplePasswordLogin (Quadrant-Codepath) > getChildInstances #1": [
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User:37"
+    }
+  ],
+  "01-SimplePasswordLogin (Quadrant-Codepath) > getComponentCards #1": {
+    "#": "ComponentCards",
+    "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+    "cards": [
+      {
+        "#": "ComponentCard",
+        "$id": "@stream44.studio/encapsulate/structs/Capsule",
+        "actions": [],
+        "connections": [],
+        "label": "Capsule",
+        "properties": [
+          {
+            "#": "Property",
+            "name": "capsuleSourceNameRefHash",
+            "propertyContractDelegate": "",
+            "type": "Literal"
+          }
+        ]
+      },
+      {
+        "#": "ComponentCard",
+        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+        "actions": [],
+        "connections": [
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/encapsulate/structs/Capsule",
+            "propertyName": "#@stream44.studio/encapsulate/structs/Capsule",
+            "target": "@stream44.studio/encapsulate/structs/Capsule",
+            "targetLabel": "Capsule"
+          }
+        ],
+        "label": "Column",
+        "properties": [
+          {
+            "#": "Property",
+            "name": "label",
+            "propertyContractDelegate": "",
+            "type": "String"
+          }
+        ]
+      },
+      {
+        "#": "ComponentCard",
+        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row",
+        "actions": [],
+        "connections": [
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/encapsulate/structs/Capsule",
+            "propertyName": "#@stream44.studio/encapsulate/structs/Capsule",
+            "target": "@stream44.studio/encapsulate/structs/Capsule",
+            "targetLabel": "Capsule"
+          }
+        ],
+        "label": "Row",
+        "properties": [
+          {
+            "#": "Property",
+            "name": "label",
+            "propertyContractDelegate": "",
+            "type": "String"
+          }
+        ]
+      },
+      {
+        "#": "ComponentCard",
+        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+        "actions": [
+          {
+            "#": "Action",
+            "name": "runModel"
+          }
+        ],
+        "connections": [
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/encapsulate/structs/Capsule",
+            "propertyName": "#@stream44.studio/encapsulate/structs/Capsule",
+            "target": "@stream44.studio/encapsulate/structs/Capsule",
+            "targetLabel": "Capsule"
+          },
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "",
+            "propertyName": "user",
+            "target": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User",
+            "targetLabel": "User"
+          }
+        ],
+        "label": "01-SimplePasswordLogin",
+        "properties": []
+      },
+      {
+        "#": "ComponentCard",
+        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService",
+        "actions": [
+          {
+            "#": "Action",
+            "name": "authenticate"
+          }
+        ],
+        "connections": [
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/encapsulate/structs/Capsule",
+            "propertyName": "#@stream44.studio/encapsulate/structs/Capsule",
+            "target": "@stream44.studio/encapsulate/structs/Capsule",
+            "targetLabel": "Capsule"
+          },
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Service",
+            "propertyName": "#@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Service",
+            "target": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Service",
+            "targetLabel": "Service"
+          },
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Server",
+            "propertyName": "#@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Server",
+            "target": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Server",
+            "targetLabel": "Server"
+          }
+        ],
+        "label": "AuthService",
+        "properties": []
+      },
+      {
+        "#": "ComponentCard",
+        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient",
+        "actions": [
+          {
+            "#": "Action",
+            "name": "post"
+          }
+        ],
+        "connections": [
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/encapsulate/structs/Capsule",
+            "propertyName": "#@stream44.studio/encapsulate/structs/Capsule",
+            "target": "@stream44.studio/encapsulate/structs/Capsule",
+            "targetLabel": "Capsule"
+          },
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Network",
+            "propertyName": "#@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Network",
+            "target": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Network",
+            "targetLabel": "Network"
+          },
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client",
+            "propertyName": "#@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client",
+            "target": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client",
+            "targetLabel": "Client"
+          },
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "",
+            "propertyName": "authService",
+            "target": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService",
+            "targetLabel": "AuthService"
+          }
+        ],
+        "label": "HttpClient",
+        "properties": []
+      },
+      {
+        "#": "ComponentCard",
+        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+        "actions": [
+          {
+            "#": "Action",
+            "name": "setEmail"
+          },
+          {
+            "#": "Action",
+            "name": "setPassword"
+          },
+          {
+            "#": "Action",
+            "name": "submit"
+          },
+          {
+            "#": "Action",
+            "name": "validate"
+          }
+        ],
+        "connections": [
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/encapsulate/structs/Capsule",
+            "propertyName": "#@stream44.studio/encapsulate/structs/Capsule",
+            "target": "@stream44.studio/encapsulate/structs/Capsule",
+            "targetLabel": "Capsule"
+          },
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Form",
+            "propertyName": "#@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Form",
+            "target": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Form",
+            "targetLabel": "Form"
+          },
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client",
+            "propertyName": "#@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client",
+            "target": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client",
+            "targetLabel": "Client"
+          },
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "",
+            "propertyName": "httpClient",
+            "target": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient",
+            "targetLabel": "HttpClient"
+          }
+        ],
+        "label": "LoginForm",
+        "properties": [
+          {
+            "#": "Property",
+            "name": "_email",
+            "propertyContractDelegate": "",
+            "type": "String"
+          },
+          {
+            "#": "Property",
+            "name": "_error",
+            "propertyContractDelegate": "",
+            "type": "Literal"
+          },
+          {
+            "#": "Property",
+            "name": "_password",
+            "propertyContractDelegate": "",
+            "type": "String"
+          }
+        ]
+      },
+      {
+        "#": "ComponentCard",
+        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User",
+        "actions": [
+          {
+            "#": "Action",
+            "name": "login"
+          }
+        ],
+        "connections": [
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/encapsulate/structs/Capsule",
+            "propertyName": "#@stream44.studio/encapsulate/structs/Capsule",
+            "target": "@stream44.studio/encapsulate/structs/Capsule",
+            "targetLabel": "Capsule"
+          },
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Person",
+            "propertyName": "#@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Person",
+            "target": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Person",
+            "targetLabel": "Person"
+          },
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client",
+            "propertyName": "#@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client",
+            "target": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client",
+            "targetLabel": "Client"
+          },
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "",
+            "propertyName": "loginForm",
+            "target": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+            "targetLabel": "LoginForm"
+          }
+        ],
+        "label": "User",
+        "properties": []
+      },
+      {
+        "#": "ComponentCard",
+        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Form",
+        "actions": [],
+        "connections": [
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/encapsulate/structs/Capsule",
+            "propertyName": "#@stream44.studio/encapsulate/structs/Capsule",
+            "target": "@stream44.studio/encapsulate/structs/Capsule",
+            "targetLabel": "Capsule"
+          },
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+            "propertyName": "#@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+            "target": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+            "targetLabel": "Column"
+          }
+        ],
+        "label": "Form",
+        "properties": [
+          {
+            "#": "Property",
+            "name": "options",
+            "propertyContractDelegate": "",
+            "type": ""
+          }
+        ]
+      },
+      {
+        "#": "ComponentCard",
+        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Network",
+        "actions": [],
+        "connections": [
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/encapsulate/structs/Capsule",
+            "propertyName": "#@stream44.studio/encapsulate/structs/Capsule",
+            "target": "@stream44.studio/encapsulate/structs/Capsule",
+            "targetLabel": "Capsule"
+          },
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+            "propertyName": "#@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+            "target": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+            "targetLabel": "Column"
+          }
+        ],
+        "label": "Network",
+        "properties": [
+          {
+            "#": "Property",
+            "name": "options",
+            "propertyContractDelegate": "",
+            "type": ""
+          }
+        ]
+      },
+      {
+        "#": "ComponentCard",
+        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Person",
+        "actions": [],
+        "connections": [
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/encapsulate/structs/Capsule",
+            "propertyName": "#@stream44.studio/encapsulate/structs/Capsule",
+            "target": "@stream44.studio/encapsulate/structs/Capsule",
+            "targetLabel": "Capsule"
+          },
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+            "propertyName": "#@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+            "target": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+            "targetLabel": "Column"
+          }
+        ],
+        "label": "Person",
+        "properties": [
+          {
+            "#": "Property",
+            "name": "options",
+            "propertyContractDelegate": "",
+            "type": ""
+          }
+        ]
+      },
+      {
+        "#": "ComponentCard",
+        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Service",
+        "actions": [],
+        "connections": [
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/encapsulate/structs/Capsule",
+            "propertyName": "#@stream44.studio/encapsulate/structs/Capsule",
+            "target": "@stream44.studio/encapsulate/structs/Capsule",
+            "targetLabel": "Capsule"
+          },
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+            "propertyName": "#@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+            "target": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+            "targetLabel": "Column"
+          }
+        ],
+        "label": "Service",
+        "properties": [
+          {
+            "#": "Property",
+            "name": "options",
+            "propertyContractDelegate": "",
+            "type": ""
+          }
+        ]
+      },
+      {
+        "#": "ComponentCard",
+        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client",
+        "actions": [],
+        "connections": [
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/encapsulate/structs/Capsule",
+            "propertyName": "#@stream44.studio/encapsulate/structs/Capsule",
+            "target": "@stream44.studio/encapsulate/structs/Capsule",
+            "targetLabel": "Capsule"
+          },
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row",
+            "propertyName": "#@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row",
+            "target": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row",
+            "targetLabel": "Row"
+          }
+        ],
+        "label": "Client",
+        "properties": [
+          {
+            "#": "Property",
+            "name": "options",
+            "propertyContractDelegate": "",
+            "type": ""
+          }
+        ]
+      },
+      {
+        "#": "ComponentCard",
+        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Server",
+        "actions": [],
+        "connections": [
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/encapsulate/structs/Capsule",
+            "propertyName": "#@stream44.studio/encapsulate/structs/Capsule",
+            "target": "@stream44.studio/encapsulate/structs/Capsule",
+            "targetLabel": "Capsule"
+          },
+          {
+            "#": "Connection",
+            "propertyContractDelegate": "#@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row",
+            "propertyName": "#@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row",
+            "target": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row",
+            "targetLabel": "Row"
+          }
+        ],
+        "label": "Server",
+        "properties": [
+          {
+            "#": "Property",
+            "name": "options",
+            "propertyContractDelegate": "",
+            "type": ""
+          }
+        ]
+      }
+    ]
+  },
+  "01-SimplePasswordLogin (Quadrant-Codepath) > getInstancesBySpineTree #1": [
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column:21"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column:21"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column:21"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column:21"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row:21"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row:21"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService:45"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient:38"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User:37"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Form",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Form:23"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Network",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Network:23"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Person",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Person:23"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Service",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Service:23"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client:23"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Server",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Server:23"
+    }
+  ],
+  "01-SimplePasswordLogin (Quadrant-Codepath) > getMembraneEvents #1": [
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": 184,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "eventIndex": 0,
+      "eventType": "call",
+      "membrane": "external",
+      "propertyName": "runModel",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": ""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "eventIndex": 1,
+      "eventType": "get",
+      "membrane": "internal",
+      "propertyName": "user",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": "\"[object]\""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User",
+      "eventIndex": 6,
+      "eventType": "call",
+      "membrane": "external",
+      "propertyName": "login",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": ""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User",
+      "eventIndex": 7,
+      "eventType": "get",
+      "membrane": "internal",
+      "propertyName": "loginForm",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": "\"[object]\""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+      "eventIndex": 12,
+      "eventType": "call",
+      "membrane": "external",
+      "propertyName": "setEmail",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": ""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+      "eventIndex": 13,
+      "eventType": "set",
+      "membrane": "internal",
+      "propertyName": "_email",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": "\"user@example.com\""
+    },
+    {
+      "callEventIndex": 12,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "",
+      "eventIndex": 14,
+      "eventType": "call-result",
+      "membrane": "external",
+      "propertyName": "",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": ""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User",
+      "eventIndex": 15,
+      "eventType": "get",
+      "membrane": "internal",
+      "propertyName": "loginForm",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": "\"[object]\""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+      "eventIndex": 20,
+      "eventType": "call",
+      "membrane": "external",
+      "propertyName": "setPassword",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": ""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+      "eventIndex": 21,
+      "eventType": "set",
+      "membrane": "internal",
+      "propertyName": "_password",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": "\"validPassword123\""
+    },
+    {
+      "callEventIndex": 20,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "",
+      "eventIndex": 22,
+      "eventType": "call-result",
+      "membrane": "external",
+      "propertyName": "",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": ""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User",
+      "eventIndex": 23,
+      "eventType": "get",
+      "membrane": "internal",
+      "propertyName": "loginForm",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": "\"[object]\""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+      "eventIndex": 28,
+      "eventType": "call",
+      "membrane": "external",
+      "propertyName": "submit",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": ""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+      "eventIndex": 29,
+      "eventType": "set",
+      "membrane": "internal",
+      "propertyName": "_error",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": "null"
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+      "eventIndex": 30,
+      "eventType": "call",
+      "membrane": "external",
+      "propertyName": "validate",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": ""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+      "eventIndex": 31,
+      "eventType": "get",
+      "membrane": "internal",
+      "propertyName": "_email",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": "\"user@example.com\""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+      "eventIndex": 32,
+      "eventType": "get",
+      "membrane": "internal",
+      "propertyName": "_email",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": "\"user@example.com\""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+      "eventIndex": 33,
+      "eventType": "get",
+      "membrane": "internal",
+      "propertyName": "_password",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": "\"validPassword123\""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+      "eventIndex": 34,
+      "eventType": "get",
+      "membrane": "internal",
+      "propertyName": "_password",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": "\"validPassword123\""
+    },
+    {
+      "callEventIndex": 30,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "",
+      "eventIndex": 35,
+      "eventType": "call-result",
+      "membrane": "external",
+      "propertyName": "",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "[]",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": ""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+      "eventIndex": 36,
+      "eventType": "get",
+      "membrane": "internal",
+      "propertyName": "httpClient",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": "\"[object]\""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+      "eventIndex": 41,
+      "eventType": "get",
+      "membrane": "internal",
+      "propertyName": "_email",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": "\"user@example.com\""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+      "eventIndex": 42,
+      "eventType": "get",
+      "membrane": "internal",
+      "propertyName": "_password",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": "\"validPassword123\""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient",
+      "eventIndex": 43,
+      "eventType": "call",
+      "membrane": "external",
+      "propertyName": "post",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": ""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient",
+      "eventIndex": 44,
+      "eventType": "get",
+      "membrane": "internal",
+      "propertyName": "authService",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": "\"[object]\""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService",
+      "eventIndex": 49,
+      "eventType": "call",
+      "membrane": "external",
+      "propertyName": "authenticate",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": ""
+    },
+    {
+      "callEventIndex": 49,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "",
+      "eventIndex": 50,
+      "eventType": "call-result",
+      "membrane": "external",
+      "propertyName": "",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "{\"success\":true,\"token\":\"token-user@example.com\",\"redirectUrl\":\"/dashboard\"}",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": ""
+    },
+    {
+      "callEventIndex": 43,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "",
+      "eventIndex": 51,
+      "eventType": "call-result",
+      "membrane": "external",
+      "propertyName": "",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "{\"success\":true,\"token\":\"token-user@example.com\",\"redirectUrl\":\"/dashboard\"}",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": ""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+      "eventIndex": 52,
+      "eventType": "set",
+      "membrane": "internal",
+      "propertyName": "_email",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": "\"\""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+      "eventIndex": 53,
+      "eventType": "set",
+      "membrane": "internal",
+      "propertyName": "_password",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": "\"\""
+    },
+    {
+      "callEventIndex": -1,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+      "eventIndex": 54,
+      "eventType": "set",
+      "membrane": "internal",
+      "propertyName": "_error",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": "null"
+    },
+    {
+      "callEventIndex": 28,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "",
+      "eventIndex": 55,
+      "eventType": "call-result",
+      "membrane": "external",
+      "propertyName": "",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "{\"success\":true,\"redirectUrl\":\"/dashboard\",\"token\":\"token-user@example.com\"}",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": ""
+    },
+    {
+      "callEventIndex": 6,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "",
+      "eventIndex": 56,
+      "eventType": "call-result",
+      "membrane": "external",
+      "propertyName": "",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "{\"success\":true,\"redirectUrl\":\"/dashboard\",\"token\":\"token-user@example.com\"}",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": ""
+    },
+    {
+      "callEventIndex": 0,
+      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
+      "callerLine": -1,
+      "capsuleSourceNameRef": "",
+      "eventIndex": 57,
+      "eventType": "call-result",
+      "membrane": "external",
+      "propertyName": "",
+      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
+      "result": "{\"success\":true,\"redirectUrl\":\"/dashboard\",\"token\":\"token-user@example.com\"}",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "value": ""
+    }
+  ],
+  "01-SimplePasswordLogin (Quadrant-Codepath) > getMembraneEventsByCapsule #1": [],
+  "01-SimplePasswordLogin (Quadrant-Codepath) > getQuadrantCodepathView #1": {
+    "#": "QuadrantCodepathView",
+    "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin"
+  },
+  "01-SimplePasswordLogin (Quadrant-Codepath) > getRootInstance #1": {
+    "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+    "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60"
+  },
+  "01-SimplePasswordLogin (Quadrant-Codepath) > listCapsules #1": [
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Form"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Network"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Person"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Service"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Server"
+    }
+  ],
+  "01-SimplePasswordLogin (Quadrant-Codepath) > listSpineInstanceTrees #1": [
+    {
+      "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+      "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column:21",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row:21",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/AuthService:45",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/HttpClient:38",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/LoginForm:90",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/caps/User:37",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model:60",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Form",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Form:23",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Network",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Network:23",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Person",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Person:23",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Service",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Columns/Service:23",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Client:23",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin"
+    },
+    {
+      "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Server",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/view/Rows/Server:23",
+      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin"
+    }
+  ]
+}

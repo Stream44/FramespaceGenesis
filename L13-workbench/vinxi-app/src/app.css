@@ -1009,6 +1009,8 @@ body {
     padding: 40px;
     max-width: 800px;
     margin: 0 auto;
+    overflow-y: auto;
+    max-height: 100%;
 }
 
 .instance-selector-header {
@@ -1571,6 +1573,13 @@ body {
     border-color: var(--wb-blue);
     background: var(--wb-paper-highlight);
     color: var(--wb-blue);
+}
+
+.fapi-launch-btn--active {
+    border-color: var(--wb-blue);
+    background: var(--wb-paper-highlight);
+    color: var(--wb-blue);
+    box-shadow: inset 3px 0 0 var(--wb-blue);
 }
 
 .fapi-methods {

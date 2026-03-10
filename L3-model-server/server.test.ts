@@ -136,6 +136,11 @@ describe('L3 Model Server - Full Stack Debug', () => {
         const rewriteSchemaRes = await fetch(`${BASE_URL}/api-server/schema`)
         expect(rewriteSchemaRes.status).toBe(200)
 
+        // Verify /api-server/health rewrites to root /api/health (no-cache)
+        const rewriteHealthRes = await fetch(`${BASE_URL}/api-server/health`)
+        expect(rewriteHealthRes.status).toBe(200)
+        expect(rewriteHealthRes.headers.get('cache-control')).toBe('no-cache')
+
         modelServer.stop()
     }, 30_000)
 })

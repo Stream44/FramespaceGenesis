@@ -5,11 +5,9 @@ import { Suspense } from "solid-js";
 import "./theme.css";
 import "./app.css";
 
-// Vite's base config (set via CACHE_BUST_PATH_PREFIX in app.config.ts) controls
-// all asset URLs at build time. The Router base uses the same value so client-side
-// routing matches the URL prefix (e.g. /0.2.0-rc.10/).
-// import.meta.env.BASE_URL is "/" in dev, "/<version>/" in production builds.
-const BASE_PATH = import.meta.env.BASE_URL.replace(/\/$/, '');
+// vinxi overrides BASE_URL to "/_build" in dev, so we use SERVER_BASE_URL
+// which is "" in dev and "/<prefix>" in production builds.
+const BASE_PATH = (import.meta.env.SERVER_BASE_URL || '').replace(/\/$/, '');
 
 export default function App() {
     return (

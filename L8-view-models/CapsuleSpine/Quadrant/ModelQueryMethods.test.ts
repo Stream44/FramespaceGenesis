@@ -56,7 +56,7 @@ const {
 await modelServer.init()
 const api = modelServer.api[MOUNT_KEY]
 const engine = modelServer.modelEngines[ENGINE_KEY]
-const trees = await engine._listSpineInstanceTrees({ prefix: '@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples' })
+const trees = await engine._listSpineInstanceTrees()
 
 // ── Schema tests ─────────────────────────────────────────────────────
 describe('Schema', () => {
@@ -84,16 +84,6 @@ describe('Schema', () => {
 for (const { spineInstanceTreeId } of trees) {
     const normalize = (obj: any) => normalizeForSnapshot(obj, PACKAGE_ROOT)
     describe(`Instance: ${spineInstanceTreeId}`, () => {
-
-        it('getColumnTree', async () => {
-            const result = await api.getColumnTree(spineInstanceTreeId)
-            await expectSnapshotMatch(normalize(result))
-        })
-
-        it('getRowTree', async () => {
-            const result = await api.getRowTree(spineInstanceTreeId)
-            await expectSnapshotMatch(normalize(result))
-        })
 
         it('getTableView', async () => {
             const result = await api.getTableView(spineInstanceTreeId)

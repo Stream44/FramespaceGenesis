@@ -523,7 +523,7 @@ function WorkbenchHeader(props: {
             <div class="wb-title-block">
                 <h1 class="wb-title">Framespace Genesis Workbench</h1>
                 <div class="wb-branding">
-                    <img src={`${import.meta.env.BASE_URL}assets/Stream44Studio-Icon-v1.svg`} alt="Stream44 Studio" class="wb-branding-icon" />
+                    <img src={`${import.meta.env.BASE_URL}/assets/Stream44Studio-Icon-v1.svg`} alt="Stream44 Studio" class="wb-branding-icon" />
                     <span>a <a href="https://Stream44.Studio" target="_blank" rel="noopener noreferrer" class="wb-branding-link">Stream44.Studio</a> open dev project</span>
                 </div>
             </div>
@@ -871,6 +871,7 @@ function MethodPanelContent(props: {
                             apiCall={(path, args, engine) => workbenchStore.api.call(path, args, engine ?? workbenchStore.selectedEngine() ?? undefined)}
                             lib={workbenchLib}
                             activeEventIndex={workbenchStore.activeEventIndex}
+                            eventLogEntries={workbenchStore.eventLogEntries}
                         />
                     </Show>
                 </Show>
@@ -1137,6 +1138,9 @@ function WorkbenchDockview() {
     // Track open panel IDs for the Model APIs panel to highlight active methods
     const [openPanelIds, setOpenPanelIds] = createSignal<Set<string>>(new Set());
 
+    // Track the active right-side panel ID for FramespacesPanel highlighting
+    const [activeRightPanelId, setActiveRightPanelId] = createSignal<string | null>(null);
+
     const updateOpenPanelIds = () => {
         if (!dockApi) return;
         const ids = new Set(dockApi.panels.map(p => p.id));
@@ -1187,66 +1191,78 @@ function WorkbenchDockview() {
         if (!dockApi) return;
         vlog("openFramespacePanel", `path=${link.methodPath} label=${link.label}`);
         openMethodPanel(link.methodPath, link.label);
+        setActiveRightPanelId(link.methodPath);
     };
 
-    // Resolve the first framespace link from a config object
-    const resolveFirstFramespace = (fs: Record<string, any>): { methodPath: string; label: string } | null => {
-        const entries = Object.entries(fs);
-        if (entries.length === 0) return null;
-        const [uri, entry] = entries[0];
-        const hashIdx = uri.indexOf('#');
-        const baseUri = hashIdx >= 0 ? uri.substring(0, hashIdx) : uri;
-        const ns = baseUri.replace(/\//g, '~');
-        const vizMethods = entry?.visualizationMethod;
-        const methodName = vizMethods ? Object.keys(vizMethods)[0] : null;
-        if (!methodName) return null;
-        const methodConfig = vizMethods[methodName] ?? {};
-        const label = methodConfig.label ?? methodName;
-        const s = engine().schema();
-        const apiDef = s?.apis?.[ns];
-        const basePath = apiDef?.basePath ?? `/api/${ns}`;
-        return { methodPath: `${basePath}/${methodName}`, label };
+    // Resolve all framespace links from a config object
+    const resolveFramespaceLinks = (fs: Record<string, any>): { methodPath: string; label: string }[] => {
+        const result: { methodPath: string; label: string }[] = [];
+        for (const [uri, entry] of Object.entries(fs)) {
+            const hashIdx = uri.indexOf('#');
+            const baseUri = hashIdx >= 0 ? uri.substring(0, hashIdx) : uri;
+            const ns = baseUri.replace(/\//g, '~');
+            const vizMethods = entry?.visualizationMethod;
+            if (!vizMethods) continue;
+            for (const [methodName, methodConfig] of Object.entries(vizMethods) as [string, any][]) {
+                const label = methodConfig?.label ?? methodName;
+                const s = engine().schema();
+                const apiDef = s?.apis?.[ns];
+                const basePath = apiDef?.basePath ?? `/api/${ns}`;
+                result.push({ methodPath: `${basePath}/${methodName}`, label });
+            }
+        }
+        return result;
     };
 
-    // Track the auto-opened panel ID so we can clean up on switch
-    let autoOpenedPanelId: string | null = null;
+    // Track auto-opened panel IDs so we can clean up on switch
+    let autoOpenedPanelIds: Set<string> = new Set();
 
-    // Auto-open/focus the first framespace for the current instance config.
-    // Called after dockApi is ready and on every subsequent instance change.
-    function autoOpenFirstFramespace() {
+    // Open all configured framespace panels, close non-config right-side panels,
+    // and focus the first configured panel.
+    function autoOpenFramespaces() {
         if (!dockApi) return;
         const config = workbenchStore.selectedInstanceConfig();
         const fs = config?.framespaces as Record<string, any> | null | undefined;
 
-        const first = fs ? resolveFirstFramespace(fs) : null;
-        const newId = first?.methodPath ?? null;
+        const links = fs ? resolveFramespaceLinks(fs) : [];
+        const newIds = new Set(links.map(l => l.methodPath));
 
-        vlog("autoOpenFramespace", `prev=${autoOpenedPanelId} new=${newId}`);
+        vlog("autoOpenFramespaces", `prev=${[...autoOpenedPanelIds].join(',')} new=${[...newIds].join(',')}`);
 
-        if (autoOpenedPanelId && autoOpenedPanelId !== newId) {
-            const panel = dockApi.getPanel(autoOpenedPanelId);
-            if (panel) {
-                vlog("autoOpenFramespace", `closing previous panel: ${autoOpenedPanelId}`);
+        // Close right-side panels that are not in the new config
+        for (const panel of [...dockApi.panels]) {
+            if (LEFT_GROUP_IDS.has(panel.id)) continue;
+            if (panel.id === REQUEST_LOG_PANEL_ID) continue;
+            if (!newIds.has(panel.id)) {
+                vlog("autoOpenFramespaces", `closing non-config panel: ${panel.id}`);
                 panel.api.close();
             }
         }
 
-        autoOpenedPanelId = newId;
+        autoOpenedPanelIds = newIds;
 
-        if (!newId || !first) return;
+        if (links.length === 0) return;
 
-        const existing = dockApi.getPanel(newId);
-        if (existing) {
-            vlog("autoOpenFramespace", `focusing existing panel: ${newId}`);
-            existing.api.setActive();
-        } else {
-            vlog("autoOpenFramespace", `opening new panel: ${newId} title=${first.label}`);
-            openInRightGroup(
-                dockApi,
-                { id: newId, component: "framespace-api-method", title: first.label },
-                { path: newId, name: first.label },
-                colWidth() * 5,
-            );
+        // Open all configured panels (skip if already open)
+        for (const link of links) {
+            const existing = dockApi.getPanel(link.methodPath);
+            if (!existing) {
+                vlog("autoOpenFramespaces", `opening panel: ${link.methodPath} title=${link.label}`);
+                openInRightGroup(
+                    dockApi,
+                    { id: link.methodPath, component: "framespace-api-method", title: link.label },
+                    { path: link.methodPath, name: link.label },
+                    colWidth() * 5,
+                );
+            }
+        }
+
+        // Focus the first configured panel
+        const firstPanel = dockApi.getPanel(links[0].methodPath);
+        if (firstPanel) {
+            vlog("autoOpenFramespaces", `focusing first panel: ${links[0].methodPath}`);
+            firstPanel.api.setActive();
+            setActiveRightPanelId(links[0].methodPath);
         }
     }
 
@@ -1281,6 +1297,7 @@ function WorkbenchDockview() {
                                     schema={() => engine().schema()}
                                     framespaces={() => workbenchStore.selectedInstanceConfig()?.framespaces ?? null}
                                     onFramespaceClick={openFramespacePanel}
+                                    activePanelId={activeRightPanelId}
                                 />
                             ), el);
                             disposers.push(disposeRender);
@@ -1438,10 +1455,28 @@ function WorkbenchDockview() {
 
         // Track panel add/remove for Model APIs panel highlighting
         const addDispose = dockApi.onDidAddPanel(() => updateOpenPanelIds());
-        const removeDispose = dockApi.onDidRemovePanel(() => updateOpenPanelIds());
+        const removeDispose = dockApi.onDidRemovePanel(() => {
+            updateOpenPanelIds();
+            // If the removed panel was the active right panel, clear it
+            if (dockApi) {
+                const active = dockApi.activePanel;
+                if (active && !LEFT_GROUP_IDS.has(active.id)) {
+                    setActiveRightPanelId(active.id);
+                }
+            }
+        });
         disposers.push(() => addDispose.dispose());
         disposers.push(() => removeDispose.dispose());
         updateOpenPanelIds();
+
+        // Track active panel changes for FramespacesPanel highlighting
+        const activePanelDispose = dockApi.onDidActivePanelChange((e) => {
+            if (e && !LEFT_GROUP_IDS.has(e.id) && e.id !== REQUEST_LOG_PANEL_ID) {
+                vlog("activePanelChange", `right panel active: ${e.id}`);
+                setActiveRightPanelId(e.id);
+            }
+        });
+        disposers.push(() => activePanelDispose.dispose());
 
         // Try to restore saved layout, fall back to default panels
         const savedLayout = workbenchStore.dockviewLayout();
@@ -1570,7 +1605,7 @@ function WorkbenchDockview() {
         createEffect(() => {
             // Subscribe to selectedInstanceConfig so this re-fires on instance change
             workbenchStore.selectedInstanceConfig();
-            autoOpenFirstFramespace();
+            autoOpenFramespaces();
         });
     }
 

@@ -30,6 +30,7 @@ export type RepContext = {
     apiCall?: (path: string, args?: Record<string, string>, engine?: string) => Promise<any>;
     lib?: WorkbenchLib;
     activeEventIndex?: () => number;
+    eventLogEntries?: () => any[];
 };
 
 const repRegistry: Rep[] = [];
@@ -245,6 +246,7 @@ export function RenderItem(props: {
     apiCall?: (path: string, args?: Record<string, string>, engine?: string) => Promise<any>;
     lib?: WorkbenchLib;
     activeEventIndex?: () => number;
+    eventLogEntries?: () => any[];
 }): JSX.Element {
     const rep = () => findRep(props.data);
     vlog("RenderItem", "parentRep:", props.parentRep ?? "(none)", "data #:", typeof props.data === "object" && props.data !== null && !Array.isArray(props.data) ? (props.data as any)["#"] ?? "(no #)" : typeof props.data);
@@ -267,6 +269,7 @@ export function RenderItem(props: {
                 apiCall: props.apiCall,
                 lib: props.lib,
                 activeEventIndex: props.activeEventIndex,
+                eventLogEntries: props.eventLogEntries,
             })}
         </Show>
     );
@@ -283,6 +286,7 @@ export function ResultView(props: {
     apiCall?: (path: string, args?: Record<string, string>, engine?: string) => Promise<any>;
     lib?: WorkbenchLib;
     activeEventIndex?: () => number;
+    eventLogEntries?: () => any[];
 }): JSX.Element {
     return (
         <div class="result-view">
@@ -295,6 +299,7 @@ export function ResultView(props: {
                 apiCall={props.apiCall}
                 lib={props.lib}
                 activeEventIndex={props.activeEventIndex}
+                eventLogEntries={props.eventLogEntries}
             />
         </div>
     );

@@ -48,6 +48,7 @@ export function FramespacesPanel(props: {
     schema: () => EngineSchema | null;
     framespaces: () => Record<string, any> | null;
     onFramespaceClick: (link: FramespaceLink) => void;
+    activePanelId?: () => string | null;
 }): JSX.Element {
     const links = createMemo((): FramespaceLink[] => {
         const fs = props.framespaces();
@@ -90,7 +91,7 @@ export function FramespacesPanel(props: {
             <For each={links()}>
                 {(link: FramespaceLink) => (
                     <button
-                        class="fapi-launch-btn"
+                        class={`fapi-launch-btn${props.activePanelId?.() === link.methodPath ? ' fapi-launch-btn--active' : ''}`}
                         onClick={() => props.onFramespaceClick(link)}
                     >
                         {link.label}

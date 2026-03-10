@@ -75,10 +75,54 @@ export async function capsule({
                     value: null as any,
                 },
 
+                // Lazy import: spineInstanceTreeId → Promise<void>
+                // Coalesces concurrent requests for the same ID
+                _importPromises: {
+                    type: CapsulePropertyTypes.Literal,
+                    value: new Map<string, Promise<void>>(),
+                },
+
+                // Set of spineInstanceTreeIds that have been imported
+                _importedIds: {
+                    type: CapsulePropertyTypes.Literal,
+                    value: new Set<string>(),
+                },
+
                 api: {
                     type: CapsulePropertyTypes.GetterFunction,
                     value: function (this: any): Record<string, any> {
                         return this._api
+                    }
+                },
+
+                // =============================================================
+                // Lazy Import
+                // =============================================================
+
+                _ensureImported: {
+                    type: CapsulePropertyTypes.Function,
+                    value: async function (this: any, spineInstanceTreeId: string, engine: any): Promise<void> {
+                        if (!spineInstanceTreeId) return
+                        if (this._importedIds.has(spineInstanceTreeId)) return
+
+                        // Check if there's already an in-flight import for this ID
+                        const existing = this._importPromises.get(spineInstanceTreeId)
+                        if (existing) return existing
+
+                        // Start the import and store the promise so concurrent requests coalesce
+                        const importPromise = (async () => {
+                            try {
+                                console.log(`📦 Lazy import: ${spineInstanceTreeId}`)
+                                await this.spineInstanceTrees.importInstanceToEngine({ engine, name: spineInstanceTreeId })
+                                this._importedIds.add(spineInstanceTreeId)
+                                console.log(`✅ Lazy import complete: ${spineInstanceTreeId}`)
+                            } finally {
+                                this._importPromises.delete(spineInstanceTreeId)
+                            }
+                        })()
+
+                        this._importPromises.set(spineInstanceTreeId, importPromise)
+                        return importPromise
                     }
                 },
 
@@ -189,13 +233,13 @@ export async function capsule({
                                 } catch { }
                             }
 
-                            // Run examples and import into engine
+                            // Register instances (run capsule functions to produce SIT files)
+                            // Import into engine is deferred until first request for each spineInstanceTreeId
                             for (const example of capsuleModules) {
                                 await this.spineInstanceTrees.registerInstance({ name: example.MODEL_NAME }, example.runModel)
-                                await this.spineInstanceTrees.importInstanceToEngine({ engine, name: example.MODEL_NAME })
                             }
 
-                            console.log(`✅ Engine ${engineUri}: data loaded from ${capsuleModules.length} examples`)
+                            console.log(`✅ Engine ${engineUri}: ${capsuleModules.length} examples registered (import deferred until first request)`)
 
                             // Read schema from the semantic model's apiSchema
                             const schema = modelCapsule.apiSchema
@@ -211,6 +255,7 @@ export async function capsule({
                             const modelApi: Record<string, any> = {}
 
                             // Register methods — engine is passed as `graph` first arg if method has tags (graph method)
+                            // Direct API wrappers also do lazy import for spineInstanceTreeId
                             for (const [name, methodSchema] of Object.entries(schema.methods) as [string, any][]) {
                                 if (typeof modelCapsule[name] !== 'function') continue
                                 const entry = {
@@ -222,10 +267,18 @@ export async function capsule({
                                 }
                                 this._methods.push(entry)
                                 this._methodMap.set(`${namespace}/${name}`, entry)
-                                if (methodSchema.tags || methodSchema.graphMethod) {
-                                    modelApi[name] = (...args: any[]) => modelCapsule[name]({ graph: engine, server: self }, ...args)
+                                const isGraphMethod = !!(methodSchema.tags || methodSchema.graphMethod)
+                                const sitArgIdx = (methodSchema.args || []).findIndex((d: any) => d.name === 'spineInstanceTreeId')
+                                if (isGraphMethod) {
+                                    modelApi[name] = async (...args: any[]) => {
+                                        if (sitArgIdx >= 0 && args[sitArgIdx]) await self._ensureImported(args[sitArgIdx], engine)
+                                        return modelCapsule[name]({ graph: engine, server: self }, ...args)
+                                    }
                                 } else {
-                                    modelApi[name] = (...args: any[]) => modelCapsule[name](...args)
+                                    modelApi[name] = async (...args: any[]) => {
+                                        if (sitArgIdx >= 0 && args[sitArgIdx]) await self._ensureImported(args[sitArgIdx], engine)
+                                        return modelCapsule[name](...args)
+                                    }
                                 }
                             }
 
@@ -395,7 +448,10 @@ export async function capsule({
                                 }
 
                                 // ── Rewrite /api-server/* → /<prefix>/api/* (mirrors dev proxy) ──
-                                if (url.pathname.startsWith('/api-server/')) {
+                                // Exception: /api-server/health → /api/health (root, no-cache)
+                                if (url.pathname === '/api-server/health') {
+                                    url.pathname = '/api/health'
+                                } else if (url.pathname.startsWith('/api-server/')) {
                                     url.pathname = `/${prefix}/api/` + url.pathname.slice('/api-server/'.length)
                                 }
 
@@ -403,7 +459,8 @@ export async function capsule({
                                 // Vite's `base` is set to /<prefix>/ at build time, so the
                                 // built SPA references all assets under /<prefix>/ already.
                                 // ModelServer serves the dist dir under /<prefix>/.
-                                if (uiDistDir) {
+                                // In dev mode (prefix === 'dev'), vinxi dev server handles UI.
+                                if (uiDistDir && !isDevMode) {
                                     // Helper: serve a static file from uiDistDir
                                     const serveStatic = async (relPath: string, cacheControl: string) => {
                                         const filePath = join(uiDistDir, relPath)
@@ -521,6 +578,13 @@ export async function capsule({
                                             return a
                                         })
 
+                                        // Lazy import: if the method takes a spineInstanceTreeId arg,
+                                        // ensure that instance's data is imported into the engine before calling
+                                        const sitArgIdx = argDefs.findIndex((d: any) => d.name === 'spineInstanceTreeId')
+                                        if (sitArgIdx >= 0 && args[sitArgIdx] && (method.schema.tags || method.schema.graphMethod)) {
+                                            await self._ensureImported(args[sitArgIdx], method.engine)
+                                        }
+
                                         // Discovery fallback: if required args missing, redirect to discovery method
                                         const key = `${ns}/${methodName}`
                                         const hasRequiredArgs = argDefs.some((d: any) => !d.optional)
@@ -535,6 +599,11 @@ export async function capsule({
                                                     if (val != null) fbArgs.push(val)
                                                     else if (def.optional) fbArgs.push(undefined)
                                                     else break
+                                                }
+                                                // Also ensure import for fallback method
+                                                const fbSitIdx = fbArgDefs.findIndex((d: any) => d.name === 'spineInstanceTreeId')
+                                                if (fbSitIdx >= 0 && fbArgs[fbSitIdx] && (fb.schema.tags || fb.schema.graphMethod)) {
+                                                    await self._ensureImported(fbArgs[fbSitIdx], fb.engine)
                                                 }
                                                 const result = (fb.schema.tags || fb.schema.graphMethod)
                                                     ? await fb.capsule[fb.name]({ graph: fb.engine, server: self }, ...fbArgs)
@@ -569,8 +638,10 @@ export async function capsule({
                         console.log(`🚀 Server running on http://localhost:${boundPort}`)
                         console.log(`📋 ${this._methods.length} API methods available`)
                         console.log(`🔗 Cache-bust prefix: /${prefix}/`)
-                        if (uiDistDir) {
+                        if (uiDistDir && !isDevMode) {
                             console.log(`🌐 UI served at http://localhost:${boundPort}/${prefix}/`)
+                        } else if (isDevMode) {
+                            console.log(`🛠️  Dev mode: UI served by vinxi dev server (not this server)`)
                         }
                         const buildTimestamp = process.env.BUILD_TIMESTAMP
                         if (buildTimestamp) {

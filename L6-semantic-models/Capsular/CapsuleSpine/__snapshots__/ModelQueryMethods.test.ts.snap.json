@@ -1723,7 +1723,7 @@
       }
     ]
   },
-  "Instance: @stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1 > getCapsule (first capsule) #1": {
+  "Instance: @stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1 > getCapsule (first capsule) #1": {
     "#": "Capsule",
     "$id": "@stream44.studio/encapsulate/structs/Capsule",
     "cacheBustVersion": 22,
@@ -1754,21 +1754,21 @@
       }
     }
   },
-  "Instance: @stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1 > getEventLog #1": {
+  "Instance: @stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1 > getEventLog #1": {
     "#": "EventLog",
-    "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+    "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
     "entries": [
       {
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           }
         ],
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": 184,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
         "eventIndex": 0,
         "eventType": "call",
         "membrane": "external",
@@ -1779,18 +1779,18 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           }
         ],
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
         "dataSeen": "\"[object]\"",
         "eventIndex": 1,
         "eventType": "get",
         "isMappingRef": true,
-        "mappingTargetRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+        "mappingTargetRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User:@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
         "membrane": "internal",
         "propertyName": "user",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>"
@@ -1799,17 +1799,17 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           }
         ],
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
         "eventIndex": 6,
         "eventType": "call",
         "membrane": "external",
@@ -1820,22 +1820,22 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           }
         ],
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
         "dataSeen": "\"[object]\"",
         "eventIndex": 7,
         "eventType": "get",
         "isMappingRef": true,
-        "mappingTargetRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "mappingTargetRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "membrane": "internal",
         "propertyName": "loginForm",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>"
@@ -1844,21 +1844,21 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "setEmail"
           }
         ],
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 15,
         "eventType": "call",
         "membrane": "external",
@@ -1869,21 +1869,21 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "setEmail"
           }
         ],
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "dataSeen": "\"userexample.com\"",
         "eventIndex": 16,
         "eventType": "set",
@@ -1895,11 +1895,11 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           }
         ],
@@ -1913,7 +1913,7 @@
         "propertyName": "",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
         "resolvedCaller": {
-          "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+          "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
           "propertyName": "setEmail"
         }
       },
@@ -1921,22 +1921,22 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           }
         ],
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
         "dataSeen": "\"[object]\"",
         "eventIndex": 18,
         "eventType": "get",
         "isMappingRef": true,
-        "mappingTargetRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "mappingTargetRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "membrane": "internal",
         "propertyName": "loginForm",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>"
@@ -1945,21 +1945,21 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "setPassword"
           }
         ],
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 26,
         "eventType": "call",
         "membrane": "external",
@@ -1970,21 +1970,21 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "setPassword"
           }
         ],
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "dataSeen": "\"validPassword123\"",
         "eventIndex": 27,
         "eventType": "set",
@@ -1996,11 +1996,11 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           }
         ],
@@ -2014,7 +2014,7 @@
         "propertyName": "",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
         "resolvedCaller": {
-          "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+          "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
           "propertyName": "setPassword"
         }
       },
@@ -2022,22 +2022,22 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           }
         ],
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
         "dataSeen": "\"[object]\"",
         "eventIndex": 29,
         "eventType": "get",
         "isMappingRef": true,
-        "mappingTargetRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm:@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "mappingTargetRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "membrane": "internal",
         "propertyName": "loginForm",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>"
@@ -2046,21 +2046,21 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           }
         ],
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 37,
         "eventType": "call",
         "membrane": "external",
@@ -2071,21 +2071,21 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           }
         ],
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "dataSeen": "null",
         "eventIndex": 38,
         "eventType": "set",
@@ -2097,25 +2097,25 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "validate"
           }
         ],
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 39,
         "eventType": "call",
         "membrane": "external",
@@ -2126,25 +2126,25 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "validate"
           }
         ],
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "dataSeen": "\"userexample.com\"",
         "eventIndex": 40,
         "eventType": "get",
@@ -2156,25 +2156,25 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "validate"
           }
         ],
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "dataSeen": "\"userexample.com\"",
         "eventIndex": 41,
         "eventType": "get",
@@ -2186,25 +2186,25 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "validate"
           }
         ],
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "dataSeen": "\"validPassword123\"",
         "eventIndex": 42,
         "eventType": "get",
@@ -2216,25 +2216,25 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "validate"
           }
         ],
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "dataSeen": "\"validPassword123\"",
         "eventIndex": 43,
         "eventType": "get",
@@ -2246,15 +2246,15 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           }
         ],
@@ -2268,7 +2268,7 @@
         "propertyName": "",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
         "resolvedCaller": {
-          "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+          "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
           "propertyName": "validate"
         }
       },
@@ -2276,21 +2276,21 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           }
         ],
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "dataSeen": "\"Invalid email format\"",
         "eventIndex": 45,
         "eventType": "set",
@@ -2302,21 +2302,21 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
             "propertyName": "submit"
           }
         ],
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "dataSeen": "\"Invalid email format\"",
         "eventIndex": 46,
         "eventType": "get",
@@ -2328,11 +2328,11 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           },
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
             "propertyName": "login"
           }
         ],
@@ -2346,7 +2346,7 @@
         "propertyName": "",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
         "resolvedCaller": {
-          "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+          "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
           "propertyName": "submit"
         }
       },
@@ -2354,7 +2354,7 @@
         "#": "EventLogEntry",
         "activeInvocations": [
           {
-            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
             "propertyName": "runModel"
           }
         ],
@@ -2368,7 +2368,7 @@
         "propertyName": "",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
         "resolvedCaller": {
-          "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+          "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
           "propertyName": "login"
         }
       },
@@ -2385,22 +2385,22 @@
         "propertyName": "",
         "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
         "resolvedCaller": {
-          "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+          "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
           "propertyName": "runModel"
         }
       }
     ]
   },
-  "Instance: @stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1 > getMembraneEvents #1": {
+  "Instance: @stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1 > getMembraneEvents #1": {
     "#": "MembraneEvents",
-    "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+    "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
     "list": [
       {
         "#": "MembraneEvent",
         "callEventIndex": -1,
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": 184,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
         "eventIndex": 0,
         "eventType": "call",
         "propertyName": "runModel"
@@ -2410,7 +2410,7 @@
         "callEventIndex": -1,
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
         "eventIndex": 1,
         "eventType": "get",
         "propertyName": "user"
@@ -2420,7 +2420,7 @@
         "callEventIndex": -1,
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
         "eventIndex": 6,
         "eventType": "call",
         "propertyName": "login"
@@ -2430,7 +2430,7 @@
         "callEventIndex": -1,
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
         "eventIndex": 7,
         "eventType": "get",
         "propertyName": "loginForm"
@@ -2440,7 +2440,7 @@
         "callEventIndex": -1,
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 15,
         "eventType": "call",
         "propertyName": "setEmail"
@@ -2450,7 +2450,7 @@
         "callEventIndex": -1,
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 16,
         "eventType": "set",
         "propertyName": "_email"
@@ -2470,7 +2470,7 @@
         "callEventIndex": -1,
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
         "eventIndex": 18,
         "eventType": "get",
         "propertyName": "loginForm"
@@ -2480,7 +2480,7 @@
         "callEventIndex": -1,
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 26,
         "eventType": "call",
         "propertyName": "setPassword"
@@ -2490,7 +2490,7 @@
         "callEventIndex": -1,
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 27,
         "eventType": "set",
         "propertyName": "_password"
@@ -2510,7 +2510,7 @@
         "callEventIndex": -1,
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
         "eventIndex": 29,
         "eventType": "get",
         "propertyName": "loginForm"
@@ -2520,7 +2520,7 @@
         "callEventIndex": -1,
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 37,
         "eventType": "call",
         "propertyName": "submit"
@@ -2530,7 +2530,7 @@
         "callEventIndex": -1,
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 38,
         "eventType": "set",
         "propertyName": "_error"
@@ -2540,7 +2540,7 @@
         "callEventIndex": -1,
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 39,
         "eventType": "call",
         "propertyName": "validate"
@@ -2550,7 +2550,7 @@
         "callEventIndex": -1,
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 40,
         "eventType": "get",
         "propertyName": "_email"
@@ -2560,7 +2560,7 @@
         "callEventIndex": -1,
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 41,
         "eventType": "get",
         "propertyName": "_email"
@@ -2570,7 +2570,7 @@
         "callEventIndex": -1,
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 42,
         "eventType": "get",
         "propertyName": "_password"
@@ -2580,7 +2580,7 @@
         "callEventIndex": -1,
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 43,
         "eventType": "get",
         "propertyName": "_password"
@@ -2600,7 +2600,7 @@
         "callEventIndex": -1,
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 45,
         "eventType": "set",
         "propertyName": "_error"
@@ -2610,7 +2610,7 @@
         "callEventIndex": -1,
         "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
         "callerLine": -1,
-        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+        "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
         "eventIndex": 46,
         "eventType": "get",
         "propertyName": "_error"
@@ -2647,12 +2647,12 @@
       }
     ]
   },
-  "Instance: @stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1 > getSpineDeclarationTree #1": {
+  "Instance: @stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1 > getSpineDeclarationTree #1": {
     "#": "SpineDeclarationTree",
-    "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+    "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
     "rootCapsule": {
       "#": "Capsule",
-      "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
+      "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
       "mappings": {
         "#": "Capsule/Mappings",
         "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -2670,7 +2670,7 @@
           "#": "Capsule/PropertyMapping",
           "capsule": {
             "#": "Capsule",
-            "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
             "mappings": {
               "#": "Capsule/Mappings",
               "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -2688,7 +2688,7 @@
                 "#": "Capsule/PropertyMapping",
                 "capsule": {
                   "#": "Capsule",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
                   "mappings": {
                     "#": "Capsule/Mappings",
                     "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -2706,7 +2706,7 @@
                       "#": "Capsule/PropertyMapping",
                       "capsule": {
                         "#": "Capsule",
-                        "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/HttpClient",
                         "mappings": {
                           "#": "Capsule/Mappings",
                           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -2724,7 +2724,7 @@
                             "#": "Capsule/PropertyMapping",
                             "capsule": {
                               "#": "Capsule",
-                              "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/AuthService",
+                              "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/AuthService",
                               "mappings": {
                                 "#": "Capsule/Mappings",
                                 "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -2768,14 +2768,14 @@
       }
     }
   },
-  "Instance: @stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1 > getSpineInstanceTree #1": {
+  "Instance: @stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1 > getSpineInstanceTree #1": {
     "#": "SpineInstanceTree",
-    "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
-    "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1:53": {
+    "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
+    "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1:53": {
       "#": "CapsuleInstance",
-      "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1:53",
-      "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1",
-      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1:53",
+      "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1:53",
+      "capsuleName": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1:53",
       "children": {
         "#": "CapsuleInstance/Children",
         "list": [
@@ -2787,9 +2787,9 @@
           },
           {
             "#": "CapsuleInstance",
-            "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User:30",
-            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User",
-            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User:30",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User:30",
+            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User:30",
             "children": {
               "#": "CapsuleInstance/Children",
               "list": [
@@ -2801,9 +2801,9 @@
                 },
                 {
                   "#": "CapsuleInstance",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm:83",
-                  "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm",
-                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm:83",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83",
+                  "capsuleName": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83",
                   "children": {
                     "#": "CapsuleInstance/Children",
                     "list": [
@@ -2815,9 +2815,9 @@
                       },
                       {
                         "#": "CapsuleInstance",
-                        "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient:31",
-                        "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient",
-                        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient:31",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/HttpClient:31",
+                        "capsuleName": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/HttpClient",
+                        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/HttpClient:31",
                         "children": {
                           "#": "CapsuleInstance/Children",
                           "list": [
@@ -2829,9 +2829,9 @@
                             },
                             {
                               "#": "CapsuleInstance",
-                              "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/AuthService:38",
-                              "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/AuthService",
-                              "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/AuthService:38",
+                              "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/AuthService:38",
+                              "capsuleName": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/AuthService",
+                              "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/AuthService:38",
                               "children": {
                                 "#": "CapsuleInstance/Children",
                                 "list": [
@@ -2857,7 +2857,7 @@
       }
     }
   },
-  "Instance: @stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1 > listCapsules #1": {
+  "Instance: @stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1 > listCapsules #1": {
     "#": "Capsules",
     "list": [
       {
@@ -2866,27 +2866,27 @@
       },
       {
         "#": "Capsule",
-        "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/0A-FullStack1"
+        "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1"
       },
       {
         "#": "Capsule",
-        "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/AuthService"
+        "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/AuthService"
       },
       {
         "#": "Capsule",
-        "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/HttpClient"
+        "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/HttpClient"
       },
       {
         "#": "Capsule",
-        "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/LoginForm"
+        "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm"
       },
       {
         "#": "Capsule",
-        "$id": "@stream44.studio/FramespaceGenesis/examples/Codepath-SimplePasswordLogin/caps/User"
+        "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User"
       }
     ]
   },
-  "Instance: @stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1 > getCapsule (first capsule) #1": {
+  "Instance: @stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1 > getCapsule (first capsule) #1": {
     "#": "Capsule",
     "$id": "@stream44.studio/encapsulate/structs/Capsule",
     "cacheBustVersion": 22,
@@ -2917,22 +2917,22 @@
       }
     }
   },
-  "Instance: @stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1 > getEventLog #1": {
+  "Instance: @stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1 > getEventLog #1": {
     "#": "EventLog",
-    "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1",
+    "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1",
     "entries": []
   },
-  "Instance: @stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1 > getMembraneEvents #1": {
+  "Instance: @stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1 > getMembraneEvents #1": {
     "#": "MembraneEvents",
-    "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1",
+    "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1",
     "list": []
   },
-  "Instance: @stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1 > getSpineDeclarationTree #1": {
+  "Instance: @stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1 > getSpineDeclarationTree #1": {
     "#": "SpineDeclarationTree",
-    "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1",
+    "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1",
     "rootCapsule": {
       "#": "Capsule",
-      "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1",
+      "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1",
       "mappings": {
         "#": "Capsule/Mappings",
         "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -2950,7 +2950,7 @@
           "#": "Capsule/PropertyMapping",
           "capsule": {
             "#": "Capsule",
-            "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/AccountDB",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/AccountDB",
             "mappings": {
               "#": "Capsule/Mappings",
               "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -2964,11 +2964,11 @@
                 },
                 "isPropertyContractDelegate": true
               },
-              "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/Data": {
+              "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Data": {
                 "#": "Capsule/PropertyContractMapping",
                 "capsule": {
                   "#": "Capsule",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/Data",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Data",
                   "mappings": {
                     "#": "Capsule/Mappings",
                     "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -3007,11 +3007,11 @@
                       },
                       "isPropertyContractDelegate": true
                     },
-                    "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/Services": {
+                    "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services": {
                       "#": "Capsule/PropertyContractMapping",
                       "capsule": {
                         "#": "Capsule",
-                        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/Services",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services",
                         "mappings": {
                           "#": "Capsule/Mappings",
                           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -3064,11 +3064,11 @@
                 },
                 "isPropertyContractDelegate": true
               },
-              "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/Data": {
+              "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Data": {
                 "#": "Capsule/PropertyContractMapping",
                 "capsule": {
                   "#": "Capsule",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/Data",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Data",
                   "mappings": {
                     "#": "Capsule/Mappings",
                     "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -3107,11 +3107,11 @@
                       },
                       "isPropertyContractDelegate": true
                     },
-                    "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters": {
+                    "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters": {
                       "#": "Capsule/PropertyContractMapping",
                       "capsule": {
                         "#": "Capsule",
-                        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters",
                         "mappings": {
                           "#": "Capsule/Mappings",
                           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -3174,7 +3174,7 @@
           "#": "Capsule/PropertyMapping",
           "capsule": {
             "#": "Capsule",
-            "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/FeedService",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/FeedService",
             "mappings": {
               "#": "Capsule/Mappings",
               "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -3188,11 +3188,11 @@
                 },
                 "isPropertyContractDelegate": true
               },
-              "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/BusinessLogic": {
+              "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/BusinessLogic": {
                 "#": "Capsule/PropertyContractMapping",
                 "capsule": {
                   "#": "Capsule",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/BusinessLogic",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/BusinessLogic",
                   "mappings": {
                     "#": "Capsule/Mappings",
                     "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -3231,11 +3231,11 @@
                       },
                       "isPropertyContractDelegate": true
                     },
-                    "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/Services": {
+                    "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services": {
                       "#": "Capsule/PropertyContractMapping",
                       "capsule": {
                         "#": "Capsule",
-                        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/Services",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services",
                         "mappings": {
                           "#": "Capsule/Mappings",
                           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -3288,11 +3288,11 @@
                 },
                 "isPropertyContractDelegate": true
               },
-              "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/APICluster": {
+              "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/APICluster": {
                 "#": "Capsule/PropertyContractMapping",
                 "capsule": {
                   "#": "Capsule",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/APICluster",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/APICluster",
                   "mappings": {
                     "#": "Capsule/Mappings",
                     "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -3331,11 +3331,11 @@
                       },
                       "isPropertyContractDelegate": true
                     },
-                    "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters": {
+                    "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters": {
                       "#": "Capsule/PropertyContractMapping",
                       "capsule": {
                         "#": "Capsule",
-                        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters",
                         "mappings": {
                           "#": "Capsule/Mappings",
                           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -3398,7 +3398,7 @@
           "#": "Capsule/PropertyMapping",
           "capsule": {
             "#": "Capsule",
-            "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/GatewayService",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/GatewayService",
             "mappings": {
               "#": "Capsule/Mappings",
               "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -3412,11 +3412,11 @@
                 },
                 "isPropertyContractDelegate": true
               },
-              "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/Boundary": {
+              "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Boundary": {
                 "#": "Capsule/PropertyContractMapping",
                 "capsule": {
                   "#": "Capsule",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/Boundary",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Boundary",
                   "mappings": {
                     "#": "Capsule/Mappings",
                     "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -3455,11 +3455,11 @@
                       },
                       "isPropertyContractDelegate": true
                     },
-                    "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/Services": {
+                    "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services": {
                       "#": "Capsule/PropertyContractMapping",
                       "capsule": {
                         "#": "Capsule",
-                        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/Services",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services",
                         "mappings": {
                           "#": "Capsule/Mappings",
                           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -3512,11 +3512,11 @@
                 },
                 "isPropertyContractDelegate": true
               },
-              "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/Account": {
+              "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Account": {
                 "#": "Capsule/PropertyContractMapping",
                 "capsule": {
                   "#": "Capsule",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/Account",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Account",
                   "mappings": {
                     "#": "Capsule/Mappings",
                     "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -3555,11 +3555,11 @@
                       },
                       "isPropertyContractDelegate": true
                     },
-                    "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters": {
+                    "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters": {
                       "#": "Capsule/PropertyContractMapping",
                       "capsule": {
                         "#": "Capsule",
-                        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters",
                         "mappings": {
                           "#": "Capsule/Mappings",
                           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -3622,7 +3622,7 @@
           "#": "Capsule/PropertyMapping",
           "capsule": {
             "#": "Capsule",
-            "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/LoginService",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/LoginService",
             "mappings": {
               "#": "Capsule/Mappings",
               "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -3636,11 +3636,11 @@
                 },
                 "isPropertyContractDelegate": true
               },
-              "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/Boundary": {
+              "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Boundary": {
                 "#": "Capsule/PropertyContractMapping",
                 "capsule": {
                   "#": "Capsule",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/Boundary",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Boundary",
                   "mappings": {
                     "#": "Capsule/Mappings",
                     "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -3679,11 +3679,11 @@
                       },
                       "isPropertyContractDelegate": true
                     },
-                    "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/Services": {
+                    "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services": {
                       "#": "Capsule/PropertyContractMapping",
                       "capsule": {
                         "#": "Capsule",
-                        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/Services",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services",
                         "mappings": {
                           "#": "Capsule/Mappings",
                           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -3736,11 +3736,11 @@
                 },
                 "isPropertyContractDelegate": true
               },
-              "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/Account": {
+              "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Account": {
                 "#": "Capsule/PropertyContractMapping",
                 "capsule": {
                   "#": "Capsule",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/Account",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Account",
                   "mappings": {
                     "#": "Capsule/Mappings",
                     "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -3779,11 +3779,11 @@
                       },
                       "isPropertyContractDelegate": true
                     },
-                    "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters": {
+                    "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters": {
                       "#": "Capsule/PropertyContractMapping",
                       "capsule": {
                         "#": "Capsule",
-                        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters",
                         "mappings": {
                           "#": "Capsule/Mappings",
                           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -3846,7 +3846,7 @@
           "#": "Capsule/PropertyMapping",
           "capsule": {
             "#": "Capsule",
-            "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/PaymentService",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/PaymentService",
             "mappings": {
               "#": "Capsule/Mappings",
               "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -3860,11 +3860,11 @@
                 },
                 "isPropertyContractDelegate": true
               },
-              "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/BusinessLogic": {
+              "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/BusinessLogic": {
                 "#": "Capsule/PropertyContractMapping",
                 "capsule": {
                   "#": "Capsule",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/BusinessLogic",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/BusinessLogic",
                   "mappings": {
                     "#": "Capsule/Mappings",
                     "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -3903,11 +3903,11 @@
                       },
                       "isPropertyContractDelegate": true
                     },
-                    "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/Services": {
+                    "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services": {
                       "#": "Capsule/PropertyContractMapping",
                       "capsule": {
                         "#": "Capsule",
-                        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/Services",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services",
                         "mappings": {
                           "#": "Capsule/Mappings",
                           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -3960,11 +3960,11 @@
                 },
                 "isPropertyContractDelegate": true
               },
-              "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/Account": {
+              "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Account": {
                 "#": "Capsule/PropertyContractMapping",
                 "capsule": {
                   "#": "Capsule",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/Account",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Account",
                   "mappings": {
                     "#": "Capsule/Mappings",
                     "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -4003,11 +4003,11 @@
                       },
                       "isPropertyContractDelegate": true
                     },
-                    "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters": {
+                    "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters": {
                       "#": "Capsule/PropertyContractMapping",
                       "capsule": {
                         "#": "Capsule",
-                        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters",
                         "mappings": {
                           "#": "Capsule/Mappings",
                           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -4070,7 +4070,7 @@
           "#": "Capsule/PropertyMapping",
           "capsule": {
             "#": "Capsule",
-            "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/ProfileService",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/ProfileService",
             "mappings": {
               "#": "Capsule/Mappings",
               "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -4084,11 +4084,11 @@
                 },
                 "isPropertyContractDelegate": true
               },
-              "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/BusinessLogic": {
+              "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/BusinessLogic": {
                 "#": "Capsule/PropertyContractMapping",
                 "capsule": {
                   "#": "Capsule",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/BusinessLogic",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/BusinessLogic",
                   "mappings": {
                     "#": "Capsule/Mappings",
                     "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -4127,11 +4127,11 @@
                       },
                       "isPropertyContractDelegate": true
                     },
-                    "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/Services": {
+                    "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services": {
                       "#": "Capsule/PropertyContractMapping",
                       "capsule": {
                         "#": "Capsule",
-                        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/Services",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services",
                         "mappings": {
                           "#": "Capsule/Mappings",
                           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -4184,11 +4184,11 @@
                 },
                 "isPropertyContractDelegate": true
               },
-              "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/APICluster": {
+              "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/APICluster": {
                 "#": "Capsule/PropertyContractMapping",
                 "capsule": {
                   "#": "Capsule",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/APICluster",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/APICluster",
                   "mappings": {
                     "#": "Capsule/Mappings",
                     "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -4227,11 +4227,11 @@
                       },
                       "isPropertyContractDelegate": true
                     },
-                    "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters": {
+                    "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters": {
                       "#": "Capsule/PropertyContractMapping",
                       "capsule": {
                         "#": "Capsule",
-                        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters",
                         "mappings": {
                           "#": "Capsule/Mappings",
                           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -4294,7 +4294,7 @@
           "#": "Capsule/PropertyMapping",
           "capsule": {
             "#": "Capsule",
-            "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/ProfilesDB",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/ProfilesDB",
             "mappings": {
               "#": "Capsule/Mappings",
               "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -4308,11 +4308,11 @@
                 },
                 "isPropertyContractDelegate": true
               },
-              "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/Data": {
+              "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Data": {
                 "#": "Capsule/PropertyContractMapping",
                 "capsule": {
                   "#": "Capsule",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/Data",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Data",
                   "mappings": {
                     "#": "Capsule/Mappings",
                     "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -4351,11 +4351,11 @@
                       },
                       "isPropertyContractDelegate": true
                     },
-                    "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/Services": {
+                    "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services": {
                       "#": "Capsule/PropertyContractMapping",
                       "capsule": {
                         "#": "Capsule",
-                        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/Services",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services",
                         "mappings": {
                           "#": "Capsule/Mappings",
                           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -4408,11 +4408,11 @@
                 },
                 "isPropertyContractDelegate": true
               },
-              "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/Data": {
+              "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Data": {
                 "#": "Capsule/PropertyContractMapping",
                 "capsule": {
                   "#": "Capsule",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/Data",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Data",
                   "mappings": {
                     "#": "Capsule/Mappings",
                     "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -4451,11 +4451,11 @@
                       },
                       "isPropertyContractDelegate": true
                     },
-                    "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters": {
+                    "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters": {
                       "#": "Capsule/PropertyContractMapping",
                       "capsule": {
                         "#": "Capsule",
-                        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters",
                         "mappings": {
                           "#": "Capsule/Mappings",
                           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -4518,7 +4518,7 @@
           "#": "Capsule/PropertyMapping",
           "capsule": {
             "#": "Capsule",
-            "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/SearchService",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/SearchService",
             "mappings": {
               "#": "Capsule/Mappings",
               "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -4532,11 +4532,11 @@
                 },
                 "isPropertyContractDelegate": true
               },
-              "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/BusinessLogic": {
+              "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/BusinessLogic": {
                 "#": "Capsule/PropertyContractMapping",
                 "capsule": {
                   "#": "Capsule",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/BusinessLogic",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/BusinessLogic",
                   "mappings": {
                     "#": "Capsule/Mappings",
                     "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -4575,11 +4575,11 @@
                       },
                       "isPropertyContractDelegate": true
                     },
-                    "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/Services": {
+                    "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services": {
                       "#": "Capsule/PropertyContractMapping",
                       "capsule": {
                         "#": "Capsule",
-                        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/Services",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services",
                         "mappings": {
                           "#": "Capsule/Mappings",
                           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -4632,11 +4632,11 @@
                 },
                 "isPropertyContractDelegate": true
               },
-              "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/APICluster": {
+              "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/APICluster": {
                 "#": "Capsule/PropertyContractMapping",
                 "capsule": {
                   "#": "Capsule",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/APICluster",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/APICluster",
                   "mappings": {
                     "#": "Capsule/Mappings",
                     "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -4675,11 +4675,11 @@
                       },
                       "isPropertyContractDelegate": true
                     },
-                    "#@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters": {
+                    "#@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters": {
                       "#": "Capsule/PropertyContractMapping",
                       "capsule": {
                         "#": "Capsule",
-                        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters",
                         "mappings": {
                           "#": "Capsule/Mappings",
                           "#@stream44.studio/encapsulate/structs/Capsule": {
@@ -4744,14 +4744,14 @@
       }
     }
   },
-  "Instance: @stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1 > getSpineInstanceTree #1": {
+  "Instance: @stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1 > getSpineInstanceTree #1": {
     "#": "SpineInstanceTree",
-    "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1",
-    "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1:75": {
+    "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1",
+    "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1:75": {
       "#": "CapsuleInstance",
-      "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1:75",
-      "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1",
-      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1:75",
+      "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1:75",
+      "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1:75",
       "children": {
         "#": "CapsuleInstance/Children",
         "list": [
@@ -4763,9 +4763,9 @@
           },
           {
             "#": "CapsuleInstance",
-            "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/AccountDB:22",
-            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/AccountDB",
-            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/AccountDB:22",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/AccountDB:22",
+            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/AccountDB",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/AccountDB:22",
             "children": {
               "#": "CapsuleInstance/Children",
               "list": [
@@ -4777,9 +4777,9 @@
                 },
                 {
                   "#": "CapsuleInstance",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/Data:25",
-                  "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/Data",
-                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/Data:25",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Data:25",
+                  "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Data",
+                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Data:25",
                   "children": {
                     "#": "CapsuleInstance/Children",
                     "list": [
@@ -4811,9 +4811,9 @@
                 },
                 {
                   "#": "CapsuleInstance",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/Data:25",
-                  "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/Data",
-                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/Data:25",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Data:25",
+                  "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Data",
+                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Data:25",
                   "children": {
                     "#": "CapsuleInstance/Children",
                     "list": [
@@ -4848,9 +4848,9 @@
           },
           {
             "#": "CapsuleInstance",
-            "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/FeedService:22",
-            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/FeedService",
-            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/FeedService:22",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/FeedService:22",
+            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/FeedService",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/FeedService:22",
             "children": {
               "#": "CapsuleInstance/Children",
               "list": [
@@ -4865,9 +4865,9 @@
           },
           {
             "#": "CapsuleInstance",
-            "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/GatewayService:22",
-            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/GatewayService",
-            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/GatewayService:22",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/GatewayService:22",
+            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/GatewayService",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/GatewayService:22",
             "children": {
               "#": "CapsuleInstance/Children",
               "list": [
@@ -4882,9 +4882,9 @@
           },
           {
             "#": "CapsuleInstance",
-            "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/LoginService:21",
-            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/LoginService",
-            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/LoginService:21",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/LoginService:21",
+            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/LoginService",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/LoginService:21",
             "children": {
               "#": "CapsuleInstance/Children",
               "list": [
@@ -4896,9 +4896,9 @@
                 },
                 {
                   "#": "CapsuleInstance",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/Boundary:25",
-                  "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/Boundary",
-                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/Boundary:25",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Boundary:25",
+                  "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Boundary",
+                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Boundary:25",
                   "children": {
                     "#": "CapsuleInstance/Children",
                     "list": [
@@ -4910,9 +4910,9 @@
                       },
                       {
                         "#": "CapsuleInstance",
-                        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/Services:22",
-                        "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/Services",
-                        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/Services:22",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services:22",
+                        "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services",
+                        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services:22",
                         "children": {
                           "#": "CapsuleInstance/Children",
                           "list": [
@@ -4964,9 +4964,9 @@
                 },
                 {
                   "#": "CapsuleInstance",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/Account:25",
-                  "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/Account",
-                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/Account:25",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Account:25",
+                  "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Account",
+                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Account:25",
                   "children": {
                     "#": "CapsuleInstance/Children",
                     "list": [
@@ -4978,9 +4978,9 @@
                       },
                       {
                         "#": "CapsuleInstance",
-                        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters:22",
-                        "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters",
-                        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters:22",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters:22",
+                        "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters",
+                        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters:22",
                         "children": {
                           "#": "CapsuleInstance/Children",
                           "list": [
@@ -5035,9 +5035,9 @@
           },
           {
             "#": "CapsuleInstance",
-            "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/PaymentService:21",
-            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/PaymentService",
-            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/PaymentService:21",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/PaymentService:21",
+            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/PaymentService",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/PaymentService:21",
             "children": {
               "#": "CapsuleInstance/Children",
               "list": [
@@ -5049,9 +5049,9 @@
                 },
                 {
                   "#": "CapsuleInstance",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/BusinessLogic:25",
-                  "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/BusinessLogic",
-                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/BusinessLogic:25",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/BusinessLogic:25",
+                  "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/BusinessLogic",
+                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/BusinessLogic:25",
                   "children": {
                     "#": "CapsuleInstance/Children",
                     "list": [
@@ -5086,9 +5086,9 @@
           },
           {
             "#": "CapsuleInstance",
-            "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/ProfilesDB:22",
-            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/ProfilesDB",
-            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/ProfilesDB:22",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/ProfilesDB:22",
+            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/ProfilesDB",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/ProfilesDB:22",
             "children": {
               "#": "CapsuleInstance/Children",
               "list": [
@@ -5103,9 +5103,9 @@
           },
           {
             "#": "CapsuleInstance",
-            "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/ProfileService:22",
-            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/ProfileService",
-            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/ProfileService:22",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/ProfileService:22",
+            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/ProfileService",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/ProfileService:22",
             "children": {
               "#": "CapsuleInstance/Children",
               "list": [
@@ -5117,9 +5117,9 @@
                 },
                 {
                   "#": "CapsuleInstance",
-                  "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/APICluster:25",
-                  "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/APICluster",
-                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/APICluster:25",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/APICluster:25",
+                  "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/APICluster",
+                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/APICluster:25",
                   "children": {
                     "#": "CapsuleInstance/Children",
                     "list": [
@@ -5154,9 +5154,9 @@
           },
           {
             "#": "CapsuleInstance",
-            "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/SearchService:22",
-            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/SearchService",
-            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/SearchService:22",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/SearchService:22",
+            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/SearchService",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/SearchService:22",
             "children": {
               "#": "CapsuleInstance/Children",
               "list": [
@@ -5173,7 +5173,7 @@
       }
     }
   },
-  "Instance: @stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1 > listCapsules #1": {
+  "Instance: @stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1 > listCapsules #1": {
     "#": "Capsules",
     "list": [
       {
@@ -5182,71 +5182,71 @@
       },
       {
         "#": "Capsule",
-        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1"
+        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1"
       },
       {
         "#": "Capsule",
-        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/AccountDB"
+        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/AccountDB"
       },
       {
         "#": "Capsule",
-        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/FeedService"
+        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/FeedService"
       },
       {
         "#": "Capsule",
-        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/GatewayService"
+        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/GatewayService"
       },
       {
         "#": "Capsule",
-        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/LoginService"
+        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/LoginService"
       },
       {
         "#": "Capsule",
-        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/PaymentService"
+        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/PaymentService"
       },
       {
         "#": "Capsule",
-        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/ProfilesDB"
+        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/ProfilesDB"
       },
       {
         "#": "Capsule",
-        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/ProfileService"
+        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/ProfileService"
       },
       {
         "#": "Capsule",
-        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/elements/SearchService"
+        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/SearchService"
       },
       {
         "#": "Capsule",
-        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/Services"
+        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services"
       },
       {
         "#": "Capsule",
-        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/Boundary"
+        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Boundary"
       },
       {
         "#": "Capsule",
-        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/BusinessLogic"
+        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/BusinessLogic"
       },
       {
         "#": "Capsule",
-        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Columns/services/Data"
+        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Data"
       },
       {
         "#": "Capsule",
-        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters"
+        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters"
       },
       {
         "#": "Capsule",
-        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/Account"
+        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Account"
       },
       {
         "#": "Capsule",
-        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/APICluster"
+        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/APICluster"
       },
       {
         "#": "Capsule",
-        "$id": "@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/view/Rows/Clusters/Data"
+        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Data"
       },
       {
         "#": "Capsule",

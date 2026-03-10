@@ -35,6 +35,7 @@ import "~L6/Capsular/CapsuleSpine/reps/SpineDeclarationTreeRep";
 import "~L6/Capsular/CapsuleSpine/reps/SpineInstanceTreeRep";
 import "~L8/CapsuleSpine/Quadrant/reps/TableView";
 import "~L8/CapsuleSpine/Codepath/reps/SwimlaneView";
+import "~L8/Composite/Quadrant-Codepath/reps/QuadrantCodepathView";
 
 // Default visualizations — these are shown from the start and are non-closable
 export const visualizations: VisualizationDef[] = [

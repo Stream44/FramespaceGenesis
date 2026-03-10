@@ -99,6 +99,7 @@ export async function capsule({
                             getEventLog: {
                                 args: [
                                     { name: 'spineInstanceTreeId', type: 'string' },
+                                    { name: 'filter', type: 'string', optional: true },
                                 ],
                                 description: 'Get a structured event log with caller resolution and active invocation tracking.',
                                 tags: {
@@ -422,7 +423,7 @@ export async function capsule({
                  */
                 getEventLog: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, { graph, server }: any, spineInstanceTreeId: string): Promise<any> {
+                    value: async function (this: any, { graph, server }: any, spineInstanceTreeId: string, filter?: string): Promise<any> {
                         if (!spineInstanceTreeId) throw new Error('getEventLog: spineInstanceTreeId is required')
                         const events = await graph.getMembraneEvents(spineInstanceTreeId)
 
@@ -524,7 +525,12 @@ export async function capsule({
                             entries.push(entry)
                         }
 
-                        return { '#': 'EventLog', $id: spineInstanceTreeId, entries }
+                        // Apply codepath filter: remove mapping-ref getter events
+                        const filtered = filter === 'codepath'
+                            ? entries.filter((e: any) => !(e.isMappingRef && e.eventType === 'get'))
+                            : entries
+
+                        return { '#': 'EventLog', $id: spineInstanceTreeId, entries: filtered }
                     }
                 },
 

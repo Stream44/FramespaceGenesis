@@ -1,0 +1,50 @@
+{
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy > getTableView #1": {
+    "#": "TableView",
+    "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/01-Documentation/0A-CapsuleAnatomy"
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule > getTableView #1": {
+    "#": "TableView",
+    "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0A-SingleCapsule"
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule > getTableView #1": {
+    "#": "TableView",
+    "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0B-ExtendCapsule"
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule > getTableView #1": {
+    "#": "TableView",
+    "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0C-MappedCapsule"
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule > getTableView #1": {
+    "#": "TableView",
+    "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0D-MappedNewCapsule"
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs > getTableView #1": {
+    "#": "TableView",
+    "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0E-Structs"
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing > getTableView #1": {
+    "#": "TableView",
+    "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/02-TreeRelationships/0F-MappedInstanceSharing"
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution > getTableView #1": {
+    "#": "TableView",
+    "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution"
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-BackendServices > getTableView #1": {
+    "#": "TableView",
+    "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-BackendServices"
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1 > getTableView #1": {
+    "#": "TableView",
+    "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1"
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1 > getTableView #1": {
+    "#": "TableView",
+    "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1"
+  },
+  "Instance: @stream44.studio/FramespaceGenesis/examples/03-QuadrantCodepath-SimplePasswordLogin/0A-FullStack1 > getTableView #1": {
+    "#": "TableView",
+    "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/examples/03-QuadrantCodepath-SimplePasswordLogin/0A-FullStack1"
+  }
+}

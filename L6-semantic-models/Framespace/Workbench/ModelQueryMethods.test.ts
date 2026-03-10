@@ -223,7 +223,7 @@ describe('L6 Framespace/Workbench ModelQueryMethods', () => {
     })
 
     it('getCapsuleSourceFile (simplified format - all Quadrant-BackendServices files)', async () => {
-        const quadrantTreeId = '@stream44.studio/FramespaceGenesis/examples/Quadrant-BackendServices/0A-InfrastructurePlan1'
+        const quadrantTreeId = '@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1'
         const listing = await api.listSpineInstanceTreeCapsuleSourceFiles(quadrantTreeId)
         expect(listing.list.length).toBeGreaterThan(0)
 

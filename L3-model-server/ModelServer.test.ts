@@ -57,6 +57,11 @@ await modelServer.init()
 const loadedModel = modelServer._models.find((m: any) => m.engineUri === ENGINE_KEY)
 if (!loadedModel) throw new Error(`No loaded model found for engine ${ENGINE_KEY}`)
 const engine = loadedModel.engine
+// Ensure at least one instance is imported into the engine (lazy import is deferred)
+const registeredModels = modelServer.spineInstanceTrees?.getModels ?? []
+for (const m of registeredModels) {
+    await modelServer._ensureImported(m.name, engine)
+}
 const _trees = await engine._listSpineInstanceTrees()
 if (_trees.length === 0) throw new Error('No spine instance trees found - engine may not have loaded data correctly')
 const TREE_ID = _trees[0].spineInstanceTreeId
@@ -109,7 +114,7 @@ describe('ModelServer Capsule', () => {
 
     // ── HTTP API Methods ─────────────────────────────────────────────
     it('GET listCapsules returns capsules', async () => {
-        const res = await fetch(`${BASE_URL}/api/${MOUNT_KEY}/listCapsules?spineInstanceTreeId=${encodeURIComponent(TREE_ID)}`)
+        const res = await fetch(`${BASE_URL}/dev/api/${MOUNT_KEY}/listCapsules?spineInstanceTreeId=${encodeURIComponent(TREE_ID)}`)
         expect(res.status).toBe(200)
         const data = await res.json() as any
         expect(data.method).toBe('listCapsules')
@@ -120,12 +125,12 @@ describe('ModelServer Capsule', () => {
     })
 
     it('GET getCapsule with spineInstanceTreeId and capsuleName returns capsule', async () => {
-        const listRes = await fetch(`${BASE_URL}/api/${MOUNT_KEY}/listCapsules?spineInstanceTreeId=${encodeURIComponent(TREE_ID)}`)
+        const listRes = await fetch(`${BASE_URL}/dev/api/${MOUNT_KEY}/listCapsules?spineInstanceTreeId=${encodeURIComponent(TREE_ID)}`)
         const listData = await listRes.json() as any
         const capsuleName = listData.result.list[0]?.['$id'] ?? ''
         expect(capsuleName).not.toBe('')
 
-        const res = await fetch(`${BASE_URL}/api/${MOUNT_KEY}/getCapsule?spineInstanceTreeId=${encodeURIComponent(TREE_ID)}&capsuleName=${encodeURIComponent(capsuleName)}`)
+        const res = await fetch(`${BASE_URL}/dev/api/${MOUNT_KEY}/getCapsule?spineInstanceTreeId=${encodeURIComponent(TREE_ID)}&capsuleName=${encodeURIComponent(capsuleName)}`)
         expect(res.status).toBe(200)
         const data = await res.json() as any
         expect(data.method).toBe('getCapsule')
@@ -135,11 +140,11 @@ describe('ModelServer Capsule', () => {
     })
 
     it('POST getCapsule with args body', async () => {
-        const listRes = await fetch(`${BASE_URL}/api/${MOUNT_KEY}/listCapsules?spineInstanceTreeId=${encodeURIComponent(TREE_ID)}`)
+        const listRes = await fetch(`${BASE_URL}/dev/api/${MOUNT_KEY}/listCapsules?spineInstanceTreeId=${encodeURIComponent(TREE_ID)}`)
         const listData = await listRes.json() as any
         const capsuleName = listData.result.list[0]?.['$id'] ?? ''
 
-        const res = await fetch(`${BASE_URL}/api/${MOUNT_KEY}/getCapsule`, {
+        const res = await fetch(`${BASE_URL}/dev/api/${MOUNT_KEY}/getCapsule`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ args: [TREE_ID, capsuleName] }),
@@ -151,7 +156,7 @@ describe('ModelServer Capsule', () => {
 
     // ── Error handling ───────────────────────────────────────────────
     it('GET nonExistentMethod returns 404', async () => {
-        const res = await fetch(`${BASE_URL}/api/${MOUNT_KEY}/nonExistentMethod`)
+        const res = await fetch(`${BASE_URL}/dev/api/${MOUNT_KEY}/nonExistentMethod`)
         expect(res.status).toBe(404)
         const data = await res.json() as any
         expect(data.error).toContain('Unknown method')
