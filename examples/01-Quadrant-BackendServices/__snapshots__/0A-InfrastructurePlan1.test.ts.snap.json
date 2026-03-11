@@ -1,0 +1,431 @@
+{
+  "Quadrant-BackendServices > getSpineInstanceTree #1": {
+    "#": "SpineInstanceTree",
+    "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1",
+    "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1:75": {
+      "#": "CapsuleInstance",
+      "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1:75",
+      "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1:75",
+      "children": {
+        "#": "CapsuleInstance/Children",
+        "list": [
+          {
+            "#": "CapsuleInstance",
+            "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+            "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+            "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+          },
+          {
+            "#": "CapsuleInstance",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/AccountDB:22",
+            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/AccountDB",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/AccountDB:22",
+            "children": {
+              "#": "CapsuleInstance/Children",
+              "list": [
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                  "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                  "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                },
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Data:25",
+                  "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Data",
+                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Data:25",
+                  "children": {
+                    "#": "CapsuleInstance/Children",
+                    "list": [
+                      {
+                        "#": "CapsuleInstance",
+                        "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                        "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                        "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                      },
+                      {
+                        "#": "CapsuleInstance",
+                        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column:21",
+                        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+                        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column:21",
+                        "children": {
+                          "#": "CapsuleInstance/Children",
+                          "list": [
+                            {
+                              "#": "CapsuleInstance",
+                              "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                              "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                              "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Data:25",
+                  "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Data",
+                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Data:25",
+                  "children": {
+                    "#": "CapsuleInstance/Children",
+                    "list": [
+                      {
+                        "#": "CapsuleInstance",
+                        "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                        "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                        "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                      },
+                      {
+                        "#": "CapsuleInstance",
+                        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row:21",
+                        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row",
+                        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row:21",
+                        "children": {
+                          "#": "CapsuleInstance/Children",
+                          "list": [
+                            {
+                              "#": "CapsuleInstance",
+                              "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                              "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                              "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "#": "CapsuleInstance",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/FeedService:22",
+            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/FeedService",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/FeedService:22",
+            "children": {
+              "#": "CapsuleInstance/Children",
+              "list": [
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                  "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                  "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                }
+              ]
+            }
+          },
+          {
+            "#": "CapsuleInstance",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/GatewayService:22",
+            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/GatewayService",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/GatewayService:22",
+            "children": {
+              "#": "CapsuleInstance/Children",
+              "list": [
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                  "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                  "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                }
+              ]
+            }
+          },
+          {
+            "#": "CapsuleInstance",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/LoginService:21",
+            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/LoginService",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/LoginService:21",
+            "children": {
+              "#": "CapsuleInstance/Children",
+              "list": [
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                  "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                  "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                },
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Boundary:25",
+                  "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Boundary",
+                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Boundary:25",
+                  "children": {
+                    "#": "CapsuleInstance/Children",
+                    "list": [
+                      {
+                        "#": "CapsuleInstance",
+                        "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                        "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                        "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                      },
+                      {
+                        "#": "CapsuleInstance",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services:22",
+                        "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services",
+                        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services:22",
+                        "children": {
+                          "#": "CapsuleInstance/Children",
+                          "list": [
+                            {
+                              "#": "CapsuleInstance",
+                              "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                              "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                              "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                            },
+                            {
+                              "#": "CapsuleInstance",
+                              "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column:21",
+                              "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+                              "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column:21",
+                              "children": {
+                                "#": "CapsuleInstance/Children",
+                                "list": [
+                                  {
+                                    "#": "CapsuleInstance",
+                                    "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                                    "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                                    "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "#": "CapsuleInstance",
+                        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column:21",
+                        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+                        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column:21",
+                        "children": {
+                          "#": "CapsuleInstance/Children",
+                          "list": [
+                            {
+                              "#": "CapsuleInstance",
+                              "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                              "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                              "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Account:25",
+                  "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Account",
+                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Account:25",
+                  "children": {
+                    "#": "CapsuleInstance/Children",
+                    "list": [
+                      {
+                        "#": "CapsuleInstance",
+                        "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                        "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                        "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                      },
+                      {
+                        "#": "CapsuleInstance",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters:22",
+                        "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters",
+                        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters:22",
+                        "children": {
+                          "#": "CapsuleInstance/Children",
+                          "list": [
+                            {
+                              "#": "CapsuleInstance",
+                              "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                              "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                              "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                            },
+                            {
+                              "#": "CapsuleInstance",
+                              "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row:21",
+                              "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row",
+                              "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row:21",
+                              "children": {
+                                "#": "CapsuleInstance/Children",
+                                "list": [
+                                  {
+                                    "#": "CapsuleInstance",
+                                    "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                                    "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                                    "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "#": "CapsuleInstance",
+                        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row:21",
+                        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row",
+                        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row:21",
+                        "children": {
+                          "#": "CapsuleInstance/Children",
+                          "list": [
+                            {
+                              "#": "CapsuleInstance",
+                              "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                              "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                              "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "#": "CapsuleInstance",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/PaymentService:21",
+            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/PaymentService",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/PaymentService:21",
+            "children": {
+              "#": "CapsuleInstance/Children",
+              "list": [
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                  "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                  "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                },
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/BusinessLogic:25",
+                  "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/BusinessLogic",
+                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/BusinessLogic:25",
+                  "children": {
+                    "#": "CapsuleInstance/Children",
+                    "list": [
+                      {
+                        "#": "CapsuleInstance",
+                        "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                        "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                        "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                      },
+                      {
+                        "#": "CapsuleInstance",
+                        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column:21",
+                        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
+                        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column:21",
+                        "children": {
+                          "#": "CapsuleInstance/Children",
+                          "list": [
+                            {
+                              "#": "CapsuleInstance",
+                              "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                              "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                              "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "#": "CapsuleInstance",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/ProfilesDB:22",
+            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/ProfilesDB",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/ProfilesDB:22",
+            "children": {
+              "#": "CapsuleInstance/Children",
+              "list": [
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                  "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                  "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                }
+              ]
+            }
+          },
+          {
+            "#": "CapsuleInstance",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/ProfileService:22",
+            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/ProfileService",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/ProfileService:22",
+            "children": {
+              "#": "CapsuleInstance/Children",
+              "list": [
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                  "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                  "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                },
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/APICluster:25",
+                  "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/APICluster",
+                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/APICluster:25",
+                  "children": {
+                    "#": "CapsuleInstance/Children",
+                    "list": [
+                      {
+                        "#": "CapsuleInstance",
+                        "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                        "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                        "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                      },
+                      {
+                        "#": "CapsuleInstance",
+                        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row:21",
+                        "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row",
+                        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row:21",
+                        "children": {
+                          "#": "CapsuleInstance/Children",
+                          "list": [
+                            {
+                              "#": "CapsuleInstance",
+                              "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                              "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                              "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "#": "CapsuleInstance",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/SearchService:22",
+            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/SearchService",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/SearchService:22",
+            "children": {
+              "#": "CapsuleInstance/Children",
+              "list": [
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                  "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                  "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

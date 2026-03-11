@@ -47,65 +47,65 @@
           "propertyName": "runModel",
           "rawEvent": {
             "caller": {
-              "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+              "fileUri": "@stream44.studio/t44/standalone-rt",
               "line": 184,
               "stack": [
                 {
                   "column": 34,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
+                  "fileUri": "@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0",
                   "function": "addCallerContextToEvent",
-                  "line": 891
+                  "line": 893
                 },
                 {
                   "column": 26,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
-                  "line": 583
+                  "fileUri": "@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0",
+                  "line": 585
                 },
                 {
                   "column": 28,
-                  "filepath": "L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model.ts",
+                  "fileUri": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model",
                   "line": 66
                 },
                 {
                   "column": 37,
-                  "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+                  "fileUri": "@stream44.studio/t44/standalone-rt",
                   "line": 184
                 },
                 {
                   "column": 34,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/encapsulate.ts",
+                  "fileUri": "@stream44.studio/encapsulate/src/encapsulate",
                   "line": 317
                 },
                 {
                   "column": 26,
-                  "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+                  "fileUri": "@stream44.studio/t44/standalone-rt",
                   "function": "async run",
                   "line": 168
                 },
                 {
                   "column": 18,
-                  "filepath": "L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model.ts",
+                  "fileUri": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model",
                   "function": "async runModel",
                   "line": 6
                 },
                 {
                   "column": 46,
-                  "filepath": "L4-space-models/Capsular/SpineInstanceTrees.ts",
+                  "fileUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/SpineInstanceTrees",
                   "line": 39
                 },
                 {
                   "column": 34,
-                  "filepath": "L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model.test.ts",
+                  "fileUri": "@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/examples/01-SimplePasswordLogin/model.test",
                   "line": 86
                 },
                 {
                   "column": 43,
-                  "filepath": "node_modules/@stream44.studio/t44/caps/ProjectTest.ts",
+                  "fileUri": "@stream44.studio/t44/caps/ProjectTest",
                   "line": 328
                 },
                 {
                   "column": 39,
-                  "filepath": "native",
+                  "fileUri": "native",
                   "function": "processTicksAndRejections",
                   "line": 7
                 }

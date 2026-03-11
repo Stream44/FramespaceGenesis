@@ -1011,60 +1011,60 @@
           "propertyName": "runModel",
           "rawEvent": {
             "caller": {
-              "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+              "fileUri": "@stream44.studio/t44/standalone-rt",
               "line": 184,
               "stack": [
                 {
                   "column": 34,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
+                  "fileUri": "@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0",
                   "function": "addCallerContextToEvent",
-                  "line": 891
+                  "line": 893
                 },
                 {
                   "column": 26,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
-                  "line": 583
+                  "fileUri": "@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0",
+                  "line": 585
                 },
                 {
                   "column": 28,
-                  "filepath": "L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts",
+                  "fileUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
                   "line": 59
                 },
                 {
                   "column": 37,
-                  "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+                  "fileUri": "@stream44.studio/t44/standalone-rt",
                   "line": 184
                 },
                 {
                   "column": 34,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/encapsulate.ts",
+                  "fileUri": "@stream44.studio/encapsulate/src/encapsulate",
                   "line": 317
                 },
                 {
                   "column": 26,
-                  "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+                  "fileUri": "@stream44.studio/t44/standalone-rt",
                   "function": "async run",
                   "line": 168
                 },
                 {
                   "column": 18,
-                  "filepath": "L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts",
+                  "fileUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
                   "function": "async runModel",
                   "line": 6
                 },
                 {
                   "column": 46,
-                  "filepath": "L4-space-models/Capsular/SpineInstanceTrees.ts",
+                  "fileUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/SpineInstanceTrees",
                   "line": 39
                 },
                 {
                   "column": 63,
-                  "filepath": "L3-model-server/ModelServer.ts",
+                  "fileUri": "@framespace/model-server/ModelServer",
                   "line": 239
                 },
                 {
                   "column": 39,
-                  "filepath": "native",
+                  "fileUri": "native",
                   "function": "processTicksAndRejections",
                   "line": 7
                 }
@@ -1097,60 +1097,60 @@
           "rawEvent": {
             "caller": {
               "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
-              "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+              "fileUri": "@stream44.studio/t44/standalone-rt",
               "line": 200,
               "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter:28",
               "stack": [
                 {
                   "column": 46,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
+                  "fileUri": "@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0",
                   "function": "get",
-                  "line": 310
+                  "line": 312
                 },
                 {
                   "column": 59,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
+                  "fileUri": "@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0",
                   "function": "get",
-                  "line": 339
+                  "line": 341
                 },
                 {
                   "function": "stringify"
                 },
                 {
                   "column": 58,
-                  "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+                  "fileUri": "@stream44.studio/t44/standalone-rt",
                   "line": 200
                 },
                 {
                   "column": 34,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/encapsulate.ts",
+                  "fileUri": "@stream44.studio/encapsulate/src/encapsulate",
                   "line": 317
                 },
                 {
                   "column": 26,
-                  "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+                  "fileUri": "@stream44.studio/t44/standalone-rt",
                   "function": "async run",
                   "line": 168
                 },
                 {
                   "column": 18,
-                  "filepath": "L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts",
+                  "fileUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
                   "function": "async runModel",
                   "line": 6
                 },
                 {
                   "column": 46,
-                  "filepath": "L4-space-models/Capsular/SpineInstanceTrees.ts",
+                  "fileUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/SpineInstanceTrees",
                   "line": 39
                 },
                 {
                   "column": 63,
-                  "filepath": "L3-model-server/ModelServer.ts",
+                  "fileUri": "@framespace/model-server/ModelServer",
                   "line": 239
                 },
                 {
                   "column": 39,
-                  "filepath": "native",
+                  "fileUri": "native",
                   "function": "processTicksAndRejections",
                   "line": 7
                 }
@@ -1183,60 +1183,60 @@
           "rawEvent": {
             "caller": {
               "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
-              "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+              "fileUri": "@stream44.studio/t44/standalone-rt",
               "line": 200,
               "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter:28",
               "stack": [
                 {
                   "column": 46,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
+                  "fileUri": "@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0",
                   "function": "get",
-                  "line": 310
+                  "line": 312
                 },
                 {
                   "column": 59,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
+                  "fileUri": "@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0",
                   "function": "get",
-                  "line": 339
+                  "line": 341
                 },
                 {
                   "function": "stringify"
                 },
                 {
                   "column": 58,
-                  "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+                  "fileUri": "@stream44.studio/t44/standalone-rt",
                   "line": 200
                 },
                 {
                   "column": 34,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/encapsulate.ts",
+                  "fileUri": "@stream44.studio/encapsulate/src/encapsulate",
                   "line": 317
                 },
                 {
                   "column": 26,
-                  "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+                  "fileUri": "@stream44.studio/t44/standalone-rt",
                   "function": "async run",
                   "line": 168
                 },
                 {
                   "column": 18,
-                  "filepath": "L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts",
+                  "fileUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
                   "function": "async runModel",
                   "line": 6
                 },
                 {
                   "column": 46,
-                  "filepath": "L4-space-models/Capsular/SpineInstanceTrees.ts",
+                  "fileUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/SpineInstanceTrees",
                   "line": 39
                 },
                 {
                   "column": 63,
-                  "filepath": "L3-model-server/ModelServer.ts",
+                  "fileUri": "@framespace/model-server/ModelServer",
                   "line": 239
                 },
                 {
                   "column": 39,
-                  "filepath": "native",
+                  "fileUri": "native",
                   "function": "processTicksAndRejections",
                   "line": 7
                 }
@@ -1390,60 +1390,60 @@
           "rawEvent": {
             "caller": {
               "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
-              "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+              "fileUri": "@stream44.studio/t44/standalone-rt",
               "line": 200,
               "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter:28",
               "stack": [
                 {
                   "column": 46,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
+                  "fileUri": "@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0",
                   "function": "get",
-                  "line": 310
+                  "line": 312
                 },
                 {
                   "column": 59,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
+                  "fileUri": "@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0",
                   "function": "get",
-                  "line": 339
+                  "line": 341
                 },
                 {
                   "function": "stringify"
                 },
                 {
                   "column": 58,
-                  "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+                  "fileUri": "@stream44.studio/t44/standalone-rt",
                   "line": 200
                 },
                 {
                   "column": 34,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/encapsulate.ts",
+                  "fileUri": "@stream44.studio/encapsulate/src/encapsulate",
                   "line": 317
                 },
                 {
                   "column": 26,
-                  "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+                  "fileUri": "@stream44.studio/t44/standalone-rt",
                   "function": "async run",
                   "line": 168
                 },
                 {
                   "column": 18,
-                  "filepath": "L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts",
+                  "fileUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
                   "function": "async runModel",
                   "line": 6
                 },
                 {
                   "column": 46,
-                  "filepath": "L4-space-models/Capsular/SpineInstanceTrees.ts",
+                  "fileUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/SpineInstanceTrees",
                   "line": 39
                 },
                 {
                   "column": 63,
-                  "filepath": "L3-model-server/ModelServer.ts",
+                  "fileUri": "@framespace/model-server/ModelServer",
                   "line": 239
                 },
                 {
                   "column": 39,
-                  "filepath": "native",
+                  "fileUri": "native",
                   "function": "processTicksAndRejections",
                   "line": 7
                 }
@@ -1476,60 +1476,60 @@
           "rawEvent": {
             "caller": {
               "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
-              "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+              "fileUri": "@stream44.studio/t44/standalone-rt",
               "line": 200,
               "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter:28",
               "stack": [
                 {
                   "column": 46,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
+                  "fileUri": "@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0",
                   "function": "get",
-                  "line": 310
+                  "line": 312
                 },
                 {
                   "column": 59,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
+                  "fileUri": "@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0",
                   "function": "get",
-                  "line": 339
+                  "line": 341
                 },
                 {
                   "function": "stringify"
                 },
                 {
                   "column": 58,
-                  "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+                  "fileUri": "@stream44.studio/t44/standalone-rt",
                   "line": 200
                 },
                 {
                   "column": 34,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/encapsulate.ts",
+                  "fileUri": "@stream44.studio/encapsulate/src/encapsulate",
                   "line": 317
                 },
                 {
                   "column": 26,
-                  "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+                  "fileUri": "@stream44.studio/t44/standalone-rt",
                   "function": "async run",
                   "line": 168
                 },
                 {
                   "column": 18,
-                  "filepath": "L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution.ts",
+                  "fileUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
                   "function": "async runModel",
                   "line": 6
                 },
                 {
                   "column": 46,
-                  "filepath": "L4-space-models/Capsular/SpineInstanceTrees.ts",
+                  "fileUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/SpineInstanceTrees",
                   "line": 39
                 },
                 {
                   "column": 63,
-                  "filepath": "L3-model-server/ModelServer.ts",
+                  "fileUri": "@framespace/model-server/ModelServer",
                   "line": 239
                 },
                 {
                   "column": 39,
-                  "filepath": "native",
+                  "fileUri": "native",
                   "function": "processTicksAndRejections",
                   "line": 7
                 }
@@ -2700,60 +2700,60 @@
           "propertyName": "runModel",
           "rawEvent": {
             "caller": {
-              "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+              "fileUri": "@stream44.studio/t44/standalone-rt",
               "line": 184,
               "stack": [
                 {
                   "column": 34,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
+                  "fileUri": "@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0",
                   "function": "addCallerContextToEvent",
-                  "line": 891
+                  "line": 893
                 },
                 {
                   "column": 26,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
-                  "line": 583
+                  "fileUri": "@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0",
+                  "line": 585
                 },
                 {
                   "column": 28,
-                  "filepath": "examples/02-Codepath-SimplePasswordLogin/0A-FullStack1.ts",
+                  "fileUri": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
                   "line": 59
                 },
                 {
                   "column": 37,
-                  "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+                  "fileUri": "@stream44.studio/t44/standalone-rt",
                   "line": 184
                 },
                 {
                   "column": 34,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/encapsulate.ts",
+                  "fileUri": "@stream44.studio/encapsulate/src/encapsulate",
                   "line": 317
                 },
                 {
                   "column": 26,
-                  "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+                  "fileUri": "@stream44.studio/t44/standalone-rt",
                   "function": "async run",
                   "line": 168
                 },
                 {
                   "column": 18,
-                  "filepath": "examples/02-Codepath-SimplePasswordLogin/0A-FullStack1.ts",
+                  "fileUri": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
                   "function": "async runModel",
                   "line": 6
                 },
                 {
                   "column": 46,
-                  "filepath": "L4-space-models/Capsular/SpineInstanceTrees.ts",
+                  "fileUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/SpineInstanceTrees",
                   "line": 39
                 },
                 {
                   "column": 63,
-                  "filepath": "L3-model-server/ModelServer.ts",
+                  "fileUri": "@framespace/model-server/ModelServer",
                   "line": 239
                 },
                 {
                   "column": 39,
-                  "filepath": "native",
+                  "fileUri": "native",
                   "function": "processTicksAndRejections",
                   "line": 7
                 }
@@ -4102,60 +4102,60 @@
           "propertyName": "runModel",
           "rawEvent": {
             "caller": {
-              "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+              "fileUri": "@stream44.studio/t44/standalone-rt",
               "line": 184,
               "stack": [
                 {
                   "column": 34,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
+                  "fileUri": "@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0",
                   "function": "addCallerContextToEvent",
-                  "line": 891
+                  "line": 893
                 },
                 {
                   "column": 26,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0.ts",
-                  "line": 583
+                  "fileUri": "@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0",
+                  "line": 585
                 },
                 {
                   "column": 28,
-                  "filepath": "examples/03-QuadrantCodepath-SimplePasswordLogin/0A-FullStack1.ts",
+                  "fileUri": "@stream44.studio/FramespaceGenesis/examples/03-QuadrantCodepath-SimplePasswordLogin/0A-FullStack1",
                   "line": 66
                 },
                 {
                   "column": 37,
-                  "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+                  "fileUri": "@stream44.studio/t44/standalone-rt",
                   "line": 184
                 },
                 {
                   "column": 34,
-                  "filepath": "node_modules/@stream44.studio/encapsulate/src/encapsulate.ts",
+                  "fileUri": "@stream44.studio/encapsulate/src/encapsulate",
                   "line": 317
                 },
                 {
                   "column": 26,
-                  "filepath": "node_modules/@stream44.studio/t44/standalone-rt.ts",
+                  "fileUri": "@stream44.studio/t44/standalone-rt",
                   "function": "async run",
                   "line": 168
                 },
                 {
                   "column": 18,
-                  "filepath": "examples/03-QuadrantCodepath-SimplePasswordLogin/0A-FullStack1.ts",
+                  "fileUri": "@stream44.studio/FramespaceGenesis/examples/03-QuadrantCodepath-SimplePasswordLogin/0A-FullStack1",
                   "function": "async runModel",
                   "line": 6
                 },
                 {
                   "column": 46,
-                  "filepath": "L4-space-models/Capsular/SpineInstanceTrees.ts",
+                  "fileUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/SpineInstanceTrees",
                   "line": 39
                 },
                 {
                   "column": 63,
-                  "filepath": "L3-model-server/ModelServer.ts",
+                  "fileUri": "@framespace/model-server/ModelServer",
                   "line": 239
                 },
                 {
                   "column": 39,
-                  "filepath": "native",
+                  "fileUri": "native",
                   "function": "processTicksAndRejections",
                   "line": 7
                 }

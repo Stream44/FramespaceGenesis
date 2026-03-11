@@ -1,0 +1,814 @@
+{
+  "Codepath-SimplePasswordLogin > getSpineInstanceTree #1": {
+    "#": "SpineInstanceTree",
+    "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
+    "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1:53": {
+      "#": "CapsuleInstance",
+      "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1:53",
+      "capsuleName": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
+      "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1:53",
+      "children": {
+        "#": "CapsuleInstance/Children",
+        "list": [
+          {
+            "#": "CapsuleInstance",
+            "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+            "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+            "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+          },
+          {
+            "#": "CapsuleInstance",
+            "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User:30",
+            "capsuleName": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
+            "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User:30",
+            "children": {
+              "#": "CapsuleInstance/Children",
+              "list": [
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                  "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                  "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                },
+                {
+                  "#": "CapsuleInstance",
+                  "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83",
+                  "capsuleName": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+                  "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83",
+                  "children": {
+                    "#": "CapsuleInstance/Children",
+                    "list": [
+                      {
+                        "#": "CapsuleInstance",
+                        "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                        "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                        "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                      },
+                      {
+                        "#": "CapsuleInstance",
+                        "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/HttpClient:31",
+                        "capsuleName": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/HttpClient",
+                        "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/HttpClient:31",
+                        "children": {
+                          "#": "CapsuleInstance/Children",
+                          "list": [
+                            {
+                              "#": "CapsuleInstance",
+                              "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                              "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                              "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                            },
+                            {
+                              "#": "CapsuleInstance",
+                              "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/AuthService:38",
+                              "capsuleName": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/AuthService",
+                              "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/AuthService:38",
+                              "children": {
+                                "#": "CapsuleInstance/Children",
+                                "list": [
+                                  {
+                                    "#": "CapsuleInstance",
+                                    "$id": "@stream44.studio/encapsulate/structs/Capsule:18",
+                                    "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
+                                    "capsuleSourceUriLineRef": "@stream44.studio/encapsulate/structs/Capsule:18"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "Codepath-SimplePasswordLogin > getSwimlaneView #1": {
+    "#": "SwimlaneView",
+    "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
+    "columns": [
+      {
+        "#": "CodepathColumn",
+        "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1:@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
+        "index": 0,
+        "label": "0A-FullStack1"
+      },
+      {
+        "#": "CodepathColumn",
+        "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+        "index": 2,
+        "label": "LoginForm"
+      },
+      {
+        "#": "CodepathColumn",
+        "$id": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User:@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
+        "index": 1,
+        "label": "User"
+      }
+    ],
+    "rows": [
+      {
+        "#": "CodepathRow",
+        "$id": "row-0",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 1,
+          "columnIndex": 0,
+          "eventType": "call",
+          "membrane": "external",
+          "propertyName": "runModel",
+          "rawEvent": {
+            "caller": {
+              "fileUri": "@stream44.studio/t44/standalone-rt",
+              "line": 184,
+              "stack": [
+                {
+                  "column": 34,
+                  "fileUri": "@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0",
+                  "function": "addCallerContextToEvent",
+                  "line": 893
+                },
+                {
+                  "column": 26,
+                  "fileUri": "@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0",
+                  "line": 585
+                },
+                {
+                  "column": 28,
+                  "fileUri": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
+                  "line": 59
+                },
+                {
+                  "column": 37,
+                  "fileUri": "@stream44.studio/t44/standalone-rt",
+                  "line": 184
+                },
+                {
+                  "column": 34,
+                  "fileUri": "@stream44.studio/encapsulate/src/encapsulate",
+                  "line": 317
+                },
+                {
+                  "column": 26,
+                  "fileUri": "@stream44.studio/t44/standalone-rt",
+                  "function": "async run",
+                  "line": 168
+                },
+                {
+                  "column": 18,
+                  "fileUri": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
+                  "function": "async runModel",
+                  "line": 6
+                },
+                {
+                  "column": 46,
+                  "fileUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/SpineInstanceTrees",
+                  "line": 39
+                },
+                {
+                  "column": 63,
+                  "fileUri": "@framespace/model-server/ModelServer",
+                  "line": 239
+                },
+                {
+                  "column": 39,
+                  "fileUri": "native",
+                  "function": "processTicksAndRejections",
+                  "line": 7
+                }
+              ]
+            },
+            "event": "call",
+            "eventIndex": 0,
+            "membrane": "external",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
+              "prop": "runModel",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1:53"
+            }
+          }
+        },
+        "eventIndex": 0,
+        "index": 0
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-15",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 3,
+          "columnIndex": 2,
+          "eventType": "call",
+          "membrane": "external",
+          "propertyName": "setEmail",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
+              "prop": "login",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User:30"
+            },
+            "event": "call",
+            "eventIndex": 15,
+            "membrane": "external",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "setEmail",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            }
+          }
+        },
+        "eventIndex": 15,
+        "index": 2
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-16",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 3,
+          "columnIndex": 2,
+          "dataSeen": "\"userexample.com\"",
+          "eventType": "set",
+          "membrane": "internal",
+          "propertyName": "_email",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "setEmail",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            },
+            "event": "set",
+            "eventIndex": 16,
+            "membrane": "internal",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "_email",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            },
+            "value": "userexample.com"
+          }
+        },
+        "eventIndex": 16,
+        "index": 3
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-17",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 2,
+          "callEventIndex": 15,
+          "callerColumnIndex": 2,
+          "columnIndex": 2,
+          "eventType": "call-result",
+          "membrane": "external",
+          "propertyName": "",
+          "rawEvent": {
+            "callEventIndex": 15,
+            "event": "call-result",
+            "eventIndex": 17,
+            "membrane": "external",
+            "target": {
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            }
+          },
+          "resolvedCaller": {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+            "propertyName": "setEmail"
+          }
+        },
+        "eventIndex": 17,
+        "index": 4
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-26",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 3,
+          "columnIndex": 2,
+          "eventType": "call",
+          "membrane": "external",
+          "propertyName": "setPassword",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
+              "prop": "login",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User:30"
+            },
+            "event": "call",
+            "eventIndex": 26,
+            "membrane": "external",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "setPassword",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            }
+          }
+        },
+        "eventIndex": 26,
+        "index": 5
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-27",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 3,
+          "columnIndex": 2,
+          "dataSeen": "\"validPassword123\"",
+          "eventType": "set",
+          "membrane": "internal",
+          "propertyName": "_password",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "setPassword",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            },
+            "event": "set",
+            "eventIndex": 27,
+            "membrane": "internal",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "_password",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            },
+            "value": "validPassword123"
+          }
+        },
+        "eventIndex": 27,
+        "index": 6
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-28",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 2,
+          "callEventIndex": 26,
+          "callerColumnIndex": 2,
+          "columnIndex": 2,
+          "eventType": "call-result",
+          "membrane": "external",
+          "propertyName": "",
+          "rawEvent": {
+            "callEventIndex": 26,
+            "event": "call-result",
+            "eventIndex": 28,
+            "membrane": "external",
+            "target": {
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            }
+          },
+          "resolvedCaller": {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+            "propertyName": "setPassword"
+          }
+        },
+        "eventIndex": 28,
+        "index": 7
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-37",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 3,
+          "columnIndex": 2,
+          "eventType": "call",
+          "membrane": "external",
+          "propertyName": "submit",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
+              "prop": "login",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User:30"
+            },
+            "event": "call",
+            "eventIndex": 37,
+            "membrane": "external",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "submit",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            }
+          }
+        },
+        "eventIndex": 37,
+        "index": 8
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-38",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 3,
+          "columnIndex": 2,
+          "dataSeen": "null",
+          "eventType": "set",
+          "membrane": "internal",
+          "propertyName": "_error",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "submit",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            },
+            "event": "set",
+            "eventIndex": 38,
+            "membrane": "internal",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "_error",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            },
+            "value": null
+          }
+        },
+        "eventIndex": 38,
+        "index": 9
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-39",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 4,
+          "columnIndex": 2,
+          "eventType": "call",
+          "membrane": "external",
+          "propertyName": "validate",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "submit",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            },
+            "event": "call",
+            "eventIndex": 39,
+            "membrane": "external",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "validate",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            }
+          }
+        },
+        "eventIndex": 39,
+        "index": 10
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-40",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 4,
+          "columnIndex": 2,
+          "dataSeen": "\"userexample.com\"",
+          "eventType": "get",
+          "membrane": "internal",
+          "propertyName": "_email",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "validate",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            },
+            "event": "get",
+            "eventIndex": 40,
+            "membrane": "internal",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "_email",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            },
+            "value": "userexample.com"
+          }
+        },
+        "eventIndex": 40,
+        "index": 11
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-41",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 4,
+          "columnIndex": 2,
+          "dataSeen": "\"userexample.com\"",
+          "eventType": "get",
+          "membrane": "internal",
+          "propertyName": "_email",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "validate",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            },
+            "event": "get",
+            "eventIndex": 41,
+            "membrane": "internal",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "_email",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            },
+            "value": "userexample.com"
+          }
+        },
+        "eventIndex": 41,
+        "index": 12
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-42",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 4,
+          "columnIndex": 2,
+          "dataSeen": "\"validPassword123\"",
+          "eventType": "get",
+          "membrane": "internal",
+          "propertyName": "_password",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "validate",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            },
+            "event": "get",
+            "eventIndex": 42,
+            "membrane": "internal",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "_password",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            },
+            "value": "validPassword123"
+          }
+        },
+        "eventIndex": 42,
+        "index": 13
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-43",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 4,
+          "columnIndex": 2,
+          "dataSeen": "\"validPassword123\"",
+          "eventType": "get",
+          "membrane": "internal",
+          "propertyName": "_password",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "validate",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            },
+            "event": "get",
+            "eventIndex": 43,
+            "membrane": "internal",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "_password",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            },
+            "value": "validPassword123"
+          }
+        },
+        "eventIndex": 43,
+        "index": 14
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-44",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 3,
+          "callEventIndex": 39,
+          "callerColumnIndex": 2,
+          "columnIndex": 2,
+          "eventType": "call-result",
+          "membrane": "external",
+          "propertyName": "",
+          "rawEvent": {
+            "callEventIndex": 39,
+            "event": "call-result",
+            "eventIndex": 44,
+            "membrane": "external",
+            "result": [
+              "Invalid email format"
+            ],
+            "target": {
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            }
+          },
+          "resolvedCaller": {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+            "propertyName": "validate"
+          }
+        },
+        "eventIndex": 44,
+        "index": 15
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-45",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 3,
+          "columnIndex": 2,
+          "dataSeen": "\"Invalid email format\"",
+          "eventType": "set",
+          "membrane": "internal",
+          "propertyName": "_error",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "submit",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            },
+            "event": "set",
+            "eventIndex": 45,
+            "membrane": "internal",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "_error",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            },
+            "value": "Invalid email format"
+          }
+        },
+        "eventIndex": 45,
+        "index": 16
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-46",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 3,
+          "columnIndex": 2,
+          "dataSeen": "\"Invalid email format\"",
+          "eventType": "get",
+          "membrane": "internal",
+          "propertyName": "_error",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "submit",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            },
+            "event": "get",
+            "eventIndex": 46,
+            "membrane": "internal",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+              "prop": "_error",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            },
+            "value": "Invalid email format"
+          }
+        },
+        "eventIndex": 46,
+        "index": 17
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-47",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 2,
+          "callEventIndex": 37,
+          "callerColumnIndex": 2,
+          "columnIndex": 2,
+          "eventType": "call-result",
+          "membrane": "external",
+          "propertyName": "",
+          "rawEvent": {
+            "callEventIndex": 37,
+            "event": "call-result",
+            "eventIndex": 47,
+            "membrane": "external",
+            "result": {
+              "error": "Invalid email format",
+              "success": false
+            },
+            "target": {
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm:83"
+            }
+          },
+          "resolvedCaller": {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/LoginForm",
+            "propertyName": "submit"
+          }
+        },
+        "eventIndex": 47,
+        "index": 18
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-48",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 1,
+          "callEventIndex": 6,
+          "callerColumnIndex": 1,
+          "columnIndex": 1,
+          "eventType": "call-result",
+          "membrane": "external",
+          "propertyName": "",
+          "rawEvent": {
+            "callEventIndex": 6,
+            "event": "call-result",
+            "eventIndex": 48,
+            "membrane": "external",
+            "result": {
+              "error": "Invalid email format",
+              "success": false
+            },
+            "target": {
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User:30"
+            }
+          },
+          "resolvedCaller": {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
+            "propertyName": "login"
+          }
+        },
+        "eventIndex": 48,
+        "index": 19
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-49",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 0,
+          "callEventIndex": 0,
+          "callerColumnIndex": 0,
+          "columnIndex": 0,
+          "eventType": "call-result",
+          "membrane": "external",
+          "propertyName": "",
+          "rawEvent": {
+            "callEventIndex": 0,
+            "event": "call-result",
+            "eventIndex": 49,
+            "membrane": "external",
+            "result": {
+              "error": "Invalid email format",
+              "success": false
+            },
+            "target": {
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1:53"
+            }
+          },
+          "resolvedCaller": {
+            "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
+            "propertyName": "runModel"
+          }
+        },
+        "eventIndex": 49,
+        "index": 20
+      },
+      {
+        "#": "CodepathRow",
+        "$id": "row-6",
+        "cell": {
+          "#": "CodepathCell",
+          "activeInvocationCount": 2,
+          "columnIndex": 1,
+          "eventType": "call",
+          "membrane": "external",
+          "propertyName": "login",
+          "rawEvent": {
+            "caller": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1",
+              "prop": "runModel",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/0A-FullStack1:53"
+            },
+            "event": "call",
+            "eventIndex": 6,
+            "membrane": "external",
+            "target": {
+              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User",
+              "prop": "login",
+              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/examples/02-Codepath-SimplePasswordLogin/caps/User:30"
+            }
+          }
+        },
+        "eventIndex": 6,
+        "index": 1
+      }
+    ]
+  }
+}
