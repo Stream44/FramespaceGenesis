@@ -42,7 +42,7 @@ Each node table is a `Record<string, object>` keyed by primary key.
 
 | Table | PK / Dict Key | Key Fields |
 |-------|---------------|------------|
-| **Capsule** | `scopedRef` (`<spineInstanceTreeId>::<absoluteCapsuleLineRef>`) | `capsuleName`, `capsuleSourceLineRef`, `spineInstanceTreeId`, `cstFilepath`, `capsuleSourceNameRef`, `capsuleSourceNameRefHash`, `capsuleSourceUriLineRef`, `cacheBustVersion` |
+| **Capsule** | `scopedRef` (`<spineInstanceTreeId>::<absoluteCapsuleLineRef>`) | `capsuleName`, `capsuleSourceLineRef`, `spineInstanceTreeId`, `cstFileUri`, `capsuleSourceNameRef`, `capsuleSourceNameRefHash`, `capsuleSourceUriLineRef`, `cacheBustVersion` |
 | **CapsuleInstance** | `instanceId` | `capsuleName`, `capsuleSourceUriLineRef`, `spineInstanceTreeId` |
 | **MembraneEvent** | `id` (`<treeId>::evt::<eventIndex>`) | `eventIndex`, `eventType` (`call`/`call-result`/`get`/`set`), `membrane` (`external`/`internal`), `capsuleSourceLineRef`, `capsuleSourceNameRef`, `propertyName`, `callerFilepath`, `callerLine`, `callEventIndex`, `spineInstanceTreeId` |
 | **CapsuleSource** | `id` (`<lineRef>::source`) | `capsuleSourceLineRef`, `moduleFilepath`, `moduleUri`, `capsuleName`, `declarationLine`, `importStackLine`, `definitionStartLine`, `definitionEndLine`, `optionsStartLine`, `optionsEndLine`, `extendsCapsule`, `extendsCapsuleUri` |

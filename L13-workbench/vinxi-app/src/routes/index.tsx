@@ -1725,7 +1725,7 @@ type SourceFile = {
     '#': string;
     capsuleName: string;
     shortName: string;
-    filePath: string;
+    fileUri: string;
     line: number | null;
     capsuleSourceLineRef: string;
 };
@@ -1790,9 +1790,9 @@ function SourceBrowserDialog(props: {
                 const match = list.find((f: SourceFile) =>
                     stripLine(f.capsuleSourceLineRef) === target ||
                     f.capsuleSourceLineRef === props.initialFilePath ||
-                    f.filePath === props.initialFilePath ||
+                    f.fileUri === props.initialFilePath ||
                     f.capsuleName === target ||
-                    props.initialFilePath!.startsWith(f.filePath)
+                    props.initialFilePath!.startsWith(f.fileUri)
                 );
                 vlog("SourceBrowserDialog", `match=${match ? match.capsuleName : 'NONE'}`);
                 if (match) {
@@ -1849,10 +1849,10 @@ function SourceBrowserDialog(props: {
         editorView = new EditorView({ state, parent: editorRef });
     };
 
-    const loadFileContent = async (filePath: string, format: 'simplified' | 'raw') => {
+    const loadFileContent = async (fileUri: string, format: 'simplified' | 'raw') => {
         setLoadingContent(true);
         try {
-            const data = await workbenchStore.api.getCapsuleSourceFile(filePath, format);
+            const data = await workbenchStore.api.getCapsuleSourceFile(fileUri, format);
             if (isApiError(data.result)) {
                 props.showError(data.result);
                 setLoadingContent(false);
@@ -1875,7 +1875,7 @@ function SourceBrowserDialog(props: {
     const selectFile = async (file: SourceFile) => {
         setSelectedFile(file);
         setIsDirty(false);
-        await loadFileContent(file.filePath, viewMode());
+        await loadFileContent(file.fileUri, viewMode());
     };
 
     const switchViewMode = async (mode: 'simplified' | 'raw') => {
@@ -1884,7 +1884,7 @@ function SourceBrowserDialog(props: {
         setIsDirty(false);
         const file = selectedFile();
         if (file) {
-            await loadFileContent(file.filePath, mode);
+            await loadFileContent(file.fileUri, mode);
         }
     };
 
@@ -1894,7 +1894,7 @@ function SourceBrowserDialog(props: {
         const content = editorView.state.doc.toString();
         setIsSaving(true);
         try {
-            const data = await workbenchStore.api.saveCapsuleSourceFile(file.filePath, content);
+            const data = await workbenchStore.api.saveCapsuleSourceFile(file.fileUri, content);
             if (isApiError(data.result)) {
                 props.showError(data.result);
             } else {
@@ -1950,7 +1950,7 @@ function SourceBrowserDialog(props: {
                                 <For each={files()}>
                                     {(file) => (
                                         <button
-                                            class={`source-browser-file ${selectedFile()?.filePath === file.filePath ? "active" : ""}`}
+                                            class={`source-browser-file ${selectedFile()?.fileUri === file.fileUri ? "active" : ""}`}
                                             onClick={() => selectFile(file)}
                                             title={file.capsuleName}
                                         >
@@ -1966,7 +1966,7 @@ function SourceBrowserDialog(props: {
                             {(file) => (
                                 <div class="source-browser-editor-header">
                                     <div class="source-browser-editor-header-top">
-                                        <code class="source-browser-filepath">{file().filePath}</code>
+                                        <code class="source-browser-filepath">{file().fileUri}</code>
                                         <Show when={import.meta.env.DEV}>
                                             <div class="source-browser-editor-actions">
                                                 <button

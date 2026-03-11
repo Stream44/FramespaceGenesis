@@ -78,7 +78,7 @@ export async function capsule({
                         const conn = await this._ensureConnection()
                         if (this.verbose) console.log('[lbug] Creating schema...')
 
-                        await conn.query(`CREATE NODE TABLE IF NOT EXISTS Capsule(scopedId STRING PRIMARY KEY, capsuleSourceLineRef STRING, capsuleSourceNameRef STRING, capsuleSourceNameRefHash STRING, capsuleSourceUriLineRef STRING, cacheBustVersion INT64, capsuleName STRING, moduleUri STRING, cstFilepath STRING, spineInstanceTreeId STRING)`)
+                        await conn.query(`CREATE NODE TABLE IF NOT EXISTS Capsule(scopedId STRING PRIMARY KEY, capsuleSourceLineRef STRING, capsuleSourceNameRef STRING, capsuleSourceNameRefHash STRING, capsuleSourceUriLineRef STRING, cacheBustVersion INT64, capsuleName STRING, moduleUri STRING, cstFileUri STRING, spineInstanceTreeId STRING)`)
                         await conn.query(`CREATE NODE TABLE IF NOT EXISTS CapsuleSource(id STRING PRIMARY KEY, capsuleSourceLineRef STRING, moduleFilepath STRING, moduleUri STRING, capsuleName STRING, declarationLine INT64, importStackLine INT64, definitionStartLine INT64, definitionEndLine INT64, optionsStartLine INT64, optionsEndLine INT64, extendsCapsule STRING, extendsCapsuleUri STRING)`)
                         await conn.query(`CREATE NODE TABLE IF NOT EXISTS SpineContract(id STRING PRIMARY KEY, contractUri STRING, capsuleSourceLineRef STRING)`)
                         await conn.query(`CREATE NODE TABLE IF NOT EXISTS PropertyContract(id STRING PRIMARY KEY, contractKey STRING, propertyContractUri STRING, capsuleSourceLineRef STRING, spineContractId STRING, options STRING)`)

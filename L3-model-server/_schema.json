@@ -306,7 +306,7 @@
         "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/openFile": {
             "method": "GET or POST",
             "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods",
-            "description": "Open a file in an editor. Command is the editor binary (e.g. \"code\"), file is an absolute path optionally with :line suffix.",
+            "description": "Open a file in an editor. Command is the editor binary (e.g. \"code\"), file is an absolute path or npm URI optionally with :line suffix.",
             "args": [
                 {
                     "name": "command",
@@ -354,10 +354,10 @@
         "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/getCapsuleSourceFile": {
             "method": "GET or POST",
             "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods",
-            "description": "Read the contents of a capsule source file by its absolute path. Format: \"raw\" (default) or \"simplified\".",
+            "description": "Read the contents of a capsule source file by its npm URI. Format: \"raw\" (default) or \"simplified\".",
             "args": [
                 {
-                    "name": "filePath",
+                    "name": "fileUri",
                     "type": "string"
                 },
                 {
@@ -366,7 +366,7 @@
                 }
             ],
             "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/getCapsuleSourceFile?filePath=<string>&format=<string>",
+                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/getCapsuleSourceFile?fileUri=<string>&format=<string>",
                 "POST": {
                     "body": {
                         "args": [
@@ -380,10 +380,10 @@
         "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/saveCapsuleSourceFile": {
             "method": "GET or POST",
             "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods",
-            "description": "Save content to a capsule source file by its absolute path.",
+            "description": "Save content to a capsule source file by its npm URI.",
             "args": [
                 {
-                    "name": "filePath",
+                    "name": "fileUri",
                     "type": "string"
                 },
                 {
@@ -392,7 +392,7 @@
                 }
             ],
             "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/saveCapsuleSourceFile?filePath=<string>&content=<string>",
+                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/saveCapsuleSourceFile?fileUri=<string>&content=<string>",
                 "POST": {
                     "body": {
                         "args": [

@@ -11,7 +11,7 @@ registerRep({
         const hashType = data["#"] as string;
         const id = data["$id"] as string | undefined;
         const capsuleName = data["capsuleName"] as string | undefined;
-        const cstFilepath = data["cstFilepath"] as string | undefined;
+        const cstFileUri = data["cstFileUri"] as string | undefined;
         const moduleFilepath = data["moduleFilepath"] as string | undefined;
         const moduleUri = data["moduleUri"] as string | undefined;
         let sourceLineRef = data["capsuleSourceLineRef"] as string | undefined;
@@ -45,7 +45,7 @@ registerRep({
         const showModuleUri = moduleUri && moduleUri !== title;
 
         // Collect remaining properties (everything not specially rendered)
-        const specialKeys = new Set(["#", "$id", "capsuleName", "cstFilepath", "moduleFilepath", "moduleUri", "capsuleSourceLineRef"]);
+        const specialKeys = new Set(["#", "$id", "capsuleName", "cstFileUri", "moduleFilepath", "moduleUri", "capsuleSourceLineRef"]);
         const rest: JsonObject = {};
         for (const [k, v] of Object.entries(data)) {
             if (!specialKeys.has(k)) rest[k] = v;
@@ -53,7 +53,7 @@ registerRep({
         const hasRest = Object.keys(rest).length > 0;
 
         // Determine if body has rich content beyond just capsuleSourceLineRef
-        const hasRichBody = !!(cstFilepath || moduleFilepath || hasRest);
+        const hasRichBody = !!(cstFileUri || moduleFilepath || hasRest);
         // If only capsuleSourceLineRef is extra, body starts collapsed
         const [expanded, setExpanded] = createSignal(hasRichBody);
         // Lazy-loaded full capsule data
@@ -138,15 +138,15 @@ registerRep({
             const bodyHasRest = Object.keys(bodyRest).length > 0;
             let bodySourceLineRef = d["capsuleSourceLineRef"] as string | undefined;
             const bodyModuleFilepath = d["moduleFilepath"] as string | undefined;
-            const bodyCstFilepath = d["cstFilepath"] as string | undefined;
+            const bodyCstFileUri = d["cstFileUri"] as string | undefined;
             if (bodySourceLineRef && bodyModuleFilepath && bodySourceLineRef.startsWith(bodyModuleFilepath)) {
                 bodySourceLineRef = bodySourceLineRef.slice(bodyModuleFilepath.length);
             }
             return (
                 <>
-                    <Show when={bodyCstFilepath}>
+                    <Show when={bodyCstFileUri}>
                         <div class="rep-capsule-source">
-                            <Show when={bodyCstFilepath} keyed>
+                            <Show when={bodyCstFileUri} keyed>
                                 {(fp) => {
                                     const { prefix, highlight, highlightType, file } = splitFilePath(fp);
                                     const hlClass = highlightType === "magenta" ? "rep-source-highlight" : "rep-source-file";

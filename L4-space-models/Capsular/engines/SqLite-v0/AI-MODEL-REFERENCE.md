@@ -22,7 +22,7 @@
 
 | Table | Primary Key | Key Columns | Purpose |
 |-------|-------------|-------------|---------|
-| **Capsule** | `scopedId` (TEXT) — `<treeId>::<absLineRef>` | `capsuleSourceLineRef`, `capsuleName`, `spineInstanceTreeId`, `cstFilepath`, `capsuleSourceNameRef`, `capsuleSourceNameRefHash`, `capsuleSourceUriLineRef`, `cacheBustVersion` | Identity record for each capsule, scoped by spine instance tree. |
+| **Capsule** | `scopedId` (TEXT) — `<treeId>::<absLineRef>` | `capsuleSourceLineRef`, `capsuleName`, `spineInstanceTreeId`, `cstFileUri`, `capsuleSourceNameRef`, `capsuleSourceNameRefHash`, `capsuleSourceUriLineRef`, `cacheBustVersion` | Identity record for each capsule, scoped by spine instance tree. |
 | **CapsuleInstance** | `instanceId` (TEXT) | `capsuleName`, `capsuleSourceUriLineRef`, `spineInstanceTreeId` | Runtime instance of a capsule within a spine instance tree. |
 | **CapsuleSource** | `id` (TEXT) — `<lineRef>::source` | `capsuleSourceLineRef`, `moduleFilepath`, `moduleUri`, `capsuleName`, `declarationLine`, `importStackLine`, `definitionStartLine`, `definitionEndLine`, `optionsStartLine`, `optionsEndLine`, `extendsCapsule`, `extendsCapsuleUri` | Source metadata: file location, declaration lines, extends info. |
 | **SpineContract** | `id` (TEXT) — `<lineRef>::spine::<uri>` | `contractUri`, `capsuleSourceLineRef` | A spine contract implemented by a capsule. |

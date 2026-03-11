@@ -281,15 +281,15 @@ export function createModelApiClient(initialBaseUrl = DEFAULT_BASE_URL) {
         return fetchJson(url);
     }
 
-    async function getCapsuleSourceFile(filePath: string, format?: string): Promise<any> {
-        const params: any = { filePath };
+    async function getCapsuleSourceFile(fileUri: string, format?: string): Promise<any> {
+        const params: any = { fileUri };
         if (format) params.format = format;
         const url = apiUrl(NS.Workbench, 'getCapsuleSourceFile', params);
         return fetchJson(url);
     }
 
-    async function saveCapsuleSourceFile(filePath: string, content: string): Promise<any> {
-        const url = apiUrl(NS.Workbench, 'saveCapsuleSourceFile', { filePath, content });
+    async function saveCapsuleSourceFile(fileUri: string, content: string): Promise<any> {
+        const url = apiUrl(NS.Workbench, 'saveCapsuleSourceFile', { fileUri, content });
         return fetchJson(url);
     }
 

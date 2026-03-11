@@ -109,10 +109,10 @@ describe('L6 Framespace/Workbench ModelQueryMethods', () => {
         expect(result['#']).toBe('CapsuleSourceFiles')
         expect(Array.isArray(result.list)).toBe(true)
         expect(result.list.length).toBeGreaterThan(0)
-        // Every entry must have an absolute filePath and a shortName
+        // Every entry must have a fileUri (npm URI or absolute path for external packages) and a shortName
         for (const f of result.list) {
             expect(f['#']).toBe('CapsuleSourceFile')
-            expect(f.filePath.startsWith('/')).toBe(true)
+            expect(f.fileUri.startsWith('@') || f.fileUri.startsWith('/')).toBe(true)
             expect(typeof f.shortName).toBe('string')
             expect(typeof f.capsuleName).toBe('string')
             expect(typeof f.capsuleSourceLineRef).toBe('string')
@@ -127,14 +127,14 @@ describe('L6 Framespace/Workbench ModelQueryMethods', () => {
         await expectSnapshotMatch(normalize(result))
     })
 
-    it('getCapsuleSourceFile (relative path)', async () => {
-        const result = await api.getCapsuleSourceFile('relative/path.ts')
+    it('getCapsuleSourceFile (non-resolvable uri)', async () => {
+        const result = await api.getCapsuleSourceFile('not-a-valid-uri/path.ts')
         expect(result['#']).toBe('Error')
         await expectSnapshotMatch(normalize(result))
     })
 
     it('getCapsuleSourceFile (non-existent file)', async () => {
-        const result = await api.getCapsuleSourceFile('/nonexistent/path/file.ts')
+        const result = await api.getCapsuleSourceFile('@stream44.studio/FramespaceGenesis/nonexistent/path/file.ts')
         expect(result['#']).toBe('Error')
         await expectSnapshotMatch(normalize(result))
     })
@@ -145,9 +145,9 @@ describe('L6 Framespace/Workbench ModelQueryMethods', () => {
         const listing = await api.listSpineInstanceTreeCapsuleSourceFiles(treeId)
         expect(listing.list.length).toBeGreaterThan(0)
         const firstFile = listing.list[0]
-        const result = await api.getCapsuleSourceFile(firstFile.filePath)
+        const result = await api.getCapsuleSourceFile(firstFile.fileUri)
         expect(result['#']).toBe('CapsuleSourceFileContent')
-        expect(result.filePath).toBe(firstFile.filePath)
+        expect(result.fileUri).toBe(firstFile.fileUri)
         expect(typeof result.content).toBe('string')
         expect(result.content.length).toBeGreaterThan(0)
         expect(['typescript', 'javascript', 'json', 'css', 'text']).toContain(result.language)
@@ -160,10 +160,10 @@ describe('L6 Framespace/Workbench ModelQueryMethods', () => {
         expect(listing.list.length).toBeGreaterThan(0)
         // Find a non-root capsule file (in /caps/ or /elements/ or /structs/ subdirectory)
         const capsFile = listing.list.find((f: any) =>
-            f.filePath.includes('/caps/') || f.filePath.includes('/elements/') || f.filePath.includes('/structs/')
+            f.fileUri.includes('/caps/') || f.fileUri.includes('/elements/') || f.fileUri.includes('/structs/')
         )
         expect(capsFile).toBeTruthy()
-        const result = await api.getCapsuleSourceFile(capsFile.filePath, 'simplified')
+        const result = await api.getCapsuleSourceFile(capsFile.fileUri, 'simplified')
         expect(result['#']).toBe('CapsuleSourceFileContent')
         expect(result.format).toBe('simplified')
         // Should start with 'return Encapsulate({'
@@ -196,10 +196,10 @@ describe('L6 Framespace/Workbench ModelQueryMethods', () => {
         const listing = await api.listSpineInstanceTreeCapsuleSourceFiles(treeId)
         // Find the root model file (not in /caps/, /elements/, or /structs/ dir)
         const modelFile = listing.list.find((f: any) =>
-            !f.filePath.includes('/caps/') && !f.filePath.includes('/elements/') && !f.filePath.includes('/structs/') && f.filePath.endsWith('.ts')
+            !f.fileUri.includes('/caps/') && !f.fileUri.includes('/elements/') && !f.fileUri.includes('/structs/') && f.fileUri.endsWith('.ts')
         )
         expect(modelFile).toBeTruthy()
-        const result = await api.getCapsuleSourceFile(modelFile.filePath, 'simplified')
+        const result = await api.getCapsuleSourceFile(modelFile.fileUri, 'simplified')
         expect(result['#']).toBe('CapsuleSourceFileContent')
         expect(result.format).toBe('simplified')
         expect(result.content.startsWith('return Encapsulate({')).toBe(true)
@@ -219,7 +219,7 @@ describe('L6 Framespace/Workbench ModelQueryMethods', () => {
         const treeId = trees.list[0]?.$id
         const listing = await api.listSpineInstanceTreeCapsuleSourceFiles(treeId)
         const firstFile = listing.list[0]
-        const result = await api.getCapsuleSourceFile(firstFile.filePath, 'raw')
+        const result = await api.getCapsuleSourceFile(firstFile.fileUri, 'raw')
         expect(result['#']).toBe('CapsuleSourceFileContent')
         expect(result.format).toBe('raw')
         // Raw should contain the boilerplate
@@ -233,7 +233,7 @@ describe('L6 Framespace/Workbench ModelQueryMethods', () => {
 
         const simplifiedFiles: Record<string, string> = {}
         for (const file of listing.list) {
-            const result = await api.getCapsuleSourceFile(file.filePath, 'simplified')
+            const result = await api.getCapsuleSourceFile(file.fileUri, 'simplified')
             expect(result['#']).toBe('CapsuleSourceFileContent')
             expect(result.format).toBe('simplified')
             expect(result.content.startsWith('return Encapsulate({')).toBe(true)
@@ -254,8 +254,8 @@ describe('L6 Framespace/Workbench ModelQueryMethods', () => {
         await expectSnapshotMatch(normalize(result))
     })
 
-    it('saveCapsuleSourceFile (relative path)', async () => {
-        const result = await api.saveCapsuleSourceFile('relative/path.ts', 'content')
+    it('saveCapsuleSourceFile (non-resolvable uri)', async () => {
+        const result = await api.saveCapsuleSourceFile('not-a-valid-uri/path.ts', 'content')
         expect(result['#']).toBe('Error')
         await expectSnapshotMatch(normalize(result))
     })
@@ -268,18 +268,18 @@ describe('L6 Framespace/Workbench ModelQueryMethods', () => {
         const firstFile = listing.list[0]
 
         // Read original content
-        const original = await api.getCapsuleSourceFile(firstFile.filePath)
+        const original = await api.getCapsuleSourceFile(firstFile.fileUri)
         expect(original['#']).toBe('CapsuleSourceFileContent')
         const originalContent = original.content
 
         // Save same content back (no actual change)
-        const saveResult = await api.saveCapsuleSourceFile(firstFile.filePath, originalContent)
+        const saveResult = await api.saveCapsuleSourceFile(firstFile.fileUri, originalContent)
         expect(saveResult['#']).toBe('CapsuleSourceFileSaved')
         expect(saveResult.ok).toBe(true)
-        expect(saveResult.filePath).toBe(firstFile.filePath)
+        expect(saveResult.fileUri).toBe(firstFile.fileUri)
 
         // Verify content unchanged
-        const reread = await api.getCapsuleSourceFile(firstFile.filePath)
+        const reread = await api.getCapsuleSourceFile(firstFile.fileUri)
         expect(reread.content).toBe(originalContent)
     })
 })

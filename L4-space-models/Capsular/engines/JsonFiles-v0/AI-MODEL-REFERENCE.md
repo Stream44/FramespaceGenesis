@@ -69,7 +69,7 @@ An array of directed edge objects. Duplicates are prevented by `mergeEdge`.
 
 | Table              | PK / Dict Key                        | Key Fields                                                                        |
 |--------------------|--------------------------------------|-----------------------------------------------------------------------------------|
-| `Capsule`          | `scopedRef` (`<treeId>::<absLineRef>`) | `capsuleName`, `capsuleSourceLineRef`, `spineInstanceTreeId`, `cstFilepath`, `capsuleSourceNameRef`, `capsuleSourceNameRefHash`, `capsuleSourceUriLineRef`, `cacheBustVersion` |
+| `Capsule`          | `scopedRef` (`<treeId>::<absLineRef>`) | `capsuleName`, `capsuleSourceLineRef`, `spineInstanceTreeId`, `cstFileUri`, `capsuleSourceNameRef`, `capsuleSourceNameRefHash`, `capsuleSourceUriLineRef`, `cacheBustVersion` |
 | `CapsuleInstance`  | `instanceId`                         | `capsuleName`, `capsuleSourceUriLineRef`, `spineInstanceTreeId`                    |
 | `CapsuleSource`    | `<lineRef>::source`                  | `capsuleSourceLineRef`, `moduleFilepath`, `moduleUri`, `capsuleName`, `declarationLine`, `importStackLine`, `definitionStartLine`, `definitionEndLine`, `optionsStartLine`, `optionsEndLine`, `extendsCapsule`, `extendsCapsuleUri` |
 | `SpineContract`    | `<lineRef>::spine::<uri>`            | `contractUri`, `capsuleSourceLineRef`                                             |

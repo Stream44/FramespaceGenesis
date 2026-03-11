@@ -257,7 +257,7 @@
       "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "capsuleSourceUriLineRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model:53",
-      "cstFilepath": "<PACKAGE_ROOT>/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/.~o/encapsulate.dev/static-analysis/@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model:53.csts.json",
+      "cstFileUri": "<PACKAGE_ROOT>/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/.~o/encapsulate.dev/static-analysis/@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model:53.csts.json",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin"
     },
     "source": {

@@ -30,8 +30,11 @@ export async function capsule({
                         await this._ensureSchema()
                         let imported = 0
 
+                        // Convert filesystem cstFilepath to npm URI for storage
+                        const cstFileUri = cstFilepath ? this._toNpmUri(cstFilepath) : undefined
+
                         for (const [capsuleLineRef, cst] of Object.entries(data)) {
-                            await this._importSingleCst(capsuleLineRef, cst, cstFilepath, spineInstanceTreeId)
+                            await this._importSingleCst(capsuleLineRef, cst, cstFilepath, spineInstanceTreeId, cstFileUri)
                             imported++
                         }
 
@@ -45,7 +48,7 @@ export async function capsule({
                  */
                 _importSingleCst: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, capsuleLineRef: string, cst: any, cstFilepath?: string, spineInstanceTreeId?: string): Promise<void> {
+                    value: async function (this: any, capsuleLineRef: string, cst: any, cstFilepath?: string, spineInstanceTreeId?: string, cstFileUri?: string): Promise<void> {
                         const source = cst.source
 
                         // Resolve capsuleSourceLineRef to absolute path using cstFilepath.
@@ -80,7 +83,7 @@ export async function capsule({
                             capsuleSourceUriLineRef: cst.capsuleSourceUriLineRef ?? '',
                             cacheBustVersion: cst.cacheBustVersion ?? 0,
                             capsuleName: source.capsuleName ?? '',
-                            cstFilepath: cstFilepath ?? '',
+                            cstFileUri: cstFileUri ?? '',
                             spineInstanceTreeId: spineInstanceTreeId ?? '',
                         })
 

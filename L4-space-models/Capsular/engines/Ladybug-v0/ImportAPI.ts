@@ -30,8 +30,11 @@ export async function capsule({
                         await this._ensureSchema()
                         let imported = 0
 
+                        // Convert filesystem cstFilepath to npm URI for storage
+                        const cstFileUri = cstFilepath ? this._toNpmUri(cstFilepath) : undefined
+
                         for (const [capsuleLineRef, cst] of Object.entries(data)) {
-                            await this._importSingleCst(capsuleLineRef, cst, cstFilepath, spineInstanceTreeId)
+                            await this._importSingleCst(capsuleLineRef, cst, cstFilepath, spineInstanceTreeId, cstFileUri)
                             imported++
                         }
 
@@ -45,7 +48,7 @@ export async function capsule({
                  */
                 _importSingleCst: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, capsuleLineRef: string, cst: any, cstFilepath?: string, spineInstanceTreeId?: string): Promise<void> {
+                    value: async function (this: any, capsuleLineRef: string, cst: any, cstFilepath?: string, spineInstanceTreeId?: string, cstFileUri?: string): Promise<void> {
                         const conn = await this._ensureConnection()
                         const source = cst.source
                         const esc = (s: string | undefined | null) => s != null ? s.replace(/\\/g, "\\\\").replace(/'/g, "\\'") : ''
@@ -94,7 +97,7 @@ export async function capsule({
                                 cap.cacheBustVersion = ${cst.cacheBustVersion ?? 0},
                                 cap.capsuleName = '${esc(source.capsuleName)}',
                                 cap.moduleUri = '${esc(source.moduleUri)}',
-                                cap.cstFilepath = '${esc(cstFilepath)}',
+                                cap.cstFileUri = '${esc(cstFileUri)}',
                                 cap.spineInstanceTreeId = '${esc(spineInstanceTreeId)}'
                             ON MATCH SET
                                 cap.capsuleSourceLineRef = '${esc(absoluteCapsuleLineRef)}',
@@ -104,7 +107,7 @@ export async function capsule({
                                 cap.cacheBustVersion = ${cst.cacheBustVersion ?? 0},
                                 cap.capsuleName = '${esc(source.capsuleName)}',
                                 cap.moduleUri = '${esc(source.moduleUri)}',
-                                cap.cstFilepath = '${esc(cstFilepath)}',
+                                cap.cstFileUri = '${esc(cstFileUri)}',
                                 cap.spineInstanceTreeId = '${esc(spineInstanceTreeId)}'
                         `)
 

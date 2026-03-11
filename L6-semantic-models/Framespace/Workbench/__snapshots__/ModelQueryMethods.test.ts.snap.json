@@ -1,17 +1,17 @@
 {
   "L6 Framespace/Workbench ModelQueryMethods > getCapsuleSourceFile (missing path) #1": {
     "#": "Error",
-    "message": "No filePath provided",
+    "message": "No fileUri provided",
     "method": "getCapsuleSourceFile"
   },
   "L6 Framespace/Workbench ModelQueryMethods > getCapsuleSourceFile (non-existent file) #1": {
     "#": "Error",
-    "message": "File not found: /nonexistent/path/file.ts",
+    "message": "File not found: @stream44.studio/FramespaceGenesis/nonexistent/path/file.ts",
     "method": "getCapsuleSourceFile"
   },
-  "L6 Framespace/Workbench ModelQueryMethods > getCapsuleSourceFile (relative path) #1": {
+  "L6 Framespace/Workbench ModelQueryMethods > getCapsuleSourceFile (non-resolvable uri) #1": {
     "#": "Error",
-    "message": "filePath must be absolute: relative/path.ts",
+    "message": "fileUri must resolve to an absolute path: not-a-valid-uri/path.ts",
     "method": "getCapsuleSourceFile"
   },
   "L6 Framespace/Workbench ModelQueryMethods > getCapsuleSourceFile (simplified format - all Quadrant-BackendServices files) #1": {
@@ -55,140 +55,140 @@
       {
         "#": "CapsuleSourceFile",
         "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
-        "filePath": "node_modules/@stream44.studio/encapsulate/structs/Capsule.ts",
+        "fileUri": "node_modules/@stream44.studio/encapsulate/structs/Capsule.ts",
         "line": 7,
         "shortName": "Capsule"
       },
       {
         "#": "CapsuleSourceFile",
         "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1",
-        "filePath": "<PACKAGE_ROOT>/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1.ts",
+        "fileUri": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/0A-InfrastructurePlan1.ts",
         "line": 7,
         "shortName": "0A-InfrastructurePlan1"
       },
       {
         "#": "CapsuleSourceFile",
         "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/AccountDB",
-        "filePath": "<PACKAGE_ROOT>/examples/01-Quadrant-BackendServices/elements/AccountDB.ts",
+        "fileUri": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/AccountDB.ts",
         "line": 9,
         "shortName": "AccountDB"
       },
       {
         "#": "CapsuleSourceFile",
         "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/FeedService",
-        "filePath": "<PACKAGE_ROOT>/examples/01-Quadrant-BackendServices/elements/FeedService.ts",
+        "fileUri": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/FeedService.ts",
         "line": 9,
         "shortName": "FeedService"
       },
       {
         "#": "CapsuleSourceFile",
         "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/GatewayService",
-        "filePath": "<PACKAGE_ROOT>/examples/01-Quadrant-BackendServices/elements/GatewayService.ts",
+        "fileUri": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/GatewayService.ts",
         "line": 9,
         "shortName": "GatewayService"
       },
       {
         "#": "CapsuleSourceFile",
         "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/LoginService",
-        "filePath": "<PACKAGE_ROOT>/examples/01-Quadrant-BackendServices/elements/LoginService.ts",
+        "fileUri": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/LoginService.ts",
         "line": 9,
         "shortName": "LoginService"
       },
       {
         "#": "CapsuleSourceFile",
         "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/PaymentService",
-        "filePath": "<PACKAGE_ROOT>/examples/01-Quadrant-BackendServices/elements/PaymentService.ts",
+        "fileUri": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/PaymentService.ts",
         "line": 9,
         "shortName": "PaymentService"
       },
       {
         "#": "CapsuleSourceFile",
         "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/ProfilesDB",
-        "filePath": "<PACKAGE_ROOT>/examples/01-Quadrant-BackendServices/elements/ProfilesDB.ts",
+        "fileUri": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/ProfilesDB.ts",
         "line": 9,
         "shortName": "ProfilesDB"
       },
       {
         "#": "CapsuleSourceFile",
         "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/ProfileService",
-        "filePath": "<PACKAGE_ROOT>/examples/01-Quadrant-BackendServices/elements/ProfileService.ts",
+        "fileUri": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/ProfileService.ts",
         "line": 9,
         "shortName": "ProfileService"
       },
       {
         "#": "CapsuleSourceFile",
         "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/SearchService",
-        "filePath": "<PACKAGE_ROOT>/examples/01-Quadrant-BackendServices/elements/SearchService.ts",
+        "fileUri": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/elements/SearchService.ts",
         "line": 9,
         "shortName": "SearchService"
       },
       {
         "#": "CapsuleSourceFile",
         "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services",
-        "filePath": "<PACKAGE_ROOT>/examples/01-Quadrant-BackendServices/view/Columns/Services.ts",
+        "fileUri": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/Services.ts",
         "line": 9,
         "shortName": "Services"
       },
       {
         "#": "CapsuleSourceFile",
         "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Boundary",
-        "filePath": "<PACKAGE_ROOT>/examples/01-Quadrant-BackendServices/view/Columns/services/Boundary.ts",
+        "fileUri": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Boundary.ts",
         "line": 9,
         "shortName": "Boundary"
       },
       {
         "#": "CapsuleSourceFile",
         "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/BusinessLogic",
-        "filePath": "<PACKAGE_ROOT>/examples/01-Quadrant-BackendServices/view/Columns/services/BusinessLogic.ts",
+        "fileUri": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/BusinessLogic.ts",
         "line": 9,
         "shortName": "BusinessLogic"
       },
       {
         "#": "CapsuleSourceFile",
         "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Data",
-        "filePath": "<PACKAGE_ROOT>/examples/01-Quadrant-BackendServices/view/Columns/services/Data.ts",
+        "fileUri": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Columns/services/Data.ts",
         "line": 9,
         "shortName": "Data"
       },
       {
         "#": "CapsuleSourceFile",
         "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters",
-        "filePath": "<PACKAGE_ROOT>/examples/01-Quadrant-BackendServices/view/Rows/Clusters.ts",
+        "fileUri": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters.ts",
         "line": 9,
         "shortName": "Clusters"
       },
       {
         "#": "CapsuleSourceFile",
         "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Account",
-        "filePath": "<PACKAGE_ROOT>/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Account.ts",
+        "fileUri": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Account.ts",
         "line": 9,
         "shortName": "Account"
       },
       {
         "#": "CapsuleSourceFile",
         "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/APICluster",
-        "filePath": "<PACKAGE_ROOT>/examples/01-Quadrant-BackendServices/view/Rows/Clusters/APICluster.ts",
+        "fileUri": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/APICluster.ts",
         "line": 9,
         "shortName": "APICluster"
       },
       {
         "#": "CapsuleSourceFile",
         "capsuleName": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Data",
-        "filePath": "<PACKAGE_ROOT>/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Data.ts",
+        "fileUri": "@stream44.studio/FramespaceGenesis/examples/01-Quadrant-BackendServices/view/Rows/Clusters/Data.ts",
         "line": 9,
         "shortName": "Data"
       },
       {
         "#": "CapsuleSourceFile",
         "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column",
-        "filePath": "<PACKAGE_ROOT>/L8-view-models/CapsuleSpine/Quadrant/schema/Column.ts",
+        "fileUri": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Column.ts",
         "line": 9,
         "shortName": "Column"
       },
       {
         "#": "CapsuleSourceFile",
         "capsuleName": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row",
-        "filePath": "<PACKAGE_ROOT>/L8-view-models/CapsuleSpine/Quadrant/schema/Row.ts",
+        "fileUri": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/schema/Row.ts",
         "line": 9,
         "shortName": "Row"
       }
@@ -615,17 +615,17 @@
   },
   "L6 Framespace/Workbench ModelQueryMethods > openFile (relative path) #1": {
     "#": "Error",
-    "message": "File must be an absolute path: relative/path.ts",
+    "message": "File must be an absolute path or npm URI: relative/path.ts",
     "method": "openFile"
   },
   "L6 Framespace/Workbench ModelQueryMethods > saveCapsuleSourceFile (missing path) #1": {
     "#": "Error",
-    "message": "No filePath provided",
+    "message": "No fileUri provided",
     "method": "saveCapsuleSourceFile"
   },
-  "L6 Framespace/Workbench ModelQueryMethods > saveCapsuleSourceFile (relative path) #1": {
+  "L6 Framespace/Workbench ModelQueryMethods > saveCapsuleSourceFile (non-resolvable uri) #1": {
     "#": "Error",
-    "message": "filePath must be absolute: relative/path.ts",
+    "message": "fileUri must resolve to an absolute path: not-a-valid-uri/path.ts",
     "method": "saveCapsuleSourceFile"
   }
 }

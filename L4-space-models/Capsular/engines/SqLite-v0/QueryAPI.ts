@@ -77,7 +77,7 @@ export async function capsule({
                             capsuleSourceUriLineRef TEXT,
                             cacheBustVersion INTEGER,
                             capsuleName TEXT,
-                            cstFilepath TEXT,
+                            cstFileUri TEXT,
                             spineInstanceTreeId TEXT
                         )`)
                         db.run(`CREATE TABLE IF NOT EXISTS CapsuleSource (
@@ -282,7 +282,7 @@ export async function capsule({
                                 cap.capsuleSourceUriLineRef AS cap_capsuleSourceUriLineRef,
                                 cap.cacheBustVersion AS cap_cacheBustVersion,
                                 cap.capsuleName AS cap_capsuleName,
-                                cap.cstFilepath AS cap_cstFilepath,
+                                cap.cstFileUri AS cap_cstFileUri,
                                 cap.spineInstanceTreeId AS cap_spineInstanceTreeId,
                                 cs.id AS cs_id,
                                 cs.capsuleSourceLineRef AS cs_capsuleSourceLineRef,
@@ -311,7 +311,7 @@ export async function capsule({
                                 capsuleSourceUriLineRef: row.cap_capsuleSourceUriLineRef,
                                 cacheBustVersion: row.cap_cacheBustVersion,
                                 capsuleName: row.cap_capsuleName,
-                                cstFilepath: row.cap_cstFilepath,
+                                cstFileUri: row.cap_cstFileUri,
                                 spineInstanceTreeId: row.cap_spineInstanceTreeId,
                             },
                             source: {

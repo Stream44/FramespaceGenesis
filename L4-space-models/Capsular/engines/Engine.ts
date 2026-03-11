@@ -50,6 +50,49 @@ export async function capsule({
                         return this._mergeEdge(rel, fromTable, fromPk, toTable, toPk)
                     }
                 },
+
+                // =============================================================
+                // URI Helpers
+                // =============================================================
+
+                _toNpmUri: {
+                    type: CapsulePropertyTypes.Function,
+                    value: function (this: any, absolutePath: string): string {
+                        if (!absolutePath) return ''
+                        // The capsuleName of the Engine is an npm URI like
+                        // @stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/Engine
+                        // and its moduleFilepath is the absolute filesystem path.
+                        // We derive the package root by stripping the relative suffix.
+                        const capsuleStruct = this['#@stream44.studio/encapsulate/structs/Capsule']
+                        const rootModuleFilepath = capsuleStruct?.rootCapsule?.moduleFilepath
+                        const rootCapsuleName = capsuleStruct?.rootCapsule?.capsuleName
+                        if (!rootModuleFilepath || !rootCapsuleName) return absolutePath
+
+                        // rootCapsuleName: @stream44.studio/FramespaceGenesis/some/path/to/Module
+                        // rootModuleFilepath: /abs/path/to/packages/FramespaceGenesis/some/path/to/Module.ts
+                        // We need to find the package prefix: @stream44.studio/FramespaceGenesis
+                        // and the filesystem package root: /abs/path/to/packages/FramespaceGenesis/
+                        const atIdx = rootCapsuleName.indexOf('/')
+                        if (atIdx < 0) return absolutePath
+                        const secondSlash = rootCapsuleName.indexOf('/', atIdx + 1)
+                        if (secondSlash < 0) return absolutePath
+                        const npmPrefix = rootCapsuleName.substring(0, secondSlash) // e.g. @stream44.studio/FramespaceGenesis
+                        const relativeSuffix = rootCapsuleName.substring(secondSlash) // e.g. /some/path/to/Module
+
+                        // Find the package root by stripping the relative suffix from moduleFilepath
+                        const suffixIdx = rootModuleFilepath.indexOf(relativeSuffix)
+                        if (suffixIdx < 0) return absolutePath
+                        const packageRoot = rootModuleFilepath.substring(0, suffixIdx) // e.g. /abs/path/to/packages/FramespaceGenesis
+
+                        if (absolutePath.startsWith(packageRoot + '/')) {
+                            return npmPrefix + absolutePath.substring(packageRoot.length)
+                        }
+                        if (absolutePath.startsWith(packageRoot)) {
+                            return npmPrefix + absolutePath.substring(packageRoot.length)
+                        }
+                        return absolutePath
+                    }
+                },
             }
         }
     }, {

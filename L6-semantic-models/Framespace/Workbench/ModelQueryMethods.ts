@@ -52,7 +52,7 @@ export async function capsule({
                                     { name: 'command', type: 'string' },
                                     { name: 'file', type: 'string' },
                                 ],
-                                description: 'Open a file in an editor. Command is the editor binary (e.g. "code"), file is an absolute path optionally with :line suffix.',
+                                description: 'Open a file in an editor. Command is the editor binary (e.g. "code"), file is an absolute path or npm URI optionally with :line suffix.',
                             },
                             listSpineInstanceTreeCapsuleSourceFiles: {
                                 args: [
@@ -63,17 +63,17 @@ export async function capsule({
                             },
                             getCapsuleSourceFile: {
                                 args: [
-                                    { name: 'filePath', type: 'string' },
+                                    { name: 'fileUri', type: 'string' },
                                     { name: 'format', type: 'string' },
                                 ],
-                                description: 'Read the contents of a capsule source file by its absolute path. Format: "raw" (default) or "simplified".',
+                                description: 'Read the contents of a capsule source file by its npm URI. Format: "raw" (default) or "simplified".',
                             },
                             saveCapsuleSourceFile: {
                                 args: [
-                                    { name: 'filePath', type: 'string' },
+                                    { name: 'fileUri', type: 'string' },
                                     { name: 'content', type: 'string' },
                                 ],
-                                description: 'Save content to a capsule source file by its absolute path.',
+                                description: 'Save content to a capsule source file by its npm URI.',
                             },
                         },
                     },
@@ -386,14 +386,17 @@ export async function capsule({
                  */
                 openFile: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (command: string, file: string): Promise<any> {
+                    value: async function (this: any, command: string, file: string): Promise<any> {
                         if (process.env.NODE_ENV === 'production') return { '#': 'Error', method: 'openFile', message: 'openFile is disabled in production' }
                         if (!command || typeof command !== 'string') return { '#': 'Error', method: 'openFile', message: 'No command provided' }
                         if (!file || typeof file !== 'string') return { '#': 'Error', method: 'openFile', message: 'No file provided' }
-                        if (!file.startsWith('/')) return { '#': 'Error', method: 'openFile', message: `File must be an absolute path: ${file}` }
 
-                        const lineMatch = file.match(/^(.+):(\d+)$/)
-                        const filePath = lineMatch ? lineMatch[1] : file
+                        // Resolve npm URI to absolute path if needed
+                        const resolved = this._fromNpmUri(file)
+                        if (!resolved.startsWith('/')) return { '#': 'Error', method: 'openFile', message: `File must be an absolute path or npm URI: ${file}` }
+
+                        const lineMatch = resolved.match(/^(.+):(\d+)$/)
+                        const filePath = lineMatch ? lineMatch[1] : resolved
                         const line = lineMatch ? lineMatch[2] : null
 
                         if (!existsSync(filePath)) return { '#': 'Error', method: 'openFile', message: `File not found: ${filePath}` }
@@ -454,18 +457,18 @@ export async function capsule({
                                 '#': 'CapsuleSourceFile',
                                 capsuleName,
                                 shortName,
-                                filePath: moduleFilepath,
+                                fileUri: this._toNpmUri(moduleFilepath),
                                 line,
                                 capsuleSourceLineRef,
                             })
                         }
 
-                        // Deduplicate by filePath (multiple capsules may share a file)
+                        // Deduplicate by fileUri (multiple capsules may share a file)
                         const seen = new Set<string>()
                         const dedupedFiles: any[] = []
                         for (const f of files) {
-                            if (!seen.has(f.filePath)) {
-                                seen.add(f.filePath)
+                            if (!seen.has(f.fileUri)) {
+                                seen.add(f.fileUri)
                                 dedupedFiles.push(f)
                             }
                         }
@@ -482,10 +485,11 @@ export async function capsule({
                  */
                 getCapsuleSourceFile: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, filePath: string, format?: string): Promise<any> {
-                        if (!filePath || typeof filePath !== 'string') return { '#': 'Error', method: 'getCapsuleSourceFile', message: 'No filePath provided' }
-                        if (!filePath.startsWith('/')) return { '#': 'Error', method: 'getCapsuleSourceFile', message: `filePath must be absolute: ${filePath}` }
-                        if (!existsSync(filePath)) return { '#': 'Error', method: 'getCapsuleSourceFile', message: `File not found: ${filePath}` }
+                    value: async function (this: any, fileUri: string, format?: string): Promise<any> {
+                        if (!fileUri || typeof fileUri !== 'string') return { '#': 'Error', method: 'getCapsuleSourceFile', message: 'No fileUri provided' }
+                        const filePath = this._fromNpmUri(fileUri)
+                        if (!filePath.startsWith('/')) return { '#': 'Error', method: 'getCapsuleSourceFile', message: `fileUri must resolve to an absolute path: ${fileUri}` }
+                        if (!existsSync(filePath)) return { '#': 'Error', method: 'getCapsuleSourceFile', message: `File not found: ${fileUri}` }
 
                         try {
                             let content = await readFile(filePath, 'utf-8')
@@ -497,7 +501,7 @@ export async function capsule({
                             if (format === 'simplified') {
                                 content = this._simplifyCapsuleSource(content)
                             }
-                            return { '#': 'CapsuleSourceFileContent', filePath, content, language, format: format || 'raw' }
+                            return { '#': 'CapsuleSourceFileContent', fileUri, content, language, format: format || 'raw' }
                         } catch (err: any) {
                             return { '#': 'Error', method: 'getCapsuleSourceFile', message: err.message ?? String(err) }
                         }
@@ -509,15 +513,16 @@ export async function capsule({
                  */
                 saveCapsuleSourceFile: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (filePath: string, content: string): Promise<any> {
+                    value: async function (this: any, fileUri: string, content: string): Promise<any> {
                         if (process.env.NODE_ENV === 'production') return { '#': 'Error', method: 'saveCapsuleSourceFile', message: 'saveCapsuleSourceFile is disabled in production' }
-                        if (!filePath || typeof filePath !== 'string') return { '#': 'Error', method: 'saveCapsuleSourceFile', message: 'No filePath provided' }
-                        if (!filePath.startsWith('/')) return { '#': 'Error', method: 'saveCapsuleSourceFile', message: `filePath must be absolute: ${filePath}` }
+                        if (!fileUri || typeof fileUri !== 'string') return { '#': 'Error', method: 'saveCapsuleSourceFile', message: 'No fileUri provided' }
+                        const filePath = this._fromNpmUri(fileUri)
+                        if (!filePath.startsWith('/')) return { '#': 'Error', method: 'saveCapsuleSourceFile', message: `fileUri must resolve to an absolute path: ${fileUri}` }
                         if (typeof content !== 'string') return { '#': 'Error', method: 'saveCapsuleSourceFile', message: 'No content provided' }
 
                         try {
                             await writeFile(filePath, content, 'utf-8')
-                            return { '#': 'CapsuleSourceFileSaved', filePath, ok: true }
+                            return { '#': 'CapsuleSourceFileSaved', fileUri, ok: true }
                         } catch (err: any) {
                             return { '#': 'Error', method: 'saveCapsuleSourceFile', message: err.message ?? String(err) }
                         }
@@ -534,6 +539,65 @@ export async function capsule({
                         // L6-semantic-models/Framespace/Workbench/ModelQueryMethods.ts → 4 levels up
                         const moduleFilepath = this['#@stream44.studio/encapsulate/structs/Capsule'].rootCapsule.moduleFilepath
                         return join(dirname(moduleFilepath), '..', '..', '..', '..')
+                    }
+                },
+
+                _resolveNpmPrefixAndRoot: {
+                    type: CapsulePropertyTypes.Function,
+                    value: function (this: any): { npmPrefix: string, packageRoot: string } | null {
+                        const capsuleStruct = this['#@stream44.studio/encapsulate/structs/Capsule']
+                        // Try candidates: the capsule's own moduleFilepath+capsuleName, then rootCapsule's
+                        const candidates = [
+                            { mfp: capsuleStruct?.moduleFilepath, cn: capsuleStruct?.capsuleName },
+                            { mfp: capsuleStruct?.rootCapsule?.moduleFilepath, cn: capsuleStruct?.rootCapsule?.capsuleName },
+                        ]
+                        for (const { mfp, cn } of candidates) {
+                            if (!mfp || !cn) continue
+                            const atIdx = cn.indexOf('/')
+                            if (atIdx < 0) continue
+                            const secondSlash = cn.indexOf('/', atIdx + 1)
+                            if (secondSlash < 0) continue
+                            const npmPrefix = cn.substring(0, secondSlash)
+                            const relativeSuffix = cn.substring(secondSlash)
+                            const suffixIdx = mfp.indexOf(relativeSuffix)
+                            if (suffixIdx < 0) continue
+                            const packageRoot = mfp.substring(0, suffixIdx)
+                            return { npmPrefix, packageRoot }
+                        }
+                        return null
+                    }
+                },
+
+                _toNpmUri: {
+                    type: CapsulePropertyTypes.Function,
+                    value: function (this: any, absolutePath: string): string {
+                        if (!absolutePath) return ''
+                        const resolved = this._resolveNpmPrefixAndRoot()
+                        if (!resolved) return absolutePath
+                        const { npmPrefix, packageRoot } = resolved
+                        if (absolutePath.startsWith(packageRoot + '/')) {
+                            return npmPrefix + absolutePath.substring(packageRoot.length)
+                        }
+                        if (absolutePath.startsWith(packageRoot)) {
+                            return npmPrefix + absolutePath.substring(packageRoot.length)
+                        }
+                        return absolutePath
+                    }
+                },
+
+                _fromNpmUri: {
+                    type: CapsulePropertyTypes.Function,
+                    value: function (this: any, uri: string): string {
+                        if (!uri) return ''
+                        // If already an absolute path, return as-is
+                        if (uri.startsWith('/')) return uri
+                        const resolved = this._resolveNpmPrefixAndRoot()
+                        if (!resolved) return uri
+                        const { npmPrefix, packageRoot } = resolved
+                        if (uri.startsWith(npmPrefix + '/')) {
+                            return packageRoot + uri.substring(npmPrefix.length)
+                        }
+                        return uri
                     }
                 },
 
