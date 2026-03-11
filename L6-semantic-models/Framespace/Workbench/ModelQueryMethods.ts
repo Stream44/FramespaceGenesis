@@ -453,11 +453,19 @@ export async function capsule({
                             const shortName = capsuleName.split('/').pop() ?? capsuleName
                             const capsuleSourceLineRef = line ? `${moduleFilepath}:${line}` : moduleFilepath
 
+                            // Convert to npm URI; if _toNpmUri can't resolve (returns absolute path),
+                            // fall back to capsuleName + file extension (capsuleName IS the npm URI)
+                            let fileUri = this._toNpmUri(moduleFilepath)
+                            if (fileUri.startsWith('/')) {
+                                const ext = moduleFilepath.match(/(\.[^./]+)$/)?.[1] ?? ''
+                                fileUri = capsuleName + ext
+                            }
+
                             files.push({
                                 '#': 'CapsuleSourceFile',
                                 capsuleName,
                                 shortName,
-                                fileUri: this._toNpmUri(moduleFilepath),
+                                fileUri,
                                 line,
                                 capsuleSourceLineRef,
                             })
@@ -572,13 +580,15 @@ export async function capsule({
                     type: CapsulePropertyTypes.Function,
                     value: function (this: any, absolutePath: string): string {
                         if (!absolutePath) return ''
+                        // Handle relative or absolute node_modules/@scope/package/... paths directly
+                        const nmMatch = absolutePath.match(/(?:^|\/)node_modules\/(@[^/]+\/[^/]+)\/(.+)$/)
+                        if (nmMatch) {
+                            return nmMatch[1] + '/' + nmMatch[2]
+                        }
                         const resolved = this._resolveNpmPrefixAndRoot()
                         if (!resolved) return absolutePath
                         const { npmPrefix, packageRoot } = resolved
-                        if (absolutePath.startsWith(packageRoot + '/')) {
-                            return npmPrefix + absolutePath.substring(packageRoot.length)
-                        }
-                        if (absolutePath.startsWith(packageRoot)) {
+                        if (absolutePath.startsWith(packageRoot + '/') || absolutePath.startsWith(packageRoot)) {
                             return npmPrefix + absolutePath.substring(packageRoot.length)
                         }
                         return absolutePath
@@ -594,8 +604,42 @@ export async function capsule({
                         const resolved = this._resolveNpmPrefixAndRoot()
                         if (!resolved) return uri
                         const { npmPrefix, packageRoot } = resolved
+                        // Own package URI — strip prefix, prepend package root
                         if (uri.startsWith(npmPrefix + '/')) {
                             return packageRoot + uri.substring(npmPrefix.length)
+                        }
+                        // External npm package URI (starts with @scope/package/...) — try multiple resolution strategies
+                        if (uri.startsWith('@')) {
+                            // Strategy 1: node_modules/ under package root (CI / npm-installed deps)
+                            const nmCandidate = join(packageRoot, 'node_modules', uri)
+                            if (existsSync(nmCandidate)) {
+                                return nmCandidate
+                            }
+                            // Strategy 2: workspace sibling packages
+                            // Convention: @scope/package/path → <workspaceRoot>/scope/packages/package/path.ts
+                            // npmPrefix is @scope/ownPackage, packageRoot is .../scope/packages/ownPackage
+                            // So workspace root is packageRoot stripped of /scope/packages/ownPackage
+                            const atIdx = npmPrefix.indexOf('/')
+                            if (atIdx > 0) {
+                                const ownScope = npmPrefix.substring(1, atIdx) // e.g. framespace.dev
+                                const ownPkg = npmPrefix.substring(atIdx + 1) // e.g. FramespaceGenesis
+                                const scopePkgSuffix = `/${ownScope}/packages/${ownPkg}`
+                                if (packageRoot.endsWith(scopePkgSuffix)) {
+                                    const workspaceRoot = packageRoot.substring(0, packageRoot.length - scopePkgSuffix.length)
+                                    // Parse external URI: @extScope/extPackage/rest
+                                    const extAtIdx = uri.indexOf('/')
+                                    const extSecondSlash = uri.indexOf('/', extAtIdx + 1)
+                                    if (extAtIdx > 0 && extSecondSlash > 0) {
+                                        const extScope = uri.substring(1, extAtIdx)
+                                        const extPkg = uri.substring(extAtIdx + 1, extSecondSlash)
+                                        const extRest = uri.substring(extSecondSlash + 1)
+                                        const wsCandidate = join(workspaceRoot, extScope, 'packages', extPkg, extRest)
+                                        if (existsSync(wsCandidate)) {
+                                            return wsCandidate
+                                        }
+                                    }
+                                }
+                            }
                         }
                         return uri
                     }

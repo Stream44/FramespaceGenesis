@@ -84,10 +84,12 @@ export async function capsule({
                         if (suffixIdx < 0) return absolutePath
                         const packageRoot = rootModuleFilepath.substring(0, suffixIdx) // e.g. /abs/path/to/packages/FramespaceGenesis
 
-                        if (absolutePath.startsWith(packageRoot + '/')) {
-                            return npmPrefix + absolutePath.substring(packageRoot.length)
+                        // Handle relative or absolute node_modules/@scope/package/... paths directly
+                        const nmMatch = absolutePath.match(/(?:^|\/)node_modules\/(@[^/]+\/[^/]+)\/(.+)$/)
+                        if (nmMatch) {
+                            return nmMatch[1] + '/' + nmMatch[2]
                         }
-                        if (absolutePath.startsWith(packageRoot)) {
+                        if (absolutePath.startsWith(packageRoot + '/') || absolutePath.startsWith(packageRoot)) {
                             return npmPrefix + absolutePath.substring(packageRoot.length)
                         }
                         return absolutePath

@@ -109,10 +109,10 @@ describe('L6 Framespace/Workbench ModelQueryMethods', () => {
         expect(result['#']).toBe('CapsuleSourceFiles')
         expect(Array.isArray(result.list)).toBe(true)
         expect(result.list.length).toBeGreaterThan(0)
-        // Every entry must have a fileUri (npm URI or absolute path for external packages) and a shortName
+        // Every entry must have a fileUri (npm URI starting with @) and a shortName
         for (const f of result.list) {
             expect(f['#']).toBe('CapsuleSourceFile')
-            expect(f.fileUri.startsWith('@') || f.fileUri.startsWith('/')).toBe(true)
+            expect(f.fileUri.startsWith('@')).toBe(true)
             expect(typeof f.shortName).toBe('string')
             expect(typeof f.capsuleName).toBe('string')
             expect(typeof f.capsuleSourceLineRef).toBe('string')

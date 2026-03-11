@@ -1972,7 +1972,9 @@ function SourceBrowserDialog(props: {
                                                 <button
                                                     class="code-dialog-btn"
                                                     onClick={handleSave}
-                                                    disabled={viewMode() === 'simplified' || !isDirty() || isSaving()}
+                                                    disabled={viewMode() === 'simplified' || isSaving()}
+                                                    classList={{ 'code-dialog-btn-muted': !isDirty() }}
+                                                    title={viewMode() === 'simplified' ? 'Switch to Raw Source to enable editing' : (!isDirty() ? 'No changes to save' : '')}
                                                 >{isSaving() ? "Saving..." : "Save"}</button>
                                                 <button
                                                     class="code-dialog-btn code-dialog-btn-primary"

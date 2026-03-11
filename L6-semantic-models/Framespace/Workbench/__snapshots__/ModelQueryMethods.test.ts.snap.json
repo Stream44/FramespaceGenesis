@@ -55,7 +55,7 @@
       {
         "#": "CapsuleSourceFile",
         "capsuleName": "@stream44.studio/encapsulate/structs/Capsule",
-        "fileUri": "node_modules/@stream44.studio/encapsulate/structs/Capsule.ts",
+        "fileUri": "@stream44.studio/encapsulate/structs/Capsule.ts",
         "line": 7,
         "shortName": "Capsule"
       },
