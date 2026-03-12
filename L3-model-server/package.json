@@ -7,10 +7,6 @@
         "start": "bun run server.ts",
         "test": "bun test"
     },
-    "dependencies": {
-        "@stream44.studio/encapsulate": "^0.4.0-rc.31",
-        "@stream44.studio/t44": "^0.4.0-rc.33"
-    },
     "devDependencies": {
         "@types/bun": "latest"
     }
