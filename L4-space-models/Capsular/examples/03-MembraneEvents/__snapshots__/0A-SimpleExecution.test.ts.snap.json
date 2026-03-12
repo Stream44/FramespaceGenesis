@@ -276,7 +276,7 @@
     {
       "callEventIndex": -1,
       "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
-      "callerLine": 182,
+      "callerLine": 192,
       "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/0A-SimpleExecution",
       "eventIndex": 0,
       "eventType": "call",
@@ -433,34 +433,6 @@
       "eventIndex": 7,
       "eventType": "call-result",
       "propertyName": ""
-    },
-    {
-      "callEventIndex": -1,
-      "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule:@stream44.studio/encapsulate/structs/Capsule",
-      "eventIndex": 8,
-      "eventType": "get",
-      "propertyName": "capsuleSourceNameRefHash"
-    },
-    {
-      "callEventIndex": -1,
-      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
-      "eventIndex": 9,
-      "eventType": "get",
-      "propertyName": "_prefix"
-    },
-    {
-      "callEventIndex": -1,
-      "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule:@stream44.studio/encapsulate/structs/Capsule",
-      "eventIndex": 10,
-      "eventType": "get",
-      "propertyName": "capsuleSourceNameRefHash"
-    },
-    {
-      "callEventIndex": -1,
-      "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter:@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/examples/03-MembraneEvents/caps/Greeter",
-      "eventIndex": 11,
-      "eventType": "get",
-      "propertyName": "_prefix"
     }
   ]
 }

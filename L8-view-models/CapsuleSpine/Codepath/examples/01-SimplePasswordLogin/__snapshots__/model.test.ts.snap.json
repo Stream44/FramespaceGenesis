@@ -330,7 +330,7 @@
     {
       "callEventIndex": -1,
       "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
-      "callerLine": 184,
+      "callerLine": 192,
       "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "eventIndex": 0,
       "eventType": "call",
@@ -802,20 +802,6 @@
       "result": "{\"success\":true,\"redirectUrl\":\"/dashboard\",\"token\":\"token-user@example.com\"}",
       "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
       "value": ""
-    },
-    {
-      "callEventIndex": -1,
-      "callerFilepath": "<CHANGED_FOR_CONSISTENCY>",
-      "callerLine": 200,
-      "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
-      "eventIndex": 64,
-      "eventType": "get",
-      "membrane": "external",
-      "propertyName": "capsuleSourceNameRefHash",
-      "rawEvent": "<CHANGED_FOR_CONSISTENCY>",
-      "result": "",
-      "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
-      "value": ""
     }
   ],
   "01-SimplePasswordLogin > getMembraneEventsByCapsule #1": [],
@@ -827,12 +813,6 @@
     "#": "SwimlaneView",
     "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin",
     "columns": [
-      {
-        "#": "CodepathColumn",
-        "$id": "@stream44.studio/encapsulate/structs/Capsule:@stream44.studio/encapsulate/structs/Capsule",
-        "index": 5,
-        "label": "Capsule"
-      },
       {
         "#": "CodepathColumn",
         "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService:@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService",
@@ -878,7 +858,7 @@
           "rawEvent": {
             "caller": {
               "fileUri": "@stream44.studio/t44/standalone-rt",
-              "line": 184,
+              "line": 192,
               "stack": [
                 {
                   "column": 34,
@@ -899,7 +879,7 @@
                 {
                   "column": 37,
                   "fileUri": "@stream44.studio/t44/standalone-rt",
-                  "line": 184
+                  "line": 192
                 },
                 {
                   "column": 34,
@@ -910,7 +890,7 @@
                   "column": 26,
                   "fileUri": "@stream44.studio/t44/standalone-rt",
                   "function": "async run",
-                  "line": 168
+                  "line": 176
                 },
                 {
                   "column": 18,
@@ -1786,97 +1766,6 @@
         },
         "eventIndex": 63,
         "index": 27
-      },
-      {
-        "#": "CodepathRow",
-        "$id": "row-64",
-        "cell": {
-          "#": "CodepathCell",
-          "activeInvocationCount": 0,
-          "columnIndex": 5,
-          "dataSeen": "",
-          "eventType": "get",
-          "membrane": "external",
-          "propertyName": "capsuleSourceNameRefHash",
-          "rawEvent": {
-            "caller": {
-              "capsuleSourceNameRef": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService",
-              "fileUri": "@stream44.studio/t44/standalone-rt",
-              "line": 200,
-              "spineContractCapsuleInstanceId": "$@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/caps/AuthService:38",
-              "stack": [
-                {
-                  "column": 46,
-                  "fileUri": "@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0",
-                  "function": "get",
-                  "line": 312
-                },
-                {
-                  "column": 59,
-                  "fileUri": "@stream44.studio/encapsulate/src/spine-contracts/CapsuleSpineContract.v0/Membrane.v0",
-                  "function": "get",
-                  "line": 341
-                },
-                {
-                  "function": "stringify"
-                },
-                {
-                  "column": 58,
-                  "fileUri": "@stream44.studio/t44/standalone-rt",
-                  "line": 200
-                },
-                {
-                  "column": 34,
-                  "fileUri": "@stream44.studio/encapsulate/src/encapsulate",
-                  "line": 317
-                },
-                {
-                  "column": 26,
-                  "fileUri": "@stream44.studio/t44/standalone-rt",
-                  "function": "async run",
-                  "line": 168
-                },
-                {
-                  "column": 18,
-                  "fileUri": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model",
-                  "function": "async runModel",
-                  "line": 6
-                },
-                {
-                  "column": 46,
-                  "fileUri": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/SpineInstanceTrees",
-                  "line": 39
-                },
-                {
-                  "column": 34,
-                  "fileUri": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/examples/01-SimplePasswordLogin/model.test",
-                  "line": 74
-                },
-                {
-                  "column": 43,
-                  "fileUri": "@stream44.studio/t44/caps/ProjectTest",
-                  "line": 328
-                },
-                {
-                  "column": 39,
-                  "fileUri": "native",
-                  "function": "processTicksAndRejections",
-                  "line": 7
-                }
-              ]
-            },
-            "event": "get",
-            "eventIndex": 64,
-            "membrane": "external",
-            "target": {
-              "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule",
-              "prop": "capsuleSourceNameRefHash",
-              "spineContractCapsuleInstanceId": "$@stream44.studio/encapsulate/structs/Capsule:18"
-            }
-          }
-        },
-        "eventIndex": 64,
-        "index": 28
       }
     ]
   },
@@ -2204,14 +2093,6 @@
       "eventType": "call-result",
       "membrane": "external",
       "propertyName": ""
-    },
-    {
-      "callEventIndex": -1,
-      "capsuleSourceNameRef": "@stream44.studio/encapsulate/structs/Capsule:@stream44.studio/encapsulate/structs/Capsule",
-      "eventIndex": 64,
-      "eventType": "get",
-      "membrane": "external",
-      "propertyName": "capsuleSourceNameRefHash"
     }
   ]
 }

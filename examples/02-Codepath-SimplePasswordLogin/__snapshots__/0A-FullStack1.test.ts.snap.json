@@ -125,7 +125,7 @@
           "rawEvent": {
             "caller": {
               "fileUri": "@stream44.studio/t44/standalone-rt",
-              "line": 184,
+              "line": 192,
               "stack": [
                 {
                   "column": 34,
@@ -146,7 +146,7 @@
                 {
                   "column": 37,
                   "fileUri": "@stream44.studio/t44/standalone-rt",
-                  "line": 184
+                  "line": 192
                 },
                 {
                   "column": 34,
@@ -157,7 +157,7 @@
                   "column": 26,
                   "fileUri": "@stream44.studio/t44/standalone-rt",
                   "function": "async run",
-                  "line": 168
+                  "line": 176
                 },
                 {
                   "column": 18,
