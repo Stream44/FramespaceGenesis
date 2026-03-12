@@ -17,8 +17,8 @@
     },
     "dependencies": {
         "lbug": "^0.14.3",
-        "@stream44.studio/encapsulate": "^0.4.0-rc.32",
-        "@stream44.studio/t44": "^0.4.0-rc.34",
+        "@stream44.studio/encapsulate": "^0.4.0-rc.34",
+        "@stream44.studio/t44": "^0.4.0-rc.35",
         "json-stable-stringify": "^1.3.0",
         "solid-js": "^1.9.5"
     },
