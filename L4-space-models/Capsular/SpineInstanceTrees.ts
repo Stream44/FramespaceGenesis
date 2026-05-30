@@ -32,10 +32,6 @@ export async function capsule({
                 registerInstance: {
                     type: CapsulePropertyTypes.Function,
                     value: async function (this: any, opts: { name: string }, capsuleFn: (ctx: { run: any }) => Promise<any>): Promise<any> {
-                        // Skip if already registered (multiple models share the same SpineInstanceTrees)
-                        if (this._models.some((m: any) => m.name === opts.name)) {
-                            return this._models.find((m: any) => m.name === opts.name)!.result
-                        }
                         const result = await capsuleFn({ run })
                         this._models.push({ name: opts.name, result })
                         return result
@@ -51,7 +47,7 @@ export async function capsule({
 
                 importInstanceToEngine: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, opts: { engine: any, name?: string, reset?: boolean }): Promise<void> {
+                    value: async function (this: any, opts: { engine: any, name?: string }): Promise<void> {
                         const models = opts.name
                             ? this._models.filter((m: any) => m.name === opts.name)
                             : this._models
@@ -59,19 +55,9 @@ export async function capsule({
                         for (const model of models) {
                             const { sitRoot } = model.result
                             const sitDirName = model.name.replace(/\//g, '~')
-                            const sitDir = join(sitRoot, '.~o/encapsulate.dev/spine-instances', sitDirName)
-                            const sitFile = join(sitDir, 'root-capsule.sit.json')
+                            const sitFile = join(sitRoot, '.~o/encapsulate.dev/spine-instances', sitDirName, 'root-capsule.sit.json')
                             if (await exists(sitFile)) {
-                                await opts.engine.importSitFile(sitFile, { reset: opts.reset })
-
-                                // Import membrane events if .events.json exists alongside .sit.json
-                                const eventsFile = join(sitDir, 'root-capsule.events.json')
-                                if (await exists(eventsFile)) {
-                                    const eventsContent = await Bun.file(eventsFile).json()
-                                    if (typeof opts.engine.importMembraneEvents === 'function') {
-                                        await opts.engine.importMembraneEvents(eventsContent, model.name)
-                                    }
-                                }
+                                await opts.engine.importSitFile(sitFile)
                             }
                         }
 

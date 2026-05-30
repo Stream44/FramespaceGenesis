@@ -30,11 +30,8 @@ export async function capsule({
                         await this._ensureSchema()
                         let imported = 0
 
-                        // Convert filesystem cstFilepath to npm URI for storage
-                        const cstFileUri = cstFilepath ? this._toNpmUri(cstFilepath) : undefined
-
                         for (const [capsuleLineRef, cst] of Object.entries(data)) {
-                            await this._importSingleCst(capsuleLineRef, cst, cstFilepath, spineInstanceTreeId, cstFileUri)
+                            await this._importSingleCst(capsuleLineRef, cst, cstFilepath, spineInstanceTreeId)
                             imported++
                         }
 
@@ -48,7 +45,7 @@ export async function capsule({
                  */
                 _importSingleCst: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, capsuleLineRef: string, cst: any, cstFilepath?: string, spineInstanceTreeId?: string, cstFileUri?: string): Promise<void> {
+                    value: async function (this: any, capsuleLineRef: string, cst: any, cstFilepath?: string, spineInstanceTreeId?: string): Promise<void> {
                         const conn = await this._ensureConnection()
                         const source = cst.source
                         const esc = (s: string | undefined | null) => s != null ? s.replace(/\\/g, "\\\\").replace(/'/g, "\\'") : ''
@@ -80,34 +77,24 @@ export async function capsule({
                             }
                         }
 
-                        // Scope all node keys by spineInstanceTreeId so each tree
-                        // gets its own copy of shared capsules (e.g. structs/Capsule).
-                        const scopedRef = spineInstanceTreeId
-                            ? `${spineInstanceTreeId}::${absoluteCapsuleLineRef}`
-                            : absoluteCapsuleLineRef
-
-                        // 1. MERGE Capsule node (identity uses scopedId for isolation)
+                        // 1. MERGE Capsule node (identity)
                         await conn.query(`
-                            MERGE (cap:Capsule {scopedId: '${esc(scopedRef)}'})
+                            MERGE (cap:Capsule {capsuleSourceLineRef: '${esc(absoluteCapsuleLineRef)}'})
                             ON CREATE SET
-                                cap.capsuleSourceLineRef = '${esc(absoluteCapsuleLineRef)}',
                                 cap.capsuleSourceNameRef = '${esc(cst.capsuleSourceNameRef)}',
                                 cap.capsuleSourceNameRefHash = '${esc(cst.capsuleSourceNameRefHash)}',
                                 cap.capsuleSourceUriLineRef = '${esc(cst.capsuleSourceUriLineRef)}',
                                 cap.cacheBustVersion = ${cst.cacheBustVersion ?? 0},
                                 cap.capsuleName = '${esc(source.capsuleName)}',
-                                cap.moduleUri = '${esc(source.moduleUri)}',
-                                cap.cstFileUri = '${esc(cstFileUri)}',
+                                cap.cstFilepath = '${esc(cstFilepath)}',
                                 cap.spineInstanceTreeId = '${esc(spineInstanceTreeId)}'
                             ON MATCH SET
-                                cap.capsuleSourceLineRef = '${esc(absoluteCapsuleLineRef)}',
                                 cap.capsuleSourceNameRef = '${esc(cst.capsuleSourceNameRef)}',
                                 cap.capsuleSourceNameRefHash = '${esc(cst.capsuleSourceNameRefHash)}',
                                 cap.capsuleSourceUriLineRef = '${esc(cst.capsuleSourceUriLineRef)}',
                                 cap.cacheBustVersion = ${cst.cacheBustVersion ?? 0},
                                 cap.capsuleName = '${esc(source.capsuleName)}',
-                                cap.moduleUri = '${esc(source.moduleUri)}',
-                                cap.cstFileUri = '${esc(cstFileUri)}',
+                                cap.cstFilepath = '${esc(cstFilepath)}',
                                 cap.spineInstanceTreeId = '${esc(spineInstanceTreeId)}'
                         `)
 
@@ -145,7 +132,7 @@ export async function capsule({
 
                         // HAS_SOURCE edge
                         await conn.query(`
-                            MATCH (cap:Capsule {scopedId: '${esc(scopedRef)}'})
+                            MATCH (cap:Capsule {capsuleSourceLineRef: '${esc(absoluteCapsuleLineRef)}'})
                             MATCH (cs:CapsuleSource {id: '${esc(sourceId)}'})
                             MERGE (cap)-[:HAS_SOURCE]->(cs)
                         `)
@@ -169,7 +156,7 @@ export async function capsule({
 
                                 // IMPLEMENTS_SPINE edge (Capsule -> SpineContract)
                                 await conn.query(`
-                                    MATCH (cap:Capsule {scopedId: '${esc(scopedRef)}'})
+                                    MATCH (cap:Capsule {capsuleSourceLineRef: '${esc(absoluteCapsuleLineRef)}'})
                                     MATCH (s:SpineContract {id: '${esc(spineId)}'})
                                     MERGE (cap)-[:IMPLEMENTS_SPINE]->(s)
                                 `)
@@ -212,7 +199,7 @@ export async function capsule({
                                         if (groupData.properties) {
                                             for (const [propName, prop] of Object.entries(groupData.properties)) {
                                                 if (propName.endsWith('Expression')) continue
-                                                await this._importProperty(absoluteCapsuleLineRef, absoluteCapsuleLineRef, pcId, propName, prop as any)
+                                                await this._importProperty(absoluteCapsuleLineRef, pcId, propName, prop as any)
                                             }
                                         }
                                     }
@@ -228,7 +215,7 @@ export async function capsule({
                  */
                 _importProperty: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, scopedRef: string, capsuleSourceLineRef: string, propertyContractId: string, propName: string, prop: any): Promise<void> {
+                    value: async function (this: any, capsuleLineRef: string, propertyContractId: string, propName: string, prop: any): Promise<void> {
                         const conn = await this._ensureConnection()
                         const esc = (s: string | undefined | null) => s != null ? s.replace(/\\/g, "\\\\").replace(/'/g, "\\'") : ''
                         const escLong = (s: string | undefined | null) => {
@@ -236,7 +223,7 @@ export async function capsule({
                             return s.replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/\n/g, "\\n").replace(/\r/g, "\\r").replace(/\t/g, "\\t")
                         }
 
-                        const propId = `${scopedRef}::prop::${propName}`
+                        const propId = `${capsuleLineRef}::prop::${propName}`
                         const delegate = prop.propertyContractDelegate || ''
                         const mappedModuleUri = prop.mappedModuleUri || ''
 
@@ -255,7 +242,7 @@ export async function capsule({
                                 p.definitionStartLine = ${prop.definitionStartLine ?? -1},
                                 p.definitionEndLine = ${prop.definitionEndLine ?? -1},
                                 p.propertyContractDelegate = '${esc(delegate)}',
-                                p.capsuleSourceLineRef = '${esc(capsuleSourceLineRef)}',
+                                p.capsuleSourceLineRef = '${esc(capsuleLineRef)}',
                                 p.propertyContractId = '${esc(propertyContractId)}'
                             ON MATCH SET
                                 p.name = '${esc(propName)}',
@@ -267,7 +254,7 @@ export async function capsule({
                                 p.definitionStartLine = ${prop.definitionStartLine ?? -1},
                                 p.definitionEndLine = ${prop.definitionEndLine ?? -1},
                                 p.propertyContractDelegate = '${esc(delegate)}',
-                                p.capsuleSourceLineRef = '${esc(capsuleSourceLineRef)}',
+                                p.capsuleSourceLineRef = '${esc(capsuleLineRef)}',
                                 p.propertyContractId = '${esc(propertyContractId)}'
                         `)
 
@@ -286,73 +273,11 @@ export async function capsule({
                             await conn.query(`
                                 MATCH (p:CapsuleProperty {id: '${esc(propId)}'})
                                 MATCH (pc:PropertyContract)
-                                WHERE pc.capsuleSourceLineRef = '${esc(capsuleSourceLineRef)}'
+                                WHERE pc.capsuleSourceLineRef = '${esc(capsuleLineRef)}'
                                 AND pc.propertyContractUri = '${esc(delegateUri)}'
                                 MERGE (p)-[:DELEGATES_TO]->(pc)
                             `)
                         }
-                    }
-                },
-
-                /**
-                 * Import membrane events from a captured events array.
-                 * Each event is stored as a MembraneEvent node with HAS_MEMBRANE_EVENT edge from the owning Capsule.
-                 */
-                importMembraneEvents: {
-                    type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, events: any[], spineInstanceTreeId: string): Promise<{ imported: number }> {
-                        if (!spineInstanceTreeId) throw new Error('importMembraneEvents: spineInstanceTreeId is required')
-                        if (this.verbose) console.log(`[ladybug] Importing ${events.length} membrane events for ${spineInstanceTreeId}`)
-                        const conn = await this._ensureConnection()
-                        const esc = this._esc.bind(this)
-                        const escLong = (s: string | undefined | null) => {
-                            if (s == null) return ''
-                            return s.replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/\n/g, "\\n").replace(/\r/g, "\\r").replace(/\t/g, "\\t")
-                        }
-                        let imported = 0
-
-                        for (const evt of events) {
-                            const pk = `${spineInstanceTreeId}::evt::${evt.eventIndex}`
-                            const capsuleSourceLineRef = evt.target?.capsuleSourceLineRef || ''
-                            const valueStr = evt.value !== undefined ? JSON.stringify(evt.value) : ''
-                            const resultStr = evt.result !== undefined ? JSON.stringify(evt.result) : ''
-
-                            const rawEventStr = escLong(JSON.stringify(evt))
-
-                            await conn.query(`
-                                MERGE (e:MembraneEvent {id: '${esc(pk)}'})
-                                ON CREATE SET
-                                    e.eventIndex = ${evt.eventIndex},
-                                    e.spineInstanceTreeId = '${esc(spineInstanceTreeId)}',
-                                    e.eventType = '${esc(evt.event)}',
-                                    e.membrane = '${esc(evt.membrane || 'external')}',
-                                    e.capsuleSourceLineRef = '${esc(capsuleSourceLineRef)}',
-                                    e.capsuleSourceNameRef = '${esc(evt.target?.capsuleSourceNameRef || '')}',
-                                    e.capsuleSourceNameRefHash = '${esc(evt.target?.capsuleSourceNameRefHash || '')}',
-                                    e.propertyName = '${esc(evt.target?.prop || '')}',
-                                    e.value = '${escLong(valueStr)}',
-                                    e.result = '${escLong(resultStr)}',
-                                    e.callerFilepath = '${esc(evt.caller?.filepath || '')}',
-                                    e.callerLine = ${evt.caller?.line ?? -1},
-                                    e.callEventIndex = ${evt.callEventIndex ?? -1},
-                                    e.rawEvent = '${rawEventStr}'
-                            `)
-
-                            // Create HAS_MEMBRANE_EVENT edge from owning Capsule (if found)
-                            if (capsuleSourceLineRef) {
-                                const scopedRef = `${spineInstanceTreeId}::${capsuleSourceLineRef}`
-                                await conn.query(`
-                                    MATCH (cap:Capsule {scopedId: '${esc(scopedRef)}'})
-                                    MATCH (e:MembraneEvent {id: '${esc(pk)}'})
-                                    MERGE (cap)-[:HAS_MEMBRANE_EVENT]->(e)
-                                `)
-                            }
-
-                            imported++
-                        }
-
-                        if (this.verbose) console.log(`[ladybug] Imported ${imported} membrane events`)
-                        return { imported }
                     }
                 },
 
@@ -366,25 +291,24 @@ export async function capsule({
                         const conn = await this._ensureConnection()
                         if (this.verbose) console.log('[cst-v1] Linking mappings and extends...')
 
-                        // Build moduleUri→capsuleName lookup in JS (fast, avoids OR in Cypher)
-                        // 1. MAPS_TO edges (same tree, by capsuleName or moduleUri)
+                        // 1. MAPS_TO edges
                         const mapsResult = await conn.query(`
-                            MATCH (owner:Capsule)-[:IMPLEMENTS_SPINE]->(:SpineContract)-[:HAS_PROPERTY_CONTRACT]->(:PropertyContract)-[:HAS_PROPERTY]->(p:CapsuleProperty)
+                            MATCH (p:CapsuleProperty)
                             WHERE p.mappedModuleUri IS NOT NULL AND p.mappedModuleUri <> ''
-                            MATCH (t:Capsule)-[:HAS_SOURCE]->(ts:CapsuleSource)
-                            WHERE t.spineInstanceTreeId = owner.spineInstanceTreeId AND (t.capsuleName = p.mappedModuleUri OR ts.moduleUri = p.mappedModuleUri)
+                            MATCH (t:Capsule)
+                            WHERE t.capsuleName = p.mappedModuleUri
                             MERGE (p)-[:MAPS_TO]->(t)
                             RETURN count(*) AS linked
                         `)
                         const mapsRows = await mapsResult.getAll()
                         const linked = mapsRows[0]?.linked ?? 0
 
-                        // 2. EXTENDS edges (same tree, by capsuleName or moduleUri)
+                        // 2. EXTENDS edges
                         const extendsResult = await conn.query(`
                             MATCH (cap:Capsule)-[:HAS_SOURCE]->(cs:CapsuleSource)
                             WHERE cs.extendsCapsuleUri IS NOT NULL AND cs.extendsCapsuleUri <> ''
-                            MATCH (parent:Capsule)-[:HAS_SOURCE]->(ps:CapsuleSource)
-                            WHERE parent.spineInstanceTreeId = cap.spineInstanceTreeId AND (parent.capsuleName = cs.extendsCapsuleUri OR ps.moduleUri = cs.extendsCapsuleUri)
+                            MATCH (parent:Capsule)
+                            WHERE parent.capsuleName = cs.extendsCapsuleUri
                             MERGE (cap)-[:EXTENDS]->(parent)
                             RETURN count(*) AS linked
                         `)
@@ -420,16 +344,7 @@ export async function capsule({
                  */
                 importSitFile: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, sitFilePath: string, opts?: { reset?: boolean }): Promise<{ imported: number; capsules: number; instances: number }> {
-                        if (opts?.reset) {
-                            const conn = await this._ensureConnection()
-                            const tables = ['HAS_MEMBRANE_EVENT', 'PARENT_INSTANCE', 'INSTANCE_OF', 'DELEGATES_TO', 'EXTENDS', 'MAPS_TO', 'HAS_PROPERTY', 'HAS_PROPERTY_CONTRACT', 'IMPLEMENTS_SPINE', 'HAS_SOURCE']
-                            for (const t of tables) { await conn.query(`DROP TABLE IF EXISTS ${t}`) }
-                            const nodes = ['MembraneEvent', 'CapsuleInstance', 'CapsuleProperty', 'PropertyContract', 'SpineContract', 'CapsuleSource', 'Capsule']
-                            for (const t of nodes) { await conn.query(`DROP TABLE IF EXISTS ${t}`) }
-                            this._schemaCreated = false
-                            await this._ensureSchema()
-                        }
+                    value: async function (this: any, sitFilePath: string): Promise<{ imported: number; capsules: number; instances: number }> {
                         if (this.verbose) console.log(`[cst-v1] Importing SIT file: ${sitFilePath}`)
                         const content = await readFile(sitFilePath, 'utf-8')
                         const sit = JSON.parse(content)
@@ -467,21 +382,26 @@ export async function capsule({
 
                             const [, uriPath, line] = uriMatch
 
-                            // CST files are stored using npm URI paths (cache path = moduleUri)
-                            // Try: 1) @<uri>:<line>.csts.json (current format)
-                            //      2) <localRelPath>.ts:<line>.csts.json (legacy local format)
-                            //      3) o/npmjs.com/node_modules/@<uri>.ts:<line>.csts.json (external packages)
-                            const npmUriCstPath = join(staticAnalysisDir, `@${uriPath}:${line}.csts.json`)
-                            const uriSegments = uriPath.split('/')
-                            const localRelPath = uriSegments.length > 2 ? uriSegments.slice(2).join('/') : null
-                            const localCstPath = localRelPath ? join(staticAnalysisDir, `${localRelPath}.ts:${line}.csts.json`) : null
-                            const npmCstPath = join(staticAnalysisDir, `o/npmjs.com/node_modules/@${uriPath}.ts:${line}.csts.json`)
+                            // Try URI-based path first: @<org>/<package>/<local-path>:<line>.csts.json
+                            const uriCstFilePath = join(staticAnalysisDir, `@${uriPath}:${line}.csts.json`)
 
-                            const cstFilePath = existsSync(npmUriCstPath) ? npmUriCstPath
-                                : (localCstPath && existsSync(localCstPath)) ? localCstPath
-                                    : npmCstPath
-                            if (!existsSync(cstFilePath)) {
-                                if (this.verbose) console.log(`[cst-v1] CST file not found: ${npmUriCstPath} for capsule: ${capsuleName}`)
+                            // Fallback: strip prefix to get local path
+                            const segments = uriPath.split('/')
+                            const localPath = segments.slice(2).join('/')
+                            const localCstFilePath = join(staticAnalysisDir, `${localPath}.ts:${line}.csts.json`)
+
+                            // Fallback: npm-style path for external packages
+                            const npmCstFilePath = join(staticAnalysisDir, `o/npmjs.com/node_modules/@${uriPath}.ts:${line}.csts.json`)
+
+                            let cstFilePath: string
+                            if (existsSync(uriCstFilePath)) {
+                                cstFilePath = uriCstFilePath
+                            } else if (existsSync(localCstFilePath)) {
+                                cstFilePath = localCstFilePath
+                            } else if (existsSync(npmCstFilePath)) {
+                                cstFilePath = npmCstFilePath
+                            } else {
+                                if (this.verbose) console.log(`[cst-v1] CST file not found: ${uriCstFilePath} or ${localCstFilePath} or ${npmCstFilePath}`)
                                 continue
                             }
 
@@ -524,11 +444,10 @@ export async function capsule({
                                     inst.spineInstanceTreeId = '${esc(spineInstanceTreeId)}'
                             `)
 
-                            // Create INSTANCE_OF edge to the Capsule (scoped by spineInstanceTreeId)
+                            // Create INSTANCE_OF edge to the Capsule
                             await conn.query(`
                                 MATCH (inst:CapsuleInstance {instanceId: '${esc(instanceId)}'})
-                                MATCH (cap:Capsule)
-                                WHERE cap.spineInstanceTreeId = '${esc(spineInstanceTreeId)}' AND cap.capsuleName = '${esc(instance.capsuleName)}'
+                                MATCH (cap:Capsule {capsuleName: '${esc(instance.capsuleName)}'})
                                 MERGE (inst)-[:INSTANCE_OF]->(cap)
                             `)
 

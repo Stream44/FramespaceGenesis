@@ -18,14 +18,5 @@ RUN bun install
 # Copy the rest of the project
 COPY --chown=bun:bun . .
 
-ENV NODE_ENV=production
-ENV MODEL_SERVER_PORT=4000
-
-# .env is provided by the build system (via files option in buildDistribution).
-# It contains CACHE_BUST_PATH_PREFIX and BUILD_TIMESTAMP.
-# Bun auto-loads .env from CWD, so both `bun run build` (vinxi) and the runtime server pick it up.
-RUN cat /app/.env && bun run build
-
-CMD ["bun", "run", "L3-model-server/server.ts"]
-
-EXPOSE 4000
+# Default: run tests
+CMD ["bun", "test", "--bail"]

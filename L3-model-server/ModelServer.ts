@@ -1,7 +1,6 @@
 import { run } from '@stream44.studio/t44/standalone-rt'
-import { join, dirname, extname, resolve } from 'path'
+import { join, dirname } from 'path'
 import { readdir, stat } from 'fs/promises'
-import { writeFile } from 'fs/promises'
 
 export async function capsule({
     encapsulate,
@@ -60,69 +59,15 @@ export async function capsule({
                     value: new Map<string, string>(),
                 },
 
-                _cacheBustPathPrefix: {
-                    type: CapsulePropertyTypes.Literal,
-                    value: process.env.CACHE_BUST_PATH_PREFIX || 'dev',
-                },
-
-                _uiDistDir: {
-                    type: CapsulePropertyTypes.Literal,
-                    value: null as string | null,
-                },
-
                 _api: {
                     type: CapsulePropertyTypes.Literal,
                     value: null as any,
-                },
-
-                // Lazy import: spineInstanceTreeId → Promise<void>
-                // Coalesces concurrent requests for the same ID
-                _importPromises: {
-                    type: CapsulePropertyTypes.Literal,
-                    value: new Map<string, Promise<void>>(),
-                },
-
-                // Set of spineInstanceTreeIds that have been imported
-                _importedIds: {
-                    type: CapsulePropertyTypes.Literal,
-                    value: new Set<string>(),
                 },
 
                 api: {
                     type: CapsulePropertyTypes.GetterFunction,
                     value: function (this: any): Record<string, any> {
                         return this._api
-                    }
-                },
-
-                // =============================================================
-                // Lazy Import
-                // =============================================================
-
-                _ensureImported: {
-                    type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, spineInstanceTreeId: string, engine: any): Promise<void> {
-                        if (!spineInstanceTreeId) return
-                        if (this._importedIds.has(spineInstanceTreeId)) return
-
-                        // Check if there's already an in-flight import for this ID
-                        const existing = this._importPromises.get(spineInstanceTreeId)
-                        if (existing) return existing
-
-                        // Start the import and store the promise so concurrent requests coalesce
-                        const importPromise = (async () => {
-                            try {
-                                console.log(`📦 Lazy import: ${spineInstanceTreeId}`)
-                                await this.spineInstanceTrees.importInstanceToEngine({ engine, name: spineInstanceTreeId })
-                                this._importedIds.add(spineInstanceTreeId)
-                                console.log(`✅ Lazy import complete: ${spineInstanceTreeId}`)
-                            } finally {
-                                this._importPromises.delete(spineInstanceTreeId)
-                            }
-                        })()
-
-                        this._importPromises.set(spineInstanceTreeId, importPromise)
-                        return importPromise
                     }
                 },
 
@@ -191,7 +136,6 @@ export async function capsule({
                             const examplesDirs = [
                                 join(modelServerDir, '..', 'L4-space-models', 'Capsular', 'examples'),
                                 join(packageRoot, dirname(modelRelPath), 'examples'),
-                                join(packageRoot, 'examples'),
                             ]
                             const capsuleModules: { MODEL_NAME: string; runModel: (ctx: { run: any }) => Promise<any> }[] = []
                             const seenModels = new Set<string>()
@@ -233,13 +177,13 @@ export async function capsule({
                                 } catch { }
                             }
 
-                            // Register instances (run capsule functions to produce SIT files)
-                            // Import into engine is deferred until first request for each spineInstanceTreeId
+                            // Run examples and import into engine
                             for (const example of capsuleModules) {
                                 await this.spineInstanceTrees.registerInstance({ name: example.MODEL_NAME }, example.runModel)
+                                await this.spineInstanceTrees.importInstanceToEngine({ engine, name: example.MODEL_NAME })
                             }
 
-                            console.log(`✅ Engine ${engineUri}: ${capsuleModules.length} examples registered (import deferred until first request)`)
+                            console.log(`✅ Engine ${engineUri}: data loaded from ${capsuleModules.length} examples`)
 
                             // Read schema from the semantic model's apiSchema
                             const schema = modelCapsule.apiSchema
@@ -255,7 +199,6 @@ export async function capsule({
                             const modelApi: Record<string, any> = {}
 
                             // Register methods — engine is passed as `graph` first arg if method has tags (graph method)
-                            // Direct API wrappers also do lazy import for spineInstanceTreeId
                             for (const [name, methodSchema] of Object.entries(schema.methods) as [string, any][]) {
                                 if (typeof modelCapsule[name] !== 'function') continue
                                 const entry = {
@@ -267,18 +210,10 @@ export async function capsule({
                                 }
                                 this._methods.push(entry)
                                 this._methodMap.set(`${namespace}/${name}`, entry)
-                                const isGraphMethod = !!(methodSchema.tags || methodSchema.graphMethod)
-                                const sitArgIdx = (methodSchema.args || []).findIndex((d: any) => d.name === 'spineInstanceTreeId')
-                                if (isGraphMethod) {
-                                    modelApi[name] = async (...args: any[]) => {
-                                        if (sitArgIdx >= 0 && args[sitArgIdx]) await self._ensureImported(args[sitArgIdx], engine)
-                                        return modelCapsule[name]({ graph: engine, server: self }, ...args)
-                                    }
+                                if (methodSchema.tags || methodSchema.graphMethod) {
+                                    modelApi[name] = (...args: any[]) => modelCapsule[name]({ graph: engine, server: self }, ...args)
                                 } else {
-                                    modelApi[name] = async (...args: any[]) => {
-                                        if (sitArgIdx >= 0 && args[sitArgIdx]) await self._ensureImported(args[sitArgIdx], engine)
-                                        return modelCapsule[name](...args)
-                                    }
+                                    modelApi[name] = (...args: any[]) => modelCapsule[name](...args)
                                 }
                             }
 
@@ -301,79 +236,6 @@ export async function capsule({
                         }
 
                         console.log(`📋 ${this._methods.length} methods registered from ${this._models.length} semantic models`)
-
-                        if (this.writeApiSchema) {
-                            const schema = this._buildSchema()
-                            const modelServerDir = dirname(import.meta.path)
-                            const schemaPath = join(modelServerDir, '_schema.json')
-                            await writeFile(schemaPath, JSON.stringify(schema, null, 4))
-                            console.log(`📝 Schema written to ${schemaPath}`)
-                        }
-                    }
-                },
-
-                resolvePackagePath: {
-                    type: CapsulePropertyTypes.Function,
-                    value: function (this: any, relativePath: string): string {
-                        const packageRoot = join(dirname(import.meta.path), '..')
-                        return resolve(packageRoot, relativePath)
-                    }
-                },
-
-                _buildSchema: {
-                    type: CapsulePropertyTypes.Function,
-                    value: function (this: any): any {
-                        const endpoints: Record<string, any> = {}
-                        const apis: Record<string, any> = {}
-                        const engineNames = [...new Set(this._models.map((m: any) => m.engineUri))]
-                        for (const m of this._models) {
-                            const ns = m.schema.namespace
-                            apis[ns] = { description: m.schema.description, basePath: m.schema.basePath }
-                            for (const [name, methodSchema] of Object.entries(m.schema.methods) as [string, any][]) {
-                                const path = `${m.schema.basePath}/${name}`
-                                const hasGraph = !!(methodSchema.tags || methodSchema.graphMethod)
-                                const endpoint: any = {
-                                    method: 'GET or POST',
-                                    namespace: ns,
-                                    description: methodSchema.description ?? '',
-                                    args: methodSchema.args ?? [],
-                                }
-                                if (hasGraph) endpoint.engineParam = true
-
-                                // Extract discovery and filterField from tags
-                                let discovery: string | undefined
-                                let filterField: string | undefined
-                                if (methodSchema.tags) {
-                                    for (const tagData of Object.values(methodSchema.tags) as any[]) {
-                                        if (tagData?.discovery) discovery = tagData.discovery
-                                        if (tagData?.filterField) filterField = tagData.filterField
-                                    }
-                                }
-                                if (methodSchema.discovery) discovery = methodSchema.discovery
-                                if (methodSchema.filterField) filterField = methodSchema.filterField
-                                if (discovery) endpoint.discovery = discovery.includes('/') ? `/api/${discovery}` : `${m.schema.basePath}/${discovery}`
-                                if (filterField) endpoint.filterField = filterField
-                                if (methodSchema.tags) endpoint.tags = methodSchema.tags
-
-                                // Build usage examples
-                                const argDefs = methodSchema.args ?? []
-                                const getParams = argDefs.map((a: any) => `${a.name}=<${a.type}>`).join('&')
-                                endpoint.usage = {
-                                    GET: getParams ? `${path}?${getParams}` : path,
-                                    POST: { body: { args: argDefs.map((a: any) => `<${a.type}>`) } },
-                                }
-
-                                endpoints[path] = endpoint
-                            }
-                        }
-                        return {
-                            openapi: '3.0.0',
-                            info: { title: 'Framespace Genesis API', version: '1.0.0' },
-                            apis,
-                            engines: engineNames,
-                            defaultEngine: engineNames[0] ?? null,
-                            endpoints,
-                        }
                     }
                 },
 
@@ -383,62 +245,25 @@ export async function capsule({
 
                 startServer: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, port?: number, opts?: { skipInit?: boolean; uiDistDir?: string }): Promise<{ server: any; port: number }> {
-                        const actualPort = port ?? Number(process.env.MODEL_SERVER_PORT || 4000)
+                    value: async function (this: any, port?: number, opts?: { skipInit?: boolean }): Promise<{ server: any; port: number }> {
+                        const actualPort = port ?? Number(process.env.PORT || 4000)
 
                         if (!opts?.skipInit) await this.init()
 
-                        if (opts?.uiDistDir) this._uiDistDir = opts.uiDistDir
-
                         const self = this
-                        const prefix = self._cacheBustPathPrefix
-                        const uiDistDir = self._uiDistDir
                         const _corsHeaders = {
                             "Access-Control-Allow-Origin": "*",
                             "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
                             "Access-Control-Allow-Headers": "Content-Type",
                         }
-                        const isProduction = process.env.NODE_ENV === 'production'
-                        const isDevMode = !isProduction
-                        const _apiCacheControl = isDevMode ? 'no-cache' : 'public, max-age=31536000, immutable'
                         const _json = (data: any, init?: any) => {
                             return Response.json(data, {
                                 ...init,
                                 headers: { ..._corsHeaders, ...(init?.headers ?? {}) },
                             })
                         }
-                        const _cachedJson = (data: any, cacheControl: string, init?: any) => {
-                            return Response.json(data, {
-                                ...init,
-                                headers: { ..._corsHeaders, 'Cache-Control': cacheControl, ...(init?.headers ?? {}) },
-                            })
-                        }
-
-                        // MIME type lookup for static file serving
-                        const MIME_TYPES: Record<string, string> = {
-                            '.html': 'text/html',
-                            '.css': 'text/css',
-                            '.js': 'application/javascript',
-                            '.mjs': 'application/javascript',
-                            '.json': 'application/json',
-                            '.svg': 'image/svg+xml',
-                            '.png': 'image/png',
-                            '.jpg': 'image/jpeg',
-                            '.jpeg': 'image/jpeg',
-                            '.gif': 'image/gif',
-                            '.ico': 'image/x-icon',
-                            '.woff': 'font/woff',
-                            '.woff2': 'font/woff2',
-                            '.ttf': 'font/ttf',
-                            '.webp': 'image/webp',
-                            '.webm': 'video/webm',
-                            '.mp4': 'video/mp4',
-                            '.txt': 'text/plain',
-                            '.map': 'application/json',
-                        }
 
                         const bunServe = require('bun').serve
-                        const BunFile = require('bun').file
                         const server = bunServe({
                             port: actualPort,
                             async fetch(req: any) {
@@ -448,107 +273,51 @@ export async function capsule({
                                     return new Response(null, { status: 204, headers: _corsHeaders })
                                 }
 
-                                // ── Rewrite /api-server/* → /<prefix>/api/* (mirrors dev proxy) ──
-                                // Exception: /api-server/health → /api/health (root, no-cache)
-                                if (url.pathname === '/api-server/health') {
-                                    url.pathname = '/api/health'
-                                } else if (url.pathname.startsWith('/api-server/')) {
-                                    url.pathname = `/${prefix}/api/` + url.pathname.slice('/api-server/'.length)
+                                if (url.pathname === "/api/health") {
+                                    return _json({
+                                        status: "ok",
+                                        timestamp: new Date().toISOString(),
+                                        models: self._models.map((m: any) => ({ modelUri: m.modelUri, engineUri: m.engineUri, namespace: m.schema.namespace })),
+                                        methods: self._methods.length,
+                                    })
                                 }
 
-                                // ── UI static file serving ──
-                                // Vite's `base` is set to /<prefix>/ at build time, so the
-                                // built SPA references all assets under /<prefix>/ already.
-                                // ModelServer serves the dist dir under /<prefix>/.
-                                // In dev mode (prefix === 'dev'), vinxi dev server handles UI.
-                                if (uiDistDir && !isDevMode) {
-                                    // Helper: serve a static file from uiDistDir
-                                    const serveStatic = async (relPath: string, cacheControl: string) => {
-                                        const filePath = join(uiDistDir, relPath)
-                                        if (!filePath.startsWith(uiDistDir)) return null
-                                        const ext = extname(filePath).toLowerCase()
-                                        const bunFile = BunFile(filePath)
-                                        if (await bunFile.exists()) {
-                                            return new Response(bunFile, {
-                                                headers: {
-                                                    'Content-Type': MIME_TYPES[ext] || 'application/octet-stream',
-                                                    'Cache-Control': cacheControl,
-                                                    ..._corsHeaders,
-                                                },
-                                            })
-                                        }
-                                        return null
-                                    }
-
-                                    // Redirect / → /<prefix>/
-                                    if (url.pathname === '/' || url.pathname === '/index.html') {
-                                        return Response.redirect(`/${prefix}/`, 302)
-                                    }
-
-                                    // Redirect bare /<prefix> → /<prefix>/
-                                    if (url.pathname === `/${prefix}`) {
-                                        return Response.redirect(`/${prefix}/`, 301)
-                                    }
-
-                                    // Serve /<prefix>/* (skip /<prefix>/api/* which is handled below)
-                                    if (url.pathname.startsWith(`/${prefix}/`) && !url.pathname.startsWith(`/${prefix}/api/`)) {
-                                        const relPath = url.pathname.slice(`/${prefix}/`.length)
-
-                                        // /<prefix>/ or /<prefix>/index.html → SPA shell (no-cache so reloads pick up new versions)
-                                        if (!relPath || relPath === 'index.html') {
-                                            const r = await serveStatic('index.html', 'no-cache')
-                                            if (r) return r
-                                        }
-
-                                        // /<prefix>/<file> → static asset (immutable — hashed filenames)
-                                        if (relPath) {
-                                            const r = await serveStatic(relPath, 'public, max-age=31536000, immutable')
-                                            if (r) return r
-                                            // SPA fallback: non-file paths serve index.html
-                                            if (!extname(relPath)) {
-                                                const r = await serveStatic('index.html', 'no-cache')
-                                                if (r) return r
+                                if (url.pathname === "/api/schema") {
+                                    const endpoints: Record<string, any> = {}
+                                    const apis: Record<string, any> = {}
+                                    const engineNames = [...new Set(self._models.map((m: any) => m.engineUri))]
+                                    for (const m of self._models) {
+                                        const ns = m.schema.namespace
+                                        apis[ns] = { description: m.schema.description, basePath: m.schema.basePath }
+                                        for (const [name, methodSchema] of Object.entries(m.schema.methods) as [string, any][]) {
+                                            const path = `/api/${ns}/${name}`
+                                            endpoints[path] = {
+                                                method: name,
+                                                namespace: ns,
+                                                description: methodSchema.description ?? '',
+                                                args: methodSchema.args ?? [],
+                                                discovery: methodSchema.discovery,
+                                                filterField: methodSchema.filterField,
+                                                tags: methodSchema.tags,
                                             }
                                         }
                                     }
-
-                                    // Serve /favicon.ico from dist root
-                                    if (url.pathname === '/favicon.ico') {
-                                        const r = await serveStatic('favicon.ico', 'public, max-age=86400')
-                                        if (r) return r
-                                    }
+                                    return _json({
+                                        openapi: '3.0.0',
+                                        info: { title: 'Framespace Genesis API', version: '1.0.0' },
+                                        apis,
+                                        engines: engineNames,
+                                        defaultEngine: engineNames[0] ?? null,
+                                        endpoints,
+                                    })
                                 }
 
-                                // ── API routes ──
-
-                                // /api/health — always at root, always no-cache
-                                if (url.pathname === "/api/health") {
-                                    return _cachedJson({
-                                        status: "ok",
-                                        timestamp: new Date().toISOString(),
-                                        cacheBustPathPrefix: prefix,
-                                        models: self._models.map((m: any) => ({ modelUri: m.modelUri, engineUri: m.engineUri, namespace: m.schema.namespace })),
-                                        methods: self._methods.length,
-                                    }, 'no-cache')
-                                }
-
-                                // /<prefix>/api/* — all other API endpoints
-                                const apiPrefix = `/${prefix}/api/`
-                                let apiPath = ''
-                                if (url.pathname.startsWith(apiPrefix)) {
-                                    apiPath = url.pathname.slice(apiPrefix.length)
-                                }
-
-                                if (apiPath === 'schema') {
-                                    return _cachedJson(self._buildSchema(), _apiCacheControl)
-                                }
-
-                                // Dynamic method dispatch: /<prefix>/api/<namespace...>/<methodName>
-                                const match = apiPath ? apiPath.match(/^(.+)\/([a-zA-Z_][a-zA-Z0-9_]*)$/) : null
+                                // Dynamic method dispatch: /api/<namespace...>/<methodName>
+                                const match = url.pathname.match(/^\/api\/(.+)\/([a-zA-Z_][a-zA-Z0-9_]*)$/)
                                 if (match) {
                                     const [, ns, methodName] = match
                                     const method = self._methodMap.get(`${ns}/${methodName}`)
-                                    if (!method) return _cachedJson({ error: `Unknown method: ${ns}/${methodName}` }, 'no-cache', { status: 404 })
+                                    if (!method) return _json({ error: `Unknown method: ${ns}/${methodName}` }, { status: 404 })
 
                                     let args: any[] = []
                                     try {
@@ -579,13 +348,6 @@ export async function capsule({
                                             return a
                                         })
 
-                                        // Lazy import: if the method takes a spineInstanceTreeId arg,
-                                        // ensure that instance's data is imported into the engine before calling
-                                        const sitArgIdx = argDefs.findIndex((d: any) => d.name === 'spineInstanceTreeId')
-                                        if (sitArgIdx >= 0 && args[sitArgIdx] && (method.schema.tags || method.schema.graphMethod)) {
-                                            await self._ensureImported(args[sitArgIdx], method.engine)
-                                        }
-
                                         // Discovery fallback: if required args missing, redirect to discovery method
                                         const key = `${ns}/${methodName}`
                                         const hasRequiredArgs = argDefs.some((d: any) => !d.optional)
@@ -601,31 +363,26 @@ export async function capsule({
                                                     else if (def.optional) fbArgs.push(undefined)
                                                     else break
                                                 }
-                                                // Also ensure import for fallback method
-                                                const fbSitIdx = fbArgDefs.findIndex((d: any) => d.name === 'spineInstanceTreeId')
-                                                if (fbSitIdx >= 0 && fbArgs[fbSitIdx] && (fb.schema.tags || fb.schema.graphMethod)) {
-                                                    await self._ensureImported(fbArgs[fbSitIdx], fb.engine)
-                                                }
                                                 const result = (fb.schema.tags || fb.schema.graphMethod)
                                                     ? await fb.capsule[fb.name]({ graph: fb.engine, server: self }, ...fbArgs)
                                                     : await fb.capsule[fb.name](...fbArgs)
-                                                return _cachedJson({ method: fb.name, namespace: fb.namespace, result, fallbackFrom: methodName }, _apiCacheControl)
+                                                return _json({ method: fb.name, namespace: fb.namespace, result, fallbackFrom: methodName })
                                             }
                                         }
 
                                         const result = (method.schema.tags || method.schema.graphMethod)
                                             ? await method.capsule[method.name]({ graph: method.engine, server: self }, ...args)
                                             : await method.capsule[method.name](...args)
-                                        return _cachedJson({ method: methodName, namespace: method.namespace, result }, _apiCacheControl)
+                                        return _json({ method: methodName, namespace: method.namespace, result })
                                     } catch (err: any) {
                                         const message = err.message ?? String(err)
                                         const stack = err.stack ?? ''
                                         console.error(`❌ ${ns}/${methodName}`, `URI: ${url.pathname}${url.search}`, `args: ${JSON.stringify(args)}`, stack || message)
-                                        return _cachedJson({
+                                        return _json({
                                             method: methodName,
                                             namespace: ns,
                                             result: { '#': 'Error', method: `${ns}/${methodName}`, message, stack },
-                                        }, 'no-cache')
+                                        })
                                     }
                                 }
 
@@ -634,22 +391,11 @@ export async function capsule({
                         })
 
                         this._server = server
-                        const boundPort = server.port ?? actualPort
 
-                        console.log(`🚀 Server running on http://localhost:${boundPort}`)
-                        console.log(`📋 ${this._methods.length} API methods available`)
-                        console.log(`🔗 Cache-bust prefix: /${prefix}/`)
-                        if (uiDistDir && !isDevMode) {
-                            console.log(`🌐 UI served at http://localhost:${boundPort}/${prefix}/`)
-                        } else if (isDevMode) {
-                            console.log(`🛠️  Dev mode: UI served by vinxi dev server (not this server)`)
-                        }
-                        const buildTimestamp = process.env.BUILD_TIMESTAMP
-                        if (buildTimestamp) {
-                            console.log(`\x1b[35m🕐 Built: ${buildTimestamp}\x1b[0m`)
-                        }
+                        console.log(`🚀 API server running on http://localhost:${actualPort}`)
+                        console.log(`📋 ${this._methods.length} methods available`)
 
-                        return { server, port: boundPort }
+                        return { server, port: actualPort }
                     }
                 },
 

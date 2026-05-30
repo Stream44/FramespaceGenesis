@@ -165,10 +165,11 @@ async function loadSitAndCsts(sitRoot: string) {
 
         const segments = uriPath.split('/')
         const localPath = segments.slice(2).join('/')
+        const uriCstPath = join(staticAnalysisDir, `@${uriPath}:${line}.csts.json`)
         const localCstPath = join(staticAnalysisDir, `${localPath}.ts:${line}.csts.json`)
         const npmCstPath = join(staticAnalysisDir, `o/npmjs.com/node_modules/@${uriPath}.ts:${line}.csts.json`)
 
-        for (const candidate of [localCstPath, npmCstPath]) {
+        for (const candidate of [uriCstPath, localCstPath, npmCstPath]) {
             try {
                 csts[capsuleName] = JSON.parse(await readFile(candidate, 'utf-8'))
                 break
@@ -255,7 +256,7 @@ function removeDefaultCapsuleStructEntries(obj: any): any {
     return result
 }
 
-describe.skip('0A-CapsuleAnatomy — Documentation Structure', () => {
+describe('0A-CapsuleAnatomy — Documentation Structure', () => {
 
     const removeDefaultCapsuleStruct = true
 

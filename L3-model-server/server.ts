@@ -25,7 +25,6 @@ async function bootCapsule() {
                     value: './ModelServer',
                     options: {
                         '#': {
-                            writeApiSchema: true,
                             models: {
                                 '@stream44.studio/FramespaceGenesis/L6-semantic-models/Capsular/CapsuleSpine/ModelQueryMethods': {
                                     engine: {
@@ -37,27 +36,7 @@ async function bootCapsule() {
                                         '@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/JsonFiles-v0/ImportAPI': {}
                                     }
                                 },
-                                '@stream44.studio/FramespaceGenesis/L6-semantic-models/CapsuleSpine/Quadrant/ModelQueryMethods': {
-                                    engine: {
-                                        '@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/JsonFiles-v0/ImportAPI': {}
-                                    }
-                                },
-                                '@stream44.studio/FramespaceGenesis/L6-semantic-models/CapsuleSpine/Codepath/ModelQueryMethods': {
-                                    engine: {
-                                        '@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/JsonFiles-v0/ImportAPI': {}
-                                    }
-                                },
                                 '@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/ModelQueryMethods': {
-                                    engine: {
-                                        '@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/JsonFiles-v0/ImportAPI': {}
-                                    }
-                                },
-                                '@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Codepath/ModelQueryMethods': {
-                                    engine: {
-                                        '@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/JsonFiles-v0/ImportAPI': {}
-                                    }
-                                },
-                                '@stream44.studio/FramespaceGenesis/L8-view-models/Composite/Quadrant-Codepath/ModelQueryMethods': {
                                     engine: {
                                         '@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/JsonFiles-v0/ImportAPI': {}
                                     }
@@ -84,15 +63,5 @@ const { spine, run } = await bootCapsule()
 
 await run({}, async ({ apis }: any) => {
     const modelServer = apis[spine.capsuleSourceLineRef].modelServer
-    const uiDistDir = resolve(import.meta.dir, '../L13-workbench/vinxi-app/.output/public')
-    await modelServer.startServer(undefined, { uiDistDir })
-
-    // Graceful shutdown on SIGINT/SIGTERM
-    const shutdown = () => {
-        console.log('\n🛑 Shutting down server...')
-        modelServer.stop()
-        process.exit(0)
-    }
-    process.on('SIGINT', shutdown)
-    process.on('SIGTERM', shutdown)
+    await modelServer.startServer()
 })

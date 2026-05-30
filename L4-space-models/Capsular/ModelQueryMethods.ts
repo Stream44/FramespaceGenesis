@@ -99,21 +99,6 @@ export async function capsule({
                                 description: 'Fetch instance relations for a spine tree.',
                                 graphMethod: true,
                             },
-                            getMembraneEvents: {
-                                args: [
-                                    { name: 'spineInstanceTreeId', type: 'string' },
-                                ],
-                                description: 'Get all membrane events for a spine instance tree, ordered by eventIndex.',
-                                graphMethod: true,
-                            },
-                            getMembraneEventsByCapsule: {
-                                args: [
-                                    { name: 'spineInstanceTreeId', type: 'string' },
-                                    { name: 'capsuleSourceLineRef', type: 'string' },
-                                ],
-                                description: 'Get membrane events for a specific capsule within a spine instance tree.',
-                                graphMethod: true,
-                            },
                         },
                     },
                 },
@@ -125,11 +110,9 @@ export async function capsule({
                 init: {
                     type: CapsulePropertyTypes.Init,
                     value: async function (this: any): Promise<void> {
-                        if (this.writeMethodSchema) {
-                            const moduleFilepath = this['#@stream44.studio/encapsulate/structs/Capsule'].moduleFilepath
-                            const schemaPath = join(dirname(moduleFilepath), '_ModelQueryMethodsSchema.json')
-                            await writeFile(schemaPath, JSON.stringify(this.apiSchema, null, 4))
-                        }
+                        const moduleFilepath = this['#@stream44.studio/encapsulate/structs/Capsule'].rootCapsule.moduleFilepath
+                        const schemaPath = join(dirname(moduleFilepath), '_ModelQueryMethodsSchema.json')
+                        await writeFile(schemaPath, JSON.stringify(this.apiSchema, null, 4))
                     }
                 },
 
@@ -208,20 +191,6 @@ export async function capsule({
                     type: CapsulePropertyTypes.Function,
                     value: async function (this: any, spineInstanceTreeId: string): Promise<any> {
                         return await this._fetchInstanceRelations(spineInstanceTreeId)
-                    }
-                },
-
-                getMembraneEvents: {
-                    type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, spineInstanceTreeId: string): Promise<any[]> {
-                        return await this._getMembraneEvents(spineInstanceTreeId)
-                    }
-                },
-
-                getMembraneEventsByCapsule: {
-                    type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, spineInstanceTreeId: string, capsuleSourceLineRef: string): Promise<any[]> {
-                        return await this._getMembraneEventsByCapsule(spineInstanceTreeId, capsuleSourceLineRef)
                     }
                 },
             }

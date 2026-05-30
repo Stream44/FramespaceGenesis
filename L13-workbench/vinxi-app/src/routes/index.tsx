@@ -6,10 +6,8 @@ import type { EndpointDef, EngineSchema } from "~/lib/modelApiClient";
 import type { RequestLogEntry } from "~/lib/modelApiClient";
 import { ResultView, RawJsonView } from "~/lib/renderLib";
 import type { JsonValue } from "~/lib/renderLib";
-import { visualizations, onDemandPanels, FramespacesPanel } from "~/lib/visualizations";
-import type { FramespaceLink } from "~/lib/visualizations";
+import { visualizations, onDemandPanels, ModelsPanel } from "~/lib/visualizations";
 import { REQUEST_LOG_PANEL_ID, MODEL_APIS_PANEL_ID, MODELS_PANEL_ID, requestLogPanelDef, modelApisPanelDef } from "~L8/Workbench/ModelAPIs/HeaderStatusElement";
-import { Timeline } from "~L8/Workbench/Timeline";
 import { createDockview } from "dockview-core";
 import type { DockviewTheme } from "dockview-core";
 import type {
@@ -21,150 +19,12 @@ import type {
 import "dockview-core/dist/styles/dockview.css";
 import { render } from "solid-js/web";
 import { workbenchLib } from "~/lib/workbenchLib";
-import { EditorView, basicSetup } from "codemirror";
-import { EditorState } from "@codemirror/state";
-import { javascript } from "@codemirror/lang-javascript";
-import { json as jsonLang } from "@codemirror/lang-json";
-import { css as cssLang } from "@codemirror/lang-css";
-import { oneDark } from "@codemirror/theme-one-dark";
 
 const themeBlueprintVellum: DockviewTheme = {
     name: "blueprint-vellum",
     className: "dockview-theme-blueprint-vellum",
     gap: 4,
 };
-
-// ── Tab Context Menu State ────────────────────────────────────────────
-type TabContextMenuState = {
-    visible: boolean;
-    x: number;
-    y: number;
-    panelId: string | null;
-    groupId: string | null;
-};
-
-const [tabContextMenu, setTabContextMenu] = createSignal<TabContextMenuState>({
-    visible: false,
-    x: 0,
-    y: 0,
-    panelId: null,
-    groupId: null,
-});
-
-function TabContextMenu(props: { dockApi: () => DockviewApi | null }) {
-    const menu = tabContextMenu;
-
-    const handleCloseOthers = () => {
-        const api = props.dockApi();
-        const state = menu();
-        if (!api || !state.panelId || !state.groupId) return;
-
-        const group = api.getGroup(state.groupId);
-        if (!group) return;
-
-        const panelsInGroup = api.panels.filter(p => p.group.id === state.groupId);
-        for (const panel of panelsInGroup) {
-            if (panel.id !== state.panelId) {
-                api.removePanel(panel);
-            }
-        }
-        setTabContextMenu(prev => ({ ...prev, visible: false }));
-    };
-
-    const handleCloseToTheRight = () => {
-        const api = props.dockApi();
-        const state = menu();
-        if (!api || !state.panelId || !state.groupId) return;
-
-        const group = api.getGroup(state.groupId);
-        if (!group) return;
-
-        const panelsInGroup = api.panels.filter(p => p.group.id === state.groupId);
-        const targetIndex = panelsInGroup.findIndex(p => p.id === state.panelId);
-        if (targetIndex === -1) return;
-
-        for (let i = panelsInGroup.length - 1; i > targetIndex; i--) {
-            api.removePanel(panelsInGroup[i]);
-        }
-        setTabContextMenu(prev => ({ ...prev, visible: false }));
-    };
-
-    const handleClickOutside = (e: MouseEvent) => {
-        if (menu().visible) {
-            setTabContextMenu(prev => ({ ...prev, visible: false }));
-        }
-    };
-
-    onMount(() => {
-        document.addEventListener("click", handleClickOutside);
-        document.addEventListener("contextmenu", handleClickOutside);
-    });
-
-    onCleanup(() => {
-        document.removeEventListener("click", handleClickOutside);
-        document.removeEventListener("contextmenu", handleClickOutside);
-    });
-
-    return (
-        <Show when={menu().visible}>
-            <div
-                class="tab-context-menu"
-                style={{
-                    position: "fixed",
-                    left: `${menu().x}px`,
-                    top: `${menu().y}px`,
-                    "z-index": 10000,
-                    background: "var(--dv-tabs-and-actions-container-background-color, #1e1e1e)",
-                    border: "1px solid var(--dv-separator-border, #333)",
-                    "border-radius": "4px",
-                    "box-shadow": "0 2px 8px rgba(0,0,0,0.3)",
-                    "min-width": "150px",
-                    padding: "4px 0",
-                }}
-                onClick={(e) => e.stopPropagation()}
-            >
-                <button
-                    class="tab-context-menu-item"
-                    onClick={handleCloseOthers}
-                    style={{
-                        display: "block",
-                        width: "100%",
-                        padding: "6px 12px",
-                        border: "none",
-                        background: "transparent",
-                        color: "inherit",
-                        "text-align": "left",
-                        cursor: "pointer",
-                        "font-size": "13px",
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.background = "var(--dv-activegroup-hiddenpanel-tab-background-color, #2a2a2a)"}
-                    onMouseLeave={(e) => e.currentTarget.style.background = "transparent"}
-                >
-                    Close Others
-                </button>
-                <button
-                    class="tab-context-menu-item"
-                    onClick={handleCloseToTheRight}
-                    style={{
-                        display: "block",
-                        width: "100%",
-                        padding: "6px 12px",
-                        border: "none",
-                        background: "transparent",
-                        color: "inherit",
-                        "text-align": "left",
-                        cursor: "pointer",
-                        "font-size": "13px",
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.background = "var(--dv-activegroup-hiddenpanel-tab-background-color, #2a2a2a)"}
-                    onMouseLeave={(e) => e.currentTarget.style.background = "transparent"}
-                >
-                    Close to the Right
-                </button>
-            </div>
-        </Show>
-    );
-}
 
 // ── Verbose logging ──────────────────────────────────────────────────
 function vlog(context: string, ...args: any[]) {
@@ -208,49 +68,28 @@ function getPanelStatus(id: string): PanelStatus {
 
 // ── Spine Instance Selection Page ────────────────────────────────────
 
-function SpineInstanceSelector(props: { onCodeClick?: (spineInstanceTreeId: string, filepath: string) => void }) {
+function SpineInstanceSelector(props: { onCodeClick?: (filepath: string) => void }) {
     const instances = () => workbenchStore.spineInstances();
     const isConnecting = () => workbenchStore.api.status() === "connecting";
     const groups = () => workbenchStore.spineInstanceGroups();
+    const models = () => workbenchStore.registeredModels();
 
-    // Use persisted tab state from workbench store
-    const activeTab = () => workbenchStore.instanceSelectorTab();
-    const setActiveTab = (tab: "examples" | "tests") => workbenchStore.setInstanceSelectorTab(tab);
-
-    // Separate groups by type
-    const exampleGroups = () => groups().filter((g: any) => g.type !== 'test');
-    const testGroups = () => groups().filter((g: any) => g.type === 'test');
-
-    // Group examples by examplesPath for hierarchical display
-    const groupedExamples = () => {
-        const byPath: Record<string, { examplesPath: string; engines: any; dirs: { exampleDir: string; items: any[] }[] }> = {};
-        for (const g of exampleGroups()) {
-            const key = g.examplesPath || g.modelName;
-            if (!byPath[key]) byPath[key] = { examplesPath: key, engines: g.engines ?? {}, dirs: [] };
-            byPath[key].dirs.push({ exampleDir: g.exampleDir, items: g.list ?? [] });
-        }
-        return Object.values(byPath);
-    };
-
-    // Group tests by modelName for hierarchical display
-    const groupedTests = () => {
-        const byModel: Record<string, { modelName: string; engines: any; dirs: { exampleDir: string; items: any[] }[] }> = {};
-        for (const g of testGroups()) {
+    // Group flat server groups by modelName for hierarchical display
+    const modelGroups = () => {
+        const byModel: Record<string, { modelName: string; engines: any; examples: { exampleDir: string; items: any[] }[] }> = {};
+        for (const g of groups()) {
             const key = g.modelName;
-            if (!byModel[key]) byModel[key] = { modelName: key, engines: g.engines ?? {}, dirs: [] };
-            byModel[key].dirs.push({ exampleDir: g.exampleDir, items: g.list ?? [] });
+            if (!byModel[key]) byModel[key] = { modelName: key, engines: g.engines ?? {}, examples: [] };
+            byModel[key].examples.push({ exampleDir: g.exampleDir, items: g.list ?? [] });
         }
         return Object.values(byModel);
     };
-
-    const exampleCount = () => exampleGroups().reduce((sum: number, g: any) => sum + (g.list?.length ?? 0), 0);
-    const testCount = () => testGroups().reduce((sum: number, g: any) => sum + (g.list?.length ?? 0), 0);
 
     return (
         <div class="instance-selector">
             <div class="instance-selector-header">
                 <h2>Select a Model Instance to view</h2>
-                <p class="instance-selector-hint">Each example is a Capsule Spine Instance Tree</p>
+                <p class="instance-selector-hint">Each example is a Capsule Spine Tree Instance</p>
             </div>
             <Show when={isConnecting()}>
                 <div class="instance-selector-loading">Connecting to engines...</div>
@@ -260,161 +99,65 @@ function SpineInstanceSelector(props: { onCodeClick?: (spineInstanceTreeId: stri
                     No spine instances found. Make sure the engine API is running.
                 </div>
             </Show>
-            <Show when={instances().length > 0}>
-                <div class="instance-tabs">
-                    <button
-                        class={`instance-tab ${activeTab() === "examples" ? "active" : ""}`}
-                        onClick={() => setActiveTab("examples")}
-                    >
-                        Examples <span class="instance-tab-count">{exampleCount()}</span>
-                    </button>
-                    <button
-                        class={`instance-tab ${activeTab() === "tests" ? "active" : ""}`}
-                        onClick={() => setActiveTab("tests")}
-                    >
-                        Tests <span class="instance-tab-count">{testCount()}</span>
-                    </button>
-                </div>
-                <div class="instance-list">
-                    <Show when={activeTab() === "examples"}>
-                        <For each={groupedExamples()}>
-                            {(group) => {
-                                const copyPath = async () => {
-                                    try {
-                                        await navigator.clipboard.writeText(group.examplesPath);
-                                    } catch { /* ignore */ }
-                                };
-                                return (
-                                    <div class="instance-model">
-                                        <div class="instance-model-row">
-                                            <span class="instance-examples-path">{group.examplesPath}<button
-                                                class="instance-copy-btn"
-                                                onClick={copyPath}
-                                                title="Copy path to clipboard"
-                                            >⎘</button></span>
-                                        </div>
-                                        <For each={group.dirs}>
-                                            {(dir) => (
-                                                <div class="instance-example">
-                                                    <div class="instance-example-row">
-                                                        <span class="instance-tag instance-tag-example">Example</span>
-                                                        <span class="instance-example-name">{dir.exampleDir}</span>
-                                                    </div>
-                                                    <div class="instance-example-items">
-                                                        <For each={dir.items}>
-                                                            {(inst: any) => {
-                                                                const instanceName = () => (inst.$id as string).split('/').pop() ?? inst.$id;
-                                                                const lineSuffix = () => {
-                                                                    const ref = inst.capsuleSourceLineRef as string | null;
-                                                                    if (!ref) return '';
-                                                                    const m = ref.match(/:(\d+)$/);
-                                                                    return m ? `:${m[1]}` : '';
-                                                                };
-                                                                return (
-                                                                    <div class="instance-card-row">
-                                                                        <button
-                                                                            class="instance-card"
-                                                                            onClick={() => workbenchStore.selectSpineInstance(inst.$id)}
-                                                                        >
-                                                                            <span class="instance-tag instance-tag-instance">Instance</span>
-                                                                            <span class="instance-capsule-name">{instanceName()}<Show when={lineSuffix()}><span class="instance-line-ref">{lineSuffix()}</span></Show></span>
-                                                                        </button>
-                                                                        <Show when={inst.capsuleSourceLineRef && props.onCodeClick}>
-                                                                            <button
-                                                                                class="instance-card-code-btn"
-                                                                                onClick={(e) => {
-                                                                                    e.stopPropagation();
-                                                                                    props.onCodeClick!(inst.$id, inst.capsuleSourceLineRef);
-                                                                                }}
-                                                                                title="Open source file"
-                                                                            >Code</button>
-                                                                        </Show>
-                                                                    </div>
-                                                                );
-                                                            }}
-                                                        </For>
-                                                    </div>
-                                                </div>
-                                            )}
-                                        </For>
-                                    </div>
-                                );
-                            }}
-                        </For>
-                    </Show>
-                    <Show when={activeTab() === "tests"}>
-                        <For each={groupedTests()}>
-                            {(model) => (
-                                <div class="instance-model">
-                                    <div class="instance-model-row">
-                                        <span class="instance-tag instance-tag-model">Model</span>
-                                        <span class="instance-model-name">{model.modelName}</span>
-                                    </div>
-                                    <For each={model.dirs}>
-                                        {(dir) => (
-                                            <div class="instance-example">
-                                                <div class="instance-example-row">
-                                                    <span class="instance-tag instance-tag-test">Test</span>
-                                                    <span class="instance-example-name">{dir.exampleDir}</span>
-                                                </div>
-                                                <div class="instance-example-items">
-                                                    <For each={dir.items}>
-                                                        {(inst: any) => {
-                                                            const instanceName = () => (inst.$id as string).split('/').pop() ?? inst.$id;
-                                                            const lineSuffix = () => {
-                                                                const ref = inst.capsuleSourceLineRef as string | null;
-                                                                if (!ref) return '';
-                                                                const m = ref.match(/:(\d+)$/);
-                                                                return m ? `:${m[1]}` : '';
-                                                            };
-                                                            return (
-                                                                <div class="instance-card-row">
-                                                                    <button
-                                                                        class="instance-card"
-                                                                        onClick={() => workbenchStore.selectSpineInstance(inst.$id)}
-                                                                    >
-                                                                        <span class="instance-tag instance-tag-instance">Instance</span>
-                                                                        <span class="instance-capsule-name">{instanceName()}<Show when={lineSuffix()}><span class="instance-line-ref">{lineSuffix()}</span></Show></span>
-                                                                    </button>
-                                                                    <Show when={inst.capsuleSourceLineRef && props.onCodeClick}>
-                                                                        <button
-                                                                            class="instance-card-code-btn"
-                                                                            onClick={(e) => {
-                                                                                e.stopPropagation();
-                                                                                props.onCodeClick!(inst.$id, inst.capsuleSourceLineRef);
-                                                                            }}
-                                                                            title="Open source file"
-                                                                        >Code</button>
-                                                                    </Show>
-                                                                </div>
-                                                            );
-                                                        }}
-                                                    </For>
-                                                </div>
-                                            </div>
-                                        )}
-                                    </For>
+            <div class="instance-list">
+                <For each={modelGroups()}>
+                    {(model) => {
+                        const hasEngines = () => model.engines && Object.keys(model.engines).length > 0;
+                        return (
+                            <div class="instance-model">
+                                <div class="instance-model-row">
+                                    <span class="instance-tag instance-tag-model">Model</span>
+                                    <span class="instance-model-name">{model.modelName}</span>
                                 </div>
-                            )}
-                        </For>
-                        <Show when={testCount() === 0}>
-                            <div class="instance-selector-empty">No test instances found.</div>
-                        </Show>
-                    </Show>
-                </div>
-            </Show>
-            <Show when={!workbenchStore.selectedSpineInstance() && instances().length > 0}>
-                <div class="instance-howto">
-                    <h3>How to build your own model</h3>
-                    <ol>
-                        <li>Click on <strong>Code</strong> button for an example to launch editor or copy path and find code</li>
-                        <li>Click on same example to launch framespace viewer</li>
-                        <li>Make changes to source and reload browser</li>
-                    </ol>
-                    <br />
-                    <p><b>NOTE:</b> We are actively exploring how to best author & map components for representation in diagrams. Expect significant progress in the model development experience.</p>
-                </div>
-            </Show>
+                                <For each={model.examples}>
+                                    {(example) => (
+                                        <div class="instance-example">
+                                            <div class="instance-example-row">
+                                                <span class="instance-tag instance-tag-example">Example</span>
+                                                <span class="instance-example-name">{example.exampleDir}</span>
+                                            </div>
+                                            <div class="instance-example-items">
+                                                <For each={example.items}>
+                                                    {(inst: any) => {
+                                                        const instanceName = () => (inst.$id as string).split('/').pop() ?? inst.$id;
+                                                        const lineSuffix = () => {
+                                                            const ref = inst.capsuleSourceLineRef as string | null;
+                                                            if (!ref) return '';
+                                                            const m = ref.match(/:(\d+)$/);
+                                                            return m ? `:${m[1]}` : '';
+                                                        };
+                                                        return (
+                                                            <div class="instance-card-row">
+                                                                <button
+                                                                    class="instance-card"
+                                                                    onClick={() => workbenchStore.selectSpineInstance(inst.$id)}
+                                                                >
+                                                                    <span class="instance-tag instance-tag-instance">Instance</span>
+                                                                    <span class="instance-capsule-name">{instanceName()}<Show when={lineSuffix()}><span class="instance-line-ref">{lineSuffix()}</span></Show></span>
+                                                                </button>
+                                                                <Show when={inst.capsuleSourceLineRef && props.onCodeClick}>
+                                                                    <button
+                                                                        class="instance-card-code-btn"
+                                                                        onClick={(e) => {
+                                                                            e.stopPropagation();
+                                                                            props.onCodeClick!(inst.capsuleSourceLineRef);
+                                                                        }}
+                                                                        title="Open source file"
+                                                                    >Code</button>
+                                                                </Show>
+                                                            </div>
+                                                        );
+                                                    }}
+                                                </For>
+                                            </div>
+                                        </div>
+                                    )}
+                                </For>
+                            </div>
+                        );
+                    }}
+                </For>
+            </div>
         </div>
     );
 }
@@ -523,7 +266,7 @@ function WorkbenchHeader(props: {
             <div class="wb-title-block">
                 <h1 class="wb-title">Framespace Genesis Workbench</h1>
                 <div class="wb-branding">
-                    <img src={`${import.meta.env.BASE_URL}/assets/Stream44Studio-Icon-v1.svg`} alt="Stream44 Studio" class="wb-branding-icon" />
+                    <img src="/assets/Stream44Studio-Icon-v1.svg" alt="Stream44 Studio" class="wb-branding-icon" />
                     <span>a <a href="https://Stream44.Studio" target="_blank" rel="noopener noreferrer" class="wb-branding-link">Stream44.Studio</a> open dev project</span>
                 </div>
             </div>
@@ -565,31 +308,12 @@ function WorkbenchHeader(props: {
                         </Show>
                     </div>
                     <div class="wb-header-detail-right">
-                        <Show when={import.meta.env.DEV && client.status() === "connected"}>
+                        <Show when={client.status() === "connected"}>
                             <span class="engine-status-stats">{statsText()}</span>
                         </Show>
                     </div>
                 </div>
             </div>
-
-            {/* Timeline slider — shown when events are loaded, positioned to align with instance box */}
-            <Show when={workbenchStore.eventLogEntries().length > 0}>
-                <div class="wb-timeline-row">
-                    <Timeline
-                        currentEventIndex={workbenchStore.activeEventIndex}
-                        totalEvents={() => workbenchStore.eventLogEntries().length}
-                        isPlaying={workbenchStore.isPlaying}
-                        onEventChange={(idx) => {
-                            workbenchStore.stopPlaying();
-                            workbenchStore.setActiveEventIndex(idx);
-                        }}
-                        onPlayPause={workbenchStore.togglePlayPause}
-                        speedIndex={workbenchStore.playSpeedIndex}
-                        speedLabels={workbenchStore.PLAY_SPEED_LABELS}
-                        onSpeedChange={workbenchStore.setPlaySpeedIndex}
-                    />
-                </div>
-            </Show>
         </div>
     );
 }
@@ -868,8 +592,6 @@ function MethodPanelContent(props: {
                             spineInstanceTreeId={props.workbenchContext().spineInstanceTreeId}
                             apiCall={(path, args, engine) => workbenchStore.api.call(path, args, engine ?? workbenchStore.selectedEngine() ?? undefined)}
                             lib={workbenchLib}
-                            activeEventIndex={workbenchStore.activeEventIndex}
-                            eventLogEntries={workbenchStore.eventLogEntries}
                         />
                     </Show>
                 </Show>
@@ -883,178 +605,56 @@ function MethodPanelContent(props: {
 const NS_TRIM_PREFIX = '@stream44.studio~FramespaceGenesis~';
 const NS_TRIM_SUFFIX = '~ModelQueryMethods';
 
-function parseNamespace(ns: string): { category: string; modelName: string; displayPath: string } {
-    // Replace ~ with / for display
-    let displayPath = ns.replace(/~/g, '/');
-    // Trim common prefix/suffix
-    if (displayPath.startsWith('@stream44.studio/FramespaceGenesis/')) {
-        displayPath = displayPath.substring('@stream44.studio/FramespaceGenesis/'.length);
+function trimNamespace(ns: string): string {
+    let result = ns;
+    if (result.startsWith(NS_TRIM_PREFIX)) {
+        result = result.substring(NS_TRIM_PREFIX.length);
     }
-    if (displayPath.endsWith('/ModelQueryMethods')) {
-        displayPath = displayPath.substring(0, displayPath.length - '/ModelQueryMethods'.length);
+    if (result.endsWith(NS_TRIM_SUFFIX)) {
+        result = result.substring(0, result.length - NS_TRIM_SUFFIX.length);
     }
-    // Split into category (first segment) and model name (rest)
-    const parts = displayPath.split('/');
-    const category = parts[0] || 'Other';
-    const modelName = parts.slice(1).join('/') || displayPath;
-    return { category, modelName, displayPath };
+    return result;
 }
-
-type ApiModel = {
-    namespace: string;
-    category: string;
-    modelName: string;
-    displayPath: string;
-    description: string;
-    methods: { path: string; name: string; description?: string }[];
-};
-
-type ApiCategory = {
-    category: string;
-    models: ApiModel[];
-};
 
 function FramespaceApiListPanel(props: {
     schema: () => EngineSchema | null;
     onMethodClick: (path: string, name: string) => void;
-    openPanelIds?: () => Set<string>;
 }) {
-    const [expandedCategories, setExpandedCategories] = createSignal<Set<string>>(new Set());
-    const [expandedModels, setExpandedModels] = createSignal<Set<string>>(new Set());
-
-    const toggleCategory = (cat: string) => {
-        setExpandedCategories(prev => {
-            const next = new Set(prev);
-            if (next.has(cat)) next.delete(cat); else next.add(cat);
-            return next;
-        });
-    };
-
-    const toggleModel = (ns: string) => {
-        setExpandedModels(prev => {
-            const next = new Set(prev);
-            if (next.has(ns)) next.delete(ns); else next.add(ns);
-            return next;
-        });
-    };
-
-    // Check if a model has any open method panels
-    const modelHasOpenPanel = (model: ApiModel): boolean => {
-        const openIds = props.openPanelIds?.() ?? new Set();
-        return model.methods.some(m => openIds.has(m.path));
-    };
-
-    // Get open methods for a model (always shown even when collapsed)
-    const getOpenMethods = (model: ApiModel) => {
-        const openIds = props.openPanelIds?.() ?? new Set();
-        return model.methods.filter(m => openIds.has(m.path));
-    };
-
-    // Get non-open methods for a model (shown when expanded)
-    const getOtherMethods = (model: ApiModel) => {
-        const openIds = props.openPanelIds?.() ?? new Set();
-        return model.methods.filter(m => !openIds.has(m.path));
-    };
-
-    const categories = (): ApiCategory[] => {
+    const apis = () => {
         const s = props.schema();
         if (!s) return [];
-
-        // Build models with parsed namespace info
-        const models: ApiModel[] = Object.entries(s.apis ?? {}).map(([ns, api]) => {
-            const parsed = parseNamespace(ns);
+        return Object.entries(s.apis ?? {}).map(([ns, api]) => {
             const methods = Object.entries(s.endpoints)
                 .filter(([, def]) => def.namespace === ns)
-                .map(([path, def]) => ({ path, name: path.split("/").pop()!, description: def.description }))
+                .map(([path, def]) => ({ path, name: path.split("/").pop()!, ...def }))
                 .sort((a, b) => a.name.localeCompare(b.name));
-            return { namespace: ns, ...parsed, description: (api as any).description ?? '', methods };
+            return { namespace: ns, displayNamespace: trimNamespace(ns), ...api, methods };
         });
-
-        // Group by category
-        const catMap = new Map<string, ApiModel[]>();
-        for (const model of models) {
-            const existing = catMap.get(model.category) ?? [];
-            existing.push(model);
-            catMap.set(model.category, existing);
-        }
-
-        // Sort categories and models within
-        return Array.from(catMap.entries())
-            .map(([category, models]) => ({ category, models: models.sort((a, b) => a.modelName.localeCompare(b.modelName)) }))
-            .sort((a, b) => a.category.localeCompare(b.category));
     };
 
     return (
         <div class="fapi-list">
-            <For each={categories()}>
-                {(cat) => (
-                    <div class="fapi-category">
-                        <div
-                            class="fapi-category-header"
-                            onClick={() => toggleCategory(cat.category)}
-                        >
-                            <span class="fapi-group-chevron">{expandedCategories().has(cat.category) ? '▼' : '▶'}</span>
-                            <span class="fapi-category-name">{cat.category}</span>
-                            <span class="fapi-group-count">{cat.models.length} models</span>
+            <For each={apis()}>
+                {(api) => (
+                    <div class="fapi-group">
+                        <div class="fapi-group-header">
+                            <span class="fapi-group-name">{api.displayNamespace}</span>
+                            <span class="fapi-group-count">{api.methods.length} methods</span>
                         </div>
-                        <Show when={expandedCategories().has(cat.category)}>
-                            <div class="fapi-category-models">
-                                <For each={cat.models}>
-                                    {(model) => {
-                                        const openMethods = () => getOpenMethods(model);
-                                        const otherMethods = () => getOtherMethods(model);
-                                        const isExpanded = () => expandedModels().has(model.namespace);
-                                        const hasOpen = () => modelHasOpenPanel(model);
-
-                                        return (
-                                            <div class="fapi-model">
-                                                <div
-                                                    class={`fapi-model-header ${hasOpen() ? 'fapi-model-header--active' : ''}`}
-                                                    onClick={() => toggleModel(model.namespace)}
-                                                >
-                                                    <span class="fapi-group-chevron">{isExpanded() ? '▼' : '▶'}</span>
-                                                    <span class="fapi-model-name">{model.modelName}</span>
-                                                    <span class="fapi-group-count">{model.methods.length}</span>
-                                                </div>
-                                                {/* Always show open methods */}
-                                                <Show when={openMethods().length > 0}>
-                                                    <div class="fapi-methods fapi-methods--open">
-                                                        <For each={openMethods()}>
-                                                            {(m) => (
-                                                                <button
-                                                                    class="fapi-method fapi-method--active"
-                                                                    onClick={() => props.onMethodClick(m.path, m.name)}
-                                                                >
-                                                                    <span class="fapi-method-name">{m.name}</span>
-                                                                </button>
-                                                            )}
-                                                        </For>
-                                                    </div>
-                                                </Show>
-                                                {/* Show other methods when expanded */}
-                                                <Show when={isExpanded() && otherMethods().length > 0}>
-                                                    <div class="fapi-methods">
-                                                        <For each={otherMethods()}>
-                                                            {(m) => (
-                                                                <button
-                                                                    class="fapi-method"
-                                                                    onClick={() => props.onMethodClick(m.path, m.name)}
-                                                                >
-                                                                    <span class="fapi-method-name">{m.name}</span>
-                                                                    <Show when={m.description}>
-                                                                        <span class="fapi-method-desc">{m.description}</span>
-                                                                    </Show>
-                                                                </button>
-                                                            )}
-                                                        </For>
-                                                    </div>
-                                                </Show>
-                                            </div>
-                                        );
-                                    }}
-                                </For>
-                            </div>
-                        </Show>
+                        <div class="fapi-group-desc" innerHTML={workbenchLib.marked.parseInline(api.description) as string} />
+                        <div class="fapi-methods">
+                            <For each={api.methods}>
+                                {(m) => (
+                                    <button
+                                        class="fapi-method"
+                                        onClick={() => props.onMethodClick(m.path, m.name)}
+                                    >
+                                        <span class="fapi-method-name">{m.name}</span>
+                                        <span class="fapi-method-desc">{m.description}</span>
+                                    </button>
+                                )}
+                            </For>
+                        </div>
                     </div>
                 )}
             </For>
@@ -1133,18 +733,6 @@ function WorkbenchDockview() {
     let dockApi: DockviewApi | undefined;
     const disposers: (() => void)[] = [];
 
-    // Track open panel IDs for the Model APIs panel to highlight active methods
-    const [openPanelIds, setOpenPanelIds] = createSignal<Set<string>>(new Set());
-
-    // Track the active right-side panel ID for FramespacesPanel highlighting
-    const [activeRightPanelId, setActiveRightPanelId] = createSignal<string | null>(null);
-
-    const updateOpenPanelIds = () => {
-        if (!dockApi) return;
-        const ids = new Set(dockApi.panels.map(p => p.id));
-        setOpenPanelIds(ids);
-    };
-
     const engine = () => {
         return workbenchStore.api;
     };
@@ -1184,86 +772,6 @@ function WorkbenchDockview() {
         );
     };
 
-    // Open (or focus) a framespace visualization panel
-    const openFramespacePanel = (link: FramespaceLink) => {
-        if (!dockApi) return;
-        vlog("openFramespacePanel", `path=${link.methodPath} label=${link.label}`);
-        openMethodPanel(link.methodPath, link.label);
-        setActiveRightPanelId(link.methodPath);
-    };
-
-    // Resolve all framespace links from a config object
-    const resolveFramespaceLinks = (fs: Record<string, any>): { methodPath: string; label: string }[] => {
-        const result: { methodPath: string; label: string }[] = [];
-        for (const [uri, entry] of Object.entries(fs)) {
-            const hashIdx = uri.indexOf('#');
-            const baseUri = hashIdx >= 0 ? uri.substring(0, hashIdx) : uri;
-            const ns = baseUri.replace(/\//g, '~');
-            const vizMethods = entry?.visualizationMethod;
-            if (!vizMethods) continue;
-            for (const [methodName, methodConfig] of Object.entries(vizMethods) as [string, any][]) {
-                const label = methodConfig?.label ?? methodName;
-                const s = engine().schema();
-                const apiDef = s?.apis?.[ns];
-                const basePath = apiDef?.basePath ?? `/api/${ns}`;
-                result.push({ methodPath: `${basePath}/${methodName}`, label });
-            }
-        }
-        return result;
-    };
-
-    // Track auto-opened panel IDs so we can clean up on switch
-    let autoOpenedPanelIds: Set<string> = new Set();
-
-    // Open all configured framespace panels, close non-config right-side panels,
-    // and focus the first configured panel.
-    function autoOpenFramespaces() {
-        if (!dockApi) return;
-        const config = workbenchStore.selectedInstanceConfig();
-        const fs = config?.framespaces as Record<string, any> | null | undefined;
-
-        const links = fs ? resolveFramespaceLinks(fs) : [];
-        const newIds = new Set(links.map(l => l.methodPath));
-
-        vlog("autoOpenFramespaces", `prev=${[...autoOpenedPanelIds].join(',')} new=${[...newIds].join(',')}`);
-
-        // Close right-side panels that are not in the new config
-        for (const panel of [...dockApi.panels]) {
-            if (LEFT_GROUP_IDS.has(panel.id)) continue;
-            if (panel.id === REQUEST_LOG_PANEL_ID) continue;
-            if (!newIds.has(panel.id)) {
-                vlog("autoOpenFramespaces", `closing non-config panel: ${panel.id}`);
-                panel.api.close();
-            }
-        }
-
-        autoOpenedPanelIds = newIds;
-
-        if (links.length === 0) return;
-
-        // Open all configured panels (skip if already open)
-        for (const link of links) {
-            const existing = dockApi.getPanel(link.methodPath);
-            if (!existing) {
-                vlog("autoOpenFramespaces", `opening panel: ${link.methodPath} title=${link.label}`);
-                openInRightGroup(
-                    dockApi,
-                    { id: link.methodPath, component: "framespace-api-method", title: link.label },
-                    { path: link.methodPath, name: link.label },
-                    colWidth() * 5,
-                );
-            }
-        }
-
-        // Focus the first configured panel
-        const firstPanel = dockApi.getPanel(links[0].methodPath);
-        if (firstPanel) {
-            vlog("autoOpenFramespaces", `focusing first panel: ${links[0].methodPath}`);
-            firstPanel.api.setActive();
-            setActiveRightPanelId(links[0].methodPath);
-        }
-    }
-
     // Wait for schema, then build panels
     let built = false;
     createEffect(() => {
@@ -1283,7 +791,7 @@ function WorkbenchDockview() {
             theme: themeBlueprintVellum,
             createComponent(options) {
                 if (options.name === "framespace-models") {
-                    // Framespaces panel — config-driven visualization links
+                    // Models panel — tag-filtered method list
                     const el = document.createElement("div");
                     el.style.cssText = "width:100%;height:100%;overflow:auto;";
                     let disposeRender: (() => void) | undefined;
@@ -1291,11 +799,9 @@ function WorkbenchDockview() {
                         element: el,
                         init() {
                             disposeRender = render(() => (
-                                <FramespacesPanel
+                                <ModelsPanel
                                     schema={() => engine().schema()}
-                                    framespaces={() => workbenchStore.selectedInstanceConfig()?.framespaces ?? null}
-                                    onFramespaceClick={openFramespacePanel}
-                                    activePanelId={activeRightPanelId}
+                                    onMethodClick={openMethodPanel}
                                 />
                             ), el);
                             disposers.push(disposeRender);
@@ -1316,7 +822,6 @@ function WorkbenchDockview() {
                                 <FramespaceApiListPanel
                                     schema={() => engine().schema()}
                                     onMethodClick={openMethodPanel}
-                                    openPanelIds={openPanelIds}
                                 />
                             ), el);
                             disposers.push(disposeRender);
@@ -1451,31 +956,6 @@ function WorkbenchDockview() {
         // Store ref for header panel launchers
         setDockApiRef(dockApi);
 
-        // Track panel add/remove for Model APIs panel highlighting
-        const addDispose = dockApi.onDidAddPanel(() => updateOpenPanelIds());
-        const removeDispose = dockApi.onDidRemovePanel(() => {
-            updateOpenPanelIds();
-            // If the removed panel was the active right panel, clear it
-            if (dockApi) {
-                const active = dockApi.activePanel;
-                if (active && !LEFT_GROUP_IDS.has(active.id)) {
-                    setActiveRightPanelId(active.id);
-                }
-            }
-        });
-        disposers.push(() => addDispose.dispose());
-        disposers.push(() => removeDispose.dispose());
-        updateOpenPanelIds();
-
-        // Track active panel changes for FramespacesPanel highlighting
-        const activePanelDispose = dockApi.onDidActivePanelChange((e) => {
-            if (e && !LEFT_GROUP_IDS.has(e.id) && e.id !== REQUEST_LOG_PANEL_ID) {
-                vlog("activePanelChange", `right panel active: ${e.id}`);
-                setActiveRightPanelId(e.id);
-            }
-        });
-        disposers.push(() => activePanelDispose.dispose());
-
         // Try to restore saved layout, fall back to default panels
         const savedLayout = workbenchStore.dockviewLayout();
         let restored = false;
@@ -1520,20 +1000,6 @@ function WorkbenchDockview() {
                     });
                 }
             }
-            // Re-apply group constraints after restore (prevents left panel expanding)
-            requestAnimationFrame(() => {
-                for (const viz of visualizations) {
-                    if (viz.maxWidthCols || viz.minWidthCols) {
-                        const panel = dockApi!.getPanel(viz.id);
-                        if (panel?.group) {
-                            panel.group.api.setConstraints({
-                                maximumWidth: viz.maxWidthCols ? cw * viz.maxWidthCols : undefined,
-                                minimumWidth: viz.minWidthCols ? cw * viz.minWidthCols : undefined,
-                            });
-                        }
-                    }
-                }
-            });
         }
 
         if (!restored) {
@@ -1570,41 +1036,6 @@ function WorkbenchDockview() {
             }
         });
         disposers.push(() => layoutDisposable.dispose());
-
-        // Add context menu listener for tabs
-        const handleTabContextMenu = (e: MouseEvent) => {
-            const target = e.target as HTMLElement;
-            // Find the tab element (has class 'dv-tab')
-            const tabEl = target.closest('.dv-tab') as HTMLElement | null;
-            if (!tabEl) return;
-
-            // Get the panel id from the tab's data attribute
-            const panelId = tabEl.getAttribute('data-testid')?.replace('dv-tab-', '') ?? null;
-            if (!panelId) return;
-
-            // Find the panel and its group
-            const panel = dockApi?.getPanel(panelId);
-            if (!panel) return;
-
-            e.preventDefault();
-            setTabContextMenu({
-                visible: true,
-                x: e.clientX,
-                y: e.clientY,
-                panelId: panelId,
-                groupId: panel.group.id,
-            });
-        };
-
-        containerRef.addEventListener('contextmenu', handleTabContextMenu);
-        disposers.push(() => containerRef?.removeEventListener('contextmenu', handleTabContextMenu));
-
-        // Now that dockApi is ready, watch instance changes to auto-open first framespace
-        createEffect(() => {
-            // Subscribe to selectedInstanceConfig so this re-fires on instance change
-            workbenchStore.selectedInstanceConfig();
-            autoOpenFramespaces();
-        });
     }
 
     onCleanup(() => {
@@ -1614,10 +1045,7 @@ function WorkbenchDockview() {
     });
 
     return (
-        <>
-            <div class="wb-dockview" ref={containerRef} />
-            <TabContextMenu dockApi={() => dockApi ?? null} />
-        </>
+        <div class="wb-dockview" ref={containerRef} />
     );
 }
 
@@ -1713,306 +1141,6 @@ function SettingsDialog(props: {
                 <div class="code-dialog-actions">
                     <button class="code-dialog-btn code-dialog-btn-primary" onClick={save}>Save</button>
                     <button class="code-dialog-btn" onClick={props.onClose}>Cancel</button>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-// ── Source Browser Dialog (CodeMirror file browser) ─────────────────
-
-type SourceFile = {
-    '#': string;
-    capsuleName: string;
-    shortName: string;
-    fileUri: string;
-    line: number | null;
-    capsuleSourceLineRef: string;
-};
-
-function SourceBrowserDialog(props: {
-    spineInstanceTreeId: string;
-    settings: WorkbenchSettings;
-    onSaveSettings: (s: WorkbenchSettings) => void;
-    onClose: () => void;
-    showError: (e: ErrorInfo) => void;
-    initialFilePath?: string;
-}) {
-    const [files, setFiles] = createSignal<SourceFile[]>([]);
-    const [selectedFile, setSelectedFile] = createSignal<SourceFile | null>(null);
-    const [fileContent, setFileContent] = createSignal<string>("");
-    const [fileLanguage, setFileLanguage] = createSignal<string>("text");
-    const [loadingFiles, setLoadingFiles] = createSignal(true);
-    const [loadingContent, setLoadingContent] = createSignal(false);
-    const [showCommandPicker, setShowCommandPicker] = createSignal(!props.settings.openFileCommand);
-    const [isDirty, setIsDirty] = createSignal(false);
-    const [isSaving, setIsSaving] = createSignal(false);
-    const [viewMode, setViewMode] = createSignal<'simplified' | 'raw'>('simplified');
-
-    let editorRef: HTMLDivElement | undefined;
-    let editorView: EditorView | undefined;
-
-    // Compute prefix to trim from capsule names: dirname(dirname(spineInstanceTreeId))
-    const computeTrimPrefix = (treeId: string): string => {
-        const parts = treeId.split('/');
-        if (parts.length < 3) return '';
-        return parts.slice(0, -1).join('/') + '/';
-    };
-
-    const trimPrefix = computeTrimPrefix(props.spineInstanceTreeId);
-
-    const getDisplayName = (capsuleName: string): string => {
-        if (trimPrefix && capsuleName.startsWith(trimPrefix)) {
-            return capsuleName.slice(trimPrefix.length);
-        }
-        return capsuleName;
-    };
-
-    // Load file list on mount
-    onMount(async () => {
-        try {
-            const data = await workbenchStore.api.listCapsuleSourceFiles(props.spineInstanceTreeId);
-            if (isApiError(data.result)) {
-                props.showError(data.result);
-                setLoadingFiles(false);
-                return;
-            }
-            const list = data.result?.list ?? [];
-            list.sort((a: SourceFile, b: SourceFile) => a.capsuleName.localeCompare(b.capsuleName));
-            setFiles(list);
-            // Auto-select file if initialFilePath was provided
-            if (props.initialFilePath && list.length > 0) {
-                // Strip :line suffix for comparison (capsuleSourceLineRef may have different line numbers)
-                const stripLine = (ref: string) => ref.replace(/:\d+$/, '');
-                const target = stripLine(props.initialFilePath);
-                vlog("SourceBrowserDialog", `initialFilePath=${props.initialFilePath} target=${target}`);
-                vlog("SourceBrowserDialog", `files: ${list.map((f: SourceFile) => f.capsuleSourceLineRef).join(', ')}`);
-                const match = list.find((f: SourceFile) =>
-                    stripLine(f.capsuleSourceLineRef) === target ||
-                    f.capsuleSourceLineRef === props.initialFilePath ||
-                    f.fileUri === props.initialFilePath ||
-                    f.capsuleName === target ||
-                    props.initialFilePath!.startsWith(f.fileUri)
-                );
-                vlog("SourceBrowserDialog", `match=${match ? match.capsuleName : 'NONE'}`);
-                if (match) {
-                    selectFile(match);
-                }
-            }
-        } catch (err: any) {
-            props.showError({ method: "listCapsuleSourceFiles", message: err.message ?? String(err) });
-        }
-        setLoadingFiles(false);
-    });
-
-    const getLangExtension = (lang: string) => {
-        switch (lang) {
-            case "typescript":
-            case "javascript":
-                return javascript({ typescript: lang === "typescript", jsx: true });
-            case "json":
-                return jsonLang();
-            case "css":
-                return cssLang();
-            default:
-                return [];
-        }
-    };
-
-    const createOrUpdateEditor = (content: string, lang: string, readOnly: boolean = false) => {
-        if (!editorRef) return;
-        if (editorView) {
-            editorView.destroy();
-            editorView = undefined;
-        }
-        const extensions: any[] = [
-            basicSetup,
-            getLangExtension(lang),
-            oneDark,
-            EditorView.theme({
-                "&": { height: "100%", fontSize: "12px" },
-                ".cm-scroller": { overflow: "auto" },
-                ".cm-content": { fontFamily: "var(--wb-font-mono)" },
-            }),
-        ];
-        if (readOnly) {
-            extensions.push(EditorView.editable.of(false));
-            extensions.push(EditorState.readOnly.of(true));
-        } else {
-            extensions.push(EditorView.updateListener.of((update) => {
-                if (update.docChanged) {
-                    setIsDirty(true);
-                }
-            }));
-        }
-        const state = EditorState.create({ doc: content, extensions });
-        editorView = new EditorView({ state, parent: editorRef });
-    };
-
-    const loadFileContent = async (fileUri: string, format: 'simplified' | 'raw') => {
-        setLoadingContent(true);
-        try {
-            const data = await workbenchStore.api.getCapsuleSourceFile(fileUri, format);
-            if (isApiError(data.result)) {
-                props.showError(data.result);
-                setLoadingContent(false);
-                return;
-            }
-            const content = data.result?.content ?? "";
-            const lang = data.result?.language ?? "text";
-            if (format === 'raw') {
-                setFileContent(content);
-                setFileLanguage(lang);
-            }
-            const isReadOnly = format === 'simplified';
-            createOrUpdateEditor(content, lang, isReadOnly);
-        } catch (err: any) {
-            props.showError({ method: "getCapsuleSourceFile", message: err.message ?? String(err) });
-        }
-        setLoadingContent(false);
-    };
-
-    const selectFile = async (file: SourceFile) => {
-        setSelectedFile(file);
-        setIsDirty(false);
-        await loadFileContent(file.fileUri, viewMode());
-    };
-
-    const switchViewMode = async (mode: 'simplified' | 'raw') => {
-        if (mode === viewMode()) return;
-        setViewMode(mode);
-        setIsDirty(false);
-        const file = selectedFile();
-        if (file) {
-            await loadFileContent(file.fileUri, mode);
-        }
-    };
-
-    const handleSave = async () => {
-        const file = selectedFile();
-        if (!file || !editorView) return;
-        const content = editorView.state.doc.toString();
-        setIsSaving(true);
-        try {
-            const data = await workbenchStore.api.saveCapsuleSourceFile(file.fileUri, content);
-            if (isApiError(data.result)) {
-                props.showError(data.result);
-            } else {
-                setIsDirty(false);
-                setFileContent(content);
-            }
-        } catch (err: any) {
-            props.showError({ method: "saveCapsuleSourceFile", message: err.message ?? String(err) });
-        }
-        setIsSaving(false);
-    };
-
-    const handleOpenExternally = () => {
-        const file = selectedFile();
-        if (!file) return;
-        const cmd = props.settings.openFileCommand;
-        if (cmd) {
-            execOpenFile(cmd, file.capsuleSourceLineRef, props.showError);
-        } else {
-            setShowCommandPicker(true);
-        }
-    };
-
-    const handleCommandSelect = (cmd: string) => {
-        if (!cmd.trim()) return;
-        props.onSaveSettings({ ...props.settings, openFileCommand: cmd.trim() });
-        const file = selectedFile();
-        if (file) {
-            execOpenFile(cmd.trim(), file.capsuleSourceLineRef, props.showError);
-        }
-        setShowCommandPicker(false);
-    };
-
-    onCleanup(() => {
-        editorView?.destroy();
-    });
-
-    return (
-        <div class="source-browser-overlay" onClick={(e) => { if (e.target === e.currentTarget) props.onClose(); }}>
-            <div class="source-browser">
-                <div class="source-browser-header">
-                    <span class="source-browser-title">Capsule Source Files</span>
-                    <button class="code-dialog-close" onClick={props.onClose}>×</button>
-                </div>
-                <div class="source-browser-body">
-                    <div class="source-browser-sidebar">
-                        <Show when={!loadingFiles()} fallback={
-                            <div class="source-browser-loading">Loading files...</div>
-                        }>
-                            <Show when={files().length > 0} fallback={
-                                <div class="source-browser-empty">No source files found</div>
-                            }>
-                                <For each={files()}>
-                                    {(file) => (
-                                        <button
-                                            class={`source-browser-file ${selectedFile()?.fileUri === file.fileUri ? "active" : ""}`}
-                                            onClick={() => selectFile(file)}
-                                            title={file.capsuleName}
-                                        >
-                                            <span class="source-browser-file-name">{getDisplayName(file.capsuleName)}</span>
-                                        </button>
-                                    )}
-                                </For>
-                            </Show>
-                        </Show>
-                    </div>
-                    <div class="source-browser-editor-area">
-                        <Show when={selectedFile()}>
-                            {(file) => (
-                                <div class="source-browser-editor-header">
-                                    <div class="source-browser-editor-header-top">
-                                        <code class="source-browser-filepath">{file().fileUri}</code>
-                                        <Show when={import.meta.env.DEV}>
-                                            <div class="source-browser-editor-actions">
-                                                <button
-                                                    class="code-dialog-btn"
-                                                    onClick={handleSave}
-                                                    disabled={viewMode() === 'simplified' || isSaving()}
-                                                    classList={{ 'code-dialog-btn-muted': !isDirty() }}
-                                                    title={viewMode() === 'simplified' ? 'Switch to Raw Source to enable editing' : (!isDirty() ? 'No changes to save' : '')}
-                                                >{isSaving() ? "Saving..." : "Save"}</button>
-                                                <button
-                                                    class="code-dialog-btn code-dialog-btn-primary"
-                                                    onClick={handleOpenExternally}
-                                                >Open Externally</button>
-                                            </div>
-                                        </Show>
-                                    </div>
-                                    <div class="source-browser-view-toggle">
-                                        <button
-                                            class={`source-browser-view-btn ${viewMode() === 'simplified' ? 'active' : ''}`}
-                                            onClick={() => switchViewMode('simplified')}
-                                        >Simplified Source</button>
-                                        <button
-                                            class={`source-browser-view-btn ${viewMode() === 'raw' ? 'active' : ''}`}
-                                            onClick={() => switchViewMode('raw')}
-                                        >Raw Source</button>
-                                    </div>
-                                </div>
-                            )}
-                        </Show>
-                        <Show when={import.meta.env.DEV && showCommandPicker() && selectedFile()}>
-                            <div class="source-browser-command-picker">
-                                <SettingCommandPicker
-                                    value={props.settings.openFileCommand}
-                                    onChange={handleCommandSelect}
-                                />
-                            </div>
-                        </Show>
-                        <div class="source-browser-editor" ref={editorRef}>
-                            <Show when={!selectedFile() && !loadingContent()}>
-                                <div class="source-browser-placeholder">Select a file to view its source</div>
-                            </Show>
-                            <Show when={loadingContent()}>
-                                <div class="source-browser-loading">Loading file...</div>
-                            </Show>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -2144,9 +1272,6 @@ export default function Home() {
     const [ready, setReady] = createSignal(false);
     const [settings, setSettings] = createSignal<WorkbenchSettings>(loadSettings());
     const [codeDialog, setCodeDialog] = createSignal<{ title: string; fullpath: string } | null>(null);
-    const [showSourceBrowser, setShowSourceBrowser] = createSignal(false);
-    const [sourceBrowserInitialFile, setSourceBrowserInitialFile] = createSignal<string | undefined>(undefined);
-    const [sourceBrowserTreeId, setSourceBrowserTreeId] = createSignal<string | undefined>(undefined);
     const [showSettings, setShowSettings] = createSignal(false);
     const [errorDialog, setErrorDialog] = createSignal<ErrorInfo | null>(null);
 
@@ -2212,22 +1337,12 @@ export default function Home() {
             openCodeFile("Open Rep Source", fullpath);
         }) as EventListener);
 
-        // Listen for Capsule.code.open events (from component card Code button)
+        // Listen for Capsule.code.open events (from Capsule rep Code button)
         document.addEventListener("Capsule.code.open", ((e: Event) => {
             const filepath = (e as CustomEvent).detail?.filepath;
             if (!filepath) return;
             vlog("Home", `Capsule.code.open: ${filepath}`);
-            // Force remount if already open by closing first
-            if (showSourceBrowser()) {
-                setShowSourceBrowser(false);
-                queueMicrotask(() => {
-                    setSourceBrowserInitialFile(filepath);
-                    setShowSourceBrowser(true);
-                });
-            } else {
-                setSourceBrowserInitialFile(filepath);
-                setShowSourceBrowser(true);
-            }
+            openCodeFile("Open Capsule Source", filepath);
         }) as EventListener);
     });
 
@@ -2257,10 +1372,9 @@ export default function Home() {
                 selectedLineSuffix={selectedLineSuffix}
                 onSettingsClick={() => setShowSettings(true)}
                 onCodeClick={() => {
-                    if (selected()) {
-                        setSourceBrowserInitialFile(selectedLineRef() ?? undefined);
-                        setShowSourceBrowser(true);
-                    }
+                    const ref = selectedLineRef();
+                    if (ref) openCodeFile("Open Capsule Source", ref);
+                    else openCapsuleCode(selected()!);
                 }}
                 onClearInstance={() => workbenchStore.clearSpineInstance()}
             />
@@ -2270,11 +1384,7 @@ export default function Home() {
                     <div class="wb-loading">Connecting to engines...</div>
                 }>
                     <Show when={selected()} fallback={
-                        <SpineInstanceSelector onCodeClick={(treeId, filepath) => {
-                            setSourceBrowserTreeId(treeId);
-                            setSourceBrowserInitialFile(filepath);
-                            setShowSourceBrowser(true);
-                        }} />
+                        <SpineInstanceSelector onCodeClick={(filepath) => openCodeFile("Open Capsule Source", filepath)} />
                     }>
                         <WorkbenchDockview />
                     </Show>
@@ -2288,17 +1398,6 @@ export default function Home() {
                     </div>
                 </Show>
             </div>
-
-            <Show when={showSourceBrowser() && (selected() || sourceBrowserTreeId())}>
-                <SourceBrowserDialog
-                    spineInstanceTreeId={(selected() || sourceBrowserTreeId())!}
-                    settings={settings()}
-                    onSaveSettings={persistSettings}
-                    onClose={() => { setShowSourceBrowser(false); setSourceBrowserInitialFile(undefined); setSourceBrowserTreeId(undefined); }}
-                    showError={showError}
-                    initialFilePath={sourceBrowserInitialFile()}
-                />
-            </Show>
 
             <Show when={codeDialog()}>
                 {(dlg) => (

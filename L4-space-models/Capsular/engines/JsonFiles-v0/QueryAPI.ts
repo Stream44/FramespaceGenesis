@@ -7,8 +7,8 @@ import { mkdirSync, existsSync, readFileSync, writeFileSync, rmSync } from 'fs'
 // Edge tables: <dataDir>/edges/<Edge>.json   →  [ { fromTable, from, toTable, to } ]
 // ---------------------------------------------------------------------------
 
-const NODE_TABLES = ['Capsule', 'CapsuleSource', 'SpineContract', 'PropertyContract', 'CapsuleProperty', 'CapsuleInstance', 'MembraneEvent'] as const
-const EDGE_TABLES = ['HAS_SOURCE', 'IMPLEMENTS_SPINE', 'HAS_PROPERTY_CONTRACT', 'HAS_PROPERTY', 'MAPS_TO', 'EXTENDS', 'DELEGATES_TO', 'INSTANCE_OF', 'PARENT_INSTANCE', 'HAS_MEMBRANE_EVENT'] as const
+const NODE_TABLES = ['Capsule', 'CapsuleSource', 'SpineContract', 'PropertyContract', 'CapsuleProperty', 'CapsuleInstance'] as const
+const EDGE_TABLES = ['HAS_SOURCE', 'IMPLEMENTS_SPINE', 'HAS_PROPERTY_CONTRACT', 'HAS_PROPERTY', 'MAPS_TO', 'EXTENDS', 'DELEGATES_TO', 'INSTANCE_OF', 'PARENT_INSTANCE'] as const
 
 function _readJson(filePath: string, fallback: any): any {
     if (!existsSync(filePath)) return fallback
@@ -160,15 +160,14 @@ export async function capsule({
                 _listCapsules: {
                     type: CapsulePropertyTypes.Function,
                     value: async function (this: any, spineInstanceTreeId?: string): Promise<any[]> {
-                        const capsuleNodes = this._readNodeTable('Capsule')
+                        const capsules = Object.values(this._readNodeTable('Capsule')) as any[]
                         const hasSourceEdges = this._readEdgeTable('HAS_SOURCE')
-                        const entries = Object.entries(capsuleNodes) as [string, any][]
                         const filtered = spineInstanceTreeId
-                            ? entries.filter(([, c]) => c.spineInstanceTreeId === spineInstanceTreeId)
-                            : entries.filter(([pk]) => hasSourceEdges.some((e: any) => e.from === pk))
+                            ? capsules.filter((c: any) => c.spineInstanceTreeId === spineInstanceTreeId)
+                            : capsules.filter((c: any) => hasSourceEdges.some((e: any) => e.from === c.capsuleSourceLineRef))
                         return filtered
-                            .sort(([, a], [, b]) => (a.capsuleName || '').localeCompare(b.capsuleName || ''))
-                            .map(([, c]) => ({ capsuleName: c.capsuleName, capsuleSourceLineRef: c.capsuleSourceLineRef }))
+                            .sort((a: any, b: any) => (a.capsuleName || '').localeCompare(b.capsuleName || ''))
+                            .map((c: any) => ({ capsuleName: c.capsuleName, capsuleSourceLineRef: c.capsuleSourceLineRef }))
                     }
                 },
 
@@ -178,22 +177,13 @@ export async function capsule({
                  */
                 _getCapsuleWithSource: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, spineInstanceTreeId: string, capsuleName: string): Promise<any | null> {
+                    value: async function (this: any, capsuleName: string): Promise<any | null> {
                         const capsuleNodes = this._readNodeTable('Capsule')
                         const sourceNodes = this._readNodeTable('CapsuleSource')
                         const hasSourceEdges = this._readEdgeTable('HAS_SOURCE')
-                        // Find dict key (scopedRef) and data for matching capsule
-                        let capPk: string | null = null
-                        let cap: any = null
-                        for (const [pk, c] of Object.entries(capsuleNodes) as any[]) {
-                            if (c.spineInstanceTreeId === spineInstanceTreeId && c.capsuleName === capsuleName) {
-                                capPk = pk
-                                cap = c
-                                break
-                            }
-                        }
-                        if (!cap || !capPk) return null
-                        const edge = hasSourceEdges.find((e: any) => e.from === capPk)
+                        const cap = (Object.values(capsuleNodes) as any[]).find((c: any) => c.capsuleName === capsuleName)
+                        if (!cap) return null
+                        const edge = hasSourceEdges.find((e: any) => e.from === cap.capsuleSourceLineRef)
                         if (!edge) return null
                         const src = sourceNodes[edge.to]
                         if (!src) return null
@@ -207,8 +197,7 @@ export async function capsule({
                  */
                 _getCapsuleSpineTree_data: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, spineInstanceTreeId: string, capsuleSourceLineRef: string): Promise<any[]> {
-                        const capsuleNodes = this._readNodeTable('Capsule')
+                    value: async function (this: any, capsuleSourceLineRef: string): Promise<any[]> {
                         const spineNodes = this._readNodeTable('SpineContract')
                         const pcNodes = this._readNodeTable('PropertyContract')
                         const propNodes = this._readNodeTable('CapsuleProperty')
@@ -216,16 +205,7 @@ export async function capsule({
                         const hpcEdges = this._readEdgeTable('HAS_PROPERTY_CONTRACT')
                         const hpEdges = this._readEdgeTable('HAS_PROPERTY')
                         const rows: any[] = []
-                        // Find the scoped dict key for this capsule
-                        let scopedKey: string | null = null
-                        for (const [pk, c] of Object.entries(capsuleNodes) as any[]) {
-                            if (c.spineInstanceTreeId === spineInstanceTreeId && c.capsuleSourceLineRef === capsuleSourceLineRef) {
-                                scopedKey = pk
-                                break
-                            }
-                        }
-                        if (!scopedKey) return rows
-                        const spineEdges = implEdges.filter((e: any) => e.from === scopedKey)
+                        const spineEdges = implEdges.filter((e: any) => e.from === capsuleSourceLineRef)
                         for (const se of spineEdges) {
                             const spine = spineNodes[se.to]
                             if (!spine) continue
@@ -276,8 +256,7 @@ export async function capsule({
                  */
                 _fetchCapsuleRelations: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, spineInstanceTreeId: string, capsuleNames: string[]): Promise<any> {
-                        if (!spineInstanceTreeId) throw new Error('_fetchCapsuleRelations: spineInstanceTreeId is required')
+                    value: async function (this: any, capsuleNames: string[]): Promise<any> {
                         if (capsuleNames.length === 0) return { mappings: {}, extends: {}, found: new Set(), properties: {}, capsuleInfo: {} }
 
                         const capsuleNodes = this._readNodeTable('Capsule')
@@ -291,10 +270,10 @@ export async function capsule({
 
                         const nameSet = new Set(capsuleNames)
 
-                        // Build capsuleName -> capsuleSourceLineRef map (scoped to spineInstanceTreeId)
+                        // Build capsuleName -> capsuleSourceLineRef map
                         const nameToLineRef: Record<string, string> = {}
                         for (const [pk, cap] of Object.entries(capsuleNodes) as any[]) {
-                            if (cap.spineInstanceTreeId === spineInstanceTreeId && nameSet.has(cap.capsuleName)) nameToLineRef[cap.capsuleName] = pk
+                            if (nameSet.has(cap.capsuleName)) nameToLineRef[cap.capsuleName] = pk
                         }
 
                         // mappings: CapsuleProperty with MAPS_TO -> target Capsule
@@ -320,11 +299,6 @@ export async function capsule({
                                     }
                                 }
                             }
-                        }
-
-                        // Sort mappings by propName for consistent ordering
-                        for (const key of Object.keys(mappings)) {
-                            mappings[key].sort((a, b) => a.propName.localeCompare(b.propName))
                         }
 
                         // extends: Capsule -> EXTENDS -> parent Capsule
@@ -361,11 +335,6 @@ export async function capsule({
                             }
                         }
 
-                        // Sort properties by propName for consistent ordering
-                        for (const key of Object.keys(properties)) {
-                            properties[key].sort((a, b) => a.propName.localeCompare(b.propName))
-                        }
-
                         // found
                         const found = new Set(capsuleNames.filter(n => nameToLineRef[n]))
 
@@ -388,19 +357,13 @@ export async function capsule({
                  */
                 _listSpineInstanceTrees: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, spineInstanceTreeId?: string): Promise<any[]> {
+                    value: async function (this: any, opts?: { prefix?: string }): Promise<any[]> {
                         const capsuleNodes = this._readNodeTable('Capsule')
-                        if (spineInstanceTreeId) {
-                            // Filter by specific tree - return all capsules in that tree
-                            return (Object.values(capsuleNodes) as any[])
-                                .filter((c: any) => c.spineInstanceTreeId === spineInstanceTreeId)
-                                .map((c: any) => ({ spineInstanceTreeId: c.spineInstanceTreeId, capsuleName: c.capsuleName, capsuleSourceLineRef: c.capsuleSourceLineRef, capsuleSourceUriLineRef: c.capsuleSourceUriLineRef }))
-                                .sort((a: any, b: any) => (a.capsuleName || '').localeCompare(b.capsuleName || ''))
-                        }
-                        // No filter - return distinct trees (one entry per tree, preferring root capsule)
+                        const prefix = opts?.prefix
                         const byTreeId = new Map<string, any>()
                         for (const c of Object.values(capsuleNodes) as any[]) {
                             if (!c.spineInstanceTreeId || c.spineInstanceTreeId === '') continue
+                            if (prefix && !c.spineInstanceTreeId.startsWith(prefix)) continue
                             if (c.spineInstanceTreeId === c.capsuleName) {
                                 byTreeId.set(c.spineInstanceTreeId, { spineInstanceTreeId: c.spineInstanceTreeId, capsuleName: c.capsuleName, capsuleSourceLineRef: c.capsuleSourceLineRef, capsuleSourceUriLineRef: c.capsuleSourceUriLineRef })
                             } else if (!byTreeId.has(c.spineInstanceTreeId)) {
@@ -507,40 +470,6 @@ export async function capsule({
                         }
 
                         return { instances, parentMap, capsuleInfo }
-                    }
-                },
-
-                // =============================================================
-                // Membrane Event Query Methods
-                // =============================================================
-
-                /**
-                 * Get all membrane events for a spine instance tree, ordered by eventIndex.
-                 * Returns [{ eventIndex, eventType, capsuleSourceLineRef, ... }].
-                 */
-                _getMembraneEvents: {
-                    type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, spineInstanceTreeId: string): Promise<any[]> {
-                        if (!spineInstanceTreeId) throw new Error('_getMembraneEvents: spineInstanceTreeId is required')
-                        const eventNodes = this._readNodeTable('MembraneEvent')
-                        return (Object.values(eventNodes) as any[])
-                            .filter((e: any) => e.spineInstanceTreeId === spineInstanceTreeId)
-                            .sort((a: any, b: any) => a.eventIndex - b.eventIndex)
-                    }
-                },
-
-                /**
-                 * Get membrane events for a specific capsule within a spine instance tree.
-                 * Returns events where capsuleSourceLineRef matches, ordered by eventIndex.
-                 */
-                _getMembraneEventsByCapsule: {
-                    type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, spineInstanceTreeId: string, capsuleSourceLineRef: string): Promise<any[]> {
-                        if (!spineInstanceTreeId) throw new Error('_getMembraneEventsByCapsule: spineInstanceTreeId is required')
-                        const eventNodes = this._readNodeTable('MembraneEvent')
-                        return (Object.values(eventNodes) as any[])
-                            .filter((e: any) => e.spineInstanceTreeId === spineInstanceTreeId && e.capsuleSourceLineRef === capsuleSourceLineRef)
-                            .sort((a: any, b: any) => a.eventIndex - b.eventIndex)
                     }
                 },
 

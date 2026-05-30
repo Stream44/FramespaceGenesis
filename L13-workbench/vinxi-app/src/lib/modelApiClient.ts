@@ -42,7 +42,6 @@ export interface SpineInstance {
     filepath?: string;
     capsuleSourceLineRef?: string;
     capsuleSourceUriLineRef?: string;
-    config?: Record<string, any> | null;
 }
 
 export type ProcessStats = {
@@ -73,13 +72,9 @@ const NS = {
     Quadrant: '@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods',
 } as const;
 
-// In dev, vinxi proxies /api-server → model server rewrites to /<prefix>/api/.
-// In production, we first call /api/health to discover the cacheBustPathPrefix,
-// then use /<prefix>/api/ for all subsequent (cacheable) API calls.
-const DEFAULT_BASE_URL = import.meta.env.DEV ? "/api-server" : "";
+const DEFAULT_BASE_URL = "http://localhost:4000";
 
-export function createModelApiClient(initialBaseUrl = DEFAULT_BASE_URL) {
-    let baseUrl = initialBaseUrl;
+export function createModelApiClient(baseUrl = DEFAULT_BASE_URL) {
     const [status, setStatus] = createSignal<ConnectionStatus>("disconnected");
     const [schema, setSchema] = createSignal<EngineSchema | null>(null);
 
@@ -114,7 +109,7 @@ export function createModelApiClient(initialBaseUrl = DEFAULT_BASE_URL) {
 
     // ── Build API URL ───────────────────────────────────────────────
     function apiUrl(namespace: string, method: string, params?: Record<string, string | undefined>): string {
-        let url = `${baseUrl}/${namespace}/${method}`;
+        let url = `${baseUrl}/api/${namespace}/${method}`;
         if (params) {
             const qs = new URLSearchParams();
             for (const [k, v] of Object.entries(params)) {
@@ -162,8 +157,7 @@ export function createModelApiClient(initialBaseUrl = DEFAULT_BASE_URL) {
         if (!s) throw new Error("Not connected");
 
         const ep = s.endpoints[path];
-        // path is like /api/ns/method – rewrite to go through the proxy prefix
-        let url = `${baseUrl}${path.replace(/^\/api\//, '/')}`;
+        let url = `${baseUrl}${path}`;
 
         const params = new URLSearchParams();
         if (engine) params.set("engine", engine);
@@ -189,21 +183,12 @@ export function createModelApiClient(initialBaseUrl = DEFAULT_BASE_URL) {
     async function connect() {
         setStatus("connecting");
         try {
-            // In production, discover the cache-bust prefix from /api/health
-            // and use it as the base URL for all subsequent API calls.
-            if (!import.meta.env.DEV) {
-                const health = await fetchJson('/api/health');
-                const prefix = health.cacheBustPathPrefix;
-                if (prefix) {
-                    baseUrl = `/${prefix}/api`;
-                }
-            }
-            const s = await fetchJson(`${baseUrl}/schema`);
+            const s = await fetchJson(`${baseUrl}/api/schema`);
             setSchema(s);
             setStatus("connected");
         } catch {
             setStatus("error");
-            throw new Error(`Failed to connect to model server via ${baseUrl}`);
+            throw new Error(`Failed to connect to model server at ${baseUrl}`);
         }
     }
 
@@ -245,7 +230,6 @@ export function createModelApiClient(initialBaseUrl = DEFAULT_BASE_URL) {
             capsuleName: i.$id,
             capsuleSourceLineRef: i.capsuleSourceLineRef,
             capsuleSourceUriLineRef: i.capsuleSourceUriLineRef,
-            config: i.config ?? null,
         })) ?? [];
         const groups = data.result?.groups ?? [];
         const registeredModels = data.result?.registeredModels ?? [];
@@ -276,23 +260,6 @@ export function createModelApiClient(initialBaseUrl = DEFAULT_BASE_URL) {
         return fetchJson(url);
     }
 
-    async function listCapsuleSourceFiles(spineInstanceTreeId: string): Promise<any> {
-        const url = apiUrl(NS.Workbench, 'listSpineInstanceTreeCapsuleSourceFiles', { spineInstanceTreeId });
-        return fetchJson(url);
-    }
-
-    async function getCapsuleSourceFile(fileUri: string, format?: string): Promise<any> {
-        const params: any = { fileUri };
-        if (format) params.format = format;
-        const url = apiUrl(NS.Workbench, 'getCapsuleSourceFile', params);
-        return fetchJson(url);
-    }
-
-    async function saveCapsuleSourceFile(fileUri: string, content: string): Promise<any> {
-        const url = apiUrl(NS.Workbench, 'saveCapsuleSourceFile', { fileUri, content });
-        return fetchJson(url);
-    }
-
     // ── CapsuleSpine API ────────────────────────────────────────────
 
     async function getCapsule(capsuleName: string, engine?: string, spineInstanceTreeId?: string): Promise<any> {
@@ -303,7 +270,6 @@ export function createModelApiClient(initialBaseUrl = DEFAULT_BASE_URL) {
     // ── Stats polling ───────────────────────────────────────────────
 
     function startStatsPolling() {
-        if (import.meta.env.DEV === false || !import.meta.env.DEV) return;
         if (statsInterval) return;
         getProcessStats();
         statsInterval = setInterval(() => { getProcessStats(); }, 5000);
@@ -339,9 +305,6 @@ export function createModelApiClient(initialBaseUrl = DEFAULT_BASE_URL) {
         openFile,
         getReps,
         getCapsule,
-        listCapsuleSourceFiles,
-        getCapsuleSourceFile,
-        saveCapsuleSourceFile,
 
         // ── Stats / monitoring ──────────────────────────────────────
         requestCount,

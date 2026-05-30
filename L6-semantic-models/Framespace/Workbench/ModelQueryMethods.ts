@@ -1,4 +1,4 @@
-import { writeFile, readFile } from 'fs/promises'
+import { writeFile } from 'fs/promises'
 import { join, dirname, relative } from 'path'
 import { readdirSync, statSync, existsSync } from 'fs'
 import { exec } from 'child_process'
@@ -52,28 +52,7 @@ export async function capsule({
                                     { name: 'command', type: 'string' },
                                     { name: 'file', type: 'string' },
                                 ],
-                                description: 'Open a file in an editor. Command is the editor binary (e.g. "code"), file is an absolute path or npm URI optionally with :line suffix.',
-                            },
-                            listSpineInstanceTreeCapsuleSourceFiles: {
-                                args: [
-                                    { name: 'spineInstanceTreeId', type: 'string' },
-                                ],
-                                description: 'List all capsule source files for a spine instance tree, grouped by capsule name.',
-                                graphMethod: true,
-                            },
-                            getCapsuleSourceFile: {
-                                args: [
-                                    { name: 'fileUri', type: 'string' },
-                                    { name: 'format', type: 'string' },
-                                ],
-                                description: 'Read the contents of a capsule source file by its npm URI. Format: "raw" (default) or "simplified".',
-                            },
-                            saveCapsuleSourceFile: {
-                                args: [
-                                    { name: 'fileUri', type: 'string' },
-                                    { name: 'content', type: 'string' },
-                                ],
-                                description: 'Save content to a capsule source file by its npm URI.',
+                                description: 'Open a file in an editor. Command is the editor binary (e.g. "code"), file is an absolute path optionally with :line suffix.',
                             },
                         },
                     },
@@ -86,11 +65,9 @@ export async function capsule({
                 init: {
                     type: CapsulePropertyTypes.Init,
                     value: async function (this: any): Promise<void> {
-                        if (this.writeMethodSchema) {
-                            const moduleFilepath = this['#@stream44.studio/encapsulate/structs/Capsule'].moduleFilepath
-                            const schemaPath = join(dirname(moduleFilepath), '_ModelQueryMethodsSchema.json')
-                            await writeFile(schemaPath, JSON.stringify(this.apiSchema, null, 4))
-                        }
+                        const moduleFilepath = this['#@stream44.studio/encapsulate/structs/Capsule'].rootCapsule.moduleFilepath
+                        const schemaPath = join(dirname(moduleFilepath), '_ModelQueryMethodsSchema.json')
+                        await writeFile(schemaPath, JSON.stringify(this.apiSchema, null, 4))
                     }
                 },
 
@@ -99,75 +76,14 @@ export async function capsule({
                 // =============================================================
 
                 /**
-                 * List all distinct spine instance tree IDs.
-                 * Reads registered models and their SIT/CST files on disk.
-                 * Does NOT import into or query the engine — data imports lazily
-                 * on the first API request that contains a spineInstanceTreeId.
+                 * List all distinct spine instance tree IDs in the graph.
+                 * This method requires a graph (engine) to query.
                  */
                 listSpineInstanceTrees: {
                     type: CapsulePropertyTypes.Function,
                     value: async function (this: any, { graph, server }: any): Promise<any> {
                         const PACKAGE_ROOT = this._getPackageRoot()
                         const generatedData = join(PACKAGE_ROOT, 'models', '.cst-data')
-
-                        // getModels is a GetterFunction (property getter), not a callable function.
-                        const registeredInstances: { name: string; result: any }[] =
-                            server?.spineInstanceTrees?.getModels ?? []
-
-                        // Build list from registered models + SIT/CST files on disk
-                        const list: any[] = []
-                        for (const model of registeredInstances) {
-                            const treeId = model.name
-                            const sitRoot = model.result?.sitRoot
-                            const entry: any = {
-                                '#': 'SpineInstanceTree',
-                                $id: treeId,
-                                capsuleSourceUriLineRef: null as string | null,
-                            }
-
-                            if (sitRoot) {
-                                const sitDirName = treeId.replace(/\//g, '~')
-                                const sitBase = join(sitRoot, '.~o/encapsulate.dev/spine-instances', sitDirName)
-                                const sitFile = join(sitBase, 'root-capsule.sit.json')
-                                try {
-                                    if (existsSync(sitFile)) {
-                                        const sit = JSON.parse(require('fs').readFileSync(sitFile, 'utf-8'))
-                                        const rootRef = sit.rootCapsule?.capsuleSourceUriLineRef
-                                        if (rootRef) entry.capsuleSourceUriLineRef = rootRef
-
-                                        // Read the matching CST file for capsuleSourceLineRef and config
-                                        const staticDir = join(sitRoot, '.~o/encapsulate.dev/static-analysis')
-                                        const cstFile = join(staticDir, rootRef + '.csts.json')
-                                        if (existsSync(cstFile)) {
-                                            const cst = JSON.parse(require('fs').readFileSync(cstFile, 'utf-8'))
-                                            const cstData = cst[rootRef]
-                                            if (cstData) {
-                                                if (cstData.capsuleSourceLineRef) {
-                                                    entry.capsuleSourceLineRef = cstData.capsuleSourceLineRef
-                                                }
-                                                // Extract config from spineContracts property contracts
-                                                const sc = cstData.spineContracts || {}
-                                                for (const scVal of Object.values(sc) as any[]) {
-                                                    const pcs = scVal?.propertyContracts || {}
-                                                    for (const pcVal of Object.values(pcs) as any[]) {
-                                                        const configProp = (pcVal as any)?.properties?.config
-                                                        if (configProp?.valueExpression) {
-                                                            try {
-                                                                entry.config = new Function('return ' + configProp.valueExpression)()
-                                                            } catch { }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                } catch { }
-                            }
-
-                            // Only include entries that resolved to a rootCapsule (have capsuleSourceUriLineRef)
-                            if (!entry.capsuleSourceUriLineRef) continue
-                            list.push(entry)
-                        }
 
                         // Try to read sits.json files for ordering
                         let manifestOrder: string[] | null = null
@@ -191,7 +107,11 @@ export async function capsule({
                             if (allEntries.length > 0) manifestOrder = allEntries
                         } catch { }
 
-                        // Re-order to match manifest if available, otherwise sort by $id for deterministic output
+                        // Delegate graph query to L6 CapsuleSpine
+                        const treesResult = await this.CapsuleSpine.getSpineInstanceTrees({ graph, server })
+                        let list = treesResult.list
+
+                        // Re-order to match manifest if available
                         if (manifestOrder) {
                             const orderMap: Record<string, number> = {}
                             for (let i = 0; i < manifestOrder.length; i++) orderMap[manifestOrder[i]] = i
@@ -199,12 +119,8 @@ export async function capsule({
                             list.sort((a: any, b: any) => {
                                 const ai = a.$id in orderMap ? orderMap[a.$id] : fallback
                                 const bi = b.$id in orderMap ? orderMap[b.$id] : fallback
-                                if (ai !== bi) return ai - bi
-                                // Fallback: sort by $id for items not in manifest
-                                return (a.$id as string).localeCompare(b.$id as string)
+                                return ai - bi
                             })
-                        } else {
-                            list.sort((a: any, b: any) => (a.$id as string).localeCompare(b.$id as string))
                         }
 
                         // Load models.json for engine availability per model
@@ -244,21 +160,17 @@ export async function capsule({
                             shortName: shortModelName(uri),
                         }))
 
-                        // Group by type (example vs test) > examplesPath > exampleDir
+                        // Group by modelName > exampleDir
                         const groups: any[] = []
-                        const groupMap: Record<string, { type: string; examplesPath: string; modelName: string; exampleDir: string; items: any[] }> = {}
+                        const groupMap: Record<string, Record<string, any[]>> = {}
                         for (const item of list) {
-                            const absRef = (item.capsuleSourceLineRef ?? '') as string
+                            // Use capsuleSourceUriLineRef (npm URI) to derive model name
                             const ref = (item.capsuleSourceUriLineRef ?? item.$id) as string
                             const examplesIdx = ref.indexOf('/examples/')
                             let modelName = '(unknown)'
                             let exampleDir = '(default)'
-                            let examplesPath = ''
-
-                            const isPackageExample = ref.startsWith('@stream44.studio/FramespaceGenesis/examples/')
-                            let type = isPackageExample ? 'example' : 'test'
-
                             if (examplesIdx >= 0) {
+                                // npm URI: @scope/package/path.../examples/dir/file
                                 let rawModelName = ref.substring(0, examplesIdx)
                                 if (rawModelName.startsWith(TRIM_PREFIX)) {
                                     rawModelName = rawModelName.substring(TRIM_PREFIX.length)
@@ -269,44 +181,23 @@ export async function capsule({
                                 if (slashIdx >= 0) {
                                     exampleDir = afterExamples.substring(0, slashIdx)
                                 }
-
-                                const absExamplesIdx = absRef.indexOf('/examples/')
-                                if (absExamplesIdx >= 0) {
-                                    const afterAbsExamples = absRef.substring(absExamplesIdx + '/examples/'.length)
-                                    const absSlashIdx = afterAbsExamples.indexOf('/')
-                                    if (absSlashIdx >= 0) {
-                                        examplesPath = absRef.substring(0, absExamplesIdx + '/examples/'.length + absSlashIdx)
-                                    } else {
-                                        examplesPath = absRef.substring(0, absExamplesIdx + '/examples/'.length) + afterAbsExamples.split(':')[0]
-                                    }
-                                }
                             }
-
-                            const key = `${type}:${examplesPath}:${exampleDir}`
-                            if (!groupMap[key]) {
-                                groupMap[key] = { type, examplesPath, modelName, exampleDir, items: [] }
+                            if (!groupMap[modelName]) groupMap[modelName] = {}
+                            if (!groupMap[modelName][exampleDir]) groupMap[modelName][exampleDir] = []
+                            groupMap[modelName][exampleDir].push(item)
+                        }
+                        for (const [modelName, examples] of Object.entries(groupMap)) {
+                            const modelEngines = modelsJsonCache[modelName]?.engines ?? {}
+                            for (const [exampleDir, items] of Object.entries(examples)) {
+                                groups.push({
+                                    '#': 'SpineInstanceGroup',
+                                    modelName,
+                                    exampleDir,
+                                    engines: modelEngines,
+                                    list: items,
+                                })
                             }
-                            groupMap[key].items.push(item)
                         }
-                        for (const g of Object.values(groupMap)) {
-                            const modelEngines = modelsJsonCache[g.modelName]?.engines ?? {}
-                            groups.push({
-                                '#': 'SpineInstanceGroup',
-                                type: g.type,
-                                modelName: g.modelName,
-                                exampleDir: g.exampleDir,
-                                examplesPath: g.examplesPath,
-                                engines: modelEngines,
-                                list: g.items,
-                            })
-                        }
-
-                        // Sort groups for deterministic output across environments
-                        groups.sort((a: any, b: any) => {
-                            const ka = `${a.examplesPath}/${a.exampleDir}`
-                            const kb = `${b.examplesPath}/${b.exampleDir}`
-                            return ka.localeCompare(kb)
-                        })
 
                         return { '#': 'SpineInstances', list, groups, registeredModels }
                     }
@@ -386,17 +277,13 @@ export async function capsule({
                  */
                 openFile: {
                     type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, command: string, file: string): Promise<any> {
-                        if (process.env.NODE_ENV === 'production') return { '#': 'Error', method: 'openFile', message: 'openFile is disabled in production' }
+                    value: async function (command: string, file: string): Promise<any> {
                         if (!command || typeof command !== 'string') return { '#': 'Error', method: 'openFile', message: 'No command provided' }
                         if (!file || typeof file !== 'string') return { '#': 'Error', method: 'openFile', message: 'No file provided' }
+                        if (!file.startsWith('/')) return { '#': 'Error', method: 'openFile', message: `File must be an absolute path: ${file}` }
 
-                        // Resolve npm URI to absolute path if needed
-                        const resolved = this._fromNpmUri(file)
-                        if (!resolved.startsWith('/')) return { '#': 'Error', method: 'openFile', message: `File must be an absolute path or npm URI: ${file}` }
-
-                        const lineMatch = resolved.match(/^(.+):(\d+)$/)
-                        const filePath = lineMatch ? lineMatch[1] : resolved
+                        const lineMatch = file.match(/^(.+):(\d+)$/)
+                        const filePath = lineMatch ? lineMatch[1] : file
                         const line = lineMatch ? lineMatch[2] : null
 
                         if (!existsSync(filePath)) return { '#': 'Error', method: 'openFile', message: `File not found: ${filePath}` }
@@ -418,125 +305,6 @@ export async function capsule({
                     }
                 },
 
-                /**
-                 * List all capsule source files for a spine instance tree.
-                 * Resolves npm URIs to absolute filesystem paths via getCapsuleWithSource.
-                 */
-                listSpineInstanceTreeCapsuleSourceFiles: {
-                    type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, { graph, server }: any, spineInstanceTreeId: string): Promise<any> {
-                        if (!spineInstanceTreeId) return { '#': 'Error', method: 'listSpineInstanceTreeCapsuleSourceFiles', message: 'spineInstanceTreeId is required' }
-
-                        // Use CapsuleSpine to list all capsules for this tree
-                        const capsulesList = await this.CapsuleSpine.listCapsules({ graph, server }, spineInstanceTreeId)
-                        const capsules = capsulesList?.list ?? []
-
-                        const files: any[] = []
-                        for (const cap of capsules) {
-                            const capsuleName = cap.$id as string
-                            if (!capsuleName) continue
-
-                            // Resolve the actual filesystem path via getCapsuleWithSource
-                            const raw = await graph.getCapsuleWithSource(spineInstanceTreeId, capsuleName)
-                            if (!raw?.source) continue
-
-                            const rawFilepath = raw.source.moduleFilepath as string | undefined
-                            if (!rawFilepath) continue
-
-                            // moduleFilepath may be relative — resolve via server's package root
-                            const moduleFilepath = rawFilepath.startsWith('/')
-                                ? rawFilepath
-                                : server.resolvePackagePath(rawFilepath)
-                            if (!existsSync(moduleFilepath)) continue
-
-                            const line = raw.source.declarationLine as number | null ?? null
-                            const shortName = capsuleName.split('/').pop() ?? capsuleName
-                            const capsuleSourceLineRef = line ? `${moduleFilepath}:${line}` : moduleFilepath
-
-                            // Convert to npm URI; if _toNpmUri can't resolve (returns absolute path),
-                            // fall back to capsuleName + file extension (capsuleName IS the npm URI)
-                            let fileUri = this._toNpmUri(moduleFilepath)
-                            if (fileUri.startsWith('/')) {
-                                const ext = moduleFilepath.match(/(\.[^./]+)$/)?.[1] ?? ''
-                                fileUri = capsuleName + ext
-                            }
-
-                            files.push({
-                                '#': 'CapsuleSourceFile',
-                                capsuleName,
-                                shortName,
-                                fileUri,
-                                line,
-                                capsuleSourceLineRef,
-                            })
-                        }
-
-                        // Deduplicate by fileUri (multiple capsules may share a file)
-                        const seen = new Set<string>()
-                        const dedupedFiles: any[] = []
-                        for (const f of files) {
-                            if (!seen.has(f.fileUri)) {
-                                seen.add(f.fileUri)
-                                dedupedFiles.push(f)
-                            }
-                        }
-
-                        // Sort by capsuleName for deterministic output across environments
-                        dedupedFiles.sort((a: any, b: any) => a.capsuleName.localeCompare(b.capsuleName))
-
-                        return { '#': 'CapsuleSourceFiles', list: dedupedFiles }
-                    }
-                },
-
-                /**
-                 * Read the contents of a capsule source file by absolute path.
-                 */
-                getCapsuleSourceFile: {
-                    type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, fileUri: string, format?: string): Promise<any> {
-                        if (!fileUri || typeof fileUri !== 'string') return { '#': 'Error', method: 'getCapsuleSourceFile', message: 'No fileUri provided' }
-                        const filePath = this._fromNpmUri(fileUri)
-                        if (!filePath.startsWith('/')) return { '#': 'Error', method: 'getCapsuleSourceFile', message: `fileUri must resolve to an absolute path: ${fileUri}` }
-                        if (!existsSync(filePath)) return { '#': 'Error', method: 'getCapsuleSourceFile', message: `File not found: ${fileUri}` }
-
-                        try {
-                            let content = await readFile(filePath, 'utf-8')
-                            const language = filePath.endsWith('.ts') || filePath.endsWith('.tsx') ? 'typescript'
-                                : filePath.endsWith('.js') || filePath.endsWith('.jsx') ? 'javascript'
-                                    : filePath.endsWith('.json') ? 'json'
-                                        : filePath.endsWith('.css') ? 'css'
-                                            : 'text'
-                            if (format === 'simplified') {
-                                content = this._simplifyCapsuleSource(content)
-                            }
-                            return { '#': 'CapsuleSourceFileContent', fileUri, content, language, format: format || 'raw' }
-                        } catch (err: any) {
-                            return { '#': 'Error', method: 'getCapsuleSourceFile', message: err.message ?? String(err) }
-                        }
-                    }
-                },
-
-                /**
-                 * Save content to a capsule source file by absolute path.
-                 */
-                saveCapsuleSourceFile: {
-                    type: CapsulePropertyTypes.Function,
-                    value: async function (this: any, fileUri: string, content: string): Promise<any> {
-                        if (process.env.NODE_ENV === 'production') return { '#': 'Error', method: 'saveCapsuleSourceFile', message: 'saveCapsuleSourceFile is disabled in production' }
-                        if (!fileUri || typeof fileUri !== 'string') return { '#': 'Error', method: 'saveCapsuleSourceFile', message: 'No fileUri provided' }
-                        const filePath = this._fromNpmUri(fileUri)
-                        if (!filePath.startsWith('/')) return { '#': 'Error', method: 'saveCapsuleSourceFile', message: `fileUri must resolve to an absolute path: ${fileUri}` }
-                        if (typeof content !== 'string') return { '#': 'Error', method: 'saveCapsuleSourceFile', message: 'No content provided' }
-
-                        try {
-                            await writeFile(filePath, content, 'utf-8')
-                            return { '#': 'CapsuleSourceFileSaved', fileUri, ok: true }
-                        } catch (err: any) {
-                            return { '#': 'Error', method: 'saveCapsuleSourceFile', message: err.message ?? String(err) }
-                        }
-                    }
-                },
-
                 // =============================================================
                 // Internal helpers
                 // =============================================================
@@ -547,267 +315,6 @@ export async function capsule({
                         // L6-semantic-models/Framespace/Workbench/ModelQueryMethods.ts → 4 levels up
                         const moduleFilepath = this['#@stream44.studio/encapsulate/structs/Capsule'].rootCapsule.moduleFilepath
                         return join(dirname(moduleFilepath), '..', '..', '..', '..')
-                    }
-                },
-
-                _resolveNpmPrefixAndRoot: {
-                    type: CapsulePropertyTypes.Function,
-                    value: function (this: any): { npmPrefix: string, packageRoot: string } | null {
-                        const capsuleStruct = this['#@stream44.studio/encapsulate/structs/Capsule']
-                        // Try candidates: the capsule's own moduleFilepath+capsuleName, then rootCapsule's
-                        const candidates = [
-                            { mfp: capsuleStruct?.moduleFilepath, cn: capsuleStruct?.capsuleName },
-                            { mfp: capsuleStruct?.rootCapsule?.moduleFilepath, cn: capsuleStruct?.rootCapsule?.capsuleName },
-                        ]
-                        for (const { mfp, cn } of candidates) {
-                            if (!mfp || !cn) continue
-                            const atIdx = cn.indexOf('/')
-                            if (atIdx < 0) continue
-                            const secondSlash = cn.indexOf('/', atIdx + 1)
-                            if (secondSlash < 0) continue
-                            const npmPrefix = cn.substring(0, secondSlash)
-                            const relativeSuffix = cn.substring(secondSlash)
-                            const suffixIdx = mfp.indexOf(relativeSuffix)
-                            if (suffixIdx < 0) continue
-                            const packageRoot = mfp.substring(0, suffixIdx)
-                            return { npmPrefix, packageRoot }
-                        }
-                        return null
-                    }
-                },
-
-                _toNpmUri: {
-                    type: CapsulePropertyTypes.Function,
-                    value: function (this: any, absolutePath: string): string {
-                        if (!absolutePath) return ''
-                        // Handle relative or absolute node_modules/@scope/package/... paths directly
-                        const nmMatch = absolutePath.match(/(?:^|\/)node_modules\/(@[^/]+\/[^/]+)\/(.+)$/)
-                        if (nmMatch) {
-                            return nmMatch[1] + '/' + nmMatch[2]
-                        }
-                        const resolved = this._resolveNpmPrefixAndRoot()
-                        if (!resolved) return absolutePath
-                        const { npmPrefix, packageRoot } = resolved
-                        if (absolutePath.startsWith(packageRoot + '/') || absolutePath.startsWith(packageRoot)) {
-                            return npmPrefix + absolutePath.substring(packageRoot.length)
-                        }
-                        return absolutePath
-                    }
-                },
-
-                _fromNpmUri: {
-                    type: CapsulePropertyTypes.Function,
-                    value: function (this: any, uri: string): string {
-                        if (!uri) return ''
-                        // If already an absolute path, return as-is
-                        if (uri.startsWith('/')) return uri
-                        const resolved = this._resolveNpmPrefixAndRoot()
-                        if (!resolved) return uri
-                        const { npmPrefix, packageRoot } = resolved
-                        // Own package URI — strip prefix, prepend package root
-                        if (uri.startsWith(npmPrefix + '/')) {
-                            return packageRoot + uri.substring(npmPrefix.length)
-                        }
-                        // External npm package URI (starts with @scope/package/...) — try multiple resolution strategies
-                        if (uri.startsWith('@')) {
-                            // Strategy 1: node_modules/ under package root (CI / npm-installed deps)
-                            const nmCandidate = join(packageRoot, 'node_modules', uri)
-                            if (existsSync(nmCandidate)) {
-                                return nmCandidate
-                            }
-                            // Strategy 2: workspace sibling packages
-                            // Convention: @scope/package/path → <workspaceRoot>/scope/packages/package/path.ts
-                            // npmPrefix is @scope/ownPackage, packageRoot is .../scope/packages/ownPackage
-                            // So workspace root is packageRoot stripped of /scope/packages/ownPackage
-                            const atIdx = npmPrefix.indexOf('/')
-                            if (atIdx > 0) {
-                                const ownScope = npmPrefix.substring(1, atIdx) // e.g. framespace.dev
-                                const ownPkg = npmPrefix.substring(atIdx + 1) // e.g. FramespaceGenesis
-                                const scopePkgSuffix = `/${ownScope}/packages/${ownPkg}`
-                                if (packageRoot.endsWith(scopePkgSuffix)) {
-                                    const workspaceRoot = packageRoot.substring(0, packageRoot.length - scopePkgSuffix.length)
-                                    // Parse external URI: @extScope/extPackage/rest
-                                    const extAtIdx = uri.indexOf('/')
-                                    const extSecondSlash = uri.indexOf('/', extAtIdx + 1)
-                                    if (extAtIdx > 0 && extSecondSlash > 0) {
-                                        const extScope = uri.substring(1, extAtIdx)
-                                        const extPkg = uri.substring(extAtIdx + 1, extSecondSlash)
-                                        const extRest = uri.substring(extSecondSlash + 1)
-                                        const wsCandidate = join(workspaceRoot, extScope, 'packages', extPkg, extRest)
-                                        if (existsSync(wsCandidate)) {
-                                            return wsCandidate
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        return uri
-                    }
-                },
-
-                /**
-                 * Simplify capsule source code by stripping boilerplate header/footer.
-                 * Extracts content from the spine contract block, handles both '#': {} capsules
-                 * and capsules with only dimension refs (no '#': {} block).
-                 */
-                _simplifyCapsuleSource: {
-                    type: CapsulePropertyTypes.Function,
-                    value: function (this: any, raw: string): string {
-                        let lines = raw.split('\n')
-
-                        // Strip leading block comments (/** ... */) and empty lines
-                        let startIdx = 0
-                        let inBlockComment = false
-                        for (let i = 0; i < lines.length; i++) {
-                            const trimmed = lines[i].trim()
-                            if (trimmed.length === 0) {
-                                startIdx = i + 1
-                                continue
-                            }
-                            if (trimmed.indexOf('/**') !== -1) {
-                                inBlockComment = true
-                                startIdx = i + 1
-                                continue
-                            }
-                            if (inBlockComment) {
-                                if (trimmed.indexOf('*/') !== -1) {
-                                    inBlockComment = false
-                                    startIdx = i + 1
-                                    continue
-                                }
-                                startIdx = i + 1
-                                continue
-                            }
-                            break
-                        }
-                        if (startIdx > 0) {
-                            lines = lines.slice(startIdx)
-                        }
-
-                        // Helper: find matching closing brace from a given line
-                        const findClosingBrace = function (fromIdx: number): number {
-                            let bc = 0
-                            let st = false
-                            for (let i = fromIdx; i < lines.length; i++) {
-                                for (let c = 0; c < lines[i].length; c++) {
-                                    if (lines[i][c] === '{') { bc++; st = true }
-                                    else if (lines[i][c] === '}') {
-                                        bc--
-                                        if (st && bc === 0) return i
-                                    }
-                                }
-                            }
-                            return -1
-                        }
-
-                        // Helper: compute leading whitespace count
-                        const leadingSpaces = function (s: string): number {
-                            let n = 0
-                            for (let i = 0; i < s.length; i++) {
-                                if (s[i] === ' ' || s[i] === '\t') n++
-                                else break
-                            }
-                            return n
-                        }
-
-                        // Helper: dedent lines to minIndent, then re-indent with given prefix
-                        const dedentAndIndent = function (bodyLines: string[], indent: string): string[] {
-                            let mi = 999999
-                            for (let i = 0; i < bodyLines.length; i++) {
-                                if (bodyLines[i].trim().length === 0) continue
-                                const ls = leadingSpaces(bodyLines[i])
-                                if (ls < mi) mi = ls
-                            }
-                            if (mi === 999999) mi = 0
-                            const out: string[] = []
-                            for (let i = 0; i < bodyLines.length; i++) {
-                                if (bodyLines[i].trim().length === 0) out.push('')
-                                else out.push(indent + bodyLines[i].slice(mi))
-                            }
-                            // Remove trailing empty lines
-                            while (out.length > 0 && out[out.length - 1].trim() === '') out.pop()
-                            return out
-                        }
-
-                        // Find the spine contract block
-                        const spineContractMarker = 'CapsuleSpineContract.v0'
-                        let spineIdx = -1
-                        for (let i = 0; i < lines.length; i++) {
-                            if (lines[i].indexOf(spineContractMarker) !== -1) {
-                                spineIdx = i
-                                break
-                            }
-                        }
-
-                        if (spineIdx === -1) return raw
-
-                        const spineCloseIdx = findClosingBrace(spineIdx)
-                        if (spineCloseIdx === -1) return raw
-
-                        // Extract body inside spine contract block
-                        const spineBody = lines.slice(spineIdx + 1, spineCloseIdx)
-
-                        // Remove the Capsule struct line and empty lines around it
-                        const capsuleStructMarker = "structs/Capsule'"
-                        const filteredBody: string[] = []
-                        for (let i = 0; i < spineBody.length; i++) {
-                            if (spineBody[i].indexOf(capsuleStructMarker) !== -1) continue
-                            filteredBody.push(spineBody[i])
-                        }
-
-                        // Remove leading empty lines from filtered body
-                        while (filteredBody.length > 0 && filteredBody[0].trim().length === 0) {
-                            filteredBody.shift()
-                        }
-
-                        // Check if the filtered content is a single '#': { ... } block
-                        // by looking at the first non-empty line
-                        let hasHashBlock = false
-                        let hashLineIdx = -1
-                        for (let i = 0; i < filteredBody.length; i++) {
-                            if (filteredBody[i].trim().length === 0) continue
-                            if (filteredBody[i].indexOf("'#': {") !== -1 || filteredBody[i].indexOf('"#": {') !== -1) {
-                                hasHashBlock = true
-                                hashLineIdx = i
-                            }
-                            break
-                        }
-
-                        if (hasHashBlock && hashLineIdx !== -1) {
-                            // Find the closing brace of '#': { within filteredBody
-                            let bc = 0
-                            let st = false
-                            let closeIdx = -1
-                            for (let i = hashLineIdx; i < filteredBody.length; i++) {
-                                for (let c = 0; c < filteredBody[i].length; c++) {
-                                    if (filteredBody[i][c] === '{') { bc++; st = true }
-                                    else if (filteredBody[i][c] === '}') {
-                                        bc--
-                                        if (st && bc === 0) { closeIdx = i; break }
-                                    }
-                                }
-                                if (closeIdx !== -1) break
-                            }
-
-                            if (closeIdx !== -1) {
-                                // Extract content inside '#': { ... }
-                                const hashBody = filteredBody.slice(hashLineIdx + 1, closeIdx)
-                                const dedented = dedentAndIndent(hashBody, '        ')
-                                const result: string[] = ['return Encapsulate({', "    '#': {"]
-                                for (let i = 0; i < dedented.length; i++) result.push(dedented[i])
-                                result.push('    }')
-                                result.push('})')
-                                return result.join('\n')
-                            }
-                        }
-
-                        // No '#': { block found — use spine contract content directly
-                        // (files with only dimension refs like LoginService.ts)
-                        const dedented = dedentAndIndent(filteredBody, '    ')
-                        const result: string[] = ['return Encapsulate({']
-                        for (let i = 0; i < dedented.length; i++) result.push(dedented[i])
-                        result.push('})')
-                        return result.join('\n')
                     }
                 },
             }

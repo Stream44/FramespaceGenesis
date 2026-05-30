@@ -166,7 +166,7 @@ CREATE TABLE IF NOT EXISTS Capsule (
     capsuleSourceUriLineRef TEXT,
     cacheBustVersion INTEGER,
     capsuleName TEXT,
-    cstFileUri TEXT,
+    cstFilepath TEXT,
     spineInstanceUri TEXT
 );
 ```

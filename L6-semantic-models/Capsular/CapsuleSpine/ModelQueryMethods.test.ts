@@ -10,7 +10,7 @@ const ENGINE_KEY = '@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/
 const PACKAGE_ROOT = dirname(dirname(dirname(dirname(import.meta.path))))
 
 const {
-    test: { describe, it, expect, expectSnapshotMatch },
+    test: { describe, it, expect },
     modelServer,
 } = await run(async ({ encapsulate, CapsulePropertyTypes, makeImportStack }: any) => {
     const spine = await encapsulate({
@@ -65,38 +65,24 @@ for (const { spineInstanceTreeId } of trees) {
 
         it('listCapsules', async () => {
             const result = await api.listCapsules(spineInstanceTreeId)
-            await expectSnapshotMatch(normalize(result))
+            expect(normalize(result)).toMatchSnapshot()
         })
 
         it('getCapsule (first capsule)', async () => {
             const list = await api.listCapsules(spineInstanceTreeId)
             const capsuleName = list.list[0]?.$id
             const result = await api.getCapsule(spineInstanceTreeId, capsuleName)
-            await expectSnapshotMatch(normalize(result))
+            expect(normalize(result)).toMatchSnapshot()
         })
 
         it('getSpineDeclarationTree', async () => {
             const result = await api.getSpineDeclarationTree(spineInstanceTreeId)
-            await expectSnapshotMatch(normalize(result))
+            expect(normalize(result)).toMatchSnapshot()
         })
 
         it('getSpineInstanceTree', async () => {
             const result = await api.getSpineInstanceTree(spineInstanceTreeId)
-            await expectSnapshotMatch(normalize(result))
-        })
-
-        it('getMembraneEvents', async () => {
-            const result = await api.getMembraneEvents(spineInstanceTreeId)
-            expect(result['#']).toBe('MembraneEvents')
-            expect(result.$id).toBe(spineInstanceTreeId)
-            await expectSnapshotMatch(normalize(result))
-        })
-
-        it('getEventLog', async () => {
-            const result = await api.getEventLog(spineInstanceTreeId)
-            expect(result['#']).toBe('EventLog')
-            expect(result.$id).toBe(spineInstanceTreeId)
-            await expectSnapshotMatch(normalize(result))
+            expect(normalize(result)).toMatchSnapshot()
         })
     })
 }

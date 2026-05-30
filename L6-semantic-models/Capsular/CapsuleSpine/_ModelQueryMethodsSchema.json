@@ -1,29 +1,19 @@
 {
-    "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods",
-    "description": "Methods to query the *Capsule Spine Model* of the selected *Spine Instance Tree*",
-    "basePath": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods",
+    "namespace": "Capsular/ModelQueryMethods",
+    "description": "Low-level query methods for Capsular model engines — delegates to engine-specific implementations.",
+    "basePath": "/api/Capsular/ModelQueryMethods",
     "methods": {
         "listCapsules": {
             "args": [
                 {
                     "name": "spineInstanceTreeId",
                     "type": "string"
-                },
-                {
-                    "name": "resolveRefs",
-                    "type": "boolean",
-                    "optional": true
                 }
             ],
-            "description": "List all capsules in the tree.",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
-                    "filterField": "$id"
-                }
-            }
+            "description": "List all capsules in the given spine instance tree.",
+            "graphMethod": true
         },
-        "getCapsule": {
+        "getCapsuleWithSource": {
             "args": [
                 {
                     "name": "spineInstanceTreeId",
@@ -34,55 +24,96 @@
                     "type": "string"
                 }
             ],
-            "description": "Get a capsule with full CST structure including spine contracts, property contracts, and properties.",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "listCapsules",
-                    "filterField": "$id"
-                }
-            }
+            "description": "Get a capsule with its full source node.",
+            "graphMethod": true
         },
-        "getSpineDeclarationTree": {
+        "getCapsuleSpineTree_data": {
             "args": [
                 {
                     "name": "spineInstanceTreeId",
                     "type": "string"
                 },
                 {
-                    "name": "includeProperties",
-                    "type": "boolean",
-                    "optional": true
+                    "name": "capsuleName",
+                    "type": "string"
                 }
             ],
-            "description": "Get the declaration tree (capsule definitions) for a spineInstanceTreeId.",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
-                    "filterField": "$id"
-                }
-            }
+            "description": "Get spine tree data rows for a capsule.",
+            "graphMethod": true
         },
-        "getSpineInstanceTree": {
+        "getCapsuleNamesBySpineTree": {
             "args": [
                 {
                     "name": "spineInstanceTreeId",
                     "type": "string"
                 }
             ],
-            "description": "Get the instance tree (runtime instances) for a spineInstanceTreeId.",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
-                    "filterField": "$id"
-                }
-            }
+            "description": "Get capsule names belonging to a spine tree.",
+            "graphMethod": true
         },
-        "getSpineInstanceTrees": {
-            "args": [],
-            "description": "List all distinct spine instance tree IDs in the graph.",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {}
-            }
+        "fetchCapsuleRelations": {
+            "args": [
+                {
+                    "name": "spineInstanceTreeId",
+                    "type": "string"
+                },
+                {
+                    "name": "capsuleNames",
+                    "type": "string[]"
+                }
+            ],
+            "description": "Fetch mapping and extends relations for a set of capsules.",
+            "graphMethod": true
+        },
+        "listSpineInstanceTrees": {
+            "args": [
+                {
+                    "name": "spineInstanceTreeId",
+                    "type": "string"
+                }
+            ],
+            "description": "List all spine instance trees.",
+            "graphMethod": true
+        },
+        "getInstancesBySpineTree": {
+            "args": [
+                {
+                    "name": "spineInstanceTreeId",
+                    "type": "string"
+                }
+            ],
+            "description": "Get all instances in a spine tree.",
+            "graphMethod": true
+        },
+        "getRootInstance": {
+            "args": [
+                {
+                    "name": "spineInstanceTreeId",
+                    "type": "string"
+                }
+            ],
+            "description": "Get the root instance of a spine tree.",
+            "graphMethod": true
+        },
+        "getChildInstances": {
+            "args": [
+                {
+                    "name": "spineInstanceTreeId",
+                    "type": "string"
+                }
+            ],
+            "description": "Get child instances of the root instance in a spine tree.",
+            "graphMethod": true
+        },
+        "fetchInstanceRelations": {
+            "args": [
+                {
+                    "name": "spineInstanceTreeId",
+                    "type": "string"
+                }
+            ],
+            "description": "Fetch instance relations for a spine tree.",
+            "graphMethod": true
         }
     }
 }

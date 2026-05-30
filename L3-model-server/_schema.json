@@ -1,37 +1,21 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Framespace Genesis API",
-        "version": "1.0.0"
+        "title": "Framespace API",
+        "version": "0.1.0"
     },
     "apis": {
-        "@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods": {
-            "description": "Methods to query the *Capsule Spine Model* of the selected *Spine Instance Tree*",
-            "basePath": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods"
+        "Encapsulate/CapsuleSpine": {
+            "description": "Methods to query the *Capsule Spine Model* of the selected *Spine Tree Instance*",
+            "basePath": "/api/Encapsulate/CapsuleSpine"
         },
-        "@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods": {
+        "Framespace/Visualization/Quadrant": {
+            "description": "Methods to query the *Quadrant Column Tree Model*",
+            "basePath": "/api/Framespace/Visualization/Quadrant"
+        },
+        "Framespace/Workbench": {
             "description": "Methods to facilitate the Framespace Workbench",
-            "basePath": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods"
-        },
-        "@stream44.studio~FramespaceGenesis~L6-semantic-models~CapsuleSpine~Quadrant~ModelQueryMethods": {
-            "description": "Semantic methods to query *Quadrant* dimension trees (columns, rows) for a given *Spine Instance Tree*",
-            "basePath": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~CapsuleSpine~Quadrant~ModelQueryMethods"
-        },
-        "@stream44.studio~FramespaceGenesis~L6-semantic-models~CapsuleSpine~Codepath~ModelQueryMethods": {
-            "description": "Semantic methods to query the *Codepath Model* columns and rows for a given *Spine Instance Tree*",
-            "basePath": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~CapsuleSpine~Codepath~ModelQueryMethods"
-        },
-        "@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods": {
-            "description": "Methods to query the *Quadrant Model* for a given *Spine Instance Tree*",
-            "basePath": "/api/@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods"
-        },
-        "@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Codepath~ModelQueryMethods": {
-            "description": "Methods to query the *Codepath Model* for a given *Spine Instance Tree*",
-            "basePath": "/api/@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Codepath~ModelQueryMethods"
-        },
-        "@stream44.studio~FramespaceGenesis~L8-view-models~Composite~Quadrant-Codepath~ModelQueryMethods": {
-            "description": "Supplementary methods for the Quadrant-Codepath composite view. The UI also calls L6 Quadrant and L6 Codepath APIs directly.",
-            "basePath": "/api/@stream44.studio~FramespaceGenesis~L8-view-models~Composite~Quadrant-Codepath~ModelQueryMethods"
+            "basePath": "/api/Framespace/Workbench"
         }
     },
     "engines": [
@@ -39,14 +23,15 @@
     ],
     "defaultEngine": "@stream44.studio/FramespaceGenesis/L4-space-models/Capsular/engines/JsonFiles-v0/ImportAPI",
     "endpoints": {
-        "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods/listCapsules": {
+        "/api/Encapsulate/CapsuleSpine/listCapsules": {
             "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods",
+            "namespace": "Encapsulate/CapsuleSpine",
             "description": "List all capsules in the tree.",
             "args": [
                 {
                     "name": "spineInstanceTreeId",
-                    "type": "string"
+                    "type": "string",
+                    "optional": true
                 },
                 {
                     "name": "resolveRefs",
@@ -57,14 +42,8 @@
             "engineParam": true,
             "discovery": "/api/Framespace/Workbench/listSpineInstanceTrees",
             "filterField": "$id",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
-                    "filterField": "$id"
-                }
-            },
             "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods/listCapsules?spineInstanceTreeId=<string>&resolveRefs=<boolean>",
+                "GET": "/api/Encapsulate/CapsuleSpine/listCapsules?spineInstanceTreeId=<string>&resolveRefs=<boolean>",
                 "POST": {
                     "body": {
                         "args": [
@@ -75,44 +54,33 @@
                 }
             }
         },
-        "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods/getCapsule": {
+        "/api/Encapsulate/CapsuleSpine/getCapsule": {
             "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods",
+            "namespace": "Encapsulate/CapsuleSpine",
             "description": "Get a capsule with full CST structure including spine contracts, property contracts, and properties.",
             "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                },
                 {
                     "name": "capsuleName",
                     "type": "string"
                 }
             ],
             "engineParam": true,
-            "discovery": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods/listCapsules",
+            "discovery": "/api/Encapsulate/CapsuleSpine/listCapsules",
             "filterField": "$id",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "listCapsules",
-                    "filterField": "$id"
-                }
-            },
             "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods/getCapsule?spineInstanceTreeId=<string>&capsuleName=<string>",
+                "GET": "/api/Encapsulate/CapsuleSpine/getCapsule?capsuleName=<string>",
                 "POST": {
                     "body": {
                         "args": [
-                            "<string>",
                             "<string>"
                         ]
                     }
                 }
             }
         },
-        "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods/getSpineDeclarationTree": {
+        "/api/Encapsulate/CapsuleSpine/getSpineDeclarationTree": {
             "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods",
+            "namespace": "Encapsulate/CapsuleSpine",
             "description": "Get the declaration tree (capsule definitions) for a spineInstanceTreeId.",
             "args": [
                 {
@@ -128,14 +96,8 @@
             "engineParam": true,
             "discovery": "/api/Framespace/Workbench/listSpineInstanceTrees",
             "filterField": "$id",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
-                    "filterField": "$id"
-                }
-            },
             "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods/getSpineDeclarationTree?spineInstanceTreeId=<string>&includeProperties=<boolean>",
+                "GET": "/api/Encapsulate/CapsuleSpine/getSpineDeclarationTree?spineInstanceTreeId=<string>&includeProperties=<boolean>",
                 "POST": {
                     "body": {
                         "args": [
@@ -146,9 +108,9 @@
                 }
             }
         },
-        "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods/getSpineInstanceTree": {
+        "/api/Encapsulate/CapsuleSpine/getSpineInstanceTree": {
             "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods",
+            "namespace": "Encapsulate/CapsuleSpine",
             "description": "Get the instance tree (runtime instances) for a spineInstanceTreeId.",
             "args": [
                 {
@@ -159,14 +121,8 @@
             "engineParam": true,
             "discovery": "/api/Framespace/Workbench/listSpineInstanceTrees",
             "filterField": "$id",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
-                    "filterField": "$id"
-                }
-            },
             "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods/getSpineInstanceTree?spineInstanceTreeId=<string>",
+                "GET": "/api/Encapsulate/CapsuleSpine/getSpineInstanceTree?spineInstanceTreeId=<string>",
                 "POST": {
                     "body": {
                         "args": [
@@ -176,28 +132,58 @@
                 }
             }
         },
-        "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods/getSpineInstanceTrees": {
+        "/api/Framespace/Visualization/Quadrant/getColumnTree": {
             "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods",
-            "description": "List all distinct spine instance tree IDs in the graph.",
-            "args": [],
+            "namespace": "Framespace/Visualization/Quadrant",
+            "description": "Get the column tree for a spine instance. Columns are detected via struct dependency on schema/Column. Parent-child hierarchy is derived from struct deps between columns. Each column node includes a capsules[] array of element capsules tagged with that column.",
+            "args": [
+                {
+                    "name": "spineInstanceUri",
+                    "type": "string"
+                }
+            ],
             "engineParam": true,
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {}
-            },
+            "discovery": "/api/Framespace/Workbench/listSpineInstances",
+            "filterField": "$id",
             "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods/getSpineInstanceTrees",
+                "GET": "/api/Framespace/Visualization/Quadrant/getColumnTree?spineInstanceUri=<string>",
                 "POST": {
                     "body": {
-                        "args": []
+                        "args": [
+                            "<string>"
+                        ]
                     }
                 }
             }
         },
-        "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods/getMembraneEvents": {
+        "/api/Framespace/Visualization/Quadrant/getRowTree": {
             "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods",
-            "description": "Get all membrane events for a spine instance tree, ordered by eventIndex.",
+            "namespace": "Framespace/Visualization/Quadrant",
+            "description": "Get the row tree for a spine instance. Rows are detected via struct dependency on schema/Row. Parent-child hierarchy is derived from struct deps between rows. Each row node includes a capsules[] array of element capsules tagged with that row.",
+            "args": [
+                {
+                    "name": "spineInstanceUri",
+                    "type": "string"
+                }
+            ],
+            "engineParam": true,
+            "discovery": "/api/Framespace/Workbench/listSpineInstances",
+            "filterField": "$id",
+            "usage": {
+                "GET": "/api/Framespace/Visualization/Quadrant/getRowTree?spineInstanceUri=<string>",
+                "POST": {
+                    "body": {
+                        "args": [
+                            "<string>"
+                        ]
+                    }
+                }
+            }
+        },
+        "/api/Framespace/Visualization/Quadrant/getVisualization": {
+            "method": "GET or POST",
+            "namespace": "Framespace/Visualization/Quadrant",
+            "description": "Get the full Quadrant visualization data including column tree, row tree, and grid placement for rendering.",
             "args": [
                 {
                     "name": "spineInstanceTreeId",
@@ -205,16 +191,9 @@
                 }
             ],
             "engineParam": true,
-            "discovery": "/api/Framespace/Workbench/listSpineInstanceTrees",
             "filterField": "$id",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
-                    "filterField": "$id"
-                }
-            },
             "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods/getMembraneEvents?spineInstanceTreeId=<string>",
+                "GET": "/api/Framespace/Visualization/Quadrant/getVisualization?spineInstanceTreeId=<string>",
                 "POST": {
                     "body": {
                         "args": [
@@ -224,50 +203,14 @@
                 }
             }
         },
-        "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods/getEventLog": {
+        "/api/Framespace/Workbench/listSpineInstanceTrees": {
             "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods",
-            "description": "Get a structured event log with caller resolution and active invocation tracking.",
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                },
-                {
-                    "name": "filter",
-                    "type": "string",
-                    "optional": true
-                }
-            ],
-            "engineParam": true,
-            "discovery": "/api/Framespace/Workbench/listSpineInstanceTrees",
-            "filterField": "$id",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
-                    "filterField": "$id"
-                }
-            },
-            "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Capsular~CapsuleSpine~ModelQueryMethods/getEventLog?spineInstanceTreeId=<string>&filter=<string>",
-                "POST": {
-                    "body": {
-                        "args": [
-                            "<string>",
-                            "<string>"
-                        ]
-                    }
-                }
-            }
-        },
-        "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/listSpineInstanceTrees": {
-            "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods",
+            "namespace": "Framespace/Workbench",
             "description": "List all distinct spine instance tree IDs in the graph.",
             "args": [],
             "engineParam": true,
             "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/listSpineInstanceTrees",
+                "GET": "/api/Framespace/Workbench/listSpineInstanceTrees",
                 "POST": {
                     "body": {
                         "args": []
@@ -275,13 +218,13 @@
                 }
             }
         },
-        "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/getProcessStats": {
+        "/api/Framespace/Workbench/getProcessStats": {
             "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods",
+            "namespace": "Framespace/Workbench",
             "description": "Get backend process memory and CPU usage.",
             "args": [],
             "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/getProcessStats",
+                "GET": "/api/Framespace/Workbench/getProcessStats",
                 "POST": {
                     "body": {
                         "args": []
@@ -289,13 +232,13 @@
                 }
             }
         },
-        "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/getReps": {
+        "/api/Framespace/Workbench/getReps": {
             "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods",
+            "namespace": "Framespace/Workbench",
             "description": "List all registered reps with their source file paths.",
             "args": [],
             "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/getReps",
+                "GET": "/api/Framespace/Workbench/getReps",
                 "POST": {
                     "body": {
                         "args": []
@@ -303,10 +246,10 @@
                 }
             }
         },
-        "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/openFile": {
+        "/api/Framespace/Workbench/openFile": {
             "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods",
-            "description": "Open a file in an editor. Command is the editor binary (e.g. \"code\"), file is an absolute path or npm URI optionally with :line suffix.",
+            "namespace": "Framespace/Workbench",
+            "description": "Open a file in an editor. Command is the editor binary (e.g. \"code\"), file is an absolute path optionally with :line suffix.",
             "args": [
                 {
                     "name": "command",
@@ -318,427 +261,11 @@
                 }
             ],
             "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/openFile?command=<string>&file=<string>",
+                "GET": "/api/Framespace/Workbench/openFile?command=<string>&file=<string>",
                 "POST": {
                     "body": {
                         "args": [
                             "<string>",
-                            "<string>"
-                        ]
-                    }
-                }
-            }
-        },
-        "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/listSpineInstanceTreeCapsuleSourceFiles": {
-            "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods",
-            "description": "List all capsule source files for a spine instance tree, grouped by capsule name.",
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "engineParam": true,
-            "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/listSpineInstanceTreeCapsuleSourceFiles?spineInstanceTreeId=<string>",
-                "POST": {
-                    "body": {
-                        "args": [
-                            "<string>"
-                        ]
-                    }
-                }
-            }
-        },
-        "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/getCapsuleSourceFile": {
-            "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods",
-            "description": "Read the contents of a capsule source file by its npm URI. Format: \"raw\" (default) or \"simplified\".",
-            "args": [
-                {
-                    "name": "fileUri",
-                    "type": "string"
-                },
-                {
-                    "name": "format",
-                    "type": "string"
-                }
-            ],
-            "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/getCapsuleSourceFile?fileUri=<string>&format=<string>",
-                "POST": {
-                    "body": {
-                        "args": [
-                            "<string>",
-                            "<string>"
-                        ]
-                    }
-                }
-            }
-        },
-        "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/saveCapsuleSourceFile": {
-            "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods",
-            "description": "Save content to a capsule source file by its npm URI.",
-            "args": [
-                {
-                    "name": "fileUri",
-                    "type": "string"
-                },
-                {
-                    "name": "content",
-                    "type": "string"
-                }
-            ],
-            "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~Framespace~Workbench~ModelQueryMethods/saveCapsuleSourceFile?fileUri=<string>&content=<string>",
-                "POST": {
-                    "body": {
-                        "args": [
-                            "<string>",
-                            "<string>"
-                        ]
-                    }
-                }
-            }
-        },
-        "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~CapsuleSpine~Quadrant~ModelQueryMethods/getColumnTree": {
-            "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~CapsuleSpine~Quadrant~ModelQueryMethods",
-            "description": "Get the column tree for a spine instance. Columns are detected via struct dependency on schema/Column. Parent-child hierarchy is derived from struct deps between columns. Each column node includes a capsules[] array of element capsules tagged with that column.",
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "engineParam": true,
-            "discovery": "/api/Framespace/Workbench/listSpineInstanceTrees",
-            "filterField": "$id",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
-                    "filterField": "$id"
-                }
-            },
-            "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~CapsuleSpine~Quadrant~ModelQueryMethods/getColumnTree?spineInstanceTreeId=<string>",
-                "POST": {
-                    "body": {
-                        "args": [
-                            "<string>"
-                        ]
-                    }
-                }
-            }
-        },
-        "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~CapsuleSpine~Quadrant~ModelQueryMethods/getRowTree": {
-            "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~CapsuleSpine~Quadrant~ModelQueryMethods",
-            "description": "Get the row tree for a spine instance. Rows are detected via struct dependency on schema/Row. Parent-child hierarchy is derived from struct deps between rows. Each row node includes a capsules[] array of element capsules tagged with that row.",
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "engineParam": true,
-            "discovery": "/api/Framespace/Workbench/listSpineInstanceTrees",
-            "filterField": "$id",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
-                    "filterField": "$id"
-                }
-            },
-            "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~CapsuleSpine~Quadrant~ModelQueryMethods/getRowTree?spineInstanceTreeId=<string>",
-                "POST": {
-                    "body": {
-                        "args": [
-                            "<string>"
-                        ]
-                    }
-                }
-            }
-        },
-        "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~CapsuleSpine~Codepath~ModelQueryMethods/getCodepathColumns": {
-            "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~CapsuleSpine~Codepath~ModelQueryMethods",
-            "description": "Get the Codepath columns: one per capsule that has membrane events, ordered by first event.",
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "engineParam": true,
-            "discovery": "/api/Framespace/Workbench/listSpineInstanceTrees",
-            "filterField": "$id",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
-                    "filterField": "$id"
-                }
-            },
-            "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~CapsuleSpine~Codepath~ModelQueryMethods/getCodepathColumns?spineInstanceTreeId=<string>",
-                "POST": {
-                    "body": {
-                        "args": [
-                            "<string>"
-                        ]
-                    }
-                }
-            }
-        },
-        "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~CapsuleSpine~Codepath~ModelQueryMethods/getCodepathRows": {
-            "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~CapsuleSpine~Codepath~ModelQueryMethods",
-            "description": "Get the Codepath rows: one per event entry, with cells placed in the column of the event's owning capsule.",
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "engineParam": true,
-            "discovery": "/api/Framespace/Workbench/listSpineInstanceTrees",
-            "filterField": "$id",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
-                    "filterField": "$id"
-                }
-            },
-            "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~CapsuleSpine~Codepath~ModelQueryMethods/getCodepathRows?spineInstanceTreeId=<string>",
-                "POST": {
-                    "body": {
-                        "args": [
-                            "<string>"
-                        ]
-                    }
-                }
-            }
-        },
-        "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~CapsuleSpine~Codepath~ModelQueryMethods/getComponents": {
-            "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~CapsuleSpine~Codepath~ModelQueryMethods",
-            "description": "Get component data for each capsule in the spine: properties (data), actions (functions), and connections (mappings).",
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "engineParam": true,
-            "discovery": "/api/Framespace/Workbench/listSpineInstanceTrees",
-            "filterField": "$id",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
-                    "filterField": "$id"
-                }
-            },
-            "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~CapsuleSpine~Codepath~ModelQueryMethods/getComponents?spineInstanceTreeId=<string>",
-                "POST": {
-                    "body": {
-                        "args": [
-                            "<string>"
-                        ]
-                    }
-                }
-            }
-        },
-        "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~CapsuleSpine~Codepath~ModelQueryMethods/getCallPathFrames": {
-            "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L6-semantic-models~CapsuleSpine~Codepath~ModelQueryMethods",
-            "description": "Get a list of call-path state transitions for the full model run. Each frame contains add/remove entries describing which lines appear or disappear at that event.",
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "engineParam": true,
-            "discovery": "/api/Framespace/Workbench/listSpineInstanceTrees",
-            "filterField": "$id",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
-                    "filterField": "$id"
-                }
-            },
-            "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L6-semantic-models~CapsuleSpine~Codepath~ModelQueryMethods/getCallPathFrames?spineInstanceTreeId=<string>",
-                "POST": {
-                    "body": {
-                        "args": [
-                            "<string>"
-                        ]
-                    }
-                }
-            }
-        },
-        "/api/@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods/getTableView": {
-            "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods",
-            "description": "Get the Quadrant table view: column tree, row tree, and grid placement for rendering.",
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "engineParam": true,
-            "discovery": "/api/Framespace/Workbench/listSpineInstanceTrees",
-            "filterField": "$id",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
-                    "filterField": "$id"
-                },
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/Framespaces/Panel": {
-                    "label": "Quadrant Visualization",
-                    "description": "A table-rooted nested spatial layout for domain elements."
-                }
-            },
-            "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods/getTableView?spineInstanceTreeId=<string>",
-                "POST": {
-                    "body": {
-                        "args": [
-                            "<string>"
-                        ]
-                    }
-                }
-            }
-        },
-        "/api/@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods/getColumnTree": {
-            "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods",
-            "description": "Get the column dimension tree for a spine instance. Proxied from L6 Quadrant.",
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "engineParam": true,
-            "discovery": "/api/Framespace/Workbench/listSpineInstanceTrees",
-            "filterField": "$id",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
-                    "filterField": "$id"
-                }
-            },
-            "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods/getColumnTree?spineInstanceTreeId=<string>",
-                "POST": {
-                    "body": {
-                        "args": [
-                            "<string>"
-                        ]
-                    }
-                }
-            }
-        },
-        "/api/@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods/getRowTree": {
-            "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods",
-            "description": "Get the row dimension tree for a spine instance. Proxied from L6 Quadrant.",
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "engineParam": true,
-            "discovery": "/api/Framespace/Workbench/listSpineInstanceTrees",
-            "filterField": "$id",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
-                    "filterField": "$id"
-                }
-            },
-            "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Quadrant~ModelQueryMethods/getRowTree?spineInstanceTreeId=<string>",
-                "POST": {
-                    "body": {
-                        "args": [
-                            "<string>"
-                        ]
-                    }
-                }
-            }
-        },
-        "/api/@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Codepath~ModelQueryMethods/getSwimlaneView": {
-            "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Codepath~ModelQueryMethods",
-            "description": "Get the Codepath swimlane view: capsule columns, event rows, and grid cells for rendering the code execution path.",
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "engineParam": true,
-            "discovery": "/api/Framespace/Workbench/listSpineInstanceTrees",
-            "filterField": "$id",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
-                    "filterField": "$id"
-                },
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/Framespaces/Panel": {
-                    "label": "Codepath Visualization",
-                    "description": "A timeline view of code execution through capsule membrane events."
-                }
-            },
-            "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L8-view-models~CapsuleSpine~Codepath~ModelQueryMethods/getSwimlaneView?spineInstanceTreeId=<string>",
-                "POST": {
-                    "body": {
-                        "args": [
-                            "<string>"
-                        ]
-                    }
-                }
-            }
-        },
-        "/api/@stream44.studio~FramespaceGenesis~L8-view-models~Composite~Quadrant-Codepath~ModelQueryMethods/getQuadrantCodepathView": {
-            "method": "GET or POST",
-            "namespace": "@stream44.studio~FramespaceGenesis~L8-view-models~Composite~Quadrant-Codepath~ModelQueryMethods",
-            "description": "Get the combined Quadrant-Codepath view reference for rendering.",
-            "args": [
-                {
-                    "name": "spineInstanceTreeId",
-                    "type": "string"
-                }
-            ],
-            "engineParam": true,
-            "discovery": "/api/Framespace/Workbench/listSpineInstanceTrees",
-            "filterField": "$id",
-            "tags": {
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/ModelAPIs/Panel": {
-                    "discovery": "Framespace/Workbench/listSpineInstanceTrees",
-                    "filterField": "$id"
-                },
-                "@stream44.studio/FramespaceGenesis/L8-view-models/Workbench/Framespaces/Panel": {
-                    "label": "Quadrant-Codepath Visualization",
-                    "description": "A quadrant grid with component cards showing properties, actions, and execution flow lines."
-                }
-            },
-            "usage": {
-                "GET": "/api/@stream44.studio~FramespaceGenesis~L8-view-models~Composite~Quadrant-Codepath~ModelQueryMethods/getQuadrantCodepathView?spineInstanceTreeId=<string>",
-                "POST": {
-                    "body": {
-                        "args": [
                             "<string>"
                         ]
                     }

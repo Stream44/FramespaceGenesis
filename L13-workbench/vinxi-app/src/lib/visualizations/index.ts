@@ -6,11 +6,10 @@ export type { VisualizationDef, VisualizationContext } from "./types";
 export type { WorkbenchLib } from "../workbenchLib";
 export { workbenchLib } from "../workbenchLib";
 export { FramespaceAPI, panelDef as FramespaceAPIPanelDef } from "~L8/Workbench/ModelAPIs/Panel";
-export { FramespacesPanel, panelDef as FramespacesPanelDef } from "~L8/Workbench/Framespaces/Panel";
-export type { FramespaceLink } from "~L8/Workbench/Framespaces/Panel";
+export { ModelsPanel, panelDef as ModelsPanelDef } from "~L8/Workbench/Models/Panel";
 
 import type { VisualizationDef } from "./types";
-import { panelDef as FramespacesPanelDef } from "~L8/Workbench/Framespaces/Panel";
+import { panelDef as ModelsPanelDef } from "~L8/Workbench/Models/Panel";
 import { panelDef as FramespaceAPIPanelDef } from "~L8/Workbench/ModelAPIs/Panel";
 
 // Side-effect imports: register reps with renderLib
@@ -33,14 +32,12 @@ import "~L6/Capsular/CapsuleSpine/reps/SpineInstancesRep";
 import "~L6/Capsular/CapsuleSpine/reps/CapsuleSpineTree";
 import "~L6/Capsular/CapsuleSpine/reps/SpineDeclarationTreeRep";
 import "~L6/Capsular/CapsuleSpine/reps/SpineInstanceTreeRep";
-import "~L8/CapsuleSpine/Quadrant/reps/TableView";
-import "~L8/CapsuleSpine/Codepath/reps/SwimlaneView";
-import "~L8/Composite/Quadrant-Codepath/reps/QuadrantCodepathView";
+import "~L8/CapsuleSpine/Quadrant/reps/QuadrantGrid";
 
 // Default visualizations — these are shown from the start and are non-closable
 export const visualizations: VisualizationDef[] = [
     {
-        ...FramespacesPanelDef,
+        ...ModelsPanelDef,
         component: () => null, // placeholder — rendered inline in WorkbenchDockview
     },
 ];

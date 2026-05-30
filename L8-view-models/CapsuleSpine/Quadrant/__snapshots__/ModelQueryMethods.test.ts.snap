@@ -1,0 +1,200 @@
+// Bun Snapshot v1, https://bun.sh/docs/test/snapshots
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree getColumnTree 1`] = `
+{
+  "#": "Quadrant/ColumnTree",
+  "columns": [
+    {
+      "#": "QuadrantTreeColumn",
+      "capsule": {
+        "#": "Capsule",
+        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/view/Columns/Services",
+      },
+      "capsules": [],
+      "column": {
+        "#": "Column",
+        "label": "Services",
+      },
+      "columns": [
+        {
+          "#": "QuadrantTreeColumn",
+          "capsule": {
+            "#": "Capsule",
+            "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/view/Columns/services/Boundary",
+          },
+          "capsules": [
+            {
+              "#": "Capsule",
+              "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/elements/GatewayService",
+            },
+            {
+              "#": "Capsule",
+              "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/elements/LoginService",
+            },
+          ],
+          "column": {
+            "#": "Column",
+            "label": "Boundary",
+          },
+          "columns": [],
+        },
+        {
+          "#": "QuadrantTreeColumn",
+          "capsule": {
+            "#": "Capsule",
+            "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/view/Columns/services/BusinessLogic",
+          },
+          "capsules": [
+            {
+              "#": "Capsule",
+              "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/elements/FeedService",
+            },
+            {
+              "#": "Capsule",
+              "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/elements/PaymentService",
+            },
+            {
+              "#": "Capsule",
+              "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/elements/ProfileService",
+            },
+            {
+              "#": "Capsule",
+              "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/elements/SearchService",
+            },
+          ],
+          "column": {
+            "#": "Column",
+            "label": "Business Logic",
+          },
+          "columns": [],
+        },
+        {
+          "#": "QuadrantTreeColumn",
+          "capsule": {
+            "#": "Capsule",
+            "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/view/Columns/services/Data",
+          },
+          "capsules": [
+            {
+              "#": "Capsule",
+              "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/elements/AccountDB",
+            },
+            {
+              "#": "Capsule",
+              "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/elements/ProfilesDB",
+            },
+          ],
+          "column": {
+            "#": "Column",
+            "label": "Data",
+          },
+          "columns": [],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree getRowTree 1`] = `
+{
+  "#": "Quadrant/RowTree",
+  "rows": [
+    {
+      "#": "QuadrantTreeRow",
+      "capsule": {
+        "#": "Capsule",
+        "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/view/Rows/Clusters",
+      },
+      "capsules": [],
+      "row": {
+        "#": "Row",
+        "label": "Clusters",
+      },
+      "rows": [
+        {
+          "#": "QuadrantTreeRow",
+          "capsule": {
+            "#": "Capsule",
+            "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/view/Rows/Clusters/Account",
+          },
+          "capsules": [
+            {
+              "#": "Capsule",
+              "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/elements/GatewayService",
+            },
+            {
+              "#": "Capsule",
+              "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/elements/LoginService",
+            },
+            {
+              "#": "Capsule",
+              "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/elements/PaymentService",
+            },
+          ],
+          "row": {
+            "#": "Row",
+            "label": "Account",
+          },
+          "rows": [],
+        },
+        {
+          "#": "QuadrantTreeRow",
+          "capsule": {
+            "#": "Capsule",
+            "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/view/Rows/Clusters/APICluster",
+          },
+          "capsules": [
+            {
+              "#": "Capsule",
+              "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/elements/FeedService",
+            },
+            {
+              "#": "Capsule",
+              "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/elements/ProfileService",
+            },
+            {
+              "#": "Capsule",
+              "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/elements/SearchService",
+            },
+          ],
+          "row": {
+            "#": "Row",
+            "label": "API",
+          },
+          "rows": [],
+        },
+        {
+          "#": "QuadrantTreeRow",
+          "capsule": {
+            "#": "Capsule",
+            "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/view/Rows/Clusters/Data",
+          },
+          "capsules": [
+            {
+              "#": "Capsule",
+              "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/elements/AccountDB",
+            },
+            {
+              "#": "Capsule",
+              "$id": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree/elements/ProfilesDB",
+            },
+          ],
+          "row": {
+            "#": "Row",
+            "label": "Data",
+          },
+          "rows": [],
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`Instance: @stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree getVisualization 1`] = `
+{
+  "#": "QuadrantGrid",
+  "spineInstanceTreeId": "@stream44.studio/FramespaceGenesis/L8-view-models/CapsuleSpine/Quadrant/examples/01-ColumnTree",
+}
+`;

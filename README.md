@@ -1,7 +1,7 @@
 <table>
   <tr>
-    <td><a href="https://Stream44.Studio"><img src=".o/stream44.studio/assets/Icon-v1.svg" width="42" height="42"></a></td>
-    <td><strong><a href="https://Stream44.Studio">Stream44 Studio</a></strong><br/>Open Development Project</td>
+    <td><a href="https://Stream44.Systems"><img src=".o/stream44.studio/assets/Icon-v1.svg" width="42" height="42"></a></td>
+    <td><strong><a href="https://Stream44.Systems">Stream44 Systems</a></strong><br/>Open Development Project</td>
     <td>Preview release for community feedback.<br/>Get in touch on <a href="https://discord.gg/9eBcQXEJAN">discord</a>.</td>
     <td>Designed by Hand<br/><b>AI assisted Code</a></td>
   </tr>
@@ -9,15 +9,15 @@
 
 ⚠️ **Disclaimer:** Under active development. Code has not been audited. APIs and interfaces are subject to change!
 
-Framespace Genesis [![Tests](https://github.com/Stream44/FramespaceGenesis/actions/workflows/test.yaml/badge.svg)](https://github.com/Stream44/FramespaceGenesis/actions/workflows/test.yaml?query=branch%3Amain)
+Framespace Genesis
 ===
 
-Ontology-driven structural modeling tool for declaratively building multi-dimensional models with layered reactive functional data processing resulting in realtime interactive visualizations.
+Framespace Genesis is an ontology-driven structural modeling tool for declaratively building multi-dimensional models with layered reactive functional data processing resulting in a realtime interactive visualization.
 
 Usage
 --
 
-[bun.sh](https://bun.sh) is required.
+[bun.sh](https://bun.sh) is required. Disable engines in `framespace.yaml` if one fails to run for you.
 
 After cloning run:
 
@@ -34,56 +34,11 @@ open http://localhost:3000
 bun run test
 ```
 
-Point your AI at [docs/AI-MODEL-BUILDING.md](./docs/AI-MODEL-BUILDING.md) and make some changes to the [examples](./examples).
-
-### Quadrant & Swimlane Codepath View Examples
-
-These visualizations are generated from execution traces logged when running [examples/03-QuadrantCodepath-SimplePasswordLogin/](examples/03-QuadrantCodepath-SimplePasswordLogin).
-
-See [docs/Roadmap.md](./docs/Roadmap.md) for planned visualization libraries.
-
-![Preview Quadrant Codepath Preview](./docs/PreviewQuadrantCodepath.png)
-
-
-Problem Statement
----
-
-Semantic models are an indispensable tool for model-driven development and structuring context for AI.
-
-Semantic modeling becomes a complex task when combining multiple models horizontally and vertically leading to slow progress in practical applications of comprehensive models.
-
-Knowledge models require better tooling and toolchain integration to evolve into a well-understood and leveraged technology.
-
-Much focus is on storing the data of a system in a graph.
-
-We are focused on storing the **structure of a system** in a graph to provide the data-processing indepent blueprint for a distributed system.
-
-
-Innovation
----
-
-Framespace Genesis uses a novel approach to create complex layered models by taking a code-first approach that feels familiar and is efficient to work with by hand and AI.
-
-Models are constructed as code components with declarative mappings to other components and executed by creating and resolving a promise chain across component method invocations. This is made possible by the [encapsulate](https://github.com/Stream44/encapsulate) library.
-
-A code-first approach to building semantic entities allows for hoisting functional processing nodes into a graph and for the construction of dynamic graphs with very litte tooling. When the tools disappear and the abstraction is clear new possibilities arise.
-
-
-Purpose
----
-
-1. Explore model development using the [encapsulate](https://github.com/Stream44/encapsulate) approach and layered functional processing in a structured graph to discover sclable graph processing patterns.
-
-2. Explore the creation of interactive visual interfaces driven exclusively by models.
-
-
 
 Modeling Layers
 ---
 
 Visual models running in the workbench are constructed by calling model APIs implemented in various lower layers.
-
-![Model Stack](./docs/ModelStack.svg)
 
 ### L3: Model Server
 
@@ -98,7 +53,6 @@ They are infinite data substrates constructed from simple repeating primitives.
 - **Capsular**
  - A model that encodes component-based implementation architectures into capsule spines.
  - The schema is dictated by https://github.com/Stream44/encapsulate
- - Implementation details: [L4-space-models/Capsular/README.md](L4-space-models/Capsular/README.md) 
 
 ### L6: Semantic Models
 
@@ -110,12 +64,6 @@ Semantic models define dimensions in a space by structuring primitives into link
 ### L8: View Models
 
 View models structure one or more semantic models into derived layout visual canvases.
-
-See [L8-view-models/README.md](L8-view-models/README.md) for details.
-
-### L10: Domain Models
-
-Domain models layer view models into topic specific observer oriented perspectives.
 
 ### L13: Workbench
 
